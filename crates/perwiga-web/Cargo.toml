@@ -1,0 +1,20 @@
+[package]
+name = "perwiga-web"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+arknights-endfield = { package = "perwiga-game-arknights-endfield", path = "../../games/arknights-endfield" }
+axum.workspace = true
+clap.workspace = true
+generic-game = { package = "perwiga-game-generic", path = "../../games/generic" }
+perwiga-core = { path = "../perwiga-core" }
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+
+[dev-dependencies]
+http-body-util = "0.1.3"
+tempfile.workspace = true
+tower.workspace = true

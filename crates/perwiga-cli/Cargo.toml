@@ -1,0 +1,17 @@
+[package]
+name = "perwiga"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+clap.workspace = true
+perwiga-core = { path = "../perwiga-core" }
+perwiga-game-arknights-endfield = { path = "../../games/arknights-endfield" }
+perwiga-game-generic = { path = "../../games/generic" }
+perwiga-novel-generic = { path = "../../novels/generic" }
+serde.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

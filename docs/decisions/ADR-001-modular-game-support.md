@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted
+Superseded by [ADR-002](ADR-002-games-and-novels-as-library-works.md)
 
 ## Date
 

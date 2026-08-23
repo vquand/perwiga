@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b1116">
+    <title>Perwiga · Arknights: Endfield</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23d7f75b' d='M9 8h46v48H9z'/%3E%3Cpath fill='%230b1116' d='M19 18h26v8H27v5h15v8H27v15h-8z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="module" src="/assets/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to records</a>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Perwiga home">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span>PERWIGA</span>
+      </a>
+      <div class="topbar-actions">
+        <div class="game-switcher-shell">
+          <span id="game-switcher-label" class="game-switcher-label">Active game</span>
+          <div class="game-picker">
+            <button id="game-switcher" class="game-picker-trigger" type="button" aria-label="Active game" aria-haspopup="listbox" aria-expanded="false" aria-controls="game-switcher-menu" disabled>
+              <span id="game-switcher-value">Loading library…</span>
+              <svg class="game-picker-chevron" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="m3 6 5 5 5-5"></path>
+              </svg>
+            </button>
+            <div id="game-switcher-menu" class="game-picker-menu" role="listbox" aria-labelledby="game-switcher-label" hidden></div>
+          </div>
+        </div>
+        <button id="open-search" class="button button-secondary topbar-button topbar-search" type="button" aria-label="Search current game records">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"></circle><path d="m12.5 12.5 4 4"></path></svg>
+          <span>Search</span>
+        </button>
+        <button id="add-game" class="button button-secondary topbar-button" type="button">+ Game</button>
+        <p class="local-status"><span aria-hidden="true"></span>Local UAT session</p>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="masthead" aria-labelledby="page-title">
+        <div>
+          <p id="module-kicker" class="eyebrow">Game library / dedicated module</p>
+          <h1 id="page-title">Arknights: Endfield</h1>
+          <p class="lede">A local-first multilingual field guide. Your UAT changes stay in an isolated SQLite database.</p>
+        </div>
+        <dl class="module-facts" aria-label="Module information">
+          <div><dt>Module</dt><dd id="module-id">arknights-endfield</dd></div>
+          <div><dt>Mode</dt><dd>Manual records</dd></div>
+          <div><dt>Storage</dt><dd>Temporary</dd></div>
+        </dl>
+      </section>
+
+      <section class="workspace" aria-label="Endfield wiki workspace">
+        <aside class="type-panel" aria-labelledby="type-heading">
+          <div class="panel-heading">
+            <p class="section-index">01</p>
+            <h2 id="type-heading">Record types</h2>
+          </div>
+          <nav id="type-nav" aria-label="Filter by record type" aria-busy="true">
+            <p class="loading-line">Loading module schema…</p>
+          </nav>
+        </aside>
+
+        <section class="collection" aria-labelledby="collection-heading">
+          <div class="collection-header">
+            <div>
+              <p class="section-index">02</p>
+              <h2 id="collection-heading">All records</h2>
+            </div>
+            <button id="new-entity" class="button button-primary" type="button">New record</button>
+          </div>
+          <label class="search-box" for="entity-search">
+            <span>Search names and aliases</span>
+            <input id="entity-search" type="search" autocomplete="off" placeholder="Try an English, original, Vietnamese, or alias name">
+          </label>
+          <div id="list-status" class="list-status" role="status" aria-live="polite">Preparing local workspace…</div>
+          <ul id="entity-list" class="entity-list" aria-label="Wiki records"></ul>
+        </section>
+
+        <aside id="inspector" class="inspector" aria-labelledby="inspector-heading">
+          <div class="panel-heading">
+            <p class="section-index">03</p>
+            <h2 id="inspector-heading">Record detail</h2>
+          </div>
+          <div id="inspector-content" class="empty-inspector">
+            <div class="empty-symbol" aria-hidden="true">⌁</div>
+            <h3>Select a record</h3>
+            <p>Choose an entry to inspect every known name, provenance field, description, and alias.</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <dialog id="entity-dialog" aria-labelledby="entity-dialog-title">
+      <form id="entity-form">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Multilingual wiki</p>
+            <h2 id="entity-dialog-title">New record</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-dialog aria-label="Close record form">×</button>
+        </div>
+        <input id="entity-id" type="hidden">
+        <div class="form-grid">
+          <div class="field field-span">
+            <label for="entity-type"><span>Record type</span></label>
+            <select id="entity-type" required></select>
+          </div>
+          <label class="field"><span>Official English name</span><input id="english-name" required maxlength="240"></label>
+          <label class="field"><span>Official original name</span><input id="original-name" required maxlength="240"></label>
+          <label class="field"><span>Official Vietnamese name</span><input id="official-vietnamese" maxlength="240"></label>
+          <label class="field"><span>Automatic Vietnamese translation</span><input id="automatic-vietnamese" maxlength="240"></label>
+          <label class="field field-span"><span>English description</span><textarea id="description" rows="4"></textarea></label>
+          <label class="field field-span"><span>Other information / provenance</span><textarea id="other-information" rows="3"></textarea></label>
+        </div>
+        <p class="form-note">Official and automatic translations are stored separately. Empty optional fields are left unchanged when editing.</p>
+        <div class="dialog-actions">
+          <button class="button button-secondary" type="button" data-close-dialog>Cancel</button>
+          <button id="save-entity" class="button button-primary" type="submit">Save record</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="game-dialog" aria-labelledby="game-dialog-title">
+      <form id="game-form">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Game library</p>
+            <h2 id="game-dialog-title">Add a game</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-game-dialog aria-label="Close add game form">×</button>
+        </div>
+        <div class="form-grid">
+          <div class="field field-span">
+            <label for="game-module"><span>Support module</span></label>
+            <select id="game-module" required></select>
+          </div>
+          <label class="field field-span"><span>Library name</span><input id="game-name" required maxlength="240" placeholder="The title shown in your library"></label>
+        </div>
+        <p class="form-note">Choose a dedicated module when available. Other titles use the generic manual schema and neutral theme.</p>
+        <div class="dialog-actions">
+          <button class="button button-secondary" type="button" data-close-game-dialog>Cancel</button>
+          <button id="save-game" class="button button-primary" type="submit">Add game</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <noscript>This UAT interface requires JavaScript to communicate with the local Rust application.</noscript>
+  </body>
+</html>

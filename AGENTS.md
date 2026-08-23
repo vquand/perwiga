@@ -2,9 +2,9 @@
 
 ## Scope and sources
 
-These rules apply to the whole repository unless a deeper `AGENTS.md` adds more specific instructions. Read the relevant parts of [README.md](README.md) before changing behavior or data contracts. Follow [ADR-001](docs/decisions/ADR-001-modular-game-support.md) for game-module boundaries.
+These rules apply to the whole repository unless a deeper `AGENTS.md` adds more specific instructions. Read the relevant parts of [README.md](README.md) before changing behavior or data contracts. Follow [ADR-002](docs/decisions/ADR-002-games-and-novels-as-library-works.md) for work ownership and title-module boundaries; [ADR-001](docs/decisions/ADR-001-modular-game-support.md) is historical context.
 
-Perwiga is a private, local-first desktop game wiki. The planned core is Rust with SQLite, targeting macOS, Windows, and Linux. The repository is currently documentation-only; do not invent framework, build, migration, or test commands before they exist and are verified.
+Perwiga is a private, local-first desktop wiki for games and novels. The planned core is Rust with SQLite, targeting macOS, Windows, and Linux. The repository is currently documentation-only; do not invent framework, build, migration, or test commands before they exist and are verified.
 
 ## Non-negotiable SQLite data safety
 
@@ -26,11 +26,12 @@ Migrations must be additive and data-preserving by default. Do not introduce `ON
 
 ## Architecture guardrails
 
-- Keep shared workflows in the core and title-specific entity schemas, integrations, parsers, and migrations in `games/<module-id>/`.
-- Every game module must contain its own `AGENTS.md`. Before editing a module, read [games/AGENTS.md](games/AGENTS.md) and that module’s local instructions. Create the local file before adding a new module.
-- Use the `generic` module for manually managed games. Shared code must not branch on game titles or module IDs outside the composition/registration boundary.
-- Keep domain logic, SQLite access, filesystem coordination, and game integrations in Rust. A thin non-Rust UI layer is allowed if the selected desktop framework requires it.
-- Preserve stable IDs, Unicode text, translation provenance, entity links, and game ownership. Automatic translations must never overwrite official text.
+- Keep shared workflows in the core and title-specific entity schemas, integrations, parsers, and migrations in `games/<module-id>/` or `novels/<module-id>/`.
+- Every title module must contain its own `AGENTS.md`. Before editing a module, read the family-level and module-local instructions. Create the local file before adding a new module.
+- Use each work family’s `generic` module for titles without dedicated support. Shared code must not branch on titles or module IDs outside the composition/registration boundary.
+- Keep domain logic, SQLite access, filesystem coordination, and title integrations in Rust. A thin non-Rust UI layer is allowed if the selected desktop framework requires it.
+- Preserve stable IDs, Unicode text, translation provenance, entity links, and work ownership. Automatic translations must never overwrite official text.
+- Keep published feed activity separate from scheduled calendar events. Do not infer a future novel schedule from an RSS/Atom publication timestamp.
 - Treat local files, URLs, RSS, APIs, and embedded content as untrusted boundary input. Validate and sanitize them before persistence or rendering.
 - Linking or previewing a local folder must never move, rename, overwrite, or delete the user’s files.
 
@@ -40,7 +41,7 @@ Migrations must be additive and data-preserving by default. Do not introduce `ON
 - Preserve unrelated user changes and keep documentation synchronized with behavior and data contracts.
 - Use migrations for schema changes and transactions for multi-record writes.
 - Record expensive-to-reverse architectural choices in `docs/decisions/`.
-- Add tests for persistence, ownership isolation, migrations, multilingual round-tripping, entity links, external-source validation, and module contracts once implementation exists.
+- Add tests for persistence, ownership isolation, migrations, multilingual round-tripping, entity links, feed deduplication, feed read-state persistence, feed/calendar separation, external-source validation, and module contracts once implementation exists.
 - Never commit secrets, generated build output, temporary test databases, or SQLite runtime sidecars unless a later accepted design explicitly requires them.
 
 ## Current repository state

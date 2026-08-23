@@ -1,0 +1,4 @@
+interface:
+  display_name: "Curate Endfield Names"
+  short_description: "Research and persist multilingual Endfield names"
+  default_prompt: "Use $curate-endfield-names to verify and save an Arknights: Endfield entity name."

@@ -1,0 +1,7 @@
+# Rust build output is generated and must not be committed.
+/target/
+
+# Runtime SQLite sidecars are not canonical source data.
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal

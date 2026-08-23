@@ -1,0 +1,217 @@
+{
+  "schema": "perwiga.endfield.operators.v3",
+  "entity_type": "operator",
+  "checked_at": "2026-08-23",
+  "confidence": "A",
+  "sources": {
+    "official_english": "https://endfield.gryphline.com/en-us/operator",
+    "official_simplified_chinese": "https://endfield.hypergryph.com/operator",
+    "official_vietnamese": "https://endfield.gryphline.com/vi-vn/operator",
+    "han_viet_converter": "https://hvdic.thivien.net/transcript.php#trans",
+    "rarity_color_reference": "https://gamewith.net/akendfield/72597"
+  },
+  "notes": [
+    "The official directories listed 33 entries when checked.",
+    "The Vietnamese directory renders the same Latin operator names as the English directory.",
+    "The two Endministrator entries are retained separately using their official directory asset keys.",
+    "Directory presence is verified; release or playable availability is not asserted.",
+    "Hán-Việt names are generated search aliases from the official Simplified Chinese names. They are not official Vietnamese localization.",
+    "Rarity presentation follows the documented headhunting colors: 4-star blue, 5-star gold, and 6-star red.",
+    "Official localized names are stored only as searchable aliases when their text differs from the entity's primary English, Simplified Chinese, or Vietnamese name.",
+    "The official Spanish locale returned no operator payload when checked, so Spanish names remain unresolved rather than inferred.",
+    "Community and web-novel aliases are included only where an attested source was found; absence means no stable alias was verified, not that one cannot exist."
+  ],
+  "official_localizations": [
+    {
+      "language": "zh-Hant",
+      "label": "Official Traditional Chinese",
+      "source_url": "https://endfield.gryphline.com/zh-tw/operator",
+      "names": {
+        "typhoea":"提弗洛斯", "purrche":"噗切娜", "endministrator2":"管理員", "endministrator1":"管理員", "perlica":"佩麗卡",
+        "chen":"陳千語", "lizhiyan":"訣", "liino":"梨諾", "mifu":"弭弗", "camille":"卡繆",
+        "zhuangfy":"莊方宜", "tangtang":"湯湯", "rossi":"洛西", "laevatain":"萊萬汀", "yvonne":"伊馮",
+        "gilberta":"潔爾佩塔", "ardelia":"艾爾黛拉", "ember":"餘燼", "lastrite":"別禮", "lifeng":"黎風",
+        "pogranichnik":"駿衛", "alesh":"阿列什", "arclight":"弧光", "avywenna":"艾維文娜", "dapan":"大潘",
+        "snowshine":"晝雪", "wulfgard":"狼衛", "xaihi":"賽希", "akekuri":"秋栗", "antal":"安塔爾",
+        "catcher":"卡契爾", "estella":"埃特拉", "fluorite":"螢石"
+      }
+    },
+    {
+      "language": "ja",
+      "label": "Official Japanese",
+      "source_url": "https://endfield.gryphline.com/ja-jp/operator",
+      "names": {
+        "typhoea":"ティフォロス", "purrche":"プチエナ", "endministrator2":"管理人", "endministrator1":"管理人", "perlica":"ペリカ",
+        "chen":"チェン・センユー", "lizhiyan":"オクギ", "liino":"リーノ", "mifu":"ミ・フ", "camille":"カミーユ",
+        "zhuangfy":"ゾアン・ファンイ", "tangtang":"タンタン", "rossi":"ロッシ", "laevatain":"レーヴァテイン", "yvonne":"イヴォンヌ",
+        "gilberta":"ギルベルタ", "ardelia":"アルデリア", "ember":"エンバー", "lastrite":"ラストライト", "lifeng":"リーフォン",
+        "pogranichnik":"ポグラニチニク", "alesh":"アレッシュ", "arclight":"アークライト", "avywenna":"アイビーエナ", "dapan":"ダパン",
+        "snowshine":"スノーシャイン", "wulfgard":"ウルフガード", "xaihi":"ザイヒ", "akekuri":"アケクリ", "antal":"アンタル",
+        "catcher":"キャッチャー", "estella":"エステーラ", "fluorite":"フローライト"
+      }
+    },
+    {
+      "language": "ko",
+      "label": "Official Korean",
+      "source_url": "https://endfield.gryphline.com/ko-kr/operator",
+      "names": {
+        "typhoea":"티프로스", "purrche":"푸치나", "endministrator2":"관리자", "endministrator1":"관리자", "perlica":"펠리카",
+        "chen":"진천우", "lizhiyan":"결", "liino":"리노", "mifu":"미브", "camille":"카뮤",
+        "zhuangfy":"장방이", "tangtang":"탕탕", "rossi":"로시", "laevatain":"레바테인", "yvonne":"이본",
+        "gilberta":"질베르타", "ardelia":"아델리아", "ember":"엠버", "lastrite":"라스트 라이트", "lifeng":"여풍",
+        "pogranichnik":"포그라니치니크", "alesh":"알레쉬", "arclight":"아크라이트", "avywenna":"아비웨나", "dapan":"판",
+        "snowshine":"스노우샤인", "wulfgard":"울프가드", "xaihi":"자이히", "akekuri":"아케쿠리", "antal":"안탈",
+        "catcher":"카치르", "estella":"에스텔라", "fluorite":"플루라이트"
+      }
+    },
+    {
+      "language": "ru",
+      "label": "Official Russian",
+      "source_url": "https://endfield.gryphline.com/ru-ru/operator",
+      "names": {
+        "typhoea":"Тифея", "purrche":"Муррчена", "endministrator2":"Эндминистратор", "endministrator1":"Эндминистратор", "perlica":"Перлика",
+        "chen":"Чэнь Цяньюй", "lizhiyan":"Премудрость", "liino":"Лиино", "mifu":"Ми Фу", "camille":"Камиль",
+        "zhuangfy":"Чжуан Фанъи", "tangtang":"Тантан", "rossi":"Росси", "laevatain":"Лэватейн", "yvonne":"Ивонна",
+        "gilberta":"Гилберта", "ardelia":"Арделия", "ember":"Эмбер", "lastrite":"Панихида", "lifeng":"Лифэн",
+        "pogranichnik":"Пограничник", "alesh":"Алеш", "arclight":"Арклайт", "avywenna":"Авивенна", "dapan":"Да Пан",
+        "snowshine":"Светоснежка", "wulfgard":"Вулфгард", "xaihi":"Сайхи", "akekuri":"Акэкури", "antal":"Антал",
+        "catcher":"Кэтчер", "estella":"Эстелла", "fluorite":"Флюорит"
+      }
+    },
+    {
+      "language": "th",
+      "label": "Official Thai",
+      "source_url": "https://endfield.gryphline.com/th-th/operator",
+      "names": {
+        "typhoea":"ไทฟีอุส", "purrche":"เพอร์ซีน่า", "endministrator2":"Endministrator", "endministrator1":"Endministrator", "perlica":"เพอริกา",
+        "chen":"เฉิน เชียนยู", "lizhiyan":"ปริศนา", "liino":"หลี\u200bนั่\u200bว", "mifu":"หมี่ฟู่", "camille":"คามิลล์",
+        "zhuangfy":"จวงฟางอี้", "tangtang":"ถัง\u200bถัง", "rossi":"รอส\u200bซี", "laevatain":"ลาวาเทน", "yvonne":"อีวอน",
+        "gilberta":"กิลเบอร์ตา", "ardelia":"อาร์เดเลีย", "ember":"เอ็มเบอร์", "lastrite":"ลาสท์ไรท์", "lifeng":"หลีเฟิง",
+        "pogranichnik":"Pogranichnik", "alesh":"อาเลช", "arclight":"อาร์คไลท์", "avywenna":"เอวิเวนนา", "dapan":"ต้าปัน",
+        "snowshine":"สโนว์ไชน์", "wulfgard":"วูล์ฟการ์ด", "xaihi":"ไซฮี", "akekuri":"อาเคคูริ", "antal":"แอนทาล",
+        "catcher":"แคทเชอร์", "estella":"เอสเตญ่า", "fluorite":"ฟลูโอไรต์"
+      }
+    },
+    {
+      "language": "de",
+      "label": "Official German",
+      "source_url": "https://endfield.gryphline.com/de-de/operator",
+      "names": {"lizhiyan":"Arkan"}
+    },
+    {
+      "language": "it",
+      "label": "Official Italian",
+      "source_url": "https://endfield.gryphline.com/it-it/operator",
+      "names": {"lizhiyan":"Arcana"}
+    }
+  ],
+  "additional_aliases": [
+    {
+      "source_key": "endministrator1",
+      "value": "女管",
+      "language": "zh-CN",
+      "kind": "community-nickname",
+      "label": "[nickname] Community shorthand",
+      "notes": "Attested shorthand for the female Endministrator in Chinese community discussion. Sources: https://www.taptap.cn/moment/766701429866892252 and https://k.sina.cn/article_5729156460_1557bfd6c02001ys84.html?from=game&subch=ogame. Checked 2026-08-23. Confidence C."
+    },
+    {
+      "source_key": "endministrator1",
+      "value": "企鹅女管",
+      "language": "zh-CN",
+      "kind": "community-nickname",
+      "label": "[nickname] Community nickname",
+      "notes": "Attested nickname for the female Endministrator's penguin-themed community persona. Sources: https://www.taptap.cn/moment/766701429866892252 and https://k.sina.cn/article_5729156460_1557bfd6c02001ys84.html?from=game&subch=ogame. Checked 2026-08-23. Confidence C."
+    },
+    {
+      "source_key": "endministrator1",
+      "value": "企鹅管理员",
+      "language": "zh-CN",
+      "kind": "community-nickname",
+      "label": "[nickname] Community nickname",
+      "notes": "Attested Chinese community nickname for the female Endministrator. Source: https://k.sina.cn/article_5729156460_1557bfd6c02001ys84.html?from=game&subch=ogame. Checked 2026-08-23. Confidence C."
+    },
+    {
+      "source_key": "endministrator1",
+      "value": "凑企鹅",
+      "language": "zh-CN",
+      "kind": "meme",
+      "label": "[meme] Community alias",
+      "notes": "Attested meme name comparing the female Endministrator with Minato Aqua's penguin-like mascot persona. Source: https://k.sina.cn/article_5729156460_1557bfd6c02001ys84.html?from=game&subch=ogame. Checked 2026-08-23. Confidence C."
+    },
+    {
+      "source_key": "endministrator1",
+      "value": "咕咕嘎嘎企鹅",
+      "language": "zh-CN",
+      "kind": "meme",
+      "label": "[meme] Community alias",
+      "notes": "Attested penguin meme name for the female Endministrator. Source: https://www.taptap.cn/moment/766701429866892252. Checked 2026-08-23. Confidence C."
+    },
+    {
+      "source_key": "endministrator1",
+      "value": "Penguinistrator",
+      "language": "en",
+      "kind": "meme",
+      "label": "[meme] Community alias",
+      "notes": "Attested English-language community portmanteau for the penguin-themed female Endministrator. Source: https://anibase.net/zh-hans/character/1vz05. Checked 2026-08-23. Confidence C."
+    },
+    {
+      "source_key": "endministrator2",
+      "value": "男管",
+      "language": "zh-CN",
+      "kind": "community-nickname",
+      "label": "[nickname] Community shorthand",
+      "notes": "Attested shorthand for the male Endministrator in Chinese community discussion. Sources: https://www.taptap.cn/moment/766701429866892252 and https://k.sina.cn/article_5729156460_1557bfd6c02001ys84.html?from=game&subch=ogame. Checked 2026-08-23. Confidence C."
+    },
+    {
+      "source_key": "chen",
+      "value": "小陈",
+      "language": "zh-CN",
+      "kind": "fanfic",
+      "label": "[fanfic] Web-novel shorthand",
+      "notes": "Directly attested in the Endfield fanfiction title 终末地：从把小陈骗进流水线开始. Source: https://fanqienovel.com/keyword/7636819695668135945. Checked 2026-08-23. Confidence D (fan-created)."
+    },
+    {
+      "source_key": "yvonne",
+      "value": "伊冯白丝",
+      "language": "zh-CN",
+      "kind": "community-nickname",
+      "label": "[nickname] Community nickname",
+      "notes": "Attested in a Chinese community nickname roundup; retained as unofficial and lower confidence. Source: https://news.17173.com/z/arknights2026/content/01152026/180806931.shtml. Checked 2026-08-23. Confidence D."
+    }
+  ],
+  "operators": [
+    {"source_key":"typhoea","roster_index":1,"rarity":6,"class":"Striker","element":"Nature","official_english_name":"Typhoeus","official_original_name":"提弗洛斯","official_vietnamese_name":"Typhoeus","han_viet_name":"Đề Phất Lạc Tư","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/typhoea.87cfb4cd.png"},
+    {"source_key":"purrche","roster_index":2,"rarity":5,"class":"Defender","element":"Physical","official_english_name":"Purrchena","official_original_name":"噗切娜","official_vietnamese_name":"Purrchena","han_viet_name":"Phốc Thiết Na","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/purrche.d6659019.png"},
+    {"source_key":"endministrator2","roster_index":3,"rarity":6,"class":"Guard","element":"Physical","official_english_name":"Endministrator","official_original_name":"管理员","official_vietnamese_name":"Endministrator","han_viet_name":"Quản Lý Viên","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/endministrator2.5ccb44a8.png"},
+    {"source_key":"endministrator1","roster_index":4,"rarity":6,"class":"Guard","element":"Physical","official_english_name":"Endministrator","official_original_name":"管理员","official_vietnamese_name":"Endministrator","han_viet_name":"Quản Lý Viên","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/endministrator1.c391b13d.png"},
+    {"source_key":"perlica","roster_index":5,"rarity":5,"class":"Caster","element":"Electric","official_english_name":"Perlica","official_original_name":"佩丽卡","official_vietnamese_name":"Perlica","han_viet_name":"Bội Lệ Tạp","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/prelica.d0bbdb53.png"},
+    {"source_key":"chen","roster_index":6,"rarity":5,"class":"Guard","element":"Physical","official_english_name":"Chen Qianyu","official_original_name":"陈千语","official_vietnamese_name":"Chen Qianyu","han_viet_name":"Trần Thiên Ngữ","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/chen.b0afd1ba.png"},
+    {"source_key":"lizhiyan","roster_index":7,"rarity":6,"class":"Caster","element":"Nature","official_english_name":"Arcane","official_original_name":"诀","official_vietnamese_name":"Arcane","han_viet_name":"Quyết","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lizhiyan.7ada7b83.png"},
+    {"source_key":"liino","roster_index":8,"rarity":6,"class":"Supporter","element":"Electric","official_english_name":"Liino","official_original_name":"梨诺","official_vietnamese_name":"Liino","han_viet_name":"Lê Nặc","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/liino.8d027d2a.png"},
+    {"source_key":"mifu","roster_index":9,"rarity":6,"class":"Guard","element":"Physical","official_english_name":"Mi Fu","official_original_name":"弭弗","official_vietnamese_name":"Mi Fu","han_viet_name":"Nhị Phất","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/mifu.e1d79970.png"},
+    {"source_key":"camille","roster_index":10,"rarity":6,"class":"Vanguard","element":"Heat","official_english_name":"Camille","official_original_name":"卡缪","official_vietnamese_name":"Camille","han_viet_name":"Tạp Mâu","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/camille.a26b2443.png"},
+    {"source_key":"zhuangfy","roster_index":11,"rarity":6,"class":"Striker","element":"Electric","official_english_name":"Zhuang Fangyi","official_original_name":"庄方宜","official_vietnamese_name":"Zhuang Fangyi","han_viet_name":"Trang Phương Nghi","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/zhuangfy.50a608b8.png"},
+    {"source_key":"tangtang","roster_index":12,"rarity":6,"class":"Caster","element":"Cryo","official_english_name":"Tangtang","official_original_name":"汤汤","official_vietnamese_name":"Tangtang","han_viet_name":"Thang Thang","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/tangtang.b5cd99e9.png"},
+    {"source_key":"rossi","roster_index":13,"rarity":6,"class":"Guard","element":"Physical","official_english_name":"Rossi","official_original_name":"洛茜","official_vietnamese_name":"Rossi","han_viet_name":"Lạc Thiến","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/rossi.c58b721b.png"},
+    {"source_key":"laevatain","roster_index":14,"rarity":6,"class":"Striker","element":"Heat","official_english_name":"Laevatain","official_original_name":"莱万汀","official_vietnamese_name":"Laevatain","han_viet_name":"Lai Vạn Đinh","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/laevatain.edd103d4.png"},
+    {"source_key":"yvonne","roster_index":15,"rarity":6,"class":"Striker","element":"Cryo","official_english_name":"Yvonne","official_original_name":"伊冯","official_vietnamese_name":"Yvonne","han_viet_name":"Y Phùng","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/yvonne.9695c304.png"},
+    {"source_key":"gilberta","roster_index":16,"rarity":6,"class":"Supporter","element":"Nature","official_english_name":"Gilberta","official_original_name":"洁尔佩塔","official_vietnamese_name":"Gilberta","han_viet_name":"Khiết Nhĩ Bội Tháp","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/gilberta.724f3503.png"},
+    {"source_key":"ardelia","roster_index":17,"rarity":6,"class":"Supporter","element":"Nature","official_english_name":"Ardelia","official_original_name":"艾尔黛拉","official_vietnamese_name":"Ardelia","han_viet_name":"Ngải Nhĩ Đại Lạp","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ardelia.565c75af.png"},
+    {"source_key":"ember","roster_index":18,"rarity":6,"class":"Defender","element":"Heat","official_english_name":"Ember","official_original_name":"余烬","official_vietnamese_name":"Ember","han_viet_name":"Dư Tẫn","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/ember.6391acf9.png"},
+    {"source_key":"lastrite","roster_index":19,"rarity":6,"class":"Striker","element":"Cryo","official_english_name":"Last Rite","official_original_name":"别礼","official_vietnamese_name":"Last Rite","han_viet_name":"Biệt Lễ","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lastrite.3860f541.png"},
+    {"source_key":"lifeng","roster_index":20,"rarity":6,"class":"Guard","element":"Physical","official_english_name":"Lifeng","official_original_name":"黎风","official_vietnamese_name":"Lifeng","han_viet_name":"Lê Phong","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/lifeng.ef41bc3a.png"},
+    {"source_key":"pogranichnik","roster_index":21,"rarity":6,"class":"Vanguard","element":"Physical","official_english_name":"Pogranichnik","official_original_name":"骏卫","official_vietnamese_name":"Pogranichnik","han_viet_name":"Tuấn Vệ","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/pogranichnik.80f2ddbb.png"},
+    {"source_key":"alesh","roster_index":22,"rarity":5,"class":"Vanguard","element":"Cryo","official_english_name":"Alesh","official_original_name":"阿列什","official_vietnamese_name":"Alesh","han_viet_name":"A Liệt Thập","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/alesh.d7f457d2.png"},
+    {"source_key":"arclight","roster_index":23,"rarity":5,"class":"Vanguard","element":"Electric","official_english_name":"Arclight","official_original_name":"弧光","official_vietnamese_name":"Arclight","han_viet_name":"Hồ Quang","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/arclight.e31580d7.png"},
+    {"source_key":"avywenna","roster_index":24,"rarity":5,"class":"Striker","element":"Electric","official_english_name":"Avywenna","official_original_name":"艾维文娜","official_vietnamese_name":"Avywenna","han_viet_name":"Ngải Duy Văn Na","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/avywenna.2a592659.png"},
+    {"source_key":"dapan","roster_index":25,"rarity":5,"class":"Striker","element":"Physical","official_english_name":"Da Pan","official_original_name":"大潘","official_vietnamese_name":"Da Pan","han_viet_name":"Đại Phan","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/dapan.7cdb6a4e.png"},
+    {"source_key":"snowshine","roster_index":26,"rarity":5,"class":"Defender","element":"Cryo","official_english_name":"Snowshine","official_original_name":"昼雪","official_vietnamese_name":"Snowshine","han_viet_name":"Trú Tuyết","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/snowshine.bb2c0bdc.png"},
+    {"source_key":"wulfgard","roster_index":27,"rarity":5,"class":"Caster","element":"Heat","official_english_name":"Wulfgard","official_original_name":"狼卫","official_vietnamese_name":"Wulfgard","han_viet_name":"Lang Vệ","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/wulfgard.609a252f.png"},
+    {"source_key":"xaihi","roster_index":28,"rarity":5,"class":"Supporter","element":"Cryo","official_english_name":"Xaihi","official_original_name":"赛希","official_vietnamese_name":"Xaihi","han_viet_name":"Tái Hy","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/xaihi.9ba3eb36.png"},
+    {"source_key":"akekuri","roster_index":29,"rarity":4,"class":"Vanguard","element":"Heat","official_english_name":"Akekuri","official_original_name":"秋栗","official_vietnamese_name":"Akekuri","han_viet_name":"Thu Lật","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/akekuri.3603d013.png"},
+    {"source_key":"antal","roster_index":30,"rarity":4,"class":"Supporter","element":"Electric","official_english_name":"Antal","official_original_name":"安塔尔","official_vietnamese_name":"Antal","han_viet_name":"An Tháp Nhĩ","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/antal.763c87e4.png"},
+    {"source_key":"catcher","roster_index":31,"rarity":4,"class":"Defender","element":"Physical","official_english_name":"Catcher","official_original_name":"卡契尔","official_vietnamese_name":"Catcher","han_viet_name":"Tạp Khế Nhĩ","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/catcher.bc6bcfaa.png"},
+    {"source_key":"estella","roster_index":32,"rarity":4,"class":"Guard","element":"Cryo","official_english_name":"Estella","official_original_name":"埃特拉","official_vietnamese_name":"Estella","han_viet_name":"Ai Đặc Lạp","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/estella.38c423af.png"},
+    {"source_key":"fluorite","roster_index":33,"rarity":4,"class":"Caster","element":"Nature","official_english_name":"Fluorite","official_original_name":"萤石","official_vietnamese_name":"Fluorite","han_viet_name":"Huỳnh Thạch","thumbnail_source_url":"https://web-static.hg-cdn.com/endfield/official-v4/_next/static/media/fluorite.5a8add29.png"}
+  ]
+}
