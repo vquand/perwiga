@@ -127,8 +127,40 @@ pub struct CalendarEvent {
     pub is_all_day: bool,
     pub source_url: Option<String>,
     pub source_provider: String,
+    pub source_identity: Option<String>,
+    pub event_type: Option<String>,
+    pub time_zone: Option<String>,
+    pub patch_start: Option<String>,
+    pub patch_end: Option<String>,
+    pub occurrence_index: Option<u16>,
+    pub schedule_note: Option<String>,
+    pub source_checked_at: Option<String>,
     pub created_at: String,
     pub updated_at: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CalendarEventInput {
+    pub title: String,
+    pub starts_at: String,
+    pub ends_at: Option<String>,
+    pub is_all_day: bool,
+    pub source_url: Option<String>,
+    pub source_provider: String,
+    pub source_identity: Option<String>,
+    pub event_type: Option<String>,
+    pub time_zone: Option<String>,
+    pub patch_start: Option<String>,
+    pub patch_end: Option<String>,
+    pub occurrence_index: Option<u16>,
+    pub schedule_note: Option<String>,
+    pub source_checked_at: Option<String>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct CalendarEventImportSummary {
+    pub inserted: usize,
+    pub unchanged: usize,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -140,6 +172,22 @@ pub struct EntityInput {
     pub automatic_vietnamese_translation: Option<String>,
     pub english_description: Option<String>,
     pub other_information: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct SourcedEntityInput {
+    pub source_provider: String,
+    pub source_identity: String,
+    pub entity: EntityInput,
+    pub aliases: Vec<AliasInput>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
+pub struct EntityImportSummary {
+    pub inserted: usize,
+    pub unchanged: usize,
+    pub aliases_inserted: usize,
+    pub aliases_unchanged: usize,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]

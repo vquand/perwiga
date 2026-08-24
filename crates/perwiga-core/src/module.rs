@@ -1,10 +1,10 @@
-use std::{fmt, str::FromStr};
+use std::{collections::BTreeMap, fmt, str::FromStr};
 
 use serde::{Deserialize, Serialize};
 
 use crate::{
     error::{PerwigaError, Result},
-    model::WikiEntity,
+    model::{CalendarEvent, WikiEntity},
 };
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
@@ -59,6 +59,23 @@ pub struct EntityTypeDefinition {
     pub description: &'static str,
 }
 
+/// A value offered by a module-owned entity facet.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+pub struct EntityFacetOption {
+    pub value: &'static str,
+    pub display_name: &'static str,
+}
+
+/// Describes a title-specific filter while keeping the shared UI unaware of
+/// title IDs and title-specific classification vocabularies.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+pub struct EntityFacetDefinition {
+    pub key: &'static str,
+    pub display_name: &'static str,
+    pub entity_types: &'static [&'static str],
+    pub options: &'static [EntityFacetOption],
+}
+
 /// Semantic presentation tokens supplied by a title module. Shared UIs consume
 /// these values without branching on module IDs; modules that do not override
 /// the contract receive the neutral default palette.
@@ -85,6 +102,49 @@ pub struct EntityPresentation {
     pub thumbnail_url: String,
     pub accent_color: String,
     pub label: String,
+    pub rarity: Option<u8>,
+    /// Single-valued facets such as an Operator's role or an Item's region.
+    pub facets: BTreeMap<String, String>,
+    /// Multi-valued facets such as an Item's non-exclusive classifications.
+    pub facet_values: BTreeMap<String, Vec<String>>,
+}
+
+/// Optional, module-owned timing metadata for an entity's most recent
+/// relevant scheduled event. The shared UI computes the live day count from
+/// the supplied end timestamp without understanding title-specific rules.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct EntityEventRecencyPresentation {
+    pub heading: String,
+    pub event_title: String,
+    pub ended_at: String,
+}
+
+/// The elapsed whole-day gap between a featured entity's previous event and
+/// the event being presented.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct EventPreviousGapPresentation {
+    pub days: i64,
+    pub event_title: String,
+    pub ended_at: String,
+}
+
+/// A compact, module-owned entity reference shown in an event preview. The
+/// shared calendar renders these values without understanding banner rules.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct EventFeaturedEntityPresentation {
+    pub display_name: String,
+    pub thumbnail_url: String,
+    pub accent_color: String,
+    pub label: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub previous_event_gap: Option<EventPreviousGapPresentation>,
+}
+
+/// Optional, module-owned presentation metadata for a calendar event.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct CalendarEventPresentation {
+    pub heading: String,
+    pub featured_entities: Vec<EventFeaturedEntityPresentation>,
 }
 
 impl Default for ThemeDefinition {
@@ -111,11 +171,23 @@ pub trait LibraryModule: Sync {
     fn display_name(&self) -> &'static str;
     fn capabilities(&self) -> &'static [Capability];
     fn entity_types(&self) -> &'static [EntityTypeDefinition];
+    fn entity_facets(&self) -> &'static [EntityFacetDefinition] {
+        &[]
+    }
     /// Returns trusted, compile-time theme tokens for generic shared views.
     fn theme(&self) -> ThemeDefinition {
         ThemeDefinition::default()
     }
     fn entity_presentation(&self, _entity: &WikiEntity) -> Option<EntityPresentation> {
+        None
+    }
+    fn entity_event_recency(&self, _entity: &WikiEntity) -> Option<EntityEventRecencyPresentation> {
+        None
+    }
+    fn calendar_event_presentation(
+        &self,
+        _event: &CalendarEvent,
+    ) -> Option<CalendarEventPresentation> {
         None
     }
 }

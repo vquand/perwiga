@@ -9,6 +9,7 @@ arknights-endfield = { package = "perwiga-game-arknights-endfield", path = "../.
 axum.workspace = true
 clap.workspace = true
 generic-game = { package = "perwiga-game-generic", path = "../../games/generic" }
+genshin-impact = { package = "perwiga-game-genshin-impact", path = "../../games/genshin-impact" }
 perwiga-core = { path = "../perwiga-core" }
 serde.workspace = true
 serde_json.workspace = true

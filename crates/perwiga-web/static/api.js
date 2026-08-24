@@ -31,6 +31,10 @@ export const api = {
     return request("/api/uat/endfield", { method: "POST" });
   },
 
+  setupGenshin() {
+    return request("/api/uat/genshin", { method: "POST" });
+  },
+
   listWorks() {
     return request("/api/works?kind=game");
   },
@@ -41,6 +45,10 @@ export const api = {
 
   getWorkspace(workId) {
     return request(`/api/works/${encodeURIComponent(workId)}/workspace`);
+  },
+
+  listCalendarEvents(workId) {
+    return request(`/api/works/${encodeURIComponent(workId)}/calendar-events`);
   },
 
   createWork(values) {

@@ -10,7 +10,7 @@ use perwiga_core::Store;
     about = "Localhost UAT interface for Arknights: Endfield"
 )]
 struct Arguments {
-    /// Explicit SQLite database path. Use a temporary path for UAT.
+    /// Explicit SQLite database path.
     #[arg(long)]
     database: PathBuf,
 
@@ -30,7 +30,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let listener = tokio::net::TcpListener::bind(arguments.bind).await?;
 
     println!("Perwiga Endfield UAT: http://{}", arguments.bind);
-    println!("Temporary database: {}", arguments.database.display());
+    println!("SQLite database: {}", arguments.database.display());
 
     axum::serve(listener, application)
         .with_graceful_shutdown(shutdown_signal())

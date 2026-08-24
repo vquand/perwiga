@@ -8,9 +8,10 @@ use uuid::Uuid;
 use crate::{
     error::{PerwigaError, Result},
     model::{
-        AliasBatchSummary, AliasInput, CalendarEvent, Checklist, ChecklistItem, EntityAlias,
-        EntityAliasBatchInput, EntityInput, EntityPatch, FeedItem, FeedSource, LibraryWork,
-        LinkedFolder, Note, NoteAttachment, WikiEntity, WikiEntityDetail,
+        AliasBatchSummary, AliasInput, CalendarEvent, CalendarEventImportSummary,
+        CalendarEventInput, Checklist, ChecklistItem, EntityAlias, EntityAliasBatchInput,
+        EntityImportSummary, EntityInput, EntityPatch, FeedItem, FeedSource, LibraryWork,
+        LinkedFolder, Note, NoteAttachment, SourcedEntityInput, WikiEntity, WikiEntityDetail,
     },
     module::WorkKind,
 };
@@ -55,6 +56,24 @@ impl Store {
             transaction.execute(
                 "INSERT INTO schema_migrations (version, applied_at) VALUES (?1, ?2)",
                 params![1_i64, now()],
+            )?;
+            transaction.commit()?;
+        }
+        if current.unwrap_or(0) < 2 {
+            let transaction = self.connection.transaction()?;
+            transaction.execute_batch(SCHEMA_V2)?;
+            transaction.execute(
+                "INSERT INTO schema_migrations (version, applied_at) VALUES (?1, ?2)",
+                params![2_i64, now()],
+            )?;
+            transaction.commit()?;
+        }
+        if current.unwrap_or(0) < 3 {
+            let transaction = self.connection.transaction()?;
+            transaction.execute_batch(SCHEMA_V3)?;
+            transaction.execute(
+                "INSERT INTO schema_migrations (version, applied_at) VALUES (?1, ?2)",
+                params![3_i64, now()],
             )?;
             transaction.commit()?;
         }
@@ -153,6 +172,145 @@ impl Store {
         )?;
         self.get_entity(&id)?
             .ok_or_else(|| PerwigaError::NotFound("new entity".into()))
+    }
+
+    /// Imports source-owned entities atomically without replacing existing rows.
+    /// Stable source identities make repeat imports idempotent while preserving
+    /// any personal edits made after the first import.
+    pub fn import_sourced_entities(
+        &mut self,
+        work_id: &str,
+        inputs: &[SourcedEntityInput],
+    ) -> Result<EntityImportSummary> {
+        let transaction = self.connection.transaction()?;
+        let work_exists = transaction
+            .query_row(
+                "SELECT 1 FROM library_works WHERE id = ?1",
+                [work_id],
+                |_| Ok(()),
+            )
+            .optional()?
+            .is_some();
+        if !work_exists {
+            return Err(PerwigaError::NotFound(format!("work {work_id}")));
+        }
+
+        let mut summary = EntityImportSummary::default();
+        let timestamp = now();
+        for input in inputs {
+            let source_provider = required_text(&input.source_provider, "entity source provider")?;
+            let source_identity = required_text(&input.source_identity, "entity source identity")?;
+            let entity_type = required_text(&input.entity.entity_type, "entity type")?;
+            let english =
+                required_text(&input.entity.official_english_name, "official English name")?;
+            let original = required_text(
+                &input.entity.official_original_name,
+                "official original name",
+            )?;
+            let vietnamese = non_empty_option(
+                input.entity.official_vietnamese_name.as_deref(),
+                "official Vietnamese name",
+            )?;
+            let automatic_vietnamese = non_empty_option(
+                input.entity.automatic_vietnamese_translation.as_deref(),
+                "automatic Vietnamese translation",
+            )?;
+            let description = non_empty_option(
+                input.entity.english_description.as_deref(),
+                "English description",
+            )?;
+            let information = non_empty_option(
+                input.entity.other_information.as_deref(),
+                "other information",
+            )?;
+
+            let existing_id = transaction
+                .query_row(
+                    "SELECT id FROM wiki_entities
+                     WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                    params![work_id, source_provider, source_identity],
+                    |row| row.get::<_, String>(0),
+                )
+                .optional()?;
+            let entity_id = match existing_id {
+                Some(id) => {
+                    summary.unchanged += 1;
+                    id
+                }
+                None => {
+                    let name_collision = transaction
+                        .query_row(
+                            "SELECT id FROM wiki_entities
+                             WHERE work_id = ?1 AND entity_type = ?2
+                               AND official_english_name = ?3 COLLATE NOCASE
+                             LIMIT 1",
+                            params![work_id, entity_type, english],
+                            |row| row.get::<_, String>(0),
+                        )
+                        .optional()?;
+                    if name_collision.is_some() {
+                        return Err(PerwigaError::Conflict(format!(
+                            "an unlinked {entity_type} named {english} already exists in work {work_id}"
+                        )));
+                    }
+
+                    let id = new_id();
+                    transaction.execute(
+                        "INSERT INTO wiki_entities
+                         (id, work_id, entity_type, official_english_name,
+                          official_original_name, official_vietnamese_name,
+                          automatic_vietnamese_translation, english_description,
+                          other_information, created_at, updated_at, source_provider,
+                          source_identity)
+                         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?10, ?11, ?12)",
+                        params![
+                            id,
+                            work_id,
+                            entity_type,
+                            english,
+                            original,
+                            vietnamese,
+                            automatic_vietnamese,
+                            description,
+                            information,
+                            timestamp,
+                            source_provider,
+                            source_identity,
+                        ],
+                    )?;
+                    summary.inserted += 1;
+                    id
+                }
+            };
+
+            for alias in &input.aliases {
+                let value = required_text(&alias.value, "alias")?;
+                let kind = required_text(&alias.kind, "alias kind")?;
+                let changed = transaction.execute(
+                    "INSERT INTO entity_aliases
+                     (id, entity_id, value, language, kind, label, notes)
+                     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)
+                     ON CONFLICT (entity_id, value, kind) DO NOTHING",
+                    params![
+                        new_id(),
+                        entity_id,
+                        value,
+                        non_empty_option(alias.language.as_deref(), "alias language")?,
+                        kind,
+                        non_empty_option(alias.label.as_deref(), "alias label")?,
+                        non_empty_option(alias.notes.as_deref(), "alias notes")?,
+                    ],
+                )?;
+                if changed == 1 {
+                    summary.aliases_inserted += 1;
+                } else {
+                    summary.aliases_unchanged += 1;
+                }
+            }
+        }
+
+        transaction.commit()?;
+        Ok(summary)
     }
 
     pub fn update_entity(&self, id: &str, patch: &EntityPatch) -> Result<WikiEntity> {
@@ -813,7 +971,9 @@ impl Store {
         )?;
         self.connection
             .query_row(
-                "SELECT id, work_id, title, starts_at, ends_at, is_all_day, source_url, source_provider,
+                "SELECT id, work_id, title, starts_at, ends_at, is_all_day, source_url,
+                        source_provider, source_identity, event_type, time_zone, patch_start,
+                        patch_end, occurrence_index, schedule_note, source_checked_at,
                         created_at, updated_at
                  FROM calendar_events WHERE id = ?1",
                 [id],
@@ -824,13 +984,96 @@ impl Store {
 
     pub fn list_calendar_events(&self) -> Result<Vec<CalendarEvent>> {
         let mut statement = self.connection.prepare(
-            "SELECT id, work_id, title, starts_at, ends_at, is_all_day, source_url, source_provider,
+            "SELECT id, work_id, title, starts_at, ends_at, is_all_day, source_url,
+                    source_provider, source_identity, event_type, time_zone, patch_start,
+                    patch_end, occurrence_index, schedule_note, source_checked_at,
                     created_at, updated_at
              FROM calendar_events ORDER BY starts_at, id",
         )?;
         let rows = statement.query_map([], row_to_calendar_event)?;
         rows.collect::<std::result::Result<Vec<_>, _>>()
             .map_err(Into::into)
+    }
+
+    pub fn list_calendar_events_for_work(&self, work_id: &str) -> Result<Vec<CalendarEvent>> {
+        ensure_work(&self.connection, work_id)?;
+        let mut statement = self.connection.prepare(
+            "SELECT id, work_id, title, starts_at, ends_at, is_all_day, source_url,
+                    source_provider, source_identity, event_type, time_zone, patch_start,
+                    patch_end, occurrence_index, schedule_note, source_checked_at,
+                    created_at, updated_at
+             FROM calendar_events WHERE work_id = ?1 ORDER BY starts_at, id",
+        )?;
+        let rows = statement.query_map([work_id], row_to_calendar_event)?;
+        rows.collect::<std::result::Result<Vec<_>, _>>()
+            .map_err(Into::into)
+    }
+
+    pub fn import_calendar_events(
+        &mut self,
+        work_id: &str,
+        inputs: &[CalendarEventInput],
+    ) -> Result<CalendarEventImportSummary> {
+        ensure_work(&self.connection, work_id)?;
+        let inputs = inputs
+            .iter()
+            .map(validate_calendar_event_input)
+            .collect::<Result<Vec<_>>>()?;
+        let transaction = self.connection.transaction()?;
+        let mut summary = CalendarEventImportSummary::default();
+        for input in inputs {
+            let source_identity = input.source_identity.as_deref().ok_or_else(|| {
+                PerwigaError::Validation(
+                    "imported calendar events require a stable source identity".into(),
+                )
+            })?;
+            let exists = transaction
+                .query_row(
+                    "SELECT 1 FROM calendar_events
+                     WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                    params![work_id, input.source_provider, source_identity],
+                    |_| Ok(()),
+                )
+                .optional()?
+                .is_some();
+            if exists {
+                summary.unchanged += 1;
+                continue;
+            }
+            let id = new_id();
+            let timestamp = now();
+            transaction.execute(
+                "INSERT INTO calendar_events
+                 (id, work_id, title, starts_at, ends_at, is_all_day, source_url,
+                  source_provider, source_identity, event_type, time_zone, patch_start,
+                  patch_end, occurrence_index, schedule_note, source_checked_at,
+                  created_at, updated_at)
+                 VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13,
+                         ?14, ?15, ?16, ?17, ?17)",
+                params![
+                    id,
+                    work_id,
+                    input.title,
+                    input.starts_at,
+                    input.ends_at,
+                    i64::from(input.is_all_day),
+                    input.source_url,
+                    input.source_provider,
+                    input.source_identity,
+                    input.event_type,
+                    input.time_zone,
+                    input.patch_start,
+                    input.patch_end,
+                    input.occurrence_index.map(i64::from),
+                    input.schedule_note,
+                    input.source_checked_at,
+                    timestamp,
+                ],
+            )?;
+            summary.inserted += 1;
+        }
+        transaction.commit()?;
+        Ok(summary)
     }
 
     pub fn add_entity_reference(
@@ -1028,6 +1271,30 @@ CREATE TABLE calendar_events (
 CREATE INDEX calendar_events_start_idx ON calendar_events (starts_at, id);
 "#;
 
+const SCHEMA_V2: &str = r#"
+ALTER TABLE calendar_events ADD COLUMN source_identity TEXT;
+ALTER TABLE calendar_events ADD COLUMN event_type TEXT;
+ALTER TABLE calendar_events ADD COLUMN time_zone TEXT;
+ALTER TABLE calendar_events ADD COLUMN patch_start TEXT;
+ALTER TABLE calendar_events ADD COLUMN patch_end TEXT;
+ALTER TABLE calendar_events ADD COLUMN occurrence_index INTEGER;
+ALTER TABLE calendar_events ADD COLUMN schedule_note TEXT;
+ALTER TABLE calendar_events ADD COLUMN source_checked_at TEXT;
+CREATE UNIQUE INDEX calendar_events_source_identity_idx
+ON calendar_events (work_id, source_provider, source_identity)
+WHERE source_identity IS NOT NULL;
+CREATE INDEX calendar_events_work_start_idx
+ON calendar_events (work_id, starts_at, id);
+"#;
+
+const SCHEMA_V3: &str = r#"
+ALTER TABLE wiki_entities ADD COLUMN source_provider TEXT;
+ALTER TABLE wiki_entities ADD COLUMN source_identity TEXT;
+CREATE UNIQUE INDEX wiki_entities_source_identity_idx
+ON wiki_entities (work_id, source_provider, source_identity)
+WHERE source_identity IS NOT NULL;
+"#;
+
 fn now() -> String {
     Utc::now().to_rfc3339_opts(SecondsFormat::Millis, true)
 }
@@ -1074,6 +1341,55 @@ fn validate_event_timestamp(value: &str, is_all_day: bool, field: &str) -> Resul
             .map(|_| ())
             .map_err(|error| PerwigaError::Validation(format!("{field} must be RFC3339: {error}")))
     }
+}
+
+fn validate_calendar_event_input(input: &CalendarEventInput) -> Result<CalendarEventInput> {
+    let mut input = input.clone();
+    input.title = required_text(&input.title, "calendar event title")?;
+    input.starts_at = required_text(&input.starts_at, "calendar event start")?;
+    input.source_provider = required_text(&input.source_provider, "calendar event provider")?;
+    validate_event_timestamp(&input.starts_at, input.is_all_day, "calendar event start")?;
+    input.ends_at = non_empty_option(input.ends_at.as_deref(), "calendar event end")?;
+    if let Some(end) = input.ends_at.as_deref() {
+        validate_event_timestamp(end, input.is_all_day, "calendar event end")?;
+        let valid_order = if input.is_all_day {
+            chrono::NaiveDate::parse_from_str(end, "%Y-%m-%d")
+                .expect("validated all-day event end must parse")
+                >= chrono::NaiveDate::parse_from_str(&input.starts_at, "%Y-%m-%d")
+                    .expect("validated all-day event start must parse")
+        } else {
+            chrono::DateTime::parse_from_rfc3339(end).expect("validated event end must parse")
+                >= chrono::DateTime::parse_from_rfc3339(&input.starts_at)
+                    .expect("validated event start must parse")
+        };
+        if !valid_order {
+            return Err(PerwigaError::Validation(
+                "calendar event end cannot be before its start".into(),
+            ));
+        }
+    }
+    input.source_url = input
+        .source_url
+        .as_deref()
+        .map(validate_remote_url)
+        .transpose()?;
+    input.source_identity = non_empty_option(
+        input.source_identity.as_deref(),
+        "calendar event source identity",
+    )?;
+    input.event_type = non_empty_option(input.event_type.as_deref(), "calendar event type")?;
+    input.time_zone = non_empty_option(input.time_zone.as_deref(), "calendar event time zone")?;
+    input.patch_start = non_empty_option(input.patch_start.as_deref(), "calendar event patch")?;
+    input.patch_end = non_empty_option(input.patch_end.as_deref(), "calendar event patch")?;
+    input.schedule_note = non_empty_option(
+        input.schedule_note.as_deref(),
+        "calendar event schedule note",
+    )?;
+    input.source_checked_at = non_empty_option(
+        input.source_checked_at.as_deref(),
+        "calendar event source checked date",
+    )?;
+    Ok(input)
 }
 
 fn ensure_work(connection: &Connection, work_id: &str) -> Result<()> {
@@ -1239,7 +1555,270 @@ fn row_to_calendar_event(row: &rusqlite::Row<'_>) -> rusqlite::Result<CalendarEv
         is_all_day: row.get::<_, i64>(5)? != 0,
         source_url: row.get(6)?,
         source_provider: row.get(7)?,
-        created_at: row.get(8)?,
-        updated_at: row.get(9)?,
+        source_identity: row.get(8)?,
+        event_type: row.get(9)?,
+        time_zone: row.get(10)?,
+        patch_start: row.get(11)?,
+        patch_end: row.get(12)?,
+        occurrence_index: row.get::<_, Option<i64>>(13)?.map(|value| value as u16),
+        schedule_note: row.get(14)?,
+        source_checked_at: row.get(15)?,
+        created_at: row.get(16)?,
+        updated_at: row.get(17)?,
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::{
+        model::{AliasInput, CalendarEventInput, EntityInput, EntityPatch, SourcedEntityInput},
+        module::WorkKind,
+    };
+
+    use super::*;
+
+    fn sourced_event() -> CalendarEventInput {
+        CalendarEventInput {
+            title: "Sanity Supply 1.4.2".into(),
+            starts_at: "2026-08-26T04:00:00+08:00".into(),
+            ends_at: Some("2026-09-02T04:00:00+08:00".into()),
+            is_all_day: false,
+            source_url: Some("https://endfield.gryphline.com/en-us/news/5200".into()),
+            source_provider: "Arknights: Endfield official notices".into(),
+            source_identity: Some("sanity-supply-1-4-2".into()),
+            event_type: Some("Supply".into()),
+            time_zone: Some("Asia server (UTC+8)".into()),
+            patch_start: Some("1.4".into()),
+            patch_end: Some("1.4".into()),
+            occurrence_index: Some(2),
+            schedule_note: None,
+            source_checked_at: Some("2026-08-24".into()),
+        }
+    }
+
+    fn sourced_character(
+        source_identity: &str,
+        english: &str,
+        chinese: &str,
+    ) -> SourcedEntityInput {
+        SourcedEntityInput {
+            source_provider: "Genshin Impact official character directory".into(),
+            source_identity: source_identity.into(),
+            entity: EntityInput {
+                entity_type: "character".into(),
+                official_english_name: english.into(),
+                official_original_name: english.into(),
+                official_vietnamese_name: Some(english.into()),
+                automatic_vietnamese_translation: None,
+                english_description: Some(format!("Official profile for {english}.")),
+                other_information: Some(format!("Official source key: {source_identity}.")),
+            },
+            aliases: vec![AliasInput {
+                value: chinese.into(),
+                language: Some("zh-Hant".into()),
+                kind: "official-localization".into(),
+                label: Some("Official Traditional Chinese".into()),
+                notes: Some("Confirmed first-party localization.".into()),
+            }],
+        }
+    }
+
+    #[test]
+    fn sourced_entity_migration_preserves_existing_rows() {
+        let connection = Connection::open_in_memory().expect("legacy in-memory database");
+        connection
+            .execute_batch(
+                "CREATE TABLE schema_migrations (
+                    version INTEGER PRIMARY KEY,
+                    applied_at TEXT NOT NULL
+                 );",
+            )
+            .expect("migration ledger");
+        connection
+            .execute_batch(SCHEMA_V1)
+            .expect("version 1 schema");
+        connection
+            .execute(
+                "INSERT INTO schema_migrations (version, applied_at) VALUES (1, ?1)",
+                ["2026-01-01T00:00:00.000Z"],
+            )
+            .expect("version 1 marker");
+        connection
+            .execute(
+                "INSERT INTO library_works
+                 (id, work_kind, module_id, display_name, created_at, updated_at)
+                 VALUES (?1, 'game', 'arknights-endfield', 'Arknights: Endfield', ?2, ?2)",
+                params!["legacy-work", "2026-01-01T00:00:00.000Z"],
+            )
+            .expect("legacy work");
+        connection
+            .execute(
+                "INSERT INTO calendar_events
+                 (id, work_id, title, starts_at, ends_at, is_all_day, source_url,
+                  source_provider, created_at, updated_at)
+                 VALUES (?1, ?2, ?3, ?4, ?5, 0, ?6, ?7, ?8, ?8)",
+                params![
+                    "legacy-event",
+                    "legacy-work",
+                    "Existing personal event",
+                    "2026-01-22T11:00:00+08:00",
+                    "2026-01-23T11:00:00+08:00",
+                    "https://example.com/event",
+                    "Manual",
+                    "2026-01-01T00:00:00.000Z",
+                ],
+            )
+            .expect("legacy calendar row");
+
+        let mut store = Store { connection };
+        store.migrate().expect("additive migrations");
+
+        let events = store
+            .list_calendar_events_for_work("legacy-work")
+            .expect("migrated calendar rows");
+        assert_eq!(events.len(), 1);
+        assert_eq!(events[0].id, "legacy-event");
+        assert_eq!(events[0].title, "Existing personal event");
+        assert_eq!(events[0].source_provider, "Manual");
+        assert_eq!(events[0].source_identity, None);
+        let schema_version: i64 = store
+            .connection
+            .query_row("SELECT MAX(version) FROM schema_migrations", [], |row| {
+                row.get(0)
+            })
+            .expect("schema version");
+        assert_eq!(schema_version, 3);
+        let entity_source_columns: i64 = store
+            .connection
+            .query_row(
+                "SELECT COUNT(*) FROM pragma_table_info('wiki_entities')
+                 WHERE name IN ('source_provider', 'source_identity')",
+                [],
+                |row| row.get(0),
+            )
+            .expect("entity source columns");
+        assert_eq!(entity_source_columns, 2);
+        assert_eq!(store.integrity_check().expect("integrity"), "ok");
+        assert_eq!(store.foreign_key_violations().expect("foreign keys"), 0);
+    }
+
+    #[test]
+    fn sourced_calendar_import_is_additive_idempotent_and_work_scoped() {
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let endfield = store
+            .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+            .expect("Endfield work");
+        let other = store
+            .insert_work(WorkKind::Game, "generic", "Other game")
+            .expect("other work");
+
+        let first = store
+            .import_calendar_events(&endfield.id, &[sourced_event()])
+            .expect("first import");
+        assert_eq!(first.inserted, 1);
+        assert_eq!(first.unchanged, 0);
+
+        let second = store
+            .import_calendar_events(&endfield.id, &[sourced_event()])
+            .expect("idempotent import");
+        assert_eq!(second.inserted, 0);
+        assert_eq!(second.unchanged, 1);
+
+        let events = store
+            .list_calendar_events_for_work(&endfield.id)
+            .expect("Endfield events");
+        assert_eq!(events.len(), 1);
+        assert_eq!(
+            events[0].source_identity.as_deref(),
+            Some("sanity-supply-1-4-2")
+        );
+        assert_eq!(events[0].event_type.as_deref(), Some("Supply"));
+        assert_eq!(events[0].occurrence_index, Some(2));
+        assert!(store
+            .list_calendar_events_for_work(&other.id)
+            .expect("other events")
+            .is_empty());
+        assert_eq!(store.integrity_check().expect("integrity"), "ok");
+        assert_eq!(store.foreign_key_violations().expect("foreign keys"), 0);
+    }
+
+    #[test]
+    fn sourced_entity_import_is_transactional_idempotent_and_preserves_user_edits() {
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let genshin = store
+            .insert_work(WorkKind::Game, "genshin-impact", "Genshin Impact")
+            .expect("Genshin work");
+        let other = store
+            .insert_work(WorkKind::Game, "generic", "Other game")
+            .expect("other work");
+        let inputs = [
+            sourced_character("hoyoverse-content-104816", "Albedo", "阿貝多"),
+            sourced_character("hoyoverse-content-104802", "Amber", "安柏"),
+        ];
+
+        let first = store
+            .import_sourced_entities(&genshin.id, &inputs)
+            .expect("first import");
+        assert_eq!(first.inserted, 2);
+        assert_eq!(first.unchanged, 0);
+        assert_eq!(first.aliases_inserted, 2);
+        assert_eq!(first.aliases_unchanged, 0);
+
+        let albedo = store
+            .search_entities(&genshin.id, "阿貝多")
+            .expect("alias search")
+            .pop()
+            .expect("Albedo");
+        store
+            .update_entity(
+                &albedo.id,
+                &EntityPatch {
+                    english_description: Some("Personal edited description".into()),
+                    ..EntityPatch::default()
+                },
+            )
+            .expect("personal edit");
+
+        let second = store
+            .import_sourced_entities(&genshin.id, &inputs)
+            .expect("idempotent import");
+        assert_eq!(second.inserted, 0);
+        assert_eq!(second.unchanged, 2);
+        assert_eq!(second.aliases_inserted, 0);
+        assert_eq!(second.aliases_unchanged, 2);
+        assert_eq!(
+            store
+                .get_entity(&albedo.id)
+                .expect("edited entity")
+                .expect("Albedo")
+                .english_description
+                .as_deref(),
+            Some("Personal edited description")
+        );
+        assert!(store
+            .list_entities(&other.id, None)
+            .expect("other entities")
+            .is_empty());
+        assert_eq!(store.integrity_check().expect("integrity"), "ok");
+        assert_eq!(store.foreign_key_violations().expect("foreign keys"), 0);
+    }
+
+    #[test]
+    fn invalid_sourced_entity_rolls_back_the_whole_batch() {
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let work = store
+            .insert_work(WorkKind::Game, "genshin-impact", "Genshin Impact")
+            .expect("Genshin work");
+        let valid = sourced_character("hoyoverse-content-104816", "Albedo", "阿貝多");
+        let mut invalid = sourced_character("hoyoverse-content-104802", "Amber", "安柏");
+        invalid.aliases[0].value = " ".into();
+
+        store
+            .import_sourced_entities(&work.id, &[valid, invalid])
+            .expect_err("invalid batch must fail");
+        assert!(store
+            .list_entities(&work.id, Some("character"))
+            .expect("characters")
+            .is_empty());
+    }
 }

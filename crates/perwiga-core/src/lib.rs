@@ -11,7 +11,8 @@ pub mod storage;
 
 pub use error::{PerwigaError, Result};
 pub use module::{
-    Capability, EntityPresentation, EntityTypeDefinition, LibraryModule, ModuleRegistry,
-    ThemeDefinition, WorkKind,
+    CalendarEventPresentation, Capability, EntityEventRecencyPresentation, EntityFacetDefinition,
+    EntityFacetOption, EntityPresentation, EntityTypeDefinition, EventFeaturedEntityPresentation,
+    EventPreviousGapPresentation, LibraryModule, ModuleRegistry, ThemeDefinition, WorkKind,
 };
 pub use storage::Store;

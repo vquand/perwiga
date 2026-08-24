@@ -1,6 +1,10 @@
 # Rust build output is generated and must not be committed.
 /target/
 
+# Python script caches are generated and must not be committed.
+__pycache__/
+*.py[cod]
+
 # Runtime SQLite sidecars are not canonical source data.
 *.sqlite-wal
 *.sqlite-shm

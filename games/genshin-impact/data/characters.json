@@ -1,0 +1,2287 @@
+{
+  "schema": "perwiga.genshin-impact.characters.v1",
+  "checked_at": "2026-08-24",
+  "generated_at": "2026-08-24T12:27:46Z",
+  "sources": {
+    "official_character_directory": "https://genshin.hoyoverse.com/en/character/mondstadt",
+    "official_content_api": "https://sg-public-api-static.hoyoverse.com/content_v2_user",
+    "api_contract_discovered_from": "https://genshin.hoyoverse.com/_nuxt/446ceb2.js",
+    "api_contract": {
+      "app_id": 32,
+      "content_key": "a1b1f9d3315447cc",
+      "detail_channel_id": 407,
+      "locales": {
+        "english": "en-us",
+        "traditional_chinese": "zh-tw",
+        "vietnamese": "vi-vn"
+      },
+      "region_channels": {
+        "Mondstadt": 403,
+        "Liyue": 404,
+        "Inazuma": 405,
+        "Sumeru": 406,
+        "Fontaine": 653,
+        "Natlan": 934,
+        "Snezhnaya": 1221
+      }
+    }
+  },
+  "catalog_scope": {
+    "boundary": "Playable-character records returned by the official Genshin Impact website's seven regional character-directory channels.",
+    "included_records": 118,
+    "region_counts": {
+      "Mondstadt": 26,
+      "Liyue": 22,
+      "Inazuma": 16,
+      "Sumeru": 14,
+      "Fontaine": 14,
+      "Natlan": 12,
+      "Snezhnaya": 14
+    },
+    "locale_gaps": []
+  },
+  "characters": [
+    {
+      "source_key": "hoyoverse-content-104816",
+      "official_content_id": 104816,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Albedo",
+      "official_traditional_chinese_name": "阿貝多",
+      "official_vietnamese_name": "Albedo",
+      "official_english_description": "Albedo — an alchemist based in Mondstadt, in the service of the Knights of Favonius. \"Genius,\" \"Kreideprinz,\" or \"Captain of the Investigation Team\"... Such titles and honors are of no consequence to him when there is so much more research to conduct. The pursuit of fortune and connections cannot hold a candle to his heart's desire — acquiring the limitless, obscure knowledge left behind by previous generations of scholars.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201216/2020121611141454228.png",
+      "thumbnail_asset": "hoyoverse-content-104816.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2020-12-17 12:30:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-12-16 03:34:05"
+    },
+    {
+      "source_key": "hoyoverse-content-104819",
+      "official_content_id": 104819,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Aloy",
+      "official_traditional_chinese_name": "亞蘿伊",
+      "official_vietnamese_name": "Aloy",
+      "official_english_description": "<!--td {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}--> An agile hunter from the Nora tribe. With bow in hand, she's always ready to protect the innocent.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210817/2021081714194139099.png",
+      "thumbnail_asset": "hoyoverse-content-104819.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2021-08-27 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-08-24 05:36:09"
+    },
+    {
+      "source_key": "hoyoverse-content-104802",
+      "official_content_id": 104802,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Amber",
+      "official_traditional_chinese_name": "安柏",
+      "official_vietnamese_name": "Amber",
+      "official_english_description": "A perky, straightforward girl, who is also the only Outrider of the Knights of Favonius. Her amazing mastery of the glider has made her a three-time winner of the Gliding Champion in Mondstadt. As a rising star within the Knights of Favonius, Amber is always ready for any challenging tasks.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200310/2020031016592515874.png",
+      "thumbnail_asset": "hoyoverse-content-104802.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2019-10-01 05:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2019-10-09 06:42:15"
+    },
+    {
+      "source_key": "hoyoverse-content-104805",
+      "official_content_id": 104805,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Barbara",
+      "official_traditional_chinese_name": "芭芭拉",
+      "official_vietnamese_name": "Barbara",
+      "official_english_description": "The Deaconess of the Church of Favonius and a shining idol adored by all. Although the concept of an idol is rather novel in a city of bards, the people of Mondstadt love Barbara nonetheless. \"I owe everything to the city's spirit of freedom.\" — Barbara, regarding her popularity.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619500256389.png",
+      "thumbnail_asset": "hoyoverse-content-104805.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2019-10-02 02:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2019-10-09 05:01:57"
+    },
+    {
+      "source_key": "hoyoverse-content-104810",
+      "official_content_id": 104810,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Bennett",
+      "official_traditional_chinese_name": "班尼特",
+      "official_vietnamese_name": "Bennett",
+      "official_english_description": "One of the few young adventurers of the Mondstadt Adventurers' Guild, he is always plagued with inexplicable bad luck. He is the only active member of his own adventure group, known as \"Benny's Adventure Team,\" after all the other members decided to \"take leave\" following a series of unfortunate incidents. As a result, the team is currently on the verge of being dissolved. Being unable to break the poor boy's heart, Katheryne of the Adventurers' Guild has kept \"Benny's Adventure Team\" on the books, whilst also hiding from him the fact that all the other members have long since officially left the team.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200312/2020031220001073799.png",
+      "thumbnail_asset": "hoyoverse-content-104810.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2020-03-12 00:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-03-12 12:09:01"
+    },
+    {
+      "source_key": "hoyoverse-content-156697",
+      "official_content_id": 156697,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Dahlia",
+      "official_traditional_chinese_name": "塔利雅",
+      "official_vietnamese_name": "Dahlia",
+      "official_english_description": "Deacon of the Church of Favonius and Herald of the Anemo Archon, as well as the church choir cantor. If one should seek the guidance of Barbatos, there is none better to consult than Dahlia. Be sure to bring plenty of baggage, he likes hearing people talk about their troubles.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/156697/4a49ee18bfac5eb9523e76fe77ae91c2_2147575977592280184.png",
+      "thumbnail_asset": "hoyoverse-content-156697.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2025-06-14 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-06-04 10:02:06"
+    },
+    {
+      "source_key": "hoyoverse-content-104806",
+      "official_content_id": 104806,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Diluc",
+      "official_traditional_chinese_name": "迪盧克",
+      "official_vietnamese_name": "Diluc",
+      "official_english_description": "As the wealthiest gentleman in Mondstadt, the ever-dapper Diluc always presents himself as the epitome of perfection. But behind the courteous visage burns a zealous soul that has sworn to protect Mondstadt at all costs, allowing him to mercilessly vanquish all who threaten his city.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619504030315.png",
+      "thumbnail_asset": "hoyoverse-content-104806.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2019-10-02 03:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2019-10-09 07:08:42"
+    },
+    {
+      "source_key": "hoyoverse-content-104815",
+      "official_content_id": 104815,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Diona",
+      "official_traditional_chinese_name": "迪奧娜",
+      "official_vietnamese_name": "Diona",
+      "official_english_description": "The incredibly popular bartender of the Cat's Tail tavern, rising star of Mondstadt's wine industry, and the greatest challenger to its traditional powerhouses. A feisty feline young lady from Springvale, any drink mixed by Diona's hand tastes delicious beyond belief. Yet given her extreme distaste for alcohol, is her talent a blessing or a curse?",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201106/2020110618564834380.png",
+      "thumbnail_asset": "hoyoverse-content-104815.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2020-11-07 22:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-11-06 11:10:15"
+    },
+    {
+      "source_key": "hoyoverse-content-161036",
+      "official_content_id": 161036,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Durin",
+      "official_traditional_chinese_name": "杜林",
+      "official_vietnamese_name": "Durin",
+      "official_english_description": "Once a dragon who lived in a fairy tale, he now strives to learn how to live as a human.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/161036/12bd5d770accc4cdef5230ae9230e284_2308120632190997181.png",
+      "thumbnail_asset": "hoyoverse-content-161036.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2025-12-01 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-11-24 11:03:51"
+    },
+    {
+      "source_key": "hoyoverse-content-104818",
+      "official_content_id": 104818,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Eula",
+      "official_traditional_chinese_name": "優菈",
+      "official_vietnamese_name": "Eula",
+      "official_english_description": "A rebellious descendant of the old aristocracy who is always out on the battlefield. As one born into the old aristocracy, carrying the bloodline of sinners, Eula has needed a unique approach to the world to navigate the towering walls of prejudice peacefully. Of course, this did not prevent her from severing ties with her clan. As the outstanding Spindrift Knight, she hunts down Mondstadt's enemies in the wild to exact her unique \"vengeance.\"",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210510/2021051011360527571.png",
+      "thumbnail_asset": "hoyoverse-content-104818.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2021-05-11 11:50:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-05-10 03:43:21"
+    },
+    {
+      "source_key": "hoyoverse-content-104812",
+      "official_content_id": 104812,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Fischl",
+      "official_traditional_chinese_name": "菲謝爾",
+      "official_vietnamese_name": "Fischl",
+      "official_english_description": "A mysterious girl who calls herself \"Prinzessin der Verurteilung\" and travels with a night raven named Oz. Currently serves as an investigator in the Adventurers' Guild. Through her unique abilities, eccentric character, and (while she would never admit it herself) hard work, Fischl has become a rising star among the Adventurers' Guild's investigators, earning the recognition of all.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200330/2020033022164911534.png",
+      "thumbnail_asset": "hoyoverse-content-104812.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2020-03-30 00:00:00",
+      "available_until": "2030-01-01 00:00:00",
+      "source_created_at": "2020-03-30 14:30:41"
+    },
+    {
+      "source_key": "hoyoverse-content-104801",
+      "official_content_id": 104801,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Jean",
+      "official_traditional_chinese_name": "琴",
+      "official_vietnamese_name": "Jean",
+      "official_english_description": "As the Acting Grand Master of the Knights, Jean has always been devoted to her duties and maintaining peace in Mondstadt. She had taken precautions long before the onset of Stormterror's assault, and she will guard Mondstadt with her life as always.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/04/27/c19b1f75f760f7b9647ec40f098d9373_7867078334985204651.png",
+      "thumbnail_asset": "hoyoverse-content-104801.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2019-10-01 04:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2019-10-09 03:40:12"
+    },
+    {
+      "source_key": "hoyoverse-content-104804",
+      "official_content_id": 104804,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Kaeya",
+      "official_traditional_chinese_name": "凱亞",
+      "official_vietnamese_name": "Kaeya",
+      "official_english_description": "In the Knights of Favonius, Kaeya is the most trusted aide for the Acting Grand Master Jean. You can always count on him to solve any intractable problems. Everyone in Mondstadt loves Kaeya, but no one knows what secrets this witty, charming knight has...",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619490965086.png",
+      "thumbnail_asset": "hoyoverse-content-104804.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2019-10-02 01:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2019-10-09 02:41:09"
+    },
+    {
+      "source_key": "hoyoverse-content-104809",
+      "official_content_id": 104809,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Klee",
+      "official_traditional_chinese_name": "可莉",
+      "official_vietnamese_name": "Klee",
+      "official_english_description": "Knights of Favonius Spark Knight! Forever with a bang and a flash! —And then disappearing from the stern gaze of Acting Grand Master Jean. Sure, time in solitary confinement gives lots of time to think about new gunpowder formulas... But it'd still be better to not be in solitary in the first place.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619524764235.png",
+      "thumbnail_asset": "hoyoverse-content-104809.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2020-01-03 03:00:00",
+      "available_until": "2031-01-01 00:00:00",
+      "source_created_at": "2020-01-03 03:17:48"
+    },
+    {
+      "source_key": "hoyoverse-content-104803",
+      "official_content_id": 104803,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Lisa",
+      "official_traditional_chinese_name": "麗莎",
+      "official_vietnamese_name": "Lisa",
+      "official_english_description": "She is an intellectual witch who can never get enough naps. As the Librarian of the Knights of Favonius, Lisa is smart in that she always knows exactly what to do with whatever troubles her. As much as she loves her sleep, she still manages to keep everything under control in a calm, composed manner.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619510379464.png",
+      "thumbnail_asset": "hoyoverse-content-104803.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2019-10-01 06:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2019-10-09 07:16:07"
+    },
+    {
+      "source_key": "hoyoverse-content-163984",
+      "official_content_id": 163984,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Lohen",
+      "official_traditional_chinese_name": "洛恩",
+      "official_vietnamese_name": "Lohen",
+      "official_english_description": "Vice Captain of the Knights of Favonius 5th Company. A young knight who fights on the front lines, using himself as the arrow and his spear as its tip.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/163984/2c0c3a653bd4f8042f02e41a589f5711_3268183665020273899.png",
+      "thumbnail_asset": "hoyoverse-content-163984.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2026-06-08 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-05-14 15:25:06"
+    },
+    {
+      "source_key": "hoyoverse-content-105325",
+      "official_content_id": 105325,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Mika",
+      "official_traditional_chinese_name": "米卡",
+      "official_vietnamese_name": "Mika",
+      "official_english_description": "A young knight who is a key member of the front-line scouting team. Quiet and unassuming, Mika treats every task seriously, and can cook up a mean serving of field rations.However, he can't seem to hide his bashful and shy personality when meeting strangers.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/02/13/d1bd63a9d2f41a7bfa927811e219493d_5139997364906620073.png",
+      "thumbnail_asset": "hoyoverse-content-105325.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2023-03-17 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-02-13 14:37:02"
+    },
+    {
+      "source_key": "hoyoverse-content-104814",
+      "official_content_id": 104814,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Mona",
+      "official_traditional_chinese_name": "莫娜",
+      "official_vietnamese_name": "Mona",
+      "official_english_description": "A mysterious young astrologer who proclaims herself to be \"Astrologist Mona Megistus,\" and who possesses abilities to match the title. Erudite, but prideful. Though she is often strapped for cash and lives a life of thrift, she is resolved to never use astrology for profit... It is this very resolution that has caused her to constantly fret about money.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200828/2020082817270441202.png",
+      "thumbnail_asset": "hoyoverse-content-104814.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2020-08-28 05:40:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-08-28 10:04:49"
+    },
+    {
+      "source_key": "hoyoverse-content-163949",
+      "official_content_id": 163949,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Nicole",
+      "official_traditional_chinese_name": "尼可",
+      "official_vietnamese_name": "Nicole",
+      "official_english_description": "Mage N, Nicole Reeyn. In summary: \"The observer of the World.\"",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/163949/c2d4665dcd3021aaa9ba71e40afa8395_7619531910065153799.png",
+      "thumbnail_asset": "hoyoverse-content-163949.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2026-05-14 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-05-13 14:15:54"
+    },
+    {
+      "source_key": "hoyoverse-content-104811",
+      "official_content_id": 104811,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Noelle",
+      "official_traditional_chinese_name": "諾艾爾",
+      "official_vietnamese_name": "Noelle",
+      "official_english_description": "Like most of Mondstadt's young people, Noelle always dreamed of being a knight of Favonius when she grew up. She may not have what it takes to be a knight just yet, but she is learning. Working as a maid at the Knights' headquarters, she is constantly taking notes on what constitutes knightly speech, knightly conduct, and knightly customs. She holds firm to her belief that one day she will join their ranks — she just needs to keep trying her hardest at everything she does.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200315/2020031517331182257.png",
+      "thumbnail_asset": "hoyoverse-content-104811.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2020-03-15 00:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-03-15 09:37:50"
+    },
+    {
+      "source_key": "hoyoverse-content-163961",
+      "official_content_id": 163961,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Prune",
+      "official_traditional_chinese_name": "布倫妮",
+      "official_vietnamese_name": "Prune",
+      "official_english_description": "The little \"Witch Hunter\" has journeyed far and wide in pursuit of the \"wicked witch,\" though the story — and the grudge — driving this quest remains shrouded in mystery.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/163961/7c9a1413c308d090e82c8e786f2206f9_3866717618218845170.png",
+      "thumbnail_asset": "hoyoverse-content-163961.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2026-05-14 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-05-13 15:36:23"
+    },
+    {
+      "source_key": "hoyoverse-content-104807",
+      "official_content_id": 104807,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Razor",
+      "official_traditional_chinese_name": "雷澤",
+      "official_vietnamese_name": "Razor",
+      "official_english_description": "Some say he is an orphan raised by wolves. Others say he is a wolf spirit in human form. He is most at home in the wild, fighting with claw and thunder. To this day the wolf boy can be found prowling the forest, where he and his wolf pack hunt to survive using nothing more than their animal instincts.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619513419872.png",
+      "thumbnail_asset": "hoyoverse-content-104807.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2019-10-18 03:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2019-10-18 04:05:03"
+    },
+    {
+      "source_key": "hoyoverse-content-104817",
+      "official_content_id": 104817,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Rosaria",
+      "official_traditional_chinese_name": "蘿莎莉亞",
+      "official_vietnamese_name": "Rosaria",
+      "official_english_description": "Rosaria, a sister in Mondstadt's Church of Favonius. A sister of the church, though you wouldn't know it if it weren't for her attire. An unusual woman with sharp, piercing words and a cold manner. Her movements are unpredictable. She often leaves without notifying anyone. She acts with some kind of purpose, but others don't seem to know exactly what she stands for...",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210325/2021032514581037601.png",
+      "thumbnail_asset": "hoyoverse-content-104817.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2021-03-30 12:30:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-03-31 06:54:47"
+    },
+    {
+      "source_key": "hoyoverse-content-104813",
+      "official_content_id": 104813,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Sucrose",
+      "official_traditional_chinese_name": "砂糖",
+      "official_vietnamese_name": "Sucrose",
+      "official_english_description": "An alchemist with an insatiable curiosity towards the world and everything in it. Attached to the Knights of Favonius as an assistant to Albedo, her area of focus is \"bio-alchemy.\" She strives to enrich the world by transforming living things with the power of alchemy. Granted, the products of her research sometimes prove to be more weird than wonderful — but on the whole, she has made monumental contributions to the field of bio-alchemy.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200723/2020072319114696003.png",
+      "thumbnail_asset": "hoyoverse-content-104813.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2020-07-23 21:00:00",
+      "available_until": "2030-01-01 00:00:00",
+      "source_created_at": "2020-07-23 11:20:24"
+    },
+    {
+      "source_key": "hoyoverse-content-162625",
+      "official_content_id": 162625,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Varka",
+      "official_traditional_chinese_name": "法爾伽",
+      "official_vietnamese_name": "Varka",
+      "official_english_description": "Grand Master of the Knights of Favonius and serving Knight of Boreas, guardian of Mondstadt. This title booms louder than the howl of the north wind, and his legend reverberates long after the ring of clashing blades falls still.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/162625/01fc02b9a2cec8a390113b02891b3a86_1015471322056037432.png",
+      "thumbnail_asset": "hoyoverse-content-162625.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2026-02-24 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-02-09 10:22:39"
+    },
+    {
+      "source_key": "hoyoverse-content-104808",
+      "official_content_id": 104808,
+      "region": "Mondstadt",
+      "region_channel_id": 403,
+      "official_english_name": "Venti",
+      "official_traditional_chinese_name": "溫迪",
+      "official_vietnamese_name": "Venti",
+      "official_english_description": "A bard that seems to have arrived on some unknown wind — sometimes sings songs as old as the hills, and other times recites poems fresh and new. Likes apples and lively places, but is not a fan of cheese or anything sticky. When using his Anemo power to control the wind, it often appears as feathers, as he's fond of that which appears light and breezy.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619520566339.png",
+      "thumbnail_asset": "hoyoverse-content-104808.png",
+      "source_channels": [
+        403,
+        407
+      ],
+      "available_from": "2019-11-22 03:00:00",
+      "available_until": "2031-01-01 00:00:00",
+      "source_created_at": "2019-11-22 03:20:21"
+    },
+    {
+      "source_key": "hoyoverse-content-110845",
+      "official_content_id": 110845,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Baizhu",
+      "official_traditional_chinese_name": "白朮",
+      "official_vietnamese_name": "Baizhu",
+      "official_english_description": "The owner of Bubu Pharmacy, the finest pharmacy in all of Liyue. He is rarely seen without a white snake named Changsheng coiled around his shoulders. His prescriptions are varied and diverse, and his medical prowess and compassion are known throughout Teyvat.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/03/27/91d73bb4468762e12179ee84cebed661_5340004653954160172.png",
+      "thumbnail_asset": "hoyoverse-content-110845.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2023-04-26 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-03-27 10:38:42"
+    },
+    {
+      "source_key": "hoyoverse-content-104821",
+      "official_content_id": 104821,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Beidou",
+      "official_traditional_chinese_name": "北斗",
+      "official_vietnamese_name": "Beidou",
+      "official_english_description": "Captain of the Crux, with quite the reputation in Liyue. There are those who say she can split mountains and part the sea. Others say she draws lightning through her sword. Some say that even the mightiest of sea beasts are no match for her. For those not from Liyue, it may sound like a hearty joke, but those that have sailed with her will say— \"No matter what sea beasts there may be, Beidou will be sure to split them all in two.\"",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619533898562.png",
+      "thumbnail_asset": "hoyoverse-content-104821.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-02-27 00:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-02-27 12:20:53"
+    },
+    {
+      "source_key": "hoyoverse-content-104825",
+      "official_content_id": 104825,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Chongyun",
+      "official_traditional_chinese_name": "重雲",
+      "official_vietnamese_name": "Chongyun",
+      "official_english_description": "An exorcist who roams the land with Liyue as his base of operations, evil spirits fleeing wherever he goes. As the heir to a clan of exorcists, he has always possessed abilities superior to most. However, these abilities are not the result of training, but of an inborn trait — a pure-yang spirit.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200602/2020060220171563309.png",
+      "thumbnail_asset": "hoyoverse-content-104825.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-06-02 00:00:00",
+      "available_until": "2030-01-01 00:00:00",
+      "source_created_at": "2020-06-02 12:43:21"
+    },
+    {
+      "source_key": "hoyoverse-content-119403",
+      "official_content_id": 119403,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Gaming",
+      "official_traditional_chinese_name": "嘉明",
+      "official_vietnamese_name": "Gaming",
+      "official_english_description": "Gold-Standard Guard of the Sword and Strongbox Secure Transport Agency, and the head of the \"Mighty Mythical Beasts\" Wushou troupe. Talkative and full of zeal, he's a classic people person.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/119403/55246234a19233fcb97b0188aae1ae87_4505620889629009886.png",
+      "thumbnail_asset": "hoyoverse-content-119403.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2024-01-29 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-01-15 11:22:57"
+    },
+    {
+      "source_key": "hoyoverse-content-104831",
+      "official_content_id": 104831,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Ganyu",
+      "official_traditional_chinese_name": "甘雨",
+      "official_vietnamese_name": "Ganyu",
+      "official_english_description": "The secretary to the Liyue Qixing. The blood of both human and illuminated beast flows within her veins. Graceful and quiet by nature, yet the gentle disposition of qilin sees not even the slightest conflict with even the most arduous of workloads. After all, Ganyu firmly believes that all the work she does is in honor of her contract with Rex Lapis, seeking the well-being of all living things within Liyue.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201231/2020123114302212435.png",
+      "thumbnail_asset": "hoyoverse-content-104831.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2021-01-06 12:30:00",
+      "available_until": "2035-12-31 00:00:00",
+      "source_created_at": "2020-12-31 06:41:37"
+    },
+    {
+      "source_key": "hoyoverse-content-104832",
+      "official_content_id": 104832,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Hu Tao",
+      "official_traditional_chinese_name": "胡桃",
+      "official_vietnamese_name": "Hu Tao",
+      "official_english_description": "Hu Tao is the 77th Director of the Wangsheng Funeral Parlor, a person vital to managing Liyue's funerary affairs. She does her utmost to flawlessly carry out a person's last rites and preserve the world's balance of yin and yang. Aside from this, she is also a talented poet whose many \"masterpieces\" have passed around Liyue's populace by word of mouth.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210224/2021022411105923049.png",
+      "thumbnail_asset": "hoyoverse-content-104832.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2021-02-27 12:30:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-02-24 03:57:33"
+    },
+    {
+      "source_key": "hoyoverse-content-104827",
+      "official_content_id": 104827,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Keqing",
+      "official_traditional_chinese_name": "刻晴",
+      "official_vietnamese_name": "Keqing",
+      "official_english_description": "The Yuheng of the Liyue Qixing. Keqing has much to say about Rex Lapis' unilateral approach to policymaking in Liyue ⁠— but in truth, gods admire skeptics such as her quite a lot. She firmly believes that humanity's future should be determined by humans themselves, and that they can even do better than the archons and adepti have done for them. In order to prove this, she works harder than anyone else.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200828/2020082817192175739.png",
+      "thumbnail_asset": "hoyoverse-content-104827.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-08-28 05:40:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-08-28 10:01:44"
+    },
+    {
+      "source_key": "hoyoverse-content-127979",
+      "official_content_id": 127979,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Lan Yan",
+      "official_traditional_chinese_name": "藍硯",
+      "official_vietnamese_name": "Lan Yan",
+      "official_english_description": "A key member of the Chenyu Vale Artisans Association, she is adept at weaving a dazzling array of rattan handicrafts, and her joyful, quick-witted nature is positively infectious.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/127979/b426464fc7f1b760b37946dca23f85f9_8098107794290090838.png",
+      "thumbnail_asset": "hoyoverse-content-127979.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2025-01-17 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-01-14 10:49:08"
+    },
+    {
+      "source_key": "hoyoverse-content-104822",
+      "official_content_id": 104822,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Ningguang",
+      "official_traditional_chinese_name": "凝光",
+      "official_vietnamese_name": "Ningguang",
+      "official_english_description": "Owner of the Jade Chamber in the skies above Liyue, there are stories abound about Ningguang, with her elegance and mysterious smile. As the Tianquan of the Liyue Qixing, not only does she embody law and order, she also represents fortune and wit.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619540911246.png",
+      "thumbnail_asset": "hoyoverse-content-104822.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-03-05 00:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-03-05 11:46:38"
+    },
+    {
+      "source_key": "hoyoverse-content-104826",
+      "official_content_id": 104826,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Qiqi",
+      "official_traditional_chinese_name": "七七",
+      "official_vietnamese_name": "Qiqi",
+      "official_english_description": "An apprentice and herb gatherer at Bubu Pharmacy. \"Blessed\" by the adepti with a body that cannot die, this petite zombie cannot do anything without first giving herself orders to do it. Qiqi's memory is like a sieve. Out of necessity, she always carries around a notebook in which she writes anything important that she is sure to forget later. But on her worst days, she even forgets to look at her notebook...",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200828/2020082817144917562.png",
+      "thumbnail_asset": "hoyoverse-content-104826.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-08-28 05:40:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-08-28 09:54:41"
+    },
+    {
+      "source_key": "hoyoverse-content-104834",
+      "official_content_id": 104834,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Shenhe",
+      "official_traditional_chinese_name": "申鶴",
+      "official_vietnamese_name": "Shenhe",
+      "official_english_description": "Even though she was born in the human world, she ended up being an adepti disciple. She grew up in the mountains far away from Liyue Harbor, her soul bound with red ropes, training both her body and mind. Despite having the elegant temperament of an adeptus, she seems to be shrouded in mystery.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20211226/2021122613550589080.png",
+      "thumbnail_asset": "hoyoverse-content-104834.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2021-12-30 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-12-26 06:00:04"
+    },
+    {
+      "source_key": "hoyoverse-content-104823",
+      "official_content_id": 104823,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Xiangling",
+      "official_traditional_chinese_name": "香菱",
+      "official_vietnamese_name": "Xiangling",
+      "official_english_description": "The Head Chef at the Wanmin Restaurant and also a waitress there, Xiangling is extremely passionate about cooking and excels at her signature hot and spicy dishes. Though still young, Xiangling is a true master of the culinary arts with all the skills of a kitchen veteran. She enjoys a good reputation among the hearty eaters at Chihu Rock. There's absolutely no need to be nervous if she wants you to sample her latest creation. It will not disappoint. Promise.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031618223919497.png",
+      "thumbnail_asset": "hoyoverse-content-104823.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-03-16 00:00:00",
+      "available_until": "2031-01-01 00:00:00",
+      "source_created_at": "2020-03-16 10:27:16"
+    },
+    {
+      "source_key": "hoyoverse-content-119401",
+      "official_content_id": 119401,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Xianyun",
+      "official_traditional_chinese_name": "閒雲",
+      "official_vietnamese_name": "Xianyun",
+      "official_english_description": "A mysterious woman who has just moved to Liyue Harbor and claims to be reserved, quiet, and socially inept.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/119401/796395c5d6e8db88d96d841f3688e5d1_5330070862488304337.png",
+      "thumbnail_asset": "hoyoverse-content-119401.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2024-01-25 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-01-15 10:44:33"
+    },
+    {
+      "source_key": "hoyoverse-content-104820",
+      "official_content_id": 104820,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Xiao",
+      "official_traditional_chinese_name": "魈",
+      "official_vietnamese_name": "Xiao",
+      "official_english_description": "One of the mighty and illuminated adepti guarding Liyue, also heralded as the \"Vigilant Yaksha.\" Despite his youthful appearance, tales of his exploits have been documented for millennia. He is especially fond of Wangshu Inn's Almond Tofu. This is because it tastes just like the sweet dreams he used to devour.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200316/2020031619530797687.png",
+      "thumbnail_asset": "hoyoverse-content-104820.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-02-19 22:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-02-20 09:13:28"
+    },
+    {
+      "source_key": "hoyoverse-content-104824",
+      "official_content_id": 104824,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Xingqiu",
+      "official_traditional_chinese_name": "行秋",
+      "official_vietnamese_name": "Xingqiu",
+      "official_english_description": "Second son of the Feiyun Commerce Guild, Xingqiu has had a reputation for being studious and polite ever since he was a young child. But there is another side to the mild-mannered Xingqiu everyone knows. A daring, adventurous and much more mischievous side...",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20200324/2020032418063127277.png",
+      "thumbnail_asset": "hoyoverse-content-104824.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-03-23 00:00:00",
+      "available_until": "2030-01-01 00:00:00",
+      "source_created_at": "2020-03-24 10:19:39"
+    },
+    {
+      "source_key": "hoyoverse-content-104830",
+      "official_content_id": 104830,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Xinyan",
+      "official_traditional_chinese_name": "辛焱",
+      "official_vietnamese_name": "Xinyan",
+      "official_english_description": "Rock 'n' roll is an avant-garde art in Liyue Harbor and Xinyan is the pioneer in this field. She rebels against ossified prejudices, using her music and passionate singing to awaken dazed souls fatigued by worldly matters. If you get the chance, do not miss out on her next performance!",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201125/2020112516015327993.png",
+      "thumbnail_asset": "hoyoverse-content-104830.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-11-27 12:30:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-11-25 08:22:11"
+    },
+    {
+      "source_key": "hoyoverse-content-104833",
+      "official_content_id": 104833,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Yanfei",
+      "official_traditional_chinese_name": "煙緋",
+      "official_vietnamese_name": "Yanfei",
+      "official_english_description": "A half-illuminated beast and highly-skilled legal adviser. She combines adherence to the legal codices and reasonable flexibility to find the perfect balance in her work. She devotes herself to protecting the fairness of contracts in Liyue with her identity as a legal adviser and her unique experience and methods.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210421/2021042114213880485.png",
+      "thumbnail_asset": "hoyoverse-content-104833.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2021-04-22 11:50:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-04-21 06:19:20"
+    },
+    {
+      "source_key": "hoyoverse-content-104975",
+      "official_content_id": 104975,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Yaoyao",
+      "official_traditional_chinese_name": "瑤瑤",
+      "official_vietnamese_name": "Yaoyao",
+      "official_english_description": "A young adepti disciple who is generous and sincere. She is used to taking care of everyone around her. She trains under her master at Liyue Harbor and regularly travels between the mountains and the city. Although she does not say it outright, she prefers bustling city markets to the tranquil mountains.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/01/10/676ae3ebfbb61c724eae558e88cc731d_153423425358731771.png",
+      "thumbnail_asset": "hoyoverse-content-104975.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2023-01-16 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-01-10 10:08:33"
+    },
+    {
+      "source_key": "hoyoverse-content-104836",
+      "official_content_id": 104836,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Yelan",
+      "official_traditional_chinese_name": "夜蘭",
+      "official_vietnamese_name": "Yelan",
+      "official_english_description": "A mysterious person who claims to work for the Ministry of Civil Affairs, but is a \"non-entity\" on the Ministry of Civil Affairs' list. Elusive, enigmatic, erratic - all of these are Yelan's hallmarks.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/05/18/76cfc9a21e196fd316070196c1396950_3932943384506410653.png",
+      "thumbnail_asset": "hoyoverse-content-104836.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2022-05-25 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-05-18 13:58:16"
+    },
+    {
+      "source_key": "hoyoverse-content-104835",
+      "official_content_id": 104835,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Yun Jin",
+      "official_traditional_chinese_name": "雲堇",
+      "official_vietnamese_name": "Yun Jin",
+      "official_english_description": "<!--td {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}--> The current director of the Yun-Han Opera Troupe, a renowned Liyue opera singer who is skilled in both playwriting and singing. Her style is one-of-a-kind, exquisite and delicate, much like the person herself.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20211226/2021122614193650279.png",
+      "thumbnail_asset": "hoyoverse-content-104835.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2022-01-02 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-12-26 06:22:23"
+    },
+    {
+      "source_key": "hoyoverse-content-104829",
+      "official_content_id": 104829,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Zhongli",
+      "official_traditional_chinese_name": "鍾離",
+      "official_vietnamese_name": "Zhongli",
+      "official_english_description": "Wangsheng Funeral Parlor mysterious consultant. Handsome, elegant, and surpassingly learned. Though no one knows where Zhongli is from, he is a master of courtesy and rules. From his seat at Wangsheng Funeral Parlor, he performs all manner of rituals.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201120/2020112022105267987.png",
+      "thumbnail_asset": "hoyoverse-content-104829.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2020-11-23 12:30:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-11-20 14:22:19"
+    },
+    {
+      "source_key": "hoyoverse-content-162095",
+      "official_content_id": 162095,
+      "region": "Liyue",
+      "region_channel_id": 404,
+      "official_english_name": "Zibai",
+      "official_traditional_chinese_name": "茲白",
+      "official_vietnamese_name": "Zibai",
+      "official_english_description": "The White Horse Adeptus from Liyue's legends, known as Zibai, is the most mysterious figure in Liyue's myths.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/162095/a35765dea0bcf932774c269352bb2ec8_2603652122734324685.png",
+      "thumbnail_asset": "hoyoverse-content-162095.png",
+      "source_channels": [
+        404,
+        407
+      ],
+      "available_from": "2026-02-03 18:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-01-11 20:55:07"
+    },
+    {
+      "source_key": "hoyoverse-content-104845",
+      "official_content_id": 104845,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Arataki Itto",
+      "official_traditional_chinese_name": "荒瀧一斗",
+      "official_vietnamese_name": "Arataki Itto",
+      "official_english_description": "Descendant of the oni, of intrepid spirit and noble heart. Fast as the wind and mighty as thunder.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20211203/2021120310384694932.png",
+      "thumbnail_asset": "hoyoverse-content-104845.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-12-08 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-12-03 02:42:39"
+    },
+    {
+      "source_key": "hoyoverse-content-104846",
+      "official_content_id": 104846,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Gorou",
+      "official_traditional_chinese_name": "五郎",
+      "official_vietnamese_name": "Gorou",
+      "official_english_description": "The great general of Watatsumi Island's forces. He has gained respect and prestige, but always shows himself to be a humble leader. He is deeply trusted by his subordinates and is someone with whom you can share your feelings without shame.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20211203/2021120311003146616.png",
+      "thumbnail_asset": "hoyoverse-content-104846.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-12-11 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-12-03 03:03:02"
+    },
+    {
+      "source_key": "hoyoverse-content-104838",
+      "official_content_id": 104838,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Kaedehara Kazuha",
+      "official_traditional_chinese_name": "楓原萬葉",
+      "official_vietnamese_name": "Kaedehara Kazuha",
+      "official_english_description": "A wandering samurai from Inazuma with a modest and gentle personality. Beneath a youthful and carefree demeanor lies a heart that hides a great many burdens from the past. Seemingly easygoing, Kazuha has his own code of conduct.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210622/2021062217445040081.png",
+      "thumbnail_asset": "hoyoverse-content-104838.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-06-23 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-06-22 09:44:03"
+    },
+    {
+      "source_key": "hoyoverse-content-104837",
+      "official_content_id": 104837,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Kamisato Ayaka",
+      "official_traditional_chinese_name": "神里綾華",
+      "official_vietnamese_name": "Kamisato Ayaka",
+      "official_english_description": "Daughter of the Yashiro Commission's Kamisato Clan from Inazuma. Dignified and elegant, wise and determined. Sincere and pleasant to others. Universally loved by the Inazuma people, she has earned the title of Shirasagi Himegimi.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210715/2021071516532990350.png",
+      "thumbnail_asset": "hoyoverse-content-104837.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-06-01 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-07-15 08:07:26"
+    },
+    {
+      "source_key": "hoyoverse-content-104848",
+      "official_content_id": 104848,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Kamisato Ayato",
+      "official_traditional_chinese_name": "神里綾人",
+      "official_vietnamese_name": "Kamisato Ayato",
+      "official_english_description": "<!--td {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}--> Current head of the Kamisato Clan and, accordingly, the Yashiro Commissioner. He always has a way of attaining his purpose in a well-thought-out manner. However, few people understand what that \"goal\" he holds most dear is.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/03/22/6713b70c875d723eb22c9effda407377_3450569287117483156.png",
+      "thumbnail_asset": "hoyoverse-content-104848.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2022-03-24 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-03-22 03:07:15"
+    },
+    {
+      "source_key": "hoyoverse-content-111416",
+      "official_content_id": 111416,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Kirara",
+      "official_traditional_chinese_name": "綺良良",
+      "official_vietnamese_name": "Kirara",
+      "official_english_description": "A courier who works for Komaniya Express, a delivery company in Inazuma. She has twin restless tails and is a nekomata who loves human society.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/05/11/968ccf69c47165ea873b948f3b03d06c_6903872076186376698.png",
+      "thumbnail_asset": "hoyoverse-content-111416.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2023-05-19 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-05-11 15:27:39"
+    },
+    {
+      "source_key": "hoyoverse-content-104842",
+      "official_content_id": 104842,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Kujou Sara",
+      "official_traditional_chinese_name": "九條裟羅",
+      "official_vietnamese_name": "Kujou Sara",
+      "official_english_description": "Leader of the Tenryou Commission's forces. A charismatic woman who acts as swiftly as a storm wind and always honors her word. She bears the title of \"Devotee of the Divine\" and has sworn her allegiance to the Raiden Shogun. The eternity that the Shogun pursues is the cause that she is willing to fight for.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210818/2021081815223814593.png",
+      "thumbnail_asset": "hoyoverse-content-104842.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-08-29 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-08-18 07:27:21"
+    },
+    {
+      "source_key": "hoyoverse-content-104849",
+      "official_content_id": 104849,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Kuki Shinobu",
+      "official_traditional_chinese_name": "久岐忍",
+      "official_vietnamese_name": "Kuki Shinobu",
+      "official_english_description": "The deputy leader of the Arataki Gang. She wears a unique mask and is rather stoic. Few people know why a talent of this caliber would run away to join a street gang. Even fewer people know what she hides under her mask. At least, that's what everyone says on the surface. Although... there are probably more people in the know.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/06/14/d9e1610f9201fd4d5e8ca93c21380485_3143069182364603204.png",
+      "thumbnail_asset": "hoyoverse-content-104849.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2022-06-17 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-06-14 03:24:06"
+    },
+    {
+      "source_key": "hoyoverse-content-104841",
+      "official_content_id": 104841,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Raiden Shogun",
+      "official_traditional_chinese_name": "雷電將軍",
+      "official_vietnamese_name": "Raiden<br/>Shogun",
+      "official_english_description": "The Raiden Shogun is the awesome and terrible power of thunder incarnate, the exalted ruler of the Inazuma Shogunate. With the might of lightning at her disposal, she commits herself to the solitary pursuit of eternity.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210818/2021081811214637697.png",
+      "thumbnail_asset": "hoyoverse-content-104841.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-08-26 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-08-18 03:28:21"
+    },
+    {
+      "source_key": "hoyoverse-content-104843",
+      "official_content_id": 104843,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Sangonomiya Kokomi",
+      "official_traditional_chinese_name": "珊瑚宮心海",
+      "official_vietnamese_name": "Sangonomiya Kokomi",
+      "official_english_description": "Kokomi is the Divine Priestess of Watatsumi Island, and also serves as its supreme leader. She is well-versed in the art of war, is good at strategizing, and has keen insights into military affairs. She is also adept at handling domestic affairs, diplomacy, and other matters. Still, this unfathomable leader has a mysterious side to her...",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210909/2021090910071932878.png",
+      "thumbnail_asset": "hoyoverse-content-104843.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-09-15 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-09-09 02:25:38"
+    },
+    {
+      "source_key": "hoyoverse-content-104840",
+      "official_content_id": 104840,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Sayu",
+      "official_traditional_chinese_name": "早柚",
+      "official_vietnamese_name": "Sayu",
+      "official_english_description": "Sayu, Shuumatsuban's resident ninja, is obsessed with sleeping and growing taller. She has mastered all kinds of ninjutsu to run away and hide in pursuit of opportunities to laze around and sleep. Such an extraordinary skillset may have very unexpected uses.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210730/2021073014304594779.png",
+      "thumbnail_asset": "hoyoverse-content-104840.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-08-07 18:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-07-30 06:33:53"
+    },
+    {
+      "source_key": "hoyoverse-content-104850",
+      "official_content_id": 104850,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Shikanoin Heizou",
+      "official_traditional_chinese_name": "鹿野院平藏",
+      "official_vietnamese_name": "Shikanoin Heizou",
+      "official_english_description": "A young prodigy detective from the Tenryou Commission. His senses are sharp and his thoughts are ingenious. No matter what unsolved case he's facing, he can get to the truth in unexpected ways.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/07/05/8cb39b11a39045288b7ef800b9c8a085_5614260264118012404.png",
+      "thumbnail_asset": "hoyoverse-content-104850.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2022-07-08 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-07-05 06:43:17"
+    },
+    {
+      "source_key": "hoyoverse-content-104844",
+      "official_content_id": 104844,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Thoma",
+      "official_traditional_chinese_name": "托馬",
+      "official_vietnamese_name": "Thoma",
+      "official_english_description": "The housekeeper of the Yashiro Commission's Kamisato Clan, and a well-known \"fixer\" in Inazuma. Friendly and approachable, Thoma fits in with the crowd easily wherever he is. At first glance, he seems to be a very easygoing person, but he is in fact very responsible. He has an extraordinarily serious side, be it in his work or his interpersonal communications.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20211021/2021102111162752987.png",
+      "thumbnail_asset": "hoyoverse-content-104844.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-10-29 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-10-21 08:12:03"
+    },
+    {
+      "source_key": "hoyoverse-content-104847",
+      "official_content_id": 104847,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Yae Miko",
+      "official_traditional_chinese_name": "八重神子",
+      "official_vietnamese_name": "Yae Miko",
+      "official_english_description": "The head shrine maiden in charge of Grand Narukami Shrine and a descendant of Kitsune lineage, Eternity's servant and friend, and the intimidating editor-in-chief of Yae Publishing House, a publisher of light novels... The enigmatic Guuji, with many identities, may never be fully understood by mortals for what she truly is in her heart of hearts.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20220208/2022020810270373393.png",
+      "thumbnail_asset": "hoyoverse-content-104847.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2022-02-10 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-02-08 02:41:27"
+    },
+    {
+      "source_key": "hoyoverse-content-104839",
+      "official_content_id": 104839,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Yoimiya",
+      "official_traditional_chinese_name": "宵宮",
+      "official_vietnamese_name": "Yoimiya",
+      "official_english_description": "A talented pyrotechnician. The current owner of Naganohara Fireworks known as the \"Queen of the Summer Festival.\" A girl filled with fiery passion. The uncompromising childish innocence and the obsession with craftsmanship intertwine in her to create a spectacular blaze.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20210730/2021073011351978058.png",
+      "thumbnail_asset": "hoyoverse-content-104839.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2021-08-04 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2021-07-30 03:41:52"
+    },
+    {
+      "source_key": "hoyoverse-content-129697",
+      "official_content_id": 129697,
+      "region": "Inazuma",
+      "region_channel_id": 405,
+      "official_english_name": "Yumemizuki Mizuki",
+      "official_traditional_chinese_name": "夢見月瑞希",
+      "official_vietnamese_name": "Yumemizuki Mizuki",
+      "official_english_description": "A yumekui-baku, who also happens to be a clinical psychologist and a major shareholder of Aisa Bathhouse. If you ever find yourself gripped by seemingly insurmountable anxiety, she will surely be able to offer you the help you so need.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/129697/f2d25033c05685ef81ead5d61f8f3748_589607755565422496.png",
+      "thumbnail_asset": "hoyoverse-content-129697.png",
+      "source_channels": [
+        405,
+        407
+      ],
+      "available_from": "2025-02-06 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-01-26 09:44:35"
+    },
+    {
+      "source_key": "hoyoverse-content-104974",
+      "official_content_id": 104974,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Alhaitham",
+      "official_traditional_chinese_name": "艾爾海森",
+      "official_vietnamese_name": "Alhaitham",
+      "official_english_description": "The current scribe of the Sumeru Akademiya, a man endowed with extraordinary intelligence and talent. He lives free — free from the searching eyes of ordinary people, anyway.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/01/09/bfd6f03d6e5057f0ea946bd5c8490f88_3915677511569380641.png",
+      "thumbnail_asset": "hoyoverse-content-104974.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2023-01-12 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-01-09 21:39:43"
+    },
+    {
+      "source_key": "hoyoverse-content-104855",
+      "official_content_id": 104855,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Candace",
+      "official_traditional_chinese_name": "坎蒂絲",
+      "official_vietnamese_name": "Candace",
+      "official_english_description": "The guardian of Aaru Village who is gentle and benevolent. She will not allow anyone to harm Aaru Village under her watch.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/09/22/4199ac7c190fe49d64215345c1c04f30_6820465596752303350.png",
+      "thumbnail_asset": "hoyoverse-content-104855.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-09-26 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-09-22 07:34:13"
+    },
+    {
+      "source_key": "hoyoverse-content-104852",
+      "official_content_id": 104852,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Collei",
+      "official_traditional_chinese_name": "柯萊",
+      "official_vietnamese_name": "Collei",
+      "official_english_description": "A Trainee Forest Ranger who is under the tutelage of Tighnari. She started her academic career a little later than her peers, so she is currently working hard to catch up. She hides the other side of her personality deep under the surface of optimism and kindness.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/08/16/3677cbc063b7ab3887ceb7f9a77287ac_5225903633109499465.png",
+      "thumbnail_asset": "hoyoverse-content-104852.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-08-24 10:01:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-08-16 08:12:28"
+    },
+    {
+      "source_key": "hoyoverse-content-104854",
+      "official_content_id": 104854,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Cyno",
+      "official_traditional_chinese_name": "賽諾",
+      "official_vietnamese_name": "Cyno",
+      "official_english_description": "The General Mahamatra of the Akademiya, leader of all the Matras. He has a unique sense of humor that never fails to leave a deep impression.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/09/20/377cfb0cf754a873c864e92208e540f0_8849480619158826778.png",
+      "thumbnail_asset": "hoyoverse-content-104854.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-09-22 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-09-20 06:50:04"
+    },
+    {
+      "source_key": "hoyoverse-content-105323",
+      "official_content_id": 105323,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Dehya",
+      "official_traditional_chinese_name": "迪希雅",
+      "official_vietnamese_name": "Dehya",
+      "official_english_description": "A member of \"The Eremites,\" a loosely-organized mercenary organization. She is brave, powerful, and enjoys an excellent reputation among mercenaries.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/02/13/2926f9b9e00ac8443a660bab7333e996_2240408255495645080.png",
+      "thumbnail_asset": "hoyoverse-content-105323.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2023-02-23 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-02-13 11:51:21"
+    },
+    {
+      "source_key": "hoyoverse-content-104853",
+      "official_content_id": 104853,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Dori",
+      "official_traditional_chinese_name": "多莉",
+      "official_vietnamese_name": "Dori",
+      "official_english_description": "Dori is a merchant in Sumeru who has a fondness for glittering Mora. With her persuasive eloquence, she is able to sell various strange and mysterious products for a very high price.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/08/30/b8a367991017a9f3c6bb445c5c8b68e6_4884467699333507931.png",
+      "thumbnail_asset": "hoyoverse-content-104853.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-09-02 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-08-30 09:24:43"
+    },
+    {
+      "source_key": "hoyoverse-content-104860",
+      "official_content_id": 104860,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Faruzan",
+      "official_traditional_chinese_name": "琺露珊",
+      "official_vietnamese_name": "Faruzan",
+      "official_english_description": "A distinguished Akademiya scholar from \"a century ago\" and one of the founders of Ancient Mechanics as a field of study. Although she hailed from Haravatat, she was renowned for her talents in machinery throughout Sumeru... Even though these honors have been forgotten in the river of time, much as she has.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/12/01/5efdda38074033b2a60003917c44a407_3397956755107654202.png",
+      "thumbnail_asset": "hoyoverse-content-104860.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-12-05 18:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-12-01 09:17:20"
+    },
+    {
+      "source_key": "hoyoverse-content-110848",
+      "official_content_id": 110848,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Kaveh",
+      "official_traditional_chinese_name": "卡維",
+      "official_vietnamese_name": "Kaveh",
+      "official_english_description": "A renowned architect from Sumeru who perhaps cares a bit too much about too many things. He is an aesthete troubled by reality.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/03/27/db3834416088a151c71b3bbce8f8ed60_8581044997127247446.png",
+      "thumbnail_asset": "hoyoverse-content-110848.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2023-04-28 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-03-27 14:53:50"
+    },
+    {
+      "source_key": "hoyoverse-content-104858",
+      "official_content_id": 104858,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Layla",
+      "official_traditional_chinese_name": "萊依拉",
+      "official_vietnamese_name": "Layla",
+      "official_english_description": "A Rtawahist student who always looks sleep-deprived. Her dark eye circles have been worsening due to academic stress. Yet no matter how difficult the work at hand, she always manages to make the most brilliant deductions. Could she be writing her thesis in her dreams?",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/11/07/f5b95c8f39180f0bf83303c6316439c4_3238690627126680494.png",
+      "thumbnail_asset": "hoyoverse-content-104858.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-11-11 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-11-07 02:56:25"
+    },
+    {
+      "source_key": "hoyoverse-content-104857",
+      "official_content_id": 104857,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Nahida",
+      "official_traditional_chinese_name": "納西妲",
+      "official_vietnamese_name": "Nahida",
+      "official_english_description": "Lesser Lord Kusanali dwells deep in the Sanctuary of Surasthana, and has never really been in the limelight, nor has she even been mentioned much. Her burden is heavy, but though she may experience loneliness, and though darkness is all she sees before her, she will not stop moving forward.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/10/24/62cb7fb1815d9d05d3ece2e0d8e85c7d_4079917072260630056.png",
+      "thumbnail_asset": "hoyoverse-content-104857.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-10-27 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-10-24 03:29:51"
+    },
+    {
+      "source_key": "hoyoverse-content-104856",
+      "official_content_id": 104856,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Nilou",
+      "official_traditional_chinese_name": "妮露",
+      "official_vietnamese_name": "Nilou",
+      "official_english_description": "Star of the Zubayr Theater. Her dance is as graceful as a water lily in first bloom, pure and pristine. But she is by no means a haughty and cold person. Even the most hurried traveler will not forget her innocent and radiant smile.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/09/28/a5f2a564298709911b3ceef0289d183c_2536068389215590052.png",
+      "thumbnail_asset": "hoyoverse-content-104856.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-10-07 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-09-28 07:12:39"
+    },
+    {
+      "source_key": "hoyoverse-content-123866",
+      "official_content_id": 123866,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Sethos",
+      "official_traditional_chinese_name": "賽索斯",
+      "official_vietnamese_name": "Sethos",
+      "official_english_description": "A mysterious desert youth with a friendly smile who loves traveling by foot across both rainforest and desert.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/123866/be909232b7ab3924affe5524b58bfa68_4552096941827253763.png",
+      "thumbnail_asset": "hoyoverse-content-123866.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2024-06-02 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-05-28 13:58:48"
+    },
+    {
+      "source_key": "hoyoverse-content-104851",
+      "official_content_id": 104851,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Tighnari",
+      "official_traditional_chinese_name": "提納里",
+      "official_vietnamese_name": "Tighnari",
+      "official_english_description": "An Avidya Forest Watcher and botanical scholar who graduated from Amurta. He leads a fruitful life of patrolling the rainforest, protecting the ecology, and lecturing fools every day.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/08/16/1f88bdae2e99307e68a0bbfedf6cc74f_1764069507689020312.png",
+      "thumbnail_asset": "hoyoverse-content-104851.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-08-24 10:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-08-16 08:09:51"
+    },
+    {
+      "source_key": "hoyoverse-content-104859",
+      "official_content_id": 104859,
+      "region": "Sumeru",
+      "region_channel_id": 406,
+      "official_english_name": "Wanderer",
+      "official_traditional_chinese_name": "流浪者",
+      "official_vietnamese_name": "Kẻ Lang Thang",
+      "official_english_description": "If the measure of humanity is having a heart, then he cannot be deemed as such. If one without a heart experiences joy and sorrow, then he shall be a puppet most alike to humanity.",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/upload/contentweb/2022/12/04/e6f9e89c89330b23573400fff27905c0_1060254991042222704.png",
+      "thumbnail_asset": "hoyoverse-content-104859.png",
+      "source_channels": [
+        406,
+        407
+      ],
+      "available_from": "2022-12-04 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2022-11-28 08:02:56"
+    },
+    {
+      "source_key": "hoyoverse-content-113448",
+      "official_content_id": 113448,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Charlotte",
+      "official_traditional_chinese_name": "夏洛蒂",
+      "official_vietnamese_name": "Charlotte",
+      "official_english_description": "Indefatigable reporter of The Steambird, constantly on the hunt for the \"truth.\"",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/113448/72bd4cb919b45738bf71817d2670ed34_6595535132105809866.png",
+      "thumbnail_asset": "hoyoverse-content-113448.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2023-11-04 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-10-26 17:24:35"
+    },
+    {
+      "source_key": "hoyoverse-content-113800",
+      "official_content_id": 113800,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Chevreuse",
+      "official_traditional_chinese_name": "夏沃蕾",
+      "official_vietnamese_name": "Chevreuse",
+      "official_english_description": "The renowned Captain of the Special Security and Surveillance Patrol, always true to her own sense of \"justice.\"",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/113800/64fe10ded54cecbe6255163a11727f4c_2983522378840343670.png",
+      "thumbnail_asset": "hoyoverse-content-113800.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2024-01-05 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-11-28 16:50:00"
+    },
+    {
+      "source_key": "hoyoverse-content-122720",
+      "official_content_id": 122720,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Chiori",
+      "official_traditional_chinese_name": "千織",
+      "official_vietnamese_name": "Chiori",
+      "official_english_description": "A frank and outspoken fashion designer whose unique sense of style always puts her at the forefront of Fontainian trends.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/122720/82831308dc78c0f0b07d3fc63b3b7458_4341826594665199125.png",
+      "thumbnail_asset": "hoyoverse-content-122720.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2024-03-07 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-03-04 09:52:05"
+    },
+    {
+      "source_key": "hoyoverse-content-123842",
+      "official_content_id": 123842,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Clorinde",
+      "official_traditional_chinese_name": "克洛琳德",
+      "official_vietnamese_name": "Clorinde",
+      "official_english_description": "The mightiest Champion Duelist. Sword in hand, she defends justice in the Court of Fontaine.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/123842/0bd854ede1c0879aacb3514d8a045c93_5267882877138140414.png",
+      "thumbnail_asset": "hoyoverse-content-123842.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2024-05-30 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-05-27 15:04:04"
+    },
+    {
+      "source_key": "hoyoverse-content-124961",
+      "official_content_id": 124961,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Emilie",
+      "official_traditional_chinese_name": "艾梅莉埃",
+      "official_vietnamese_name": "Emilie",
+      "official_english_description": "A renowned perfumer from Fontaine. Elegant, charming, and a little mysterious... just like her work.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/124961/cfefe228a0419b0b3a24663c5536024c_718485427508329161.png",
+      "thumbnail_asset": "hoyoverse-content-124961.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2024-07-31 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-07-24 10:03:04"
+    },
+    {
+      "source_key": "hoyoverse-content-155630",
+      "official_content_id": 155630,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Escoffier",
+      "official_traditional_chinese_name": "愛可菲",
+      "official_vietnamese_name": "Escoffier",
+      "official_english_description": "A renowned, exacting Fontainian chef. Diligently seeks the pinnacle of culinary excellence.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/155630/16418e9de1cb6681723c6002234bc27f_279603454861809999.png",
+      "thumbnail_asset": "hoyoverse-content-155630.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2025-05-01 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-04-24 14:01:32"
+    },
+    {
+      "source_key": "hoyoverse-content-112636",
+      "official_content_id": 112636,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Freminet",
+      "official_traditional_chinese_name": "菲米尼",
+      "official_vietnamese_name": "Freminet",
+      "official_english_description": "A taciturn young man and an expert diver, his heart remains as innocent as the fairytales that never cease to absorb him.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/08/11/5d33262b4a7de7b0be0ac08b859a8442_5182512646036529937.png",
+      "thumbnail_asset": "hoyoverse-content-112636.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2023-09-01 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-08-11 14:05:19"
+    },
+    {
+      "source_key": "hoyoverse-content-113447",
+      "official_content_id": 113447,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Furina",
+      "official_traditional_chinese_name": "芙寧娜",
+      "official_vietnamese_name": "Furina",
+      "official_english_description": "The \"Regina of All Waters, Kindreds, Peoples and Laws\" is deeply loved by her people.She follows each and every trial held at the Opera Epiclese with an inextinguishable passion, and is always acutely aware of how the \"audience\" sees things.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/113447/6b3e34fb09616b569998330b968cd2a0_6887303933528198014.png",
+      "thumbnail_asset": "hoyoverse-content-113447.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2023-11-06 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-10-26 16:51:36"
+    },
+    {
+      "source_key": "hoyoverse-content-112632",
+      "official_content_id": 112632,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Lynette",
+      "official_traditional_chinese_name": "琳妮特",
+      "official_vietnamese_name": "Lynette",
+      "official_english_description": "A magician's assistant hidden in the shadows who refers to herself as a \"Multi-Function Magic Assistant.\" Poker-faced, reticent to speak, and as unpredictable in her movements as a cat.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/08/11/c2759cdfc8206689f137d38ca5c6fe98_1412965380554212433.png",
+      "thumbnail_asset": "hoyoverse-content-112632.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2023-08-16 10:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-08-11 11:00:03"
+    },
+    {
+      "source_key": "hoyoverse-content-112618",
+      "official_content_id": 112618,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Lyney",
+      "official_traditional_chinese_name": "林尼",
+      "official_vietnamese_name": "Lyney",
+      "official_english_description": "A genius of a magician famed throughout Fontaine. He moves his audience with a combination of sleight of hand and the gift of the gab. Eloquent, ingenious, and with a mind as hard to fathom as a cat.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/08/10/7b47aa8ac8e2a35ae5e7d37d264dcb93_1637075788613803635.png",
+      "thumbnail_asset": "hoyoverse-content-112618.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2023-08-16 10:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-08-10 11:47:17"
+    },
+    {
+      "source_key": "hoyoverse-content-113799",
+      "official_content_id": 113799,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Navia",
+      "official_traditional_chinese_name": "娜維婭",
+      "official_vietnamese_name": "Navia",
+      "official_english_description": "The ever-beaming President of the Spina di Rosula, devoted to helping the people of Fontaine solve all kinds of thorny issues.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/113799/9050fcca1dec27019d07fa0b6e963167_7478599474243345638.png",
+      "thumbnail_asset": "hoyoverse-content-113799.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2023-12-14 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-11-28 16:35:17"
+    },
+    {
+      "source_key": "hoyoverse-content-113014",
+      "official_content_id": 113014,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Neuvillette",
+      "official_traditional_chinese_name": "那維萊特",
+      "official_vietnamese_name": "Neuvillette",
+      "official_english_description": "You wouldn't exactly describe the Iudex of Fontaine as \"approachable.\" It's hard to say whether it's just in his nature, or because he has secrets to hide.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/09/14/9ee54053e4b710d163fd828c7d60c7e8_3422795180595961529.png",
+      "thumbnail_asset": "hoyoverse-content-113014.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2023-09-21 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-09-14 17:37:20"
+    },
+    {
+      "source_key": "hoyoverse-content-124105",
+      "official_content_id": 124105,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Sigewinne",
+      "official_traditional_chinese_name": "希格雯",
+      "official_vietnamese_name": "Sigewinne",
+      "official_english_description": "The head nurse of the Fortress of Meropide. As a Melusine, she uses her unique perspective to observe and care for those around her.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/124105/c70a894a0ffe472765493fdef81583a9_2515687304589022911.png",
+      "thumbnail_asset": "hoyoverse-content-124105.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2024-06-19 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-06-12 09:49:23"
+    },
+    {
+      "source_key": "hoyoverse-content-113013",
+      "official_content_id": 113013,
+      "region": "Fontaine",
+      "region_channel_id": 653,
+      "official_english_name": "Wriothesley",
+      "official_traditional_chinese_name": "萊歐斯利",
+      "official_vietnamese_name": "Wriothesley",
+      "official_english_description": "Administrator of the Fortress of Meropide, he was given Fontaine's highest honorary title of \"Duke.\" Both low-profile and dependable.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/op-public/2023/09/15/c096289444775cca45d9a582c2251751_657526917361529008.png",
+      "thumbnail_asset": "hoyoverse-content-113013.png",
+      "source_channels": [
+        407,
+        653
+      ],
+      "available_from": "2023-10-11 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2023-09-14 17:36:14"
+    },
+    {
+      "source_key": "hoyoverse-content-126886",
+      "official_content_id": 126886,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Chasca",
+      "official_traditional_chinese_name": "恰斯卡",
+      "official_vietnamese_name": "Chasca",
+      "official_english_description": "Whether mediating \"disputes\" stirred up by humans or by Saurians, or arbitrating with words or with bullets, all conflicts are resolved when the Peacemaker of the Tlalocan gets involved.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/126886/4074c30639ab8bd3c3e949038c55c889_4656426280786881036.png",
+      "thumbnail_asset": "hoyoverse-content-126886.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2024-11-14 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-11-11 11:46:37"
+    },
+    {
+      "source_key": "hoyoverse-content-127513",
+      "official_content_id": 127513,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Citlali",
+      "official_traditional_chinese_name": "茜特菈莉",
+      "official_vietnamese_name": "Citlali",
+      "official_english_description": "A legendary shaman from the Masters of the Night-Wind, known throughout Natlan as the eminent \"Granny Itztli.\" Not one to be messed with, but also the first person all turn to when trouble arises.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/127513/e0ea0a8d21fbbc785914e4d2c69c15f2_7699597058027873875.png",
+      "thumbnail_asset": "hoyoverse-content-127513.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2024-12-25 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-12-20 13:13:17"
+    },
+    {
+      "source_key": "hoyoverse-content-154719",
+      "official_content_id": 154719,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Iansan",
+      "official_traditional_chinese_name": "伊安珊",
+      "official_vietnamese_name": "Iansan",
+      "official_english_description": "The head coach of the fitness club at the Collective of Plenty, a renowned Natlanese nutritionist, and the founder of the \"Pilgrimage Victors Academy.\" Overwhelmed by the prospect of training? Unsure of how to improve your strength? In that case, she's the first person you should talk to.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/154719/c0b6c5da8b76973b5af32019b32d3294_6421217698954837430.png",
+      "thumbnail_asset": "hoyoverse-content-154719.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2025-03-22 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-03-14 10:05:51"
+    },
+    {
+      "source_key": "hoyoverse-content-155631",
+      "official_content_id": 155631,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Ifa",
+      "official_traditional_chinese_name": "伊法",
+      "official_vietnamese_name": "Ifa",
+      "official_english_description": "A vet from the Flower-Feather Clan, beloved by humans and animals alike. The round creature by his side is his assistant.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/155631/29699b14bbfaeacb283ac09444ac5d32_1330902198646865597.png",
+      "thumbnail_asset": "hoyoverse-content-155631.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2025-05-03 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-04-24 14:03:54"
+    },
+    {
+      "source_key": "hoyoverse-content-125395",
+      "official_content_id": 125395,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Kachina",
+      "official_traditional_chinese_name": "卡齊娜",
+      "official_vietnamese_name": "Kachina",
+      "official_english_description": "A young warrior of the Children of Echoes, given the Ancient Name of \"Uthabiti.\" Kind-hearted and insatiably persistent, she grows stronger and more capable with each setback she faces.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/125395/dcb5792bc05e58821d605507ff0b8db0_8986986070354750033.png",
+      "thumbnail_asset": "hoyoverse-content-125395.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2024-08-28 10:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-08-20 15:06:03"
+    },
+    {
+      "source_key": "hoyoverse-content-125716",
+      "official_content_id": 125716,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Kinich",
+      "official_traditional_chinese_name": "基尼奇",
+      "official_vietnamese_name": "Kinich",
+      "official_english_description": "A saurian hunter who accompanies the one who calls himself \"Dragonlord.\" He often accepts commissions that no one else wants, and is equally skilled at appraising the price.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/125716/05a63a2a78f89f0c033bbd77e6dfa54b_1084592064768608047.png",
+      "thumbnail_asset": "hoyoverse-content-125716.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2024-09-12 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-09-05 09:32:27"
+    },
+    {
+      "source_key": "hoyoverse-content-127512",
+      "official_content_id": 127512,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Mavuika",
+      "official_traditional_chinese_name": "瑪薇卡",
+      "official_vietnamese_name": "Mavuika",
+      "official_english_description": "Natlan's Archon and leader, the everlasting flame of hope for all living beings, and the cleansing flame that incinerates all evil.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/127512/147a22ef8d2be797225611dd75f89544_3907479022286621857.png",
+      "thumbnail_asset": "hoyoverse-content-127512.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2024-12-26 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-12-20 13:12:40"
+    },
+    {
+      "source_key": "hoyoverse-content-125394",
+      "official_content_id": 125394,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Mualani",
+      "official_traditional_chinese_name": "瑪拉妮",
+      "official_vietnamese_name": "Mualani",
+      "official_english_description": "One of the shining stars of the People of the Springs' new generation of young guides. If you've come to Natlan for sightseeing, there's no better companion you could choose.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/125394/61b24fd8f87c161b924e42a1c02655bf_184680064868178818.png",
+      "thumbnail_asset": "hoyoverse-content-125394.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2024-08-28 10:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-08-20 14:43:07"
+    },
+    {
+      "source_key": "hoyoverse-content-126887",
+      "official_content_id": 126887,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Ororon",
+      "official_traditional_chinese_name": "歐洛倫",
+      "official_vietnamese_name": "Ororon",
+      "official_english_description": "A young man from the Masters of the Night-Wind, who always seems to be calm and at ease, no matter what the situation. Catching him is no easy feat.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/126887/2a247e0e85ce8d3b8090183b9f75cb5e_1923052509290720163.png",
+      "thumbnail_asset": "hoyoverse-content-126887.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2024-11-16 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-11-11 11:49:53"
+    },
+    {
+      "source_key": "hoyoverse-content-156698",
+      "official_content_id": 156698,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Skirk",
+      "official_traditional_chinese_name": "絲柯克",
+      "official_vietnamese_name": "Skirk",
+      "official_english_description": "A mighty warrior of unknown origin. She claims to be the disciple of Surtalogi \"The Foul,\" one of Khaenri'ah's Five Sinners, and the master of \"Childe\" Tartaglia.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/156698/bbd771829b4de9a04c07234c53dd46ce_7430986783015169366.png",
+      "thumbnail_asset": "hoyoverse-content-156698.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2025-06-12 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-06-04 10:04:00"
+    },
+    {
+      "source_key": "hoyoverse-content-154718",
+      "official_content_id": 154718,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Varesa",
+      "official_traditional_chinese_name": "瓦雷莎",
+      "official_vietnamese_name": "Varesa",
+      "official_english_description": "An orchard owner who normally leads a laid-back life. However, when her fighting spirit is ignited, she dons a unique mask and exudes the indomitable air of a legendary hero.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/154718/d4e4a6c1fe878143009605262fe0c098_5569552020432455466.png",
+      "thumbnail_asset": "hoyoverse-content-154718.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2025-03-20 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-03-14 10:00:44"
+    },
+    {
+      "source_key": "hoyoverse-content-126103",
+      "official_content_id": 126103,
+      "region": "Natlan",
+      "region_channel_id": 934,
+      "official_english_name": "Xilonen",
+      "official_traditional_chinese_name": "希諾寧",
+      "official_vietnamese_name": "Xilonen",
+      "official_english_description": "A blacksmith of the Nanatzcayan, she is especially skilled at finding a good balance between the heavy responsibilities of her job and living well.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/126103/424b23b2224d60dcd177075d6767ab59_1324111878376312709.png",
+      "thumbnail_asset": "hoyoverse-content-126103.png",
+      "source_channels": [
+        407,
+        934
+      ],
+      "available_from": "2024-10-03 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-09-25 10:05:12"
+    },
+    {
+      "source_key": "hoyoverse-content-159154",
+      "official_content_id": 159154,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Aino",
+      "official_traditional_chinese_name": "愛諾",
+      "official_vietnamese_name": "Aino",
+      "official_english_description": "The genius mechanical inventor of Nod-Krai. She lives in the Clink-Clank Krumkake Craftshop, surrounded by her mechanical family and the fragrance of the workshop's namesake — scrumptious krumkakes.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/159154/6fd3066d0123d76a9d25bca8cc9264c2_9072526321460189200.png",
+      "thumbnail_asset": "hoyoverse-content-159154.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2025-09-06 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-09-02 11:07:29"
+    },
+    {
+      "source_key": "hoyoverse-content-165500",
+      "official_content_id": 165500,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Alyosha",
+      "official_traditional_chinese_name": "阿羅夏",
+      "official_vietnamese_name": "Alyosha",
+      "official_english_description": "A \"professional hunter\" mastering the Snezhnayan snowfields. Beneath his calm demeanor, a fiercely distinct \"ideal\" seems to burn.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/165500/5f8d8ba1068e3eb3a875464875b45c0d_7988669622907114879.png",
+      "thumbnail_asset": "hoyoverse-content-165500.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2026-08-11 10:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-08-03 14:12:52"
+    },
+    {
+      "source_key": "hoyoverse-content-123167",
+      "official_content_id": 123167,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Arlecchino",
+      "official_traditional_chinese_name": "阿蕾奇諾",
+      "official_vietnamese_name": "Arlecchino",
+      "official_english_description": "\"The Knave,\" Fourth of the Fatui Harbingers. Revered as \"Father\" by the children of the House of the Hearth.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/123167/002a7e54d3b70ac98b5aef6d9be471f7_7063677131319557183.png",
+      "thumbnail_asset": "hoyoverse-content-123167.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2024-04-18 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2024-04-09 15:53:17"
+    },
+    {
+      "source_key": "hoyoverse-content-162067",
+      "official_content_id": 162067,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Columbina Hyposelenia",
+      "official_traditional_chinese_name": "哥倫比婭·希珀塞萊尼婭",
+      "official_vietnamese_name": "Columbina Hyposelenia",
+      "official_english_description": "Kuutar, the Moon Goddess of Nod-Krai, and formerly The Damselette, Third of the Fatui Harbingers. Still, her friends all call her Columbina Hyposelenia, and she prefers it that way.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/162067/4e8138f314c65807b63808848bcfe6f7_3858029483757003197.png",
+      "thumbnail_asset": "hoyoverse-content-162067.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2026-01-13 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-01-08 14:59:09"
+    },
+    {
+      "source_key": "hoyoverse-content-159269",
+      "official_content_id": 159269,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Flins",
+      "official_traditional_chinese_name": "菲林斯",
+      "official_vietnamese_name": "Flins",
+      "official_english_description": "Kyryll Chudomirovich Flins, a Ratnik of Nod-Krai — this is how he likes to introduce himself.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/159269/78026b4939a74349cfec212c99c38b7a_8182066422859237792.png",
+      "thumbnail_asset": "hoyoverse-content-159269.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2025-09-24 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-09-05 14:54:47"
+    },
+    {
+      "source_key": "hoyoverse-content-162096",
+      "official_content_id": 162096,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Illuga",
+      "official_traditional_chinese_name": "葉洛亞",
+      "official_vietnamese_name": "Illuga",
+      "official_english_description": "A member of the Lightkeepers' investigation squad, the Nightmare Orioles, he is much like the lantern he carries — both a guiding light and a source of care.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/162096/e3115d7070b944ac8770383f18d0a3f6_7228636816108101845.png",
+      "thumbnail_asset": "hoyoverse-content-162096.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2026-02-03 18:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-01-11 21:35:06"
+    },
+    {
+      "source_key": "hoyoverse-content-157730",
+      "official_content_id": 157730,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Ineffa",
+      "official_traditional_chinese_name": "伊涅芙",
+      "official_vietnamese_name": "Ineffa",
+      "official_english_description": "A robot from Nod-Krai constructed using mechanical components from all over the world. She was designed and built at the Clink-Clank Krumkake Craftshop.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/157730/bcbd2761b4a6d3cef8030190c8f223f1_2382801960058571524.png",
+      "thumbnail_asset": "hoyoverse-content-157730.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2025-07-24 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-07-18 10:02:46"
+    },
+    {
+      "source_key": "hoyoverse-content-161107",
+      "official_content_id": 161107,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Jahoda",
+      "official_traditional_chinese_name": "雅珂達",
+      "official_vietnamese_name": "Jahoda",
+      "official_english_description": "The Curatorium's do-it-all employee (or so she claims).",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/161107/297e76a4007915f7b45b86a8282e9fe0_1895175489401746974.png",
+      "thumbnail_asset": "hoyoverse-content-161107.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2025-12-01 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-11-26 14:02:44"
+    },
+    {
+      "source_key": "hoyoverse-content-159015",
+      "official_content_id": 159015,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Lauma",
+      "official_traditional_chinese_name": "菈烏瑪",
+      "official_vietnamese_name": "Lauma",
+      "official_english_description": "The Moonchanter of the Frostmoon Scions, also known as the Maiden of the Grove. She has a peculiar affinity for both animals and the moonlight.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/159015/7b7aeac18e2a3d794d6d45b3da20ac0b_4597015323222957034.png",
+      "thumbnail_asset": "hoyoverse-content-159015.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2025-09-04 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-08-25 10:08:55"
+    },
+    {
+      "source_key": "hoyoverse-content-163297",
+      "official_content_id": 163297,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Linnea",
+      "official_traditional_chinese_name": "莉奈婭",
+      "official_vietnamese_name": "Linnea",
+      "official_english_description": "Advisor for the Adventurers' Guild, a changeling, born of the fae but raised among humans.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/163297/7bd12ca1ea7e74f8592e41f9b60059b2_6896456024039328803.png",
+      "thumbnail_asset": "hoyoverse-content-163297.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2026-04-08 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-03-27 14:29:06"
+    },
+    {
+      "source_key": "hoyoverse-content-160183",
+      "official_content_id": 160183,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Nefer",
+      "official_traditional_chinese_name": "奈芙爾",
+      "official_vietnamese_name": "Nefer",
+      "official_english_description": "The incredibly resourceful owner of the Curatorium of Secrets.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/160183/c1ded96f90f71c66f5c5a8eab3df0efe_2405505457178083458.png",
+      "thumbnail_asset": "hoyoverse-content-160183.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2025-10-16 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2025-10-13 10:08:07"
+    },
+    {
+      "source_key": "hoyoverse-content-165495",
+      "official_content_id": 165495,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Odette",
+      "official_traditional_chinese_name": "奧黛塔",
+      "official_vietnamese_name": "Odette",
+      "official_english_description": "The prima ballerina of the Korolevskiy Troupe, clear and unyielding as the ice.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/165495/64cc802a006f1989a184ece6001b3809_6752181297973530819.png",
+      "thumbnail_asset": "hoyoverse-content-165495.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2026-08-11 10:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-08-03 00:04:22"
+    },
+    {
+      "source_key": "hoyoverse-content-164628",
+      "official_content_id": 164628,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Sandrone",
+      "official_traditional_chinese_name": "桑多涅",
+      "official_vietnamese_name": "Sandrone",
+      "official_english_description": "The seventh of the Fatui Harbingers, \"Marionette.\" Interprets all phenomena through the prism of mathematics, and is an elegant lady who is never absent from a tea party.",
+      "thumbnail_source_url": "https://fastcdn.hoyoverse.com/content-v2/hk4e/164628/765eb21a90ca3d608d437e03810bbd8a_1755193234439956682.png",
+      "thumbnail_asset": "hoyoverse-content-164628.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2026-06-25 12:00:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2026-06-05 14:47:13"
+    },
+    {
+      "source_key": "hoyoverse-content-104828",
+      "official_content_id": 104828,
+      "region": "Snezhnaya",
+      "region_channel_id": 1221,
+      "official_english_name": "Tartaglia",
+      "official_traditional_chinese_name": "達達利亞",
+      "official_vietnamese_name": "Tartaglia",
+      "official_english_description": "Meet Tartaglia — the cunning Snezhnayan whose unpredictable personality keeps people guessing his every move. Don't be under any illusion as to what he might be thinking or what his intentions are. Just remember this: Behind that innocent, childlike exterior lies a finely honed instrument of war.",
+      "thumbnail_source_url": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20201103/2020110321155815420.png",
+      "thumbnail_asset": "hoyoverse-content-104828.png",
+      "source_channels": [
+        407,
+        1221
+      ],
+      "available_from": "2020-11-04 12:30:00",
+      "available_until": "2035-01-01 00:00:00",
+      "source_created_at": "2020-11-03 13:30:29"
+    }
+  ]
+}

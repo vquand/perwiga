@@ -790,6 +790,7 @@ dependencies = [
  "perwiga-core",
  "perwiga-game-arknights-endfield",
  "perwiga-game-generic",
+ "perwiga-game-genshin-impact",
  "perwiga-novel-generic",
  "serde",
  "serde_json",
@@ -815,6 +816,7 @@ dependencies = [
 name = "perwiga-game-arknights-endfield"
 version = "0.1.0"
 dependencies = [
+ "chrono",
  "perwiga-core",
  "serde",
  "serde_json",
@@ -825,6 +827,15 @@ name = "perwiga-game-generic"
 version = "0.1.0"
 dependencies = [
  "perwiga-core",
+]
+
+[[package]]
+name = "perwiga-game-genshin-impact"
+version = "0.1.0"
+dependencies = [
+ "perwiga-core",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -844,6 +855,7 @@ dependencies = [
  "perwiga-core",
  "perwiga-game-arknights-endfield",
  "perwiga-game-generic",
+ "perwiga-game-genshin-impact",
  "serde",
  "serde_json",
  "tempfile",

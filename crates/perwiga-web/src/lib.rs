@@ -15,16 +15,17 @@ use axum::{
 };
 use perwiga_core::{
     model::{
-        AliasInput, EntityAlias, EntityInput, EntityPatch, LibraryWork, WikiEntity,
-        WikiEntityDetail,
+        AliasInput, CalendarEvent, EntityAlias, EntityInput, EntityPatch, LibraryWork, WikiEntity,
     },
     service::Application,
+    CalendarEventPresentation, EntityEventRecencyPresentation, EntityFacetDefinition,
     EntityPresentation, EntityTypeDefinition, ModuleRegistry, PerwigaError, Store, ThemeDefinition,
     WorkKind,
 };
 use serde::{Deserialize, Serialize};
 
 pub const ENDFIELD_MODULE_ID: &str = "arknights-endfield";
+pub const GENSHIN_MODULE_ID: &str = "genshin-impact";
 
 pub fn validate_bind_address(address: SocketAddr) -> Result<(), String> {
     if address.ip().is_loopback() {
@@ -52,6 +53,7 @@ impl WebState {
 struct SetupResponse {
     work: LibraryWork,
     entity_types: Vec<EntityTypeResponse>,
+    entity_facets: &'static [EntityFacetDefinition],
     theme: ThemeDefinition,
 }
 
@@ -75,6 +77,21 @@ struct EntityListItemResponse {
     #[serde(flatten)]
     entity: WikiEntity,
     presentation: Option<EntityPresentation>,
+    event_recency: Option<EntityEventRecencyPresentation>,
+}
+
+#[derive(Serialize)]
+struct EntityDetailResponse {
+    entity: WikiEntity,
+    aliases: Vec<EntityAlias>,
+    event_recency: Option<EntityEventRecencyPresentation>,
+}
+
+#[derive(Serialize)]
+struct CalendarEventListItemResponse {
+    #[serde(flatten)]
+    event: CalendarEvent,
+    presentation: Option<CalendarEventPresentation>,
 }
 
 impl From<&EntityTypeDefinition> for EntityTypeResponse {
@@ -219,6 +236,7 @@ pub fn router_with_store(store: Store) -> perwiga_core::Result<Router> {
     let mut registry = ModuleRegistry::default();
     arknights_endfield::register(&mut registry)?;
     generic_game::register(&mut registry)?;
+    genshin_impact::register(&mut registry)?;
     let state = WebState {
         application: Arc::new(Mutex::new(Application::new(store, registry))),
     };
@@ -230,14 +248,35 @@ pub fn router_with_store(store: Store) -> perwiga_core::Result<Router> {
         .route("/assets/api.js", get(api_script))
         .route("/assets/ui.js", get(ui_script))
         .route(
+            "/assets/placeholders/{filename}",
+            get(entity_type_placeholder),
+        )
+        .route(
             "/assets/modules/arknights-endfield/operators/{filename}",
             get(endfield_operator_thumbnail),
         )
+        .route(
+            "/assets/modules/arknights-endfield/weapons/{filename}",
+            get(endfield_weapon_thumbnail),
+        )
+        .route(
+            "/assets/modules/arknights-endfield/items/{filename}",
+            get(endfield_item_thumbnail),
+        )
+        .route(
+            "/assets/modules/genshin-impact/characters/{filename}",
+            get(genshin_character_thumbnail),
+        )
         .route("/api/health", get(health))
         .route("/api/uat/endfield", post(setup_endfield))
+        .route("/api/uat/genshin", post(setup_genshin))
         .route("/api/modules", get(list_modules))
         .route("/api/works", get(list_works).post(create_work))
         .route("/api/works/{work_id}/workspace", get(get_workspace))
+        .route(
+            "/api/works/{work_id}/calendar-events",
+            get(list_calendar_events),
+        )
         .route(
             "/api/works/{work_id}/entities",
             get(list_entities).post(create_entity),
@@ -285,6 +324,36 @@ async fn ui_script() -> impl IntoResponse {
     )
 }
 
+async fn entity_type_placeholder(Path(filename): Path<String>) -> Result<Response, WebError> {
+    let body = match filename.as_str() {
+        "character.svg" => include_str!("../static/placeholders/character.svg"),
+        "place.svg" => include_str!("../static/placeholders/place.svg"),
+        "concept.svg" => include_str!("../static/placeholders/concept.svg"),
+        "weapon.svg" => include_str!("../static/placeholders/weapon.svg"),
+        "enemy.svg" => include_str!("../static/placeholders/enemy.svg"),
+        "mission.svg" => include_str!("../static/placeholders/mission.svg"),
+        "event.svg" => include_str!("../static/placeholders/event.svg"),
+        "item.svg" => include_str!("../static/placeholders/item.svg"),
+        "faction.svg" => include_str!("../static/placeholders/faction.svg"),
+        "generic.svg" => include_str!("../static/placeholders/generic.svg"),
+        _ => return Err(PerwigaError::NotFound(format!("entity placeholder {filename}")).into()),
+    };
+    let mut response = Response::new(Body::from(body));
+    response.headers_mut().insert(
+        header::CONTENT_TYPE,
+        HeaderValue::from_static("image/svg+xml"),
+    );
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        HeaderValue::from_static("public, max-age=31536000, immutable"),
+    );
+    response.headers_mut().insert(
+        header::X_CONTENT_TYPE_OPTIONS,
+        HeaderValue::from_static("nosniff"),
+    );
+    Ok(response)
+}
+
 async fn endfield_operator_thumbnail(Path(filename): Path<String>) -> Result<Response, WebError> {
     let source_key = filename
         .strip_suffix(".webp")
@@ -295,6 +364,69 @@ async fn endfield_operator_thumbnail(Path(filename): Path<String>) -> Result<Res
     response
         .headers_mut()
         .insert(header::CONTENT_TYPE, HeaderValue::from_static("image/webp"));
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        HeaderValue::from_static("public, max-age=31536000, immutable"),
+    );
+    response.headers_mut().insert(
+        header::X_CONTENT_TYPE_OPTIONS,
+        HeaderValue::from_static("nosniff"),
+    );
+    Ok(response)
+}
+
+async fn endfield_weapon_thumbnail(Path(filename): Path<String>) -> Result<Response, WebError> {
+    let source_key = filename
+        .strip_suffix(".png")
+        .ok_or_else(|| PerwigaError::NotFound(format!("weapon thumbnail {filename}")))?;
+    let bytes = arknights_endfield::weapon_thumbnail(source_key)
+        .ok_or_else(|| PerwigaError::NotFound(format!("weapon thumbnail {filename}")))?;
+    let mut response = Response::new(Body::from(bytes));
+    response
+        .headers_mut()
+        .insert(header::CONTENT_TYPE, HeaderValue::from_static("image/png"));
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        HeaderValue::from_static("public, max-age=31536000, immutable"),
+    );
+    response.headers_mut().insert(
+        header::X_CONTENT_TYPE_OPTIONS,
+        HeaderValue::from_static("nosniff"),
+    );
+    Ok(response)
+}
+
+async fn endfield_item_thumbnail(Path(filename): Path<String>) -> Result<Response, WebError> {
+    let icon_id = filename
+        .strip_suffix(".webp")
+        .ok_or_else(|| PerwigaError::NotFound(format!("item thumbnail {filename}")))?;
+    let bytes = arknights_endfield::item_thumbnail(icon_id)
+        .ok_or_else(|| PerwigaError::NotFound(format!("item thumbnail {filename}")))?;
+    let mut response = Response::new(Body::from(bytes));
+    response
+        .headers_mut()
+        .insert(header::CONTENT_TYPE, HeaderValue::from_static("image/webp"));
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        HeaderValue::from_static("public, max-age=31536000, immutable"),
+    );
+    response.headers_mut().insert(
+        header::X_CONTENT_TYPE_OPTIONS,
+        HeaderValue::from_static("nosniff"),
+    );
+    Ok(response)
+}
+
+async fn genshin_character_thumbnail(Path(filename): Path<String>) -> Result<Response, WebError> {
+    let source_key = filename
+        .strip_suffix(".png")
+        .ok_or_else(|| PerwigaError::NotFound(format!("character thumbnail {filename}")))?;
+    let bytes = genshin_impact::character_thumbnail(source_key)
+        .ok_or_else(|| PerwigaError::NotFound(format!("character thumbnail {filename}")))?;
+    let mut response = Response::new(Body::from(bytes));
+    response
+        .headers_mut()
+        .insert(header::CONTENT_TYPE, HeaderValue::from_static("image/png"));
     response.headers_mut().insert(
         header::CACHE_CONTROL,
         HeaderValue::from_static("public, max-age=31536000, immutable"),
@@ -327,10 +459,11 @@ async fn health() -> Json<HealthResponse> {
 }
 
 async fn setup_endfield(State(state): State<WebState>) -> Result<Json<SetupResponse>, WebError> {
-    let application = state.lock()?;
-    let module = application
+    let mut application = state.lock()?;
+    let module_name = application
         .modules()
         .find(|module| module.kind() == WorkKind::Game && module.id() == ENDFIELD_MODULE_ID)
+        .map(|module| module.display_name())
         .ok_or_else(|| {
             PerwigaError::Unsupported("Endfield module is not registered".to_string())
         })?;
@@ -341,10 +474,34 @@ async fn setup_endfield(State(state): State<WebState>) -> Result<Json<SetupRespo
         .find(|work| work.kind == WorkKind::Game && work.module_id == ENDFIELD_MODULE_ID)
     {
         Some(work) => work,
-        None => {
-            application.create_work(WorkKind::Game, ENDFIELD_MODULE_ID, module.display_name())?
-        }
+        None => application.create_work(WorkKind::Game, ENDFIELD_MODULE_ID, module_name)?,
     };
+    let events = arknights_endfield::curated_calendar_events()?;
+    application
+        .store_mut()
+        .import_calendar_events(&work.id, &events)?;
+    Ok(Json(workspace_response(&application, work)?))
+}
+
+async fn setup_genshin(State(state): State<WebState>) -> Result<Json<SetupResponse>, WebError> {
+    let mut application = state.lock()?;
+    let module_name = application
+        .modules()
+        .find(|module| module.kind() == WorkKind::Game && module.id() == GENSHIN_MODULE_ID)
+        .map(|module| module.display_name())
+        .ok_or_else(|| {
+            PerwigaError::Unsupported("Genshin Impact module is not registered".to_string())
+        })?;
+    let work = match application
+        .store()
+        .list_works()?
+        .into_iter()
+        .find(|work| work.kind == WorkKind::Game && work.module_id == GENSHIN_MODULE_ID)
+    {
+        Some(work) => work,
+        None => application.create_work(WorkKind::Game, GENSHIN_MODULE_ID, module_name)?,
+    };
+    genshin_impact::import_curated_characters(application.store_mut(), &work.id)?;
     Ok(Json(workspace_response(&application, work)?))
 }
 
@@ -368,6 +525,7 @@ fn workspace_response(
             .iter()
             .map(EntityTypeResponse::from)
             .collect(),
+        entity_facets: module.entity_facets(),
         theme: module.theme(),
     })
 }
@@ -458,7 +616,39 @@ async fn list_entities(
             .into_iter()
             .map(|entity| EntityListItemResponse {
                 presentation: module.entity_presentation(&entity),
+                event_recency: module.entity_event_recency(&entity),
                 entity,
+            })
+            .collect(),
+    ))
+}
+
+async fn list_calendar_events(
+    State(state): State<WebState>,
+    Path(work_id): Path<String>,
+) -> Result<Json<Vec<CalendarEventListItemResponse>>, WebError> {
+    let application = state.lock()?;
+    let work = application
+        .store()
+        .get_work(&work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    let module = application
+        .modules()
+        .find(|module| module.kind() == work.kind && module.id() == work.module_id)
+        .ok_or_else(|| {
+            PerwigaError::Unsupported(format!(
+                "module {}:{} is not registered",
+                work.kind, work.module_id
+            ))
+        })?;
+    Ok(Json(
+        application
+            .store()
+            .list_calendar_events_for_work(&work_id)?
+            .into_iter()
+            .map(|event| CalendarEventListItemResponse {
+                presentation: module.calendar_event_presentation(&event),
+                event,
             })
             .collect(),
     ))
@@ -477,13 +667,31 @@ async fn create_entity(
 async fn get_entity(
     State(state): State<WebState>,
     Path(entity_id): Path<String>,
-) -> Result<Json<WikiEntityDetail>, WebError> {
+) -> Result<Json<EntityDetailResponse>, WebError> {
     let application = state.lock()?;
     let detail = application
         .store()
         .get_entity_detail(&entity_id)?
         .ok_or_else(|| PerwigaError::NotFound(format!("entity {entity_id}")))?;
-    Ok(Json(detail))
+    let work = application
+        .store()
+        .get_work(&detail.entity.work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {}", detail.entity.work_id)))?;
+    let module = application
+        .modules()
+        .find(|module| module.kind() == work.kind && module.id() == work.module_id)
+        .ok_or_else(|| {
+            PerwigaError::Unsupported(format!(
+                "module {}:{} is not registered",
+                work.kind, work.module_id
+            ))
+        })?;
+    let event_recency = module.entity_event_recency(&detail.entity);
+    Ok(Json(EntityDetailResponse {
+        entity: detail.entity,
+        aliases: detail.aliases,
+        event_recency,
+    }))
 }
 
 async fn update_entity(

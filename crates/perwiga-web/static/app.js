@@ -1,7 +1,9 @@
 import { api } from "/assets/api.js";
 import {
+  filterAndSortEntities,
   renderEntityDetail,
   renderEntityList,
+  renderEventTimeline,
   renderInspectorEmpty,
   renderTypeNavigation,
 } from "/assets/ui.js";
@@ -11,11 +13,18 @@ const state = {
   modules: [],
   work: null,
   types: [],
+  facets: [],
   allEntities: [],
   entities: [],
   selectedType: "",
   selectedId: "",
   detail: null,
+  selectedRarity: "",
+  selectedFacets: {},
+  sort: "name",
+  events: [],
+  eventStatus: "all",
+  view: "wiki",
   switchSequence: 0,
 };
 
@@ -29,10 +38,22 @@ const dom = {
   pageTitle: document.querySelector("#page-title"),
   moduleKicker: document.querySelector("#module-kicker"),
   moduleId: document.querySelector("#module-id"),
+  viewButtons: Array.from(document.querySelectorAll("[data-view]")),
+  wikiView: document.querySelector("#wiki-view"),
+  timelineView: document.querySelector("#timeline-view"),
+  eventStatusButtons: Array.from(document.querySelectorAll("[data-event-status]")),
+  timelineStatus: document.querySelector("#timeline-status"),
+  timeline: document.querySelector("#event-timeline"),
   workspace: document.querySelector(".workspace"),
   nav: document.querySelector("#type-nav"),
   heading: document.querySelector("#collection-heading"),
   search: document.querySelector("#entity-search"),
+  controls: document.querySelector("#entity-list-controls"),
+  rarityField: document.querySelector("#rarity-filter-field"),
+  rarityFilter: document.querySelector("#rarity-filter"),
+  facetFilters: document.querySelector("#entity-facet-filters"),
+  sortField: document.querySelector("#entity-sort-field"),
+  sort: document.querySelector("#entity-sort"),
   status: document.querySelector("#list-status"),
   list: document.querySelector("#entity-list"),
   inspector: document.querySelector("#inspector-content"),
@@ -225,11 +246,108 @@ function setBusy(message) {
   dom.list.setAttribute("aria-busy", "true");
 }
 
+function showView(view) {
+  state.view = view === "timeline" ? "timeline" : "wiki";
+  dom.wikiView.hidden = state.view !== "wiki";
+  dom.timelineView.hidden = state.view !== "timeline";
+  for (const button of dom.viewButtons) {
+    const active = button.dataset.view === state.view;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  }
+  if (state.view === "timeline") {
+    requestAnimationFrame(() => dom.timeline.focus({ preventScroll: true }));
+  }
+}
+
 function currentTypeName() {
   return state.types.find((type) => type.key === state.selectedType)?.display_name || "All records";
 }
 
+function resetEntityControls() {
+  state.selectedRarity = "";
+  state.selectedFacets = {};
+  state.sort = "name";
+  dom.rarityFilter.value = "";
+  dom.sort.value = "name";
+}
+
+function applicableFacets() {
+  if (!state.selectedType) return [];
+  return state.facets.filter((facet) => facet.entity_types.includes(state.selectedType));
+}
+
+function renderEntityControls() {
+  const rarities = Array.from(
+    new Set(
+      state.entities
+        .map((entity) => entity.presentation?.rarity)
+        .filter(Number.isInteger),
+    ),
+  ).sort((left, right) => right - left);
+  const hasRarity = rarities.length > 0;
+  if (state.selectedRarity && !rarities.includes(Number(state.selectedRarity))) {
+    state.selectedRarity = "";
+  }
+
+  dom.rarityFilter.replaceChildren();
+  const allRarities = document.createElement("option");
+  allRarities.value = "";
+  allRarities.textContent = "All rarities";
+  dom.rarityFilter.append(allRarities);
+  for (const rarity of rarities) {
+    const option = document.createElement("option");
+    option.value = String(rarity);
+    option.textContent = `${rarity}★`;
+    dom.rarityFilter.append(option);
+  }
+  dom.rarityFilter.value = state.selectedRarity;
+  dom.rarityField.hidden = !hasRarity;
+  dom.sortField.hidden = !hasRarity;
+  if (!hasRarity) state.sort = "name";
+  dom.sort.value = state.sort;
+
+  const facets = applicableFacets();
+  dom.facetFilters.replaceChildren();
+  for (const facet of facets) {
+    const field = document.createElement("label");
+    field.className = "list-control";
+    const label = document.createElement("span");
+    label.textContent = facet.display_name;
+    const select = document.createElement("select");
+    select.setAttribute("aria-label", `Filter by ${facet.display_name.toLowerCase()}`);
+    const all = document.createElement("option");
+    all.value = "";
+    all.textContent = `All ${facet.display_name.toLowerCase()}s`;
+    select.append(all);
+    for (const facetOption of facet.options) {
+      const option = document.createElement("option");
+      option.value = facetOption.value;
+      option.textContent = facetOption.display_name;
+      select.append(option);
+    }
+    select.value = state.selectedFacets[facet.key] || "";
+    select.addEventListener("change", () => {
+      state.selectedFacets[facet.key] = select.value;
+      renderWorkspace();
+    });
+    field.append(label, select);
+    dom.facetFilters.append(field);
+  }
+  dom.controls.hidden = !hasRarity && facets.length === 0;
+}
+
+function visibleEntities() {
+  return filterAndSortEntities(state.entities, {
+    rarity: state.selectedRarity,
+    facets: state.selectedFacets,
+    sort: state.sort,
+  });
+}
+
 function renderWorkspace() {
+  renderEntityControls();
+  const entities = visibleEntities();
   renderTypeNavigation(
     dom.nav,
     state.types,
@@ -237,11 +355,44 @@ function renderWorkspace() {
     state.selectedType,
     selectType,
   );
-  renderEntityList(dom.list, state.entities, state.types, state.selectedId, selectEntity);
+  renderEntityList(dom.list, entities, state.types, state.selectedId, selectEntity);
   dom.list.removeAttribute("aria-busy");
   dom.heading.textContent = currentTypeName();
   const noun = state.entities.length === 1 ? "record" : "records";
-  dom.status.textContent = `${state.entities.length} ${noun} shown`;
+  dom.status.textContent = entities.length === state.entities.length
+    ? `${entities.length} ${noun} shown`
+    : `${entities.length} of ${state.entities.length} ${noun} shown`;
+}
+
+function renderTimeline() {
+  const summary = renderEventTimeline(dom.timeline, state.events, state.eventStatus);
+  const noun = summary.shown === 1 ? "event" : "events";
+  const typeNoun = summary.lanes === 1 ? "type" : "types";
+  const filterLabel = state.eventStatus === "all" ? "scheduled" : state.eventStatus;
+  dom.timelineStatus.textContent = summary.shown
+    ? `${summary.shown} ${filterLabel} ${noun} across ${summary.lanes} ${typeNoun}${summary.timeZone ? ` · ${summary.timeZone}` : ""}`
+    : state.events.length
+      ? `No ${filterLabel} events in this schedule`
+      : "No event schedule has been imported for this title";
+}
+
+async function refreshTimeline() {
+  if (!state.work) return;
+  const workId = state.work.id;
+  dom.timeline.setAttribute("aria-busy", "true");
+  dom.timelineStatus.textContent = "Loading event schedule…";
+  try {
+    const events = await api.listCalendarEvents(workId);
+    if (state.work?.id !== workId) return;
+    state.events = events;
+    renderTimeline();
+  } catch (error) {
+    if (state.work?.id !== workId) return;
+    state.events = [];
+    dom.timeline.removeAttribute("aria-busy");
+    dom.timelineStatus.textContent = "The event schedule could not be loaded.";
+    showToast(error.message, true);
+  }
 }
 
 async function refreshEntities() {
@@ -273,10 +424,19 @@ async function activateWork(workId) {
     if (sequence !== state.switchSequence) return;
     state.work = workspace.work;
     state.types = workspace.entity_types;
+    state.facets = workspace.entity_facets || [];
     state.selectedType = "";
     state.selectedId = "";
     state.detail = null;
+    state.events = [];
+    state.eventStatus = "all";
     dom.search.value = "";
+    resetEntityControls();
+    for (const button of dom.eventStatusButtons) {
+      const active = button.dataset.eventStatus === "all";
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    }
     applyTheme(workspace.theme);
     renderActiveWork();
     renderInspectorEmpty(
@@ -284,7 +444,7 @@ async function activateWork(workId) {
       "Select a record",
       `Choose an entry belonging to ${state.work.display_name}.`,
     );
-    await refreshEntities();
+    await Promise.all([refreshEntities(), refreshTimeline()]);
   } catch (error) {
     showToast(error.message, true);
   } finally {
@@ -294,12 +454,13 @@ async function activateWork(workId) {
 
 function selectType(type) {
   state.selectedType = type;
+  resetEntityControls();
   refreshEntities();
 }
 
 async function selectEntity(entityId) {
   state.selectedId = entityId;
-  renderEntityList(dom.list, state.entities, state.types, state.selectedId, selectEntity);
+  renderEntityList(dom.list, visibleEntities(), state.types, state.selectedId, selectEntity);
   dom.inspector.setAttribute("aria-busy", "true");
   try {
     state.detail = await api.getEntity(entityId);
@@ -386,6 +547,7 @@ function openGameDialog() {
 }
 
 function focusRecordSearch() {
+  showView("wiki");
   const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ? "auto"
     : "smooth";
@@ -417,7 +579,7 @@ async function saveGame(event) {
 
 async function initialize() {
   try {
-    const setup = await api.setupEndfield();
+    const [setup] = await Promise.all([api.setupEndfield(), api.setupGenshin()]);
     [state.works, state.modules] = await Promise.all([api.listWorks(), api.listModules()]);
     renderLibrary();
     await activateWork(setup.work.id);
@@ -453,6 +615,28 @@ dom.search.addEventListener("input", () => {
   clearTimeout(searchTimer);
   searchTimer = setTimeout(refreshEntities, 220);
 });
+dom.rarityFilter.addEventListener("change", () => {
+  state.selectedRarity = dom.rarityFilter.value;
+  renderWorkspace();
+});
+dom.sort.addEventListener("change", () => {
+  state.sort = dom.sort.value;
+  renderWorkspace();
+});
+for (const button of dom.viewButtons) {
+  button.addEventListener("click", () => showView(button.dataset.view));
+}
+for (const button of dom.eventStatusButtons) {
+  button.addEventListener("click", () => {
+    state.eventStatus = button.dataset.eventStatus;
+    for (const candidate of dom.eventStatusButtons) {
+      const active = candidate === button;
+      candidate.classList.toggle("is-active", active);
+      candidate.setAttribute("aria-pressed", String(active));
+    }
+    renderTimeline();
+  });
+}
 for (const button of document.querySelectorAll("[data-close-dialog]")) {
   button.addEventListener("click", () => dom.dialog.close());
 }

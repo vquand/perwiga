@@ -72,6 +72,7 @@ enum EntityCommand {
     Update(UpdateEntity),
     Alias(AddAlias),
     ImportEndfieldAliases(ImportEndfieldAliases),
+    ImportGenshinCharacters(ImportGenshinCharacters),
 }
 
 #[derive(Debug, Args)]
@@ -152,6 +153,12 @@ struct AddAlias {
 
 #[derive(Debug, Args)]
 struct ImportEndfieldAliases {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinCharacters {
     #[arg(long)]
     work: String,
 }
@@ -308,6 +315,7 @@ fn run() -> perwiga_core::Result<()> {
     let mut registry = ModuleRegistry::default();
     perwiga_game_generic::register(&mut registry)?;
     perwiga_game_arknights_endfield::register(&mut registry)?;
+    perwiga_game_genshin_impact::register(&mut registry)?;
     perwiga_novel_generic::register(&mut registry)?;
     let mut app = Application::new(Store::open(&cli.database)?, registry);
 
@@ -379,6 +387,12 @@ fn run() -> perwiga_core::Result<()> {
             )?)?,
             EntityCommand::ImportEndfieldAliases(input) => {
                 print_json(&perwiga_game_arknights_endfield::import_curated_aliases(
+                    app.store_mut(),
+                    &input.work,
+                )?)?
+            }
+            EntityCommand::ImportGenshinCharacters(input) => {
+                print_json(&perwiga_game_genshin_impact::import_curated_characters(
                     app.store_mut(),
                     &input.work,
                 )?)?
@@ -522,6 +536,25 @@ mod tests {
             Command::Entity {
                 command: EntityCommand::ImportEndfieldAliases(input),
             } => assert_eq!(input.work, "work-1"),
+            command => panic!("unexpected command: {command:?}"),
+        }
+    }
+
+    #[test]
+    fn parses_genshin_curated_character_import() {
+        let cli = Cli::try_parse_from([
+            "perwiga",
+            "entity",
+            "import-genshin-characters",
+            "--work",
+            "work-2",
+        ])
+        .expect("valid Genshin character import command");
+
+        match cli.command {
+            Command::Entity {
+                command: EntityCommand::ImportGenshinCharacters(input),
+            } => assert_eq!(input.work, "work-2"),
             command => panic!("unexpected command: {command:?}"),
         }
     }

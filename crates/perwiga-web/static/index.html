@@ -43,16 +43,21 @@
         <div>
           <p id="module-kicker" class="eyebrow">Game library / dedicated module</p>
           <h1 id="page-title">Arknights: Endfield</h1>
-          <p class="lede">A local-first multilingual field guide. Your UAT changes stay in an isolated SQLite database.</p>
+          <p class="lede">A local-first multilingual field guide. Your wiki and schedule stay in local SQLite.</p>
         </div>
         <dl class="module-facts" aria-label="Module information">
           <div><dt>Module</dt><dd id="module-id">arknights-endfield</dd></div>
           <div><dt>Mode</dt><dd>Manual records</dd></div>
-          <div><dt>Storage</dt><dd>Temporary</dd></div>
+          <div><dt>Storage</dt><dd>Local SQLite</dd></div>
         </dl>
       </section>
 
-      <section class="workspace" aria-label="Endfield wiki workspace">
+      <nav class="view-switcher" aria-label="Workspace view">
+        <button class="view-switch is-active" type="button" data-view="wiki" aria-pressed="true">Wiki</button>
+        <button class="view-switch" type="button" data-view="timeline" aria-pressed="false">Timeline</button>
+      </nav>
+
+      <section id="wiki-view" class="workspace" aria-label="Endfield wiki workspace">
         <aside class="type-panel" aria-labelledby="type-heading">
           <div class="panel-heading">
             <p class="section-index">01</p>
@@ -75,6 +80,23 @@
             <span>Search names and aliases</span>
             <input id="entity-search" type="search" autocomplete="off" placeholder="Try an English, original, Vietnamese, or alias name">
           </label>
+          <div id="entity-list-controls" class="entity-list-controls" aria-label="Filter and sort records" hidden>
+            <label id="rarity-filter-field" class="list-control" for="rarity-filter" hidden>
+              <span>Rarity</span>
+              <select id="rarity-filter">
+                <option value="">All rarities</option>
+              </select>
+            </label>
+            <div id="entity-facet-filters" class="entity-facet-filters"></div>
+            <label id="entity-sort-field" class="list-control" for="entity-sort" hidden>
+              <span>Sort</span>
+              <select id="entity-sort">
+                <option value="name">Name A–Z</option>
+                <option value="rarity-desc">Rarity: high to low</option>
+                <option value="rarity-asc">Rarity: low to high</option>
+              </select>
+            </label>
+          </div>
           <div id="list-status" class="list-status" role="status" aria-live="polite">Preparing local workspace…</div>
           <ul id="entity-list" class="entity-list" aria-label="Wiki records"></ul>
         </section>
@@ -90,6 +112,32 @@
             <p>Choose an entry to inspect every known name, provenance field, description, and alias.</p>
           </div>
         </aside>
+      </section>
+
+      <section id="timeline-view" class="timeline-view" aria-labelledby="timeline-heading" hidden>
+        <header class="timeline-header">
+          <div>
+            <p class="section-index">Calendar / universal view</p>
+            <h2 id="timeline-heading">Event timeline</h2>
+            <p class="timeline-intro">Each swimlane is a title-defined event type. Dates use the schedule timezone recorded by the source module.</p>
+          </div>
+          <div class="timeline-legend" aria-label="Timeline legend">
+            <span><i class="legend-marker is-started" aria-hidden="true"></i>Ongoing</span>
+            <span><i class="legend-marker is-upcoming" aria-hidden="true"></i>Upcoming</span>
+            <span><i class="legend-marker is-open" aria-hidden="true"></i>End not announced</span>
+          </div>
+        </header>
+        <div class="timeline-toolbar">
+          <div class="event-status-filters" role="group" aria-label="Filter events by schedule status">
+            <button class="event-status-filter is-active" type="button" data-event-status="all" aria-pressed="true">All</button>
+            <button class="event-status-filter" type="button" data-event-status="ongoing" aria-pressed="false">Ongoing</button>
+            <button class="event-status-filter" type="button" data-event-status="upcoming" aria-pressed="false">Upcoming</button>
+            <button class="event-status-filter" type="button" data-event-status="past" aria-pressed="false">Past</button>
+          </div>
+          <p id="timeline-status" class="timeline-status" role="status" aria-live="polite">Preparing event schedule…</p>
+        </div>
+        <div id="event-timeline" class="event-timeline" tabindex="0" aria-label="Scrollable event timeline" aria-busy="true"></div>
+        <p class="timeline-source-note">Open an event bar to inspect its published schedule source. Open-ended bars preserve an unannounced closing date.</p>
       </section>
     </main>
 

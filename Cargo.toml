@@ -5,6 +5,7 @@ members = [
     "crates/perwiga-web",
     "games/generic",
     "games/arknights-endfield",
+    "games/genshin-impact",
     "novels/generic",
 ]
 resolver = "2"
