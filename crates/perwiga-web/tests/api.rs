@@ -369,11 +369,27 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
         .iter()
         .find(|character| character["official_english_name"] == "Albedo")
         .expect("Albedo");
-    assert_eq!(albedo["presentation"]["label"], "Mondstadt");
+    assert_eq!(albedo["presentation"]["label"], "5★");
+    assert_eq!(albedo["presentation"]["rarity"], 5);
+    assert_eq!(albedo["presentation"]["accent_color"], "#d8b66f");
+    assert_eq!(albedo["presentation"]["context_label"], "Mondstadt");
+    assert_eq!(
+        albedo["presentation"]["context_icon_url"],
+        "/assets/modules/genshin-impact/regions/mondstadt.webp"
+    );
     assert_eq!(
         albedo["presentation"]["thumbnail_url"],
         "/assets/modules/genshin-impact/characters/hoyoverse-content-104816.png"
     );
+    let aloy = character_json
+        .as_array()
+        .expect("character list")
+        .iter()
+        .find(|character| character["official_english_name"] == "Aloy")
+        .expect("Aloy");
+    assert_eq!(aloy["presentation"]["label"], "5★");
+    assert_eq!(aloy["presentation"]["rarity"], 5);
+    assert_eq!(aloy["presentation"]["accent_color"], "#d94b4b");
 
     let thumbnail = app
         .clone()
@@ -386,6 +402,26 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
         .expect("Genshin thumbnail response");
     assert_eq!(thumbnail.status(), StatusCode::OK);
     assert_eq!(thumbnail.headers()["content-type"], "image/png");
+
+    let region_icon = app
+        .clone()
+        .oneshot(
+            Request::get("/assets/modules/genshin-impact/regions/mondstadt.webp")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Genshin region icon response");
+    assert_eq!(region_icon.status(), StatusCode::OK);
+    assert_eq!(region_icon.headers()["content-type"], "image/webp");
+    let region_icon_bytes = region_icon
+        .into_body()
+        .collect()
+        .await
+        .expect("Genshin region icon body")
+        .to_bytes();
+    assert!(region_icon_bytes.starts_with(b"RIFF"));
+    assert_eq!(&region_icon_bytes[8..12], b"WEBP");
 
     let script = app
         .oneshot(
@@ -787,6 +823,11 @@ async fn entity_type_placeholders_are_served_and_replace_name_initials() {
     assert!(javascript.contains("ENTITY_PLACEHOLDER_BY_TYPE"));
     assert!(javascript.contains("/assets/placeholders/"));
     assert!(javascript.contains("facet_values"));
+    assert!(javascript.contains("presentation?.context_label"));
+    assert!(javascript.contains("presentation?.context_icon_url"));
+    assert!(javascript.contains("entity-context-icon"));
+    assert!(javascript.contains("visually-hidden"));
+    assert!(!javascript.contains("contextIcon.title"));
     assert!(!javascript.contains("function initials"));
     assert!(!javascript.contains("type-meta"));
     assert!(!javascript.contains("module index"));

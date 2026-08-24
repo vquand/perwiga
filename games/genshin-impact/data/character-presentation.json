@@ -1,0 +1,719 @@
+{
+  "schema": "perwiga.genshin-impact.character-presentation.v1",
+  "checked_at": "2026-08-24",
+  "sources": {
+    "rarity_dataset": "https://github.com/theBowja/genshin-db",
+    "rarity_dataset_version": "v5.2.13",
+    "aloy_collaboration": "https://support.hoyoverse.com/hc/en-us/articles/50333967030681-How-can-I-get-the-character-Aloy"
+  },
+  "characters": [
+    {
+      "source_key": "hoyoverse-content-104816",
+      "official_english_name": "Albedo",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104819",
+      "official_english_name": "Aloy",
+      "rarity": 5,
+      "collaboration": true
+    },
+    {
+      "source_key": "hoyoverse-content-104802",
+      "official_english_name": "Amber",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104805",
+      "official_english_name": "Barbara",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104810",
+      "official_english_name": "Bennett",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-156697",
+      "official_english_name": "Dahlia",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104806",
+      "official_english_name": "Diluc",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104815",
+      "official_english_name": "Diona",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-161036",
+      "official_english_name": "Durin",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104818",
+      "official_english_name": "Eula",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104812",
+      "official_english_name": "Fischl",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104801",
+      "official_english_name": "Jean",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104804",
+      "official_english_name": "Kaeya",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104809",
+      "official_english_name": "Klee",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104803",
+      "official_english_name": "Lisa",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-163984",
+      "official_english_name": "Lohen",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-105325",
+      "official_english_name": "Mika",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104814",
+      "official_english_name": "Mona",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-163949",
+      "official_english_name": "Nicole",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104811",
+      "official_english_name": "Noelle",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-163961",
+      "official_english_name": "Prune",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104807",
+      "official_english_name": "Razor",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104817",
+      "official_english_name": "Rosaria",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104813",
+      "official_english_name": "Sucrose",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-162625",
+      "official_english_name": "Varka",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104808",
+      "official_english_name": "Venti",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-110845",
+      "official_english_name": "Baizhu",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104821",
+      "official_english_name": "Beidou",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104825",
+      "official_english_name": "Chongyun",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-119403",
+      "official_english_name": "Gaming",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104831",
+      "official_english_name": "Ganyu",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104832",
+      "official_english_name": "Hu Tao",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104827",
+      "official_english_name": "Keqing",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-127979",
+      "official_english_name": "Lan Yan",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104822",
+      "official_english_name": "Ningguang",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104826",
+      "official_english_name": "Qiqi",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104834",
+      "official_english_name": "Shenhe",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104823",
+      "official_english_name": "Xiangling",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-119401",
+      "official_english_name": "Xianyun",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104820",
+      "official_english_name": "Xiao",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104824",
+      "official_english_name": "Xingqiu",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104830",
+      "official_english_name": "Xinyan",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104833",
+      "official_english_name": "Yanfei",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104975",
+      "official_english_name": "Yaoyao",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104836",
+      "official_english_name": "Yelan",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104835",
+      "official_english_name": "Yun Jin",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104829",
+      "official_english_name": "Zhongli",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-162095",
+      "official_english_name": "Zibai",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104845",
+      "official_english_name": "Arataki Itto",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104846",
+      "official_english_name": "Gorou",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104838",
+      "official_english_name": "Kaedehara Kazuha",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104837",
+      "official_english_name": "Kamisato Ayaka",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104848",
+      "official_english_name": "Kamisato Ayato",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-111416",
+      "official_english_name": "Kirara",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104842",
+      "official_english_name": "Kujou Sara",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104849",
+      "official_english_name": "Kuki Shinobu",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104841",
+      "official_english_name": "Raiden Shogun",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104843",
+      "official_english_name": "Sangonomiya Kokomi",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104840",
+      "official_english_name": "Sayu",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104850",
+      "official_english_name": "Shikanoin Heizou",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104844",
+      "official_english_name": "Thoma",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104847",
+      "official_english_name": "Yae Miko",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104839",
+      "official_english_name": "Yoimiya",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-129697",
+      "official_english_name": "Yumemizuki Mizuki",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104974",
+      "official_english_name": "Alhaitham",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104855",
+      "official_english_name": "Candace",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104852",
+      "official_english_name": "Collei",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104854",
+      "official_english_name": "Cyno",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-105323",
+      "official_english_name": "Dehya",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104853",
+      "official_english_name": "Dori",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104860",
+      "official_english_name": "Faruzan",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-110848",
+      "official_english_name": "Kaveh",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104858",
+      "official_english_name": "Layla",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104857",
+      "official_english_name": "Nahida",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104856",
+      "official_english_name": "Nilou",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-123866",
+      "official_english_name": "Sethos",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104851",
+      "official_english_name": "Tighnari",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104859",
+      "official_english_name": "Wanderer",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-113448",
+      "official_english_name": "Charlotte",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-113800",
+      "official_english_name": "Chevreuse",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-122720",
+      "official_english_name": "Chiori",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-123842",
+      "official_english_name": "Clorinde",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-124961",
+      "official_english_name": "Emilie",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-155630",
+      "official_english_name": "Escoffier",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-112636",
+      "official_english_name": "Freminet",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-113447",
+      "official_english_name": "Furina",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-112632",
+      "official_english_name": "Lynette",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-112618",
+      "official_english_name": "Lyney",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-113799",
+      "official_english_name": "Navia",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-113014",
+      "official_english_name": "Neuvillette",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-124105",
+      "official_english_name": "Sigewinne",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-113013",
+      "official_english_name": "Wriothesley",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-126886",
+      "official_english_name": "Chasca",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-127513",
+      "official_english_name": "Citlali",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-154719",
+      "official_english_name": "Iansan",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-155631",
+      "official_english_name": "Ifa",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-125395",
+      "official_english_name": "Kachina",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-125716",
+      "official_english_name": "Kinich",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-127512",
+      "official_english_name": "Mavuika",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-125394",
+      "official_english_name": "Mualani",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-126887",
+      "official_english_name": "Ororon",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-156698",
+      "official_english_name": "Skirk",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-154718",
+      "official_english_name": "Varesa",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-126103",
+      "official_english_name": "Xilonen",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-159154",
+      "official_english_name": "Aino",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-165500",
+      "official_english_name": "Alyosha",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-123167",
+      "official_english_name": "Arlecchino",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-162067",
+      "official_english_name": "Columbina Hyposelenia",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-159269",
+      "official_english_name": "Flins",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-162096",
+      "official_english_name": "Illuga",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-157730",
+      "official_english_name": "Ineffa",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-161107",
+      "official_english_name": "Jahoda",
+      "rarity": 4,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-159015",
+      "official_english_name": "Lauma",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-163297",
+      "official_english_name": "Linnea",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-160183",
+      "official_english_name": "Nefer",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-165495",
+      "official_english_name": "Odette",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-164628",
+      "official_english_name": "Sandrone",
+      "rarity": 5,
+      "collaboration": false
+    },
+    {
+      "source_key": "hoyoverse-content-104828",
+      "official_english_name": "Tartaglia",
+      "rarity": 5,
+      "collaboration": false
+    }
+  ]
+}

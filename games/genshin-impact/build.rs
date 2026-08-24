@@ -8,35 +8,51 @@ use std::{
 
 fn main() -> Result<(), Box<dyn Error>> {
     let module_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?);
-    generate_thumbnail_module(&module_dir.join("assets/characters"))
+    generate_asset_module(
+        &module_dir.join("assets/characters"),
+        "png",
+        "character_thumbnails.rs",
+        "character_thumbnail",
+    )?;
+    generate_asset_module(
+        &module_dir.join("assets/regions"),
+        "webp",
+        "region_icons.rs",
+        "region_icon",
+    )
 }
 
-fn generate_thumbnail_module(asset_dir: &Path) -> Result<(), Box<dyn Error>> {
+fn generate_asset_module(
+    asset_dir: &Path,
+    extension: &str,
+    output_file: &str,
+    function_name: &str,
+) -> Result<(), Box<dyn Error>> {
     println!("cargo:rerun-if-changed={}", asset_dir.display());
 
-    let mut thumbnails = Vec::new();
+    let mut assets = Vec::new();
     for entry in fs::read_dir(asset_dir)? {
         let path = entry?.path();
-        if path.extension().and_then(|value| value.to_str()) != Some("png") {
+        if path.extension().and_then(|value| value.to_str()) != Some(extension) {
             continue;
         }
         let source_key = path
             .file_stem()
             .and_then(|stem| stem.to_str())
-            .ok_or("thumbnail filename must be UTF-8")?;
+            .ok_or("asset filename must be UTF-8")?;
         if !source_key.bytes().all(|byte| {
             byte.is_ascii_lowercase() || byte.is_ascii_digit() || byte == b'-' || byte == b'_'
         }) {
-            return Err(format!("invalid thumbnail source key: {source_key}").into());
+            return Err(format!("invalid asset source key: {source_key}").into());
         }
-        thumbnails.push((source_key.to_string(), path.canonicalize()?));
+        assets.push((source_key.to_string(), path.canonicalize()?));
     }
-    thumbnails.sort_by(|left, right| left.0.cmp(&right.0));
+    assets.sort_by(|left, right| left.0.cmp(&right.0));
 
-    let mut generated = String::from(
-        "pub fn character_thumbnail(source_key: &str) -> Option<&'static [u8]> {\n    match source_key {\n",
+    let mut generated = format!(
+        "pub fn {function_name}(source_key: &str) -> Option<&'static [u8]> {{\n    match source_key {{\n"
     );
-    for (source_key, path) in &thumbnails {
+    for (source_key, path) in &assets {
         writeln!(
             generated,
             "        \"{source_key}\" => Some(include_bytes!(r#\"{}\"#)),",
@@ -46,7 +62,7 @@ fn generate_thumbnail_module(asset_dir: &Path) -> Result<(), Box<dyn Error>> {
     generated.push_str("        _ => None,\n    }\n}\n");
 
     fs::write(
-        PathBuf::from(env::var("OUT_DIR")?).join("character_thumbnails.rs"),
+        PathBuf::from(env::var("OUT_DIR")?).join(output_file),
         generated,
     )?;
     Ok(())
