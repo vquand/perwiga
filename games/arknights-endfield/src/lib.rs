@@ -770,6 +770,8 @@ impl LibraryModule for ArknightsEndfieldModule {
                         "/assets/modules/arknights-endfield/operators/{source_key}.webp"
                     ),
                     accent_color: rarity_color(operator.rarity)?.to_string(),
+                    context_label: None,
+                    context_icon_url: None,
                     label: format!("{}★", operator.rarity),
                     rarity: Some(operator.rarity),
                     facets,
@@ -784,6 +786,8 @@ impl LibraryModule for ArknightsEndfieldModule {
                         "/assets/modules/arknights-endfield/weapons/{source_key}.png"
                     ),
                     accent_color: rarity_color(weapon.rarity)?.to_string(),
+                    context_label: None,
+                    context_icon_url: None,
                     label: format!("{}★", weapon.rarity),
                     rarity: Some(weapon.rarity),
                     facets: BTreeMap::from([(
@@ -806,6 +810,8 @@ impl LibraryModule for ArknightsEndfieldModule {
                         item.client_icon_id
                     ),
                     accent_color: rarity_color(item.rarity)?.to_string(),
+                    context_label: None,
+                    context_icon_url: None,
                     label: format!("{}★", item.rarity),
                     rarity: Some(item.rarity),
                     facets,

@@ -113,6 +113,50 @@ function entityAvatar(entity) {
   return avatar;
 }
 
+function entityKind(entityType, presentation) {
+  const kind = element("span", "entity-kind");
+  const contextLabel = typeof presentation?.context_label === "string"
+    ? presentation.context_label.trim()
+    : "";
+  const contextIconUrl = typeof presentation?.context_icon_url === "string"
+    ? presentation.context_icon_url.trim()
+    : "";
+
+  if (contextLabel && contextIconUrl) {
+    const marker = element("span", "entity-context-marker");
+    const accessibleLabel = element("span", "visually-hidden", contextLabel);
+    const contextIcon = element("img", "entity-context-icon");
+    contextIcon.src = contextIconUrl;
+    contextIcon.alt = "";
+    contextIcon.width = 40;
+    contextIcon.height = 40;
+    contextIcon.loading = "lazy";
+    contextIcon.decoding = "async";
+    const fallback = element("span", "entity-context-fallback", contextLabel);
+    fallback.hidden = true;
+    fallback.setAttribute("aria-hidden", "true");
+    contextIcon.addEventListener(
+      "error",
+      () => {
+        contextIcon.remove();
+        fallback.hidden = false;
+        marker.classList.add("is-fallback");
+      },
+      { once: true },
+    );
+    marker.append(accessibleLabel, contextIcon, fallback);
+    kind.append(marker);
+  } else if (contextLabel) {
+    kind.append(
+      element("span", "entity-context-fallback", contextLabel),
+      element("span", "entity-context-separator", "·"),
+    );
+  }
+
+  kind.append(element("span", "entity-kind-label", entityType));
+  return kind;
+}
+
 const nameCollator = new Intl.Collator(undefined, { sensitivity: "base" });
 
 export function filterAndSortEntities(entities, { rarity = "", facets = {}, sort = "name" } = {}) {
@@ -201,7 +245,7 @@ export function renderEntityList(list, entities, types, selectedId, onSelect) {
       element("strong", "entity-name", entity.official_english_name),
       element("span", "entity-original", entity.official_original_name),
     );
-    const kind = element("span", "entity-kind", typeName(types, entity.entity_type));
+    const kind = entityKind(typeName(types, entity.entity_type), entity.presentation);
     button.append(avatar, copy, kind);
     button.addEventListener("click", () => onSelect(entity.id));
     item.append(button);

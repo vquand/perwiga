@@ -15,6 +15,9 @@ pub struct GenshinImpactModule;
 static CAPABILITIES: &[Capability] = &[Capability::ManualContent, Capability::EntitySchema];
 const SOURCE_PROVIDER: &str = "Genshin Impact official global character directory";
 const SOURCE_URL: &str = "https://genshin.hoyoverse.com/en/character/mondstadt";
+const FOUR_STAR_COLOR: &str = "#9a77c7";
+const FIVE_STAR_COLOR: &str = "#d8b66f";
+const COLLABORATION_COLOR: &str = "#d94b4b";
 static ENTITY_TYPES: &[EntityTypeDefinition] = &[
     EntityTypeDefinition {
         key: "character",
@@ -108,6 +111,20 @@ struct CuratedCharacter {
     thumbnail_asset: String,
 }
 
+#[derive(Debug, Deserialize)]
+struct CharacterPresentationSnapshot {
+    schema: String,
+    characters: Vec<CuratedCharacterPresentation>,
+}
+
+#[derive(Debug, Deserialize)]
+struct CuratedCharacterPresentation {
+    source_key: String,
+    official_english_name: String,
+    rarity: u8,
+    collaboration: bool,
+}
+
 fn curated_snapshot() -> Result<&'static CharacterSnapshot, PerwigaError> {
     static SNAPSHOT: OnceLock<Result<CharacterSnapshot, String>> = OnceLock::new();
     match SNAPSHOT.get_or_init(|| {
@@ -179,6 +196,72 @@ fn validate_snapshot(snapshot: &CharacterSnapshot) -> Result<(), String> {
     Ok(())
 }
 
+fn curated_presentation_snapshot() -> Result<&'static CharacterPresentationSnapshot, PerwigaError> {
+    static SNAPSHOT: OnceLock<Result<CharacterPresentationSnapshot, String>> = OnceLock::new();
+    match SNAPSHOT.get_or_init(|| {
+        let snapshot: CharacterPresentationSnapshot = serde_json::from_str(include_str!(
+            "../data/character-presentation.json"
+        ))
+        .map_err(|error| format!("invalid bundled Genshin presentation snapshot: {error}"))?;
+        validate_presentation_snapshot(
+            &snapshot,
+            curated_snapshot().map_err(|error| error.to_string())?,
+        )?;
+        Ok(snapshot)
+    }) {
+        Ok(snapshot) => Ok(snapshot),
+        Err(message) => Err(PerwigaError::Validation(message.clone())),
+    }
+}
+
+fn validate_presentation_snapshot(
+    snapshot: &CharacterPresentationSnapshot,
+    catalog: &CharacterSnapshot,
+) -> Result<(), String> {
+    if snapshot.schema != "perwiga.genshin-impact.character-presentation.v1" {
+        return Err("unexpected Genshin character presentation snapshot schema".into());
+    }
+    if snapshot.characters.len() != catalog.characters.len() {
+        return Err("Genshin character presentation coverage is incomplete".into());
+    }
+
+    let catalog_by_key = catalog
+        .characters
+        .iter()
+        .map(|character| (character.source_key.as_str(), character))
+        .collect::<BTreeMap<_, _>>();
+    let mut source_keys = HashSet::new();
+    for presentation in &snapshot.characters {
+        if !source_keys.insert(presentation.source_key.as_str()) {
+            return Err(format!(
+                "duplicate Genshin character presentation: {}",
+                presentation.source_key
+            ));
+        }
+        let character = catalog_by_key
+            .get(presentation.source_key.as_str())
+            .ok_or_else(|| {
+                format!(
+                    "unknown Genshin character presentation: {}",
+                    presentation.source_key
+                )
+            })?;
+        if presentation.official_english_name != character.official_english_name {
+            return Err(format!(
+                "Genshin character presentation name mismatch: {}",
+                presentation.source_key
+            ));
+        }
+        if !matches!(presentation.rarity, 4 | 5) {
+            return Err(format!(
+                "invalid Genshin character rarity for {}",
+                presentation.source_key
+            ));
+        }
+    }
+    Ok(())
+}
+
 fn validate_source_text(
     value: &str,
     max_characters: usize,
@@ -202,6 +285,40 @@ fn curated_character(source_key: &str) -> Option<&'static CuratedCharacter> {
         .characters
         .iter()
         .find(|character| character.source_key == source_key)
+}
+
+fn curated_character_presentation(
+    source_key: &str,
+) -> Option<&'static CuratedCharacterPresentation> {
+    curated_presentation_snapshot()
+        .ok()?
+        .characters
+        .iter()
+        .find(|character| character.source_key == source_key)
+}
+
+fn character_accent(presentation: &CuratedCharacterPresentation) -> &'static str {
+    if presentation.collaboration {
+        return COLLABORATION_COLOR;
+    }
+    match presentation.rarity {
+        4 => FOUR_STAR_COLOR,
+        5 => FIVE_STAR_COLOR,
+        _ => THEME.border_strong,
+    }
+}
+
+fn region_asset_key(region: &str) -> Option<&'static str> {
+    match region {
+        "Mondstadt" => Some("mondstadt"),
+        "Liyue" => Some("liyue"),
+        "Inazuma" => Some("inazuma"),
+        "Sumeru" => Some("sumeru"),
+        "Fontaine" => Some("fontaine"),
+        "Natlan" => Some("natlan"),
+        "Snezhnaya" => Some("snezhnaya"),
+        _ => None,
+    }
 }
 
 fn character_source_key(entity: &WikiEntity) -> Option<&str> {
@@ -308,11 +425,18 @@ impl LibraryModule for GenshinImpactModule {
     fn entity_presentation(&self, entity: &WikiEntity) -> Option<EntityPresentation> {
         let source_key = character_source_key(entity)?;
         let character = curated_character(source_key)?;
+        let presentation = curated_character_presentation(source_key)?;
+        let region_asset_key = region_asset_key(&character.region)?;
+        region_icon(region_asset_key)?;
         Some(EntityPresentation {
             thumbnail_url: format!("/assets/modules/genshin-impact/characters/{source_key}.png"),
-            accent_color: THEME.accent.to_string(),
-            label: character.region.clone(),
-            rarity: None,
+            accent_color: character_accent(presentation).to_string(),
+            context_label: Some(character.region.clone()),
+            context_icon_url: Some(format!(
+                "/assets/modules/genshin-impact/regions/{region_asset_key}.webp"
+            )),
+            label: format!("{}★", presentation.rarity),
+            rarity: Some(presentation.rarity),
             facets: BTreeMap::from([("region".to_string(), character.region.clone())]),
             facet_values: BTreeMap::new(),
         })
@@ -330,6 +454,7 @@ pub fn register(registry: &mut ModuleRegistry) -> perwiga_core::Result<()> {
 }
 
 include!(concat!(env!("OUT_DIR"), "/character_thumbnails.rs"));
+include!(concat!(env!("OUT_DIR"), "/region_icons.rs"));
 
 #[cfg(test)]
 mod tests {
@@ -389,8 +514,14 @@ mod tests {
         let presentation = module()
             .entity_presentation(albedo)
             .expect("character presentation");
-        assert_eq!(presentation.label, "Mondstadt");
-        assert_eq!(presentation.rarity, None);
+        assert_eq!(presentation.label, "5★");
+        assert_eq!(presentation.rarity, Some(5));
+        assert_eq!(presentation.accent_color, "#d8b66f");
+        assert_eq!(presentation.context_label.as_deref(), Some("Mondstadt"));
+        assert_eq!(
+            presentation.context_icon_url.as_deref(),
+            Some("/assets/modules/genshin-impact/regions/mondstadt.webp")
+        );
         assert_eq!(
             presentation.facets.get("region").map(String::as_str),
             Some("Mondstadt")
@@ -401,6 +532,31 @@ mod tests {
         );
         let thumbnail = character_thumbnail("hoyoverse-content-104816").expect("Albedo thumbnail");
         assert!(thumbnail.starts_with(b"\x89PNG\r\n\x1a\n"));
+        let region_icon_bytes = region_icon("mondstadt").expect("Mondstadt region icon");
+        assert!(region_icon_bytes.starts_with(b"RIFF"));
+        assert_eq!(&region_icon_bytes[8..12], b"WEBP");
+
+        let aloy = characters
+            .iter()
+            .find(|character| character.official_english_name == "Aloy")
+            .expect("Aloy");
+        let aloy_presentation = module()
+            .entity_presentation(aloy)
+            .expect("Aloy presentation");
+        assert_eq!(aloy_presentation.label, "5★");
+        assert_eq!(aloy_presentation.rarity, Some(5));
+        assert_eq!(aloy_presentation.accent_color, "#d94b4b");
+
+        let amber = characters
+            .iter()
+            .find(|character| character.official_english_name == "Amber")
+            .expect("Amber");
+        let amber_presentation = module()
+            .entity_presentation(amber)
+            .expect("Amber presentation");
+        assert_eq!(amber_presentation.label, "4★");
+        assert_eq!(amber_presentation.rarity, Some(4));
+        assert_eq!(amber_presentation.accent_color, "#9a77c7");
 
         let second = import_curated_characters(&mut store, &work.id).expect("second import");
         assert_eq!(second.inserted, 0);
@@ -412,6 +568,18 @@ mod tests {
     }
 
     #[test]
+    fn every_known_region_has_a_local_webp_emblem() {
+        for region in REGION_OPTIONS {
+            let asset_key = region_asset_key(region.value).expect("known region asset key");
+            let bytes = region_icon(asset_key).expect("bundled region emblem");
+            assert!(bytes.starts_with(b"RIFF"), "{}", region.value);
+            assert_eq!(&bytes[8..12], b"WEBP", "{}", region.value);
+        }
+        assert!(region_asset_key("Khaenri'ah").is_none());
+        assert!(region_icon("../mondstadt").is_none());
+    }
+
+    #[test]
     fn snapshot_validation_rejects_control_characters_before_persistence() {
         let mut snapshot: CharacterSnapshot =
             serde_json::from_str(include_str!("../data/characters.json")).expect("snapshot JSON");
@@ -420,5 +588,25 @@ mod tests {
         assert!(validate_snapshot(&snapshot)
             .expect_err("control character must be rejected")
             .contains("Vietnamese name"));
+    }
+
+    #[test]
+    fn presentation_snapshot_requires_complete_four_or_five_star_classification() {
+        let catalog: CharacterSnapshot =
+            serde_json::from_str(include_str!("../data/characters.json")).expect("catalog JSON");
+        let mut presentation: CharacterPresentationSnapshot =
+            serde_json::from_str(include_str!("../data/character-presentation.json"))
+                .expect("presentation JSON");
+
+        presentation.characters[0].rarity = 3;
+        assert!(validate_presentation_snapshot(&presentation, &catalog)
+            .expect_err("unsupported rarity must be rejected")
+            .contains("invalid Genshin character rarity"));
+
+        presentation.characters[0].rarity = 5;
+        presentation.characters.pop();
+        assert!(validate_presentation_snapshot(&presentation, &catalog)
+            .expect_err("incomplete coverage must be rejected")
+            .contains("coverage is incomplete"));
     }
 }

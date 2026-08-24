@@ -71,6 +71,18 @@ button:disabled {
   outline-offset: 0.1875rem;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  padding: 0;
+  margin: -0.0625rem;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: fixed;
   z-index: 100;
@@ -1136,6 +1148,7 @@ textarea:hover {
 }
 
 .entity-row {
+  --entity-row-surface: var(--bg);
   display: grid;
   grid-template-columns: 2.75rem minmax(0, 1fr) auto;
   gap: var(--space-3);
@@ -1150,10 +1163,12 @@ textarea:hover {
 }
 
 .entity-row:hover {
+  --entity-row-surface: var(--surface);
   background: var(--surface);
 }
 
 .entity-row.is-selected {
+  --entity-row-surface: var(--surface-active);
   border-left-color: var(--accent);
   background: var(--surface-active);
 }
@@ -1239,8 +1254,59 @@ textarea:hover {
 }
 
 .entity-kind {
-  max-width: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  max-width: 12rem;
   text-align: right;
+  white-space: nowrap;
+}
+
+.entity-context-marker {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 1.75rem;
+  overflow: hidden;
+  place-items: center;
+  background: var(--border-strong);
+  clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%);
+}
+
+.entity-context-marker::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0.0625rem 0.125rem;
+  background: var(--entity-row-surface, var(--bg));
+  clip-path: inherit;
+  content: "";
+}
+
+.entity-context-icon {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  opacity: 0.88;
+}
+
+.entity-context-marker.is-fallback {
+  width: auto;
+  height: auto;
+  overflow: visible;
+  background: transparent;
+  clip-path: none;
+}
+
+.entity-context-marker.is-fallback::before {
+  display: none;
+}
+
+.entity-context-fallback[hidden] {
+  display: none;
 }
 
 .list-empty,
@@ -1781,6 +1847,7 @@ noscript {
 
   .entity-kind {
     grid-column: 2;
+    justify-content: flex-start;
     max-width: none;
     text-align: left;
   }

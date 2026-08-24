@@ -101,6 +101,16 @@ pub struct ThemeDefinition {
 pub struct EntityPresentation {
     pub thumbnail_url: String,
     pub accent_color: String,
+    /// Compact text shown beside the entity type in list views. Modules may
+    /// use this for accessible context such as a Character's region of
+    /// origin. The UI may keep it visually hidden when `context_icon_url` is
+    /// present.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub context_label: Option<String>,
+    /// Optional module-owned icon for the compact list context. The shared UI
+    /// renders it without needing to understand the title-specific meaning.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub context_icon_url: Option<String>,
     pub label: String,
     pub rarity: Option<u8>,
     /// Single-valued facets such as an Operator's role or an Item's region.
