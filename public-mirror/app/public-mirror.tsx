@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { EntityDetail } from "./components/entity-detail";
 import { EntityList } from "./components/entity-list";
@@ -8,6 +8,7 @@ import { Timeline } from "./components/timeline";
 import type { Catalog, Entity, Facet, Work } from "./types";
 
 type PublicMirrorProps = { initialCatalog: Catalog };
+const PAGE_SIZE = 10;
 
 function entityName(entity: Entity) { return entity.catalog_label || entity.official_english_name; }
 
@@ -52,6 +53,8 @@ export function PublicMirror({ initialCatalog }: PublicMirrorProps) {
   const [sort, setSort] = useState("name");
   const [facetValues, setFacetValues] = useState<Record<string, string>>({});
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const loadMoreRef = useRef<HTMLButtonElement>(null);
 
   const work = initialCatalog.works.find((candidate) => candidate.id === workId) || initialCatalog.works[0];
   const workEntities = useMemo(() => initialCatalog.entities.filter((entity) => entity.work_id === work?.id), [initialCatalog.entities, work?.id]);
@@ -68,10 +71,23 @@ export function PublicMirror({ initialCatalog }: PublicMirrorProps) {
     return sortEntities(filtered, sort);
   }, [facetValues, facets, query, rarity, sort, type, workEntities]);
   const activeEntity = filteredEntities.find((entity) => entity.id === selectedId) || filteredEntities[0];
-  const visibleEntities = filteredEntities.slice(0, 350);
+  const visibleEntities = filteredEntities.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredEntities.length;
 
-  function switchWork(nextWorkId: string) { setWorkId(nextWorkId); setType(""); setQuery(""); setRarity(""); setSort("name"); setFacetValues({}); setSelectedId(null); }
-  function switchType(nextType: string) { setType(nextType); setRarity(""); setFacetValues({}); setSelectedId(null); }
+  useEffect(() => {
+    const sentinel = loadMoreRef.current;
+    if (!sentinel || !hasMore || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setVisibleCount((current) => Math.min(current + PAGE_SIZE, filteredEntities.length));
+    }, { rootMargin: "600px 0px" });
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [filteredEntities.length, hasMore, visibleCount]);
+
+  function resetList() { setVisibleCount(PAGE_SIZE); setSelectedId(null); }
+  function switchWork(nextWorkId: string) { setWorkId(nextWorkId); setType(""); setQuery(""); setRarity(""); setSort("name"); setFacetValues({}); resetList(); }
+  function switchType(nextType: string) { setType(nextType); setRarity(""); setFacetValues({}); resetList(); }
+  function loadMore() { setVisibleCount((current) => Math.min(current + PAGE_SIZE, filteredEntities.length)); }
 
   return (
     <div style={themeStyle(work)}>
@@ -81,7 +97,7 @@ export function PublicMirror({ initialCatalog }: PublicMirrorProps) {
         <section className="hero" aria-labelledby="atlas-title"><div><p className="eyebrow">Library / multilingual field guide</p><h1 id="atlas-title">Perwiga<br />Atlas</h1><p>Browse characters, places, equipment, stories, and events from the worlds you play and read.</p></div><div className="hero-note"><strong>Worlds, names, and stories</strong><span>{initialCatalog.works.length} worlds · {initialCatalog.entities.length.toLocaleString()} records · {initialCatalog.events.length} events</span></div></section>
         <nav className="work-tabs" aria-label="Library works">{initialCatalog.works.map((candidate) => <button key={candidate.id} type="button" className={`work-tab${candidate.id === work?.id ? " is-active" : ""}`} onClick={() => switchWork(candidate.id)}>{candidate.display_name}<small>{candidate.kind} · {initialCatalog.entities.filter((entity) => entity.work_id === candidate.id).length} records</small></button>)}</nav>
         <nav className="view-tabs" aria-label="Atlas view"><button type="button" className={`view-tab${view === "wiki" ? " is-active" : ""}`} onClick={() => setView("wiki")}>Wiki</button><button type="button" className={`view-tab${view === "timeline" ? " is-active" : ""}`} onClick={() => setView("timeline")}>Timeline</button></nav>
-        {view === "wiki" && work ? <section className="wiki-layout" aria-label={`${work.display_name} wiki`}><aside className="catalog-nav" aria-label="Record types"><p className="panel-kicker">Browse by type</p><div className="type-list"><button type="button" className={`type-button${type === "" ? " is-active" : ""}`} onClick={() => switchType("")}>All records <small>{workEntities.length}</small></button>{work.entity_types.map((entityType) => <button type="button" key={entityType.key} className={`type-button${type === entityType.key ? " is-active" : ""}`} onClick={() => switchType(entityType.key)}>{entityType.display_name} <small>{countForType(workEntities, entityType.key)}</small></button>)}</div></aside><section className="collection" aria-labelledby="collection-title"><div className="collection-head"><div><p className="eyebrow">{work.module_id}</p><h2 id="collection-title">{type ? work.entity_types.find((candidate) => candidate.key === type)?.display_name : "All records"}</h2></div><p className="record-count">{filteredEntities.length.toLocaleString()} records</p></div><label className="search-label" htmlFor="public-search">Search names and aliases<input id="public-search" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search English, original, Vietnamese, or alias" autoComplete="off" /></label>{(rarityOptions.length > 0 || facets.length > 0) && <div className="filters">{rarityOptions.length > 0 && <label className="filter-field">Rarity<select className="filter-select" value={rarity} onChange={(event) => setRarity(event.target.value)}><option value="">All rarities</option>{rarityOptions.map((value) => <option value={value} key={value}>{value}★</option>)}</select></label>}{facets.map((facet) => <label className="filter-field" key={facet.key}>{facet.display_name}<select className="filter-select" value={facetValues[facet.key] || ""} onChange={(event) => setFacetValues((previous) => ({ ...previous, [facet.key]: event.target.value }))}><option value="">All</option>{facet.options.map((option) => <option value={option.value} key={option.value}>{option.display_name}</option>)}</select></label>)}<label className="filter-field">Sort<select className="filter-select" value={sort} onChange={(event) => setSort(event.target.value)}><option value="name">Name A–Z</option><option value="rarity-desc">Rarity high–low</option><option value="rarity-asc">Rarity low–high</option></select></label></div>}{filteredEntities.length > visibleEntities.length && <p className="filter-note">Showing the first {visibleEntities.length} records. Use search or filters to narrow the list.</p>}<EntityList entities={visibleEntities} types={work.entity_types} selectedId={activeEntity?.id || null} onSelect={setSelectedId} /></section><aside className="inspector" aria-label="Record detail"><EntityDetail entity={activeEntity} /></aside></section> : work ? <section className="timeline-panel" aria-labelledby="timeline-title"><p className="eyebrow">{work.display_name} / schedule</p><h2 id="timeline-title">Event timeline</h2><p className="timeline-intro">Events arranged by type and date.</p><Timeline events={workEvents} /></section> : <div className="empty-state"><h3>No records yet</h3><p>There are no records to show for this work.</p></div>}
+        {view === "wiki" && work ? <section className="wiki-layout" aria-label={`${work.display_name} wiki`}><aside className="catalog-nav" aria-label="Record types"><p className="panel-kicker">Browse by type</p><div className="type-list"><button type="button" className={`type-button${type === "" ? " is-active" : ""}`} onClick={() => switchType("")}>All records <small>{workEntities.length}</small></button>{work.entity_types.map((entityType) => <button type="button" key={entityType.key} className={`type-button${type === entityType.key ? " is-active" : ""}`} onClick={() => switchType(entityType.key)}>{entityType.display_name} <small>{countForType(workEntities, entityType.key)}</small></button>)}</div></aside><section className="collection" aria-labelledby="collection-title"><div className="collection-head"><div><p className="eyebrow">{work.module_id}</p><h2 id="collection-title">{type ? work.entity_types.find((candidate) => candidate.key === type)?.display_name : "All records"}</h2></div><p className="record-count">{filteredEntities.length.toLocaleString()} records</p></div><label className="search-label" htmlFor="public-search">Search names and aliases<input id="public-search" type="search" value={query} onChange={(event) => { setQuery(event.target.value); resetList(); }} placeholder="Search English, original, Vietnamese, or alias" autoComplete="off" /></label>{(rarityOptions.length > 0 || facets.length > 0) && <div className="filters">{rarityOptions.length > 0 && <label className="filter-field">Rarity<select className="filter-select" value={rarity} onChange={(event) => { setRarity(event.target.value); resetList(); }}><option value="">All rarities</option>{rarityOptions.map((value) => <option value={value} key={value}>{value}★</option>)}</select></label>}{facets.map((facet) => <label className="filter-field" key={facet.key}>{facet.display_name}<select className="filter-select" value={facetValues[facet.key] || ""} onChange={(event) => { setFacetValues((previous) => ({ ...previous, [facet.key]: event.target.value })); resetList(); }}><option value="">All</option>{facet.options.map((option) => <option value={option.value} key={option.value}>{option.display_name}</option>)}</select></label>)}<label className="filter-field">Sort<select className="filter-select" value={sort} onChange={(event) => { setSort(event.target.value); resetList(); }}><option value="name">Name A–Z</option><option value="rarity-desc">Rarity high–low</option><option value="rarity-asc">Rarity low–high</option></select></label></div>}<EntityList entities={visibleEntities} types={work.entity_types} selectedId={activeEntity?.id || null} onSelect={setSelectedId} />{hasMore && <button ref={loadMoreRef} type="button" className="load-sentinel" onClick={loadMore}><span>Continue browsing</span><small>Next 10</small></button>}{!hasMore && visibleEntities.length > PAGE_SIZE && <p className="load-status">All {visibleEntities.length.toLocaleString()} records shown</p>}</section><aside className="inspector" aria-label="Record detail"><EntityDetail entity={activeEntity} /></aside></section> : work ? <section className="timeline-panel" aria-labelledby="timeline-title"><p className="eyebrow">{work.display_name} / schedule</p><h2 id="timeline-title">Event timeline</h2><p className="timeline-intro">Events arranged by type and date.</p><Timeline events={workEvents} /></section> : <div className="empty-state"><h3>No records yet</h3><p>There are no records to show for this work.</p></div>}
         <footer className="mirror-footer"><span>Perwiga Atlas</span><span>Names · places · stories · events</span></footer>
       </main>
     </div>

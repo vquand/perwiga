@@ -77,7 +77,10 @@ main { width: min(100% - 2rem, 112rem); margin: 0 auto; }
 .filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: var(--space-2); margin-bottom: var(--space-5); }
 .filter-field { display: grid; gap: var(--space-1); color: var(--text-subtle); font-size: 0.625rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .filter-select { min-height: 2.35rem; font-size: 0.75rem; }
-.filter-note { margin: -var(--space-2) 0 var(--space-4); color: var(--text-subtle); font-size: 0.7rem; line-height: 1.4; }
+.load-sentinel { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: var(--space-3); margin-top: var(--space-4); padding: var(--space-3) var(--space-4); border: 0.0625rem solid var(--border-strong); color: var(--text-muted); background: var(--surface); font-size: 0.75rem; font-weight: 700; text-align: left; }
+.load-sentinel:hover { border-color: var(--accent); color: var(--text); background: var(--surface-active); }
+.load-sentinel small, .load-status { color: var(--text-subtle); font-size: 0.65rem; font-weight: 600; }
+.load-status { margin: var(--space-4) 0 0; text-align: center; }
 
 .entity-list { display: grid; gap: 0; padding: 0; margin: 0; list-style: none; border-top: 0.0625rem solid var(--border); }
 .entity-row { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) auto; gap: var(--space-3); width: 100%; align-items: center; padding: var(--space-3) 0 var(--space-3) var(--space-3); border: 0; border-bottom: 0.0625rem solid var(--border); border-left: 0.125rem solid var(--border); color: var(--text); background: transparent; text-align: left; }

@@ -35,6 +35,8 @@ test("server-renders the Perwiga atlas", async () => {
   assert.match(html, /Worlds, names, and stories/);
   assert.match(html, /Genshin Impact/);
   assert.match(html, /Arknights: Endfield/);
+  assert.equal((html.match(/class="entity-row/g) ?? []).length, 10);
+  assert.match(html, /Continue browsing/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
   assert.doesNotMatch(html, /\/api\//i);
 });
@@ -48,5 +50,8 @@ test("does not retain the starter preview or editing affordances", async () => {
 
   assert.match(page, /Perwiga Public Atlas/);
   assert.match(client, /Worlds, names, and stories/);
+  assert.match(client, /PAGE_SIZE = 10/);
+  assert.match(client, /IntersectionObserver/);
+  assert.doesNotMatch(client, /slice\(0, 350\)/);
   assert.doesNotMatch(client, /new-entity|save-entity|create_work|PATCH|POST/);
 });
