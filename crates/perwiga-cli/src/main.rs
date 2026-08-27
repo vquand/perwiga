@@ -9,6 +9,8 @@ use perwiga_core::{
     ModuleRegistry, Store, WorkKind,
 };
 
+mod public_export;
+
 #[derive(Debug, Parser)]
 #[command(name = "perwiga", about = "Local-first game and novel wiki")]
 struct Cli {
@@ -22,6 +24,7 @@ struct Cli {
 #[derive(Debug, Subcommand)]
 enum Command {
     Modules,
+    ExportPublic(public_export::ExportPublicCommand),
     Work {
         #[command(subcommand)]
         command: WorkCommand,
@@ -374,6 +377,9 @@ fn run() -> perwiga_core::Result<()> {
                     println!("  {}\t{}", entity_type.key, entity_type.display_name);
                 }
             }
+        }
+        Command::ExportPublic(input) => {
+            public_export::write_catalog(app.store(), app.modules(), &input.output)?;
         }
         Command::Work { command } => match command {
             WorkCommand::Add(input) => {

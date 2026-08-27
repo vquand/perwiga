@@ -4,6 +4,17 @@ Perwiga is a personal, local-first wiki for games and novels. It stores informat
 
 The first planned category is a multilingual wiki for named content such as playable characters, NPCs, main/supporting/side characters, regions, places, items, factions, and other entities. The app will also connect folders, notes, checklists, feeds, and supported schedule data to each library work.
 
+## Public mirror
+
+Perwiga also has an optional public, read-only presentation for selected curated
+records. It is generated from the canonical tracked [`perwiga.sqlite`](perwiga.sqlite)
+with `npm run prepare:public` in [`public-mirror/`](public-mirror/). The mirror
+publishes a disposable JSON projection and the thumbnails it needs; it does not
+publish the SQLite file, private notes, checklists, folders, feed state, or
+internal provenance. Editing and data fetching remain local-only. This keeps one
+database authoritative: after changing the app or importing reviewed data, the
+same export command refreshes the public deployment inputs.
+
 ## Status
 
 The first executable vertical slice is implemented in Rust. It provides a local SQLite core, a family-aware module registry, a CLI composition root, and the common wiki, notes, folders, checklists, feeds, calendar, and source-backed entity-context persistence workflows. Arknights: Endfield and Genshin Impact are dedicated runtime game modules. Genshin has title-owned, review-first fetch pipelines for characters, NPCs, regions, weapons, skins, artifacts, and domains, plus additive, idempotent SQLite importers for its bundled snapshots.
