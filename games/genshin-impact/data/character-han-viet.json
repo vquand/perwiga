@@ -1,0 +1,738 @@
+{
+  "schema": "perwiga.genshin-impact.character-han-viet.v1",
+  "checked_at": "2026-08-25",
+  "catalog_scope": {
+    "included_records": 118
+  },
+  "confidence": {
+    "han_viet_names": "E"
+  },
+  "sources": {
+    "official_traditional_chinese_names": "https://genshin.hoyoverse.com/zh-tw/character/mondstadt",
+    "han_viet_dictionary": "https://hvdic.thivien.net/transcript.php#trans",
+    "unattested_character_fallback": "https://en.wiktionary.org/wiki/%E8%8F%88",
+    "fallback_han_viet_cognate": "https://dictionary.zim.vn/trung-viet/%E6%8B%89%E9%BB%91"
+  },
+  "generation": {
+    "selection": "First dictionary alternative unless a context override is recorded.",
+    "reading_overrides": {},
+    "explicit_fallbacks": {
+      "菈": "lạp"
+    }
+  },
+  "notes": [
+    "Every Hán-Việt value is a generated search alias from the verified official Traditional Chinese localization; none is an official Vietnamese localization.",
+    "Traditional Chinese is the global website localization and is not presented as the original mainland Simplified Chinese name.",
+    "Ambiguous readings use the dictionary's first alternative unless this snapshot records an explicit context override."
+  ],
+  "characters": [
+    {
+      "source_key": "hoyoverse-content-104816",
+      "official_english_name": "Albedo",
+      "official_traditional_chinese_name": "阿貝多",
+      "han_viet_name": "A Bối Đa"
+    },
+    {
+      "source_key": "hoyoverse-content-104819",
+      "official_english_name": "Aloy",
+      "official_traditional_chinese_name": "亞蘿伊",
+      "han_viet_name": "Á La Y"
+    },
+    {
+      "source_key": "hoyoverse-content-104802",
+      "official_english_name": "Amber",
+      "official_traditional_chinese_name": "安柏",
+      "han_viet_name": "An Bách"
+    },
+    {
+      "source_key": "hoyoverse-content-104805",
+      "official_english_name": "Barbara",
+      "official_traditional_chinese_name": "芭芭拉",
+      "han_viet_name": "Ba Ba Lạp"
+    },
+    {
+      "source_key": "hoyoverse-content-104810",
+      "official_english_name": "Bennett",
+      "official_traditional_chinese_name": "班尼特",
+      "han_viet_name": "Ban Ni Đặc"
+    },
+    {
+      "source_key": "hoyoverse-content-156697",
+      "official_english_name": "Dahlia",
+      "official_traditional_chinese_name": "塔利雅",
+      "han_viet_name": "Tháp Lợi Nhã"
+    },
+    {
+      "source_key": "hoyoverse-content-104806",
+      "official_english_name": "Diluc",
+      "official_traditional_chinese_name": "迪盧克",
+      "han_viet_name": "Địch Lô Khắc"
+    },
+    {
+      "source_key": "hoyoverse-content-104815",
+      "official_english_name": "Diona",
+      "official_traditional_chinese_name": "迪奧娜",
+      "han_viet_name": "Địch Áo Na"
+    },
+    {
+      "source_key": "hoyoverse-content-161036",
+      "official_english_name": "Durin",
+      "official_traditional_chinese_name": "杜林",
+      "han_viet_name": "Đỗ Lâm"
+    },
+    {
+      "source_key": "hoyoverse-content-104818",
+      "official_english_name": "Eula",
+      "official_traditional_chinese_name": "優菈",
+      "han_viet_name": "Ưu Lạp"
+    },
+    {
+      "source_key": "hoyoverse-content-104812",
+      "official_english_name": "Fischl",
+      "official_traditional_chinese_name": "菲謝爾",
+      "han_viet_name": "Phi Tạ Nhĩ"
+    },
+    {
+      "source_key": "hoyoverse-content-104801",
+      "official_english_name": "Jean",
+      "official_traditional_chinese_name": "琴",
+      "han_viet_name": "Cầm"
+    },
+    {
+      "source_key": "hoyoverse-content-104804",
+      "official_english_name": "Kaeya",
+      "official_traditional_chinese_name": "凱亞",
+      "han_viet_name": "Khải Á"
+    },
+    {
+      "source_key": "hoyoverse-content-104809",
+      "official_english_name": "Klee",
+      "official_traditional_chinese_name": "可莉",
+      "han_viet_name": "Khả Lị"
+    },
+    {
+      "source_key": "hoyoverse-content-104803",
+      "official_english_name": "Lisa",
+      "official_traditional_chinese_name": "麗莎",
+      "han_viet_name": "Lệ Toa"
+    },
+    {
+      "source_key": "hoyoverse-content-163984",
+      "official_english_name": "Lohen",
+      "official_traditional_chinese_name": "洛恩",
+      "han_viet_name": "Lạc Ân"
+    },
+    {
+      "source_key": "hoyoverse-content-105325",
+      "official_english_name": "Mika",
+      "official_traditional_chinese_name": "米卡",
+      "han_viet_name": "Mễ Tạp"
+    },
+    {
+      "source_key": "hoyoverse-content-104814",
+      "official_english_name": "Mona",
+      "official_traditional_chinese_name": "莫娜",
+      "han_viet_name": "Mạc Na"
+    },
+    {
+      "source_key": "hoyoverse-content-163949",
+      "official_english_name": "Nicole",
+      "official_traditional_chinese_name": "尼可",
+      "han_viet_name": "Ni Khả"
+    },
+    {
+      "source_key": "hoyoverse-content-104811",
+      "official_english_name": "Noelle",
+      "official_traditional_chinese_name": "諾艾爾",
+      "han_viet_name": "Nặc Ngải Nhĩ"
+    },
+    {
+      "source_key": "hoyoverse-content-163961",
+      "official_english_name": "Prune",
+      "official_traditional_chinese_name": "布倫妮",
+      "han_viet_name": "Bố Luân Ni"
+    },
+    {
+      "source_key": "hoyoverse-content-104807",
+      "official_english_name": "Razor",
+      "official_traditional_chinese_name": "雷澤",
+      "han_viet_name": "Lôi Trạch"
+    },
+    {
+      "source_key": "hoyoverse-content-104817",
+      "official_english_name": "Rosaria",
+      "official_traditional_chinese_name": "蘿莎莉亞",
+      "han_viet_name": "La Toa Lị Á"
+    },
+    {
+      "source_key": "hoyoverse-content-104813",
+      "official_english_name": "Sucrose",
+      "official_traditional_chinese_name": "砂糖",
+      "han_viet_name": "Sa Đường"
+    },
+    {
+      "source_key": "hoyoverse-content-162625",
+      "official_english_name": "Varka",
+      "official_traditional_chinese_name": "法爾伽",
+      "han_viet_name": "Pháp Nhĩ Già"
+    },
+    {
+      "source_key": "hoyoverse-content-104808",
+      "official_english_name": "Venti",
+      "official_traditional_chinese_name": "溫迪",
+      "han_viet_name": "Ôn Địch"
+    },
+    {
+      "source_key": "hoyoverse-content-110845",
+      "official_english_name": "Baizhu",
+      "official_traditional_chinese_name": "白朮",
+      "han_viet_name": "Bạch Truật"
+    },
+    {
+      "source_key": "hoyoverse-content-104821",
+      "official_english_name": "Beidou",
+      "official_traditional_chinese_name": "北斗",
+      "han_viet_name": "Bắc Đẩu"
+    },
+    {
+      "source_key": "hoyoverse-content-104825",
+      "official_english_name": "Chongyun",
+      "official_traditional_chinese_name": "重雲",
+      "han_viet_name": "Trùng Vân"
+    },
+    {
+      "source_key": "hoyoverse-content-119403",
+      "official_english_name": "Gaming",
+      "official_traditional_chinese_name": "嘉明",
+      "han_viet_name": "Gia Minh"
+    },
+    {
+      "source_key": "hoyoverse-content-104831",
+      "official_english_name": "Ganyu",
+      "official_traditional_chinese_name": "甘雨",
+      "han_viet_name": "Cam Vũ"
+    },
+    {
+      "source_key": "hoyoverse-content-104832",
+      "official_english_name": "Hu Tao",
+      "official_traditional_chinese_name": "胡桃",
+      "han_viet_name": "Hồ Đào"
+    },
+    {
+      "source_key": "hoyoverse-content-104827",
+      "official_english_name": "Keqing",
+      "official_traditional_chinese_name": "刻晴",
+      "han_viet_name": "Khắc Tình"
+    },
+    {
+      "source_key": "hoyoverse-content-127979",
+      "official_english_name": "Lan Yan",
+      "official_traditional_chinese_name": "藍硯",
+      "han_viet_name": "Lam Nghiễn"
+    },
+    {
+      "source_key": "hoyoverse-content-104822",
+      "official_english_name": "Ningguang",
+      "official_traditional_chinese_name": "凝光",
+      "han_viet_name": "Ngưng Quang"
+    },
+    {
+      "source_key": "hoyoverse-content-104826",
+      "official_english_name": "Qiqi",
+      "official_traditional_chinese_name": "七七",
+      "han_viet_name": "Thất Thất"
+    },
+    {
+      "source_key": "hoyoverse-content-104834",
+      "official_english_name": "Shenhe",
+      "official_traditional_chinese_name": "申鶴",
+      "han_viet_name": "Thân Hạc"
+    },
+    {
+      "source_key": "hoyoverse-content-104823",
+      "official_english_name": "Xiangling",
+      "official_traditional_chinese_name": "香菱",
+      "han_viet_name": "Hương Lăng"
+    },
+    {
+      "source_key": "hoyoverse-content-119401",
+      "official_english_name": "Xianyun",
+      "official_traditional_chinese_name": "閒雲",
+      "han_viet_name": "Nhàn Vân"
+    },
+    {
+      "source_key": "hoyoverse-content-104820",
+      "official_english_name": "Xiao",
+      "official_traditional_chinese_name": "魈",
+      "han_viet_name": "Tiêu"
+    },
+    {
+      "source_key": "hoyoverse-content-104824",
+      "official_english_name": "Xingqiu",
+      "official_traditional_chinese_name": "行秋",
+      "han_viet_name": "Hành Thu"
+    },
+    {
+      "source_key": "hoyoverse-content-104830",
+      "official_english_name": "Xinyan",
+      "official_traditional_chinese_name": "辛焱",
+      "han_viet_name": "Tân Diễm"
+    },
+    {
+      "source_key": "hoyoverse-content-104833",
+      "official_english_name": "Yanfei",
+      "official_traditional_chinese_name": "煙緋",
+      "han_viet_name": "Yên Phi"
+    },
+    {
+      "source_key": "hoyoverse-content-104975",
+      "official_english_name": "Yaoyao",
+      "official_traditional_chinese_name": "瑤瑤",
+      "han_viet_name": "Dao Dao"
+    },
+    {
+      "source_key": "hoyoverse-content-104836",
+      "official_english_name": "Yelan",
+      "official_traditional_chinese_name": "夜蘭",
+      "han_viet_name": "Dạ Lan"
+    },
+    {
+      "source_key": "hoyoverse-content-104835",
+      "official_english_name": "Yun Jin",
+      "official_traditional_chinese_name": "雲堇",
+      "han_viet_name": "Vân Cận"
+    },
+    {
+      "source_key": "hoyoverse-content-104829",
+      "official_english_name": "Zhongli",
+      "official_traditional_chinese_name": "鍾離",
+      "han_viet_name": "Chung Ly"
+    },
+    {
+      "source_key": "hoyoverse-content-162095",
+      "official_english_name": "Zibai",
+      "official_traditional_chinese_name": "茲白",
+      "han_viet_name": "Tư Bạch"
+    },
+    {
+      "source_key": "hoyoverse-content-104845",
+      "official_english_name": "Arataki Itto",
+      "official_traditional_chinese_name": "荒瀧一斗",
+      "han_viet_name": "Hoang Lang Nhất Đẩu"
+    },
+    {
+      "source_key": "hoyoverse-content-104846",
+      "official_english_name": "Gorou",
+      "official_traditional_chinese_name": "五郎",
+      "han_viet_name": "Ngũ Lang"
+    },
+    {
+      "source_key": "hoyoverse-content-104838",
+      "official_english_name": "Kaedehara Kazuha",
+      "official_traditional_chinese_name": "楓原萬葉",
+      "han_viet_name": "Phong Nguyên Vạn Diệp"
+    },
+    {
+      "source_key": "hoyoverse-content-104837",
+      "official_english_name": "Kamisato Ayaka",
+      "official_traditional_chinese_name": "神里綾華",
+      "han_viet_name": "Thần Lý Lăng Hoa"
+    },
+    {
+      "source_key": "hoyoverse-content-104848",
+      "official_english_name": "Kamisato Ayato",
+      "official_traditional_chinese_name": "神里綾人",
+      "han_viet_name": "Thần Lý Lăng Nhân"
+    },
+    {
+      "source_key": "hoyoverse-content-111416",
+      "official_english_name": "Kirara",
+      "official_traditional_chinese_name": "綺良良",
+      "han_viet_name": "Ỷ Lương Lương"
+    },
+    {
+      "source_key": "hoyoverse-content-104842",
+      "official_english_name": "Kujou Sara",
+      "official_traditional_chinese_name": "九條裟羅",
+      "han_viet_name": "Cửu Điều Sa La"
+    },
+    {
+      "source_key": "hoyoverse-content-104849",
+      "official_english_name": "Kuki Shinobu",
+      "official_traditional_chinese_name": "久岐忍",
+      "han_viet_name": "Cửu Kỳ Nhẫn"
+    },
+    {
+      "source_key": "hoyoverse-content-104841",
+      "official_english_name": "Raiden Shogun",
+      "official_traditional_chinese_name": "雷電將軍",
+      "han_viet_name": "Lôi Điện Tướng Quân"
+    },
+    {
+      "source_key": "hoyoverse-content-104843",
+      "official_english_name": "Sangonomiya Kokomi",
+      "official_traditional_chinese_name": "珊瑚宮心海",
+      "han_viet_name": "San Hô Cung Tâm Hải"
+    },
+    {
+      "source_key": "hoyoverse-content-104840",
+      "official_english_name": "Sayu",
+      "official_traditional_chinese_name": "早柚",
+      "han_viet_name": "Tảo Trục"
+    },
+    {
+      "source_key": "hoyoverse-content-104850",
+      "official_english_name": "Shikanoin Heizou",
+      "official_traditional_chinese_name": "鹿野院平藏",
+      "han_viet_name": "Lộc Dã Viện Bình Tàng"
+    },
+    {
+      "source_key": "hoyoverse-content-104844",
+      "official_english_name": "Thoma",
+      "official_traditional_chinese_name": "托馬",
+      "han_viet_name": "Thác Mã"
+    },
+    {
+      "source_key": "hoyoverse-content-104847",
+      "official_english_name": "Yae Miko",
+      "official_traditional_chinese_name": "八重神子",
+      "han_viet_name": "Bát Trùng Thần Tử"
+    },
+    {
+      "source_key": "hoyoverse-content-104839",
+      "official_english_name": "Yoimiya",
+      "official_traditional_chinese_name": "宵宮",
+      "han_viet_name": "Tiêu Cung"
+    },
+    {
+      "source_key": "hoyoverse-content-129697",
+      "official_english_name": "Yumemizuki Mizuki",
+      "official_traditional_chinese_name": "夢見月瑞希",
+      "han_viet_name": "Mộng Kiến Nguyệt Thuỵ Hy"
+    },
+    {
+      "source_key": "hoyoverse-content-104974",
+      "official_english_name": "Alhaitham",
+      "official_traditional_chinese_name": "艾爾海森",
+      "han_viet_name": "Ngải Nhĩ Hải Sâm"
+    },
+    {
+      "source_key": "hoyoverse-content-104855",
+      "official_english_name": "Candace",
+      "official_traditional_chinese_name": "坎蒂絲",
+      "han_viet_name": "Khảm Đế Ty"
+    },
+    {
+      "source_key": "hoyoverse-content-104852",
+      "official_english_name": "Collei",
+      "official_traditional_chinese_name": "柯萊",
+      "han_viet_name": "Kha Lai"
+    },
+    {
+      "source_key": "hoyoverse-content-104854",
+      "official_english_name": "Cyno",
+      "official_traditional_chinese_name": "賽諾",
+      "han_viet_name": "Tái Nặc"
+    },
+    {
+      "source_key": "hoyoverse-content-105323",
+      "official_english_name": "Dehya",
+      "official_traditional_chinese_name": "迪希雅",
+      "han_viet_name": "Địch Hy Nhã"
+    },
+    {
+      "source_key": "hoyoverse-content-104853",
+      "official_english_name": "Dori",
+      "official_traditional_chinese_name": "多莉",
+      "han_viet_name": "Đa Lị"
+    },
+    {
+      "source_key": "hoyoverse-content-104860",
+      "official_english_name": "Faruzan",
+      "official_traditional_chinese_name": "琺露珊",
+      "han_viet_name": "Pháp Lộ San"
+    },
+    {
+      "source_key": "hoyoverse-content-110848",
+      "official_english_name": "Kaveh",
+      "official_traditional_chinese_name": "卡維",
+      "han_viet_name": "Tạp Duy"
+    },
+    {
+      "source_key": "hoyoverse-content-104858",
+      "official_english_name": "Layla",
+      "official_traditional_chinese_name": "萊依拉",
+      "han_viet_name": "Lai Y Lạp"
+    },
+    {
+      "source_key": "hoyoverse-content-104857",
+      "official_english_name": "Nahida",
+      "official_traditional_chinese_name": "納西妲",
+      "han_viet_name": "Nạp Tây Đát"
+    },
+    {
+      "source_key": "hoyoverse-content-104856",
+      "official_english_name": "Nilou",
+      "official_traditional_chinese_name": "妮露",
+      "han_viet_name": "Ni Lộ"
+    },
+    {
+      "source_key": "hoyoverse-content-123866",
+      "official_english_name": "Sethos",
+      "official_traditional_chinese_name": "賽索斯",
+      "han_viet_name": "Tái Tác Tư"
+    },
+    {
+      "source_key": "hoyoverse-content-104851",
+      "official_english_name": "Tighnari",
+      "official_traditional_chinese_name": "提納里",
+      "han_viet_name": "Đề Nạp Lý"
+    },
+    {
+      "source_key": "hoyoverse-content-104859",
+      "official_english_name": "Wanderer",
+      "official_traditional_chinese_name": "流浪者",
+      "han_viet_name": "Lưu Lãng Giả"
+    },
+    {
+      "source_key": "hoyoverse-content-113448",
+      "official_english_name": "Charlotte",
+      "official_traditional_chinese_name": "夏洛蒂",
+      "han_viet_name": "Hạ Lạc Đế"
+    },
+    {
+      "source_key": "hoyoverse-content-113800",
+      "official_english_name": "Chevreuse",
+      "official_traditional_chinese_name": "夏沃蕾",
+      "han_viet_name": "Hạ Ốc Lôi"
+    },
+    {
+      "source_key": "hoyoverse-content-122720",
+      "official_english_name": "Chiori",
+      "official_traditional_chinese_name": "千織",
+      "han_viet_name": "Thiên Chức"
+    },
+    {
+      "source_key": "hoyoverse-content-123842",
+      "official_english_name": "Clorinde",
+      "official_traditional_chinese_name": "克洛琳德",
+      "han_viet_name": "Khắc Lạc Lâm Đức"
+    },
+    {
+      "source_key": "hoyoverse-content-124961",
+      "official_english_name": "Emilie",
+      "official_traditional_chinese_name": "艾梅莉埃",
+      "han_viet_name": "Ngải Mai Lị Ai"
+    },
+    {
+      "source_key": "hoyoverse-content-155630",
+      "official_english_name": "Escoffier",
+      "official_traditional_chinese_name": "愛可菲",
+      "han_viet_name": "Ái Khả Phi"
+    },
+    {
+      "source_key": "hoyoverse-content-112636",
+      "official_english_name": "Freminet",
+      "official_traditional_chinese_name": "菲米尼",
+      "han_viet_name": "Phi Mễ Ni"
+    },
+    {
+      "source_key": "hoyoverse-content-113447",
+      "official_english_name": "Furina",
+      "official_traditional_chinese_name": "芙寧娜",
+      "han_viet_name": "Phù Ninh Na"
+    },
+    {
+      "source_key": "hoyoverse-content-112632",
+      "official_english_name": "Lynette",
+      "official_traditional_chinese_name": "琳妮特",
+      "han_viet_name": "Lâm Ni Đặc"
+    },
+    {
+      "source_key": "hoyoverse-content-112618",
+      "official_english_name": "Lyney",
+      "official_traditional_chinese_name": "林尼",
+      "han_viet_name": "Lâm Ni"
+    },
+    {
+      "source_key": "hoyoverse-content-113799",
+      "official_english_name": "Navia",
+      "official_traditional_chinese_name": "娜維婭",
+      "han_viet_name": "Na Duy Á"
+    },
+    {
+      "source_key": "hoyoverse-content-113014",
+      "official_english_name": "Neuvillette",
+      "official_traditional_chinese_name": "那維萊特",
+      "han_viet_name": "Na Duy Lai Đặc"
+    },
+    {
+      "source_key": "hoyoverse-content-124105",
+      "official_english_name": "Sigewinne",
+      "official_traditional_chinese_name": "希格雯",
+      "han_viet_name": "Hy Cách Văn"
+    },
+    {
+      "source_key": "hoyoverse-content-113013",
+      "official_english_name": "Wriothesley",
+      "official_traditional_chinese_name": "萊歐斯利",
+      "han_viet_name": "Lai Âu Tư Lợi"
+    },
+    {
+      "source_key": "hoyoverse-content-126886",
+      "official_english_name": "Chasca",
+      "official_traditional_chinese_name": "恰斯卡",
+      "han_viet_name": "Kháp Tư Tạp"
+    },
+    {
+      "source_key": "hoyoverse-content-127513",
+      "official_english_name": "Citlali",
+      "official_traditional_chinese_name": "茜特菈莉",
+      "han_viet_name": "Thiến Đặc Lạp Lị"
+    },
+    {
+      "source_key": "hoyoverse-content-154719",
+      "official_english_name": "Iansan",
+      "official_traditional_chinese_name": "伊安珊",
+      "han_viet_name": "Y An San"
+    },
+    {
+      "source_key": "hoyoverse-content-155631",
+      "official_english_name": "Ifa",
+      "official_traditional_chinese_name": "伊法",
+      "han_viet_name": "Y Pháp"
+    },
+    {
+      "source_key": "hoyoverse-content-125395",
+      "official_english_name": "Kachina",
+      "official_traditional_chinese_name": "卡齊娜",
+      "han_viet_name": "Tạp Tề Na"
+    },
+    {
+      "source_key": "hoyoverse-content-125716",
+      "official_english_name": "Kinich",
+      "official_traditional_chinese_name": "基尼奇",
+      "han_viet_name": "Cơ Ni Kỳ"
+    },
+    {
+      "source_key": "hoyoverse-content-127512",
+      "official_english_name": "Mavuika",
+      "official_traditional_chinese_name": "瑪薇卡",
+      "han_viet_name": "Mã Vy Tạp"
+    },
+    {
+      "source_key": "hoyoverse-content-125394",
+      "official_english_name": "Mualani",
+      "official_traditional_chinese_name": "瑪拉妮",
+      "han_viet_name": "Mã Lạp Ni"
+    },
+    {
+      "source_key": "hoyoverse-content-126887",
+      "official_english_name": "Ororon",
+      "official_traditional_chinese_name": "歐洛倫",
+      "han_viet_name": "Âu Lạc Luân"
+    },
+    {
+      "source_key": "hoyoverse-content-156698",
+      "official_english_name": "Skirk",
+      "official_traditional_chinese_name": "絲柯克",
+      "han_viet_name": "Ty Kha Khắc"
+    },
+    {
+      "source_key": "hoyoverse-content-154718",
+      "official_english_name": "Varesa",
+      "official_traditional_chinese_name": "瓦雷莎",
+      "han_viet_name": "Ngoã Lôi Toa"
+    },
+    {
+      "source_key": "hoyoverse-content-126103",
+      "official_english_name": "Xilonen",
+      "official_traditional_chinese_name": "希諾寧",
+      "han_viet_name": "Hy Nặc Ninh"
+    },
+    {
+      "source_key": "hoyoverse-content-159154",
+      "official_english_name": "Aino",
+      "official_traditional_chinese_name": "愛諾",
+      "han_viet_name": "Ái Nặc"
+    },
+    {
+      "source_key": "hoyoverse-content-165500",
+      "official_english_name": "Alyosha",
+      "official_traditional_chinese_name": "阿羅夏",
+      "han_viet_name": "A La Hạ"
+    },
+    {
+      "source_key": "hoyoverse-content-123167",
+      "official_english_name": "Arlecchino",
+      "official_traditional_chinese_name": "阿蕾奇諾",
+      "han_viet_name": "A Lôi Kỳ Nặc"
+    },
+    {
+      "source_key": "hoyoverse-content-162067",
+      "official_english_name": "Columbina Hyposelenia",
+      "official_traditional_chinese_name": "哥倫比婭·希珀塞萊尼婭",
+      "han_viet_name": "Ca Luân Tỷ Á · Hy Phách Tắc Lai Ni Á"
+    },
+    {
+      "source_key": "hoyoverse-content-159269",
+      "official_english_name": "Flins",
+      "official_traditional_chinese_name": "菲林斯",
+      "han_viet_name": "Phi Lâm Tư"
+    },
+    {
+      "source_key": "hoyoverse-content-162096",
+      "official_english_name": "Illuga",
+      "official_traditional_chinese_name": "葉洛亞",
+      "han_viet_name": "Diệp Lạc Á"
+    },
+    {
+      "source_key": "hoyoverse-content-157730",
+      "official_english_name": "Ineffa",
+      "official_traditional_chinese_name": "伊涅芙",
+      "han_viet_name": "Y Niết Phù"
+    },
+    {
+      "source_key": "hoyoverse-content-161107",
+      "official_english_name": "Jahoda",
+      "official_traditional_chinese_name": "雅珂達",
+      "han_viet_name": "Nhã Kha Đạt"
+    },
+    {
+      "source_key": "hoyoverse-content-159015",
+      "official_english_name": "Lauma",
+      "official_traditional_chinese_name": "菈烏瑪",
+      "han_viet_name": "Lạp Ô Mã"
+    },
+    {
+      "source_key": "hoyoverse-content-163297",
+      "official_english_name": "Linnea",
+      "official_traditional_chinese_name": "莉奈婭",
+      "han_viet_name": "Lị Nại Á"
+    },
+    {
+      "source_key": "hoyoverse-content-160183",
+      "official_english_name": "Nefer",
+      "official_traditional_chinese_name": "奈芙爾",
+      "han_viet_name": "Nại Phù Nhĩ"
+    },
+    {
+      "source_key": "hoyoverse-content-165495",
+      "official_english_name": "Odette",
+      "official_traditional_chinese_name": "奧黛塔",
+      "han_viet_name": "Áo Đại Tháp"
+    },
+    {
+      "source_key": "hoyoverse-content-164628",
+      "official_english_name": "Sandrone",
+      "official_traditional_chinese_name": "桑多涅",
+      "han_viet_name": "Tang Đa Niết"
+    },
+    {
+      "source_key": "hoyoverse-content-104828",
+      "official_english_name": "Tartaglia",
+      "official_traditional_chinese_name": "達達利亞",
+      "han_viet_name": "Đạt Đạt Lợi Á"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "schema": "perwiga.genshin-impact.skin-han-viet.v1",
+  "checked_at": "2026-08-26",
+  "catalog_scope": {
+    "included_records": 29
+  },
+  "confidence": {
+    "han_viet_names": "E"
+  },
+  "sources": {
+    "simplified_chinese_names": "Pinned genshin-db outfit localizations",
+    "han_viet_dictionary": "https://hvdic.thivien.net/transcript.php#trans"
+  },
+  "notes": [
+    "Every value is a generated search alias from the Simplified Chinese Skin name; none is an official Vietnamese localization."
+  ],
+  "skins": [
+    {
+      "source_key": "hoyowiki-outfit-5774",
+      "official_english_name": "100% Outrider",
+      "official_simplified_chinese_name": "100%侦察骑士",
+      "han_viet_name": "100% Trinh Sát Kỵ Sĩ"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5780",
+      "official_english_name": "A Sobriquet Under Shade",
+      "official_simplified_chinese_name": "叶隐芳名",
+      "han_viet_name": "Diệp Ẩn Phương Danh"
+    },
+    {
+      "source_key": "hoyowiki-outfit-8363",
+      "official_english_name": "Adventures in Blazing Hue",
+      "official_simplified_chinese_name": "炽绘奇旅",
+      "han_viet_name": "Sí Hội Kỳ Lữ"
+    },
+    {
+      "source_key": "hoyowiki-outfit-9251",
+      "official_english_name": "As Heaven and Earth Are Made Anew",
+      "official_simplified_chinese_name": "复地重天",
+      "han_viet_name": "Phức Địa Trùng Thiên"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5785",
+      "official_english_name": "Bamboo Rain",
+      "official_simplified_chinese_name": "雨化竹身",
+      "han_viet_name": "Vũ Hoá Trúc Thân"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5781",
+      "official_english_name": "Blossoming Starlight",
+      "official_simplified_chinese_name": "琪花星烛",
+      "han_viet_name": "Kỳ Hoa Tinh Chúc"
+    },
+    {
+      "source_key": "hoyowiki-outfit-6275",
+      "official_english_name": "Breeze of Sabaa",
+      "official_simplified_chinese_name": "莎邦之息",
+      "han_viet_name": "Toa Bang Chi Tức"
+    },
+    {
+      "source_key": "hoyowiki-outfit-7363",
+      "official_english_name": "Cherries Snow-Laden",
+      "official_simplified_chinese_name": "宿雪桃红",
+      "han_viet_name": "Túc Tuyết Đào Hồng"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5778",
+      "official_english_name": "Ein Immernachtstraum",
+      "official_simplified_chinese_name": "极夜真梦",
+      "han_viet_name": "Cực Dạ Chân Mộng"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5783",
+      "official_english_name": "Frostflower Dew",
+      "official_simplified_chinese_name": "冷花幽露",
+      "han_viet_name": "Lãnh Hoa U Lộ"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5773",
+      "official_english_name": "Gunnhildr's Legacy",
+      "official_simplified_chinese_name": "古恩希尔德的传承",
+      "han_viet_name": "Cổ Ân Hy Nhĩ Đức Đích Truyện Thừa"
+    },
+    {
+      "source_key": "hoyowiki-outfit-10963",
+      "official_english_name": "Hurlock Variations",
+      "official_simplified_chinese_name": "赫尔洛克变奏曲",
+      "han_viet_name": "Hách Nhĩ Lạc Khắc Biến Tấu Khúc"
+    },
+    {
+      "source_key": "hoyowiki-outfit-9252",
+      "official_english_name": "Melusent Gift",
+      "official_simplified_chinese_name": "莘露的赠礼",
+      "han_viet_name": "Sân Lộ Đích Tặng Lễ"
+    },
+    {
+      "source_key": "hoyowiki-outfit-7364",
+      "official_english_name": "New Year's Cheer",
+      "official_simplified_chinese_name": "岁夜欢哗",
+      "han_viet_name": "Tuế Dạ Hoan Hoa"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5772",
+      "official_english_name": "Opulent Splendor",
+      "official_simplified_chinese_name": "霓裾翩跹",
+      "han_viet_name": "Nghê Cứ Phiên Tiên"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5771",
+      "official_english_name": "Orchid's Evening Gown",
+      "official_simplified_chinese_name": "纱中幽兰",
+      "han_viet_name": "Sa Trung U Lan"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5775",
+      "official_english_name": "Pact of Stars and Moon",
+      "official_simplified_chinese_name": "星与月之约",
+      "han_viet_name": "Tinh Dữ Nguyệt Chi Ước"
+    },
+    {
+      "source_key": "hoyowiki-outfit-6276",
+      "official_english_name": "Phantom in Boots",
+      "official_simplified_chinese_name": "倩影游侠",
+      "han_viet_name": "Thiến Ảnh Du Hiệp"
+    },
+    {
+      "source_key": "hoyowiki-outfit-9253",
+      "official_english_name": "Rainlit Bamboo Reverie",
+      "official_simplified_chinese_name": "聆雨听竹",
+      "han_viet_name": "Linh Vũ Thính Trúc"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5777",
+      "official_english_name": "Red Dead of Night",
+      "official_simplified_chinese_name": "殷红终夜",
+      "han_viet_name": "Ân Hồng Chung Dạ"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5782",
+      "official_english_name": "Sailwind Shadow",
+      "official_simplified_chinese_name": "帆影游风",
+      "han_viet_name": "Phàm Ảnh Du Phong"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5769",
+      "official_english_name": "Sea Breeze Dandelion",
+      "official_simplified_chinese_name": "海风之梦",
+      "han_viet_name": "Hải Phong Chi Mộng"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5779",
+      "official_english_name": "Springbloom Missive",
+      "official_simplified_chinese_name": "花时来信",
+      "han_viet_name": "Hoa Thì Lai Tín"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5770",
+      "official_english_name": "Summertime Sparkle",
+      "official_simplified_chinese_name": "闪耀协奏",
+      "han_viet_name": "Thiểm Diệu Hiệp Tấu"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5776",
+      "official_english_name": "To the Church's Free Spirit",
+      "official_simplified_chinese_name": "致教会自由人",
+      "han_viet_name": "Trí Giáo Hội Tự Do Nhân"
+    },
+    {
+      "source_key": "hoyowiki-outfit-9083",
+      "official_english_name": "Toward the Distant Horizon",
+      "official_simplified_chinese_name": "故事的远方",
+      "han_viet_name": "Cố Sự Đích Viễn Phương"
+    },
+    {
+      "source_key": "hoyowiki-outfit-8362",
+      "official_english_name": "Tranquil Banquet",
+      "official_simplified_chinese_name": "静暇雅宴",
+      "han_viet_name": "Tĩnh Hạ Nhã Yến"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5784",
+      "official_english_name": "Twilight Blossom",
+      "official_simplified_chinese_name": "玄玉瑶芳",
+      "han_viet_name": "Huyền Ngọc Dao Phương"
+    },
+    {
+      "source_key": "hoyowiki-outfit-10962",
+      "official_english_name": "Whispers of Stars and Smoke",
+      "official_simplified_chinese_name": "星与烟帷的夜语",
+      "han_viet_name": "Tinh Dữ Yên Duy Đích Dạ Ngữ"
+    }
+  ]
+}

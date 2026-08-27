@@ -19,6 +19,36 @@ fn main() -> Result<(), Box<dyn Error>> {
         "webp",
         "region_icons.rs",
         "region_icon",
+    )?;
+    generate_asset_module(
+        &module_dir.join("assets/weapons-hoyowiki"),
+        "png",
+        "weapon_hoyowiki_thumbnails.rs",
+        "weapon_hoyowiki_thumbnail",
+    )?;
+    generate_asset_module(
+        &module_dir.join("assets/weapons"),
+        "png",
+        "weapon_fallback_thumbnails.rs",
+        "weapon_fallback_thumbnail",
+    )?;
+    generate_asset_module(
+        &module_dir.join("assets/skins"),
+        "png",
+        "skin_png_thumbnails.rs",
+        "skin_png_thumbnail",
+    )?;
+    generate_asset_module(
+        &module_dir.join("assets/skins"),
+        "gif",
+        "skin_gif_thumbnails.rs",
+        "skin_gif_thumbnail",
+    )?;
+    generate_asset_module(
+        &module_dir.join("assets/artifacts"),
+        "png",
+        "artifact_thumbnails.rs",
+        "artifact_thumbnail",
     )
 }
 

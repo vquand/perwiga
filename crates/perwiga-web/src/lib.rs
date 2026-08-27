@@ -15,7 +15,8 @@ use axum::{
 };
 use perwiga_core::{
     model::{
-        AliasInput, CalendarEvent, EntityAlias, EntityInput, EntityPatch, LibraryWork, WikiEntity,
+        AliasInput, CalendarEvent, EntityAlias, EntityAppearance, EntityInput, EntityPatch,
+        LibraryWork, WikiEntity,
     },
     service::Application,
     CalendarEventPresentation, EntityEventRecencyPresentation, EntityFacetDefinition,
@@ -76,6 +77,8 @@ struct EntityTypeResponse {
 struct EntityListItemResponse {
     #[serde(flatten)]
     entity: WikiEntity,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    catalog_label: Option<String>,
     presentation: Option<EntityPresentation>,
     event_recency: Option<EntityEventRecencyPresentation>,
 }
@@ -84,6 +87,7 @@ struct EntityListItemResponse {
 struct EntityDetailResponse {
     entity: WikiEntity,
     aliases: Vec<EntityAlias>,
+    appearances: Vec<EntityAppearance>,
     event_recency: Option<EntityEventRecencyPresentation>,
 }
 
@@ -268,6 +272,18 @@ pub fn router_with_store(store: Store) -> perwiga_core::Result<Router> {
             get(genshin_character_thumbnail),
         )
         .route(
+            "/assets/modules/genshin-impact/weapons/{filename}",
+            get(genshin_weapon_thumbnail),
+        )
+        .route(
+            "/assets/modules/genshin-impact/skins/{filename}",
+            get(genshin_skin_thumbnail),
+        )
+        .route(
+            "/assets/modules/genshin-impact/artifacts/{filename}",
+            get(genshin_artifact_thumbnail),
+        )
+        .route(
             "/assets/modules/genshin-impact/regions/{filename}",
             get(genshin_region_icon),
         )
@@ -442,6 +458,73 @@ async fn genshin_character_thumbnail(Path(filename): Path<String>) -> Result<Res
     Ok(response)
 }
 
+async fn genshin_weapon_thumbnail(Path(filename): Path<String>) -> Result<Response, WebError> {
+    let source_key = filename
+        .strip_suffix(".png")
+        .ok_or_else(|| PerwigaError::NotFound(format!("weapon thumbnail {filename}")))?;
+    let bytes = genshin_impact::weapon_thumbnail(source_key)
+        .ok_or_else(|| PerwigaError::NotFound(format!("weapon thumbnail {filename}")))?;
+    let mut response = Response::new(Body::from(bytes));
+    response
+        .headers_mut()
+        .insert(header::CONTENT_TYPE, HeaderValue::from_static("image/png"));
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        HeaderValue::from_static("public, max-age=31536000, immutable"),
+    );
+    response.headers_mut().insert(
+        header::X_CONTENT_TYPE_OPTIONS,
+        HeaderValue::from_static("nosniff"),
+    );
+    Ok(response)
+}
+
+async fn genshin_skin_thumbnail(Path(filename): Path<String>) -> Result<Response, WebError> {
+    let (source_key, content_type) = if let Some(source_key) = filename.strip_suffix(".png") {
+        (source_key, "image/png")
+    } else if let Some(source_key) = filename.strip_suffix(".gif") {
+        (source_key, "image/gif")
+    } else {
+        return Err(PerwigaError::NotFound(format!("Skin thumbnail {filename}")).into());
+    };
+    let bytes = genshin_impact::skin_thumbnail(source_key)
+        .ok_or_else(|| PerwigaError::NotFound(format!("Skin thumbnail {filename}")))?;
+    let mut response = Response::new(Body::from(bytes));
+    response
+        .headers_mut()
+        .insert(header::CONTENT_TYPE, HeaderValue::from_static(content_type));
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        HeaderValue::from_static("public, max-age=31536000, immutable"),
+    );
+    response.headers_mut().insert(
+        header::X_CONTENT_TYPE_OPTIONS,
+        HeaderValue::from_static("nosniff"),
+    );
+    Ok(response)
+}
+
+async fn genshin_artifact_thumbnail(Path(filename): Path<String>) -> Result<Response, WebError> {
+    let source_key = filename
+        .strip_suffix(".png")
+        .ok_or_else(|| PerwigaError::NotFound(format!("Artifact thumbnail {filename}")))?;
+    let bytes = genshin_impact::artifact_thumbnail(source_key)
+        .ok_or_else(|| PerwigaError::NotFound(format!("Artifact thumbnail {filename}")))?;
+    let mut response = Response::new(Body::from(bytes));
+    response
+        .headers_mut()
+        .insert(header::CONTENT_TYPE, HeaderValue::from_static("image/png"));
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        HeaderValue::from_static("public, max-age=31536000, immutable"),
+    );
+    response.headers_mut().insert(
+        header::X_CONTENT_TYPE_OPTIONS,
+        HeaderValue::from_static("nosniff"),
+    );
+    Ok(response)
+}
+
 async fn genshin_region_icon(Path(filename): Path<String>) -> Result<Response, WebError> {
     let source_key = filename
         .strip_suffix(".webp")
@@ -501,6 +584,9 @@ async fn setup_endfield(State(state): State<WebState>) -> Result<Json<SetupRespo
         Some(work) => work,
         None => application.create_work(WorkKind::Game, ENDFIELD_MODULE_ID, module_name)?,
     };
+    arknights_endfield::import_curated_regions(application.store_mut(), &work.id)?;
+    arknights_endfield::import_curated_gear_sets_and_essences(application.store_mut(), &work.id)?;
+    arknights_endfield::import_curated_event_entities(application.store_mut(), &work.id)?;
     let events = arknights_endfield::curated_calendar_events()?;
     application
         .store_mut()
@@ -527,6 +613,12 @@ async fn setup_genshin(State(state): State<WebState>) -> Result<Json<SetupRespon
         None => application.create_work(WorkKind::Game, GENSHIN_MODULE_ID, module_name)?,
     };
     genshin_impact::import_curated_characters(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_regions(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_npcs(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_weapons(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_skins(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_artifacts(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_artifact_domains(application.store_mut(), &work.id)?;
     Ok(Json(workspace_response(&application, work)?))
 }
 
@@ -640,6 +732,7 @@ async fn list_entities(
         entities
             .into_iter()
             .map(|entity| EntityListItemResponse {
+                catalog_label: module.entity_catalog_label(&entity),
                 presentation: module.entity_presentation(&entity),
                 event_recency: module.entity_event_recency(&entity),
                 entity,
@@ -715,6 +808,7 @@ async fn get_entity(
     Ok(Json(EntityDetailResponse {
         entity: detail.entity,
         aliases: detail.aliases,
+        appearances: detail.appearances,
         event_recency,
     }))
 }

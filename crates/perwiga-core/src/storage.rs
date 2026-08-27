@@ -10,8 +10,9 @@ use crate::{
     model::{
         AliasBatchSummary, AliasInput, CalendarEvent, CalendarEventImportSummary,
         CalendarEventInput, Checklist, ChecklistItem, EntityAlias, EntityAliasBatchInput,
-        EntityImportSummary, EntityInput, EntityPatch, FeedItem, FeedSource, LibraryWork,
-        LinkedFolder, Note, NoteAttachment, SourcedEntityInput, WikiEntity, WikiEntityDetail,
+        EntityAppearance, EntityAppearanceInput, EntityImportSummary, EntityInput, EntityPatch,
+        FeedItem, FeedSource, LibraryWork, LinkedFolder, Note, NoteAttachment, SourcedEntityInput,
+        WikiEntity, WikiEntityDetail,
     },
     module::WorkKind,
 };
@@ -74,6 +75,15 @@ impl Store {
             transaction.execute(
                 "INSERT INTO schema_migrations (version, applied_at) VALUES (?1, ?2)",
                 params![3_i64, now()],
+            )?;
+            transaction.commit()?;
+        }
+        if current.unwrap_or(0) < 4 {
+            let transaction = self.connection.transaction()?;
+            transaction.execute_batch(SCHEMA_V4)?;
+            transaction.execute(
+                "INSERT INTO schema_migrations (version, applied_at) VALUES (?1, ?2)",
+                params![4_i64, now()],
             )?;
             transaction.commit()?;
         }
@@ -243,6 +253,7 @@ impl Store {
                             "SELECT id FROM wiki_entities
                              WHERE work_id = ?1 AND entity_type = ?2
                                AND official_english_name = ?3 COLLATE NOCASE
+                               AND source_provider IS NULL
                              LIMIT 1",
                             params![work_id, entity_type, english],
                             |row| row.get::<_, String>(0),
@@ -381,6 +392,7 @@ impl Store {
         };
         Ok(Some(WikiEntityDetail {
             aliases: self.list_aliases(id)?,
+            appearances: self.list_entity_appearances(id)?,
             entity,
         }))
     }
@@ -433,6 +445,148 @@ impl Store {
         let rows = statement.query_map([entity_id], row_to_alias)?;
         rows.collect::<std::result::Result<Vec<_>, _>>()
             .map_err(Into::into)
+    }
+
+    /// Imports module-owned relationship rows without replacing existing data.
+    /// The generic table is namespaced by the source provider/identity, while
+    /// the owning module controls the relation kind and meaning.
+    pub fn import_entity_appearances(&mut self, inputs: &[EntityAppearanceInput]) -> Result<usize> {
+        let transaction = self.connection.transaction()?;
+        let mut inserted = 0;
+        for input in inputs {
+            let entity_id = required_text(&input.entity_id, "appearance entity ID")?;
+            let relation_kind = required_text(&input.relation_kind, "appearance relation kind")?;
+            let related_title = required_text(&input.related_title, "appearance title")?;
+            let source_provider =
+                required_text(&input.source_provider, "appearance source provider")?;
+            let source_identity =
+                required_text(&input.source_identity, "appearance source identity")?;
+            let entity_exists: Option<String> = transaction
+                .query_row(
+                    "SELECT work_id FROM wiki_entities WHERE id = ?1",
+                    [&entity_id],
+                    |row| row.get(0),
+                )
+                .optional()?;
+            if entity_exists.is_none() {
+                return Err(PerwigaError::NotFound(format!("entity {entity_id}")));
+            }
+            let related_source_url = input
+                .related_source_url
+                .as_deref()
+                .map(validate_remote_url)
+                .transpose()?;
+            let appearance_id = transaction
+                .query_row(
+                    "SELECT id FROM entity_appearances
+                     WHERE entity_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                    params![entity_id, source_provider, source_identity],
+                    |row| row.get::<_, String>(0),
+                )
+                .optional()?;
+            let appearance_id = match appearance_id {
+                Some(id) => id,
+                None => {
+                    let id = new_id();
+                    transaction.execute(
+                        "INSERT INTO entity_appearances
+                         (id, entity_id, relation_kind, related_title, related_source_url,
+                          source_provider, source_identity, source_notes, created_at, updated_at)
+                         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?9)",
+                        params![
+                            id,
+                            entity_id,
+                            relation_kind,
+                            related_title,
+                            related_source_url,
+                            source_provider,
+                            source_identity,
+                            non_empty_option(input.source_notes.as_deref(), "appearance notes")?,
+                            now(),
+                        ],
+                    )?;
+                    inserted += 1;
+                    id
+                }
+            };
+            for location in &input.locations {
+                let location_name = required_text(&location.location_name, "appearance location")?;
+                transaction.execute(
+                    "INSERT INTO entity_appearance_locations
+                     (id, appearance_id, location_name, region_name)
+                     VALUES (?1, ?2, ?3, ?4)
+                     ON CONFLICT (appearance_id, location_name, region_name) DO NOTHING",
+                    params![
+                        new_id(),
+                        appearance_id,
+                        location_name,
+                        non_empty_option(location.region_name.as_deref(), "location region")?,
+                    ],
+                )?;
+            }
+        }
+        transaction.commit()?;
+        Ok(inserted)
+    }
+
+    pub fn list_entity_appearances(&self, entity_id: &str) -> Result<Vec<EntityAppearance>> {
+        let mut statement = self.connection.prepare(
+            "SELECT id, entity_id, relation_kind, related_title, related_source_url,
+                    source_provider, source_identity, source_notes
+             FROM entity_appearances WHERE entity_id = ?1
+             ORDER BY relation_kind, related_title COLLATE NOCASE, id",
+        )?;
+        let rows = statement.query_map([entity_id], |row| {
+            Ok((
+                row.get::<_, String>(0)?,
+                row.get::<_, String>(1)?,
+                row.get::<_, String>(2)?,
+                row.get::<_, String>(3)?,
+                row.get::<_, Option<String>>(4)?,
+                row.get::<_, String>(5)?,
+                row.get::<_, String>(6)?,
+                row.get::<_, Option<String>>(7)?,
+            ))
+        })?;
+        let mut appearances = Vec::new();
+        for row in rows {
+            let (
+                id,
+                entity_id,
+                relation_kind,
+                related_title,
+                related_source_url,
+                source_provider,
+                source_identity,
+                source_notes,
+            ) = row?;
+            let mut locations = self.connection.prepare(
+                "SELECT id, appearance_id, location_name, region_name
+                 FROM entity_appearance_locations WHERE appearance_id = ?1
+                 ORDER BY location_name COLLATE NOCASE, id",
+            )?;
+            let location_rows = locations.query_map([&id], |row| {
+                Ok(crate::model::EntityAppearanceLocation {
+                    id: row.get(0)?,
+                    appearance_id: row.get(1)?,
+                    location_name: row.get(2)?,
+                    region_name: row.get(3)?,
+                })
+            })?;
+            let locations = location_rows.collect::<std::result::Result<Vec<_>, _>>()?;
+            appearances.push(EntityAppearance {
+                id,
+                entity_id,
+                relation_kind,
+                related_title,
+                related_source_url,
+                source_provider,
+                source_identity,
+                source_notes,
+                locations,
+            });
+        }
+        Ok(appearances)
     }
 
     pub fn add_alias(&self, entity_id: &str, input: &AliasInput) -> Result<EntityAlias> {
@@ -1295,6 +1449,33 @@ ON wiki_entities (work_id, source_provider, source_identity)
 WHERE source_identity IS NOT NULL;
 "#;
 
+const SCHEMA_V4: &str = r#"
+CREATE TABLE entity_appearances (
+    id TEXT PRIMARY KEY,
+    entity_id TEXT NOT NULL REFERENCES wiki_entities (id),
+    relation_kind TEXT NOT NULL CHECK (relation_kind IN ('quest', 'event', 'action')),
+    related_title TEXT NOT NULL CHECK (length(trim(related_title)) > 0),
+    related_source_url TEXT,
+    source_provider TEXT NOT NULL CHECK (length(trim(source_provider)) > 0),
+    source_identity TEXT NOT NULL CHECK (length(trim(source_identity)) > 0),
+    source_notes TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    UNIQUE (entity_id, source_provider, source_identity)
+);
+CREATE INDEX entity_appearances_entity_idx ON entity_appearances (entity_id, relation_kind);
+
+CREATE TABLE entity_appearance_locations (
+    id TEXT PRIMARY KEY,
+    appearance_id TEXT NOT NULL REFERENCES entity_appearances (id),
+    location_name TEXT NOT NULL CHECK (length(trim(location_name)) > 0),
+    region_name TEXT,
+    UNIQUE (appearance_id, location_name, region_name)
+);
+CREATE INDEX entity_appearance_locations_appearance_idx
+ON entity_appearance_locations (appearance_id, location_name);
+"#;
+
 fn now() -> String {
     Utc::now().to_rfc3339_opts(SecondsFormat::Millis, true)
 }
@@ -1571,7 +1752,10 @@ fn row_to_calendar_event(row: &rusqlite::Row<'_>) -> rusqlite::Result<CalendarEv
 #[cfg(test)]
 mod tests {
     use crate::{
-        model::{AliasInput, CalendarEventInput, EntityInput, EntityPatch, SourcedEntityInput},
+        model::{
+            AliasInput, CalendarEventInput, EntityAppearanceInput, EntityAppearanceLocationInput,
+            EntityInput, EntityPatch, SourcedEntityInput,
+        },
         module::WorkKind,
     };
 
@@ -1687,7 +1871,7 @@ mod tests {
                 row.get(0)
             })
             .expect("schema version");
-        assert_eq!(schema_version, 3);
+        assert_eq!(schema_version, 4);
         let entity_source_columns: i64 = store
             .connection
             .query_row(
@@ -1740,6 +1924,107 @@ mod tests {
             .is_empty());
         assert_eq!(store.integrity_check().expect("integrity"), "ok");
         assert_eq!(store.foreign_key_violations().expect("foreign keys"), 0);
+    }
+
+    #[test]
+    fn entity_appearances_are_normalized_idempotent_and_keep_many_locations() {
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let work = store
+            .insert_work(WorkKind::Game, "genshin-impact", "Genshin Impact")
+            .expect("work");
+        let npc = store
+            .insert_entity(
+                &work.id,
+                &EntityInput {
+                    entity_type: "npc".into(),
+                    official_english_name: "Liben".into(),
+                    official_original_name: "立本".into(),
+                    official_vietnamese_name: Some("Liben".into()),
+                    automatic_vietnamese_translation: None,
+                    english_description: None,
+                    other_information: None,
+                },
+            )
+            .expect("NPC");
+        let input = EntityAppearanceInput {
+            entity_id: npc.id.clone(),
+            relation_kind: "event".into(),
+            related_title: "Marvelous Merchandise".into(),
+            related_source_url: Some(
+                "https://genshin-impact.fandom.com/wiki/Marvelous_Merchandise".into(),
+            ),
+            source_provider: "Genshin Impact Wiki".into(),
+            source_identity: "npc-14969:event:marvelous-merchandise".into(),
+            source_notes: Some("Source-backed event relationship".into()),
+            locations: vec![
+                EntityAppearanceLocationInput {
+                    location_name: "Mondstadt".into(),
+                    region_name: Some("Mondstadt".into()),
+                },
+                EntityAppearanceLocationInput {
+                    location_name: "Liyue Harbor".into(),
+                    region_name: Some("Liyue".into()),
+                },
+            ],
+        };
+        assert_eq!(
+            store
+                .import_entity_appearances(&[input.clone()])
+                .expect("first import"),
+            1
+        );
+        assert_eq!(
+            store
+                .import_entity_appearances(&[input])
+                .expect("second import"),
+            0
+        );
+        let appearances = store.list_entity_appearances(&npc.id).expect("appearances");
+        assert_eq!(appearances.len(), 1);
+        assert_eq!(appearances[0].relation_kind, "event");
+        assert_eq!(appearances[0].locations.len(), 2);
+        let detail = store
+            .get_entity_detail(&npc.id)
+            .expect("entity detail")
+            .expect("NPC detail");
+        assert_eq!(detail.appearances, appearances);
+        assert_eq!(store.integrity_check().expect("integrity"), "ok");
+        assert_eq!(store.foreign_key_violations().expect("foreign keys"), 0);
+    }
+
+    #[test]
+    fn entity_appearance_source_urls_are_validated_at_the_storage_boundary() {
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let work = store
+            .insert_work(WorkKind::Novel, "generic", "A novel")
+            .expect("work");
+        let character = store
+            .insert_entity(
+                &work.id,
+                &EntityInput {
+                    entity_type: "character".into(),
+                    official_english_name: "Mara".into(),
+                    official_original_name: "Mara".into(),
+                    official_vietnamese_name: None,
+                    automatic_vietnamese_translation: None,
+                    english_description: None,
+                    other_information: None,
+                },
+            )
+            .expect("character");
+        let error = store
+            .import_entity_appearances(&[EntityAppearanceInput {
+                entity_id: character.id,
+                relation_kind: "chapter".into(),
+                related_title: "Chapter 1".into(),
+                related_source_url: Some("javascript:alert(1)".into()),
+                source_provider: "Novel manuscript".into(),
+                source_identity: "chapter-1".into(),
+                source_notes: None,
+                locations: vec![],
+            }])
+            .expect_err("unsafe URL must be rejected");
+        assert!(error.to_string().contains("URL must use http or https"));
     }
 
     #[test]
@@ -1801,6 +2086,23 @@ mod tests {
             .is_empty());
         assert_eq!(store.integrity_check().expect("integrity"), "ok");
         assert_eq!(store.foreign_key_violations().expect("foreign keys"), 0);
+    }
+
+    #[test]
+    fn sourced_entities_may_share_an_official_name_when_identities_differ() {
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let work = store
+            .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+            .expect("Endfield work");
+        let inputs = [
+            sourced_character("essence-1", "Flawless Essence", "无瑕基质"),
+            sourced_character("essence-2", "Flawless Essence", "无瑕基质"),
+        ];
+
+        let summary = store
+            .import_sourced_entities(&work.id, &inputs)
+            .expect("stable source identities disambiguate duplicate official names");
+        assert_eq!(summary.inserted, 2);
     }
 
     #[test]

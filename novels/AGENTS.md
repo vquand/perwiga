@@ -8,6 +8,8 @@ These rules apply to every module under `novels/`. The root [AGENTS.md](../AGENT
 
 Keep the wiki, notes, checklists, attachments, linked folders, stable entity references, standards-compliant RSS/Atom transport, normalized feed items, and provider status in the shared core.
 
+Source-backed character context records are also common when they describe quest/event/action-style participation. A novel may use `character` for main, supporting, or side characters; locations can be chapter/scene settings when the common record’s meaning is accurate. Chapter, scene, volume, arc, or publication-specific metadata belongs in the owning novel module’s namespaced extension.
+
 Keep behavior in the owning novel module when it depends on a title’s entity taxonomy, chapter/volume model, structured fields, source URLs, authentication, rate limits, custom HTML/API parsing, refresh rules, deduplication, or publication-time semantics.
 
 - Modules depend on shared contracts; shared core code must not import a concrete novel module.
@@ -19,6 +21,7 @@ Keep behavior in the owning novel module when it depends on a title’s entity t
 - Prefer a stable RSS/Atom GUID for feed identity, then a canonical URL, then a documented title-specific fallback.
 - Treat a chapter publication timestamp as feed activity, not a future schedule. Do not create a calendar event unless a confirmed source explicitly supplies schedule semantics or the user creates one manually.
 - Never delete stored chapters or feed items merely because an upstream feed is shortened, reordered, unavailable, or corrected.
+- Never infer a novel character’s appearances from a publication timestamp or prose search alone. Store only source-backed relationships, and preserve provenance and explicit uncertainty for manually curated context.
 - Module migrations run after common migrations in deterministic order and must obey the root no-data-loss rules.
 
 ## Local `AGENTS.md` requirements

@@ -1,0 +1,2194 @@
+{
+  "schema": "perwiga.genshin-impact.artifact-han-viet.v1",
+  "checked_at": "2026-08-26",
+  "catalog_scope": {
+    "artifact_sets": 63,
+    "artifact_pieces": 299
+  },
+  "confidence": {
+    "han_viet_names": "E"
+  },
+  "sources": {
+    "simplified_chinese_names": "Pinned genshin-db Artifact localizations",
+    "han_viet_dictionary": "https://hvdic.thivien.net/transcript.php#trans"
+  },
+  "notes": [
+    "Every value is a generated search alias from the Simplified Chinese Artifact name; none is an official Vietnamese localization."
+  ],
+  "artifact_sets": [
+    {
+      "source_key": "genshin-data-artifact-set-15044",
+      "official_english_name": "A Day Carved From Rising Winds",
+      "official_simplified_chinese_name": "风起之日",
+      "han_viet_name": "Phong Khởi Chi Nhật"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10010",
+      "official_english_name": "Adventurer",
+      "official_simplified_chinese_name": "冒险家",
+      "han_viet_name": "Mạo Hiểm Gia"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15014",
+      "official_english_name": "Archaic Petra",
+      "official_simplified_chinese_name": "悠古的磐岩",
+      "han_viet_name": "Du Cổ Đích Bàn Nham"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15043",
+      "official_english_name": "Aubade of Morningstar and Moon",
+      "official_simplified_chinese_name": "晨星与月的晓歌",
+      "han_viet_name": "Thần Tinh Dữ Nguyệt Đích Hiểu Ca"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10005",
+      "official_english_name": "Berserker",
+      "official_simplified_chinese_name": "战狂",
+      "han_viet_name": "Chiến Cuồng"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-14001",
+      "official_english_name": "Blizzard Strayer",
+      "official_simplified_chinese_name": "冰风迷途的勇士",
+      "han_viet_name": "Băng Phong Mê Đồ Đích Dũng Sĩ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15008",
+      "official_english_name": "Bloodstained Chivalry",
+      "official_simplified_chinese_name": "染血的骑士道",
+      "han_viet_name": "Nhiễm Huyết Đích Kỵ Sĩ Đạo"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10002",
+      "official_english_name": "Brave Heart",
+      "official_simplified_chinese_name": "勇士之心",
+      "han_viet_name": "Dũng Sĩ Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15045",
+      "official_english_name": "Celestial Gift",
+      "official_simplified_chinese_name": "天之美赐",
+      "han_viet_name": "Thiên Chi Mỹ Tứ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15006",
+      "official_english_name": "Crimson Witch of Flames",
+      "official_simplified_chinese_name": "炽烈的炎之魔女",
+      "han_viet_name": "Sí Liệt Đích Viêm Chi Ma Nữ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15025",
+      "official_english_name": "Deepwood Memories",
+      "official_simplified_chinese_name": "深林的记忆",
+      "han_viet_name": "Thâm Lâm Đích Ký Ức"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10003",
+      "official_english_name": "Defender's Will",
+      "official_simplified_chinese_name": "守护之心",
+      "han_viet_name": "Thủ Hộ Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15027",
+      "official_english_name": "Desert Pavilion Chronicle",
+      "official_simplified_chinese_name": "沙上楼阁史话",
+      "han_viet_name": "Sa Thượng Lâu Các Sử Thoại"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15046",
+      "official_english_name": "Disenchantment in Deep Shadow",
+      "official_simplified_chinese_name": "影中沉凝的幻灭",
+      "han_viet_name": "Ảnh Trung Trầm Ngưng Đích Ảo Diệt"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15024",
+      "official_english_name": "Echoes of an Offering",
+      "official_simplified_chinese_name": "来歆余响",
+      "han_viet_name": "Lai Hâm Dư Hưởng"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15020",
+      "official_english_name": "Emblem of Severed Fate",
+      "official_simplified_chinese_name": "绝缘之旗印",
+      "han_viet_name": "Tuyệt Duyên Chi Kỳ Ấn"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15040",
+      "official_english_name": "Finale of the Deep Galleries",
+      "official_simplified_chinese_name": "深廊终曲",
+      "han_viet_name": "Thâm Lang Chung Khúc"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15028",
+      "official_english_name": "Flower of Paradise Lost",
+      "official_simplified_chinese_name": "乐园遗落之花",
+      "han_viet_name": "Nhạc Viên Di Lạc Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15035",
+      "official_english_name": "Fragment of Harmonic Whimsy",
+      "official_simplified_chinese_name": "谐律异想断章",
+      "han_viet_name": "Hài Luật Dị Tưởng Đoạn Chương"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10008",
+      "official_english_name": "Gambler",
+      "official_simplified_chinese_name": "赌徒",
+      "han_viet_name": "Đổ Đồ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15026",
+      "official_english_name": "Gilded Dreams",
+      "official_simplified_chinese_name": "饰金之梦",
+      "han_viet_name": "Sức Kim Chi Mộng"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15001",
+      "official_english_name": "Gladiator's Finale",
+      "official_simplified_chinese_name": "角斗士的终幕礼",
+      "han_viet_name": "Giác Đẩu Sĩ Đích Chung Mán Lễ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15032",
+      "official_english_name": "Golden Troupe",
+      "official_simplified_chinese_name": "黄金剧团",
+      "han_viet_name": "Hoàng Kim Kịch Đoàn"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15016",
+      "official_english_name": "Heart of Depth",
+      "official_simplified_chinese_name": "沉沦之心",
+      "han_viet_name": "Trầm Luân Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15048",
+      "official_english_name": "Heart of the Furnace",
+      "official_simplified_chinese_name": "炉火融炼之心",
+      "han_viet_name": "Lô Hoả Dung Luyện Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15021",
+      "official_english_name": "Husk of Opulent Dreams",
+      "official_simplified_chinese_name": "华馆梦醒形骸记",
+      "han_viet_name": "Hoa Quán Mộng Tỉnh Hình Hài Ký"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10007",
+      "official_english_name": "Instructor",
+      "official_simplified_chinese_name": "教官",
+      "han_viet_name": "Giáo Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-14003",
+      "official_english_name": "Lavawalker",
+      "official_simplified_chinese_name": "渡过烈火的贤人",
+      "han_viet_name": "Độ Quá Liệt Hoả Đích Hiền Nhân"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15039",
+      "official_english_name": "Long Night's Oath",
+      "official_simplified_chinese_name": "长夜之誓",
+      "han_viet_name": "Trưởng Dạ Chi Thệ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10011",
+      "official_english_name": "Lucky Dog",
+      "official_simplified_chinese_name": "幸运儿",
+      "han_viet_name": "Hạnh Vận Nhi"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-14004",
+      "official_english_name": "Maiden Beloved",
+      "official_simplified_chinese_name": "被怜爱的少女",
+      "han_viet_name": "Bị Liên Ái Đích Thiểu Nữ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15031",
+      "official_english_name": "Marechaussee Hunter",
+      "official_simplified_chinese_name": "逐影猎人",
+      "han_viet_name": "Trục Ảnh Lạp Nhân"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10006",
+      "official_english_name": "Martial Artist",
+      "official_simplified_chinese_name": "武人",
+      "han_viet_name": "Võ Nhân"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15041",
+      "official_english_name": "Night of the Sky's Unveiling",
+      "official_simplified_chinese_name": "穹境示现之夜",
+      "han_viet_name": "Khung Cảnh Kỳ Hiện Chi Dạ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15034",
+      "official_english_name": "Nighttime Whispers in the Echoing Woods",
+      "official_simplified_chinese_name": "回声之林夜话",
+      "han_viet_name": "Hồi Thanh Chi Lâm Dạ Thoại"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15007",
+      "official_english_name": "Noblesse Oblige",
+      "official_simplified_chinese_name": "昔日宗室之仪",
+      "han_viet_name": "Tích Nhật Tông Thất Chi Nghi"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15029",
+      "official_english_name": "Nymph's Dream",
+      "official_simplified_chinese_name": "水仙之梦",
+      "han_viet_name": "Thuỷ Tiên Chi Mộng"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15038",
+      "official_english_name": "Obsidian Codex",
+      "official_simplified_chinese_name": "黑曜秘典",
+      "han_viet_name": "Hắc Diệu Bí Điển"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15022",
+      "official_english_name": "Ocean-Hued Clam",
+      "official_simplified_chinese_name": "海染砗磲",
+      "han_viet_name": "Hải Nhiễm Xa Cừ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15018",
+      "official_english_name": "Pale Flame",
+      "official_simplified_chinese_name": "苍白之火",
+      "han_viet_name": "Thương Bạch Chi Hoả"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15010",
+      "official_english_name": "Prayers for Destiny",
+      "official_simplified_chinese_name": "祭水之人",
+      "han_viet_name": "Tế Thuỷ Chi Nhân"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15009",
+      "official_english_name": "Prayers for Illumination",
+      "official_simplified_chinese_name": "祭火之人",
+      "han_viet_name": "Tế Hoả Chi Nhân"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15011",
+      "official_english_name": "Prayers for Wisdom",
+      "official_simplified_chinese_name": "祭雷之人",
+      "han_viet_name": "Tế Lôi Chi Nhân"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15013",
+      "official_english_name": "Prayers to Springtime",
+      "official_simplified_chinese_name": "祭冰之人",
+      "han_viet_name": "Tế Băng Chi Nhân"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10001",
+      "official_english_name": "Resolution of Sojourner",
+      "official_simplified_chinese_name": "行者之心",
+      "han_viet_name": "Hành Giả Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15015",
+      "official_english_name": "Retracing Bolide",
+      "official_simplified_chinese_name": "逆飞的流星",
+      "han_viet_name": "Nghịch Phi Đích Lưu Tinh"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15047",
+      "official_english_name": "Scarlet Proof",
+      "official_simplified_chinese_name": "血红之证",
+      "han_viet_name": "Huyết Hồng Chi Chứng"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10012",
+      "official_english_name": "Scholar",
+      "official_simplified_chinese_name": "学士",
+      "han_viet_name": "Học Sĩ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15037",
+      "official_english_name": "Scroll of the Hero of Cinder City",
+      "official_simplified_chinese_name": "烬城勇者绘卷",
+      "han_viet_name": "Tẫn Thành Dũng Giả Hội Quyển"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15019",
+      "official_english_name": "Shimenawa's Reminiscence",
+      "official_simplified_chinese_name": "追忆之注连",
+      "han_viet_name": "Truy Ức Chi Chú Liên"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15042",
+      "official_english_name": "Silken Moon's Serenade",
+      "official_simplified_chinese_name": "纺月的夜歌",
+      "han_viet_name": "Phưởng Nguyệt Đích Dạ Ca"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15033",
+      "official_english_name": "Song of Days Past",
+      "official_simplified_chinese_name": "昔时之歌",
+      "han_viet_name": "Tích Thì Chi Ca"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15017",
+      "official_english_name": "Tenacity of the Millelith",
+      "official_simplified_chinese_name": "千岩牢固",
+      "han_viet_name": "Thiên Nham Lao Cố"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10009",
+      "official_english_name": "The Exile",
+      "official_simplified_chinese_name": "流放者",
+      "han_viet_name": "Lưu Phóng Giả"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15005",
+      "official_english_name": "Thundering Fury",
+      "official_simplified_chinese_name": "如雷的盛怒",
+      "han_viet_name": "Như Lôi Đích Thịnh Nộ"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-14002",
+      "official_english_name": "Thundersoother",
+      "official_simplified_chinese_name": "平息鸣雷的尊者",
+      "han_viet_name": "Bình Tức Minh Lôi Đích Tôn Giả"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10004",
+      "official_english_name": "Tiny Miracle",
+      "official_simplified_chinese_name": "奇迹",
+      "han_viet_name": "Kỳ Tích"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-10013",
+      "official_english_name": "Traveling Doctor",
+      "official_simplified_chinese_name": "游医",
+      "han_viet_name": "Du Y"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15036",
+      "official_english_name": "Unfinished Reverie",
+      "official_simplified_chinese_name": "未竟的遐思",
+      "han_viet_name": "Vị Cánh Đích Hà Tư"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15023",
+      "official_english_name": "Vermillion Hereafter",
+      "official_simplified_chinese_name": "辰砂往生录",
+      "han_viet_name": "Thần Sa Vãng Sinh Lục"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15002",
+      "official_english_name": "Viridescent Venerer",
+      "official_simplified_chinese_name": "翠绿之影",
+      "han_viet_name": "Thuý Lục Chi Ảnh"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15030",
+      "official_english_name": "Vourukasha's Glow",
+      "official_simplified_chinese_name": "花海甘露之光",
+      "han_viet_name": "Hoa Hải Cam Lộ Chi Quang"
+    },
+    {
+      "source_key": "genshin-data-artifact-set-15003",
+      "official_english_name": "Wanderer's Troupe",
+      "official_simplified_chinese_name": "流浪大地的乐团",
+      "han_viet_name": "Lưu Lãng Đại Địa Đích Nhạc Đoàn"
+    }
+  ],
+  "artifact_pieces": [
+    {
+      "source_key": "genshin-data-artifact-piece-15044-flower",
+      "official_english_name": "Windborne Flower's Spruchdichtung",
+      "official_simplified_chinese_name": "风花的箴铭",
+      "han_viet_name": "Phong Hoa Đích Châm Minh"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15044-plume",
+      "official_english_name": "Dawn's Brilliant Oath",
+      "official_simplified_chinese_name": "晨光的明誓",
+      "han_viet_name": "Thần Quang Đích Minh Thệ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15044-sands",
+      "official_english_name": "A Note in Spring's Leich",
+      "official_simplified_chinese_name": "春律的片刻",
+      "han_viet_name": "Xuân Luật Đích Phiến Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15044-goblet",
+      "official_english_name": "Heldenepos's Unspoken Tale",
+      "official_simplified_chinese_name": "未言的宴话",
+      "han_viet_name": "Vị Ngôn Đích Yến Thoại"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15044-circlet",
+      "official_english_name": "Minnesang of Love and Lament",
+      "official_simplified_chinese_name": "哀慕的恋歌",
+      "han_viet_name": "Ai Mộ Đích Luyến Ca"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10010-flower",
+      "official_english_name": "Adventurer's Flower",
+      "official_simplified_chinese_name": "冒险家之花",
+      "han_viet_name": "Mạo Hiểm Gia Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10010-plume",
+      "official_english_name": "Adventurer's Tail Feather",
+      "official_simplified_chinese_name": "冒险家尾羽",
+      "han_viet_name": "Mạo Hiểm Gia Vĩ Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10010-sands",
+      "official_english_name": "Adventurer's Pocket Watch",
+      "official_simplified_chinese_name": "冒险家怀表",
+      "han_viet_name": "Mạo Hiểm Gia Hoài Biểu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10010-goblet",
+      "official_english_name": "Adventurer's Golden Goblet",
+      "official_simplified_chinese_name": "冒险家金杯",
+      "han_viet_name": "Mạo Hiểm Gia Kim Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10010-circlet",
+      "official_english_name": "Adventurer's Bandana",
+      "official_simplified_chinese_name": "冒险家头带",
+      "han_viet_name": "Mạo Hiểm Gia Đầu Đới"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15014-flower",
+      "official_english_name": "Flower of Creviced Cliff",
+      "official_simplified_chinese_name": "磐陀裂生之花",
+      "han_viet_name": "Bàn Đà Liệt Sinh Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15014-plume",
+      "official_english_name": "Feather of Jagged Peaks",
+      "official_simplified_chinese_name": "嵯峨群峰之翼",
+      "han_viet_name": "Tha Nga Quần Phong Chi Dực"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15014-sands",
+      "official_english_name": "Sundial of Enduring Jade",
+      "official_simplified_chinese_name": "星罗圭璧之晷",
+      "han_viet_name": "Tinh La Khuê Bích Chi Quỹ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15014-goblet",
+      "official_english_name": "Goblet of Chiseled Crag",
+      "official_simplified_chinese_name": "巉岩琢塑之樽",
+      "han_viet_name": "Sàm Nham Trác Tố Chi Tôn"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15014-circlet",
+      "official_english_name": "Mask of Solitude Basalt",
+      "official_simplified_chinese_name": "不动玄石之相",
+      "han_viet_name": "Bất Động Huyền Thạch Chi Tương"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15043-flower",
+      "official_english_name": "Moonlit Offering's Opulent Dream",
+      "official_simplified_chinese_name": "献与月的华梦",
+      "han_viet_name": "Hiến Dữ Nguyệt Đích Hoa Mộng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15043-plume",
+      "official_english_name": "Moonlit Offering's Parting Light",
+      "official_simplified_chinese_name": "献与月的离光",
+      "han_viet_name": "Hiến Dữ Nguyệt Đích Ly Quang"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15043-sands",
+      "official_english_name": "Moonlit Offering's Final Hour",
+      "official_simplified_chinese_name": "献与月的终时",
+      "han_viet_name": "Hiến Dữ Nguyệt Đích Chung Thì"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15043-goblet",
+      "official_english_name": "Moonlit Offering's Libation",
+      "official_simplified_chinese_name": "献与月的酹祭",
+      "han_viet_name": "Hiến Dữ Nguyệt Đích Lỗi Tế"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15043-circlet",
+      "official_english_name": "Moonlit Offering's Silver Crown",
+      "official_simplified_chinese_name": "献与月的银冕",
+      "han_viet_name": "Hiến Dữ Nguyệt Đích Ngân Miện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10005-flower",
+      "official_english_name": "Berserker's Rose",
+      "official_simplified_chinese_name": "战狂的蔷薇",
+      "han_viet_name": "Chiến Cuồng Đích Tường Vy"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10005-plume",
+      "official_english_name": "Berserker's Indigo Feather",
+      "official_simplified_chinese_name": "战狂的翎羽",
+      "han_viet_name": "Chiến Cuồng Đích Linh Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10005-sands",
+      "official_english_name": "Berserker's Timepiece",
+      "official_simplified_chinese_name": "战狂的时计",
+      "han_viet_name": "Chiến Cuồng Đích Thì Kế"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10005-goblet",
+      "official_english_name": "Berserker's Bone Goblet",
+      "official_simplified_chinese_name": "战狂的骨杯",
+      "han_viet_name": "Chiến Cuồng Đích Cốt Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10005-circlet",
+      "official_english_name": "Berserker's Battle Mask",
+      "official_simplified_chinese_name": "战狂的鬼面",
+      "han_viet_name": "Chiến Cuồng Đích Quỷ Diện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14001-flower",
+      "official_english_name": "Snowswept Memory",
+      "official_simplified_chinese_name": "历经风雪的思念",
+      "han_viet_name": "Lịch Kinh Phong Tuyết Đích Tư Niệm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14001-plume",
+      "official_english_name": "Icebreaker's Resolve",
+      "official_simplified_chinese_name": "摧冰而行的执望",
+      "han_viet_name": "Tồi Băng Nhi Hành Đích Chấp Vọng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14001-sands",
+      "official_english_name": "Frozen Homeland's Demise",
+      "official_simplified_chinese_name": "冰雪故园的终期",
+      "han_viet_name": "Băng Tuyết Cố Viên Đích Chung Kỳ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14001-goblet",
+      "official_english_name": "Frost-Weaved Dignity",
+      "official_simplified_chinese_name": "遍结寒霜的傲骨",
+      "han_viet_name": "Biến Kết Hàn Sương Đích Ngạo Cốt"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14001-circlet",
+      "official_english_name": "Broken Rime's Echo",
+      "official_simplified_chinese_name": "破冰踏雪的回音",
+      "han_viet_name": "Phá Băng Đạp Tuyết Đích Hồi Âm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15008-flower",
+      "official_english_name": "Bloodstained Flower of Iron",
+      "official_simplified_chinese_name": "染血的铁之心",
+      "han_viet_name": "Nhiễm Huyết Đích Thiết Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15008-plume",
+      "official_english_name": "Bloodstained Black Plume",
+      "official_simplified_chinese_name": "染血的黑之羽",
+      "han_viet_name": "Nhiễm Huyết Đích Hắc Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15008-sands",
+      "official_english_name": "Bloodstained Final Hour",
+      "official_simplified_chinese_name": "骑士染血之时",
+      "han_viet_name": "Kỵ Sĩ Nhiễm Huyết Chi Thì"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15008-goblet",
+      "official_english_name": "Bloodstained Chevalier's Goblet",
+      "official_simplified_chinese_name": "染血骑士之杯",
+      "han_viet_name": "Nhiễm Huyết Kỵ Sĩ Chi Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15008-circlet",
+      "official_english_name": "Bloodstained Iron Mask",
+      "official_simplified_chinese_name": "染血的铁假面",
+      "han_viet_name": "Nhiễm Huyết Đích Thiết Giả Diện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10002-flower",
+      "official_english_name": "Medal of the Brave",
+      "official_simplified_chinese_name": "勇士的勋章",
+      "han_viet_name": "Dũng Sĩ Đích Huân Chương"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10002-plume",
+      "official_english_name": "Prospect of the Brave",
+      "official_simplified_chinese_name": "勇士的期许",
+      "han_viet_name": "Dũng Sĩ Đích Kỳ Hứa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10002-sands",
+      "official_english_name": "Fortitude of the Brave",
+      "official_simplified_chinese_name": "勇士的坚毅",
+      "han_viet_name": "Dũng Sĩ Đích Kiên Nghị"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10002-goblet",
+      "official_english_name": "Outset of the Brave",
+      "official_simplified_chinese_name": "勇士的壮行",
+      "han_viet_name": "Dũng Sĩ Đích Tráng Hành"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10002-circlet",
+      "official_english_name": "Crown of the Brave",
+      "official_simplified_chinese_name": "勇士的冠冕",
+      "han_viet_name": "Dũng Sĩ Đích Quan Miện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15045-flower",
+      "official_english_name": "Heavensent Fragrance",
+      "official_simplified_chinese_name": "天授之馨",
+      "han_viet_name": "Thiên Thụ Chi Hinh"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15045-plume",
+      "official_english_name": "Heavensent Demise",
+      "official_simplified_chinese_name": "天授之殁",
+      "han_viet_name": "Thiên Thụ Chi Một"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15045-sands",
+      "official_english_name": "Heavensent Decree",
+      "official_simplified_chinese_name": "天授之令",
+      "han_viet_name": "Thiên Thụ Chi Linh"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15045-goblet",
+      "official_english_name": "Heavensent Reward",
+      "official_simplified_chinese_name": "天授之禄",
+      "han_viet_name": "Thiên Thụ Chi Lộc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15045-circlet",
+      "official_english_name": "Heavensent Crown",
+      "official_simplified_chinese_name": "天授之冕",
+      "han_viet_name": "Thiên Thụ Chi Miện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15006-flower",
+      "official_english_name": "Witch's Flower of Blaze",
+      "official_simplified_chinese_name": "魔女的炎之花",
+      "han_viet_name": "Ma Nữ Đích Viêm Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15006-plume",
+      "official_english_name": "Witch's Ever-Burning Plume",
+      "official_simplified_chinese_name": "魔女常燃之羽",
+      "han_viet_name": "Ma Nữ Thường Nhiên Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15006-sands",
+      "official_english_name": "Witch's End Time",
+      "official_simplified_chinese_name": "魔女破灭之时",
+      "han_viet_name": "Ma Nữ Phá Diệt Chi Thì"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15006-goblet",
+      "official_english_name": "Witch's Heart Flames",
+      "official_simplified_chinese_name": "魔女的心之火",
+      "han_viet_name": "Ma Nữ Đích Tâm Chi Hoả"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15006-circlet",
+      "official_english_name": "Witch's Scorching Hat",
+      "official_simplified_chinese_name": "焦灼的魔女帽",
+      "han_viet_name": "Tiêu Chước Đích Ma Nữ Mạo"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15025-flower",
+      "official_english_name": "Labyrinth Wayfarer",
+      "official_simplified_chinese_name": "迷宫的游人",
+      "han_viet_name": "Mê Cung Đích Du Nhân"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15025-plume",
+      "official_english_name": "Scholar of Vines",
+      "official_simplified_chinese_name": "翠蔓的智者",
+      "han_viet_name": "Thuý Mạn Đích Trí Giả"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15025-sands",
+      "official_english_name": "A Time of Insight",
+      "official_simplified_chinese_name": "贤智的定期",
+      "han_viet_name": "Hiền Trí Đích Định Kỳ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15025-goblet",
+      "official_english_name": "Lamp of the Lost",
+      "official_simplified_chinese_name": "迷误者之灯",
+      "han_viet_name": "Mê Ngộ Giả Chi Đăng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15025-circlet",
+      "official_english_name": "Laurel Coronet",
+      "official_simplified_chinese_name": "月桂的宝冠",
+      "han_viet_name": "Nguyệt Quế Đích Bảo Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10003-flower",
+      "official_english_name": "Guardian's Flower",
+      "official_simplified_chinese_name": "守护之花",
+      "han_viet_name": "Thủ Hộ Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10003-plume",
+      "official_english_name": "Guardian's Sigil",
+      "official_simplified_chinese_name": "守护徽印",
+      "han_viet_name": "Thủ Hộ Huy Ấn"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10003-sands",
+      "official_english_name": "Guardian's Clock",
+      "official_simplified_chinese_name": "守护座钟",
+      "han_viet_name": "Thủ Hộ Toạ Chung"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10003-goblet",
+      "official_english_name": "Guardian's Vessel",
+      "official_simplified_chinese_name": "守护之皿",
+      "han_viet_name": "Thủ Hộ Chi Mẫn"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10003-circlet",
+      "official_english_name": "Guardian's Band",
+      "official_simplified_chinese_name": "守护束带",
+      "han_viet_name": "Thủ Hộ Thúc Đới"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15027-flower",
+      "official_english_name": "The First Days of the City of Kings",
+      "official_simplified_chinese_name": "众王之都的开端",
+      "han_viet_name": "Chúng Vương Chi Đô Đích Khai Đoan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15027-plume",
+      "official_english_name": "End of the Golden Realm",
+      "official_simplified_chinese_name": "黄金邦国的结末",
+      "han_viet_name": "Hoàng Kim Bang Quốc Đích Kết Mạt"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15027-sands",
+      "official_english_name": "Timepiece of the Lost Path",
+      "official_simplified_chinese_name": "失落迷途的机芯",
+      "han_viet_name": "Thất Lạc Mê Đồ Đích Cơ Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15027-goblet",
+      "official_english_name": "Defender of the Enchanting Dream",
+      "official_simplified_chinese_name": "迷醉长梦的守护",
+      "han_viet_name": "Mê Tuý Trưởng Mộng Đích Thủ Hộ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15027-circlet",
+      "official_english_name": "Legacy of the Desert High-Born",
+      "official_simplified_chinese_name": "流沙贵嗣的遗宝",
+      "han_viet_name": "Lưu Sa Quý Tự Đích Di Bảo"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15046-flower",
+      "official_english_name": "Iridescence That Ceased Amidst Glory",
+      "official_simplified_chinese_name": "止于荣礼的缎彩",
+      "han_viet_name": "Chỉ Vu Vinh Lễ Đích Đoạn Thái"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15046-plume",
+      "official_english_name": "Sharpness That Ceased Upon Wondrous Creation",
+      "official_simplified_chinese_name": "止于妙想成型的锋毫",
+      "han_viet_name": "Chỉ Vu Diệu Tưởng Thành Hình Đích Phong Hào"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15046-sands",
+      "official_english_name": "Moment That Ceased Upon Waking From Grand Dreams",
+      "official_simplified_chinese_name": "止于宏伟梦醒的时刻",
+      "han_viet_name": "Chỉ Vu Hoành Vĩ Mộng Tỉnh Đích Thì Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15046-goblet",
+      "official_english_name": "Ovations That Ceased Upon Festivity",
+      "official_simplified_chinese_name": "止于祝庆的喝礼",
+      "han_viet_name": "Chỉ Vu Chúc Khánh Đích Hát Lễ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15046-circlet",
+      "official_english_name": "Pendulum That Ceased Amidst a Great Fall",
+      "official_simplified_chinese_name": "止于阔步跌坠的灵摆",
+      "han_viet_name": "Chỉ Vu Khoát Bộ Điệt Truỵ Đích Linh Bi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15024-flower",
+      "official_english_name": "Soulscent Bloom",
+      "official_simplified_chinese_name": "魂香之花",
+      "han_viet_name": "Hồn Hương Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15024-plume",
+      "official_english_name": "Jade Leaf",
+      "official_simplified_chinese_name": "垂玉之叶",
+      "han_viet_name": "Thuỳ Ngọc Chi Diệp"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15024-sands",
+      "official_english_name": "Symbol of Felicitation",
+      "official_simplified_chinese_name": "祝祀之凭",
+      "han_viet_name": "Chúc Tự Chi Bằng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15024-goblet",
+      "official_english_name": "Chalice of the Font",
+      "official_simplified_chinese_name": "涌泉之盏",
+      "han_viet_name": "Dũng Tuyền Chi Trản"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15024-circlet",
+      "official_english_name": "Flowing Rings",
+      "official_simplified_chinese_name": "浮溯之珏",
+      "han_viet_name": "Phù Tố Chi Giác"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15020-flower",
+      "official_english_name": "Magnificent Tsuba",
+      "official_simplified_chinese_name": "明威之镡",
+      "han_viet_name": "Minh Uy Chi Thiền"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15020-plume",
+      "official_english_name": "Sundered Feather",
+      "official_simplified_chinese_name": "切落之羽",
+      "han_viet_name": "Thiết Lạc Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15020-sands",
+      "official_english_name": "Storm Cage",
+      "official_simplified_chinese_name": "雷云之笼",
+      "han_viet_name": "Lôi Vân Chi Lung"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15020-goblet",
+      "official_english_name": "Scarlet Vessel",
+      "official_simplified_chinese_name": "绯花之壶",
+      "han_viet_name": "Phi Hoa Chi Hồ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15020-circlet",
+      "official_english_name": "Ornate Kabuto",
+      "official_simplified_chinese_name": "华饰之兜",
+      "han_viet_name": "Hoa Sức Chi Đâu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15040-flower",
+      "official_english_name": "Deep Gallery's Echoing Song",
+      "official_simplified_chinese_name": "深廊的回奏之歌",
+      "han_viet_name": "Thâm Lang Đích Hồi Tấu Chi Ca"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15040-plume",
+      "official_english_name": "Deep Gallery's Distant Pact",
+      "official_simplified_chinese_name": "深廊的漫远之约",
+      "han_viet_name": "Thâm Lang Đích Mạn Viễn Chi Ước"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15040-sands",
+      "official_english_name": "Deep Gallery's Moment of Oblivion",
+      "official_simplified_chinese_name": "深廊的湮落之刻",
+      "han_viet_name": "Thâm Lang Đích Yên Lạc Chi Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15040-goblet",
+      "official_english_name": "Deep Gallery's Bestowed Banquet",
+      "official_simplified_chinese_name": "深廊的饫赐之宴",
+      "han_viet_name": "Thâm Lang Đích Ứ Tứ Chi Yến"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15040-circlet",
+      "official_english_name": "Deep Gallery's Lost Crown",
+      "official_simplified_chinese_name": "深廊的遂失之冕",
+      "han_viet_name": "Thâm Lang Đích Toại Thất Chi Miện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15028-flower",
+      "official_english_name": "Ay-Khanoum's Myriad",
+      "official_simplified_chinese_name": "月女的华彩",
+      "han_viet_name": "Nguyệt Nữ Đích Hoa Thái"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15028-plume",
+      "official_english_name": "Wilting Feast",
+      "official_simplified_chinese_name": "谢落的筵席",
+      "han_viet_name": "Tạ Lạc Đích Diên Tịch"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15028-sands",
+      "official_english_name": "A Moment Congealed",
+      "official_simplified_chinese_name": "凝结的时刻",
+      "han_viet_name": "Ngưng Kết Đích Thì Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15028-goblet",
+      "official_english_name": "Secret-Keeper's Magic Bottle",
+      "official_simplified_chinese_name": "守秘的魔瓶",
+      "han_viet_name": "Thủ Bí Đích Ma Bình"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15028-circlet",
+      "official_english_name": "Amethyst Crown",
+      "official_simplified_chinese_name": "紫晶的花冠",
+      "han_viet_name": "Tử Tinh Đích Hoa Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15035-flower",
+      "official_english_name": "Harmonious Symphony Prelude",
+      "official_simplified_chinese_name": "谐律交响的前奏",
+      "han_viet_name": "Hài Luật Giao Hưởng Đích Tiền Tấu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15035-plume",
+      "official_english_name": "Ancient Sea's Nocturnal Musing",
+      "official_simplified_chinese_name": "古海玄幽的夜想",
+      "han_viet_name": "Cổ Hải Huyền U Đích Dạ Tưởng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15035-sands",
+      "official_english_name": "The Grand Jape of the Turning of Fate",
+      "official_simplified_chinese_name": "命途轮转的谐谑",
+      "han_viet_name": "Mệnh Đồ Luân Chuyển Đích Hài Hước"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15035-goblet",
+      "official_english_name": "Ichor Shower Rhapsody",
+      "official_simplified_chinese_name": "灵露倾洒的狂诗",
+      "han_viet_name": "Linh Lộ Khuynh Sái Đích Cuồng Thi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15035-circlet",
+      "official_english_name": "Whimsical Dance of the Withered",
+      "official_simplified_chinese_name": "异想零落的圆舞",
+      "han_viet_name": "Dị Tưởng Linh Lạc Đích Viên Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10008-flower",
+      "official_english_name": "Gambler's Brooch",
+      "official_simplified_chinese_name": "赌徒的胸花",
+      "han_viet_name": "Đổ Đồ Đích Hung Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10008-plume",
+      "official_english_name": "Gambler's Feather Accessory",
+      "official_simplified_chinese_name": "赌徒的羽饰",
+      "han_viet_name": "Đổ Đồ Đích Vũ Sức"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10008-sands",
+      "official_english_name": "Gambler's Pocket Watch",
+      "official_simplified_chinese_name": "赌徒的怀表",
+      "han_viet_name": "Đổ Đồ Đích Hoài Biểu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10008-goblet",
+      "official_english_name": "Gambler's Dice Cup",
+      "official_simplified_chinese_name": "赌徒的骰盅",
+      "han_viet_name": "Đổ Đồ Đích Đầu Chung"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10008-circlet",
+      "official_english_name": "Gambler's Earrings",
+      "official_simplified_chinese_name": "赌徒的耳环",
+      "han_viet_name": "Đổ Đồ Đích Nhĩ Hoàn"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15026-flower",
+      "official_english_name": "Dreaming Steelbloom",
+      "official_simplified_chinese_name": "梦中的铁花",
+      "han_viet_name": "Mộng Trung Đích Thiết Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15026-plume",
+      "official_english_name": "Feather of Judgment",
+      "official_simplified_chinese_name": "裁断的翎羽",
+      "han_viet_name": "Tài Đoạn Đích Linh Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15026-sands",
+      "official_english_name": "The Sunken Years",
+      "official_simplified_chinese_name": "沉金的岁月",
+      "han_viet_name": "Trầm Kim Đích Tuế Nguyệt"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15026-goblet",
+      "official_english_name": "Honeyed Final Feast",
+      "official_simplified_chinese_name": "如蜜的终宴",
+      "han_viet_name": "Như Mật Đích Chung Yến"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15026-circlet",
+      "official_english_name": "Shadow of the Sand King",
+      "official_simplified_chinese_name": "沙王的投影",
+      "han_viet_name": "Sa Vương Đích Đầu Ảnh"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15001-flower",
+      "official_english_name": "Gladiator's Nostalgia",
+      "official_simplified_chinese_name": "角斗士的留恋",
+      "han_viet_name": "Giác Đẩu Sĩ Đích Lưu Luyến"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15001-plume",
+      "official_english_name": "Gladiator's Destiny",
+      "official_simplified_chinese_name": "角斗士的归宿",
+      "han_viet_name": "Giác Đẩu Sĩ Đích Quy Túc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15001-sands",
+      "official_english_name": "Gladiator's Longing",
+      "official_simplified_chinese_name": "角斗士的希冀",
+      "han_viet_name": "Giác Đẩu Sĩ Đích Hy Ký"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15001-goblet",
+      "official_english_name": "Gladiator's Intoxication",
+      "official_simplified_chinese_name": "角斗士的酣醉",
+      "han_viet_name": "Giác Đẩu Sĩ Đích Hàm Tuý"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15001-circlet",
+      "official_english_name": "Gladiator's Triumphus",
+      "official_simplified_chinese_name": "角斗士的凯旋",
+      "han_viet_name": "Giác Đẩu Sĩ Đích Khải Toàn"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15032-flower",
+      "official_english_name": "Golden Song's Variation",
+      "official_simplified_chinese_name": "黄金乐曲的变奏",
+      "han_viet_name": "Hoàng Kim Nhạc Khúc Đích Biến Tấu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15032-plume",
+      "official_english_name": "Golden Bird's Shedding",
+      "official_simplified_chinese_name": "黄金飞鸟的落羽",
+      "han_viet_name": "Hoàng Kim Phi Điểu Đích Lạc Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15032-sands",
+      "official_english_name": "Golden Era's Prelude",
+      "official_simplified_chinese_name": "黄金时代的先声",
+      "han_viet_name": "Hoàng Kim Thì Đại Đích Tiên Thanh"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15032-goblet",
+      "official_english_name": "Golden Night's Bustle",
+      "official_simplified_chinese_name": "黄金之夜的喧嚣",
+      "han_viet_name": "Hoàng Kim Chi Dạ Đích Huyên Hiêu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15032-circlet",
+      "official_english_name": "Golden Troupe's Reward",
+      "official_simplified_chinese_name": "黄金剧团的奖赏",
+      "han_viet_name": "Hoàng Kim Kịch Đoàn Đích Tưởng Thưởng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15016-flower",
+      "official_english_name": "Gilded Corsage",
+      "official_simplified_chinese_name": "饰金胸花",
+      "han_viet_name": "Sức Kim Hung Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15016-plume",
+      "official_english_name": "Gust of Nostalgia",
+      "official_simplified_chinese_name": "追忆之风",
+      "han_viet_name": "Truy Ức Chi Phong"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15016-sands",
+      "official_english_name": "Copper Compass",
+      "official_simplified_chinese_name": "坚铜罗盘",
+      "han_viet_name": "Kiên Đồng La Bàn"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15016-goblet",
+      "official_english_name": "Goblet of Thundering Deep",
+      "official_simplified_chinese_name": "沉波之盏",
+      "han_viet_name": "Trầm Ba Chi Trản"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15016-circlet",
+      "official_english_name": "Wine-Stained Tricorne",
+      "official_simplified_chinese_name": "酒渍船帽",
+      "han_viet_name": "Tửu Tý Thuyền Mạo"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15048-flower",
+      "official_english_name": "Foundryman's Conjecture",
+      "official_simplified_chinese_name": "熔铸者的揣度",
+      "han_viet_name": "Dung Chú Giả Đích Suỷ Độ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15048-plume",
+      "official_english_name": "Foundryman's Observation",
+      "official_simplified_chinese_name": "熔铸者的观测",
+      "han_viet_name": "Dung Chú Giả Đích Quan Trắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15048-sands",
+      "official_english_name": "Foundryman's Calculus",
+      "official_simplified_chinese_name": "熔铸者的计算",
+      "han_viet_name": "Dung Chú Giả Đích Kế Toán"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15048-goblet",
+      "official_english_name": "Foundryman's Magnanimity",
+      "official_simplified_chinese_name": "熔铸者的雅量",
+      "han_viet_name": "Dung Chú Giả Đích Nhã Lượng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15048-circlet",
+      "official_english_name": "Foundryman's Legacy",
+      "official_simplified_chinese_name": "熔铸者的继志",
+      "han_viet_name": "Dung Chú Giả Đích Kế Chí"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15021-flower",
+      "official_english_name": "Bloom Times",
+      "official_simplified_chinese_name": "荣花之期",
+      "han_viet_name": "Vinh Hoa Chi Kỳ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15021-plume",
+      "official_english_name": "Plume of Luxury",
+      "official_simplified_chinese_name": "华馆之羽",
+      "han_viet_name": "Hoa Quán Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15021-sands",
+      "official_english_name": "Song of Life",
+      "official_simplified_chinese_name": "众生之谣",
+      "han_viet_name": "Chúng Sinh Chi Dao"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15021-goblet",
+      "official_english_name": "Calabash of Awakening",
+      "official_simplified_chinese_name": "梦醒之瓢",
+      "han_viet_name": "Mộng Tỉnh Chi Biều"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15021-circlet",
+      "official_english_name": "Skeletal Hat",
+      "official_simplified_chinese_name": "形骸之笠",
+      "han_viet_name": "Hình Hài Chi Lạp"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10007-flower",
+      "official_english_name": "Instructor's Brooch",
+      "official_simplified_chinese_name": "教官的胸花",
+      "han_viet_name": "Giáo Quan Đích Hung Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10007-plume",
+      "official_english_name": "Instructor's Feather Accessory",
+      "official_simplified_chinese_name": "教官的羽饰",
+      "han_viet_name": "Giáo Quan Đích Vũ Sức"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10007-sands",
+      "official_english_name": "Instructor's Pocket Watch",
+      "official_simplified_chinese_name": "教官的怀表",
+      "han_viet_name": "Giáo Quan Đích Hoài Biểu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10007-goblet",
+      "official_english_name": "Instructor's Tea Cup",
+      "official_simplified_chinese_name": "教官的茶杯",
+      "han_viet_name": "Giáo Quan Đích Trà Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10007-circlet",
+      "official_english_name": "Instructor's Cap",
+      "official_simplified_chinese_name": "教官的帽子",
+      "han_viet_name": "Giáo Quan Đích Mạo Tử"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14003-flower",
+      "official_english_name": "Lavawalker's Resolution",
+      "official_simplified_chinese_name": "渡火者的决绝",
+      "han_viet_name": "Độ Hoả Giả Đích Quyết Tuyệt"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14003-plume",
+      "official_english_name": "Lavawalker's Salvation",
+      "official_simplified_chinese_name": "渡火者的解脱",
+      "han_viet_name": "Độ Hoả Giả Đích Giải Thoát"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14003-sands",
+      "official_english_name": "Lavawalker's Torment",
+      "official_simplified_chinese_name": "渡火者的煎熬",
+      "han_viet_name": "Độ Hoả Giả Đích Tiên Ngao"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14003-goblet",
+      "official_english_name": "Lavawalker's Epiphany",
+      "official_simplified_chinese_name": "渡火者的醒悟",
+      "han_viet_name": "Độ Hoả Giả Đích Tỉnh Ngộ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14003-circlet",
+      "official_english_name": "Lavawalker's Wisdom",
+      "official_simplified_chinese_name": "渡火者的智慧",
+      "han_viet_name": "Độ Hoả Giả Đích Trí Tuệ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15039-flower",
+      "official_english_name": "Lightkeeper's Pledge",
+      "official_simplified_chinese_name": "执灯人的誓词",
+      "han_viet_name": "Chấp Đăng Nhân Đích Thệ Từ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15039-plume",
+      "official_english_name": "Nightingale's Tail Feather",
+      "official_simplified_chinese_name": "夜鸣莺的尾羽",
+      "han_viet_name": "Dạ Minh Oanh Đích Vĩ Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15039-sands",
+      "official_english_name": "Undying One's Mourning Bell",
+      "official_simplified_chinese_name": "不死者的哀铃",
+      "han_viet_name": "Bất Tử Giả Đích Ai Linh"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15039-goblet",
+      "official_english_name": "A Horn Unwinded",
+      "official_simplified_chinese_name": "未吹响的号角",
+      "han_viet_name": "Vị Xuy Hưởng Đích Hiệu Giác"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15039-circlet",
+      "official_english_name": "Dyed Tassel",
+      "official_simplified_chinese_name": "被浸染的缨盔",
+      "han_viet_name": "Bị Tẩm Nhiễm Đích Anh Khôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10011-flower",
+      "official_english_name": "Lucky Dog's Clover",
+      "official_simplified_chinese_name": "幸运儿绿花",
+      "han_viet_name": "Hạnh Vận Nhi Lục Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10011-plume",
+      "official_english_name": "Lucky Dog's Eagle Feather",
+      "official_simplified_chinese_name": "幸运儿鹰羽",
+      "han_viet_name": "Hạnh Vận Nhi Ưng Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10011-sands",
+      "official_english_name": "Lucky Dog's Hourglass",
+      "official_simplified_chinese_name": "幸运儿沙漏",
+      "han_viet_name": "Hạnh Vận Nhi Sa Lậu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10011-goblet",
+      "official_english_name": "Lucky Dog's Goblet",
+      "official_simplified_chinese_name": "幸运儿之杯",
+      "han_viet_name": "Hạnh Vận Nhi Chi Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10011-circlet",
+      "official_english_name": "Lucky Dog's Silver Circlet",
+      "official_simplified_chinese_name": "幸运儿银冠",
+      "han_viet_name": "Hạnh Vận Nhi Ngân Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14004-flower",
+      "official_english_name": "Maiden's Distant Love",
+      "official_simplified_chinese_name": "远方的少女之心",
+      "han_viet_name": "Viễn Phương Đích Thiểu Nữ Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14004-plume",
+      "official_english_name": "Maiden's Heart-stricken Infatuation",
+      "official_simplified_chinese_name": "少女飘摇的思念",
+      "han_viet_name": "Thiểu Nữ Phiêu Dao Đích Tư Niệm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14004-sands",
+      "official_english_name": "Maiden's Passing Youth",
+      "official_simplified_chinese_name": "少女苦短的良辰",
+      "han_viet_name": "Thiểu Nữ Khổ Đoản Đích Lương Thần"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14004-goblet",
+      "official_english_name": "Maiden's Fleeting Leisure",
+      "official_simplified_chinese_name": "少女片刻的闲暇",
+      "han_viet_name": "Thiểu Nữ Phiến Khắc Đích Nhàn Hạ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14004-circlet",
+      "official_english_name": "Maiden's Fading Beauty",
+      "official_simplified_chinese_name": "少女易逝的芳颜",
+      "han_viet_name": "Thiểu Nữ Dị Thệ Đích Phương Nhan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15031-flower",
+      "official_english_name": "Hunter's Brooch",
+      "official_simplified_chinese_name": "猎人的胸花",
+      "han_viet_name": "Lạp Nhân Đích Hung Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15031-plume",
+      "official_english_name": "Masterpiece's Overture",
+      "official_simplified_chinese_name": "杰作的序曲",
+      "han_viet_name": "Kiệt Tác Đích Tự Khúc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15031-sands",
+      "official_english_name": "Moment of Judgment",
+      "official_simplified_chinese_name": "裁判的时刻",
+      "han_viet_name": "Tài Phán Đích Thì Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15031-goblet",
+      "official_english_name": "Forgotten Vessel",
+      "official_simplified_chinese_name": "遗忘的容器",
+      "han_viet_name": "Di Vong Đích Dung Khí"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15031-circlet",
+      "official_english_name": "Veteran's Visage",
+      "official_simplified_chinese_name": "老兵的容颜",
+      "han_viet_name": "Lão Binh Đích Dung Nhan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10006-flower",
+      "official_english_name": "Martial Artist's Red Flower",
+      "official_simplified_chinese_name": "武人的红花",
+      "han_viet_name": "Võ Nhân Đích Hồng Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10006-plume",
+      "official_english_name": "Martial Artist's Feather Accessory",
+      "official_simplified_chinese_name": "武人的羽饰",
+      "han_viet_name": "Võ Nhân Đích Vũ Sức"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10006-sands",
+      "official_english_name": "Martial Artist's Water Hourglass",
+      "official_simplified_chinese_name": "武人的水漏",
+      "han_viet_name": "Võ Nhân Đích Thuỷ Lậu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10006-goblet",
+      "official_english_name": "Martial Artist's Wine Cup",
+      "official_simplified_chinese_name": "武人的酒杯",
+      "han_viet_name": "Võ Nhân Đích Tửu Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10006-circlet",
+      "official_english_name": "Martial Artist's Bandana",
+      "official_simplified_chinese_name": "武人的头巾",
+      "han_viet_name": "Võ Nhân Đích Đầu Cân"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15041-flower",
+      "official_english_name": "Bloom of the Mind's Desire",
+      "official_simplified_chinese_name": "渴真之花",
+      "han_viet_name": "Khát Chân Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15041-plume",
+      "official_english_name": "Feather of Indelible Sin",
+      "official_simplified_chinese_name": "深罪之羽",
+      "han_viet_name": "Thâm Tội Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15041-sands",
+      "official_english_name": "Revelation's Toll",
+      "official_simplified_chinese_name": "谕告之钟",
+      "han_viet_name": "Dụ Cáo Chi Chung"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15041-goblet",
+      "official_english_name": "Vessel of Plenty",
+      "official_simplified_chinese_name": "满溢之壶",
+      "han_viet_name": "Mãn Dật Chi Hồ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15041-circlet",
+      "official_english_name": "Crown of the Befallen",
+      "official_simplified_chinese_name": "永劫之冕",
+      "han_viet_name": "Vĩnh Kiếp Chi Miện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15034-flower",
+      "official_english_name": "Selfless Floral Accessory",
+      "official_simplified_chinese_name": "无私的妆饰花",
+      "han_viet_name": "Vô Tư Đích Trang Sức Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15034-plume",
+      "official_english_name": "Honest Quill",
+      "official_simplified_chinese_name": "诚恳的蘸水笔",
+      "han_viet_name": "Thành Khẩn Đích Trám Thuỷ Bút"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15034-sands",
+      "official_english_name": "Faithful Hourglass",
+      "official_simplified_chinese_name": "忠实的砂时计",
+      "han_viet_name": "Trung Thực Đích Sa Thì Kế"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15034-goblet",
+      "official_english_name": "Magnanimous Ink Bottle",
+      "official_simplified_chinese_name": "慷慨的墨水瓶",
+      "han_viet_name": "Khảng Khái Đích Mặc Thuỷ Bình"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15034-circlet",
+      "official_english_name": "Compassionate Ladies' Hat",
+      "official_simplified_chinese_name": "慈爱的淑女帽",
+      "han_viet_name": "Từ Ái Đích Thục Nữ Mạo"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15007-flower",
+      "official_english_name": "Royal Flora",
+      "official_simplified_chinese_name": "宗室之花",
+      "han_viet_name": "Tông Thất Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15007-plume",
+      "official_english_name": "Royal Plume",
+      "official_simplified_chinese_name": "宗室之翎",
+      "han_viet_name": "Tông Thất Chi Linh"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15007-sands",
+      "official_english_name": "Royal Pocket Watch",
+      "official_simplified_chinese_name": "宗室时计",
+      "han_viet_name": "Tông Thất Thì Kế"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15007-goblet",
+      "official_english_name": "Royal Silver Urn",
+      "official_simplified_chinese_name": "宗室银瓮",
+      "han_viet_name": "Tông Thất Ngân Ung"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15007-circlet",
+      "official_english_name": "Royal Masque",
+      "official_simplified_chinese_name": "宗室面具",
+      "han_viet_name": "Tông Thất Diện Cụ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15029-flower",
+      "official_english_name": "Odyssean Flower",
+      "official_simplified_chinese_name": "旅途中的鲜花",
+      "han_viet_name": "Lữ Đồ Trung Đích Tiên Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15029-plume",
+      "official_english_name": "Wicked Mage's Plumule",
+      "official_simplified_chinese_name": "坏巫师的羽杖",
+      "han_viet_name": "Khôi Vu Sư Đích Vũ Trượng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15029-sands",
+      "official_english_name": "Nymph's Constancy",
+      "official_simplified_chinese_name": "水仙的时时刻刻",
+      "han_viet_name": "Thuỷ Tiên Đích Thì Thì Khắc Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15029-goblet",
+      "official_english_name": "Heroes' Tea Party",
+      "official_simplified_chinese_name": "勇者们的茶会",
+      "han_viet_name": "Dũng Giả Môn Đích Trà Hội"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15029-circlet",
+      "official_english_name": "Fell Dragon's Monocle",
+      "official_simplified_chinese_name": "恶龙的单片镜",
+      "han_viet_name": "Ác Long Đích Đan Phiến Kính"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15038-flower",
+      "official_english_name": "Reckoning of the Xenogenic",
+      "official_simplified_chinese_name": "异种的期许",
+      "han_viet_name": "Dị Chủng Đích Kỳ Hứa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15038-plume",
+      "official_english_name": "Root of the Spirit-Marrow",
+      "official_simplified_chinese_name": "灵髓的根脉",
+      "han_viet_name": "Linh Tuỷ Đích Căn Mạch"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15038-sands",
+      "official_english_name": "Myths of the Night Realm",
+      "official_simplified_chinese_name": "夜域的迷思",
+      "han_viet_name": "Dạ Vực Đích Mê Tư"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15038-goblet",
+      "official_english_name": "Pre-Banquet of the Contenders",
+      "official_simplified_chinese_name": "纷争的前宴",
+      "han_viet_name": "Phân Tranh Đích Tiền Yến"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15038-circlet",
+      "official_english_name": "Crown of the Saints",
+      "official_simplified_chinese_name": "诸圣的礼冠",
+      "han_viet_name": "Chư Thánh Đích Lễ Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15022-flower",
+      "official_english_name": "Sea-Dyed Blossom",
+      "official_simplified_chinese_name": "海染之花",
+      "han_viet_name": "Hải Nhiễm Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15022-plume",
+      "official_english_name": "Deep Palace's Plume",
+      "official_simplified_chinese_name": "渊宫之羽",
+      "han_viet_name": "Uyên Cung Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15022-sands",
+      "official_english_name": "Cowry of Parting",
+      "official_simplified_chinese_name": "离别之贝",
+      "han_viet_name": "Ly Biệt Chi Bối"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15022-goblet",
+      "official_english_name": "Pearl Cage",
+      "official_simplified_chinese_name": "真珠之笼",
+      "han_viet_name": "Chân Châu Chi Lung"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15022-circlet",
+      "official_english_name": "Crown of Watatsumi",
+      "official_simplified_chinese_name": "海祇之冠",
+      "han_viet_name": "Hải Kỳ Chi Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15018-flower",
+      "official_english_name": "Stainless Bloom",
+      "official_simplified_chinese_name": "无垢之花",
+      "han_viet_name": "Vô Cấu Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15018-plume",
+      "official_english_name": "Wise Doctor's Pinion",
+      "official_simplified_chinese_name": "贤医之羽",
+      "han_viet_name": "Hiền Y Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15018-sands",
+      "official_english_name": "Moment of Cessation",
+      "official_simplified_chinese_name": "停摆之刻",
+      "han_viet_name": "Đình Bi Chi Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15018-goblet",
+      "official_english_name": "Surpassing Cup",
+      "official_simplified_chinese_name": "超越之盏",
+      "han_viet_name": "Siêu Việt Chi Trản"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15018-circlet",
+      "official_english_name": "Mocking Mask",
+      "official_simplified_chinese_name": "嗤笑之面",
+      "han_viet_name": "Xuy Tiếu Chi Diện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15010-circlet",
+      "official_english_name": "Tiara of Torrents",
+      "official_simplified_chinese_name": "祭水礼冠",
+      "han_viet_name": "Tế Thuỷ Lễ Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15009-circlet",
+      "official_english_name": "Tiara of Flame",
+      "official_simplified_chinese_name": "祭火礼冠",
+      "han_viet_name": "Tế Hoả Lễ Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15011-circlet",
+      "official_english_name": "Tiara of Thunder",
+      "official_simplified_chinese_name": "祭雷礼冠",
+      "han_viet_name": "Tế Lôi Lễ Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15013-circlet",
+      "official_english_name": "Tiara of Frost",
+      "official_simplified_chinese_name": "祭冰礼冠",
+      "han_viet_name": "Tế Băng Lễ Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10001-flower",
+      "official_english_name": "Heart of Comradeship",
+      "official_simplified_chinese_name": "故人之心",
+      "han_viet_name": "Cố Nhân Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10001-plume",
+      "official_english_name": "Feather of Homecoming",
+      "official_simplified_chinese_name": "归乡之羽",
+      "han_viet_name": "Quy Hương Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10001-sands",
+      "official_english_name": "Sundial of the Sojourner",
+      "official_simplified_chinese_name": "逐光之石",
+      "han_viet_name": "Trục Quang Chi Thạch"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10001-goblet",
+      "official_english_name": "Goblet of the Sojourner",
+      "official_simplified_chinese_name": "异国之盏",
+      "han_viet_name": "Dị Quốc Chi Trản"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10001-circlet",
+      "official_english_name": "Crown of Parting",
+      "official_simplified_chinese_name": "感别之冠",
+      "han_viet_name": "Cảm Biệt Chi Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15015-flower",
+      "official_english_name": "Summer Night's Bloom",
+      "official_simplified_chinese_name": "夏祭之花",
+      "han_viet_name": "Hạ Tế Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15015-plume",
+      "official_english_name": "Summer Night's Finale",
+      "official_simplified_chinese_name": "夏祭终末",
+      "han_viet_name": "Hạ Tế Chung Mạt"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15015-sands",
+      "official_english_name": "Summer Night's Moment",
+      "official_simplified_chinese_name": "夏祭之刻",
+      "han_viet_name": "Hạ Tế Chi Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15015-goblet",
+      "official_english_name": "Summer Night's Waterballoon",
+      "official_simplified_chinese_name": "夏祭水玉",
+      "han_viet_name": "Hạ Tế Thuỷ Ngọc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15015-circlet",
+      "official_english_name": "Summer Night's Mask",
+      "official_simplified_chinese_name": "夏祭之面",
+      "han_viet_name": "Hạ Tế Chi Diện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15047-flower",
+      "official_english_name": "Honor to Your Devotion",
+      "official_simplified_chinese_name": "感谢你的奉献",
+      "han_viet_name": "Cảm Tạ Nhĩ Đích Phụng Hiến"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15047-plume",
+      "official_english_name": "Glory to Your Legacy",
+      "official_simplified_chinese_name": "铭记你的功勋",
+      "han_viet_name": "Minh Ký Nhĩ Đích Công Huân"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15047-sands",
+      "official_english_name": "Time Gifted Unto You",
+      "official_simplified_chinese_name": "授予你的年华",
+      "han_viet_name": "Thụ Dư Nhĩ Đích Niên Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15047-goblet",
+      "official_english_name": "Chalice of Your Blood and Sorrow",
+      "official_simplified_chinese_name": "饮尽你的血泪",
+      "han_viet_name": "Ẩm Tận Nhĩ Đích Huyết Lệ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15047-circlet",
+      "official_english_name": "Testament to Your Faith",
+      "official_simplified_chinese_name": "缅怀你的信仰",
+      "han_viet_name": "Miễn Hoài Nhĩ Đích Tín Ngưỡng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10012-flower",
+      "official_english_name": "Scholar's Bookmark",
+      "official_simplified_chinese_name": "学士的书签",
+      "han_viet_name": "Học Sĩ Đích Thư Thiêm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10012-plume",
+      "official_english_name": "Scholar's Quill Pen",
+      "official_simplified_chinese_name": "学士的羽笔",
+      "han_viet_name": "Học Sĩ Đích Vũ Bút"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10012-sands",
+      "official_english_name": "Scholar's Clock",
+      "official_simplified_chinese_name": "学士的时钟",
+      "han_viet_name": "Học Sĩ Đích Thì Chung"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10012-goblet",
+      "official_english_name": "Scholar's Ink Cup",
+      "official_simplified_chinese_name": "学士的墨杯",
+      "han_viet_name": "Học Sĩ Đích Mặc Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10012-circlet",
+      "official_english_name": "Scholar's Lens",
+      "official_simplified_chinese_name": "学士的镜片",
+      "han_viet_name": "Học Sĩ Đích Kính Phiến"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15037-flower",
+      "official_english_name": "Beast Tamer's Talisman",
+      "official_simplified_chinese_name": "驯兽师的护符",
+      "han_viet_name": "Tuần Thú Sư Đích Hộ Phù"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15037-plume",
+      "official_english_name": "Mountain Ranger's Marker",
+      "official_simplified_chinese_name": "巡山客的信标",
+      "han_viet_name": "Tuần Sơn Khách Đích Tín Tiêu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15037-sands",
+      "official_english_name": "Mystic's Gold Dial",
+      "official_simplified_chinese_name": "秘术家的金盘",
+      "han_viet_name": "Bí Thuật Gia Đích Kim Bàn"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15037-goblet",
+      "official_english_name": "Wandering Scholar's Claw Cup",
+      "official_simplified_chinese_name": "游学者的爪杯",
+      "han_viet_name": "Du Học Giả Đích Trảo Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15037-circlet",
+      "official_english_name": "Demon-Warrior's Feather Mask",
+      "official_simplified_chinese_name": "魔战士的羽面",
+      "han_viet_name": "Ma Chiến Sĩ Đích Vũ Diện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15019-flower",
+      "official_english_name": "Entangling Bloom",
+      "official_simplified_chinese_name": "羁缠之花",
+      "han_viet_name": "Ky Triền Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15019-plume",
+      "official_english_name": "Shaft of Remembrance",
+      "official_simplified_chinese_name": "思忆之矢",
+      "han_viet_name": "Tư Ức Chi Thi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15019-sands",
+      "official_english_name": "Morning Dew's Moment",
+      "official_simplified_chinese_name": "朝露之时",
+      "han_viet_name": "Triêu Lộ Chi Thì"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15019-goblet",
+      "official_english_name": "Hopeful Heart",
+      "official_simplified_chinese_name": "祈望之心",
+      "han_viet_name": "Kỳ Vọng Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15019-circlet",
+      "official_english_name": "Capricious Visage",
+      "official_simplified_chinese_name": "无常之面",
+      "han_viet_name": "Vô Thường Chi Diện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15042-flower",
+      "official_english_name": "Crystal Tear of the Wanderer",
+      "official_simplified_chinese_name": "流离者的晶泪",
+      "han_viet_name": "Lưu Ly Giả Đích Tinh Lệ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15042-plume",
+      "official_english_name": "Pristine Plume of the Blessed",
+      "official_simplified_chinese_name": "受福者的白羽",
+      "han_viet_name": "Thâu Phúc Giả Đích Bạch Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15042-sands",
+      "official_english_name": "Frost Devotee's Delirium",
+      "official_simplified_chinese_name": "祭霜者的迷狂",
+      "han_viet_name": "Tế Sương Giả Đích Mê Cuồng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15042-goblet",
+      "official_english_name": "Joyous Glory of the Pure",
+      "official_simplified_chinese_name": "至纯者的欢荣",
+      "han_viet_name": "Chí Thuần Giả Đích Hoan Vinh"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15042-circlet",
+      "official_english_name": "Holy Crown of the Believer",
+      "official_simplified_chinese_name": "司信者的圣冕",
+      "han_viet_name": "Ty Tín Giả Đích Thánh Miện"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15033-flower",
+      "official_english_name": "Forgotten Oath of Days Past",
+      "official_simplified_chinese_name": "昔时遗落之誓",
+      "han_viet_name": "Tích Thì Di Lạc Chi Thệ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15033-plume",
+      "official_english_name": "Recollection of Days Past",
+      "official_simplified_chinese_name": "昔时浮想之思",
+      "han_viet_name": "Tích Thì Phù Tưởng Chi Tư"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15033-sands",
+      "official_english_name": "Echoing Sound From Days Past",
+      "official_simplified_chinese_name": "昔时回映之音",
+      "han_viet_name": "Tích Thì Hồi Ánh Chi Âm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15033-goblet",
+      "official_english_name": "Promised Dream of Days Past",
+      "official_simplified_chinese_name": "昔时应许之梦",
+      "han_viet_name": "Tích Thì Ưng Hứa Chi Mộng"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15033-circlet",
+      "official_english_name": "Poetry of Days Past",
+      "official_simplified_chinese_name": "昔时传奏之诗",
+      "han_viet_name": "Tích Thì Truyện Tấu Chi Thi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15017-flower",
+      "official_english_name": "Flower of Accolades",
+      "official_simplified_chinese_name": "勋绩之花",
+      "han_viet_name": "Huân Tích Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15017-plume",
+      "official_english_name": "Ceremonial War-Plume",
+      "official_simplified_chinese_name": "昭武翎羽",
+      "han_viet_name": "Chiêu Võ Linh Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15017-sands",
+      "official_english_name": "Orichalceous Time-Dial",
+      "official_simplified_chinese_name": "金铜时晷",
+      "han_viet_name": "Kim Đồng Thì Quỹ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15017-goblet",
+      "official_english_name": "Noble's Pledging Vessel",
+      "official_simplified_chinese_name": "盟誓金爵",
+      "han_viet_name": "Minh Thệ Kim Tước"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15017-circlet",
+      "official_english_name": "General's Ancient Helm",
+      "official_simplified_chinese_name": "将帅兜鍪",
+      "han_viet_name": "Tướng Suý Đâu Mâu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10009-flower",
+      "official_english_name": "Exile's Flower",
+      "official_simplified_chinese_name": "流放者之花",
+      "han_viet_name": "Lưu Phóng Giả Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10009-plume",
+      "official_english_name": "Exile's Feather",
+      "official_simplified_chinese_name": "流放者之羽",
+      "han_viet_name": "Lưu Phóng Giả Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10009-sands",
+      "official_english_name": "Exile's Pocket Watch",
+      "official_simplified_chinese_name": "流放者怀表",
+      "han_viet_name": "Lưu Phóng Giả Hoài Biểu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10009-goblet",
+      "official_english_name": "Exile's Goblet",
+      "official_simplified_chinese_name": "流放者之杯",
+      "han_viet_name": "Lưu Phóng Giả Chi Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10009-circlet",
+      "official_english_name": "Exile's Circlet",
+      "official_simplified_chinese_name": "流放者头冠",
+      "han_viet_name": "Lưu Phóng Giả Đầu Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15005-flower",
+      "official_english_name": "Thunderbird's Mercy",
+      "official_simplified_chinese_name": "雷鸟的怜悯",
+      "han_viet_name": "Lôi Điểu Đích Liên Mẫn"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15005-plume",
+      "official_english_name": "Survivor of Catastrophe",
+      "official_simplified_chinese_name": "雷灾的孑遗",
+      "han_viet_name": "Lôi Tai Đích Kiết Di"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15005-sands",
+      "official_english_name": "Hourglass of Thunder",
+      "official_simplified_chinese_name": "雷霆的时计",
+      "han_viet_name": "Lôi Đình Đích Thì Kế"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15005-goblet",
+      "official_english_name": "Omen of Thunderstorm",
+      "official_simplified_chinese_name": "降雷的凶兆",
+      "han_viet_name": "Giáng Lôi Đích Hung Triệu"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15005-circlet",
+      "official_english_name": "Thunder Summoner's Crown",
+      "official_simplified_chinese_name": "唤雷的头冠",
+      "han_viet_name": "Hoán Lôi Đích Đầu Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14002-flower",
+      "official_english_name": "Thundersoother's Heart",
+      "official_simplified_chinese_name": "平雷之心",
+      "han_viet_name": "Bình Lôi Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14002-plume",
+      "official_english_name": "Thundersoother's Plume",
+      "official_simplified_chinese_name": "平雷之羽",
+      "han_viet_name": "Bình Lôi Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14002-sands",
+      "official_english_name": "Hour of Soothing Thunder",
+      "official_simplified_chinese_name": "平雷之刻",
+      "han_viet_name": "Bình Lôi Chi Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14002-goblet",
+      "official_english_name": "Thundersoother's Goblet",
+      "official_simplified_chinese_name": "平雷之器",
+      "han_viet_name": "Bình Lôi Chi Khí"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-14002-circlet",
+      "official_english_name": "Thundersoother's Diadem",
+      "official_simplified_chinese_name": "平雷之冠",
+      "han_viet_name": "Bình Lôi Chi Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10004-flower",
+      "official_english_name": "Tiny Miracle's Flower",
+      "official_simplified_chinese_name": "奇迹之花",
+      "han_viet_name": "Kỳ Tích Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10004-plume",
+      "official_english_name": "Tiny Miracle's Feather",
+      "official_simplified_chinese_name": "奇迹之羽",
+      "han_viet_name": "Kỳ Tích Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10004-sands",
+      "official_english_name": "Tiny Miracle's Hourglass",
+      "official_simplified_chinese_name": "奇迹之沙",
+      "han_viet_name": "Kỳ Tích Chi Sa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10004-goblet",
+      "official_english_name": "Tiny Miracle's Goblet",
+      "official_simplified_chinese_name": "奇迹之杯",
+      "han_viet_name": "Kỳ Tích Chi Bôi"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10004-circlet",
+      "official_english_name": "Tiny Miracle's Earrings",
+      "official_simplified_chinese_name": "奇迹耳坠",
+      "han_viet_name": "Kỳ Tích Nhĩ Truỵ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10013-flower",
+      "official_english_name": "Traveling Doctor's Silver Lotus",
+      "official_simplified_chinese_name": "游医的银莲",
+      "han_viet_name": "Du Y Đích Ngân Liên"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10013-plume",
+      "official_english_name": "Traveling Doctor's Owl Feather",
+      "official_simplified_chinese_name": "游医的枭羽",
+      "han_viet_name": "Du Y Đích Kiêu Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10013-sands",
+      "official_english_name": "Traveling Doctor's Pocket Watch",
+      "official_simplified_chinese_name": "游医的怀钟",
+      "han_viet_name": "Du Y Đích Hoài Chung"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10013-goblet",
+      "official_english_name": "Traveling Doctor's Medicine Pot",
+      "official_simplified_chinese_name": "游医的药壶",
+      "han_viet_name": "Du Y Đích Dược Hồ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-10013-circlet",
+      "official_english_name": "Traveling Doctor's Handkerchief",
+      "official_simplified_chinese_name": "游医的方巾",
+      "han_viet_name": "Du Y Đích Phương Cân"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15036-flower",
+      "official_english_name": "Dark Fruit of Bright Flowers",
+      "official_simplified_chinese_name": "暗结的明花",
+      "han_viet_name": "Ám Kết Đích Minh Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15036-plume",
+      "official_english_name": "Faded Emerald Tail",
+      "official_simplified_chinese_name": "褪光的翠尾",
+      "han_viet_name": "Thốn Quang Đích Thuý Vĩ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15036-sands",
+      "official_english_name": "Moment of Attainment",
+      "official_simplified_chinese_name": "举业的识刻",
+      "han_viet_name": "Cử Nghiệp Đích Thức Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15036-goblet",
+      "official_english_name": "The Wine-Flask Over Which the Plan Was Hatched",
+      "official_simplified_chinese_name": "筹谋的共樽",
+      "han_viet_name": "Trù Mưu Đích Cộng Tôn"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15036-circlet",
+      "official_english_name": "Crownless Crown",
+      "official_simplified_chinese_name": "失冕的宝冠",
+      "han_viet_name": "Thất Miện Đích Bảo Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15023-flower",
+      "official_english_name": "Flowering Life",
+      "official_simplified_chinese_name": "生灵之华",
+      "han_viet_name": "Sinh Linh Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15023-plume",
+      "official_english_name": "Feather of Nascent Light",
+      "official_simplified_chinese_name": "潜光片羽",
+      "han_viet_name": "Tiềm Quang Phiến Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15023-sands",
+      "official_english_name": "Solar Relic",
+      "official_simplified_chinese_name": "阳辔之遗",
+      "han_viet_name": "Dương Bí Chi Di"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15023-goblet",
+      "official_english_name": "Moment of the Pact",
+      "official_simplified_chinese_name": "结契之刻",
+      "han_viet_name": "Kết Khế Chi Khắc"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15023-circlet",
+      "official_english_name": "Thundering Poise",
+      "official_simplified_chinese_name": "虺雷之姿",
+      "han_viet_name": "Huỷ Lôi Chi Tư"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15002-flower",
+      "official_english_name": "In Remembrance of Viridescent Fields",
+      "official_simplified_chinese_name": "野花记忆的绿野",
+      "han_viet_name": "Dã Hoa Ký Ức Đích Lục Dã"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15002-plume",
+      "official_english_name": "Viridescent Arrow Feather",
+      "official_simplified_chinese_name": "猎人青翠的箭羽",
+      "han_viet_name": "Lạp Nhân Thanh Thuý Đích Tiễn Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15002-sands",
+      "official_english_name": "Viridescent Venerer's Determination",
+      "official_simplified_chinese_name": "翠绿猎人的笃定",
+      "han_viet_name": "Thuý Lục Lạp Nhân Đích Đốc Định"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15002-goblet",
+      "official_english_name": "Viridescent Venerer's Vessel",
+      "official_simplified_chinese_name": "翠绿猎人的容器",
+      "han_viet_name": "Thuý Lục Lạp Nhân Đích Dung Khí"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15002-circlet",
+      "official_english_name": "Viridescent Venerer's Diadem",
+      "official_simplified_chinese_name": "翠绿的猎人之冠",
+      "han_viet_name": "Thuý Lục Đích Lạp Nhân Chi Quan"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15030-flower",
+      "official_english_name": "Stamen of Khvarena's Origin",
+      "official_simplified_chinese_name": "灵光源起之蕊",
+      "han_viet_name": "Linh Quang Nguyên Khởi Chi Nhị"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15030-plume",
+      "official_english_name": "Vibrant Pinion",
+      "official_simplified_chinese_name": "琦色灵彩之羽",
+      "han_viet_name": "Kỳ Sắc Linh Thái Chi Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15030-sands",
+      "official_english_name": "Ancient Abscission",
+      "official_simplified_chinese_name": "久远花落之时",
+      "han_viet_name": "Cửu Viễn Hoa Lạc Chi Thì"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15030-goblet",
+      "official_english_name": "Feast of Boundless Joy",
+      "official_simplified_chinese_name": "无边酣乐之筵",
+      "han_viet_name": "Vô Biên Hàm Nhạc Chi Diên"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15030-circlet",
+      "official_english_name": "Heart of Khvarena's Brilliance",
+      "official_simplified_chinese_name": "灵光明烁之心",
+      "han_viet_name": "Linh Quang Minh Thước Chi Tâm"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15003-flower",
+      "official_english_name": "Troupe's Dawnlight",
+      "official_simplified_chinese_name": "乐团的晨光",
+      "han_viet_name": "Nhạc Đoàn Đích Thần Quang"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15003-plume",
+      "official_english_name": "Bard's Arrow Feather",
+      "official_simplified_chinese_name": "琴师的箭羽",
+      "han_viet_name": "Cầm Sư Đích Tiễn Vũ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15003-sands",
+      "official_english_name": "Concert's Final Hour",
+      "official_simplified_chinese_name": "终幕的时计",
+      "han_viet_name": "Chung Mán Đích Thì Kế"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15003-goblet",
+      "official_english_name": "Wanderer's String-Kettle",
+      "official_simplified_chinese_name": "吟游者之壶",
+      "han_viet_name": "Ngâm Du Giả Chi Hồ"
+    },
+    {
+      "source_key": "genshin-data-artifact-piece-15003-circlet",
+      "official_english_name": "Conductor's Top Hat",
+      "official_simplified_chinese_name": "指挥的礼帽",
+      "han_viet_name": "Chỉ Huy Đích Lễ Mạo"
+    }
+  ]
+}

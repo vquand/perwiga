@@ -1,0 +1,1023 @@
+{
+  "schema": "perwiga.genshin-impact.artifact-domains.v1",
+  "checked_at": "2026-08-26",
+  "source": {
+    "url": "https://github.com/theBowja/genshin-db",
+    "commit": "8b15995fa220c88a4d0d7ffe1e21b041d0b32588"
+  },
+  "catalog_scope": {
+    "domain_entrances": 22,
+    "challenge_stages": 92,
+    "domain_type": "UI_ABYSSUS_RELIC"
+  },
+  "domains": [
+    {
+      "source_key": "genshin-data-artifact-domain-758",
+      "game_data_entrance_id": 758,
+      "official_english_name": "City of Gold",
+      "official_simplified_chinese_name": "赤金的城墟",
+      "official_traditional_chinese_name": "赤金的城墟",
+      "official_vietnamese_name": "Phế Tích Ánh Kim",
+      "official_english_description": "Lost and abandoned for centuries, the ruins of this city have become a resting place for paltry beings.\nShould you manage to sweep away the monsters inside like a gust of desert wind, you might just find yourself a few rare Artifacts richer.",
+      "region": "Sumeru",
+      "challenge_stage_ids": [
+        5060,
+        5061,
+        5062,
+        5063
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Desert Citadel I",
+        "Domain of Blessing: Desert Citadel II",
+        "Domain of Blessing: Desert Citadel III",
+        "Domain of Blessing: Desert Citadel IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Anemo"
+      ],
+      "hosted_artifact_set_names": [
+        "Brave Heart",
+        "Desert Pavilion Chronicle",
+        "Flower of Paradise Lost",
+        "Resolution of Sojourner"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10002",
+        "genshin-data-artifact-set-15027",
+        "genshin-data-artifact-set-15028",
+        "genshin-data-artifact-set-10001"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-50",
+      "game_data_entrance_id": 50,
+      "official_english_name": "Clear Pool and Mountain Cavern",
+      "official_simplified_chinese_name": "华池岩岫",
+      "official_traditional_chinese_name": "華池岩岫",
+      "official_vietnamese_name": "Hoa Trì Nham Khúc",
+      "official_english_description": "This ancient blessed altar is filled with monsters that fear the power of Geo.\nYou shall earn priceless Artifacts, if — and only if — you can pass the trial.",
+      "region": "Liyue",
+      "challenge_stage_ids": [
+        5112,
+        5113,
+        5114
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Stone Chamber I",
+        "Domain of Blessing: Stone Chamber II",
+        "Domain of Blessing: Stone Chamber III"
+      ],
+      "recommended_levels": [
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 35,
+      "recommended_elements": [
+        "Geo"
+      ],
+      "hosted_artifact_set_names": [
+        "Bloodstained Chivalry",
+        "Gambler",
+        "Noblesse Oblige",
+        "Scholar"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-15008",
+        "genshin-data-artifact-set-10008",
+        "genshin-data-artifact-set-15007",
+        "genshin-data-artifact-set-10012"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-982",
+      "game_data_entrance_id": 982,
+      "official_english_name": "Denouement of Sin",
+      "official_simplified_chinese_name": "罪祸的终末",
+      "official_traditional_chinese_name": "罪禍的終末",
+      "official_vietnamese_name": "Cái Kết Của Tội Ác",
+      "official_english_description": "After the accident at the Fontaine Research Institute of Kinetic Energy Engineering, many masterless constructs went out of control, wandering aimlessly about the caverns around the shore of the lake, waiting for orders that will never come.\nIf you can destroy the out-of-control clockwork meka, you will obtain the precious artifacts within.",
+      "region": "Fontaine",
+      "challenge_stage_ids": [
+        4480,
+        4481,
+        4482,
+        4483
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Harmony I",
+        "Domain of Blessing: Harmony II",
+        "Domain of Blessing: Harmony III",
+        "Domain of Blessing: Harmony IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Anemo",
+        "Cryo",
+        "Hydro",
+        "Pyro"
+      ],
+      "hosted_artifact_set_names": [
+        "Defender's Will",
+        "Golden Troupe",
+        "Marechaussee Hunter",
+        "Resolution of Sojourner"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10003",
+        "genshin-data-artifact-set-15032",
+        "genshin-data-artifact-set-15031",
+        "genshin-data-artifact-set-10001"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-1191",
+      "game_data_entrance_id": 1191,
+      "official_english_name": "Derelict Masonry Dock",
+      "official_simplified_chinese_name": "荒废砌造坞",
+      "official_traditional_chinese_name": "荒廢砌造塢",
+      "official_vietnamese_name": "Bến Tàu Xây Dựng Bỏ Hoang",
+      "official_english_description": "A once-magnificent design left abandoned to time. This desolate site, hidden deep within the mountain's heart, casts but a flickering shadow of its former grandiose creation.\nThorough exploration may reveal treasures that those who long to reach beyond the heavens can only dream of obtaining.",
+      "region": "Natlan",
+      "challenge_stage_ids": [
+        5022,
+        5023,
+        5024,
+        5025
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Deepfire Construct I",
+        "Domain of Blessing: Deepfire Construct II",
+        "Domain of Blessing: Deepfire Construct III",
+        "Domain of Blessing: Deepfire Construct IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Anemo",
+        "Dendro",
+        "Electro",
+        "Hydro",
+        "Pyro"
+      ],
+      "hosted_artifact_set_names": [
+        "Finale of the Deep Galleries",
+        "Long Night's Oath",
+        "Scholar",
+        "Tiny Miracle"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-15040",
+        "genshin-data-artifact-set-15039",
+        "genshin-data-artifact-set-10012",
+        "genshin-data-artifact-set-10004"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-48",
+      "game_data_entrance_id": 48,
+      "official_english_name": "Domain of Guyun",
+      "official_simplified_chinese_name": "孤云凌霄之处",
+      "official_traditional_chinese_name": "孤雲凌霄之處",
+      "official_vietnamese_name": "Cô Vân Lăng Tiêu",
+      "official_english_description": "This ancient blessed altar is filled with monsters that fear the power of Electro.\nYou shall earn priceless Artifacts, if — and only if — you can pass the trial.",
+      "region": "Liyue",
+      "challenge_stage_ids": [
+        5100,
+        5101,
+        5102,
+        5103,
+        5104,
+        5105
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Spring I",
+        "Domain of Blessing: Spring II",
+        "Domain of Blessing: Spring III",
+        "Domain of Blessing: Spring IV",
+        "Domain of Blessing: Spring V",
+        "Domain of Blessing: Spring VI"
+      ],
+      "recommended_levels": [
+        34,
+        47,
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 20,
+      "recommended_elements": [
+        "Electro"
+      ],
+      "hosted_artifact_set_names": [
+        "Archaic Petra",
+        "Brave Heart",
+        "Lucky Dog",
+        "Retracing Bolide"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-15014",
+        "genshin-data-artifact-set-10002",
+        "genshin-data-artifact-set-10011",
+        "genshin-data-artifact-set-15015"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-1151",
+      "game_data_entrance_id": 1151,
+      "official_english_name": "Faded Theater",
+      "official_simplified_chinese_name": "褪色的剧场",
+      "official_traditional_chinese_name": "褪色的劇場",
+      "official_vietnamese_name": "Nhà Hát Phai Màu",
+      "official_english_description": "The prophet and the ruler, heroes and fell dragons, the grand opera of the golden age once played out here.\nNow, the only players left on the stage are monsters of unknown provenance. You shall earn priceless Artifacts, if — and only if — you can defeat them.",
+      "region": "Fontaine",
+      "challenge_stage_ids": [
+        4510,
+        4511,
+        4512,
+        4513
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Variation I",
+        "Domain of Blessing: Variation II",
+        "Domain of Blessing: Variation III",
+        "Domain of Blessing: Variation IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Electro",
+        "Geo",
+        "Pyro"
+      ],
+      "hosted_artifact_set_names": [
+        "Brave Heart",
+        "Fragment of Harmonic Whimsy",
+        "Scholar",
+        "Unfinished Reverie"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10002",
+        "genshin-data-artifact-set-15035",
+        "genshin-data-artifact-set-10012",
+        "genshin-data-artifact-set-15036"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-1692",
+      "game_data_entrance_id": 1692,
+      "official_english_name": "Frostladen Machinery",
+      "official_simplified_chinese_name": "霜凝的机枢",
+      "official_traditional_chinese_name": "霜凝的機樞",
+      "official_vietnamese_name": "Cơ Quan Đọng Sương",
+      "official_english_description": "A series of giant devices built to test certain principles or assumptions. After all conclusions were drawn, these structures lost their reason for being.\nIf you can defeat the dregs that dwell in this place, you may obtain precious artifacts.",
+      "region": "Nod-Krai",
+      "challenge_stage_ids": [
+        4665,
+        4666,
+        4667,
+        4668
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Derivations From the Deep I",
+        "Domain of Blessing: Derivations From the Deep II",
+        "Domain of Blessing: Derivations From the Deep III",
+        "Domain of Blessing: Derivations From the Deep IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Dendro",
+        "Electro",
+        "Hydro"
+      ],
+      "hosted_artifact_set_names": [
+        "Gambler",
+        "Night of the Sky's Unveiling",
+        "Resolution of Sojourner",
+        "Silken Moon's Serenade"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10008",
+        "genshin-data-artifact-set-15041",
+        "genshin-data-artifact-set-10001",
+        "genshin-data-artifact-set-15042"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-54",
+      "game_data_entrance_id": 54,
+      "official_english_name": "Hidden Palace of Zhou Formula",
+      "official_simplified_chinese_name": "无妄引咎密宫",
+      "official_traditional_chinese_name": "無妄引咎密宮",
+      "official_vietnamese_name": "Mật Cung Vô Vọng",
+      "official_english_description": "This ancient blessed altar is filled with monsters that fear the power of Hydro.\nYou shall earn priceless Artifacts, if — and only if — you can pass the trial.",
+      "region": "Liyue",
+      "challenge_stage_ids": [
+        5107,
+        5108,
+        5109,
+        5110
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Roaring Fire I",
+        "Domain of Blessing: Roaring Fire II",
+        "Domain of Blessing: Roaring Fire III",
+        "Domain of Blessing: Roaring Fire IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Hydro"
+      ],
+      "hosted_artifact_set_names": [
+        "Crimson Witch of Flames",
+        "Defender's Will",
+        "Lavawalker",
+        "Martial Artist"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-15006",
+        "genshin-data-artifact-set-10003",
+        "genshin-data-artifact-set-14003",
+        "genshin-data-artifact-set-10006"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-2075",
+      "game_data_entrance_id": 2075,
+      "official_english_name": "Inverted Glacier",
+      "official_simplified_chinese_name": "逆悬的冰河",
+      "official_traditional_chinese_name": "逆懸的冰河",
+      "official_vietnamese_name": "Sông Băng Treo Ngược",
+      "official_english_description": "A barren mountain scourged by eternal winter storms. Neither monster nor outlaw can long survive its ancient, desolate cold.\nIf you can defeat the scoundrels that dwell in this place, you may obtain precious artifacts.",
+      "region": "Snezhnaya",
+      "challenge_stage_ids": [
+        4703,
+        4704,
+        4705,
+        4706
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Ice Erosion I",
+        "Domain of Blessing: Ice Erosion II",
+        "Domain of Blessing: Ice Erosion III",
+        "Domain of Blessing: Ice Erosion IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Anemo",
+        "Cryo",
+        "Electro"
+      ],
+      "hosted_artifact_set_names": [
+        "Brave Heart",
+        "Heart of the Furnace",
+        "Scarlet Proof",
+        "The Exile"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10002",
+        "genshin-data-artifact-set-15048",
+        "genshin-data-artifact-set-15047",
+        "genshin-data-artifact-set-10009"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-35",
+      "game_data_entrance_id": 35,
+      "official_english_name": "Midsummer Courtyard",
+      "official_simplified_chinese_name": "仲夏庭园",
+      "official_traditional_chinese_name": "仲夏庭園",
+      "official_vietnamese_name": "Vườn Mùa Hè",
+      "official_english_description": "This ancient blessed altar is filled with Pyro-fearing monsters.\nYou shall earn priceless Artifacts, if — and only if — you can pass the trial.",
+      "region": "Mondstadt",
+      "challenge_stage_ids": [
+        5001,
+        5002,
+        5003,
+        5004,
+        5005,
+        5006
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Fires of Purification I",
+        "Domain of Blessing: Fires of Purification II",
+        "Domain of Blessing: Fires of Purification III",
+        "Domain of Blessing: Fires of Purification IV",
+        "Domain of Blessing: Fires of Purification V",
+        "Domain of Blessing: Fires of Purification VI"
+      ],
+      "recommended_levels": [
+        34,
+        47,
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 20,
+      "recommended_elements": [
+        "Pyro"
+      ],
+      "hosted_artifact_set_names": [
+        "Adventurer",
+        "Resolution of Sojourner",
+        "Thundering Fury",
+        "Thundersoother"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10010",
+        "genshin-data-artifact-set-10001",
+        "genshin-data-artifact-set-15005",
+        "genshin-data-artifact-set-14002"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-803",
+      "game_data_entrance_id": 803,
+      "official_english_name": "Molten Iron Fortress",
+      "official_simplified_chinese_name": "熔铁的孤塞",
+      "official_traditional_chinese_name": "熔鐵的孤塞",
+      "official_vietnamese_name": "Cô Thành Sắt Nung",
+      "official_english_description": "A border city that used to provide shelter for desert folk displaced in an epidemic. Now, a new group of vagrants has taken up residence within its walls.\nIf you repel the infesting monsters with the blessing of Dendro, you might be rewarded valuable artifacts.",
+      "region": "Sumeru",
+      "challenge_stage_ids": [
+        5064,
+        5065,
+        5066,
+        5067
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Forsaken Rampart I",
+        "Domain of Blessing: Forsaken Rampart II",
+        "Domain of Blessing: Forsaken Rampart III",
+        "Domain of Blessing: Forsaken Rampart IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Dendro"
+      ],
+      "hosted_artifact_set_names": [
+        "Martial Artist",
+        "Nymph's Dream",
+        "Scholar",
+        "Vourukasha's Glow"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10006",
+        "genshin-data-artifact-set-15029",
+        "genshin-data-artifact-set-10012",
+        "genshin-data-artifact-set-15030"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-361",
+      "game_data_entrance_id": 361,
+      "official_english_name": "Momiji-Dyed Court",
+      "official_simplified_chinese_name": "椛染之庭",
+      "official_traditional_chinese_name": "椛染之庭",
+      "official_vietnamese_name": "Sân Vườn Momiji",
+      "official_english_description": "At this altar where red leaves flutter in the wind, summer and autumn are separated into two spheres, one where Cryo is enhanced, the other where Pyro is enhanced.\nThose of profound skill who can master the trial within have a chance to obtain precious artifacts and receive help in their pursuit of that which may otherwise be untraceable.",
+      "region": "Inazuma",
+      "challenge_stage_ids": [
+        5200,
+        5201,
+        5202,
+        5203
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Autumn Hunt I",
+        "Domain of Blessing: Autumn Hunt II",
+        "Domain of Blessing: Autumn Hunt III",
+        "Domain of Blessing: Autumn Hunt IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Cryo",
+        "Pyro"
+      ],
+      "hosted_artifact_set_names": [
+        "Emblem of Severed Fate",
+        "Resolution of Sojourner",
+        "Shimenawa's Reminiscence",
+        "Tiny Miracle"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-15020",
+        "genshin-data-artifact-set-10001",
+        "genshin-data-artifact-set-15019",
+        "genshin-data-artifact-set-10004"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-1811",
+      "game_data_entrance_id": 1811,
+      "official_english_name": "Moonchild's Treasures",
+      "official_simplified_chinese_name": "月童的库藏",
+      "official_traditional_chinese_name": "月童的庫藏",
+      "official_vietnamese_name": "Kho Tàng Của Nguyệt Đồng",
+      "official_english_description": "A vault that once held the sparks of an ancient civilization, now taken over by villains seeking sacred relics along with the owls of the bedeviled skies.\nIf you repel the infesting monsters with the blessing of moonlight, you might be rewarded valuable artifacts.",
+      "region": "Nod-Krai",
+      "challenge_stage_ids": [
+        4683,
+        4684,
+        4685,
+        4686
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Sacred Vault I",
+        "Domain of Blessing: Sacred Vault II",
+        "Domain of Blessing: Sacred Vault III",
+        "Domain of Blessing: Sacred Vault IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Dendro",
+        "Electro",
+        "Geo",
+        "Hydro"
+      ],
+      "hosted_artifact_set_names": [
+        "A Day Carved From Rising Winds",
+        "Aubade of Morningstar and Moon",
+        "Instructor",
+        "Tiny Miracle"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-15044",
+        "genshin-data-artifact-set-15043",
+        "genshin-data-artifact-set-10007",
+        "genshin-data-artifact-set-10004"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-221",
+      "game_data_entrance_id": 221,
+      "official_english_name": "Peak of Vindagnyr",
+      "official_simplified_chinese_name": "芬德尼尔之顶",
+      "official_traditional_chinese_name": "芬德尼爾之頂",
+      "official_vietnamese_name": "Đỉnh Vindagnyr",
+      "official_english_description": "This was once a ritual site close to the skies, but a frigid nail that descended from the firmament buried it into the mountainside.\nThe frigid air has created the unique environment within. You must conquer the cold to pass this trial.",
+      "region": "Mondstadt",
+      "challenge_stage_ids": [
+        5120,
+        5121,
+        5122,
+        5123
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Elegiac Rime I",
+        "Domain of Blessing: Elegiac Rime II",
+        "Domain of Blessing: Elegiac Rime III",
+        "Domain of Blessing: Elegiac Rime IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Pyro"
+      ],
+      "hosted_artifact_set_names": [
+        "Blizzard Strayer",
+        "Defender's Will",
+        "Gambler",
+        "Heart of Depth"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-14001",
+        "genshin-data-artifact-set-10003",
+        "genshin-data-artifact-set-10008",
+        "genshin-data-artifact-set-15016"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-282",
+      "game_data_entrance_id": 282,
+      "official_english_name": "Ridge Watch",
+      "official_simplified_chinese_name": "山脊守望",
+      "official_traditional_chinese_name": "山脊守望",
+      "official_vietnamese_name": "Bảo Vệ Sườn Núi",
+      "official_english_description": "Those who are tough in spirit and body and who are not afraid of suffering pain shall gain the protection of this ritual site.\nThose who conquer the trial within have a chance to obtain precious artifacts, and with them, the power to achieve dreams yet far-off.",
+      "region": "Mondstadt",
+      "challenge_stage_ids": [
+        5014,
+        5015,
+        5016,
+        5017
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Unyielding I",
+        "Domain of Blessing: Unyielding II",
+        "Domain of Blessing: Unyielding III",
+        "Domain of Blessing: Unyielding IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Cryo",
+        "Geo",
+        "Hydro"
+      ],
+      "hosted_artifact_set_names": [
+        "Brave Heart",
+        "Martial Artist",
+        "Pale Flame",
+        "Tenacity of the Millelith"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10002",
+        "genshin-data-artifact-set-10006",
+        "genshin-data-artifact-set-15018",
+        "genshin-data-artifact-set-15017"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-1190",
+      "game_data_entrance_id": 1190,
+      "official_english_name": "Sanctum of Rainbow Spirits",
+      "official_simplified_chinese_name": "虹灵的净土",
+      "official_traditional_chinese_name": "虹靈的淨土",
+      "official_vietnamese_name": "Tịnh Thổ Linh Hồn",
+      "official_english_description": "It is said it was here that the sage in the form of a rainbow spirit once taught the warriors of the tribes the language of phlogiston. However, after the first Pyro Archon seized the authority of flame, the trials became unnecessary.\nDrive out the squalid scoundrels occupying this place, and you may obtain the precious artifacts stored here.",
+      "region": "Natlan",
+      "challenge_stage_ids": [
+        5018,
+        5019,
+        5020,
+        5021
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: The Burning Gauntlet I",
+        "Domain of Blessing: The Burning Gauntlet II",
+        "Domain of Blessing: The Burning Gauntlet III",
+        "Domain of Blessing: The Burning Gauntlet IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Anemo",
+        "Cryo",
+        "Electro",
+        "Pyro"
+      ],
+      "hosted_artifact_set_names": [
+        "Gambler",
+        "Obsidian Codex",
+        "Resolution of Sojourner",
+        "Scroll of the Hero of Cinder City"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10008",
+        "genshin-data-artifact-set-15038",
+        "genshin-data-artifact-set-10001",
+        "genshin-data-artifact-set-15037"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-433",
+      "game_data_entrance_id": 433,
+      "official_english_name": "Slumbering Court",
+      "official_simplified_chinese_name": "沉眠之庭",
+      "official_traditional_chinese_name": "沉眠之庭",
+      "official_vietnamese_name": "Đại Sảnh Ngủ Say",
+      "official_english_description": "This masterless mansion has become the haunting ground of monsters from the rift.\nThose who can wield the eternal lightning to conquer this trial will obtain the artifacts within.",
+      "region": "Inazuma",
+      "challenge_stage_ids": [
+        5204,
+        5205,
+        5206,
+        5207
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Necropolis I",
+        "Domain of Blessing: Necropolis II",
+        "Domain of Blessing: Necropolis III",
+        "Domain of Blessing: Necropolis IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Electro",
+        "Hydro"
+      ],
+      "hosted_artifact_set_names": [
+        "Brave Heart",
+        "Defender's Will",
+        "Husk of Opulent Dreams",
+        "Ocean-Hued Clam"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10002",
+        "genshin-data-artifact-set-10003",
+        "genshin-data-artifact-set-15021",
+        "genshin-data-artifact-set-15022"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-507",
+      "game_data_entrance_id": 507,
+      "official_english_name": "Spire of Solitary Enlightenment",
+      "official_simplified_chinese_name": "缘觉塔",
+      "official_traditional_chinese_name": "緣覺塔",
+      "official_vietnamese_name": "Tháp Duyên Giác",
+      "official_english_description": "Bandits from the sea of sand lurk within this Domain.\nUse your understanding of the secrets of the elements to defeat them and obtain the precious artifacts stored here.",
+      "region": "Sumeru",
+      "challenge_stage_ids": [
+        5050,
+        5051,
+        5052,
+        5053
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Seven Senses I",
+        "Domain of Blessing: Seven Senses II",
+        "Domain of Blessing: Seven Senses III",
+        "Domain of Blessing: Seven Senses IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Cryo",
+        "Electro",
+        "Hydro"
+      ],
+      "hosted_artifact_set_names": [
+        "Deepwood Memories",
+        "Gambler",
+        "Gilded Dreams",
+        "Tiny Miracle"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-15025",
+        "genshin-data-artifact-set-10008",
+        "genshin-data-artifact-set-15026",
+        "genshin-data-artifact-set-10004"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-516",
+      "game_data_entrance_id": 516,
+      "official_english_name": "The Lost Valley",
+      "official_simplified_chinese_name": "岩中幽谷",
+      "official_traditional_chinese_name": "岩中幽谷",
+      "official_vietnamese_name": "Vực Sâu Nham Thạch",
+      "official_english_description": "This seems to have once been an ancient ritual site, but it has since been taken over by ruin machines from the outside.\nThose who defeat these mechanized invaders may obtain precious artifacts.",
+      "region": "Liyue",
+      "challenge_stage_ids": [
+        5125,
+        5126,
+        5127,
+        5128
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Machine Nest I",
+        "Domain of Blessing: Machine Nest II",
+        "Domain of Blessing: Machine Nest III",
+        "Domain of Blessing: Machine Nest IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Anemo",
+        "Electro",
+        "Geo",
+        "Pyro"
+      ],
+      "hosted_artifact_set_names": [
+        "Echoes of an Offering",
+        "Gambler",
+        "Martial Artist",
+        "Vermillion Hereafter"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-15024",
+        "genshin-data-artifact-set-10008",
+        "genshin-data-artifact-set-10006",
+        "genshin-data-artifact-set-15023"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-2003",
+      "game_data_entrance_id": 2003,
+      "official_english_name": "Thorny Crown of the Mountain Wind",
+      "official_simplified_chinese_name": "山风的荆冕",
+      "official_traditional_chinese_name": "山風的荊冕",
+      "official_vietnamese_name": "Vương Miện Gai Của Gió Núi",
+      "official_english_description": "A floral realm hidden amidst the mountains, now seldom visited due to its remote location.\nIf you can defeat the scoundrels that dwell in this place, you may obtain precious artifacts.",
+      "region": "Mondstadt",
+      "challenge_stage_ids": [
+        4687,
+        4688,
+        4689,
+        4690
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Flower Feast I",
+        "Domain of Blessing: Flower Feast II",
+        "Domain of Blessing: Flower Feast III",
+        "Domain of Blessing: Flower Feast IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Anemo",
+        "Cryo",
+        "Pyro"
+      ],
+      "hosted_artifact_set_names": [
+        "Berserker",
+        "Celestial Gift",
+        "Disenchantment in Deep Shadow",
+        "The Exile"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10005",
+        "genshin-data-artifact-set-15045",
+        "genshin-data-artifact-set-15046",
+        "genshin-data-artifact-set-10009"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-27",
+      "game_data_entrance_id": 27,
+      "official_english_name": "Valley of Remembrance",
+      "official_simplified_chinese_name": "铭记之谷",
+      "official_traditional_chinese_name": "銘記之谷",
+      "official_vietnamese_name": "Thung Lũng Ký Ức",
+      "official_english_description": "This ancient blessed altar is filled with monsters that fear pure, brute force.\nYou shall earn priceless Artifacts, if — and only if — you can pass the trial.",
+      "region": "Mondstadt",
+      "challenge_stage_ids": [
+        5008,
+        5009,
+        5010,
+        5011,
+        5012
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Dance of Steel I",
+        "Domain of Blessing: Dance of Steel II",
+        "Domain of Blessing: Dance of Steel III",
+        "Domain of Blessing: Dance of Steel IV",
+        "Domain of Blessing: Dance of Steel V"
+      ],
+      "recommended_levels": [
+        47,
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 25,
+      "recommended_elements": [],
+      "hosted_artifact_set_names": [
+        "Maiden Beloved",
+        "Tiny Miracle",
+        "Traveling Doctor",
+        "Viridescent Venerer"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-14004",
+        "genshin-data-artifact-set-10004",
+        "genshin-data-artifact-set-10013",
+        "genshin-data-artifact-set-15002"
+      ]
+    },
+    {
+      "source_key": "genshin-data-artifact-domain-1142",
+      "game_data_entrance_id": 1142,
+      "official_english_name": "Waterfall Wen",
+      "official_simplified_chinese_name": "临瀑之城",
+      "official_traditional_chinese_name": "臨瀑之城",
+      "official_vietnamese_name": "Thành Bang Thác Đổ",
+      "official_english_description": "An ancient ruined city that was once used by a now-bygone secret order as an ad-hoc site of assembly.\nNow, all that remains to rule the roost are beasts bereft of language or intellect. Defeat them, and you may claim precious artifacts.",
+      "region": "Fontaine",
+      "challenge_stage_ids": [
+        4484,
+        4485,
+        4486,
+        4487
+      ],
+      "challenge_stage_names": [
+        "Domain of Blessing: Crumbling Assembly I",
+        "Domain of Blessing: Crumbling Assembly II",
+        "Domain of Blessing: Crumbling Assembly III",
+        "Domain of Blessing: Crumbling Assembly IV"
+      ],
+      "recommended_levels": [
+        59,
+        69,
+        80,
+        90
+      ],
+      "minimum_unlock_rank": 30,
+      "recommended_elements": [
+        "Geo"
+      ],
+      "hosted_artifact_set_names": [
+        "Martial Artist",
+        "Nighttime Whispers in the Echoing Woods",
+        "Song of Days Past",
+        "Tiny Miracle"
+      ],
+      "hosted_artifact_set_source_keys": [
+        "genshin-data-artifact-set-10006",
+        "genshin-data-artifact-set-15034",
+        "genshin-data-artifact-set-15033",
+        "genshin-data-artifact-set-10004"
+      ]
+    }
+  ]
+}

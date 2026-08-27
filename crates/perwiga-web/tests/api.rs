@@ -49,7 +49,7 @@ async fn endfield_setup_is_idempotent() {
 
     assert_eq!(first_json["work"]["id"], second_json["work"]["id"]);
     assert_eq!(first_json["work"]["module_id"], "arknights-endfield");
-    assert_eq!(first_json["entity_types"].as_array().unwrap().len(), 8);
+    assert_eq!(first_json["entity_types"].as_array().unwrap().len(), 10);
     let facets = first_json["entity_facets"]
         .as_array()
         .expect("entity facet definitions");
@@ -58,7 +58,10 @@ async fn endfield_setup_is_idempotent() {
         .find(|facet| facet["key"] == "weapon_type")
         .expect("weapon type facet");
     assert_eq!(weapon_type["display_name"], "Weapon type");
-    assert_eq!(weapon_type["entity_types"], json!(["operator", "weapon"]));
+    assert_eq!(
+        weapon_type["entity_types"],
+        json!(["operator", "weapon", "essence"])
+    );
     assert_eq!(
         weapon_type["options"],
         json!([
@@ -101,6 +104,43 @@ async fn endfield_setup_is_idempotent() {
     );
 
     let work_id = first_json["work"]["id"].as_str().expect("work id");
+    let wiki_events = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/entities?entity_type=event"))
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Wiki event list response");
+    assert_eq!(wiki_events.status(), StatusCode::OK);
+    let wiki_events = json_response(wiki_events).await;
+    let wiki_events = wiki_events.as_array().expect("Wiki event list");
+    assert_eq!(wiki_events.len(), 74);
+    let version = wiki_events
+        .iter()
+        .find(|event| event["official_english_name"] == "Zeroth Directive 1.0")
+        .expect("Zeroth Directive Wiki event");
+    assert_eq!(version["official_original_name"], "Zeroth Directive 1.0");
+    assert_eq!(
+        version["english_description"],
+        "Version start is the official release; end is the next announced maintenance start."
+    );
+    assert!(version["other_information"]
+        .as_str()
+        .expect("event provenance")
+        .contains("Curated event source key: version-1-0."));
+    let mut wiki_event_titles = wiki_events
+        .iter()
+        .map(|event| {
+            event["official_english_name"]
+                .as_str()
+                .expect("Wiki event title")
+                .to_string()
+        })
+        .collect::<Vec<_>>();
+    wiki_event_titles.sort();
+
     let created = app
         .clone()
         .oneshot(
@@ -180,6 +220,17 @@ async fn endfield_setup_is_idempotent() {
     let events = json_response(timeline).await;
     let events = events.as_array().expect("timeline events");
     assert!(events.len() >= 55);
+    let mut calendar_event_titles = events
+        .iter()
+        .map(|event| {
+            event["title"]
+                .as_str()
+                .expect("calendar event title")
+                .to_string()
+        })
+        .collect::<Vec<_>>();
+    calendar_event_titles.sort();
+    assert_eq!(wiki_event_titles, calendar_event_titles);
     assert!(events.iter().any(|event| {
         event["title"] == "Sanity Supply 1.4.2"
             && event["event_type"] == "Supply"
@@ -308,8 +359,56 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
             .iter()
             .map(|entity_type| entity_type["key"].as_str().expect("entity type key"))
             .collect::<Vec<_>>(),
-        vec!["character", "npc", "region"]
+        vec![
+            "character",
+            "npc",
+            "region",
+            "weapon",
+            "skin",
+            "artifact-set",
+            "artifact-piece",
+            "domain",
+        ]
     );
+
+    let facets = first_json["entity_facets"]
+        .as_array()
+        .expect("Genshin facets");
+    for key in ["weapon_type", "main_stat", "substat", "ascension_region"] {
+        let facet = facets
+            .iter()
+            .find(|facet| facet["key"] == key)
+            .unwrap_or_else(|| panic!("missing Genshin {key} facet"));
+        assert_eq!(facet["entity_types"], json!(["weapon"]));
+    }
+    for key in ["skin_application", "skin_character", "skin_weapon_type"] {
+        let facet = facets
+            .iter()
+            .find(|facet| facet["key"] == key)
+            .unwrap_or_else(|| panic!("missing Genshin {key} facet"));
+        assert_eq!(facet["entity_types"], json!(["skin"]));
+    }
+    assert_eq!(
+        facets
+            .iter()
+            .find(|facet| facet["key"] == "artifact_slot")
+            .expect("Artifact slot facet")["entity_types"],
+        json!(["artifact-piece"])
+    );
+    assert_eq!(
+        facets
+            .iter()
+            .find(|facet| facet["key"] == "domain_region")
+            .expect("Domain region facet")["entity_types"],
+        json!(["domain"])
+    );
+    for key in ["region_type", "parent_region"] {
+        let facet = facets
+            .iter()
+            .find(|facet| facet["key"] == key)
+            .unwrap_or_else(|| panic!("missing Genshin {key} facet"));
+        assert_eq!(facet["entity_types"], json!(["region"]));
+    }
 
     let works = app
         .clone()
@@ -381,6 +480,74 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
         albedo["presentation"]["thumbnail_url"],
         "/assets/modules/genshin-impact/characters/hoyoverse-content-104816.png"
     );
+    let han_viet_search = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/entities?query=A%20B%E1%BB%91i%20%C4%90a"
+            ))
+            .body(Body::empty())
+            .expect("request"),
+        )
+        .await
+        .expect("Genshin Hán-Việt search response");
+    assert_eq!(han_viet_search.status(), StatusCode::OK);
+    let han_viet_search_json = json_response(han_viet_search).await;
+    assert_eq!(
+        han_viet_search_json
+            .as_array()
+            .expect("Hán-Việt search result")
+            .iter()
+            .map(|character| character["official_english_name"]
+                .as_str()
+                .expect("character name"))
+            .collect::<Vec<_>>(),
+        vec!["Albedo"]
+    );
+
+    let npcs = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/entities?entity_type=npc"))
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Genshin NPC list response");
+    assert_eq!(npcs.status(), StatusCode::OK);
+    let npc_json = json_response(npcs).await;
+    assert_eq!(npc_json.as_array().expect("NPC list").len(), 4_967);
+    let liben = npc_json
+        .as_array()
+        .expect("NPC list")
+        .iter()
+        .find(|npc| npc["official_english_name"] == "Liben")
+        .expect("Liben");
+    assert_eq!(liben["official_original_name"], "立本");
+    let liben_id = liben["id"].as_str().expect("Liben ID");
+    let liben_detail = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/entities/{liben_id}"))
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Liben detail response");
+    assert_eq!(liben_detail.status(), StatusCode::OK);
+    let liben_detail = json_response(liben_detail).await;
+    assert_eq!(liben_detail["appearances"][0]["relation_kind"], "event");
+    assert_eq!(
+        liben_detail["appearances"][0]["related_title"],
+        "Marvelous Merchandise"
+    );
+    assert_eq!(
+        liben_detail["appearances"][0]["locations"]
+            .as_array()
+            .unwrap()
+            .len(),
+        2
+    );
     let aloy = character_json
         .as_array()
         .expect("character list")
@@ -390,6 +557,53 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
     assert_eq!(aloy["presentation"]["label"], "5★");
     assert_eq!(aloy["presentation"]["rarity"], 5);
     assert_eq!(aloy["presentation"]["accent_color"], "#d94b4b");
+
+    let regions = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/entities?entity_type=region"))
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Genshin Region list response");
+    assert_eq!(regions.status(), StatusCode::OK);
+    let region_json = json_response(regions).await;
+    assert_eq!(region_json.as_array().expect("Region list").len(), 217);
+    let liyue_harbor = region_json
+        .as_array()
+        .expect("Region list")
+        .iter()
+        .find(|region| region["official_english_name"] == "Liyue Harbor")
+        .expect("Liyue Harbor");
+    assert_eq!(liyue_harbor["official_original_name"], "璃月港");
+    assert_eq!(liyue_harbor["presentation"]["label"], "SUBREGION");
+    assert_eq!(liyue_harbor["presentation"]["context_label"], "Liyue");
+    assert_eq!(
+        liyue_harbor["presentation"]["facets"]["region_type"],
+        "Subregion"
+    );
+    assert_eq!(
+        liyue_harbor["presentation"]["facets"]["parent_region"],
+        "Liyue"
+    );
+    let region_han_viet_search = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/entities?query=Ly%20Nguy%E1%BB%87t%20C%E1%BA%A3ng"
+            ))
+            .body(Body::empty())
+            .expect("request"),
+        )
+        .await
+        .expect("Region Hán-Việt search response");
+    assert!(json_response(region_han_viet_search)
+        .await
+        .as_array()
+        .expect("Region Hán-Việt search result")
+        .iter()
+        .any(|entity| entity["official_english_name"] == "Liyue Harbor"));
 
     let thumbnail = app
         .clone()
@@ -422,6 +636,232 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
         .to_bytes();
     assert!(region_icon_bytes.starts_with(b"RIFF"));
     assert_eq!(&region_icon_bytes[8..12], b"WEBP");
+
+    let weapons = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/entities?entity_type=weapon"))
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Genshin weapon list response");
+    assert_eq!(weapons.status(), StatusCode::OK);
+    let weapon_json = json_response(weapons).await;
+    assert_eq!(weapon_json.as_array().expect("weapon list").len(), 246);
+    let gravestone = weapon_json
+        .as_array()
+        .expect("weapon list")
+        .iter()
+        .find(|weapon| weapon["official_english_name"] == "Wolf's Gravestone")
+        .expect("Wolf's Gravestone");
+    assert_eq!(gravestone["presentation"]["rarity"], 5);
+    assert_eq!(gravestone["presentation"]["accent_color"], "#d8b66f");
+    assert_eq!(
+        gravestone["presentation"]["facets"]["weapon_type"],
+        "Claymore"
+    );
+    assert_eq!(gravestone["presentation"]["facets"]["main_stat"], "46");
+    assert_eq!(gravestone["presentation"]["facets"]["substat"], "ATK");
+    assert_eq!(
+        gravestone["presentation"]["facets"]["ascension_region"],
+        "Mondstadt"
+    );
+    assert_eq!(
+        gravestone["presentation"]["thumbnail_url"],
+        "/assets/modules/genshin-impact/weapons/genshin-data-weapon-12502.png"
+    );
+    let weapon_thumbnail = app
+        .clone()
+        .oneshot(
+            Request::get("/assets/modules/genshin-impact/weapons/genshin-data-weapon-12502.png")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Genshin weapon thumbnail response");
+    assert_eq!(weapon_thumbnail.status(), StatusCode::OK);
+    assert_eq!(weapon_thumbnail.headers()["content-type"], "image/png");
+    let weapon_han_viet_search = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/entities?query=Lang%20%C4%90%C3%ADch%20M%E1%BA%A1t%20L%E1%BB%99"
+            ))
+            .body(Body::empty())
+            .expect("request"),
+        )
+        .await
+        .expect("weapon Hán-Việt search response");
+    assert_eq!(weapon_han_viet_search.status(), StatusCode::OK);
+    let weapon_han_viet_json = json_response(weapon_han_viet_search).await;
+    assert!(weapon_han_viet_json
+        .as_array()
+        .expect("weapon Hán-Việt search result")
+        .iter()
+        .any(|entity| entity["official_english_name"] == "Wolf's Gravestone"));
+
+    let skins = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/entities?entity_type=skin"))
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Genshin Skin list response");
+    assert_eq!(skins.status(), StatusCode::OK);
+    let skin_json = json_response(skins).await;
+    assert_eq!(skin_json.as_array().expect("Skin list").len(), 29);
+    let diluc = skin_json
+        .as_array()
+        .expect("Skin list")
+        .iter()
+        .find(|skin| skin["official_english_name"] == "Red Dead of Night")
+        .expect("Diluc Skin");
+    assert_eq!(diluc["presentation"]["rarity"], 5);
+    assert_eq!(diluc["presentation"]["accent_color"], "#d8b66f");
+    assert_eq!(diluc["presentation"]["context_label"], "Diluc");
+    assert_eq!(
+        diluc["presentation"]["facet_values"]["skin_character"],
+        json!(["Diluc"])
+    );
+    let traveler = skin_json
+        .as_array()
+        .expect("Skin list")
+        .iter()
+        .find(|skin| skin["official_english_name"] == "As Heaven and Earth Are Made Anew")
+        .expect("Traveler Skin");
+    assert_eq!(
+        traveler["presentation"]["facet_values"]["skin_character"],
+        json!(["Aether", "Lumine"])
+    );
+    assert!(traveler["presentation"]["thumbnail_url"]
+        .as_str()
+        .expect("Traveler thumbnail")
+        .ends_with(".gif"));
+
+    let skin_thumbnail = app
+        .clone()
+        .oneshot(
+            Request::get("/assets/modules/genshin-impact/skins/hoyowiki-outfit-5777.png")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Skin thumbnail response");
+    assert_eq!(skin_thumbnail.status(), StatusCode::OK);
+    assert_eq!(skin_thumbnail.headers()["content-type"], "image/png");
+    let traveler_thumbnail = app
+        .clone()
+        .oneshot(
+            Request::get("/assets/modules/genshin-impact/skins/hoyowiki-outfit-9251.gif")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Traveler Skin thumbnail response");
+    assert_eq!(traveler_thumbnail.status(), StatusCode::OK);
+    assert_eq!(traveler_thumbnail.headers()["content-type"], "image/gif");
+
+    let skin_han_viet_search = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/entities?query=%C3%82n%20H%E1%BB%93ng%20Chung%20D%E1%BA%A1"
+            ))
+            .body(Body::empty())
+            .expect("request"),
+        )
+        .await
+        .expect("Skin Hán-Việt search response");
+    let skin_han_viet_json = json_response(skin_han_viet_search).await;
+    assert!(skin_han_viet_json
+        .as_array()
+        .expect("Skin Hán-Việt search result")
+        .iter()
+        .any(|entity| entity["official_english_name"] == "Red Dead of Night"));
+
+    let artifact_sets = json_response(
+        app.clone()
+            .oneshot(
+                Request::get(format!(
+                    "/api/works/{work_id}/entities?entity_type=artifact-set"
+                ))
+                .body(Body::empty())
+                .expect("request"),
+            )
+            .await
+            .expect("Artifact Set response"),
+    )
+    .await;
+    assert_eq!(artifact_sets.as_array().expect("Artifact Sets").len(), 63);
+    let gladiator = artifact_sets
+        .as_array()
+        .expect("Artifact Sets")
+        .iter()
+        .find(|entity| entity["official_english_name"] == "Gladiator's Finale")
+        .expect("Gladiator set");
+    assert_eq!(gladiator["presentation"]["rarity"], 5);
+    assert_eq!(gladiator["presentation"]["accent_color"], "#d8b66f");
+
+    let artifact_pieces = json_response(
+        app.clone()
+            .oneshot(
+                Request::get(format!(
+                    "/api/works/{work_id}/entities?entity_type=artifact-piece"
+                ))
+                .body(Body::empty())
+                .expect("request"),
+            )
+            .await
+            .expect("Artifact Piece response"),
+    )
+    .await;
+    assert_eq!(
+        artifact_pieces.as_array().expect("Artifact Pieces").len(),
+        299
+    );
+    let flower = artifact_pieces
+        .as_array()
+        .expect("Artifact Pieces")
+        .iter()
+        .find(|entity| entity["official_english_name"] == "Gladiator's Nostalgia")
+        .expect("Gladiator flower");
+    assert_eq!(
+        flower["presentation"]["context_label"],
+        "Gladiator's Finale"
+    );
+    assert_eq!(
+        flower["presentation"]["facets"]["artifact_slot"],
+        "Flower of Life"
+    );
+    let artifact_thumbnail = app.clone().oneshot(Request::get("/assets/modules/genshin-impact/artifacts/genshin-data-artifact-piece-15001-flower.png").body(Body::empty()).expect("request")).await.expect("Artifact thumbnail response");
+    assert_eq!(artifact_thumbnail.status(), StatusCode::OK);
+    assert_eq!(artifact_thumbnail.headers()["content-type"], "image/png");
+
+    let domains = json_response(
+        app.clone()
+            .oneshot(
+                Request::get(format!("/api/works/{work_id}/entities?entity_type=domain"))
+                    .body(Body::empty())
+                    .expect("request"),
+            )
+            .await
+            .expect("Domain response"),
+    )
+    .await;
+    assert_eq!(domains.as_array().expect("Domains").len(), 22);
+    let valley = domains
+        .as_array()
+        .expect("Domains")
+        .iter()
+        .find(|entity| entity["official_english_name"] == "Valley of Remembrance")
+        .expect("Valley of Remembrance");
+    assert_eq!(
+        valley["presentation"]["facets"]["domain_region"],
+        "Mondstadt"
+    );
 
     let script = app
         .oneshot(
@@ -769,6 +1209,158 @@ async fn endfield_item_list_exposes_many_types_region_rarity_and_local_thumbnail
 }
 
 #[tokio::test]
+async fn endfield_gear_sets_and_essences_are_seeded_with_readable_labels_and_facets() {
+    let app = router_with_store(Store::open_in_memory().expect("in-memory database"))
+        .expect("UAT router");
+    let setup = app
+        .clone()
+        .oneshot(
+            Request::post("/api/uat/endfield")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("setup response");
+    let setup_json = json_response(setup).await;
+    let work_id = setup_json["work"]["id"].as_str().expect("work id");
+
+    let gear_response = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/entities?entity_type=gear-set"
+            ))
+            .body(Body::empty())
+            .expect("request"),
+        )
+        .await
+        .expect("Gear Set list response");
+    let gear = json_response(gear_response).await;
+    assert_eq!(gear.as_array().unwrap().len(), 23);
+    let roving = gear
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|entry| entry["official_english_name"] == "Roving MSGR")
+        .expect("Roving MSGR");
+    assert_eq!(roving["presentation"]["label"], "3–4★");
+    assert!(roving["presentation"]["thumbnail_url"]
+        .as_str()
+        .unwrap()
+        .contains("item_equip_t2_suit_agi01_body_01"));
+
+    let essence_response = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/entities?entity_type=essence"))
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Essence list response");
+    let essences = json_response(essence_response).await;
+    assert_eq!(essences.as_array().unwrap().len(), 154);
+    let suppression = essences
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|entry| {
+            entry["catalog_label"]
+                == "Flawless Essence — Industry 0.1 — Strength Boost Lv.4 · Attack Boost Lv.4 · Suppression Lv.2"
+        })
+        .expect("readable Essence catalog label");
+    assert_eq!(suppression["official_english_name"], "Flawless Essence");
+    assert_eq!(suppression["presentation"]["rarity"], 5);
+    assert_eq!(
+        suppression["presentation"]["facets"]["weapon_type"],
+        "Greatsword"
+    );
+    assert_eq!(
+        suppression["presentation"]["facets"]["essence_skill"],
+        "Suppression"
+    );
+
+    let thumbnail = app
+        .oneshot(
+            Request::get("/assets/modules/arknights-endfield/items/item_gem_rarity_5.webp")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Essence thumbnail response");
+    assert_eq!(thumbnail.status(), StatusCode::OK);
+    assert_eq!(thumbnail.headers()["content-type"], "image/webp");
+}
+
+#[tokio::test]
+async fn endfield_regions_are_seeded_with_han_viet_hierarchy_and_filters() {
+    let app = router_with_store(Store::open_in_memory().expect("in-memory database"))
+        .expect("UAT router");
+    let setup = app
+        .clone()
+        .oneshot(
+            Request::post("/api/uat/endfield")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("setup response");
+    let setup_json = json_response(setup).await;
+    let work_id = setup_json["work"]["id"].as_str().expect("work id");
+    for (key, display_name) in [
+        ("region_type", "Region type"),
+        ("parent_region", "Parent region"),
+    ] {
+        let facet = setup_json["entity_facets"]
+            .as_array()
+            .expect("facet definitions")
+            .iter()
+            .find(|facet| facet["key"] == key)
+            .unwrap_or_else(|| panic!("missing {key} facet"));
+        assert_eq!(facet["display_name"], display_name);
+        assert_eq!(facet["entity_types"], json!(["region"]));
+    }
+
+    let response = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/entities?entity_type=region"))
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("Region list response");
+    assert_eq!(response.status(), StatusCode::OK);
+    let regions = json_response(response).await;
+    assert_eq!(regions.as_array().expect("Region list").len(), 43);
+    let jingyu = regions
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|entry| entry["official_english_name"] == "Jingyu Valley")
+        .expect("Jingyu Valley");
+    assert_eq!(jingyu["presentation"]["label"], "Subregion");
+    assert_eq!(jingyu["presentation"]["facets"]["parent_region"], "Wuling");
+
+    let search = app
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/entities?query=C%E1%BA%A3nh%20Ng%E1%BB%8Dc%20C%E1%BB%91c"
+            ))
+            .body(Body::empty())
+            .expect("request"),
+        )
+        .await
+        .expect("Hán-Việt search response");
+    let search = json_response(search).await;
+    assert!(search
+        .as_array()
+        .expect("search results")
+        .iter()
+        .any(|entry| entry["official_english_name"] == "Jingyu Valley"));
+}
+
+#[tokio::test]
 async fn entity_type_placeholders_are_served_and_replace_name_initials() {
     let app = router_with_store(Store::open_in_memory().expect("in-memory database"))
         .expect("UAT router");
@@ -862,6 +1454,8 @@ async fn event_timeline_assets_support_featured_operator_hover_and_focus_preview
     assert!(javascript.contains("previous_event_gap"));
     assert!(javascript.contains("event_recency"));
     assert!(javascript.contains("wholeDaysSince"));
+    assert!(javascript.contains("entityAppearanceSection"));
+    assert!(javascript.contains("appearance.related_title"));
     assert!(!javascript.contains("bar.title = description"));
 
     let styles = app
@@ -889,6 +1483,7 @@ async fn event_timeline_assets_support_featured_operator_hover_and_focus_preview
     assert!(css.contains("background-color: var(--surface-raised)"));
     assert!(css.contains(".event-feature-gap"));
     assert!(css.contains(".entity-event-recency"));
+    assert!(css.contains(".appearance-list"));
 }
 
 #[tokio::test]

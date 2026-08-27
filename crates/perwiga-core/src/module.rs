@@ -191,6 +191,11 @@ pub trait LibraryModule: Sync {
     fn entity_presentation(&self, _entity: &WikiEntity) -> Option<EntityPresentation> {
         None
     }
+    /// Optional readable catalog label when several records share the same
+    /// official name. This never replaces the persisted official localization.
+    fn entity_catalog_label(&self, _entity: &WikiEntity) -> Option<String> {
+        None
+    }
     fn entity_event_recency(&self, _entity: &WikiEntity) -> Option<EntityEventRecencyPresentation> {
         None
     }

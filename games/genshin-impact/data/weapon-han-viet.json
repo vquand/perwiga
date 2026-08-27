@@ -1,0 +1,1504 @@
+{
+  "schema": "perwiga.genshin-impact.weapon-han-viet.v1",
+  "checked_at": "2026-08-26",
+  "catalog_scope": {
+    "included_records": 246
+  },
+  "confidence": {
+    "han_viet_names": "E"
+  },
+  "sources": {
+    "simplified_chinese_names": "https://github.com/theBowja/genshin-db",
+    "han_viet_dictionary": "https://hvdic.thivien.net/transcript.php#trans",
+    "weapon_fallback_evidence": "https://js.vnu.edu.vn/FS/article/download/4175/3893"
+  },
+  "generation": {
+    "selection": "First dictionary alternative unless a context override is recorded.",
+    "reading_overrides": {},
+    "explicit_fallbacks": {
+      "鹮": "hoàn"
+    }
+  },
+  "notes": [
+    "Every Hán-Việt value is a generated search alias from the extracted Simplified Chinese original name; none is an official Vietnamese localization.",
+    "Ambiguous readings use the dictionary's first alternative unless an explicit context override is recorded."
+  ],
+  "weapons": [
+    {
+      "source_key": "genshin-data-weapon-13415",
+      "official_english_name": "\"The Catch\"",
+      "official_simplified_chinese_name": "「渔获」",
+      "han_viet_name": "Ngư Hoạch"
+    },
+    {
+      "source_key": "genshin-data-weapon-12426",
+      "official_english_name": "\"Ultimate Overlord's Mega Magic Sword\"",
+      "official_simplified_chinese_name": "「究极霸王超级魔剑」",
+      "han_viet_name": "Cứu Cực Bá Vương Siêu Cấp Ma Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-12516",
+      "official_english_name": "A Teaspoon of Transcendence",
+      "official_simplified_chinese_name": "超越之匙",
+      "han_viet_name": "Siêu Việt Chi Thi"
+    },
+    {
+      "source_key": "genshin-data-weapon-12514",
+      "official_english_name": "A Thousand Blazing Suns",
+      "official_simplified_chinese_name": "焚曜千阳",
+      "han_viet_name": "Phần Diệu Thiên Dương"
+    },
+    {
+      "source_key": "genshin-data-weapon-14511",
+      "official_english_name": "A Thousand Floating Dreams",
+      "official_simplified_chinese_name": "千夜浮梦",
+      "han_viet_name": "Thiên Dạ Phù Mộng"
+    },
+    {
+      "source_key": "genshin-data-weapon-11515",
+      "official_english_name": "Absolution",
+      "official_simplified_chinese_name": "赦罪",
+      "han_viet_name": "Xá Tội"
+    },
+    {
+      "source_key": "genshin-data-weapon-12416",
+      "official_english_name": "Akuoumaru",
+      "official_simplified_chinese_name": "恶王丸",
+      "han_viet_name": "Ác Vương Hoàn"
+    },
+    {
+      "source_key": "genshin-data-weapon-15410",
+      "official_english_name": "Alley Hunter",
+      "official_simplified_chinese_name": "暗巷猎手",
+      "han_viet_name": "Ám Hạng Lạp Thủ"
+    },
+    {
+      "source_key": "genshin-data-weapon-11414",
+      "official_english_name": "Amenoma Kageuchi",
+      "official_simplified_chinese_name": "天目影打刀",
+      "han_viet_name": "Thiên Mục Ảnh Đả Đao"
+    },
+    {
+      "source_key": "genshin-data-weapon-15502",
+      "official_english_name": "Amos' Bow",
+      "official_simplified_chinese_name": "阿莫斯之弓",
+      "han_viet_name": "A Mạc Tư Chi Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-14523",
+      "official_english_name": "Angelos' Heptades",
+      "official_simplified_chinese_name": "尘光七谕",
+      "han_viet_name": "Trần Quang Thất Dụ"
+    },
+    {
+      "source_key": "genshin-data-weapon-14101",
+      "official_english_name": "Apprentice's Notes",
+      "official_simplified_chinese_name": "学徒笔记",
+      "han_viet_name": "Học Đồ Bút Ký"
+    },
+    {
+      "source_key": "genshin-data-weapon-15508",
+      "official_english_name": "Aqua Simulacra",
+      "official_simplified_chinese_name": "若水",
+      "han_viet_name": "Nhược Thuỷ"
+    },
+    {
+      "source_key": "genshin-data-weapon-11501",
+      "official_english_name": "Aquila Favonia",
+      "official_simplified_chinese_name": "风鹰剑",
+      "han_viet_name": "Phong Ưng Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14427",
+      "official_english_name": "Ash-Graven Drinking Horn",
+      "official_simplified_chinese_name": "苍纹角杯",
+      "han_viet_name": "Thương Văn Giác Bôi"
+    },
+    {
+      "source_key": "genshin-data-weapon-15514",
+      "official_english_name": "Astral Vulture's Crimson Plumage",
+      "official_simplified_chinese_name": "星鹫赤羽",
+      "han_viet_name": "Tinh Thứu Xích Vũ"
+    },
+    {
+      "source_key": "genshin-data-weapon-11518",
+      "official_english_name": "Athame Artis",
+      "official_simplified_chinese_name": "黑蚀",
+      "han_viet_name": "Hắc Thực"
+    },
+    {
+      "source_key": "genshin-data-weapon-11517",
+      "official_english_name": "Azurelight",
+      "official_simplified_chinese_name": "苍耀",
+      "han_viet_name": "Thương Diệu"
+    },
+    {
+      "source_key": "genshin-data-weapon-14426",
+      "official_english_name": "Ballad of the Boundless Blue",
+      "official_simplified_chinese_name": "无垠蔚蓝之歌",
+      "han_viet_name": "Vô Ngân Uý Lam Chi Ca"
+    },
+    {
+      "source_key": "genshin-data-weapon-13424",
+      "official_english_name": "Ballad of the Fjords",
+      "official_simplified_chinese_name": "峡湾长歌",
+      "han_viet_name": "Hạp Loan Trưởng Ca"
+    },
+    {
+      "source_key": "genshin-data-weapon-12511",
+      "official_english_name": "Beacon of the Reed Sea",
+      "official_simplified_chinese_name": "苇海信标",
+      "han_viet_name": "Vy Hải Tín Tiêu"
+    },
+    {
+      "source_key": "genshin-data-weapon-13101",
+      "official_english_name": "Beginner's Protector",
+      "official_simplified_chinese_name": "新手长枪",
+      "han_viet_name": "Tân Thủ Trưởng Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-13303",
+      "official_english_name": "Black Tassel",
+      "official_simplified_chinese_name": "黑缨枪",
+      "han_viet_name": "Hắc Anh Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-14408",
+      "official_english_name": "Blackcliff Agate",
+      "official_simplified_chinese_name": "黑岩绯玉",
+      "han_viet_name": "Hắc Nham Phi Ngọc"
+    },
+    {
+      "source_key": "genshin-data-weapon-11408",
+      "official_english_name": "Blackcliff Longsword",
+      "official_simplified_chinese_name": "黑岩长剑",
+      "han_viet_name": "Hắc Nham Trưởng Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13404",
+      "official_english_name": "Blackcliff Pole",
+      "official_simplified_chinese_name": "黑岩刺枪",
+      "han_viet_name": "Hắc Nham Thích Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-12408",
+      "official_english_name": "Blackcliff Slasher",
+      "official_simplified_chinese_name": "黑岩斩刀",
+      "han_viet_name": "Hắc Nham Trảm Đao"
+    },
+    {
+      "source_key": "genshin-data-weapon-15408",
+      "official_english_name": "Blackcliff Warbow",
+      "official_simplified_chinese_name": "黑岩战弓",
+      "han_viet_name": "Hắc Nham Chiến Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-14433",
+      "official_english_name": "Blackmarrow Lantern",
+      "official_simplified_chinese_name": "乌髓孑灯",
+      "han_viet_name": "Ô Tuỷ Kiết Đăng"
+    },
+    {
+      "source_key": "genshin-data-weapon-12436",
+      "official_english_name": "Blade of Atonement",
+      "official_simplified_chinese_name": "救赎之斩",
+      "han_viet_name": "Cứu Thục Chi Trảm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13516",
+      "official_english_name": "Bloodsoaked Ruins",
+      "official_simplified_chinese_name": "血染荒城",
+      "han_viet_name": "Huyết Nhiễm Hoang Thành"
+    },
+    {
+      "source_key": "genshin-data-weapon-12302",
+      "official_english_name": "Bloodtainted Greatsword",
+      "official_simplified_chinese_name": "沐浴龙血的剑",
+      "han_viet_name": "Mộc Dục Long Huyết Đích Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11432",
+      "official_english_name": "Calamity of Eshu",
+      "official_simplified_chinese_name": "厄水之祸",
+      "han_viet_name": "Ách Thuỷ Chi Hoạ"
+    },
+    {
+      "source_key": "genshin-data-weapon-13507",
+      "official_english_name": "Calamity Queller",
+      "official_simplified_chinese_name": "息灾",
+      "han_viet_name": "Tức Tai"
+    },
+    {
+      "source_key": "genshin-data-weapon-14513",
+      "official_english_name": "Cashflow Supervision",
+      "official_simplified_chinese_name": "金流监督",
+      "han_viet_name": "Kim Lưu Giám Đốc"
+    },
+    {
+      "source_key": "genshin-data-weapon-15431",
+      "official_english_name": "Chain Breaker",
+      "official_simplified_chinese_name": "碎链",
+      "han_viet_name": "Toái Liên"
+    },
+    {
+      "source_key": "genshin-data-weapon-11415",
+      "official_english_name": "Cinnabar Spindle",
+      "official_simplified_chinese_name": "辰砂之纺锤",
+      "han_viet_name": "Thần Sa Chi Phưởng Chuỳ"
+    },
+    {
+      "source_key": "genshin-data-weapon-14435",
+      "official_english_name": "Clash of Kings",
+      "official_simplified_chinese_name": "群王局戏",
+      "han_viet_name": "Quần Vương Cục Hý"
+    },
+    {
+      "source_key": "genshin-data-weapon-15426",
+      "official_english_name": "Cloudforged",
+      "official_simplified_chinese_name": "筑云",
+      "han_viet_name": "Trúc Vân"
+    },
+    {
+      "source_key": "genshin-data-weapon-15407",
+      "official_english_name": "Compound Bow",
+      "official_simplified_chinese_name": "钢轮弓",
+      "han_viet_name": "Cương Luân Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-11301",
+      "official_english_name": "Cool Steel",
+      "official_simplified_chinese_name": "冷刃",
+      "han_viet_name": "Lãnh Nhận"
+    },
+    {
+      "source_key": "genshin-data-weapon-15436",
+      "official_english_name": "Covenant of Frost and Snow",
+      "official_simplified_chinese_name": "霜雪誓约",
+      "han_viet_name": "Sương Tuyết Thệ Ước"
+    },
+    {
+      "source_key": "genshin-data-weapon-14515",
+      "official_english_name": "Crane's Echoing Call",
+      "official_simplified_chinese_name": "鹤鸣余音",
+      "han_viet_name": "Hạc Minh Dư Âm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13403",
+      "official_english_name": "Crescent Pike",
+      "official_simplified_chinese_name": "流月针",
+      "han_viet_name": "Lưu Nguyệt Châm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13512",
+      "official_english_name": "Crimson Moon's Semblance",
+      "official_simplified_chinese_name": "赤月之形",
+      "han_viet_name": "Xích Nguyệt Chi Hình"
+    },
+    {
+      "source_key": "genshin-data-weapon-11304",
+      "official_english_name": "Dark Iron Sword",
+      "official_simplified_chinese_name": "暗铁剑",
+      "han_viet_name": "Ám Thiết Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14434",
+      "official_english_name": "Dawning Frost",
+      "official_simplified_chinese_name": "霜辰",
+      "han_viet_name": "Sương Thần"
+    },
+    {
+      "source_key": "genshin-data-weapon-13405",
+      "official_english_name": "Deathmatch",
+      "official_simplified_chinese_name": "决斗之枪",
+      "han_viet_name": "Quyết Đẩu Chi Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-12305",
+      "official_english_name": "Debate Club",
+      "official_simplified_chinese_name": "以理服人",
+      "han_viet_name": "Dĩ Lý Phục Nhân"
+    },
+    {
+      "source_key": "genshin-data-weapon-13426",
+      "official_english_name": "Dialogues of the Desert Sages",
+      "official_simplified_chinese_name": "沙中伟贤的对答",
+      "han_viet_name": "Sa Trung Vĩ Hiền Đích Đối Đáp"
+    },
+    {
+      "source_key": "genshin-data-weapon-13517",
+      "official_english_name": "Disaster and Remorse",
+      "official_simplified_chinese_name": "灾悔",
+      "han_viet_name": "Tai Hối"
+    },
+    {
+      "source_key": "genshin-data-weapon-14413",
+      "official_english_name": "Dodoco Tales",
+      "official_simplified_chinese_name": "嘟嘟可故事集",
+      "han_viet_name": "Đô Đô Khả Cố Sự Tập"
+    },
+    {
+      "source_key": "genshin-data-weapon-13401",
+      "official_english_name": "Dragon's Bane",
+      "official_simplified_chinese_name": "匣里灭辰",
+      "han_viet_name": "Hạp Lý Diệt Thần"
+    },
+    {
+      "source_key": "genshin-data-weapon-13409",
+      "official_english_name": "Dragonspine Spear",
+      "official_simplified_chinese_name": "龙脊长枪",
+      "han_viet_name": "Long Tích Trưởng Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-11101",
+      "official_english_name": "Dull Blade",
+      "official_simplified_chinese_name": "无锋剑",
+      "han_viet_name": "Vô Phong Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-12431",
+      "official_english_name": "Earth Shaker",
+      "official_simplified_chinese_name": "撼地者",
+      "han_viet_name": "Hám Địa Giả"
+    },
+    {
+      "source_key": "genshin-data-weapon-14436",
+      "official_english_name": "Echoes of the Heart",
+      "official_simplified_chinese_name": "寸心余响",
+      "han_viet_name": "Thốn Tâm Dư Hưởng"
+    },
+    {
+      "source_key": "genshin-data-weapon-15503",
+      "official_english_name": "Elegy for the End",
+      "official_simplified_chinese_name": "终末嗟叹之诗",
+      "han_viet_name": "Chung Mạt Ta Thán Chi Thi"
+    },
+    {
+      "source_key": "genshin-data-weapon-11436",
+      "official_english_name": "Emberwell",
+      "official_simplified_chinese_name": "引火之源",
+      "han_viet_name": "Dẫn Hoả Chi Nguyên"
+    },
+    {
+      "source_key": "genshin-data-weapon-14304",
+      "official_english_name": "Emerald Orb",
+      "official_simplified_chinese_name": "翡玉法球",
+      "han_viet_name": "Phí Ngọc Pháp Cầu"
+    },
+    {
+      "source_key": "genshin-data-weapon-15418",
+      "official_english_name": "End of the Line",
+      "official_simplified_chinese_name": "竭泽",
+      "han_viet_name": "Kiệt Trạch"
+    },
+    {
+      "source_key": "genshin-data-weapon-13509",
+      "official_english_name": "Engulfing Lightning",
+      "official_simplified_chinese_name": "薙草之稻光",
+      "han_viet_name": "Thế Thảo Chi Đạo Quang"
+    },
+    {
+      "source_key": "genshin-data-weapon-14432",
+      "official_english_name": "Etherlight Spindlelute",
+      "official_simplified_chinese_name": "天光的纺琴",
+      "han_viet_name": "Thiên Quang Đích Phưởng Cầm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14506",
+      "official_english_name": "Everlasting Moonglow",
+      "official_simplified_chinese_name": "不灭月华",
+      "han_viet_name": "Bất Diệt Nguyệt Hoa"
+    },
+    {
+      "source_key": "genshin-data-weapon-11521",
+      "official_english_name": "Exaiphanes Blade",
+      "official_simplified_chinese_name": "星锋剑",
+      "han_viet_name": "Tinh Phong Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14409",
+      "official_english_name": "Eye of Perception",
+      "official_simplified_chinese_name": "昭心",
+      "han_viet_name": "Chiêu Tâm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15411",
+      "official_english_name": "Fading Twilight",
+      "official_simplified_chinese_name": "落霞",
+      "han_viet_name": "Lạc Hà"
+    },
+    {
+      "source_key": "genshin-data-weapon-12513",
+      "official_english_name": "Fang of the Mountain King",
+      "official_simplified_chinese_name": "山王长牙",
+      "han_viet_name": "Sơn Vương Trưởng Nha"
+    },
+    {
+      "source_key": "genshin-data-weapon-14401",
+      "official_english_name": "Favonius Codex",
+      "official_simplified_chinese_name": "西风秘典",
+      "han_viet_name": "Tây Phong Bí Điển"
+    },
+    {
+      "source_key": "genshin-data-weapon-12401",
+      "official_english_name": "Favonius Greatsword",
+      "official_simplified_chinese_name": "西风大剑",
+      "han_viet_name": "Tây Phong Đại Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13407",
+      "official_english_name": "Favonius Lance",
+      "official_simplified_chinese_name": "西风长枪",
+      "han_viet_name": "Tây Phong Trưởng Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-11401",
+      "official_english_name": "Favonius Sword",
+      "official_simplified_chinese_name": "西风剑",
+      "han_viet_name": "Tây Phong Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15401",
+      "official_english_name": "Favonius Warbow",
+      "official_simplified_chinese_name": "西风猎弓",
+      "han_viet_name": "Tây Phong Lạp Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-12301",
+      "official_english_name": "Ferrous Shadow",
+      "official_simplified_chinese_name": "铁影阔剑",
+      "han_viet_name": "Thiết Ảnh Khoát Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11413",
+      "official_english_name": "Festering Desire",
+      "official_simplified_chinese_name": "腐殖之剑",
+      "han_viet_name": "Hủ Thực Chi Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11305",
+      "official_english_name": "Fillet Blade",
+      "official_simplified_chinese_name": "吃虎鱼刀",
+      "han_viet_name": "Ngật Hổ Ngư Đao"
+    },
+    {
+      "source_key": "genshin-data-weapon-11425",
+      "official_english_name": "Finale of the Deep",
+      "official_simplified_chinese_name": "海渊终曲",
+      "han_viet_name": "Hải Uyên Chung Khúc"
+    },
+    {
+      "source_key": "genshin-data-weapon-12432",
+      "official_english_name": "Flame-Forged Insight",
+      "official_simplified_chinese_name": "拾慧铸熔",
+      "han_viet_name": "Thập Tuệ Chú Dung"
+    },
+    {
+      "source_key": "genshin-data-weapon-11426",
+      "official_english_name": "Fleuve Cendre Ferryman",
+      "official_simplified_chinese_name": "灰河渡手",
+      "han_viet_name": "Hôi Hà Độ Thủ"
+    },
+    {
+      "source_key": "genshin-data-weapon-15430",
+      "official_english_name": "Flower-Wreathed Feathers",
+      "official_simplified_chinese_name": "缀花之翎",
+      "han_viet_name": "Chuế Hoa Chi Linh"
+    },
+    {
+      "source_key": "genshin-data-weapon-14425",
+      "official_english_name": "Flowing Purity",
+      "official_simplified_chinese_name": "纯水流华",
+      "han_viet_name": "Thuần Thuỷ Lưu Hoa"
+    },
+    {
+      "source_key": "genshin-data-weapon-11431",
+      "official_english_name": "Flute of Ezpitzal",
+      "official_simplified_chinese_name": "息燧之笛",
+      "han_viet_name": "Tức Toại Chi Địch"
+    },
+    {
+      "source_key": "genshin-data-weapon-13431",
+      "official_english_name": "Footprint of the Rainbow",
+      "official_simplified_chinese_name": "虹的行迹",
+      "han_viet_name": "Hồng Đích Hành Tích"
+    },
+    {
+      "source_key": "genshin-data-weapon-12417",
+      "official_english_name": "Forest Regalia",
+      "official_simplified_chinese_name": "森林王器",
+      "han_viet_name": "Sâm Lâm Vương Khí"
+    },
+    {
+      "source_key": "genshin-data-weapon-12435",
+      "official_english_name": "Forged by the Golden Melody",
+      "official_simplified_chinese_name": "金律铸影",
+      "han_viet_name": "Kim Luật Chú Ảnh"
+    },
+    {
+      "source_key": "genshin-data-weapon-13515",
+      "official_english_name": "Fractured Halo",
+      "official_simplified_chinese_name": "支离轮光",
+      "han_viet_name": "Chi Ly Luân Quang"
+    },
+    {
+      "source_key": "genshin-data-weapon-11503",
+      "official_english_name": "Freedom-Sworn",
+      "official_simplified_chinese_name": "苍古自由之誓",
+      "han_viet_name": "Thương Cổ Tự Do Chi Thệ"
+    },
+    {
+      "source_key": "genshin-data-weapon-14412",
+      "official_english_name": "Frostbearer",
+      "official_simplified_chinese_name": "忍冬之果",
+      "han_viet_name": "Nhẫn Đông Chi Quả"
+    },
+    {
+      "source_key": "genshin-data-weapon-13435",
+      "official_english_name": "Frostbreath",
+      "official_simplified_chinese_name": "寒息",
+      "han_viet_name": "Hàn Tức"
+    },
+    {
+      "source_key": "genshin-data-weapon-14417",
+      "official_english_name": "Fruit of Fulfillment",
+      "official_simplified_chinese_name": "盈满之实",
+      "han_viet_name": "Doanh Mãn Chi Thực"
+    },
+    {
+      "source_key": "genshin-data-weapon-12430",
+      "official_english_name": "Fruitful Hook",
+      "official_simplified_chinese_name": "硕果钩",
+      "han_viet_name": "Thạc Quả Câu"
+    },
+    {
+      "source_key": "genshin-data-weapon-12515",
+      "official_english_name": "Gest of the Mighty Wolf",
+      "official_simplified_chinese_name": "狼的武功歌",
+      "han_viet_name": "Lang Đích Võ Công Ca"
+    },
+    {
+      "source_key": "genshin-data-weapon-15516",
+      "official_english_name": "Golden Frostbound Oath",
+      "official_simplified_chinese_name": "霜结的誓金枝",
+      "han_viet_name": "Sương Kết Đích Thệ Kim Chi"
+    },
+    {
+      "source_key": "genshin-data-weapon-14414",
+      "official_english_name": "Hakushin Ring",
+      "official_simplified_chinese_name": "白辰之环",
+      "han_viet_name": "Bạch Thần Chi Hoàn"
+    },
+    {
+      "source_key": "genshin-data-weapon-13302",
+      "official_english_name": "Halberd",
+      "official_simplified_chinese_name": "钺矛",
+      "han_viet_name": "Việt Mâu"
+    },
+    {
+      "source_key": "genshin-data-weapon-15414",
+      "official_english_name": "Hamayumi",
+      "official_simplified_chinese_name": "破魔之弓",
+      "han_viet_name": "Phá Ma Chi Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-11510",
+      "official_english_name": "Haran Geppaku Futsu",
+      "official_simplified_chinese_name": "波乱月白经津",
+      "han_viet_name": "Ba Loạn Nguyệt Bạch Kinh Tân"
+    },
+    {
+      "source_key": "genshin-data-weapon-11302",
+      "official_english_name": "Harbinger of Dawn",
+      "official_simplified_chinese_name": "黎明神剑",
+      "han_viet_name": "Lê Minh Thần Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11435",
+      "official_english_name": "Heretic's Molten Blade",
+      "official_simplified_chinese_name": "熔猎异端之刃",
+      "han_viet_name": "Dung Lạp Dị Đoan Chi Nhận"
+    },
+    {
+      "source_key": "genshin-data-weapon-15101",
+      "official_english_name": "Hunter's Bow",
+      "official_simplified_chinese_name": "猎弓",
+      "han_viet_name": "Lạp Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-15511",
+      "official_english_name": "Hunter's Path",
+      "official_simplified_chinese_name": "猎人之径",
+      "han_viet_name": "Lạp Nhân Chi Kính"
+    },
+    {
+      "source_key": "genshin-data-weapon-15419",
+      "official_english_name": "Ibis Piercer",
+      "official_simplified_chinese_name": "鹮穿之喙",
+      "han_viet_name": "Hoàn Xuyên Chi Uế"
+    },
+    {
+      "source_key": "genshin-data-weapon-13201",
+      "official_english_name": "Iron Point",
+      "official_simplified_chinese_name": "铁尖枪",
+      "han_viet_name": "Thiết Tiêm Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-11407",
+      "official_english_name": "Iron Sting",
+      "official_simplified_chinese_name": "铁蜂刺",
+      "han_viet_name": "Thiết Phong Thích"
+    },
+    {
+      "source_key": "genshin-data-weapon-15435",
+      "official_english_name": "Jade Vista",
+      "official_simplified_chinese_name": "悬黎千钧",
+      "han_viet_name": "Huyền Lê Thiên Quân"
+    },
+    {
+      "source_key": "genshin-data-weapon-14505",
+      "official_english_name": "Jadefall's Splendor",
+      "official_simplified_chinese_name": "碧落之珑",
+      "han_viet_name": "Bích Lạc Chi Lung"
+    },
+    {
+      "source_key": "genshin-data-weapon-11416",
+      "official_english_name": "Kagotsurube Isshin",
+      "official_simplified_chinese_name": "笼钓瓶一心",
+      "han_viet_name": "Lung Điếu Bình Nhất Tâm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14509",
+      "official_english_name": "Kagura's Verity",
+      "official_simplified_chinese_name": "神乐之真意",
+      "han_viet_name": "Thần Nhạc Chi Chân Ý"
+    },
+    {
+      "source_key": "genshin-data-weapon-12414",
+      "official_english_name": "Katsuragikiri Nagamasa",
+      "official_simplified_chinese_name": "桂木斩长正",
+      "han_viet_name": "Quế Mộc Trảm Trưởng Chính"
+    },
+    {
+      "source_key": "genshin-data-weapon-11511",
+      "official_english_name": "Key of Khaj-Nisut",
+      "official_simplified_chinese_name": "圣显之钥",
+      "han_viet_name": "Thánh Hiển Chi Thược"
+    },
+    {
+      "source_key": "genshin-data-weapon-15417",
+      "official_english_name": "King's Squire",
+      "official_simplified_chinese_name": "王下近侍",
+      "han_viet_name": "Vương Hạ Cận Thị"
+    },
+    {
+      "source_key": "genshin-data-weapon-13414",
+      "official_english_name": "Kitain Cross Spear",
+      "official_simplified_chinese_name": "喜多院十文字",
+      "han_viet_name": "Hỷ Đa Viện Thập Văn Tự"
+    },
+    {
+      "source_key": "genshin-data-weapon-11512",
+      "official_english_name": "Light of Foliar Incision",
+      "official_simplified_chinese_name": "裁叶萃光",
+      "han_viet_name": "Tài Diệp Tuỵ Quang"
+    },
+    {
+      "source_key": "genshin-data-weapon-11519",
+      "official_english_name": "Lightbearing Moonshard",
+      "official_simplified_chinese_name": "朏魄含光",
+      "han_viet_name": "Phỉ Phách Hàm Quang"
+    },
+    {
+      "source_key": "genshin-data-weapon-11405",
+      "official_english_name": "Lion's Roar",
+      "official_simplified_chinese_name": "匣里龙吟",
+      "han_viet_name": "Hạp Lý Long Ngâm"
+    },
+    {
+      "source_key": "genshin-data-weapon-12410",
+      "official_english_name": "Lithic Blade",
+      "official_simplified_chinese_name": "千岩古剑",
+      "han_viet_name": "Thiên Nham Cổ Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13406",
+      "official_english_name": "Lithic Spear",
+      "official_simplified_chinese_name": "千岩长枪",
+      "han_viet_name": "Thiên Nham Trưởng Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-14502",
+      "official_english_name": "Lost Prayer to the Sacred Winds",
+      "official_simplified_chinese_name": "四风原典",
+      "han_viet_name": "Tứ Phong Nguyên Điển"
+    },
+    {
+      "source_key": "genshin-data-weapon-13513",
+      "official_english_name": "Lumidouce Elegy",
+      "official_simplified_chinese_name": "柔灯挽歌",
+      "han_viet_name": "Nhu Đăng Vãn Ca"
+    },
+    {
+      "source_key": "genshin-data-weapon-12412",
+      "official_english_name": "Luxurious Sea-Lord",
+      "official_simplified_chinese_name": "衔珠海皇",
+      "han_viet_name": "Hàm Châu Hải Hoàng"
+    },
+    {
+      "source_key": "genshin-data-weapon-14301",
+      "official_english_name": "Magic Guide",
+      "official_simplified_chinese_name": "魔导绪论",
+      "han_viet_name": "Ma Đạo Tự Luận"
+    },
+    {
+      "source_key": "genshin-data-weapon-12418",
+      "official_english_name": "Mailed Flower",
+      "official_simplified_chinese_name": "饰铁之花",
+      "han_viet_name": "Sức Thiết Chi Hoa"
+    },
+    {
+      "source_key": "genshin-data-weapon-12415",
+      "official_english_name": "Makhaira Aquamarine",
+      "official_simplified_chinese_name": "玛海菈的水色",
+      "han_viet_name": "Mã Hải Lạp Đích Thuỷ Sắc"
+    },
+    {
+      "source_key": "genshin-data-weapon-14407",
+      "official_english_name": "Mappa Mare",
+      "official_simplified_chinese_name": "万国诸海图谱",
+      "han_viet_name": "Vạn Quốc Chư Hải Đồ Phổ"
+    },
+    {
+      "source_key": "genshin-data-weapon-12433",
+      "official_english_name": "Master Key",
+      "official_simplified_chinese_name": "万能钥匙",
+      "han_viet_name": "Vạn Năng Thược Thi"
+    },
+    {
+      "source_key": "genshin-data-weapon-14504",
+      "official_english_name": "Memory of Dust",
+      "official_simplified_chinese_name": "尘世之锁",
+      "han_viet_name": "Trần Thế Chi Toả"
+    },
+    {
+      "source_key": "genshin-data-weapon-15305",
+      "official_english_name": "Messenger",
+      "official_simplified_chinese_name": "信使",
+      "han_viet_name": "Tín Sử"
+    },
+    {
+      "source_key": "genshin-data-weapon-13419",
+      "official_english_name": "Missive Windspear",
+      "official_simplified_chinese_name": "风信之锋",
+      "han_viet_name": "Phong Tín Chi Phong"
+    },
+    {
+      "source_key": "genshin-data-weapon-11509",
+      "official_english_name": "Mistsplitter Reforged",
+      "official_simplified_chinese_name": "雾切之回光",
+      "han_viet_name": "Vụ Thiết Chi Hồi Quang"
+    },
+    {
+      "source_key": "genshin-data-weapon-15412",
+      "official_english_name": "Mitternachts Waltz",
+      "official_simplified_chinese_name": "幽夜华尔兹",
+      "han_viet_name": "U Dạ Hoa Nhĩ Tư"
+    },
+    {
+      "source_key": "genshin-data-weapon-13417",
+      "official_english_name": "Moonpiercer",
+      "official_simplified_chinese_name": "贯月矢",
+      "han_viet_name": "Quán Nguyệt Thi"
+    },
+    {
+      "source_key": "genshin-data-weapon-11434",
+      "official_english_name": "Moonweaver's Dawn",
+      "official_simplified_chinese_name": "织月者的曙色",
+      "han_viet_name": "Chức Nguyệt Giả Đích Thự Sắc"
+    },
+    {
+      "source_key": "genshin-data-weapon-13430",
+      "official_english_name": "Mountain-Bracing Bolt",
+      "official_simplified_chinese_name": "镇山之钉",
+      "han_viet_name": "Trấn Sơn Chi Đính"
+    },
+    {
+      "source_key": "genshin-data-weapon-15416",
+      "official_english_name": "Mouun's Moon",
+      "official_simplified_chinese_name": "曚云之月",
+      "han_viet_name": "Mông Vân Chi Nguyệt"
+    },
+    {
+      "source_key": "genshin-data-weapon-14520",
+      "official_english_name": "Nightweaver's Looking Glass",
+      "official_simplified_chinese_name": "纺夜天镜",
+      "han_viet_name": "Phưởng Dạ Thiên Kính"
+    },
+    {
+      "source_key": "genshin-data-weapon-14522",
+      "official_english_name": "Nocturne's Curtain Call",
+      "official_simplified_chinese_name": "帷间夜曲",
+      "han_viet_name": "Duy Gian Dạ Khúc"
+    },
+    {
+      "source_key": "genshin-data-weapon-14415",
+      "official_english_name": "Oathsworn Eye",
+      "official_simplified_chinese_name": "证誓之明瞳",
+      "han_viet_name": "Chứng Thệ Chi Minh Đồng"
+    },
+    {
+      "source_key": "genshin-data-weapon-12201",
+      "official_english_name": "Old Merc's Pal",
+      "official_simplified_chinese_name": "佣兵重剑",
+      "han_viet_name": "Dong Binh Trùng Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14303",
+      "official_english_name": "Otherworldly Story",
+      "official_simplified_chinese_name": "异世界行记",
+      "han_viet_name": "Dị Thế Giới Hành Ký"
+    },
+    {
+      "source_key": "genshin-data-weapon-11516",
+      "official_english_name": "Peak Patrol Song",
+      "official_simplified_chinese_name": "岩峰巡歌",
+      "han_viet_name": "Nham Phong Tuần Ca"
+    },
+    {
+      "source_key": "genshin-data-weapon-14201",
+      "official_english_name": "Pocket Grimoire",
+      "official_simplified_chinese_name": "口袋魔导书",
+      "han_viet_name": "Khẩu Đại Ma Đạo Thư"
+    },
+    {
+      "source_key": "genshin-data-weapon-15507",
+      "official_english_name": "Polar Star",
+      "official_simplified_chinese_name": "冬极白星",
+      "han_viet_name": "Đông Cực Bạch Tinh"
+    },
+    {
+      "source_key": "genshin-data-weapon-12427",
+      "official_english_name": "Portable Power Saw",
+      "official_simplified_chinese_name": "便携动力锯",
+      "han_viet_name": "Tiện Huề Động Lực Cứ"
+    },
+    {
+      "source_key": "genshin-data-weapon-15415",
+      "official_english_name": "Predator",
+      "official_simplified_chinese_name": "掠食者",
+      "han_viet_name": "Lược Thực Giả"
+    },
+    {
+      "source_key": "genshin-data-weapon-11505",
+      "official_english_name": "Primordial Jade Cutter",
+      "official_simplified_chinese_name": "磐岩结绿",
+      "han_viet_name": "Bàn Nham Kết Lục"
+    },
+    {
+      "source_key": "genshin-data-weapon-13505",
+      "official_english_name": "Primordial Jade Winged-Spear",
+      "official_simplified_chinese_name": "和璞鸢",
+      "han_viet_name": "Hoà Phác Diên"
+    },
+    {
+      "source_key": "genshin-data-weapon-13427",
+      "official_english_name": "Prospector's Drill",
+      "official_simplified_chinese_name": "勘探钻机",
+      "han_viet_name": "Khám Thám Toàn Cơ"
+    },
+    {
+      "source_key": "genshin-data-weapon-13433",
+      "official_english_name": "Prospector's Shovel",
+      "official_simplified_chinese_name": "掘金之锹",
+      "han_viet_name": "Quật Kim Chi Thiêu"
+    },
+    {
+      "source_key": "genshin-data-weapon-14406",
+      "official_english_name": "Prototype Amber",
+      "official_simplified_chinese_name": "试作金珀",
+      "han_viet_name": "Thí Tác Kim Phách"
+    },
+    {
+      "source_key": "genshin-data-weapon-12406",
+      "official_english_name": "Prototype Archaic",
+      "official_simplified_chinese_name": "试作古华",
+      "han_viet_name": "Thí Tác Cổ Hoa"
+    },
+    {
+      "source_key": "genshin-data-weapon-15406",
+      "official_english_name": "Prototype Crescent",
+      "official_simplified_chinese_name": "试作澹月",
+      "han_viet_name": "Thí Tác Đạm Nguyệt"
+    },
+    {
+      "source_key": "genshin-data-weapon-11406",
+      "official_english_name": "Prototype Rancour",
+      "official_simplified_chinese_name": "试作斩岩",
+      "han_viet_name": "Thí Tác Trảm Nham"
+    },
+    {
+      "source_key": "genshin-data-weapon-13402",
+      "official_english_name": "Prototype Starglitter",
+      "official_simplified_chinese_name": "试作星镰",
+      "han_viet_name": "Thí Tác Tinh Liêm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15434",
+      "official_english_name": "Rainbow Serpent's Rain Bow",
+      "official_simplified_chinese_name": "虹蛇的雨弦",
+      "han_viet_name": "Hồng Xà Đích Vũ Huyền"
+    },
+    {
+      "source_key": "genshin-data-weapon-12405",
+      "official_english_name": "Rainslasher",
+      "official_simplified_chinese_name": "雨裁",
+      "han_viet_name": "Vũ Tài"
+    },
+    {
+      "source_key": "genshin-data-weapon-15427",
+      "official_english_name": "Range Gauge",
+      "official_simplified_chinese_name": "测距规",
+      "han_viet_name": "Trắc Cự Quy"
+    },
+    {
+      "source_key": "genshin-data-weapon-15301",
+      "official_english_name": "Raven Bow",
+      "official_simplified_chinese_name": "鸦羽弓",
+      "han_viet_name": "Nha Vũ Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-15303",
+      "official_english_name": "Recurve Bow",
+      "official_simplified_chinese_name": "反曲弓",
+      "han_viet_name": "Phản Khúc Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-12510",
+      "official_english_name": "Redhorn Stonethresher",
+      "official_simplified_chinese_name": "赤角石溃杵",
+      "han_viet_name": "Xích Giác Thạch Hội Chử"
+    },
+    {
+      "source_key": "genshin-data-weapon-14521",
+      "official_english_name": "Reliquary of Truth",
+      "official_simplified_chinese_name": "真语秘匣",
+      "han_viet_name": "Chân Ngữ Bí Hạp"
+    },
+    {
+      "source_key": "genshin-data-weapon-13425",
+      "official_english_name": "Rightful Reward",
+      "official_simplified_chinese_name": "公义的酬报",
+      "han_viet_name": "Công Nghĩa Đích Thù Báo"
+    },
+    {
+      "source_key": "genshin-data-weapon-14431",
+      "official_english_name": "Ring of Yaxche",
+      "official_simplified_chinese_name": "木棉之环",
+      "han_viet_name": "Mộc Miên Chi Hoàn"
+    },
+    {
+      "source_key": "genshin-data-weapon-15404",
+      "official_english_name": "Royal Bow",
+      "official_simplified_chinese_name": "宗室长弓",
+      "han_viet_name": "Tông Thất Trưởng Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-12404",
+      "official_english_name": "Royal Greatsword",
+      "official_simplified_chinese_name": "宗室大剑",
+      "han_viet_name": "Tông Thất Đại Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14404",
+      "official_english_name": "Royal Grimoire",
+      "official_simplified_chinese_name": "宗室秘法录",
+      "han_viet_name": "Tông Thất Bí Pháp Lục"
+    },
+    {
+      "source_key": "genshin-data-weapon-11404",
+      "official_english_name": "Royal Longsword",
+      "official_simplified_chinese_name": "宗室长剑",
+      "han_viet_name": "Tông Thất Trưởng Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13408",
+      "official_english_name": "Royal Spear",
+      "official_simplified_chinese_name": "宗室猎枪",
+      "han_viet_name": "Tông Thất Lạp Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-15405",
+      "official_english_name": "Rust",
+      "official_simplified_chinese_name": "弓藏",
+      "han_viet_name": "Cung Tàng"
+    },
+    {
+      "source_key": "genshin-data-weapon-13434",
+      "official_english_name": "Sacrificer's Staff",
+      "official_simplified_chinese_name": "圣祭者的辉杖",
+      "han_viet_name": "Thánh Tế Giả Đích Huy Trượng"
+    },
+    {
+      "source_key": "genshin-data-weapon-15403",
+      "official_english_name": "Sacrificial Bow",
+      "official_simplified_chinese_name": "祭礼弓",
+      "han_viet_name": "Tế Lễ Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-14403",
+      "official_english_name": "Sacrificial Fragments",
+      "official_simplified_chinese_name": "祭礼残章",
+      "han_viet_name": "Tế Lễ Tàn Chương"
+    },
+    {
+      "source_key": "genshin-data-weapon-12403",
+      "official_english_name": "Sacrificial Greatsword",
+      "official_simplified_chinese_name": "祭礼大剑",
+      "han_viet_name": "Tế Lễ Đại Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14424",
+      "official_english_name": "Sacrificial Jade",
+      "official_simplified_chinese_name": "遗祀玉珑",
+      "han_viet_name": "Di Tự Ngọc Lung"
+    },
+    {
+      "source_key": "genshin-data-weapon-11403",
+      "official_english_name": "Sacrificial Sword",
+      "official_simplified_chinese_name": "祭礼剑",
+      "han_viet_name": "Tế Lễ Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11417",
+      "official_english_name": "Sapwood Blade",
+      "official_simplified_chinese_name": "原木刀",
+      "han_viet_name": "Nguyên Mộc Đao"
+    },
+    {
+      "source_key": "genshin-data-weapon-15424",
+      "official_english_name": "Scion of the Blazing Sun",
+      "official_simplified_chinese_name": "烈阳之嗣",
+      "han_viet_name": "Liệt Dương Chi Tự"
+    },
+    {
+      "source_key": "genshin-data-weapon-15201",
+      "official_english_name": "Seasoned Hunter's Bow",
+      "official_simplified_chinese_name": "历练的猎弓",
+      "han_viet_name": "Lịch Luyện Đích Lạp Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-15432",
+      "official_english_name": "Sequence of Solitude",
+      "official_simplified_chinese_name": "冷寂迸音",
+      "han_viet_name": "Lãnh Tịch Bính Âm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11433",
+      "official_english_name": "Serenity's Call",
+      "official_simplified_chinese_name": "谧音吹哨",
+      "han_viet_name": "Mật Âm Xuy Tiêu"
+    },
+    {
+      "source_key": "genshin-data-weapon-12409",
+      "official_english_name": "Serpent Spine",
+      "official_simplified_chinese_name": "螭骨剑",
+      "han_viet_name": "Ly Cốt Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15302",
+      "official_english_name": "Sharpshooter's Oath",
+      "official_simplified_chinese_name": "神射手之誓",
+      "han_viet_name": "Thần Xạ Thủ Chi Thệ"
+    },
+    {
+      "source_key": "genshin-data-weapon-11201",
+      "official_english_name": "Silver Sword",
+      "official_simplified_chinese_name": "银剑",
+      "han_viet_name": "Ngân Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15513",
+      "official_english_name": "Silvershower Heartstrings",
+      "official_simplified_chinese_name": "白雨心弦",
+      "han_viet_name": "Bạch Vũ Tâm Huyền"
+    },
+    {
+      "source_key": "genshin-data-weapon-12306",
+      "official_english_name": "Skyrider Greatsword",
+      "official_simplified_chinese_name": "飞天大御剑",
+      "han_viet_name": "Phi Thiên Đại Ngự Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11306",
+      "official_english_name": "Skyrider Sword",
+      "official_simplified_chinese_name": "飞天御剑",
+      "han_viet_name": "Phi Thiên Ngự Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14501",
+      "official_english_name": "Skyward Atlas",
+      "official_simplified_chinese_name": "天空之卷",
+      "han_viet_name": "Thiên Không Chi Quyển"
+    },
+    {
+      "source_key": "genshin-data-weapon-11502",
+      "official_english_name": "Skyward Blade",
+      "official_simplified_chinese_name": "天空之刃",
+      "han_viet_name": "Thiên Không Chi Nhận"
+    },
+    {
+      "source_key": "genshin-data-weapon-15501",
+      "official_english_name": "Skyward Harp",
+      "official_simplified_chinese_name": "天空之翼",
+      "han_viet_name": "Thiên Không Chi Dực"
+    },
+    {
+      "source_key": "genshin-data-weapon-12501",
+      "official_english_name": "Skyward Pride",
+      "official_simplified_chinese_name": "天空之傲",
+      "han_viet_name": "Thiên Không Chi Ngạo"
+    },
+    {
+      "source_key": "genshin-data-weapon-13502",
+      "official_english_name": "Skyward Spine",
+      "official_simplified_chinese_name": "天空之脊",
+      "han_viet_name": "Thiên Không Chi Tích"
+    },
+    {
+      "source_key": "genshin-data-weapon-15304",
+      "official_english_name": "Slingshot",
+      "official_simplified_chinese_name": "弹弓",
+      "han_viet_name": "Đàn Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-15433",
+      "official_english_name": "Snare Hook",
+      "official_simplified_chinese_name": "罗网勾针",
+      "han_viet_name": "La Võng Câu Châm"
+    },
+    {
+      "source_key": "genshin-data-weapon-12411",
+      "official_english_name": "Snow-Tombed Starsilver",
+      "official_simplified_chinese_name": "雪葬的星银",
+      "han_viet_name": "Tuyết Táng Đích Tinh Ngân"
+    },
+    {
+      "source_key": "genshin-data-weapon-14405",
+      "official_english_name": "Solar Pearl",
+      "official_simplified_chinese_name": "匣里日月",
+      "han_viet_name": "Hạp Lý Nhật Nguyệt"
+    },
+    {
+      "source_key": "genshin-data-weapon-12503",
+      "official_english_name": "Song of Broken Pines",
+      "official_simplified_chinese_name": "松籁响起之时",
+      "han_viet_name": "Tùng Lại Hưởng Khởi Chi Thì"
+    },
+    {
+      "source_key": "genshin-data-weapon-15425",
+      "official_english_name": "Song of Stillness",
+      "official_simplified_chinese_name": "静谧之曲",
+      "han_viet_name": "Tĩnh Mật Chi Khúc"
+    },
+    {
+      "source_key": "genshin-data-weapon-13436",
+      "official_english_name": "Song of the Vigil",
+      "official_simplified_chinese_name": "戍望谣歌",
+      "han_viet_name": "Thú Vọng Dao Ca"
+    },
+    {
+      "source_key": "genshin-data-weapon-11513",
+      "official_english_name": "Splendor of Tranquil Waters",
+      "official_simplified_chinese_name": "静水流涌之辉",
+      "han_viet_name": "Tĩnh Thuỷ Lưu Dũng Chi Huy"
+    },
+    {
+      "source_key": "genshin-data-weapon-13501",
+      "official_english_name": "Staff of Homa",
+      "official_simplified_chinese_name": "护摩之杖",
+      "han_viet_name": "Hộ Ma Chi Trượng"
+    },
+    {
+      "source_key": "genshin-data-weapon-13511",
+      "official_english_name": "Staff of the Scarlet Sands",
+      "official_simplified_chinese_name": "赤沙之杖",
+      "han_viet_name": "Xích Sa Chi Trượng"
+    },
+    {
+      "source_key": "genshin-data-weapon-14517",
+      "official_english_name": "Starcaller's Watch",
+      "official_simplified_chinese_name": "祭星者之望",
+      "han_viet_name": "Tế Tinh Giả Chi Vọng"
+    },
+    {
+      "source_key": "genshin-data-weapon-11430",
+      "official_english_name": "Sturdy Bone",
+      "official_simplified_chinese_name": "弥坚骨",
+      "han_viet_name": "My Kiên Cốt"
+    },
+    {
+      "source_key": "genshin-data-weapon-11504",
+      "official_english_name": "Summit Shaper",
+      "official_simplified_chinese_name": "斫峰之刃",
+      "han_viet_name": "Chước Phong Chi Nhận"
+    },
+    {
+      "source_key": "genshin-data-weapon-14518",
+      "official_english_name": "Sunny Morning Sleep-In",
+      "official_simplified_chinese_name": "寝正月初晴",
+      "han_viet_name": "Tẩm Chính Nguyệt Sơ Tình"
+    },
+    {
+      "source_key": "genshin-data-weapon-14516",
+      "official_english_name": "Surf's Up",
+      "official_simplified_chinese_name": "冲浪时光",
+      "han_viet_name": "Xung Lãng Thì Quang"
+    },
+    {
+      "source_key": "genshin-data-weapon-11412",
+      "official_english_name": "Sword of Descension",
+      "official_simplified_chinese_name": "降临之剑",
+      "han_viet_name": "Giáng Lâm Chi Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11428",
+      "official_english_name": "Sword of Narzissenkreuz",
+      "official_simplified_chinese_name": "水仙十字之剑",
+      "han_viet_name": "Thuỷ Tiên Thập Tự Chi Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13514",
+      "official_english_name": "Symphonist of Scents",
+      "official_simplified_chinese_name": "香韵奏者",
+      "han_viet_name": "Hương Vận Tấu Giả"
+    },
+    {
+      "source_key": "genshin-data-weapon-12424",
+      "official_english_name": "Talking Stick",
+      "official_simplified_chinese_name": "聊聊棒",
+      "han_viet_name": "Liêu Liêu Bổng"
+    },
+    {
+      "source_key": "genshin-data-weapon-13432",
+      "official_english_name": "Tamayuratei no Ohanashi",
+      "official_simplified_chinese_name": "且住亭御咄",
+      "han_viet_name": "Thả Trú Đình Ngự Đốt"
+    },
+    {
+      "source_key": "genshin-data-weapon-11410",
+      "official_english_name": "The Alley Flash",
+      "official_simplified_chinese_name": "暗巷闪光",
+      "han_viet_name": "Ám Hạng Thiểm Quang"
+    },
+    {
+      "source_key": "genshin-data-weapon-12402",
+      "official_english_name": "The Bell",
+      "official_simplified_chinese_name": "钟剑",
+      "han_viet_name": "Chung Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11409",
+      "official_english_name": "The Black Sword",
+      "official_simplified_chinese_name": "黑剑",
+      "han_viet_name": "Hắc Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15515",
+      "official_english_name": "The Daybreak Chronicles",
+      "official_simplified_chinese_name": "黎明破晓之史",
+      "han_viet_name": "Lê Minh Phá Hiểu Chi Sử"
+    },
+    {
+      "source_key": "genshin-data-weapon-11427",
+      "official_english_name": "The Dockhand's Assistant",
+      "official_simplified_chinese_name": "船坞长剑",
+      "han_viet_name": "Thuyền Ổ Trưởng Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15512",
+      "official_english_name": "The First Great Magic",
+      "official_simplified_chinese_name": "最初的大魔术",
+      "han_viet_name": "Tối Sơ Đích Đại Ma Thuật"
+    },
+    {
+      "source_key": "genshin-data-weapon-11402",
+      "official_english_name": "The Flute",
+      "official_simplified_chinese_name": "笛剑",
+      "han_viet_name": "Địch Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15402",
+      "official_english_name": "The Stringless",
+      "official_simplified_chinese_name": "绝弦",
+      "han_viet_name": "Tuyệt Huyền"
+    },
+    {
+      "source_key": "genshin-data-weapon-12504",
+      "official_english_name": "The Unforged",
+      "official_simplified_chinese_name": "无工之剑",
+      "han_viet_name": "Vô Công Chi Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15409",
+      "official_english_name": "The Viridescent Hunt",
+      "official_simplified_chinese_name": "苍翠猎弓",
+      "han_viet_name": "Thương Thuý Lạp Cung"
+    },
+    {
+      "source_key": "genshin-data-weapon-14402",
+      "official_english_name": "The Widsith",
+      "official_simplified_chinese_name": "流浪乐章",
+      "han_viet_name": "Lưu Lãng Nhạc Chương"
+    },
+    {
+      "source_key": "genshin-data-weapon-14302",
+      "official_english_name": "Thrilling Tales of Dragon Slayers",
+      "official_simplified_chinese_name": "讨龙英杰谭",
+      "han_viet_name": "Thảo Long Anh Kiệt Đàm"
+    },
+    {
+      "source_key": "genshin-data-weapon-15509",
+      "official_english_name": "Thundering Pulse",
+      "official_simplified_chinese_name": "飞雷之弦振",
+      "han_viet_name": "Phi Lôi Chi Huyền Chấn"
+    },
+    {
+      "source_key": "genshin-data-weapon-12425",
+      "official_english_name": "Tidal Shadow",
+      "official_simplified_chinese_name": "浪影阔剑",
+      "han_viet_name": "Lãng Ảnh Khoát Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14514",
+      "official_english_name": "Tome of the Eternal Flow",
+      "official_simplified_chinese_name": "万世流涌大典",
+      "han_viet_name": "Vạn Thế Lưu Dũng Đại Điển"
+    },
+    {
+      "source_key": "genshin-data-weapon-11422",
+      "official_english_name": "Toukabou Shigure",
+      "official_simplified_chinese_name": "东花坊时雨",
+      "han_viet_name": "Đông Hoa Phường Thì Vũ"
+    },
+    {
+      "source_key": "genshin-data-weapon-11303",
+      "official_english_name": "Traveler's Handy Sword",
+      "official_simplified_chinese_name": "旅行剑",
+      "han_viet_name": "Lữ Hành Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-14512",
+      "official_english_name": "Tulaytullah's Remembrance",
+      "official_simplified_chinese_name": "图莱杜拉的回忆",
+      "han_viet_name": "Đồ Lai Đỗ Lạp Đích Hồi Ức"
+    },
+    {
+      "source_key": "genshin-data-weapon-14305",
+      "official_english_name": "Twin Nephrite",
+      "official_simplified_chinese_name": "甲级宝珏",
+      "han_viet_name": "Giáp Cấp Bảo Giác"
+    },
+    {
+      "source_key": "genshin-data-weapon-11514",
+      "official_english_name": "Uraku Misugiri",
+      "official_simplified_chinese_name": "有乐御簾切",
+      "han_viet_name": "Hữu Nhạc Ngự Liêm Thiết"
+    },
+    {
+      "source_key": "genshin-data-weapon-12512",
+      "official_english_name": "Verdict",
+      "official_simplified_chinese_name": "裁断",
+      "han_viet_name": "Tài Đoạn"
+    },
+    {
+      "source_key": "genshin-data-weapon-14519",
+      "official_english_name": "Vivid Notions",
+      "official_simplified_chinese_name": "溢彩心念",
+      "han_viet_name": "Dật Thái Tâm Niệm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13504",
+      "official_english_name": "Vortex Vanquisher",
+      "official_simplified_chinese_name": "贯虹之槊",
+      "han_viet_name": "Quán Hồng Chi Sáo"
+    },
+    {
+      "source_key": "genshin-data-weapon-14416",
+      "official_english_name": "Wandering Evenstar",
+      "official_simplified_chinese_name": "流浪的晚星",
+      "han_viet_name": "Lưu Lãng Đích Vãn Tinh"
+    },
+    {
+      "source_key": "genshin-data-weapon-12101",
+      "official_english_name": "Waster Greatsword",
+      "official_simplified_chinese_name": "训练大剑",
+      "han_viet_name": "Huấn Luyện Đại Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13416",
+      "official_english_name": "Wavebreaker's Fin",
+      "official_simplified_chinese_name": "断浪长鳍",
+      "han_viet_name": "Đoạn Lãng Trưởng Kỳ"
+    },
+    {
+      "source_key": "genshin-data-weapon-14430",
+      "official_english_name": "Waveriding Whirl",
+      "official_simplified_chinese_name": "乘浪的回旋",
+      "han_viet_name": "Thừa Lãng Đích Hồi Toàn"
+    },
+    {
+      "source_key": "genshin-data-weapon-12303",
+      "official_english_name": "White Iron Greatsword",
+      "official_simplified_chinese_name": "白铁大剑",
+      "han_viet_name": "Bạch Thiết Đại Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-13301",
+      "official_english_name": "White Tassel",
+      "official_simplified_chinese_name": "白缨枪",
+      "han_viet_name": "Bạch Anh Thương"
+    },
+    {
+      "source_key": "genshin-data-weapon-12407",
+      "official_english_name": "Whiteblind",
+      "official_simplified_chinese_name": "白影剑",
+      "han_viet_name": "Bạch Ảnh Kiếm"
+    },
+    {
+      "source_key": "genshin-data-weapon-11520",
+      "official_english_name": "Whitelake Frostfeather",
+      "official_simplified_chinese_name": "白湖冬羽",
+      "han_viet_name": "Bạch Hồ Đông Vũ"
+    },
+    {
+      "source_key": "genshin-data-weapon-15413",
+      "official_english_name": "Windblume Ode",
+      "official_simplified_chinese_name": "风花之颂",
+      "han_viet_name": "Phong Hoa Chi Tụng"
+    },
+    {
+      "source_key": "genshin-data-weapon-14410",
+      "official_english_name": "Wine and Song",
+      "official_simplified_chinese_name": "暗巷的酒与诗",
+      "han_viet_name": "Ám Hạng Đích Tửu Dữ Thi"
+    },
+    {
+      "source_key": "genshin-data-weapon-12502",
+      "official_english_name": "Wolf's Gravestone",
+      "official_simplified_chinese_name": "狼的末路",
+      "han_viet_name": "Lang Đích Mạt Lộ"
+    },
+    {
+      "source_key": "genshin-data-weapon-11424",
+      "official_english_name": "Wolf-Fang",
+      "official_simplified_chinese_name": "狼牙",
+      "han_viet_name": "Lang Nha"
+    },
+    {
+      "source_key": "genshin-data-weapon-11418",
+      "official_english_name": "Xiphos' Moonlight",
+      "official_simplified_chinese_name": "西福斯的月光",
+      "han_viet_name": "Tây Phúc Tư Đích Nguyệt Quang"
+    }
+  ]
+}

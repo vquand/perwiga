@@ -5,7 +5,10 @@ use std::{
 
 use chrono::{DateTime, FixedOffset};
 use perwiga_core::{
-    model::{AliasInput, CalendarEvent, CalendarEventInput, EntityAliasBatchInput, WikiEntity},
+    model::{
+        AliasInput, CalendarEvent, CalendarEventInput, EntityAliasBatchInput, EntityImportSummary,
+        EntityInput, SourcedEntityInput, WikiEntity,
+    },
     CalendarEventPresentation, Capability, EntityEventRecencyPresentation, EntityFacetDefinition,
     EntityFacetOption, EntityPresentation, EntityTypeDefinition, EventFeaturedEntityPresentation,
     EventPreviousGapPresentation, LibraryModule, ModuleRegistry, PerwigaError, Store,
@@ -73,6 +76,16 @@ static ENTITY_TYPES: &[EntityTypeDefinition] = &[
         key: "item",
         display_name: "Item",
         description: "A named item, material, reward, or other database record.",
+    },
+    EntityTypeDefinition {
+        key: "gear-set",
+        display_name: "Gear Set",
+        description: "A client-defined gear suit and its three-piece set effect.",
+    },
+    EntityTypeDefinition {
+        key: "essence",
+        display_name: "Essence",
+        description: "A production weapon Essence preset with three official effect terms.",
     },
 ];
 static WEAPON_TYPE_OPTIONS: &[EntityFacetOption] = &[
@@ -345,6 +358,264 @@ static ITEM_REGION_OPTIONS: &[EntityFacetOption] = &[
         display_name: "Wuling",
     },
 ];
+static ESSENCE_PRIMARY_OPTIONS: &[EntityFacetOption] = &[
+    EntityFacetOption {
+        value: "Agility Boost",
+        display_name: "Agility Boost",
+    },
+    EntityFacetOption {
+        value: "Intellect Boost",
+        display_name: "Intellect Boost",
+    },
+    EntityFacetOption {
+        value: "Main Attribute Boost",
+        display_name: "Main Attribute Boost",
+    },
+    EntityFacetOption {
+        value: "Strength Boost",
+        display_name: "Strength Boost",
+    },
+    EntityFacetOption {
+        value: "Will Boost",
+        display_name: "Will Boost",
+    },
+];
+static ESSENCE_SECONDARY_OPTIONS: &[EntityFacetOption] = &[
+    EntityFacetOption {
+        value: "Arts DMG Boost",
+        display_name: "Arts DMG Boost",
+    },
+    EntityFacetOption {
+        value: "Arts Intensity Boost",
+        display_name: "Arts Intensity Boost",
+    },
+    EntityFacetOption {
+        value: "Attack Boost",
+        display_name: "Attack Boost",
+    },
+    EntityFacetOption {
+        value: "Critical Rate Boost",
+        display_name: "Critical Rate Boost",
+    },
+    EntityFacetOption {
+        value: "Cryo DMG Boost",
+        display_name: "Cryo DMG Boost",
+    },
+    EntityFacetOption {
+        value: "Electric DMG Boost",
+        display_name: "Electric DMG Boost",
+    },
+    EntityFacetOption {
+        value: "HP Boost",
+        display_name: "HP Boost",
+    },
+    EntityFacetOption {
+        value: "Heat DMG Boost",
+        display_name: "Heat DMG Boost",
+    },
+    EntityFacetOption {
+        value: "Nature DMG Boost",
+        display_name: "Nature DMG Boost",
+    },
+    EntityFacetOption {
+        value: "Physical DMG Boost",
+        display_name: "Physical DMG Boost",
+    },
+    EntityFacetOption {
+        value: "Treatment Efficiency Boost",
+        display_name: "Treatment Efficiency Boost",
+    },
+    EntityFacetOption {
+        value: "Ultimate Gain Efficiency Boost",
+        display_name: "Ultimate Gain Efficiency Boost",
+    },
+];
+static ESSENCE_SKILL_OPTIONS: &[EntityFacetOption] = &[
+    EntityFacetOption {
+        value: "Assault",
+        display_name: "Assault",
+    },
+    EntityFacetOption {
+        value: "Brutality",
+        display_name: "Brutality",
+    },
+    EntityFacetOption {
+        value: "Combative",
+        display_name: "Combative",
+    },
+    EntityFacetOption {
+        value: "Crusher",
+        display_name: "Crusher",
+    },
+    EntityFacetOption {
+        value: "Detonate",
+        display_name: "Detonate",
+    },
+    EntityFacetOption {
+        value: "Efficacy",
+        display_name: "Efficacy",
+    },
+    EntityFacetOption {
+        value: "Flow",
+        display_name: "Flow",
+    },
+    EntityFacetOption {
+        value: "Fracture",
+        display_name: "Fracture",
+    },
+    EntityFacetOption {
+        value: "Infliction",
+        display_name: "Infliction",
+    },
+    EntityFacetOption {
+        value: "Inspiring",
+        display_name: "Inspiring",
+    },
+    EntityFacetOption {
+        value: "Medicant",
+        display_name: "Medicant",
+    },
+    EntityFacetOption {
+        value: "Pursuit",
+        display_name: "Pursuit",
+    },
+    EntityFacetOption {
+        value: "Suppression",
+        display_name: "Suppression",
+    },
+    EntityFacetOption {
+        value: "Twilight",
+        display_name: "Twilight",
+    },
+];
+static REGION_TYPE_OPTIONS: &[EntityFacetOption] = &[
+    EntityFacetOption {
+        value: "World",
+        display_name: "World",
+    },
+    EntityFacetOption {
+        value: "Macroregion",
+        display_name: "Macroregion",
+    },
+    EntityFacetOption {
+        value: "Mobile base",
+        display_name: "Mobile base",
+    },
+    EntityFacetOption {
+        value: "Playable region",
+        display_name: "Playable region",
+    },
+    EntityFacetOption {
+        value: "Subregion",
+        display_name: "Subregion",
+    },
+    EntityFacetOption {
+        value: "Outpost",
+        display_name: "Outpost",
+    },
+    EntityFacetOption {
+        value: "Facility",
+        display_name: "Facility",
+    },
+    EntityFacetOption {
+        value: "Interior",
+        display_name: "Interior",
+    },
+    EntityFacetOption {
+        value: "Anomalous zone",
+        display_name: "Anomalous zone",
+    },
+    EntityFacetOption {
+        value: "Megastructure",
+        display_name: "Megastructure",
+    },
+    EntityFacetOption {
+        value: "Infrastructure landmark",
+        display_name: "Infrastructure landmark",
+    },
+    EntityFacetOption {
+        value: "Iconic landmark",
+        display_name: "Iconic landmark",
+    },
+    EntityFacetOption {
+        value: "Natural landmark",
+        display_name: "Natural landmark",
+    },
+    EntityFacetOption {
+        value: "Hideout",
+        display_name: "Hideout",
+    },
+    EntityFacetOption {
+        value: "Fort",
+        display_name: "Fort",
+    },
+    EntityFacetOption {
+        value: "Underground complex",
+        display_name: "Underground complex",
+    },
+    EntityFacetOption {
+        value: "Street",
+        display_name: "Street",
+    },
+    EntityFacetOption {
+        value: "Transit facility",
+        display_name: "Transit facility",
+    },
+    EntityFacetOption {
+        value: "Route",
+        display_name: "Route",
+    },
+    EntityFacetOption {
+        value: "Shelter",
+        display_name: "Shelter",
+    },
+];
+static REGION_PARENT_OPTIONS: &[EntityFacetOption] = &[
+    EntityFacetOption {
+        value: "Talos-II",
+        display_name: "Talos-II",
+    },
+    EntityFacetOption {
+        value: "Valley IV",
+        display_name: "Valley IV",
+    },
+    EntityFacetOption {
+        value: "Wuling",
+        display_name: "Wuling",
+    },
+    EntityFacetOption {
+        value: "The Hub",
+        display_name: "The Hub",
+    },
+    EntityFacetOption {
+        value: "Valley Pass",
+        display_name: "Valley Pass",
+    },
+    EntityFacetOption {
+        value: "Originium Science Park",
+        display_name: "Originium Science Park",
+    },
+    EntityFacetOption {
+        value: "Origin Lodespring",
+        display_name: "Origin Lodespring",
+    },
+    EntityFacetOption {
+        value: "Power Plateau",
+        display_name: "Power Plateau",
+    },
+    EntityFacetOption {
+        value: "Jingyu Valley",
+        display_name: "Jingyu Valley",
+    },
+    EntityFacetOption {
+        value: "Marker Stone",
+        display_name: "Marker Stone",
+    },
+    EntityFacetOption {
+        value: "Yinglung Pass",
+        display_name: "Yinglung Pass",
+    },
+];
 static ENTITY_FACETS: &[EntityFacetDefinition] = &[
     EntityFacetDefinition {
         key: "role",
@@ -361,7 +632,7 @@ static ENTITY_FACETS: &[EntityFacetDefinition] = &[
     EntityFacetDefinition {
         key: "weapon_type",
         display_name: "Weapon type",
-        entity_types: &["operator", "weapon"],
+        entity_types: &["operator", "weapon", "essence"],
         options: WEAPON_TYPE_OPTIONS,
     },
     EntityFacetDefinition {
@@ -387,6 +658,36 @@ static ENTITY_FACETS: &[EntityFacetDefinition] = &[
         display_name: "Region",
         entity_types: &["item"],
         options: ITEM_REGION_OPTIONS,
+    },
+    EntityFacetDefinition {
+        key: "essence_primary",
+        display_name: "Primary effect",
+        entity_types: &["essence"],
+        options: ESSENCE_PRIMARY_OPTIONS,
+    },
+    EntityFacetDefinition {
+        key: "essence_secondary",
+        display_name: "Secondary effect",
+        entity_types: &["essence"],
+        options: ESSENCE_SECONDARY_OPTIONS,
+    },
+    EntityFacetDefinition {
+        key: "essence_skill",
+        display_name: "Skill effect",
+        entity_types: &["essence"],
+        options: ESSENCE_SKILL_OPTIONS,
+    },
+    EntityFacetDefinition {
+        key: "region_type",
+        display_name: "Region type",
+        entity_types: &["region"],
+        options: REGION_TYPE_OPTIONS,
+    },
+    EntityFacetDefinition {
+        key: "parent_region",
+        display_name: "Parent region",
+        entity_types: &["region"],
+        options: REGION_PARENT_OPTIONS,
     },
 ];
 
@@ -442,6 +743,77 @@ struct CuratedItem {
 #[derive(Debug, Deserialize)]
 struct CuratedItemRegion {
     english: String,
+}
+
+#[derive(Debug, Deserialize)]
+struct GearEssenceSnapshot {
+    checked_at: String,
+    client_data_commit: String,
+    sources: BTreeMap<String, String>,
+    gear_sets: Vec<CuratedGearSet>,
+    essences: Vec<CuratedEssence>,
+}
+
+#[derive(Debug, Deserialize)]
+struct CuratedGearSet {
+    source_key: String,
+    official_english_name: String,
+    official_original_name: String,
+    official_vietnamese_name: Option<String>,
+    official_traditional_chinese_name: Option<String>,
+    han_viet_name: Option<String>,
+    client_logo_id: String,
+    official_english_effect: String,
+    member_item_ids: Vec<String>,
+    rarities: Vec<u8>,
+}
+
+#[derive(Debug, Deserialize)]
+struct CuratedEssence {
+    source_key: String,
+    official_english_name: String,
+    official_original_name: String,
+    official_vietnamese_name: Option<String>,
+    official_traditional_chinese_name: Option<String>,
+    han_viet_name: Option<String>,
+    catalog_label: String,
+    catalog_han_viet_label: Option<String>,
+    rarity: u8,
+    client_icon_id: String,
+    weapon_type: String,
+    compatible_weapon_ids: Vec<String>,
+    terms: Vec<CuratedEssenceTerm>,
+}
+
+#[derive(Debug, Deserialize)]
+struct CuratedEssenceTerm {
+    kind: String,
+    official_english_name: String,
+}
+
+#[derive(Debug, Deserialize)]
+struct RegionSnapshot {
+    checked_at: String,
+    regions: Vec<CuratedRegion>,
+}
+
+#[derive(Debug, Deserialize)]
+struct CuratedRegion {
+    source_key: String,
+    official_english_name: String,
+    official_original_name: String,
+    official_vietnamese_name: Option<String>,
+    han_viet_name: String,
+    subtype: String,
+    parent_source_key: Option<String>,
+    #[serde(default)]
+    related_source_keys: Vec<String>,
+    status: String,
+    #[serde(default)]
+    client_keys: Vec<String>,
+    source_table: String,
+    catalog_index: u16,
+    evidence_url: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -552,15 +924,336 @@ fn curated_item(source_key: &str) -> Option<&'static CuratedItem> {
         .find(|item| item.source_key == source_key)
 }
 
+fn curated_gear_essence_snapshot() -> &'static GearEssenceSnapshot {
+    static SNAPSHOT: OnceLock<GearEssenceSnapshot> = OnceLock::new();
+    SNAPSHOT.get_or_init(|| {
+        let snapshot =
+            serde_json::from_str::<GearEssenceSnapshot>(include_str!("../data/gear-essences.json"))
+                .expect("the bundled Endfield Gear Set and Essence snapshot must be valid JSON");
+        assert_eq!(
+            snapshot.gear_sets.len(),
+            23,
+            "verified Gear Set scope changed"
+        );
+        assert_eq!(
+            snapshot.essences.len(),
+            154,
+            "verified Essence scope changed"
+        );
+        snapshot
+    })
+}
+
+fn curated_gear_set(source_key: &str) -> Option<&'static CuratedGearSet> {
+    curated_gear_essence_snapshot()
+        .gear_sets
+        .iter()
+        .find(|record| record.source_key == source_key)
+}
+
+fn curated_essence(source_key: &str) -> Option<&'static CuratedEssence> {
+    curated_gear_essence_snapshot()
+        .essences
+        .iter()
+        .find(|record| record.source_key == source_key)
+}
+
+fn curated_region_snapshot() -> &'static RegionSnapshot {
+    static SNAPSHOT: OnceLock<RegionSnapshot> = OnceLock::new();
+    SNAPSHOT.get_or_init(|| {
+        let snapshot = serde_json::from_str::<RegionSnapshot>(include_str!("../data/regions.json"))
+            .expect("the bundled Endfield Region snapshot must be valid JSON");
+        assert_eq!(snapshot.regions.len(), 43, "verified Region scope changed");
+        snapshot
+    })
+}
+
+fn curated_region(source_key: &str) -> Option<&'static CuratedRegion> {
+    curated_region_snapshot()
+        .regions
+        .iter()
+        .find(|record| record.source_key == source_key)
+}
+
+fn region_type_label(value: &str) -> String {
+    value
+        .split('-')
+        .enumerate()
+        .map(|(index, word)| {
+            if index == 0 {
+                let mut chars = word.chars();
+                chars
+                    .next()
+                    .map(|first| first.to_uppercase().collect::<String>() + chars.as_str())
+                    .unwrap_or_default()
+            } else {
+                word.to_string()
+            }
+        })
+        .collect::<Vec<_>>()
+        .join(" ")
+}
+
+fn region_alias(record: &CuratedRegion) -> AliasInput {
+    AliasInput {
+        value: record.han_viet_name.clone(),
+        language: Some("vi".to_string()),
+        kind: "han-viet".to_string(),
+        label: Some("Hán-Việt (generated)".to_string()),
+        notes: Some(format!(
+            "Generated from verified Simplified Chinese client text with Thi Viện dictionary-attested readings; not an official Vietnamese localization. Checked {}. Confidence E (generated).",
+            curated_region_snapshot().checked_at
+        )),
+    }
+}
+
+fn region_input(record: &CuratedRegion) -> SourcedEntityInput {
+    let parent = record
+        .parent_source_key
+        .as_deref()
+        .and_then(curated_region)
+        .map(|parent| parent.official_english_name.as_str());
+    SourcedEntityInput {
+        source_provider: "beyondGameData@90bc55768143f1998ad02d03ed0042919135979f".to_string(),
+        source_identity: format!("region:{}", record.source_key),
+        entity: EntityInput {
+            entity_type: "region".to_string(),
+            official_english_name: record.official_english_name.clone(),
+            official_original_name: record.official_original_name.clone(),
+            official_vietnamese_name: record.official_vietnamese_name.clone(),
+            automatic_vietnamese_translation: None,
+            english_description: Some(match parent {
+                Some(parent) => format!(
+                    "A {} in {}.",
+                    region_type_label(&record.subtype).to_lowercase(),
+                    parent
+                ),
+                None => format!("A {} in Arknights: Endfield.", region_type_label(&record.subtype).to_lowercase()),
+            }),
+            other_information: Some(format!(
+                "Curated Region source key: {}. Catalog index: {}/43. Subtype: {}. Parent source key: {}. Related source keys: {}. Status: {}. Client keys: {}. Source table: {}. Evidence: {}. Checked {}.",
+                record.source_key,
+                record.catalog_index,
+                record.subtype,
+                record.parent_source_key.as_deref().unwrap_or("none"),
+                if record.related_source_keys.is_empty() { "none".to_string() } else { record.related_source_keys.join(", ") },
+                record.status,
+                if record.client_keys.is_empty() { "none".to_string() } else { record.client_keys.join(", ") },
+                record.source_table,
+                record.evidence_url,
+                curated_region_snapshot().checked_at
+            )),
+        },
+        aliases: vec![region_alias(record)],
+    }
+}
+
+pub fn import_curated_regions(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<EntityImportSummary> {
+    let work = store
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if work.kind != WorkKind::Game || work.module_id != "arknights-endfield" {
+        return Err(PerwigaError::Validation(format!(
+            "work {work_id} is not owned by the Arknights: Endfield module"
+        )));
+    }
+
+    let existing = store.list_entities(work_id, Some("region"))?;
+    let mut existing_by_key = BTreeMap::new();
+    for entity in &existing {
+        if let Some(key) = region_source_key(entity) {
+            if existing_by_key.insert(key.to_string(), entity).is_some() {
+                return Err(PerwigaError::Conflict(format!(
+                    "multiple Region rows claim curated source key {key}"
+                )));
+            }
+        }
+    }
+
+    let mut pending = Vec::new();
+    let mut existing_aliases = Vec::new();
+    let mut summary = EntityImportSummary::default();
+    for record in &curated_region_snapshot().regions {
+        if let Some(entity) = existing_by_key.get(&record.source_key) {
+            summary.unchanged += 1;
+            existing_aliases.push(EntityAliasBatchInput {
+                entity_id: entity.id.clone(),
+                alias: region_alias(record),
+            });
+        } else {
+            pending.push(region_input(record));
+        }
+    }
+    let inserted = store.import_sourced_entities(work_id, &pending)?;
+    let aliases = store.add_aliases_batch(&existing_aliases)?;
+    summary.inserted += inserted.inserted;
+    summary.unchanged += inserted.unchanged;
+    summary.aliases_inserted += inserted.aliases_inserted + aliases.inserted;
+    summary.aliases_unchanged += inserted.aliases_unchanged + aliases.unchanged;
+    Ok(summary)
+}
+
+fn generated_alias(value: &str, label: &str) -> AliasInput {
+    AliasInput {
+        value: value.to_string(),
+        language: Some("vi".to_string()),
+        kind: "han-viet".to_string(),
+        label: Some(label.to_string()),
+        notes: Some(format!(
+            "Generated from verified Simplified Chinese client text with Thi Viện dictionary-attested readings; not an official Vietnamese localization. Checked {}. Confidence E (generated).",
+            curated_gear_essence_snapshot().checked_at
+        )),
+    }
+}
+
+fn traditional_chinese_alias(value: &str) -> AliasInput {
+    AliasInput {
+        value: value.to_string(),
+        language: Some("zh-Hant".to_string()),
+        kind: "official-localization".to_string(),
+        label: Some("Official Traditional Chinese".to_string()),
+        notes: Some(format!(
+            "Official client localization aligned independently by localization key. Checked {}. Confidence B.",
+            curated_gear_essence_snapshot().checked_at
+        )),
+    }
+}
+
+pub fn import_curated_gear_sets_and_essences(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<EntityImportSummary> {
+    let work = store
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if work.kind != WorkKind::Game || work.module_id != "arknights-endfield" {
+        return Err(PerwigaError::Validation(format!(
+            "work {work_id} is not owned by the Arknights: Endfield module"
+        )));
+    }
+    let snapshot = curated_gear_essence_snapshot();
+    let provider = format!("beyondGameData@{}", snapshot.client_data_commit);
+    let source_url = snapshot
+        .sources
+        .get("client_data")
+        .cloned()
+        .unwrap_or_else(|| "https://github.com/555me/beyondGameData".to_string());
+    let mut inputs = Vec::with_capacity(snapshot.gear_sets.len() + snapshot.essences.len());
+
+    for gear in &snapshot.gear_sets {
+        let mut aliases = Vec::new();
+        if let Some(value) = &gear.official_traditional_chinese_name {
+            aliases.push(traditional_chinese_alias(value));
+        }
+        if let Some(value) = &gear.han_viet_name {
+            aliases.push(generated_alias(value, "Hán-Việt (generated)"));
+        }
+        inputs.push(SourcedEntityInput {
+            source_provider: provider.clone(),
+            source_identity: format!("gear-set:{}", gear.source_key),
+            entity: EntityInput {
+                entity_type: "gear-set".to_string(),
+                official_english_name: gear.official_english_name.clone(),
+                official_original_name: gear.official_original_name.clone(),
+                official_vietnamese_name: gear.official_vietnamese_name.clone(),
+                automatic_vietnamese_translation: None,
+                english_description: Some(gear.official_english_effect.clone()),
+                other_information: Some(format!(
+                    "Curated Gear Set source key: {}. Client logo ID: {}. Set requires 3 pieces and has {} cataloged gear-piece variants. Available rarities: {}. Source: {}. Checked {}.",
+                    gear.source_key,
+                    gear.client_logo_id,
+                    gear.member_item_ids.len(),
+                    gear.rarities.iter().map(u8::to_string).collect::<Vec<_>>().join(", "),
+                    source_url,
+                    snapshot.checked_at
+                )),
+            },
+            aliases,
+        });
+    }
+
+    for essence in &snapshot.essences {
+        let mut aliases = vec![AliasInput {
+            value: essence.catalog_label.clone(),
+            language: Some("en".to_string()),
+            kind: "catalog-label".to_string(),
+            label: Some("Source-composed catalog label".to_string()),
+            notes: Some("UI/search label composed from the official Essence rarity name and its three official effect-term names; not an official standalone item name.".to_string()),
+        }];
+        if let Some(value) = &essence.official_traditional_chinese_name {
+            aliases.push(traditional_chinese_alias(value));
+        }
+        if let Some(value) = &essence.han_viet_name {
+            aliases.push(generated_alias(value, "Hán-Việt (generated)"));
+        }
+        if let Some(value) = &essence.catalog_han_viet_label {
+            aliases.push(generated_alias(value, "Hán-Việt catalog label (generated)"));
+        }
+        let terms = essence
+            .terms
+            .iter()
+            .map(|term| format!("{}: {}", term.kind, term.official_english_name))
+            .collect::<Vec<_>>()
+            .join("; ");
+        inputs.push(SourcedEntityInput {
+            source_provider: provider.clone(),
+            source_identity: format!("essence:{}", essence.source_key),
+            entity: EntityInput {
+                entity_type: "essence".to_string(),
+                official_english_name: essence.official_english_name.clone(),
+                official_original_name: essence.official_original_name.clone(),
+                official_vietnamese_name: essence.official_vietnamese_name.clone(),
+                automatic_vietnamese_translation: None,
+                english_description: Some(format!(
+                    "A {}★ {} Essence preset for {}. {}.",
+                    essence.rarity, essence.official_english_name, essence.weapon_type, terms
+                )),
+                other_information: Some(format!(
+                    "Curated Essence source key: {}. Catalog label: {}. Client icon ID: {}. Compatible weapon IDs: {}. Source: {}. Checked {}. The catalog label is source-composed and is not represented as an official name.",
+                    essence.source_key,
+                    essence.catalog_label,
+                    essence.client_icon_id,
+                    essence.compatible_weapon_ids.join(", "),
+                    source_url,
+                    snapshot.checked_at
+                )),
+            },
+            aliases,
+        });
+    }
+    store.import_sourced_entities(work_id, &inputs)
+}
+
 fn curated_event_snapshot() -> Result<&'static EventSnapshot, PerwigaError> {
     static SNAPSHOT: OnceLock<Result<EventSnapshot, String>> = OnceLock::new();
     match SNAPSHOT.get_or_init(|| {
-        serde_json::from_str(include_str!("../data/events.json"))
-            .map_err(|error| format!("invalid bundled Endfield event snapshot: {error}"))
+        let snapshot = serde_json::from_str(include_str!("../data/events.json"))
+            .map_err(|error| format!("invalid bundled Endfield event snapshot: {error}"))?;
+        validate_event_snapshot(&snapshot)?;
+        Ok(snapshot)
     }) {
         Ok(snapshot) => Ok(snapshot),
         Err(message) => Err(PerwigaError::Validation(message.clone())),
     }
+}
+
+fn validate_event_snapshot(snapshot: &EventSnapshot) -> Result<(), String> {
+    if snapshot.metadata.module_id != "arknights-endfield" {
+        return Err("Endfield event snapshot has the wrong module ID".into());
+    }
+    let mut seen = HashSet::new();
+    for event in &snapshot.events {
+        if !seen.insert(event.source_key.as_str()) {
+            return Err(format!(
+                "duplicate Endfield event source key {}",
+                event.source_key
+            ));
+        }
+    }
+    Ok(())
 }
 
 pub fn recurring_event_title(
@@ -580,40 +1273,30 @@ pub fn recurring_event_title(
     }
 }
 
+fn curated_event_display_title(event: &CuratedEvent) -> String {
+    if !event.recurring {
+        return event.title.clone();
+    }
+    recurring_event_title(
+        &event.title,
+        &event.patch_start,
+        event.patch_end.as_deref().unwrap_or(&event.patch_start),
+        event.occurrence_index,
+    )
+}
+
 pub fn curated_calendar_events() -> Result<Vec<CalendarEventInput>, PerwigaError> {
     let snapshot = curated_event_snapshot()?;
-    if snapshot.metadata.module_id != "arknights-endfield" {
-        return Err(PerwigaError::Validation(
-            "Endfield event snapshot has the wrong module ID".into(),
-        ));
-    }
-    let mut seen = HashSet::new();
     snapshot
         .events
         .iter()
         .map(|event| {
-            if !seen.insert(event.source_key.clone()) {
-                return Err(PerwigaError::Conflict(format!(
-                    "duplicate Endfield event source key {}",
-                    event.source_key
-                )));
-            }
             let patch_end = event
                 .patch_end
                 .clone()
                 .unwrap_or_else(|| event.patch_start.clone());
-            let title = if event.recurring {
-                recurring_event_title(
-                    &event.title,
-                    &event.patch_start,
-                    &patch_end,
-                    event.occurrence_index,
-                )
-            } else {
-                event.title.clone()
-            };
             Ok(CalendarEventInput {
-                title,
+                title: curated_event_display_title(event),
                 starts_at: event.starts_at.clone(),
                 ends_at: event.ends_at.clone(),
                 is_all_day: event.is_all_day,
@@ -630,6 +1313,59 @@ pub fn curated_calendar_events() -> Result<Vec<CalendarEventInput>, PerwigaError
             })
         })
         .collect()
+}
+
+pub fn import_curated_event_entities(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<EntityImportSummary> {
+    let work = store
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if work.kind != WorkKind::Game || work.module_id != "arknights-endfield" {
+        return Err(PerwigaError::Validation(format!(
+            "work {work_id} is not owned by the Arknights: Endfield module"
+        )));
+    }
+
+    let snapshot = curated_event_snapshot()?;
+    let inputs = snapshot
+        .events
+        .iter()
+        .map(|event| {
+            let title = curated_event_display_title(event);
+            let patch_end = event.patch_end.as_deref().unwrap_or(&event.patch_start);
+            let published_end = event.ends_at.as_deref().unwrap_or("No published end time");
+            SourcedEntityInput {
+                source_provider: snapshot.metadata.source_provider.clone(),
+                source_identity: event.source_key.clone(),
+                entity: EntityInput {
+                    entity_type: "event".to_string(),
+                    official_english_name: title.clone(),
+                    // The curated schedule currently has no verified original-language title.
+                    // Preserve the English catalog anchor instead of inventing a localization.
+                    official_original_name: title,
+                    official_vietnamese_name: None,
+                    automatic_vietnamese_translation: None,
+                    english_description: event.schedule_note.clone(),
+                    other_information: Some(format!(
+                        "Curated event source key: {}. Type: {}. Start: {}. End: {}. Time zone: {}. Patch: {}–{}. Source: {}. Checked {}. The confirmed schedule snapshot does not provide verified original-language or Vietnamese titles; the English schedule title is repeated in the required original-name field.",
+                        event.source_key,
+                        event.event_type,
+                        event.starts_at,
+                        published_end,
+                        snapshot.metadata.time_zone,
+                        event.patch_start,
+                        patch_end,
+                        event.source_url,
+                        snapshot.metadata.source_checked_at
+                    )),
+                },
+                aliases: Vec::new(),
+            }
+        })
+        .collect::<Vec<_>>();
+    store.import_sourced_entities(work_id, &inputs)
 }
 
 fn operator_source_key(entity: &WikiEntity) -> Option<&str> {
@@ -660,6 +1396,43 @@ fn item_source_key(entity: &WikiEntity) -> Option<&str> {
     let (_, suffix) = information.split_once("Curated source key: ")?;
     let source_key = suffix.split('.').next()?.trim();
     curated_item(source_key).map(|item| item.source_key.as_str())
+}
+
+fn gear_set_source_key(entity: &WikiEntity) -> Option<&str> {
+    if entity.entity_type != "gear-set" {
+        return None;
+    }
+    let (_, suffix) = entity
+        .other_information
+        .as_deref()?
+        .split_once("Curated Gear Set source key: ")?;
+    let source_key = suffix.split('.').next()?.trim();
+    curated_gear_set(source_key).map(|record| record.source_key.as_str())
+}
+
+fn essence_source_key(entity: &WikiEntity) -> Option<&str> {
+    if entity.entity_type != "essence" {
+        return None;
+    }
+    let (_, suffix) = entity
+        .other_information
+        .as_deref()?
+        .split_once("Curated Essence source key: ")?;
+    let source_key = suffix.split('.').next()?.trim();
+    curated_essence(source_key).map(|record| record.source_key.as_str())
+}
+
+fn region_source_key(entity: &WikiEntity) -> Option<&str> {
+    if entity.entity_type != "region" {
+        return None;
+    }
+    let information = entity.other_information.as_deref()?;
+    let suffix = information
+        .split_once("Curated Region source key: ")
+        .or_else(|| information.split_once("Curated source key: "))?
+        .1;
+    let source_key = suffix.split('.').next()?.trim();
+    curated_region(source_key).map(|record| record.source_key.as_str())
 }
 
 fn rarity_color(rarity: u8) -> Option<&'static str> {
@@ -821,8 +1594,100 @@ impl LibraryModule for ArknightsEndfieldModule {
                     )]),
                 })
             }
+            "gear-set" => {
+                let source_key = gear_set_source_key(entity)?;
+                let gear = curated_gear_set(source_key)?;
+                let rarity = *gear.rarities.last()?;
+                let first_member = gear.member_item_ids.first()?;
+                let thumbnail = curated_item(first_member)
+                    .map(|item| item.client_icon_id.as_str())
+                    .unwrap_or(first_member);
+                Some(EntityPresentation {
+                    thumbnail_url: format!(
+                        "/assets/modules/arknights-endfield/items/{thumbnail}.webp"
+                    ),
+                    accent_color: rarity_color(rarity)?.to_string(),
+                    context_label: None,
+                    context_icon_url: None,
+                    label: format!(
+                        "{}★",
+                        gear.rarities
+                            .iter()
+                            .map(u8::to_string)
+                            .collect::<Vec<_>>()
+                            .join("–")
+                    ),
+                    rarity: Some(rarity),
+                    facets: BTreeMap::new(),
+                    facet_values: BTreeMap::new(),
+                })
+            }
+            "essence" => {
+                let source_key = essence_source_key(entity)?;
+                let essence = curated_essence(source_key)?;
+                let term = |kind: &str| {
+                    essence
+                        .terms
+                        .iter()
+                        .find(|term| term.kind == kind)
+                        .map(|term| term.official_english_name.clone())
+                };
+                let mut facets =
+                    BTreeMap::from([("weapon_type".to_string(), essence.weapon_type.clone())]);
+                for (key, kind) in [
+                    ("essence_primary", "Primary attribute"),
+                    ("essence_secondary", "Secondary attribute"),
+                    ("essence_skill", "Skill effect"),
+                ] {
+                    if let Some(value) = term(kind) {
+                        facets.insert(key.to_string(), value);
+                    }
+                }
+                Some(EntityPresentation {
+                    thumbnail_url: format!(
+                        "/assets/modules/arknights-endfield/items/{}.webp",
+                        essence.client_icon_id
+                    ),
+                    accent_color: rarity_color(essence.rarity)?.to_string(),
+                    context_label: None,
+                    context_icon_url: None,
+                    label: format!("{}★", essence.rarity),
+                    rarity: Some(essence.rarity),
+                    facets,
+                    facet_values: BTreeMap::new(),
+                })
+            }
+            "region" => {
+                let source_key = region_source_key(entity)?;
+                let region = curated_region(source_key)?;
+                let region_type = region_type_label(&region.subtype);
+                let parent = region
+                    .parent_source_key
+                    .as_deref()
+                    .and_then(curated_region)
+                    .map(|record| record.official_english_name.clone());
+                let mut facets = BTreeMap::from([("region_type".to_string(), region_type.clone())]);
+                if let Some(parent) = &parent {
+                    facets.insert("parent_region".to_string(), parent.clone());
+                }
+                Some(EntityPresentation {
+                    thumbnail_url: String::new(),
+                    accent_color: THEME.accent.to_string(),
+                    context_label: parent,
+                    context_icon_url: None,
+                    label: region_type,
+                    rarity: None,
+                    facets,
+                    facet_values: BTreeMap::new(),
+                })
+            }
             _ => None,
         }
+    }
+
+    fn entity_catalog_label(&self, entity: &WikiEntity) -> Option<String> {
+        let source_key = essence_source_key(entity)?;
+        Some(curated_essence(source_key)?.catalog_label.clone())
     }
 
     fn entity_event_recency(&self, entity: &WikiEntity) -> Option<EntityEventRecencyPresentation> {
@@ -1093,6 +1958,58 @@ mod tests {
         }
     }
 
+    fn gear_set(source_key: &str) -> WikiEntity {
+        WikiEntity {
+            id: "gear-set-1".into(),
+            work_id: "work-1".into(),
+            entity_type: "gear-set".into(),
+            official_english_name: "Roving MSGR".into(),
+            official_original_name: "巡行信使".into(),
+            official_vietnamese_name: Some("LLV Cơ Động".into()),
+            automatic_vietnamese_translation: None,
+            english_description: None,
+            other_information: Some(format!("Curated Gear Set source key: {source_key}.")),
+            created_at: "2026-08-26T00:00:00Z".into(),
+            updated_at: "2026-08-26T00:00:00Z".into(),
+        }
+    }
+
+    fn essence(source_key: &str) -> WikiEntity {
+        WikiEntity {
+            id: "essence-1".into(),
+            work_id: "work-1".into(),
+            entity_type: "essence".into(),
+            official_english_name: "Flawless Essence".into(),
+            official_original_name: "无瑕基质".into(),
+            official_vietnamese_name: Some("Tinh Chất Hoàn Hảo".into()),
+            automatic_vietnamese_translation: None,
+            english_description: None,
+            other_information: Some(format!("Curated Essence source key: {source_key}.")),
+            created_at: "2026-08-26T00:00:00Z".into(),
+            updated_at: "2026-08-26T00:00:00Z".into(),
+        }
+    }
+
+    fn region(source_key: &str) -> WikiEntity {
+        let record = curated_region(source_key).expect("curated region");
+        WikiEntity {
+            id: "region-1".into(),
+            work_id: "work-1".into(),
+            entity_type: "region".into(),
+            official_english_name: record.official_english_name.clone(),
+            official_original_name: record.official_original_name.clone(),
+            official_vietnamese_name: record.official_vietnamese_name.clone(),
+            automatic_vietnamese_translation: None,
+            english_description: None,
+            other_information: Some(format!(
+                "Curated Region source key: {source_key}. Subtype: {}.",
+                record.subtype
+            )),
+            created_at: "2026-08-26T00:00:00Z".into(),
+            updated_at: "2026-08-26T00:00:00Z".into(),
+        }
+    }
+
     fn calendar_event(source_key: &str) -> CalendarEvent {
         let input = curated_calendar_events()
             .expect("curated events")
@@ -1204,6 +2121,137 @@ mod tests {
     }
 
     #[test]
+    fn gear_set_and_essence_catalogs_import_additively_with_module_facets() {
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let work = store
+            .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+            .expect("Endfield work");
+        let first = import_curated_gear_sets_and_essences(&mut store, &work.id)
+            .expect("first catalog import");
+        assert_eq!(first.inserted, 177);
+        let second = import_curated_gear_sets_and_essences(&mut store, &work.id)
+            .expect("idempotent catalog import");
+        assert_eq!(second.unchanged, 177);
+        assert_eq!(
+            store
+                .list_entities(&work.id, Some("gear-set"))
+                .unwrap()
+                .len(),
+            23
+        );
+        assert_eq!(
+            store
+                .list_entities(&work.id, Some("essence"))
+                .unwrap()
+                .len(),
+            154
+        );
+
+        let gear = module()
+            .entity_presentation(&gear_set("suit_agi01"))
+            .expect("Gear Set presentation");
+        assert_eq!(gear.label, "3–4★");
+        assert_eq!(gear.rarity, Some(4));
+        assert!(gear
+            .thumbnail_url
+            .contains("item_equip_t2_suit_agi01_body_01"));
+
+        let essence_entity = essence("gem_claym_0003_442");
+        let essence = module()
+            .entity_presentation(&essence_entity)
+            .expect("Essence presentation");
+        assert_eq!(essence.rarity, Some(5));
+        assert_eq!(essence.facets["weapon_type"], "Greatsword");
+        assert_eq!(essence.facets["essence_primary"], "Strength Boost");
+        assert_eq!(essence.facets["essence_secondary"], "Attack Boost");
+        assert_eq!(essence.facets["essence_skill"], "Suppression");
+        assert_eq!(
+            module().entity_catalog_label(&essence_entity).as_deref(),
+            Some(
+                "Flawless Essence — Industry 0.1 — Strength Boost Lv.4 · Attack Boost Lv.4 · Suppression Lv.2"
+            )
+        );
+        assert_eq!(store.integrity_check().unwrap(), "ok");
+    }
+
+    #[test]
+    fn region_catalog_imports_additively_with_hierarchy_and_facets() {
+        let snapshot = curated_region_snapshot();
+        assert_eq!(snapshot.regions.len(), 43);
+        assert!(snapshot
+            .regions
+            .iter()
+            .all(|record| !record.han_viet_name.trim().is_empty()));
+        assert_eq!(
+            snapshot
+                .regions
+                .iter()
+                .filter(|record| record.subtype == "playable-region")
+                .count(),
+            2
+        );
+        assert_eq!(
+            snapshot
+                .regions
+                .iter()
+                .filter(|record| record.subtype == "subregion")
+                .count(),
+            14
+        );
+        let source_keys = snapshot
+            .regions
+            .iter()
+            .map(|record| record.source_key.as_str())
+            .collect::<HashSet<_>>();
+        assert_eq!(source_keys.len(), snapshot.regions.len());
+        for record in &snapshot.regions {
+            if let Some(parent) = &record.parent_source_key {
+                assert!(
+                    source_keys.contains(parent.as_str()),
+                    "{} has an unknown parent {parent}",
+                    record.source_key
+                );
+            }
+            assert!(!record.related_source_keys.contains(&record.source_key));
+        }
+
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let work = store
+            .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+            .expect("Endfield work");
+        let first = import_curated_regions(&mut store, &work.id).expect("first region import");
+        assert_eq!(first.inserted, 43);
+        assert_eq!(first.aliases_inserted, 43);
+        let second = import_curated_regions(&mut store, &work.id).expect("idempotent import");
+        assert_eq!(second.unchanged, 43);
+        assert_eq!(second.aliases_unchanged, 43);
+
+        let wuling = module()
+            .entity_presentation(&region("wuling"))
+            .expect("Wuling presentation");
+        assert_eq!(wuling.facets["region_type"], "Playable region");
+        assert_eq!(wuling.facets["parent_region"], "Talos-II");
+        assert_eq!(wuling.context_label.as_deref(), Some("Talos-II"));
+
+        let jingyu = module()
+            .entity_presentation(&region("jingyu-valley"))
+            .expect("Jingyu Valley presentation");
+        assert_eq!(jingyu.facets["region_type"], "Subregion");
+        assert_eq!(jingyu.facets["parent_region"], "Wuling");
+        assert_eq!(jingyu.context_label.as_deref(), Some("Wuling"));
+
+        for key in ["region_type", "parent_region"] {
+            let facet = module()
+                .entity_facets()
+                .iter()
+                .find(|facet| facet.key == key)
+                .unwrap_or_else(|| panic!("missing {key} facet"));
+            assert_eq!(facet.entity_types, &["region"]);
+        }
+        assert_eq!(store.integrity_check().unwrap(), "ok");
+    }
+
+    #[test]
     fn weapon_presentation_uses_curated_icon_and_rarity_metadata() {
         let presentation = module()
             .entity_presentation(&weapon("aggeloslayer"))
@@ -1250,7 +2298,7 @@ mod tests {
             .find(|facet| facet.key == "weapon_type")
             .expect("weapon type facet");
         assert_eq!(weapon_type.key, "weapon_type");
-        assert_eq!(weapon_type.entity_types, &["operator", "weapon"]);
+        assert_eq!(weapon_type.entity_types, &["operator", "weapon", "essence"]);
         assert_eq!(weapon_type.options.len(), 5);
     }
 

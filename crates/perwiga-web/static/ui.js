@@ -171,7 +171,10 @@ export function filterAndSortEntities(entities, { rarity = "", facets = {}, sort
   });
 
   const byName = (left, right) =>
-    nameCollator.compare(left.official_english_name, right.official_english_name);
+    nameCollator.compare(
+      left.catalog_label || left.official_english_name,
+      right.catalog_label || right.official_english_name,
+    );
   if (sort === "name") return filtered.sort(byName);
 
   const direction = sort === "rarity-asc" ? 1 : -1;
@@ -242,7 +245,7 @@ export function renderEntityList(list, entities, types, selectedId, onSelect) {
     const avatar = entityAvatar(entity);
     const copy = element("span", "entity-copy");
     copy.append(
-      element("strong", "entity-name", entity.official_english_name),
+      element("strong", "entity-name", entity.catalog_label || entity.official_english_name),
       element("span", "entity-original", entity.official_original_name),
     );
     const kind = entityKind(typeName(types, entity.entity_type), entity.presentation);
@@ -375,8 +378,50 @@ function aliasEditor(onAlias) {
   return editor;
 }
 
+function entityAppearanceSection(appearances) {
+  const section = element("section", "entity-appearances");
+  section.append(element("h3", "subheading", `Appearances · ${appearances.length}`));
+  if (!appearances.length) {
+    section.append(element("p", "empty-copy", "No source-backed quest, event, or action records have been recorded."));
+    return section;
+  }
+
+  const list = element("ul", "appearance-list");
+  for (const appearance of appearances) {
+    const item = element("li", "appearance-list-item");
+    const heading = element("div", "appearance-heading");
+    const title = appearance.related_source_url
+      ? element("a", "appearance-title", appearance.related_title)
+      : element("strong", "appearance-title", appearance.related_title);
+    if (appearance.related_source_url) {
+      title.href = appearance.related_source_url;
+      title.target = "_blank";
+      title.rel = "noreferrer noopener";
+    }
+    heading.append(title, element("span", "appearance-kind", appearance.relation_kind));
+    item.append(heading);
+    if (appearance.locations?.length) {
+      const locations = appearance.locations.map((location) =>
+        location.region_name && location.region_name !== location.location_name
+          ? `${location.location_name} · ${location.region_name}`
+          : location.location_name,
+      );
+      item.append(element("small", "appearance-locations", locations.join(", ")));
+    }
+    if (appearance.source_notes) item.append(element("small", "appearance-notes", appearance.source_notes));
+    list.append(item);
+  }
+  section.append(list);
+  return section;
+}
+
 export function renderEntityDetail(container, detail, types, { onEdit, onAlias }) {
-  const { entity, aliases, event_recency: eventRecency } = detail;
+  const {
+    entity,
+    aliases,
+    appearances = [],
+    event_recency: eventRecency,
+  } = detail;
   container.className = "inspector-content";
   container.replaceChildren();
 
@@ -428,7 +473,7 @@ export function renderEntityDetail(container, detail, types, { onEdit, onAlias }
   const recency = eventRecencyPanel(eventRecency);
   container.append(heading);
   if (recency) container.append(recency);
-  container.append(names, aliasSection, aliasEditor(onAlias));
+  container.append(names, entityAppearanceSection(appearances), aliasSection, aliasEditor(onAlias));
 }
 
 export function renderInspectorEmpty(container, title = "Select a record", message) {
