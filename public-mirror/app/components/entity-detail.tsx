@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Entity } from "../types";
+import type { Entity, EntityEventRecency } from "../types";
 
 type EntityDetailProps = { entity: Entity | undefined };
 
@@ -10,6 +10,31 @@ function Detail({ label, value }: { label: string; value?: string }) {
       <dt>{label}</dt>
       <dd>{value}</dd>
     </div>
+  );
+}
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+function wholeDaysSince(value: string, now = new Date()) {
+  const endedAt = new Date(value);
+  if (Number.isNaN(endedAt.getTime())) return null;
+  const elapsed = now.getTime() - endedAt.getTime();
+  if (elapsed < 0) return null;
+  return Math.floor(elapsed / DAY_MS);
+}
+
+function EventRecency({ recency }: { recency?: EntityEventRecency }) {
+  const days = recency ? wholeDaysSince(recency.ended_at) : null;
+  if (!recency || days === null) return null;
+
+  const endedAt = new Date(recency.ended_at);
+  return (
+    <section className="entity-event-recency" aria-label={`${days} ${days === 1 ? "day" : "days"} since ${recency.event_title} ended`}>
+      <p className="event-recency-heading">{recency.heading}</p>
+      <div className="event-recency-metric"><strong>{days}</strong><span>{days === 1 ? "day" : "days"}</span></div>
+      <p className="event-recency-context">since {recency.event_title} ended</p>
+      <time className="event-recency-date" dateTime={recency.ended_at}>Ended {new Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(endedAt)}</time>
+    </section>
   );
 }
 
@@ -52,6 +77,8 @@ export function EntityDetail({ entity }: EntityDetailProps) {
           )}
         </div>
       </header>
+
+      <EventRecency recency={entity.event_recency} />
 
       <dl className="detail-fields">
         <Detail label="Official English" value={entity.official_english_name} />

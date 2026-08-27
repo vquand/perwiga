@@ -45,12 +45,16 @@ test("does not retain the starter preview or editing affordances", async () => {
     readFile(new URL("../app/public-mirror.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/components/timeline.tsx", import.meta.url), "utf8"),
   ]);
+  const entityDetail = await readFile(new URL("../app/components/entity-detail.tsx", import.meta.url), "utf8");
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
 
   assert.match(page, /Perwiga Public Atlas/);
   assert.match(client, /Worlds, names, and stories/);
   assert.match(client, /PAGE_SIZE = 10/);
   assert.match(client, /IntersectionObserver/);
+  assert.match(entityDetail, /event_recency/);
+  assert.match(entityDetail, /entity-event-recency/);
+  assert.match(entityDetail, /wholeDaysSince/);
   assert.match(client, /fetch\("\/data\/catalog\.json"/);
   assert.match(timeline, /timeline-axis/);
   assert.match(timeline, /timeline-bar/);

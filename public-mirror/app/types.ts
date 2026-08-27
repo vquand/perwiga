@@ -51,6 +51,12 @@ export type Appearance = {
   locations: Array<{ location_name: string; region_name?: string }>;
 };
 
+export type EntityEventRecency = {
+  heading: string;
+  event_title: string;
+  ended_at: string;
+};
+
 export type Entity = {
   id: string;
   work_id: string;
@@ -64,6 +70,7 @@ export type Entity = {
   appearances: Appearance[];
   catalog_label?: string;
   presentation?: Presentation;
+  event_recency?: EntityEventRecency;
 };
 
 export type EventFeaturedEntity = {

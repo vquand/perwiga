@@ -3,8 +3,8 @@ use std::{collections::HashMap, fs, path::PathBuf};
 use clap::Args;
 use perwiga_core::{
     model::{CalendarEvent, EntityAlias, EntityAppearance, LibraryWork, WikiEntity},
-    CalendarEventPresentation, EntityFacetDefinition, EntityPresentation, LibraryModule,
-    PerwigaError, Result, Store, ThemeDefinition, WorkKind,
+    CalendarEventPresentation, EntityEventRecencyPresentation, EntityFacetDefinition,
+    EntityPresentation, LibraryModule, PerwigaError, Result, Store, ThemeDefinition, WorkKind,
 };
 use serde::Serialize;
 use url::Url;
@@ -58,6 +58,8 @@ pub struct PublicEntity {
     pub appearances: Vec<PublicAppearance>,
     pub catalog_label: Option<String>,
     pub presentation: Option<EntityPresentation>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub event_recency: Option<EntityEventRecencyPresentation>,
 }
 
 #[derive(Debug, Serialize)]
@@ -220,6 +222,7 @@ fn public_entity(
     let presentation = module
         .entity_presentation(&entity)
         .map(rewrite_entity_presentation);
+    let event_recency = module.entity_event_recency(&entity);
     let catalog_label = module.entity_catalog_label(&entity);
     let aliases = store
         .list_aliases(&entity_id)?
@@ -239,6 +242,7 @@ fn public_entity(
         appearances: Vec::new(),
         catalog_label,
         presentation,
+        event_recency,
     })
 }
 
@@ -344,11 +348,50 @@ fn public_asset_url(value: &str) -> String {
 #[cfg(test)]
 mod tests {
     use perwiga_core::{
-        model::{AliasInput, EntityAppearanceInput, EntityInput},
+        model::{AliasInput, EntityAppearanceInput, EntityInput, WikiEntity},
+        Capability, EntityEventRecencyPresentation, EntityTypeDefinition, LibraryModule,
         ModuleRegistry, Store, WorkKind,
     };
 
     use super::build_catalog;
+
+    struct RecencyModule;
+
+    static RECENCY_MODULE: RecencyModule = RecencyModule;
+    static RECENCY_ENTITY_TYPES: &[EntityTypeDefinition] = &[];
+
+    impl LibraryModule for RecencyModule {
+        fn id(&self) -> &'static str {
+            "recency-test"
+        }
+
+        fn kind(&self) -> WorkKind {
+            WorkKind::Game
+        }
+
+        fn display_name(&self) -> &'static str {
+            "Recency Test"
+        }
+
+        fn capabilities(&self) -> &'static [Capability] {
+            &[]
+        }
+
+        fn entity_types(&self) -> &'static [EntityTypeDefinition] {
+            RECENCY_ENTITY_TYPES
+        }
+
+        fn entity_event_recency(
+            &self,
+            _entity: &WikiEntity,
+        ) -> Option<EntityEventRecencyPresentation> {
+            Some(EntityEventRecencyPresentation {
+                heading: "Last limited banner".into(),
+                event_title: "Previous Banner".into(),
+                ended_at: "2026-06-05T06:00:00+08:00".into(),
+            })
+        }
+    }
 
     #[test]
     fn public_export_contains_curated_records_but_excludes_unmarked_records() {
@@ -424,5 +467,42 @@ mod tests {
             .entities
             .iter()
             .any(|entity| entity.id == private.id));
+    }
+
+    #[test]
+    fn public_export_preserves_module_owned_event_recency() {
+        let store = Store::open_in_memory().expect("in-memory store");
+        let work = store
+            .insert_work(WorkKind::Game, "recency-test", "Recency Test")
+            .expect("work");
+        store
+            .insert_entity(
+                &work.id,
+                &EntityInput {
+                    entity_type: "character".to_string(),
+                    official_english_name: "Featured Character".to_string(),
+                    official_original_name: "原名".to_string(),
+                    official_vietnamese_name: None,
+                    automatic_vietnamese_translation: None,
+                    english_description: None,
+                    other_information: Some("Curated source key: character-1".to_string()),
+                },
+            )
+            .expect("entity");
+
+        let catalog = build_catalog(
+            &store,
+            std::iter::once(&RECENCY_MODULE as &'static dyn LibraryModule),
+        )
+        .expect("public catalog");
+
+        assert_eq!(
+            catalog.entities[0].event_recency,
+            Some(EntityEventRecencyPresentation {
+                heading: "Last limited banner".into(),
+                event_title: "Previous Banner".into(),
+                ended_at: "2026-06-05T06:00:00+08:00".into(),
+            })
+        );
     }
 }
