@@ -42,9 +42,10 @@ test("server-renders the Perwiga atlas", async () => {
 });
 
 test("does not retain the starter preview or editing affordances", async () => {
-  const [page, client] = await Promise.all([
+  const [page, client, timeline] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/public-mirror.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/components/timeline.tsx", import.meta.url), "utf8"),
   ]);
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
 
@@ -52,6 +53,10 @@ test("does not retain the starter preview or editing affordances", async () => {
   assert.match(client, /Worlds, names, and stories/);
   assert.match(client, /PAGE_SIZE = 10/);
   assert.match(client, /IntersectionObserver/);
+  assert.match(timeline, /timeline-axis/);
+  assert.match(timeline, /timeline-bar/);
+  assert.match(timeline, /timeline-lane-track/);
+  assert.doesNotMatch(timeline, /className="timeline-events"/);
   assert.doesNotMatch(client, /slice\(0, 350\)/);
   assert.doesNotMatch(client, /new-entity|save-entity|create_work|PATCH|POST/);
 });
