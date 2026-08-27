@@ -31,12 +31,10 @@ test("server-renders the Perwiga atlas", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Perwiga Public Atlas<\/title>/i);
-  assert.match(html, /Library \/ multilingual field guide/);
-  assert.match(html, /Worlds, names, and stories/);
-  assert.match(html, /Genshin Impact/);
-  assert.match(html, /Arknights: Endfield/);
-  assert.equal((html.match(/class="entity-row/g) ?? []).length, 10);
-  assert.match(html, /Continue browsing/);
+  assert.match(html, /Loading atlas/);
+  assert.doesNotMatch(html, /Genshin Impact|Arknights: Endfield/);
+  assert.equal((html.match(/class="entity-row/g) ?? []).length, 0);
+  assert.doesNotMatch(html, /Continue browsing/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
   assert.doesNotMatch(html, /\/api\//i);
 });
@@ -53,6 +51,7 @@ test("does not retain the starter preview or editing affordances", async () => {
   assert.match(client, /Worlds, names, and stories/);
   assert.match(client, /PAGE_SIZE = 10/);
   assert.match(client, /IntersectionObserver/);
+  assert.match(client, /fetch\("\/data\/catalog\.json"/);
   assert.match(timeline, /timeline-axis/);
   assert.match(timeline, /timeline-bar/);
   assert.match(timeline, /timeline-lane-track/);

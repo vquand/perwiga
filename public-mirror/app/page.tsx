@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import catalogData from "../public/data/catalog.json";
 import { PublicMirror } from "./public-mirror";
-import type { Catalog } from "./types";
 
 export const metadata: Metadata = {
   title: "Perwiga Public Atlas",
@@ -10,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <PublicMirror initialCatalog={catalogData as unknown as Catalog} />;
+  return <PublicMirror />;
 }
