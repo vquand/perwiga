@@ -1,0 +1,1977 @@
+{
+  "schema": "perwiga.genshin-impact.weapon-thumbnails-hoyowiki.v1",
+  "checked_at": "2026-08-26",
+  "source": {
+    "provider": "Official Genshin HoYoWiki",
+    "url": "https://wiki.hoyolab.com/pc/genshin/aggregate/weapon"
+  },
+  "catalog_scope": {
+    "catalog_records": 246,
+    "wiki_matches": 245,
+    "missing_from_hoyowiki": [
+      "genshin-data-weapon-11521"
+    ]
+  },
+  "weapons": [
+    {
+      "source_key": "genshin-data-weapon-13415",
+      "official_english_name": "\"The Catch\"",
+      "hoyowiki_english_name": "\"The Catch\"",
+      "hoyowiki_entry_page_id": "1930",
+      "thumbnail_asset": "genshin-data-weapon-13415.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/「渔获」.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12426",
+      "official_english_name": "\"Ultimate Overlord's Mega Magic Sword\"",
+      "hoyowiki_english_name": "Ultimate Overlord's Mega Magic Sword",
+      "hoyowiki_entry_page_id": "4720",
+      "thumbnail_asset": "genshin-data-weapon-12426.png",
+      "thumbnail_source_url": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/23/35428890/9eb77ebc428cc08b695d166c70d72012_6536152954173802112.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12516",
+      "official_english_name": "A Teaspoon of Transcendence",
+      "hoyowiki_english_name": "A Teaspoon of Transcendence",
+      "hoyowiki_entry_page_id": "10949",
+      "thumbnail_asset": "genshin-data-weapon-12516.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/06/25/a2c59d52525cd3b23ba5dfc0e2ca0e40_8273039777765971978.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12514",
+      "official_english_name": "A Thousand Blazing Suns",
+      "hoyowiki_english_name": "A Thousand Blazing Suns",
+      "hoyowiki_entry_page_id": "7365",
+      "thumbnail_asset": "genshin-data-weapon-12514.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/26/da1910fbe0e825e1e3704c126720ab24_2121228058184091562.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14511",
+      "official_english_name": "A Thousand Floating Dreams",
+      "hoyowiki_english_name": "A Thousand Floating Dreams",
+      "hoyowiki_entry_page_id": "2966",
+      "thumbnail_asset": "genshin-data-weapon-14511.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/10/31/35428890/afd146c520b3a0bd72489a3426d8f283_7854516109466365358.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11515",
+      "official_english_name": "Absolution",
+      "hoyowiki_english_name": "Absolution",
+      "hoyowiki_entry_page_id": "5674",
+      "thumbnail_asset": "genshin-data-weapon-11515.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/05/30/d5da78d8dd0ac8814b699d6195145776_7211910286782963050.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12416",
+      "official_english_name": "Akuoumaru",
+      "hoyowiki_english_name": "Akuoumaru",
+      "hoyowiki_entry_page_id": "1971",
+      "thumbnail_asset": "genshin-data-weapon-12416.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/恶王丸.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15410",
+      "official_english_name": "Alley Hunter",
+      "hoyowiki_english_name": "Alley Hunter",
+      "hoyowiki_entry_page_id": "1981",
+      "thumbnail_asset": "genshin-data-weapon-15410.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/暗巷猎手.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11414",
+      "official_english_name": "Amenoma Kageuchi",
+      "hoyowiki_english_name": "Amenoma Kageuchi",
+      "hoyowiki_entry_page_id": "1952",
+      "thumbnail_asset": "genshin-data-weapon-11414.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/天目影打刀.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15502",
+      "official_english_name": "Amos' Bow",
+      "hoyowiki_english_name": "Amos' Bow",
+      "hoyowiki_entry_page_id": "2040",
+      "thumbnail_asset": "genshin-data-weapon-15502.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/阿莫斯之弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14523",
+      "official_english_name": "Angelos' Heptades",
+      "hoyowiki_english_name": "Angelos' Heptades",
+      "hoyowiki_entry_page_id": "10757",
+      "thumbnail_asset": "genshin-data-weapon-14523.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/35faadca59d9ed40b7c448a1e628bcdc_4873659369821393193.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14101",
+      "official_english_name": "Apprentice's Notes",
+      "hoyowiki_english_name": "Apprentice's Notes",
+      "hoyowiki_entry_page_id": "1958",
+      "thumbnail_asset": "genshin-data-weapon-14101.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/学徒笔记.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15508",
+      "official_english_name": "Aqua Simulacra",
+      "hoyowiki_english_name": "Aqua Simulacra",
+      "hoyowiki_entry_page_id": "2254",
+      "thumbnail_asset": "genshin-data-weapon-15508.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/若水.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11501",
+      "official_english_name": "Aquila Favonia",
+      "hoyowiki_english_name": "Aquila Favonia",
+      "hoyowiki_entry_page_id": "2046",
+      "thumbnail_asset": "genshin-data-weapon-11501.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/风鹰剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14427",
+      "official_english_name": "Ash-Graven Drinking Horn",
+      "hoyowiki_english_name": "Ash-Graven Drinking Horn",
+      "hoyowiki_entry_page_id": "6550",
+      "thumbnail_asset": "genshin-data-weapon-14427.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/28866045cbb3e5227244b4aa09ef0db3_8394892053233317551.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15514",
+      "official_english_name": "Astral Vulture's Crimson Plumage",
+      "hoyowiki_english_name": "Astral Vulture's Crimson Plumage",
+      "hoyowiki_entry_page_id": "7116",
+      "thumbnail_asset": "genshin-data-weapon-15514.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/14/d3bb0f9d936379661d409644e4269ff1_2888646900955247330.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11518",
+      "official_english_name": "Athame Artis",
+      "hoyowiki_english_name": "Athame Artis",
+      "hoyowiki_entry_page_id": "9045",
+      "thumbnail_asset": "genshin-data-weapon-11518.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/11/25/69991219a3eab8162a67513d013e6ef0_6929917729223804184.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11517",
+      "official_english_name": "Azurelight",
+      "hoyowiki_english_name": "Azurelight",
+      "hoyowiki_entry_page_id": "7785",
+      "thumbnail_asset": "genshin-data-weapon-11517.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/06/12/0809293ee527b40073c4c9636eff6dd0_2992571952915882222.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14426",
+      "official_english_name": "Ballad of the Boundless Blue",
+      "hoyowiki_english_name": "Ballad of the Boundless Blue",
+      "hoyowiki_entry_page_id": "4338",
+      "thumbnail_asset": "genshin-data-weapon-14426.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/22/35428890/079c8ff2c28a14f02c40af831e9b5179_5407660022702405104.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13424",
+      "official_english_name": "Ballad of the Fjords",
+      "hoyowiki_english_name": "Ballad of the Fjords",
+      "hoyowiki_entry_page_id": "4001",
+      "thumbnail_asset": "genshin-data-weapon-13424.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/35428890/bd385748dfaefad1cddca86948a4846c_4272011011757162904.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12511",
+      "official_english_name": "Beacon of the Reed Sea",
+      "hoyowiki_english_name": "Beacon of the Reed Sea",
+      "hoyowiki_entry_page_id": "3615",
+      "thumbnail_asset": "genshin-data-weapon-12511.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/02/28/35428890/374cad27eb39f01436d6f52446804e6b_7142308678889222851.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13101",
+      "official_english_name": "Beginner's Protector",
+      "hoyowiki_english_name": "Beginner's Protector",
+      "hoyowiki_entry_page_id": "1976",
+      "thumbnail_asset": "genshin-data-weapon-13101.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/新手长枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13303",
+      "official_english_name": "Black Tassel",
+      "hoyowiki_english_name": "Black Tassel",
+      "hoyowiki_entry_page_id": "2059",
+      "thumbnail_asset": "genshin-data-weapon-13303.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/黑缨枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14408",
+      "official_english_name": "Blackcliff Agate",
+      "hoyowiki_english_name": "Blackcliff Agate",
+      "hoyowiki_entry_page_id": "2057",
+      "thumbnail_asset": "genshin-data-weapon-14408.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/黑岩绯玉.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11408",
+      "official_english_name": "Blackcliff Longsword",
+      "hoyowiki_english_name": "Blackcliff Longsword",
+      "hoyowiki_entry_page_id": "2058",
+      "thumbnail_asset": "genshin-data-weapon-11408.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/黑岩长剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13404",
+      "official_english_name": "Blackcliff Pole",
+      "hoyowiki_english_name": "Blackcliff Pole",
+      "hoyowiki_entry_page_id": "2054",
+      "thumbnail_asset": "genshin-data-weapon-13404.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/黑岩刺枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12408",
+      "official_english_name": "Blackcliff Slasher",
+      "hoyowiki_english_name": "Blackcliff Slasher",
+      "hoyowiki_entry_page_id": "2056",
+      "thumbnail_asset": "genshin-data-weapon-12408.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/黑岩斩刀.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15408",
+      "official_english_name": "Blackcliff Warbow",
+      "hoyowiki_english_name": "Blackcliff Warbow",
+      "hoyowiki_entry_page_id": "2055",
+      "thumbnail_asset": "genshin-data-weapon-15408.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/黑岩战弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14433",
+      "official_english_name": "Blackmarrow Lantern",
+      "hoyowiki_english_name": "Blackmarrow Lantern",
+      "hoyowiki_entry_page_id": "8517",
+      "thumbnail_asset": "genshin-data-weapon-14433.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/fca1d073841a27aa921fb0cdadcc1814_4456705496709264629.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12436",
+      "official_english_name": "Blade of Atonement",
+      "hoyowiki_english_name": "Blade of Atonement",
+      "hoyowiki_entry_page_id": "11214",
+      "thumbnail_asset": "genshin-data-weapon-12436.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/47b7c05e0d29ef0b8845e3b249fdd800_7183760739047053137.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13516",
+      "official_english_name": "Bloodsoaked Ruins",
+      "hoyowiki_english_name": "Bloodsoaked Ruins",
+      "hoyowiki_entry_page_id": "8838",
+      "thumbnail_asset": "genshin-data-weapon-13516.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/f842bb3bf454987301dd1bedd3be0c06_372682473601768051.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12302",
+      "official_english_name": "Bloodtainted Greatsword",
+      "hoyowiki_english_name": "Bloodtainted Greatsword",
+      "hoyowiki_entry_page_id": "1988",
+      "thumbnail_asset": "genshin-data-weapon-12302.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/沐浴龙血的剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11432",
+      "official_english_name": "Calamity of Eshu",
+      "hoyowiki_english_name": "Calamity of Eshu",
+      "hoyowiki_entry_page_id": "7113",
+      "thumbnail_asset": "genshin-data-weapon-11432.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/14/034a74a58833bc506791e2d2c8e00539_8351835749900866009.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13507",
+      "official_english_name": "Calamity Queller",
+      "hoyowiki_english_name": "Calamity Queller",
+      "hoyowiki_entry_page_id": "1970",
+      "thumbnail_asset": "genshin-data-weapon-13507.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/息灾.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14513",
+      "official_english_name": "Cashflow Supervision",
+      "hoyowiki_english_name": "Cashflow Supervision",
+      "hoyowiki_entry_page_id": "4340",
+      "thumbnail_asset": "genshin-data-weapon-14513.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/16/35428890/6d8248633da24c16368b6570bf578874_2176869761748941225.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15431",
+      "official_english_name": "Chain Breaker",
+      "hoyowiki_english_name": "Chain Breaker",
+      "hoyowiki_entry_page_id": "6552",
+      "thumbnail_asset": "genshin-data-weapon-15431.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/8a6b418598f555deba7da922385254a2_8112788546506820868.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11415",
+      "official_english_name": "Cinnabar Spindle",
+      "hoyowiki_english_name": "Cinnabar Spindle",
+      "hoyowiki_entry_page_id": "2032",
+      "thumbnail_asset": "genshin-data-weapon-11415.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/辰砂之纺锤.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14435",
+      "official_english_name": "Clash of Kings",
+      "hoyowiki_english_name": "Clash of Kings",
+      "hoyowiki_entry_page_id": "11219",
+      "thumbnail_asset": "genshin-data-weapon-14435.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/028d4226ab8c38cbe2e0fcdd3ce128e4_172320011752876507.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15426",
+      "official_english_name": "Cloudforged",
+      "hoyowiki_english_name": "Cloudforged",
+      "hoyowiki_entry_page_id": "5713",
+      "thumbnail_asset": "genshin-data-weapon-15426.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/05/30/3faeebdf8797b7fe42c82cf92b0ffdef_5718559054494307925.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15407",
+      "official_english_name": "Compound Bow",
+      "hoyowiki_english_name": "Compound Bow",
+      "hoyowiki_entry_page_id": "2034",
+      "thumbnail_asset": "genshin-data-weapon-15407.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/钢轮弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11301",
+      "official_english_name": "Cool Steel",
+      "hoyowiki_english_name": "Cool Steel",
+      "hoyowiki_entry_page_id": "1938",
+      "thumbnail_asset": "genshin-data-weapon-11301.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/冷刃.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15436",
+      "official_english_name": "Covenant of Frost and Snow",
+      "hoyowiki_english_name": "Covenant of Frost and Snow",
+      "hoyowiki_entry_page_id": "11220",
+      "thumbnail_asset": "genshin-data-weapon-15436.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/71e03a3f1868a9caa8e7adac310ca6a7_6530544918250739118.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14515",
+      "official_english_name": "Crane's Echoing Call",
+      "hoyowiki_english_name": "Crane's Echoing Call",
+      "hoyowiki_entry_page_id": "4941",
+      "thumbnail_asset": "genshin-data-weapon-14515.png",
+      "thumbnail_source_url": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/29/35428890/7d49f94bfb8725b8c04332b11eb7df60_2329485834347949734.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13403",
+      "official_english_name": "Crescent Pike",
+      "hoyowiki_english_name": "Crescent Pike",
+      "hoyowiki_entry_page_id": "1990",
+      "thumbnail_asset": "genshin-data-weapon-13403.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/流月针.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13512",
+      "official_english_name": "Crimson Moon's Semblance",
+      "hoyowiki_english_name": "Crimson Moon’s Semblance",
+      "hoyowiki_entry_page_id": "5577",
+      "thumbnail_asset": "genshin-data-weapon-13512.png",
+      "thumbnail_source_url": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/22/35428890/ce91a453b9a942c9ab20df0f62caa033_4944089408609115680.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11304",
+      "official_english_name": "Dark Iron Sword",
+      "hoyowiki_english_name": "Dark Iron Sword",
+      "hoyowiki_entry_page_id": "1984",
+      "thumbnail_asset": "genshin-data-weapon-11304.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/暗铁剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14434",
+      "official_english_name": "Dawning Frost",
+      "hoyowiki_english_name": "Dawning Frost",
+      "hoyowiki_entry_page_id": "8990",
+      "thumbnail_asset": "genshin-data-weapon-14434.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/10/20/f71e542de2ae1c6c9a936eceb667f733_3168622620827067279.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13405",
+      "official_english_name": "Deathmatch",
+      "hoyowiki_english_name": "Deathmatch",
+      "hoyowiki_entry_page_id": "1937",
+      "thumbnail_asset": "genshin-data-weapon-13405.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/决斗之枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12305",
+      "official_english_name": "Debate Club",
+      "hoyowiki_english_name": "Debate Club",
+      "hoyowiki_entry_page_id": "1933",
+      "thumbnail_asset": "genshin-data-weapon-12305.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/以理服人.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13426",
+      "official_english_name": "Dialogues of the Desert Sages",
+      "hoyowiki_english_name": "Dialogues of the Desert Sages",
+      "hoyowiki_entry_page_id": "5151",
+      "thumbnail_asset": "genshin-data-weapon-13426.png",
+      "thumbnail_source_url": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/15/35428890/cac436c29ec9fc31413bc56cd0448f70_4636647816463834058.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13517",
+      "official_english_name": "Disaster and Remorse",
+      "hoyowiki_english_name": "Disaster and Remorse",
+      "hoyowiki_entry_page_id": "10758",
+      "thumbnail_asset": "genshin-data-weapon-13517.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/173531aa00de724260fb5c8ce21ce625_742789739843295350.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14413",
+      "official_english_name": "Dodoco Tales",
+      "hoyowiki_english_name": "Dodoco Tales",
+      "hoyowiki_entry_page_id": "1950",
+      "thumbnail_asset": "genshin-data-weapon-14413.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/嘟嘟可故事集.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13401",
+      "official_english_name": "Dragon's Bane",
+      "hoyowiki_english_name": "Dragon's Bane",
+      "hoyowiki_entry_page_id": "1940",
+      "thumbnail_asset": "genshin-data-weapon-13401.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/匣里灭辰.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13409",
+      "official_english_name": "Dragonspine Spear",
+      "hoyowiki_english_name": "Dragonspine Spear",
+      "hoyowiki_entry_page_id": "2060",
+      "thumbnail_asset": "genshin-data-weapon-13409.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/龙脊长枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11101",
+      "official_english_name": "Dull Blade",
+      "hoyowiki_english_name": "Dull Blade",
+      "hoyowiki_entry_page_id": "1979",
+      "thumbnail_asset": "genshin-data-weapon-11101.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/无锋剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12431",
+      "official_english_name": "Earth Shaker",
+      "hoyowiki_english_name": "Earth Shaker",
+      "hoyowiki_entry_page_id": "6548",
+      "thumbnail_asset": "genshin-data-weapon-12431.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/dc6bf4c87afe67014579743618e97371_6360663376854922140.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14436",
+      "official_english_name": "Echoes of the Heart",
+      "hoyowiki_english_name": "Echoes of the Heart",
+      "hoyowiki_entry_page_id": "11218",
+      "thumbnail_asset": "genshin-data-weapon-14436.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/4f8d41d48cafdb7a77568b7fae43c436_5465649971679004871.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15503",
+      "official_english_name": "Elegy for the End",
+      "hoyowiki_english_name": "Elegy for the End",
+      "hoyowiki_entry_page_id": "2008",
+      "thumbnail_asset": "genshin-data-weapon-15503.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/终末嗟叹之诗.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11436",
+      "official_english_name": "Emberwell",
+      "hoyowiki_english_name": "Emberwell",
+      "hoyowiki_entry_page_id": "11212",
+      "thumbnail_asset": "genshin-data-weapon-11436.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/9ae260ef2d2f79ddc6e3963513e4cc46_2657429378983343835.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14304",
+      "official_english_name": "Emerald Orb",
+      "hoyowiki_english_name": "Emerald Orb",
+      "hoyowiki_entry_page_id": "2010",
+      "thumbnail_asset": "genshin-data-weapon-14304.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/翡玉法球.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15418",
+      "official_english_name": "End of the Line",
+      "hoyowiki_english_name": "End of the Line",
+      "hoyowiki_entry_page_id": "2666",
+      "thumbnail_asset": "genshin-data-weapon-15418.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/23/194600931/80d2c21b70f486d9d9cb90e491e5b9da_4078404468332601679.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13509",
+      "official_english_name": "Engulfing Lightning",
+      "hoyowiki_english_name": "Engulfing Lightning",
+      "hoyowiki_entry_page_id": "2014",
+      "thumbnail_asset": "genshin-data-weapon-13509.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/薙草之稻光.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14432",
+      "official_english_name": "Etherlight Spindlelute",
+      "hoyowiki_english_name": "Etherlight Spindlelute",
+      "hoyowiki_entry_page_id": "8837",
+      "thumbnail_asset": "genshin-data-weapon-14432.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/139e8ec2c68957b44a0f217b3859bb82_2114353354330070345.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14506",
+      "official_english_name": "Everlasting Moonglow",
+      "hoyowiki_english_name": "Everlasting Moonglow",
+      "hoyowiki_entry_page_id": "1932",
+      "thumbnail_asset": "genshin-data-weapon-14506.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/不灭月华.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14409",
+      "official_english_name": "Eye of Perception",
+      "hoyowiki_english_name": "Eye of Perception",
+      "hoyowiki_entry_page_id": "1980",
+      "thumbnail_asset": "genshin-data-weapon-14409.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/昭心.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15411",
+      "official_english_name": "Fading Twilight",
+      "hoyowiki_english_name": "Fading Twilight",
+      "hoyowiki_entry_page_id": "2255",
+      "thumbnail_asset": "genshin-data-weapon-15411.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/落霞.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12513",
+      "official_english_name": "Fang of the Mountain King",
+      "hoyowiki_english_name": "Fang of the Mountain King",
+      "hoyowiki_entry_page_id": "6545",
+      "thumbnail_asset": "genshin-data-weapon-12513.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/1fd3c498faccab68bfa5d961477a8c29_2936359463997877474.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14401",
+      "official_english_name": "Favonius Codex",
+      "hoyowiki_english_name": "Favonius Codex",
+      "hoyowiki_entry_page_id": "2020",
+      "thumbnail_asset": "genshin-data-weapon-14401.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/西风秘典.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12401",
+      "official_english_name": "Favonius Greatsword",
+      "hoyowiki_english_name": "Favonius Greatsword",
+      "hoyowiki_entry_page_id": "2018",
+      "thumbnail_asset": "genshin-data-weapon-12401.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/西风大剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13407",
+      "official_english_name": "Favonius Lance",
+      "hoyowiki_english_name": "Favonius Lance",
+      "hoyowiki_entry_page_id": "2021",
+      "thumbnail_asset": "genshin-data-weapon-13407.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/西风长枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11401",
+      "official_english_name": "Favonius Sword",
+      "hoyowiki_english_name": "Favonius Sword",
+      "hoyowiki_entry_page_id": "2017",
+      "thumbnail_asset": "genshin-data-weapon-11401.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/西风剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15401",
+      "official_english_name": "Favonius Warbow",
+      "hoyowiki_english_name": "Favonius Warbow",
+      "hoyowiki_entry_page_id": "2019",
+      "thumbnail_asset": "genshin-data-weapon-15401.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/西风猎弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12301",
+      "official_english_name": "Ferrous Shadow",
+      "hoyowiki_english_name": "Ferrous Shadow",
+      "hoyowiki_entry_page_id": "2037",
+      "thumbnail_asset": "genshin-data-weapon-12301.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/铁影阔剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11413",
+      "official_english_name": "Festering Desire",
+      "hoyowiki_english_name": "Festering Desire",
+      "hoyowiki_entry_page_id": "2011",
+      "thumbnail_asset": "genshin-data-weapon-11413.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/腐殖之剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11305",
+      "official_english_name": "Fillet Blade",
+      "hoyowiki_english_name": "Fillet Blade",
+      "hoyowiki_entry_page_id": "1947",
+      "thumbnail_asset": "genshin-data-weapon-11305.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/吃虎鱼刀.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11425",
+      "official_english_name": "Finale of the Deep",
+      "hoyowiki_english_name": "Finale of the Deep",
+      "hoyowiki_entry_page_id": "3984",
+      "thumbnail_asset": "genshin-data-weapon-11425.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/11/35428890/3139f087dee78d3856ab63fd6845ae61_7690792916067580940.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12432",
+      "official_english_name": "Flame-Forged Insight",
+      "hoyowiki_english_name": "Flame-Forged Insight",
+      "hoyowiki_entry_page_id": "8300",
+      "thumbnail_asset": "genshin-data-weapon-12432.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/21/62b7410999e0777b83bd4be9334226bc_1124279062957674054.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11426",
+      "official_english_name": "Fleuve Cendre Ferryman",
+      "hoyowiki_english_name": "Fleuve Cendre Ferryman",
+      "hoyowiki_entry_page_id": "3989",
+      "thumbnail_asset": "genshin-data-weapon-11426.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/35428890/920ca2fe25ca2db1796848099b59b2d8_9037857887405548950.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15430",
+      "official_english_name": "Flower-Wreathed Feathers",
+      "hoyowiki_english_name": "Flower-Wreathed Feathers",
+      "hoyowiki_entry_page_id": "7115",
+      "thumbnail_asset": "genshin-data-weapon-15430.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/14/0d166f885502452188022563f5fc8797_876127194185049091.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14425",
+      "official_english_name": "Flowing Purity",
+      "hoyowiki_english_name": "Flowing Purity",
+      "hoyowiki_entry_page_id": "3988",
+      "thumbnail_asset": "genshin-data-weapon-14425.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/14/35428890/0130ca8183d3daa2eddbb9200a1d776f_1451142999894885216.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11431",
+      "official_english_name": "Flute of Ezpitzal",
+      "hoyowiki_english_name": "Flute of Ezpitzal",
+      "hoyowiki_entry_page_id": "6547",
+      "thumbnail_asset": "genshin-data-weapon-11431.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/bdd740ad879d22a1fc4e3770cc9c73bd_5479414831341401728.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13431",
+      "official_english_name": "Footprint of the Rainbow",
+      "hoyowiki_english_name": "Footprint of the Rainbow",
+      "hoyowiki_entry_page_id": "6549",
+      "thumbnail_asset": "genshin-data-weapon-13431.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/9d5294dc8b165585f51ec126543a5208_1314604610170565721.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12417",
+      "official_english_name": "Forest Regalia",
+      "hoyowiki_english_name": "Forest Regalia",
+      "hoyowiki_entry_page_id": "2671",
+      "thumbnail_asset": "genshin-data-weapon-12417.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/26/194600931/236f42a62e034034870c2c4e44015572_5474035930475118540.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12435",
+      "official_english_name": "Forged by the Golden Melody",
+      "hoyowiki_english_name": "Forged by the Golden Melody",
+      "hoyowiki_entry_page_id": "11215",
+      "thumbnail_asset": "genshin-data-weapon-12435.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/5238a7b7a630ef9f9d2d789f6a2aa6da_1650019963952327060.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13515",
+      "official_english_name": "Fractured Halo",
+      "hoyowiki_english_name": "Fractured Halo",
+      "hoyowiki_entry_page_id": "8299",
+      "thumbnail_asset": "genshin-data-weapon-13515.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/21/6f0271a3d35033b8ec7260faa56b8cc1_2090404062568539078.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11503",
+      "official_english_name": "Freedom-Sworn",
+      "hoyowiki_english_name": "Freedom-Sworn",
+      "hoyowiki_entry_page_id": "2012",
+      "thumbnail_asset": "genshin-data-weapon-11503.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/苍古自由之誓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14412",
+      "official_english_name": "Frostbearer",
+      "hoyowiki_english_name": "Frostbearer",
+      "hoyowiki_entry_page_id": "1969",
+      "thumbnail_asset": "genshin-data-weapon-14412.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/忍冬之果.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13435",
+      "official_english_name": "Frostbreath",
+      "hoyowiki_english_name": "Frostbreath",
+      "hoyowiki_entry_page_id": "11217",
+      "thumbnail_asset": "genshin-data-weapon-13435.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/6a0eb9b0455f71517ba22556b21814f1_4657577436996434077.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14417",
+      "official_english_name": "Fruit of Fulfillment",
+      "hoyowiki_english_name": "Fruit of Fulfillment",
+      "hoyowiki_entry_page_id": "2669",
+      "thumbnail_asset": "genshin-data-weapon-14417.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/26/194600931/0e1cecaeba7b12c8c9adcb2f11eccd5e_416583125189394990.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12430",
+      "official_english_name": "Fruitful Hook",
+      "hoyowiki_english_name": "Fruitful Hook",
+      "hoyowiki_entry_page_id": "7030",
+      "thumbnail_asset": "genshin-data-weapon-12430.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/27/25c75653d47f882870e96d9119a17e9a_6960324287026452673.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12515",
+      "official_english_name": "Gest of the Mighty Wolf",
+      "hoyowiki_english_name": "Gest of the Mighty Wolf",
+      "hoyowiki_entry_page_id": "9456",
+      "thumbnail_asset": "genshin-data-weapon-12515.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/02/09/69a9c4711061f96f155bbe236d1ac188_2915183031167827788.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15516",
+      "official_english_name": "Golden Frostbound Oath",
+      "hoyowiki_english_name": "Golden Frostbound Oath",
+      "hoyowiki_entry_page_id": "10547",
+      "thumbnail_asset": "genshin-data-weapon-15516.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/04/03/56dfea855cb96781fc3fa4409463e523_641344848709162695.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14414",
+      "official_english_name": "Hakushin Ring",
+      "hoyowiki_english_name": "Hakushin Ring",
+      "hoyowiki_entry_page_id": "1997",
+      "thumbnail_asset": "genshin-data-weapon-14414.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/白辰之环.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13302",
+      "official_english_name": "Halberd",
+      "hoyowiki_english_name": "Halberd",
+      "hoyowiki_entry_page_id": "2035",
+      "thumbnail_asset": "genshin-data-weapon-13302.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/钺矛.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15414",
+      "official_english_name": "Hamayumi",
+      "hoyowiki_english_name": "Hamayumi",
+      "hoyowiki_entry_page_id": "1999",
+      "thumbnail_asset": "genshin-data-weapon-15414.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/破魔之弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11510",
+      "official_english_name": "Haran Geppaku Futsu",
+      "hoyowiki_english_name": "Haran Geppaku Futsu",
+      "hoyowiki_entry_page_id": "1989",
+      "thumbnail_asset": "genshin-data-weapon-11510.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/波乱月白经津.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11302",
+      "official_english_name": "Harbinger of Dawn",
+      "hoyowiki_english_name": "Harbinger of Dawn",
+      "hoyowiki_entry_page_id": "2052",
+      "thumbnail_asset": "genshin-data-weapon-11302.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/黎明神剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11435",
+      "official_english_name": "Heretic's Molten Blade",
+      "hoyowiki_english_name": "Heretic's Molten Blade",
+      "hoyowiki_entry_page_id": "11213",
+      "thumbnail_asset": "genshin-data-weapon-11435.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/0c0d6535c7c54aa95d58b5394a023cd2_844859417849776738.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15101",
+      "official_english_name": "Hunter's Bow",
+      "hoyowiki_english_name": "Hunter's Bow",
+      "hoyowiki_entry_page_id": "1993",
+      "thumbnail_asset": "genshin-data-weapon-15101.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/猎弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15511",
+      "official_english_name": "Hunter's Path",
+      "hoyowiki_english_name": "Hunter's Path",
+      "hoyowiki_entry_page_id": "2665",
+      "thumbnail_asset": "genshin-data-weapon-15511.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/23/194600931/110a33dca005873d039a32c6c931d405_5358077549703882796.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15419",
+      "official_english_name": "Ibis Piercer",
+      "hoyowiki_english_name": "Ibis Piercer",
+      "hoyowiki_entry_page_id": "3902",
+      "thumbnail_asset": "genshin-data-weapon-15419.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/26/194600931/3c33fbd1aeadf27dc00617c3f4d31c55_8985435652169839567.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13201",
+      "official_english_name": "Iron Point",
+      "hoyowiki_english_name": "Iron Point",
+      "hoyowiki_entry_page_id": "2036",
+      "thumbnail_asset": "genshin-data-weapon-13201.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/铁尖枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11407",
+      "official_english_name": "Iron Sting",
+      "hoyowiki_english_name": "Iron Sting",
+      "hoyowiki_entry_page_id": "2038",
+      "thumbnail_asset": "genshin-data-weapon-11407.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/铁蜂刺.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15435",
+      "official_english_name": "Jade Vista",
+      "hoyowiki_english_name": "Jade Vista",
+      "hoyowiki_entry_page_id": "11221",
+      "thumbnail_asset": "genshin-data-weapon-15435.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/19c80f587430adbfce599f56ef3324dd_4937523743376541205.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14505",
+      "official_english_name": "Jadefall's Splendor",
+      "hoyowiki_english_name": "Jadefall's Splendor",
+      "hoyowiki_entry_page_id": "3692",
+      "thumbnail_asset": "genshin-data-weapon-14505.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/02/35428890/0a88b9e311e28c9ae89138a10c48601a_3822390923121875698.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11416",
+      "official_english_name": "Kagotsurube Isshin",
+      "hoyowiki_english_name": "Kagotsurube Isshin",
+      "hoyowiki_entry_page_id": "2264",
+      "thumbnail_asset": "genshin-data-weapon-11416.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/笼钓瓶一心.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14509",
+      "official_english_name": "Kagura's Verity",
+      "hoyowiki_english_name": "Kagura's Verity",
+      "hoyowiki_entry_page_id": "2001",
+      "thumbnail_asset": "genshin-data-weapon-14509.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/神乐之真意.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12414",
+      "official_english_name": "Katsuragikiri Nagamasa",
+      "hoyowiki_english_name": "Katsuragikiri Nagamasa",
+      "hoyowiki_entry_page_id": "1987",
+      "thumbnail_asset": "genshin-data-weapon-12414.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/桂木斩长正.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11511",
+      "official_english_name": "Key of Khaj-Nisut",
+      "hoyowiki_english_name": "Key of Khaj-Nisut",
+      "hoyowiki_entry_page_id": "2908",
+      "thumbnail_asset": "genshin-data-weapon-11511.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/10/10/35428890/e45d52017a7ccb1ada459212615381d8_9190142076232384205.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15417",
+      "official_english_name": "King's Squire",
+      "hoyowiki_english_name": "King's Squire",
+      "hoyowiki_entry_page_id": "2670",
+      "thumbnail_asset": "genshin-data-weapon-15417.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/26/194600931/e3b554a4032b5b738d056ab7a44e9e37_7655698488024418107.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13414",
+      "official_english_name": "Kitain Cross Spear",
+      "hoyowiki_english_name": "Kitain Cross Spear",
+      "hoyowiki_entry_page_id": "1949",
+      "thumbnail_asset": "genshin-data-weapon-13414.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/喜多院十文字.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11512",
+      "official_english_name": "Light of Foliar Incision",
+      "hoyowiki_english_name": "Light of Foliar Incision",
+      "hoyowiki_entry_page_id": "3461",
+      "thumbnail_asset": "genshin-data-weapon-11512.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/01/18/35428890/bf4ef5696afdf695a26fab9510228060_1761507291577300383.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11519",
+      "official_english_name": "Lightbearing Moonshard",
+      "hoyowiki_english_name": "Lightbearing Moonshard",
+      "hoyowiki_entry_page_id": "9249",
+      "thumbnail_asset": "genshin-data-weapon-11519.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/07/5df9a7e1f45c7967eb263a37362c76d9_5509634125074303398.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11405",
+      "official_english_name": "Lion's Roar",
+      "hoyowiki_english_name": "Lion's Roar",
+      "hoyowiki_entry_page_id": "1941",
+      "thumbnail_asset": "genshin-data-weapon-11405.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/匣里龙吟.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12410",
+      "official_english_name": "Lithic Blade",
+      "hoyowiki_english_name": "Lithic Blade",
+      "hoyowiki_entry_page_id": "1942",
+      "thumbnail_asset": "genshin-data-weapon-12410.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/千岩古剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13406",
+      "official_english_name": "Lithic Spear",
+      "hoyowiki_english_name": "Lithic Spear",
+      "hoyowiki_entry_page_id": "1943",
+      "thumbnail_asset": "genshin-data-weapon-13406.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/千岩长枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14502",
+      "official_english_name": "Lost Prayer to the Sacred Winds",
+      "hoyowiki_english_name": "Lost Prayer to the Sacred Winds",
+      "hoyowiki_entry_page_id": "1951",
+      "thumbnail_asset": "genshin-data-weapon-14502.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/四风原典.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13513",
+      "official_english_name": "Lumidouce Elegy",
+      "hoyowiki_english_name": "Lumidouce Elegy",
+      "hoyowiki_entry_page_id": "5847",
+      "thumbnail_asset": "genshin-data-weapon-13513.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/31/3dff07a4b024917cb63c933d2078ccc8_8401589850337226556.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12412",
+      "official_english_name": "Luxurious Sea-Lord",
+      "hoyowiki_english_name": "Luxurious Sea-Lord",
+      "hoyowiki_entry_page_id": "2016",
+      "thumbnail_asset": "genshin-data-weapon-12412.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/衔珠海皇.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14301",
+      "official_english_name": "Magic Guide",
+      "hoyowiki_english_name": "Magic Guide",
+      "hoyowiki_entry_page_id": "2050",
+      "thumbnail_asset": "genshin-data-weapon-14301.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/魔导绪论.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12418",
+      "official_english_name": "Mailed Flower",
+      "hoyowiki_english_name": "Mailed Flower",
+      "hoyowiki_entry_page_id": "3614",
+      "thumbnail_asset": "genshin-data-weapon-12418.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/02/28/35428890/bca5e3d255c646e42449a06b79b5d019_8759736612810872622.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12415",
+      "official_english_name": "Makhaira Aquamarine",
+      "hoyowiki_english_name": "Makhaira Aquamarine",
+      "hoyowiki_entry_page_id": "2848",
+      "thumbnail_asset": "genshin-data-weapon-12415.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/28/194600931/e945b4d60271cc0560627c16f4a0a7dd_2629837070953493651.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14407",
+      "official_english_name": "Mappa Mare",
+      "hoyowiki_english_name": "Mappa Mare",
+      "hoyowiki_entry_page_id": "1931",
+      "thumbnail_asset": "genshin-data-weapon-14407.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/万国诸海图谱.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12433",
+      "official_english_name": "Master Key",
+      "hoyowiki_english_name": "Master Key",
+      "hoyowiki_entry_page_id": "8513",
+      "thumbnail_asset": "genshin-data-weapon-12433.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/9fca47d88e241f45ae1568ca386c9e6f_3876291412959841816.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14504",
+      "official_english_name": "Memory of Dust",
+      "hoyowiki_english_name": "Memory of Dust",
+      "hoyowiki_entry_page_id": "1964",
+      "thumbnail_asset": "genshin-data-weapon-14504.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/尘世之锁.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15305",
+      "official_english_name": "Messenger",
+      "hoyowiki_english_name": "Messenger",
+      "hoyowiki_entry_page_id": "1935",
+      "thumbnail_asset": "genshin-data-weapon-15305.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/信使.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13419",
+      "official_english_name": "Missive Windspear",
+      "hoyowiki_english_name": "Missive Windspear",
+      "hoyowiki_entry_page_id": "2847",
+      "thumbnail_asset": "genshin-data-weapon-13419.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/30/94376896/98f3fb9e0886b25bfd094828cc391978_4027924857629812923.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11509",
+      "official_english_name": "Mistsplitter Reforged",
+      "hoyowiki_english_name": "Mistsplitter Reforged",
+      "hoyowiki_entry_page_id": "2044",
+      "thumbnail_asset": "genshin-data-weapon-11509.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/雾切之回光.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15412",
+      "official_english_name": "Mitternachts Waltz",
+      "hoyowiki_english_name": "Mitternachts Waltz",
+      "hoyowiki_entry_page_id": "1965",
+      "thumbnail_asset": "genshin-data-weapon-15412.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/幽夜华尔兹.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13417",
+      "official_english_name": "Moonpiercer",
+      "hoyowiki_english_name": "Moonpiercer",
+      "hoyowiki_entry_page_id": "2668",
+      "thumbnail_asset": "genshin-data-weapon-13417.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/26/194600931/2ab37345c6972292fda8b3095c15f971_8878508254336755657.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11434",
+      "official_english_name": "Moonweaver's Dawn",
+      "hoyowiki_english_name": "Moonweaver's Dawn",
+      "hoyowiki_entry_page_id": "8512",
+      "thumbnail_asset": "genshin-data-weapon-11434.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/02686441b09dcc1d5029ff21a6d04ef8_297003927757836842.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13430",
+      "official_english_name": "Mountain-Bracing Bolt",
+      "hoyowiki_english_name": "Mountain-Bracing Bolt",
+      "hoyowiki_entry_page_id": "7031",
+      "thumbnail_asset": "genshin-data-weapon-13430.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/27/201424fa6a98ffb190ae82c8ad7d0cc3_6084387639848528037.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15416",
+      "official_english_name": "Mouun's Moon",
+      "hoyowiki_english_name": "Mouun's Moon",
+      "hoyowiki_entry_page_id": "1985",
+      "thumbnail_asset": "genshin-data-weapon-15416.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/曚云之月.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14520",
+      "official_english_name": "Nightweaver's Looking Glass",
+      "hoyowiki_english_name": "Nightweaver's Looking Glass",
+      "hoyowiki_entry_page_id": "8836",
+      "thumbnail_asset": "genshin-data-weapon-14520.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/d28b849e0abef976114ea7ecef92960e_4616051474368823347.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14522",
+      "official_english_name": "Nocturne's Curtain Call",
+      "hoyowiki_english_name": "Nocturne's Curtain Call",
+      "hoyowiki_entry_page_id": "9250",
+      "thumbnail_asset": "genshin-data-weapon-14522.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/07/670440ccb460f5f58e014c68ad569d78_7754520756837248808.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14415",
+      "official_english_name": "Oathsworn Eye",
+      "hoyowiki_english_name": "Oathsworn Eye",
+      "hoyowiki_entry_page_id": "2024",
+      "thumbnail_asset": "genshin-data-weapon-14415.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/证誓之明瞳.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12201",
+      "official_english_name": "Old Merc's Pal",
+      "hoyowiki_english_name": "Old Merc's Pal",
+      "hoyowiki_entry_page_id": "1934",
+      "thumbnail_asset": "genshin-data-weapon-12201.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/佣兵重剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14303",
+      "official_english_name": "Otherworldly Story",
+      "hoyowiki_english_name": "Otherworldly Story",
+      "hoyowiki_entry_page_id": "1966",
+      "thumbnail_asset": "genshin-data-weapon-14303.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/异世界行记.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11516",
+      "official_english_name": "Peak Patrol Song",
+      "hoyowiki_english_name": "Peak Patrol Song",
+      "hoyowiki_entry_page_id": "7029",
+      "thumbnail_asset": "genshin-data-weapon-11516.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/27/862200e1c8e0ee60c2396d8f4fbe7fb8_4291183729855777874.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14201",
+      "official_english_name": "Pocket Grimoire",
+      "hoyowiki_english_name": "Pocket Grimoire",
+      "hoyowiki_entry_page_id": "1946",
+      "thumbnail_asset": "genshin-data-weapon-14201.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/口袋魔导书.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15507",
+      "official_english_name": "Polar Star",
+      "hoyowiki_english_name": "Polar Star",
+      "hoyowiki_entry_page_id": "1936",
+      "thumbnail_asset": "genshin-data-weapon-15507.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/冬极白星.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12427",
+      "official_english_name": "Portable Power Saw",
+      "hoyowiki_english_name": "Portable Power Saw",
+      "hoyowiki_entry_page_id": "4335",
+      "thumbnail_asset": "genshin-data-weapon-12427.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/27/35428890/ac81c1e26d35d3742320975fffe21ee8_1604254334456103094.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15415",
+      "official_english_name": "Predator",
+      "hoyowiki_english_name": "Predator",
+      "hoyowiki_entry_page_id": "1973",
+      "thumbnail_asset": "genshin-data-weapon-15415.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/掠食者.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11505",
+      "official_english_name": "Primordial Jade Cutter",
+      "hoyowiki_english_name": "Primordial Jade Cutter",
+      "hoyowiki_entry_page_id": "2000",
+      "thumbnail_asset": "genshin-data-weapon-11505.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/磐岩结绿.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13505",
+      "official_english_name": "Primordial Jade Winged-Spear",
+      "hoyowiki_english_name": "Primordial Jade Winged-Spear",
+      "hoyowiki_entry_page_id": "1948",
+      "thumbnail_asset": "genshin-data-weapon-13505.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/和璞鸢.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13427",
+      "official_english_name": "Prospector's Drill",
+      "hoyowiki_english_name": "Prospector's Drill",
+      "hoyowiki_entry_page_id": "4336",
+      "thumbnail_asset": "genshin-data-weapon-13427.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/16/35428890/4bfc21303d8ff98cd546aae980b55090_6373501799982920044.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13433",
+      "official_english_name": "Prospector's Shovel",
+      "hoyowiki_english_name": "Prospector's Shovel",
+      "hoyowiki_entry_page_id": "8514",
+      "thumbnail_asset": "genshin-data-weapon-13433.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/02b62205aa9b8bbf8db3f7dfd81c2722_4251757494889514703.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14406",
+      "official_english_name": "Prototype Amber",
+      "hoyowiki_english_name": "Prototype Amber",
+      "hoyowiki_entry_page_id": "2029",
+      "thumbnail_asset": "genshin-data-weapon-14406.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/试作金珀.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12406",
+      "official_english_name": "Prototype Archaic",
+      "hoyowiki_english_name": "Prototype Archaic",
+      "hoyowiki_entry_page_id": "2025",
+      "thumbnail_asset": "genshin-data-weapon-12406.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/试作古华.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15406",
+      "official_english_name": "Prototype Crescent",
+      "hoyowiki_english_name": "Prototype Crescent",
+      "hoyowiki_entry_page_id": "2028",
+      "thumbnail_asset": "genshin-data-weapon-15406.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/试作澹月.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11406",
+      "official_english_name": "Prototype Rancour",
+      "hoyowiki_english_name": "Prototype Rancour",
+      "hoyowiki_entry_page_id": "2026",
+      "thumbnail_asset": "genshin-data-weapon-11406.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/试作斩岩.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13402",
+      "official_english_name": "Prototype Starglitter",
+      "hoyowiki_english_name": "Prototype Starglitter",
+      "hoyowiki_entry_page_id": "2027",
+      "thumbnail_asset": "genshin-data-weapon-13402.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/试作星镰.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15434",
+      "official_english_name": "Rainbow Serpent's Rain Bow",
+      "hoyowiki_english_name": "Rainbow Serpent's Rain Bow",
+      "hoyowiki_entry_page_id": "9046",
+      "thumbnail_asset": "genshin-data-weapon-15434.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/11/25/d9cb6d60dadf1e2238bcad97ba61afca_2753787926355500061.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12405",
+      "official_english_name": "Rainslasher",
+      "hoyowiki_english_name": "Rainslasher",
+      "hoyowiki_entry_page_id": "2042",
+      "thumbnail_asset": "genshin-data-weapon-12405.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/雨裁.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15427",
+      "official_english_name": "Range Gauge",
+      "hoyowiki_english_name": "Range Gauge",
+      "hoyowiki_entry_page_id": "4337",
+      "thumbnail_asset": "genshin-data-weapon-15427.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/16/35428890/4e67e6c313220ea1ca84a48d42d78806_8702041612949933944.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15301",
+      "official_english_name": "Raven Bow",
+      "hoyowiki_english_name": "Raven Bow",
+      "hoyowiki_entry_page_id": "2051",
+      "thumbnail_asset": "genshin-data-weapon-15301.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/鸦羽弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15303",
+      "official_english_name": "Recurve Bow",
+      "hoyowiki_english_name": "Recurve Bow",
+      "hoyowiki_entry_page_id": "1945",
+      "thumbnail_asset": "genshin-data-weapon-15303.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/反曲弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12510",
+      "official_english_name": "Redhorn Stonethresher",
+      "hoyowiki_english_name": "Redhorn Stonethresher",
+      "hoyowiki_entry_page_id": "2031",
+      "thumbnail_asset": "genshin-data-weapon-12510.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/赤角石溃杵.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14521",
+      "official_english_name": "Reliquary of Truth",
+      "hoyowiki_english_name": "Reliquary of Truth",
+      "hoyowiki_entry_page_id": "8991",
+      "thumbnail_asset": "genshin-data-weapon-14521.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/10/20/a81d9e6d6b35935cfa6027c1d74d70c8_5519387986125030469.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13425",
+      "official_english_name": "Rightful Reward",
+      "hoyowiki_english_name": "Rightful Reward",
+      "hoyowiki_entry_page_id": "3986",
+      "thumbnail_asset": "genshin-data-weapon-13425.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/35428890/9bb154ad1759bf2d9015b060cad1ca9c_7004886929221204489.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14431",
+      "official_english_name": "Ring of Yaxche",
+      "hoyowiki_english_name": "Ring of Yaxche",
+      "hoyowiki_entry_page_id": "6551",
+      "thumbnail_asset": "genshin-data-weapon-14431.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/9ab70898644274ce31f91faea8216bd8_5924884446177979679.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15404",
+      "official_english_name": "Royal Bow",
+      "hoyowiki_english_name": "Royal Bow",
+      "hoyowiki_entry_page_id": "1963",
+      "thumbnail_asset": "genshin-data-weapon-15404.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/宗室长弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12404",
+      "official_english_name": "Royal Greatsword",
+      "hoyowiki_english_name": "Royal Greatsword",
+      "hoyowiki_entry_page_id": "1959",
+      "thumbnail_asset": "genshin-data-weapon-12404.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/宗室大剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14404",
+      "official_english_name": "Royal Grimoire",
+      "hoyowiki_english_name": "Royal Grimoire",
+      "hoyowiki_entry_page_id": "1961",
+      "thumbnail_asset": "genshin-data-weapon-14404.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/宗室秘法录.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11404",
+      "official_english_name": "Royal Longsword",
+      "hoyowiki_english_name": "Royal Longsword",
+      "hoyowiki_entry_page_id": "1962",
+      "thumbnail_asset": "genshin-data-weapon-11404.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/宗室长剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13408",
+      "official_english_name": "Royal Spear",
+      "hoyowiki_english_name": "Royal Spear",
+      "hoyowiki_entry_page_id": "1960",
+      "thumbnail_asset": "genshin-data-weapon-13408.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/宗室猎枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15405",
+      "official_english_name": "Rust",
+      "hoyowiki_english_name": "Rust",
+      "hoyowiki_entry_page_id": "1967",
+      "thumbnail_asset": "genshin-data-weapon-15405.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/弓藏.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13434",
+      "official_english_name": "Sacrificer's Staff",
+      "hoyowiki_english_name": "Sacrificer's Staff",
+      "hoyowiki_entry_page_id": "8989",
+      "thumbnail_asset": "genshin-data-weapon-13434.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/10/20/42b605f34cfce0b70d437d0673c847fd_3003547681809154152.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15403",
+      "official_english_name": "Sacrificial Bow",
+      "hoyowiki_english_name": "Sacrificial Bow",
+      "hoyowiki_entry_page_id": "2005",
+      "thumbnail_asset": "genshin-data-weapon-15403.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/祭礼弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14403",
+      "official_english_name": "Sacrificial Fragments",
+      "hoyowiki_english_name": "Sacrificial Fragments",
+      "hoyowiki_entry_page_id": "2006",
+      "thumbnail_asset": "genshin-data-weapon-14403.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/祭礼残章.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12403",
+      "official_english_name": "Sacrificial Greatsword",
+      "hoyowiki_english_name": "Sacrificial Greatsword",
+      "hoyowiki_entry_page_id": "2004",
+      "thumbnail_asset": "genshin-data-weapon-12403.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/祭礼大剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14424",
+      "official_english_name": "Sacrificial Jade",
+      "hoyowiki_english_name": "Sacrificial Jade",
+      "hoyowiki_entry_page_id": "4003",
+      "thumbnail_asset": "genshin-data-weapon-14424.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/35428890/58d2970c1997ad52dfbb43017dac3ce8_2068604060208544498.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11403",
+      "official_english_name": "Sacrificial Sword",
+      "hoyowiki_english_name": "Sacrificial Sword",
+      "hoyowiki_entry_page_id": "2003",
+      "thumbnail_asset": "genshin-data-weapon-11403.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/祭礼剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11417",
+      "official_english_name": "Sapwood Blade",
+      "hoyowiki_english_name": "Sapwood Blade",
+      "hoyowiki_entry_page_id": "2667",
+      "thumbnail_asset": "genshin-data-weapon-11417.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/08/26/194600931/b7dc579e8ad60147a049d14fc277629c_8193231495693842461.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15424",
+      "official_english_name": "Scion of the Blazing Sun",
+      "hoyowiki_english_name": "Scion of the Blazing Sun",
+      "hoyowiki_entry_page_id": "4002",
+      "thumbnail_asset": "genshin-data-weapon-15424.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/35428890/b10e2c320e65f991f0e829879761af72_8400582650316877404.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15201",
+      "official_english_name": "Seasoned Hunter's Bow",
+      "hoyowiki_english_name": "Seasoned Hunter's Bow",
+      "hoyowiki_entry_page_id": "1944",
+      "thumbnail_asset": "genshin-data-weapon-15201.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/历练的猎弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15432",
+      "official_english_name": "Sequence of Solitude",
+      "hoyowiki_english_name": "Sequence of Solitude",
+      "hoyowiki_entry_page_id": "7641",
+      "thumbnail_asset": "genshin-data-weapon-15432.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/04/24/351cd2de062f0cd7e0bef038fb63f6ae_5924354425808403276.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11433",
+      "official_english_name": "Serenity's Call",
+      "hoyowiki_english_name": "Serenity's Call",
+      "hoyowiki_entry_page_id": "8511",
+      "thumbnail_asset": "genshin-data-weapon-11433.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/88826bbf50b08b5f95c56c3dba17a002_3387604816719715343.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12409",
+      "official_english_name": "Serpent Spine",
+      "hoyowiki_english_name": "Serpent Spine",
+      "hoyowiki_entry_page_id": "2015",
+      "thumbnail_asset": "genshin-data-weapon-12409.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/螭骨剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15302",
+      "official_english_name": "Sharpshooter's Oath",
+      "hoyowiki_english_name": "Sharpshooter's Oath",
+      "hoyowiki_entry_page_id": "2002",
+      "thumbnail_asset": "genshin-data-weapon-15302.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/神射手之誓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11201",
+      "official_english_name": "Silver Sword",
+      "hoyowiki_english_name": "Silver Sword",
+      "hoyowiki_entry_page_id": "2039",
+      "thumbnail_asset": "genshin-data-weapon-11201.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/银剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15513",
+      "official_english_name": "Silvershower Heartstrings",
+      "hoyowiki_english_name": "Silvershower Heartstrings",
+      "hoyowiki_entry_page_id": "5673",
+      "thumbnail_asset": "genshin-data-weapon-15513.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/25/bbfcbecb44910640904415c4c8f7a71d_6233228634431101260.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12306",
+      "official_english_name": "Skyrider Greatsword",
+      "hoyowiki_english_name": "Skyrider Greatsword",
+      "hoyowiki_entry_page_id": "2047",
+      "thumbnail_asset": "genshin-data-weapon-12306.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/飞天大御剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11306",
+      "official_english_name": "Skyrider Sword",
+      "hoyowiki_english_name": "Skyrider Sword",
+      "hoyowiki_entry_page_id": "2048",
+      "thumbnail_asset": "genshin-data-weapon-11306.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/飞天御剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14501",
+      "official_english_name": "Skyward Atlas",
+      "hoyowiki_english_name": "Skyward Atlas",
+      "hoyowiki_entry_page_id": "1955",
+      "thumbnail_asset": "genshin-data-weapon-14501.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/天空之卷.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11502",
+      "official_english_name": "Skyward Blade",
+      "hoyowiki_english_name": "Skyward Blade",
+      "hoyowiki_entry_page_id": "1954",
+      "thumbnail_asset": "genshin-data-weapon-11502.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/天空之刃.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15501",
+      "official_english_name": "Skyward Harp",
+      "hoyowiki_english_name": "Skyward Harp",
+      "hoyowiki_entry_page_id": "1956",
+      "thumbnail_asset": "genshin-data-weapon-15501.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/天空之翼.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12501",
+      "official_english_name": "Skyward Pride",
+      "hoyowiki_english_name": "Skyward Pride",
+      "hoyowiki_entry_page_id": "1953",
+      "thumbnail_asset": "genshin-data-weapon-12501.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/天空之傲.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13502",
+      "official_english_name": "Skyward Spine",
+      "hoyowiki_english_name": "Skyward Spine",
+      "hoyowiki_entry_page_id": "1957",
+      "thumbnail_asset": "genshin-data-weapon-13502.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/天空之脊.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15304",
+      "official_english_name": "Slingshot",
+      "hoyowiki_english_name": "Slingshot",
+      "hoyowiki_entry_page_id": "1968",
+      "thumbnail_asset": "genshin-data-weapon-15304.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/弹弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15433",
+      "official_english_name": "Snare Hook",
+      "hoyowiki_english_name": "Snare Hook",
+      "hoyowiki_entry_page_id": "8835",
+      "thumbnail_asset": "genshin-data-weapon-15433.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/794f286cd49e6beb026d4729d6a0e491_2738340196396279380.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12411",
+      "official_english_name": "Snow-Tombed Starsilver",
+      "hoyowiki_english_name": "Snow-Tombed Starsilver",
+      "hoyowiki_entry_page_id": "2043",
+      "thumbnail_asset": "genshin-data-weapon-12411.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/雪葬的星银.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14405",
+      "official_english_name": "Solar Pearl",
+      "hoyowiki_english_name": "Solar Pearl",
+      "hoyowiki_entry_page_id": "1939",
+      "thumbnail_asset": "genshin-data-weapon-14405.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/匣里日月.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12503",
+      "official_english_name": "Song of Broken Pines",
+      "hoyowiki_english_name": "Song of Broken Pines",
+      "hoyowiki_entry_page_id": "1986",
+      "thumbnail_asset": "genshin-data-weapon-12503.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/松籁响起之时.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15425",
+      "official_english_name": "Song of Stillness",
+      "hoyowiki_english_name": "Song of Stillness",
+      "hoyowiki_entry_page_id": "3987",
+      "thumbnail_asset": "genshin-data-weapon-15425.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/14/35428890/2cec558b676eefaafe23b64d42f2067e_6453748403910603164.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13436",
+      "official_english_name": "Song of the Vigil",
+      "hoyowiki_english_name": "Song of the Vigil",
+      "hoyowiki_entry_page_id": "11216",
+      "thumbnail_asset": "genshin-data-weapon-13436.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/993e369730552558f3a6d11269647d3f_162896007110569426.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11513",
+      "official_english_name": "Splendor of Tranquil Waters",
+      "hoyowiki_english_name": "Splendor of Tranquil Waters",
+      "hoyowiki_entry_page_id": "4570",
+      "thumbnail_asset": "genshin-data-weapon-11513.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/06/35428890/9807aa25f336daae391a6f6d4995af3d_3267574340947980453.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13501",
+      "official_english_name": "Staff of Homa",
+      "hoyowiki_english_name": "Staff of Homa",
+      "hoyowiki_entry_page_id": "1972",
+      "thumbnail_asset": "genshin-data-weapon-13501.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/护摩之杖.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13511",
+      "official_english_name": "Staff of the Scarlet Sands",
+      "hoyowiki_english_name": "Staff of the Scarlet Sands",
+      "hoyowiki_entry_page_id": "2849",
+      "thumbnail_asset": "genshin-data-weapon-13511.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/09/28/194600931/fc9a85ad2a47dc0386d55ac4e8596440_7909203100593110405.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14517",
+      "official_english_name": "Starcaller's Watch",
+      "hoyowiki_english_name": "Starcaller's Watch",
+      "hoyowiki_entry_page_id": "7366",
+      "thumbnail_asset": "genshin-data-weapon-14517.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/26/de225a286996965268c32027a6c484d9_2367767765928118667.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11430",
+      "official_english_name": "Sturdy Bone",
+      "hoyowiki_english_name": "Sturdy Bone",
+      "hoyowiki_entry_page_id": "7028",
+      "thumbnail_asset": "genshin-data-weapon-11430.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/27/9fbe8cf3da1d476d4c5a228017656cd1_114889972255186755.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11504",
+      "official_english_name": "Summit Shaper",
+      "hoyowiki_english_name": "Summit Shaper",
+      "hoyowiki_entry_page_id": "1974",
+      "thumbnail_asset": "genshin-data-weapon-11504.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/斫峰之刃.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14518",
+      "official_english_name": "Sunny Morning Sleep-In",
+      "hoyowiki_english_name": "Sunny Morning Sleep-In",
+      "hoyowiki_entry_page_id": "7434",
+      "thumbnail_asset": "genshin-data-weapon-14518.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/02/07/de8bcaf9142a27cc3aefe8a77f5b4c4c_6111963220065472522.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14516",
+      "official_english_name": "Surf's Up",
+      "hoyowiki_english_name": "Surf's Up",
+      "hoyowiki_entry_page_id": "6546",
+      "thumbnail_asset": "genshin-data-weapon-14516.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/6ce2e0da75fbdc19fc4b6f9e7bae9049_5151463723015160354.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11412",
+      "official_english_name": "Sword of Descension",
+      "hoyowiki_english_name": "Sword of Descension",
+      "hoyowiki_entry_page_id": "2041",
+      "thumbnail_asset": "genshin-data-weapon-11412.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/降临之剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11428",
+      "official_english_name": "Sword of Narzissenkreuz",
+      "hoyowiki_english_name": "Sword of Narzissenkreuz",
+      "hoyowiki_entry_page_id": "4592",
+      "thumbnail_asset": "genshin-data-weapon-11428.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/12/35428890/01d3f8317c86ea98d617ad61213b7c9a_4271295687560653806.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13514",
+      "official_english_name": "Symphonist of Scents",
+      "hoyowiki_english_name": "Symphonist of Scents",
+      "hoyowiki_entry_page_id": "7640",
+      "thumbnail_asset": "genshin-data-weapon-13514.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/04/24/f1928d012621b1f03577efc4f619894a_6810995251642628479.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12424",
+      "official_english_name": "Talking Stick",
+      "hoyowiki_english_name": "Talking Stick",
+      "hoyowiki_entry_page_id": "4000",
+      "thumbnail_asset": "genshin-data-weapon-12424.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/35428890/6e0130263c2de43a0bd7863edce22df3_1490535884850747976.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13432",
+      "official_english_name": "Tamayuratei no Ohanashi",
+      "hoyowiki_english_name": "Tamayuratei no Ohanashi",
+      "hoyowiki_entry_page_id": "7435",
+      "thumbnail_asset": "genshin-data-weapon-13432.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/02/07/a539c3f246fc39105fca045cb374aee8_7144935190009323615.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11410",
+      "official_english_name": "The Alley Flash",
+      "hoyowiki_english_name": "The Alley Flash",
+      "hoyowiki_entry_page_id": "1983",
+      "thumbnail_asset": "genshin-data-weapon-11410.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/暗巷闪光.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12402",
+      "official_english_name": "The Bell",
+      "hoyowiki_english_name": "The Bell",
+      "hoyowiki_entry_page_id": "2033",
+      "thumbnail_asset": "genshin-data-weapon-12402.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/钟剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11409",
+      "official_english_name": "The Black Sword",
+      "hoyowiki_english_name": "The Black Sword",
+      "hoyowiki_entry_page_id": "2053",
+      "thumbnail_asset": "genshin-data-weapon-11409.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/黑剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15515",
+      "official_english_name": "The Daybreak Chronicles",
+      "hoyowiki_english_name": "The Daybreak Chronicles",
+      "hoyowiki_entry_page_id": "9047",
+      "thumbnail_asset": "genshin-data-weapon-15515.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/11/25/888f15859930696bb17aeb61f35fa340_139096456278287885.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11427",
+      "official_english_name": "The Dockhand's Assistant",
+      "hoyowiki_english_name": "The Dockhand's Assistant",
+      "hoyowiki_entry_page_id": "4334",
+      "thumbnail_asset": "genshin-data-weapon-11427.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/27/35428890/eac5d6d4056f7b28c876e64866825e46_112069212882380326.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15512",
+      "official_english_name": "The First Great Magic",
+      "hoyowiki_english_name": "The First Great Magic",
+      "hoyowiki_entry_page_id": "3983",
+      "thumbnail_asset": "genshin-data-weapon-15512.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/11/35428890/150d6ae6dec75c2af1e4c37a084bf80f_93661134642122637.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11402",
+      "official_english_name": "The Flute",
+      "hoyowiki_english_name": "The Flute",
+      "hoyowiki_entry_page_id": "2007",
+      "thumbnail_asset": "genshin-data-weapon-11402.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/笛剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15402",
+      "official_english_name": "The Stringless",
+      "hoyowiki_english_name": "The Stringless",
+      "hoyowiki_entry_page_id": "2009",
+      "thumbnail_asset": "genshin-data-weapon-15402.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/绝弦.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12504",
+      "official_english_name": "The Unforged",
+      "hoyowiki_english_name": "The Unforged",
+      "hoyowiki_entry_page_id": "1978",
+      "thumbnail_asset": "genshin-data-weapon-12504.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/无工之剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15409",
+      "official_english_name": "The Viridescent Hunt",
+      "hoyowiki_english_name": "The Viridescent Hunt",
+      "hoyowiki_entry_page_id": "2013",
+      "thumbnail_asset": "genshin-data-weapon-15409.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/苍翠猎弓.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14402",
+      "official_english_name": "The Widsith",
+      "hoyowiki_english_name": "The Widsith",
+      "hoyowiki_entry_page_id": "1991",
+      "thumbnail_asset": "genshin-data-weapon-14402.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/流浪乐章.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14302",
+      "official_english_name": "Thrilling Tales of Dragon Slayers",
+      "hoyowiki_english_name": "Thrilling Tales of Dragon Slayers",
+      "hoyowiki_entry_page_id": "2022",
+      "thumbnail_asset": "genshin-data-weapon-14302.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/讨龙英杰谭.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15509",
+      "official_english_name": "Thundering Pulse",
+      "hoyowiki_english_name": "Thundering Pulse",
+      "hoyowiki_entry_page_id": "2049",
+      "thumbnail_asset": "genshin-data-weapon-15509.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/飞雷之弦振.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12425",
+      "official_english_name": "Tidal Shadow",
+      "hoyowiki_english_name": "Tidal Shadow",
+      "hoyowiki_entry_page_id": "3985",
+      "thumbnail_asset": "genshin-data-weapon-12425.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/14/35428890/17a33544c58e2a45ad5f1a4a5a68906a_3812897365671640245.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14514",
+      "official_english_name": "Tome of the Eternal Flow",
+      "hoyowiki_english_name": "Tome of the Eternal Flow",
+      "hoyowiki_entry_page_id": "4339",
+      "thumbnail_asset": "genshin-data-weapon-14514.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/26/35428890/5828ed7b48c39e5d15aaf6f2495ddabc_4077399461570238363.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11422",
+      "official_english_name": "Toukabou Shigure",
+      "hoyowiki_english_name": "Toukabou Shigure",
+      "hoyowiki_entry_page_id": "3319",
+      "thumbnail_asset": "genshin-data-weapon-11422.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/15/194600931/e611885dcef509e0ced1b3aec547ebf0_8005422016701349311.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11303",
+      "official_english_name": "Traveler's Handy Sword",
+      "hoyowiki_english_name": "Traveler's Handy Sword",
+      "hoyowiki_entry_page_id": "1977",
+      "thumbnail_asset": "genshin-data-weapon-11303.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/旅行剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14512",
+      "official_english_name": "Tulaytullah's Remembrance",
+      "hoyowiki_english_name": "Tulaytullah's Remembrance",
+      "hoyowiki_entry_page_id": "3320",
+      "thumbnail_asset": "genshin-data-weapon-14512.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/12/05/35428890/8de363bf716e4538ba86014fbea827ef_1659819870214382408.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14305",
+      "official_english_name": "Twin Nephrite",
+      "hoyowiki_english_name": "Twin Nephrite",
+      "hoyowiki_entry_page_id": "1994",
+      "thumbnail_asset": "genshin-data-weapon-14305.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/甲级宝珏.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11514",
+      "official_english_name": "Uraku Misugiri",
+      "hoyowiki_english_name": "Uraku Misugiri",
+      "hoyowiki_entry_page_id": "5150",
+      "thumbnail_asset": "genshin-data-weapon-11514.png",
+      "thumbnail_source_url": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/12/35428890/97083537849c199bc3fa7fed8a49d010_4537988792766091765.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12512",
+      "official_english_name": "Verdict",
+      "hoyowiki_english_name": "Verdict",
+      "hoyowiki_entry_page_id": "4719",
+      "thumbnail_asset": "genshin-data-weapon-12512.png",
+      "thumbnail_source_url": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/18/35428890/4f35f9bf1bceead8fa216873ce321847_580447322497057561.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14519",
+      "official_english_name": "Vivid Notions",
+      "hoyowiki_english_name": "Vivid Notions",
+      "hoyowiki_entry_page_id": "7588",
+      "thumbnail_asset": "genshin-data-weapon-14519.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/4eed5f1f892cf722e4f8df1778a0a1f1_3249018324800310475.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13504",
+      "official_english_name": "Vortex Vanquisher",
+      "hoyowiki_english_name": "Vortex Vanquisher",
+      "hoyowiki_entry_page_id": "2030",
+      "thumbnail_asset": "genshin-data-weapon-13504.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/贯虹之槊.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14416",
+      "official_english_name": "Wandering Evenstar",
+      "hoyowiki_english_name": "Wandering Evenstar",
+      "hoyowiki_entry_page_id": "2910",
+      "thumbnail_asset": "genshin-data-weapon-14416.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/10/12/35428890/350f5bf6ae4210be623556772c4c3836_6719838927234871355.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12101",
+      "official_english_name": "Waster Greatsword",
+      "hoyowiki_english_name": "Waster Greatsword",
+      "hoyowiki_entry_page_id": "2023",
+      "thumbnail_asset": "genshin-data-weapon-12101.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/训练大剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13416",
+      "official_english_name": "Wavebreaker's Fin",
+      "hoyowiki_english_name": "Wavebreaker's Fin",
+      "hoyowiki_entry_page_id": "1975",
+      "thumbnail_asset": "genshin-data-weapon-13416.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/断浪长鳍.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14430",
+      "official_english_name": "Waveriding Whirl",
+      "hoyowiki_english_name": "Waveriding Whirl",
+      "hoyowiki_entry_page_id": "7114",
+      "thumbnail_asset": "genshin-data-weapon-14430.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/14/7d6082c11138d4e71e7cb7ce6276e8bb_8319120219748886665.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12303",
+      "official_english_name": "White Iron Greatsword",
+      "hoyowiki_english_name": "White Iron Greatsword",
+      "hoyowiki_entry_page_id": "1998",
+      "thumbnail_asset": "genshin-data-weapon-12303.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/白铁大剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-13301",
+      "official_english_name": "White Tassel",
+      "hoyowiki_english_name": "White Tassel",
+      "hoyowiki_entry_page_id": "1996",
+      "thumbnail_asset": "genshin-data-weapon-13301.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/白缨枪.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12407",
+      "official_english_name": "Whiteblind",
+      "hoyowiki_english_name": "Whiteblind",
+      "hoyowiki_entry_page_id": "1995",
+      "thumbnail_asset": "genshin-data-weapon-12407.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/白影剑.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11520",
+      "official_english_name": "Whitelake Frostfeather",
+      "hoyowiki_english_name": "Whitelake Frostfeather",
+      "hoyowiki_entry_page_id": "11210",
+      "thumbnail_asset": "genshin-data-weapon-11520.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/08/03/5e3d91936ed4facfebc5f4f8c2ba4cde_1995425813023287621.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-15413",
+      "official_english_name": "Windblume Ode",
+      "hoyowiki_english_name": "Windblume Ode",
+      "hoyowiki_entry_page_id": "2045",
+      "thumbnail_asset": "genshin-data-weapon-15413.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/风花之颂.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-14410",
+      "official_english_name": "Wine and Song",
+      "hoyowiki_english_name": "Wine and Song",
+      "hoyowiki_entry_page_id": "1982",
+      "thumbnail_asset": "genshin-data-weapon-14410.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/暗巷的酒与诗.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-12502",
+      "official_english_name": "Wolf's Gravestone",
+      "hoyowiki_english_name": "Wolf's Gravestone",
+      "hoyowiki_entry_page_id": "1992",
+      "thumbnail_asset": "genshin-data-weapon-12502.png",
+      "thumbnail_source_url": "https://bbs.hoyolab.com/hoyowiki/picture/weapon/狼的末路.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11424",
+      "official_english_name": "Wolf-Fang",
+      "hoyowiki_english_name": "Wolf-Fang",
+      "hoyowiki_entry_page_id": "3999",
+      "thumbnail_asset": "genshin-data-weapon-11424.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/35428890/e1d10d55b8b96e0695000018664e17ef_8234591885133749148.png"
+    },
+    {
+      "source_key": "genshin-data-weapon-11418",
+      "official_english_name": "Xiphos' Moonlight",
+      "hoyowiki_english_name": "Xiphos' Moonlight",
+      "hoyowiki_entry_page_id": "2909",
+      "thumbnail_asset": "genshin-data-weapon-11418.png",
+      "thumbnail_source_url": "https://upload-static.hoyoverse.com/hoyolab-wiki/2022/10/12/35428890/06be2dc5c5b80671ddf01cc9dc01bb49_6360458851061396642.png"
+    }
+  ]
+}

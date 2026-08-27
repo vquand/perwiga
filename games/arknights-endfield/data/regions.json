@@ -1,7 +1,7 @@
 {
   "schema": "perwiga.endfield.regions.v1",
   "entity_type": "region",
-  "checked_at": "2026-08-23",
+  "checked_at": "2026-08-26",
   "confidence": {
     "region_classification": "B",
     "hierarchy": "B",
@@ -9,11 +9,11 @@
     "han_viet_names": "E"
   },
   "sources": {
-    "localized_client_data": "https://github.com/555me/beyondGameData",
-    "structured_map_data": "https://github.com/555me/beyondGameData/blob/main/tableCfg/MapIdTable.json",
-    "structured_domain_data": "https://github.com/555me/beyondGameData/blob/main/tableCfg/DomainDataTable.json",
-    "structured_level_data": "https://github.com/555me/beyondGameData/blob/main/tableCfg/LevelDescTable.json",
-    "structured_settlement_data": "https://github.com/555me/beyondGameData/blob/main/tableCfg/SettlementBasicDataTable.json",
+    "localized_client_data": "https://github.com/555me/beyondGameData/tree/90bc55768143f1998ad02d03ed0042919135979f",
+    "structured_map_data": "https://github.com/555me/beyondGameData/blob/90bc55768143f1998ad02d03ed0042919135979f/tableCfg/MapIdTable.json",
+    "structured_domain_data": "https://github.com/555me/beyondGameData/blob/90bc55768143f1998ad02d03ed0042919135979f/tableCfg/DomainDataTable.json",
+    "structured_level_data": "https://github.com/555me/beyondGameData/blob/90bc55768143f1998ad02d03ed0042919135979f/tableCfg/LevelDescTable.json",
+    "structured_settlement_data": "https://github.com/555me/beyondGameData/blob/90bc55768143f1998ad02d03ed0042919135979f/tableCfg/SettlementBasicDataTable.json",
     "official_setting_context": "https://endfield.gryphline.com/en-us/news/3846",
     "area_discovery_catalog": "https://endfield.wiki.gg/wiki/Category%3AAreas",
     "valley_iv_cross_check": "https://endfield.wiki.gg/wiki/Valley_IV",

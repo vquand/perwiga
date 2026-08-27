@@ -11,12 +11,17 @@ static ENTITY_TYPES: &[EntityTypeDefinition] = &[
     EntityTypeDefinition {
         key: "character",
         display_name: "Character",
-        description: "A named character in the novel.",
+        description: "A named main, supporting, or side character in the novel.",
     },
     EntityTypeDefinition {
         key: "place",
         display_name: "Place",
         description: "A named place or setting in the novel.",
+    },
+    EntityTypeDefinition {
+        key: "region",
+        display_name: "Region",
+        description: "A named geographic, political, or world region in the novel.",
     },
 ];
 
@@ -46,4 +51,22 @@ pub fn module() -> &'static dyn LibraryModule {
 
 pub fn register(registry: &mut ModuleRegistry) -> perwiga_core::Result<()> {
     registry.register(module())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::module;
+
+    #[test]
+    fn generic_novels_keep_side_characters_and_regions_as_common_types() {
+        let types = module()
+            .entity_types()
+            .iter()
+            .map(|definition| definition.key)
+            .collect::<Vec<_>>();
+        assert_eq!(types, vec!["character", "place", "region"]);
+        assert!(module().entity_types()[0]
+            .description
+            .contains("side character"));
+    }
 }

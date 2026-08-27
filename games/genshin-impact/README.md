@@ -22,7 +22,97 @@ Each record retains the official content ID, region channel, English name and de
 
 [`data/character-presentation.json`](data/character-presentation.json) is a separately reviewable, fully covered presentation snapshot keyed by those same stable HoYoverse content IDs. It records the current 4-star/5-star classification from `genshin-db` v5.2.13 without treating that community dataset as naming evidence. The UI renders 4-star Characters with a purple border and 5-star Characters with a gold border, keeps the star label in the thumbnail, and displays the source-confirmed region as a local white-on-transparent emblem in a compact trapezoid beside the Character type. The region name remains in the accessibility tree and becomes the visible fallback if its emblem cannot load. Aloy retains her 5-star classification but receives a red border because HoYoverse identifies her as a limited-time collaboration Character.
 
+[`data/character-han-viet.json`](data/character-han-viet.json) adds one generated Hán-Việt search alias for every catalog character. The readings are generated from the verified official Traditional Chinese localization with the Thi Viện Hán-Nôm dictionary and carry confidence E. They are not official Vietnamese names, and the Traditional Chinese input is not presented as the original mainland localization. Ambiguous dictionary choices and the explicit fallback for `菈` remain visible in the reviewable snapshot metadata.
+
 The seven bundled region emblems and their exact source URLs/checksums are recorded in [`assets/regions/README.md`](assets/regions/README.md). They are presentation-only community-indexed game UI assets; they are not used as evidence for names or affiliations, and the running app never fetches them from the Internet.
+
+[`data/weapons.json`](data/weapons.json) is a pinned, reviewable snapshot of 246 obtainable weapons from GenshinData-derived data distributed by `genshin-db`. It excludes three explicitly marked, non-obtainable Prized Isshin Blade quest variants. Each record retains the stable game-data ID, English, Simplified Chinese, Traditional Chinese, and Vietnamese names, English description, rarity, weapon type, level-1 Base ATK, substat, first ascension material, release version, and local-thumbnail metadata.
+
+[`data/weapon-han-viet.json`](data/weapon-han-viet.json) adds one generated confidence-E Hán-Việt search alias for every catalog weapon. The generator transcribes the original Simplified Chinese name; it never replaces the official Vietnamese localization. Dictionary ambiguity and the cited `鹮` fallback remain reviewable in the snapshot metadata.
+
+[`data/weapon-thumbnails-hoyowiki.json`](data/weapon-thumbnails-hoyowiki.json) joins the catalog to the official Genshin HoYoWiki weapon archive. The 2026-08-26 snapshot matches 245 of 246 weapons and records each HoYoWiki entry ID and first-party image URL. HoYoWiki does not yet list the 7.0 weapon Exaiphanes Blade, so that one explicit gap retains its existing verified game-asset icon; it is not misattributed to the wiki.
+
+The weapon `ascension_region` facet is derived from the first ascension-material family. It answers “which region supplies this weapon's ascension material?” and does not claim a lore origin. Nod-Krai and Far North material families are grouped under the module's broad Snezhnaya taxonomy. Generic rarity filtering/sorting uses the module's 1-star gray, 2-star green, 3-star blue, 4-star purple, and 5-star gold presentation colors.
+
+[`data/skins.json`](data/skins.json) is a 2026-08-26 snapshot of all 29 non-default entries in the official HoYoWiki Outfit catalog, joined to the pinned multilingual `genshin-db` outfit records. It excludes 120 default outfits, groups the shared Traveler outfit under both Aether and Lumine, retains official English, Simplified Chinese, Traditional Chinese, and Vietnamese names, and bundles each first-party HoYoWiki thumbnail. All current entries apply to Characters; the snapshot records zero confirmed weapon or weapon-type skins. The schema reserves those applicability fields for future source-confirmed entries, and the UI does not fabricate any.
+
+Skin presentation uses the same 4-star purple and 5-star gold rarity borders as other Genshin entities. Filters cover rarity, applicability kind, applicable Character, and the title-owned weapon-type taxonomy. [`data/skin-han-viet.json`](data/skin-han-viet.json) contains a separate generated confidence-E Hán-Việt search alias for each Skin name; it never replaces the official Vietnamese localization.
+
+[`data/artifacts.json`](data/artifacts.json) separates the 63 current Artifact Sets from their 299 actual Artifact Pieces. Each Set keeps its effects, rarity range, stable game-data ID, official HoYoWiki identity, and piece links. Each Piece keeps its parent Set, equipment slot, lore, multilingual in-game names, and local first-party thumbnail. Four legacy one-piece Sets contain only a Circlet; the snapshot preserves that source structure instead of fabricating missing slots. [`data/artifact-han-viet.json`](data/artifact-han-viet.json) adds 362 separate confidence-E Hán-Việt search aliases generated from Simplified Chinese names.
+
+[`data/artifact-domains.json`](data/artifact-domains.json) contains 22 stable Artifact Domain entrances grouped from 92 difficulty stages. It keeps multilingual entrance names, region, unlock rank, stage IDs/names, recommended levels/elements, and links to hosted Artifact Sets. Domain entrances are records; difficulty stages remain nested source metadata so the Wiki does not show four near-duplicate entries for one place. Artifact Sets and Pieces use rarity filtering/sorting and rarity-colored borders, Pieces add an Artifact-slot filter, and Domains add a title-owned region filter including Nod-Krai.
+
+[`data/regions.json`](data/regions.json) contains a world anchor, nine top-level regions, and 207 subregions collapsed from 268 multilingual Geography Archive viewpoint records in pinned `genshin-db`. The hierarchy retains stable region/area IDs, parents Nod-Krai to Snezhnaya, and excludes seven unnamed viewpoints plus one `???` placeholder instead of inventing names. It describes Geography Archive-backed areas, not every possible map label. [`data/region-han-viet.json`](data/region-han-viet.json) adds one generated confidence-E Hán-Việt search alias per entry from the Simplified Chinese name. Region type and parent region are title-owned filters; duplicate display names such as Mondstadt (nation and city) retain separate source identities.
+
+[`data/npcs.json`](data/npcs.json) contains a 2026-08-27 snapshot of 4,967 named NPC/person pages from the community-maintained [Genshin Impact Wiki NPC index](https://genshin-impact.fandom.com/wiki/NPC/List). It preserves page IDs, multilingual page fields when present, infobox regions and locations, page categories, and source-backed quest/event/action relationships. One NPC may have many locations and many related contexts; those relationships are imported into the shared normalized context tables rather than being flattened into a text field on the NPC. The crawler captures explicit Quest/Event/Action templates, selected relationship categories, and explicit linked titles, so it does not claim to infer every appearance from free-form prose.
+
+[`data/npc-han-viet.json`](data/npc-han-viet.json) contains generated confidence-E Hán-Việt search aliases for the subset with usable Chinese names. The local reading source is [hanviet-pinyin-words](https://github.com/ph0ngp/hanviet-pinyin-words); unresolved characters and pages without Chinese names remain explicit in the snapshot metadata. These values are search aids only and never replace official Vietnamese text.
+
+## Refresh Regions
+
+Use the same reviewed, pinned `genshin-db` checkout:
+
+```text
+python3 games/genshin-impact/scripts/fetch-regions.py \
+  --source-root /path/to/pinned/genshin-db
+python3 games/genshin-impact/scripts/fetch-region-han-viet.py
+```
+
+The catalog builder joins four locales by stable Geography identity, writes atomically, refuses unexpected shrinkage, and never opens SQLite. The Hán-Việt generator keeps Japanese-kokuji/phonetic fallback evidence in snapshot metadata and never promotes generated names to official Vietnamese.
+
+## Refresh NPCs and NPC Hán-Việt aliases
+
+```text
+python3 games/genshin-impact/scripts/fetch-npcs.py \
+  --checked-at YYYY-MM-DD
+python3 games/genshin-impact/scripts/fetch-npc-han-viet.py
+```
+
+The NPC crawler uses the public Fandom MediaWiki API, validates page content in bounded batches, writes atomically, and refuses an unexpected catalog shrink unless `--allow-shrink` is reviewed explicitly. It never opens SQLite. The Hán-Việt generator is intentionally partial when a Chinese name or dictionary reading is unavailable; it records those gaps instead of fabricating a translation. Importing NPCs is additive and idempotent, including their separately stored context and location rows.
+
+## Refresh Artifacts and Domains
+
+Use a reviewed checkout of the pinned `genshin-db` source and a complete official HoYoWiki Artifact archive response:
+
+```text
+python3 games/genshin-impact/scripts/fetch-artifacts.py \
+  --source-root /path/to/pinned/genshin-db \
+  --wiki-response /path/to/complete-hoyowiki-artifact-response.json
+python3 games/genshin-impact/scripts/fetch-artifact-domains.py \
+  --source-root /path/to/pinned/genshin-db
+python3 games/genshin-impact/scripts/fetch-artifact-han-viet.py
+python3 games/genshin-impact/scripts/fetch-artifact-thumbnails.py
+```
+
+The catalog builder requires exact name and rarity coverage between the multilingual game-data extract and official HoYoWiki. The Domain builder groups only `UI_ABYSSUS_RELIC` stages by stable entrance ID and links recognized rewards to Set source keys. The thumbnail downloader allowlists first-party hosts, validates or normalizes image signatures, and never overwrites valid assets. None of these scripts opens SQLite.
+
+## Refresh Skins
+
+Use the same reviewed pinned `genshin-db` checkout as the weapon pipeline:
+
+```text
+python3 games/genshin-impact/scripts/fetch-skins.py \
+  --source-root /path/to/pinned/genshin-db \
+  --source-commit 8b15995fa220c88a4d0d7ffe1e21b041d0b32588
+python3 games/genshin-impact/scripts/fetch-skin-thumbnails.py
+python3 games/genshin-impact/scripts/fetch-skin-han-viet.py
+```
+
+The catalog builder joins official HoYoWiki identities, rarity, and thumbnail URLs to pinned multilingual game-data extracts by normalized English name. It validates complete 29-entry coverage and refuses unexpected shrinkage. The downloader accepts only allowlisted first-party HoYoVerse hosts, validates PNG/GIF signatures, and never overwrites a valid asset. All scripts write reviewable files only and never open SQLite.
+
+## Refresh weapons and thumbnails
+
+Use a reviewed, pinned checkout of `genshin-db`:
+
+```text
+python3 games/genshin-impact/scripts/fetch-weapons.py \
+  --source-root /path/to/pinned/genshin-db
+python3 games/genshin-impact/scripts/fetch-weapon-thumbnails.py
+python3 games/genshin-impact/scripts/fetch-hoyowiki-weapon-thumbnails.py
+python3 games/genshin-impact/scripts/fetch-weapon-han-viet.py
+```
+
+The snapshot builder joins all locales by stable filename and game-data ID, validates every filter value, writes atomically, and refuses unexpected shrinkage. The first thumbnail command maintains the complete fallback set from indexed game assets. The HoYoWiki command snapshots the official archive, normalizes only decorative title quotes and apostrophe typography for matching, downloads the 245 confirmed wiki icons into a separate primary asset set, and leaves explicit gaps visible. Both downloaders validate hosts, paths, sizes, and PNG signatures and never overwrite an existing valid asset.
 
 ## Refresh the catalog
 
@@ -44,6 +134,16 @@ python3 games/genshin-impact/scripts/fetch-character-thumbnails.py
 
 The downloader reads only the validated snapshot, accepts trusted HoYoverse HTTPS hosts, checks image magic, and writes new files without replacing existing assets. The current 118 PNG files occupy about 2.8 MB.
 
+## Refresh generated Hán-Việt aliases
+
+After reviewing an updated character catalog, run:
+
+```text
+python3 games/genshin-impact/scripts/fetch-character-han-viet.py
+```
+
+The generator submits only the catalog's public Traditional Chinese names to the allowlisted Thi Viện transcription endpoint, validates that every response round-trips to its source name, and atomically replaces only the reviewable alias snapshot. It never opens SQLite. Import remains additive and idempotent through the Rust module.
+
 ## Verify the fetch logic
 
 ```text
@@ -59,17 +159,38 @@ The UAT setup imports the bundled snapshot automatically. To import it explicitl
 ```text
 cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
   entity import-genshin-characters --work <genshin-work-id>
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
+  entity import-genshin-regions --work <genshin-work-id>
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
+  entity import-genshin-weapons --work <genshin-work-id>
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
+  entity import-genshin-skins --work <genshin-work-id>
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
+  entity import-genshin-artifacts --work <genshin-work-id>
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
+  entity import-genshin-artifact-domains --work <genshin-work-id>
+  entity import-genshin-npcs --work <genshin-work-id>
 ```
 
-The import is transactional, additive, and idempotent. Stable HoYoverse source keys prevent duplicate imports, existing records are never replaced, and official Traditional Chinese names are stored as provenance-labeled aliases. The confirmed global source does not provide Simplified Chinese, so the English catalog anchor is repeated in the schema-required original-name field rather than mislabeling Traditional Chinese.
+The import is transactional, additive, and idempotent. Stable HoYoverse source keys prevent duplicate imports, existing records are never replaced, official Traditional Chinese names remain provenance-labeled aliases, and generated Hán-Việt values are separate confidence-E search aliases. The confirmed global source does not provide Simplified Chinese, so the English catalog anchor is repeated in the schema-required original-name field rather than mislabeling Traditional Chinese.
 
 ## Sources
 
 - Official global character directory: <https://genshin.hoyoverse.com/en/character/mondstadt>
 - Official site bundle containing the current content-service contract: <https://genshin.hoyoverse.com/_nuxt/446ceb2.js>
 - HoYoverse public website content service: <https://sg-public-api-static.hoyoverse.com/content_v2_user>
+- Thi Viện Hán-Nôm transcription tool: <https://hvdic.thivien.net/transcript.php#trans>
 - Rarity presentation dataset: <https://github.com/theBowja/genshin-db> (`v5.2.13`, checked 2026-08-24)
+- Official HoYoWiki weapon directory and its rarity/type/substat taxonomy: <https://wiki.hoyolab.com/pc/genshin/aggregate/weapon>
+- Official HoYoWiki Outfit catalog: <https://wiki.hoyolab.com/pc/genshin/aggregate/34>
+- Official HoYoWiki Artifact archive: <https://wiki.hoyolab.com/pc/genshin/aggregate/5>
+- Official HoYoLAB introduction to Artifact and Domain archive updates: <https://www.hoyolab.com/article/7159996>
+- Official HoYoWiki introduction and Weapon Archive description: <https://www.hoyolab.com/article/4626755>
+- Weapon data/localizations and indexed first-party image URLs: <https://github.com/theBowja/genshin-db> (commit `8b15995fa220c88a4d0d7ffe1e21b041d0b32588`, checked 2026-08-25)
+- Game-asset thumbnail fallback: <https://enka.network/> (used only when an indexed first-party URL is unavailable)
+- `鹮` Hán-Việt fallback evidence: <https://js.vnu.edu.vn/FS/article/download/4175/3893>
 - Region emblem catalog: <https://genshin-impact.fandom.com/wiki/Category:Region_Emblems> (presentation assets only, checked 2026-08-24)
+- Geography Archive names and localizations: <https://github.com/theBowja/genshin-db> (commit `8b15995fa220c88a4d0d7ffe1e21b041d0b32588`, checked 2026-08-26)
 - Official Aloy collaboration status: <https://support.hoyoverse.com/hc/en-us/articles/50333967030681-How-can-I-get-the-character-Aloy>
 
 The content service is treated as a website source, not as a promised public developer API. Its contract identifiers are therefore recorded in the snapshot and validated on every refresh rather than hidden in an opaque importer.

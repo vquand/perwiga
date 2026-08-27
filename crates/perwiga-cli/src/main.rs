@@ -73,6 +73,12 @@ enum EntityCommand {
     Alias(AddAlias),
     ImportEndfieldAliases(ImportEndfieldAliases),
     ImportGenshinCharacters(ImportGenshinCharacters),
+    ImportGenshinRegions(ImportGenshinRegions),
+    ImportGenshinNpcs(ImportGenshinNpcs),
+    ImportGenshinWeapons(ImportGenshinWeapons),
+    ImportGenshinSkins(ImportGenshinSkins),
+    ImportGenshinArtifacts(ImportGenshinArtifacts),
+    ImportGenshinArtifactDomains(ImportGenshinArtifactDomains),
 }
 
 #[derive(Debug, Args)]
@@ -159,6 +165,42 @@ struct ImportEndfieldAliases {
 
 #[derive(Debug, Args)]
 struct ImportGenshinCharacters {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinRegions {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinNpcs {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinWeapons {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinSkins {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinArtifacts {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinArtifactDomains {
     #[arg(long)]
     work: String,
 }
@@ -397,6 +439,30 @@ fn run() -> perwiga_core::Result<()> {
                     &input.work,
                 )?)?
             }
+            EntityCommand::ImportGenshinRegions(input) => print_json(
+                &perwiga_game_genshin_impact::import_curated_regions(app.store_mut(), &input.work)?,
+            )?,
+            EntityCommand::ImportGenshinNpcs(input) => print_json(
+                &perwiga_game_genshin_impact::import_curated_npcs(app.store_mut(), &input.work)?,
+            )?,
+            EntityCommand::ImportGenshinWeapons(input) => print_json(
+                &perwiga_game_genshin_impact::import_curated_weapons(app.store_mut(), &input.work)?,
+            )?,
+            EntityCommand::ImportGenshinSkins(input) => print_json(
+                &perwiga_game_genshin_impact::import_curated_skins(app.store_mut(), &input.work)?,
+            )?,
+            EntityCommand::ImportGenshinArtifacts(input) => {
+                print_json(&perwiga_game_genshin_impact::import_curated_artifacts(
+                    app.store_mut(),
+                    &input.work,
+                )?)?
+            }
+            EntityCommand::ImportGenshinArtifactDomains(input) => print_json(
+                &perwiga_game_genshin_impact::import_curated_artifact_domains(
+                    app.store_mut(),
+                    &input.work,
+                )?,
+            )?,
         },
         Command::Note { command } => match command {
             NoteCommand::Add(input) => print_json(&app.store().create_note(
@@ -555,6 +621,63 @@ mod tests {
             Command::Entity {
                 command: EntityCommand::ImportGenshinCharacters(input),
             } => assert_eq!(input.work, "work-2"),
+            command => panic!("unexpected command: {command:?}"),
+        }
+    }
+
+    #[test]
+    fn parses_genshin_curated_weapon_import() {
+        let cli = Cli::try_parse_from([
+            "perwiga",
+            "entity",
+            "import-genshin-weapons",
+            "--work",
+            "work-3",
+        ])
+        .expect("valid Genshin weapon import command");
+
+        match cli.command {
+            Command::Entity {
+                command: EntityCommand::ImportGenshinWeapons(input),
+            } => assert_eq!(input.work, "work-3"),
+            command => panic!("unexpected command: {command:?}"),
+        }
+    }
+
+    #[test]
+    fn parses_genshin_curated_region_import() {
+        let cli = Cli::try_parse_from([
+            "perwiga",
+            "entity",
+            "import-genshin-regions",
+            "--work",
+            "work-regions",
+        ])
+        .expect("valid Genshin Region import command");
+
+        match cli.command {
+            Command::Entity {
+                command: EntityCommand::ImportGenshinRegions(input),
+            } => assert_eq!(input.work, "work-regions"),
+            command => panic!("unexpected command: {command:?}"),
+        }
+    }
+
+    #[test]
+    fn parses_genshin_curated_skin_import() {
+        let cli = Cli::try_parse_from([
+            "perwiga",
+            "entity",
+            "import-genshin-skins",
+            "--work",
+            "work-4",
+        ])
+        .expect("valid Genshin Skin import command");
+
+        match cli.command {
+            Command::Entity {
+                command: EntityCommand::ImportGenshinSkins(input),
+            } => assert_eq!(input.work, "work-4"),
             command => panic!("unexpected command: {command:?}"),
         }
     }

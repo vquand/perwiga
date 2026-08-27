@@ -4,6 +4,7 @@
 - Scope: fallback for any novel without dedicated support.
 - Follow [novels/AGENTS.md](../AGENTS.md), [ADR-002](../../docs/decisions/ADR-002-games-and-novels-as-library-works.md), and the root data-safety rules.
 - Support all common manual features and user-configured standards-compliant RSS/Atom feeds.
+- Use the common `character` type for main, supporting, and side characters, and `region`/`place` for story settings. The shared entity-context records may hold source-backed quest/event/action-style associations; do not invent chapter or scene metadata in this fallback module.
 - Keep this module free of title-specific entity types, source URLs, authentication, custom parsers, chapter heuristics, APIs, and title conditionals.
 - Preserve the source feed title, URL, GUID, publication timestamp, and provenance. Do not guess chapter numbers or convert publication timestamps into calendar schedules.
 - Moving a novel from `generic` to a dedicated module must preserve all common entities, links, folders, notes, checklists, attachments, feed sources/items, and manual events.

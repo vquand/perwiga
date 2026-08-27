@@ -92,6 +92,7 @@ The shared core owns behavior with the same meaning for both work kinds:
 
 - Library work identity and module assignment
 - Base entity identity, multilingual names, descriptions, and stable reference targets
+- Source-backed entity context records and their multi-location children when the relationship has common quest/event/action semantics
 - Notes, rich content, checklists, attachments, and linked folders
 - Feed item and calendar event contracts
 - SQLite connection management, common migrations, integrity rules, and Git snapshot safety
@@ -100,6 +101,7 @@ The shared core owns behavior with the same meaning for both work kinds:
 The owning title module handles behavior only that title or source can interpret:
 
 - Entity taxonomy, relationships, and title-specific fields
+- Mapping source records into common entity contexts, plus namespaced extensions for title-specific chapter, scene, raid, mission, or codex metadata
 - Semantic title theme tokens used by shared presentation components
 - Source locations, authentication, rate limits, and refresh rules
 - Custom HTML/API parsing and source-specific validation

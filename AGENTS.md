@@ -31,6 +31,7 @@ Migrations must be additive and data-preserving by default. Do not introduce `ON
 - Use each work family’s `generic` module for titles without dedicated support. Shared code must not branch on titles or module IDs outside the composition/registration boundary.
 - Keep domain logic, SQLite access, filesystem coordination, and title integrations in Rust. A thin non-Rust UI layer is allowed if the selected desktop framework requires it.
 - Preserve stable IDs, Unicode text, translation provenance, entity links, and work ownership. Automatic translations must never overwrite official text.
+- Treat source-backed entity context as a common, work-neutral relationship: an NPC, playable character, side character, place, item, or other entity may be connected to multiple quests, events, actions, or other module-defined contexts. Keep the context record and its many locations in the separated normalized tables; the owning module defines the vocabulary and source mapping.
 - Keep published feed activity separate from scheduled calendar events. Do not infer a future novel schedule from an RSS/Atom publication timestamp.
 - Treat local files, URLs, RSS, APIs, and embedded content as untrusted boundary input. Validate and sanitize them before persistence or rendering.
 - Linking or previewing a local folder must never move, rename, overwrite, or delete the user’s files.
@@ -46,4 +47,4 @@ Migrations must be additive and data-preserving by default. Do not introduce `ON
 
 ## Current repository state
 
-There are no verified application commands yet. Do not report a build, test, lint, migration, or packaging command until it exists in the repository and has been run successfully.
+The Rust workspace and the verified development commands in `README.md` exist. Do not invent additional build, test, lint, migration, or packaging commands; inspect the repository and run a command successfully before documenting or reporting it.

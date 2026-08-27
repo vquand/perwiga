@@ -1,0 +1,724 @@
+{
+  "schema": "perwiga.genshin-impact.skins.v1",
+  "checked_at": "2026-08-26",
+  "sources": {
+    "localized_outfit_data": {
+      "url": "https://github.com/theBowja/genshin-db",
+      "commit": "8b15995fa220c88a4d0d7ffe1e21b041d0b32588"
+    },
+    "rarity_identity_thumbnail": {
+      "provider": "Official Genshin HoYoWiki Outfit catalog",
+      "url": "https://wiki.hoyolab.com/pc/genshin/aggregate/34",
+      "menu_id": "34"
+    }
+  },
+  "catalog_scope": {
+    "included_records": 29,
+    "excluded_default_outfits": 120,
+    "application_kinds_present": [
+      "character"
+    ],
+    "confirmed_weapon_skins": 0
+  },
+  "skins": [
+    {
+      "source_key": "hoyowiki-outfit-5774",
+      "hoyowiki_entry_page_id": "5774",
+      "genshin_data_ids": [
+        202101
+      ],
+      "genshin_db_keys": [
+        "100outrider"
+      ],
+      "official_english_name": "100% Outrider",
+      "official_simplified_chinese_name": "100%侦察骑士",
+      "official_traditional_chinese_name": "100%偵察騎士",
+      "official_vietnamese_name": "Kỵ Sĩ Trinh Thám 100%",
+      "official_english_description": "Amber's outfit. This is a more formal — but no less cool — version of the Outrider's uniform!",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Amber"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5774.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/d3d3c7168da5f9cc963f54852a0172a2_7439782737917998801.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5780",
+      "hoyowiki_entry_page_id": "5780",
+      "genshin_data_ids": [
+        200601
+      ],
+      "genshin_db_keys": [
+        "asobriquetundershade"
+      ],
+      "official_english_name": "A Sobriquet Under Shade",
+      "official_simplified_chinese_name": "叶隐芳名",
+      "official_traditional_chinese_name": "葉隱芳名",
+      "official_vietnamese_name": "Danh Vang Trong Lá",
+      "official_english_description": "An outfit Lisa had someone commission for her when she revisited Sumeru. A perfect blend of practicality and elegance, the dress bears a resemblance to Lisa's old uniform from her Akademiya days.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Lisa"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5780.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/cfc7a964cc58990f4f2fea8de581b047_2844370454896584835.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-8363",
+      "hoyowiki_entry_page_id": "8363",
+      "genshin_data_ids": [
+        203201
+      ],
+      "genshin_db_keys": [
+        "adventuresinblazinghue"
+      ],
+      "official_english_name": "Adventures in Blazing Hue",
+      "official_simplified_chinese_name": "炽绘奇旅",
+      "official_traditional_chinese_name": "熾繪奇旅",
+      "official_vietnamese_name": "Hành Trình Sắc Lửa",
+      "official_english_description": "Bennett's traveling attire for his journeys in Natlan. Dyed lucky lakewater blue with hints of blazing orange, these clothes emanate an overflowing vitality that matches the land in which they are worn.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Bennett"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-8363.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/30/d93654006d64df5a9359d629f012e653_1228219992533863312.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-9251",
+      "hoyowiki_entry_page_id": "9251",
+      "genshin_data_ids": [
+        200501,
+        200701
+      ],
+      "genshin_db_keys": [
+        "asheavenandeartharemadeanewaether",
+        "asheavenandeartharemadeanewlumine"
+      ],
+      "official_english_name": "As Heaven and Earth Are Made Anew",
+      "official_simplified_chinese_name": "复地重天",
+      "official_traditional_chinese_name": "復地重天",
+      "official_vietnamese_name": "Phục Địa Trùng Thiên",
+      "official_english_description": "An outfit worn by the Traveler which has accompanied the twin \"stars\" in their journey through countless worlds. Despite this, they cannot yet cannot grasp the true purpose of the cosmos. Even so, surely every question posed brings them a little closer to the final answer.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Aether",
+        "Lumine"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-9251.gif",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/15/43637940540d12f7bcd26538438a4050_6114286714235187746.gif"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5785",
+      "hoyowiki_entry_page_id": "5785",
+      "genshin_data_ids": [
+        202501
+      ],
+      "genshin_db_keys": [
+        "bamboorain"
+      ],
+      "official_english_name": "Bamboo Rain",
+      "official_simplified_chinese_name": "雨化竹身",
+      "official_traditional_chinese_name": "雨化竹身",
+      "official_vietnamese_name": "Màn Mưa Rừng Trúc",
+      "official_english_description": "Formal wear prepared by the Feiyun Commerce Guild for Xingqiu. The bamboo prints are refined and the cut is most flattering, but Xingqiu's favorite aspect of the outfit is its inner pockets, into which a thinner novel might be stuffed.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Xingqiu"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5785.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/48c29e7de080b50b925c3013bbd1710d_1811908191024803705.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5781",
+      "hoyowiki_entry_page_id": "5781",
+      "genshin_data_ids": [
+        202901
+      ],
+      "genshin_db_keys": [
+        "blossomingstarlight"
+      ],
+      "official_english_name": "Blossoming Starlight",
+      "official_simplified_chinese_name": "琪花星烛",
+      "official_traditional_chinese_name": "琪花星燭",
+      "official_vietnamese_name": "Hoa Lửa Rực Rỡ",
+      "official_english_description": "An exquisite outfit Klee wears only for the most important performances. The colors are brilliant, like a cake adorned with cream flowers and crowned with scarlet candles. With it comes happiness and smiles that will fill your adventures.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Klee"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5781.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/a301ddffa3697d64093d95c792ca02c9_7479257930193658037.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-6275",
+      "hoyowiki_entry_page_id": "6275",
+      "genshin_data_ids": [
+        207001
+      ],
+      "genshin_db_keys": [
+        "breezeofsabaa"
+      ],
+      "official_english_name": "Breeze of Sabaa",
+      "official_simplified_chinese_name": "莎邦之息",
+      "official_traditional_chinese_name": "莎邦之息",
+      "official_vietnamese_name": "Ngọn Gió Sabaa",
+      "official_english_description": "An elegant outfit for Nilou, this featherweight dress is seemingly woven of countless flowers, and with it drifts a light fragrance like the east wind at dawn, carrying beauteous blessings from a fairytale land.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Nilou"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-6275.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/16/14c18f5e958f08d0a4bf207d4492ba80_3044234167150545021.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-7363",
+      "hoyowiki_entry_page_id": "7363",
+      "genshin_data_ids": [
+        204601
+      ],
+      "genshin_db_keys": [
+        "cherriessnowladen"
+      ],
+      "official_english_name": "Cherries Snow-Laden",
+      "official_simplified_chinese_name": "宿雪桃红",
+      "official_traditional_chinese_name": "宿雪桃紅",
+      "official_vietnamese_name": "Tuyết Phủ Hồng Đào",
+      "official_english_description": "Hu Tao's outfit. Styled in a palette lighter than the dark ceremonial wear favored by the Wangsheng Funeral Parlor, the dress is a special gift from her good friend Xiangling. The sunglasses, for their part, are from Hu Tao's personal collection.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Hu Tao"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-7363.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/26/94924d60a85d377b95b8ef93793e74e5_444947147903216848.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5778",
+      "hoyowiki_entry_page_id": "5778",
+      "genshin_data_ids": [
+        203101
+      ],
+      "genshin_db_keys": [
+        "einimmernachtstraum"
+      ],
+      "official_english_name": "Ein Immernachtstraum",
+      "official_simplified_chinese_name": "极夜真梦",
+      "official_traditional_chinese_name": "極夜真夢",
+      "official_vietnamese_name": "Giấc Mộng Đêm Khuya",
+      "official_english_description": "A ceremonial outfit for the Prinzessin. May she who is noble retain her courage, sincerity, and kindness forever, such that no evil shall ever overcome her.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Fischl"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5778.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/768cf71252b47d27e034f57f86e46cbe_4251206025028435751.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5783",
+      "hoyowiki_entry_page_id": "5783",
+      "genshin_data_ids": [
+        206301
+      ],
+      "genshin_db_keys": [
+        "frostflowerdew"
+      ],
+      "official_english_name": "Frostflower Dew",
+      "official_simplified_chinese_name": "冷花幽露",
+      "official_traditional_chinese_name": "冷花幽露",
+      "official_vietnamese_name": "Giọt Sương Hoa Băng",
+      "official_english_description": "This Lantern Rite gift that Shenhe received is a set of elegant formal attire that her master, Cloud Retainer had commissioned for her. Red ropes still adorn her arms, but the bitter cold in Shenhe's heart has faded.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Shenhe"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5783.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/2b29ff6c70c1edbb5a6dec7d8e3873c3_524757654613643543.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5773",
+      "hoyowiki_entry_page_id": "5773",
+      "genshin_data_ids": [
+        200302
+      ],
+      "genshin_db_keys": [
+        "gunnhildrslegacy"
+      ],
+      "official_english_name": "Gunnhildr's Legacy",
+      "official_simplified_chinese_name": "古恩希尔德的传承",
+      "official_traditional_chinese_name": "古恩希爾德的傳承",
+      "official_vietnamese_name": "Thừa Kế Của Gunnhildr",
+      "official_english_description": "Jean's outfit. This classic knight's ceremonial outfit is suited to all manner of occasions.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Jean"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5773.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/27/5a7716c7459df618fe4bce356208f946_8440451207734699228.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-10963",
+      "hoyowiki_entry_page_id": "10963",
+      "genshin_data_ids": [
+        208801
+      ],
+      "genshin_db_keys": [
+        "hurlockvariations"
+      ],
+      "official_english_name": "Hurlock Variations",
+      "official_simplified_chinese_name": "赫尔洛克变奏曲",
+      "official_traditional_chinese_name": "赫爾洛克變奏曲",
+      "official_vietnamese_name": "Khúc Biến Tấu Hurlock",
+      "official_english_description": "Charlotte's outfit. Once used as a filming costume for Great Detective Hurlock, this outfit was presented to Charlotte by the production crew as a keepsake after the shoot concluded.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Charlotte"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-10963.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/07/02/33f6be617a9ad6b0df55eb6675a93c60_8533992856315543731.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-9252",
+      "hoyowiki_entry_page_id": "9252",
+      "genshin_data_ids": [
+        208701
+      ],
+      "genshin_db_keys": [
+        "melusentgift"
+      ],
+      "official_english_name": "Melusent Gift",
+      "official_simplified_chinese_name": "莘露的赠礼",
+      "official_traditional_chinese_name": "莘露的贈禮",
+      "official_vietnamese_name": "Quà Tặng Của Melusine",
+      "official_english_description": "A surprise gift for Neuvillette. The delight comes not just from the gift itself, but from every little hand that helped make it. As rivers merge into the boundless sea, so too shall dewdrops congregate to create a shimmering, iridescent miracle.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Neuvillette"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-9252.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/15/db5f417d077ac42f063631cc9de7f414_374106195351878838.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-7364",
+      "hoyowiki_entry_page_id": "7364",
+      "genshin_data_ids": [
+        202301
+      ],
+      "genshin_db_keys": [
+        "newyearscheer"
+      ],
+      "official_english_name": "New Year's Cheer",
+      "official_simplified_chinese_name": "岁夜欢哗",
+      "official_traditional_chinese_name": "歲夜歡譁",
+      "official_vietnamese_name": "Niềm Vui Xuân Về",
+      "official_english_description": "Xiangling's outfit. The red coat glows like a stove amidst cold winds, topped with a hat that, at Hu Tao's suggestion, took inspiration from Guoba's appearance — a design that's right up Xiangling's alley.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Xiangling"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-7364.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/26/97ed7cf29eebc272cdda3b2d4c4af7b5_6733913459933849763.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5772",
+      "hoyowiki_entry_page_id": "5772",
+      "genshin_data_ids": [
+        204201
+      ],
+      "genshin_db_keys": [
+        "opulentsplendor"
+      ],
+      "official_english_name": "Opulent Splendor",
+      "official_simplified_chinese_name": "霓裾翩跹",
+      "official_traditional_chinese_name": "霓裾翩躚",
+      "official_vietnamese_name": "Vũ Điệu Nghê Thường",
+      "official_english_description": "Keqing's formal wear. Amidst the beautiful dawn of the Lantern Rite, the threads weaved by days of hard work intertwine into a light yet magnificent appearance.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Keqing"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5772.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/d1bd2f690bfeda80673bb7ef0a9d65db_2860475284540232291.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5771",
+      "hoyowiki_entry_page_id": "5771",
+      "genshin_data_ids": [
+        202701
+      ],
+      "genshin_db_keys": [
+        "orchidseveninggown"
+      ],
+      "official_english_name": "Orchid's Evening Gown",
+      "official_simplified_chinese_name": "纱中幽兰",
+      "official_traditional_chinese_name": "紗中幽蘭",
+      "official_vietnamese_name": "U Lan Tinh Diệu",
+      "official_english_description": "Ningguang's formal wear. The long cyan skirt traces her elegant curves, and the butterfly wings at her ankles lend the outfit a touch of light grace.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Ningguang"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5771.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/2d602e0e91429bece8cb73016c0f9cd7_5460633591001813811.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5775",
+      "hoyowiki_entry_page_id": "5775",
+      "genshin_data_ids": [
+        204101
+      ],
+      "genshin_db_keys": [
+        "pactofstarsandmoon"
+      ],
+      "official_english_name": "Pact of Stars and Moon",
+      "official_simplified_chinese_name": "星与月之约",
+      "official_traditional_chinese_name": "星與月之約",
+      "official_vietnamese_name": "Ước Hẹn Trăng Sao",
+      "official_english_description": "Mona's outfit. A costume made specifically to encompass the astrological concept of \"the destined moment,\" thanks to the 30% discount ticket she got from the celestial globe refund.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Mona"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5775.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/bbc10f608ec1ce78e1d1d31c92d51fec_3895697734859200682.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-6276",
+      "hoyowiki_entry_page_id": "6276",
+      "genshin_data_ids": [
+        206101
+      ],
+      "genshin_db_keys": [
+        "phantominboots"
+      ],
+      "official_english_name": "Phantom in Boots",
+      "official_simplified_chinese_name": "倩影游侠",
+      "official_traditional_chinese_name": "倩影遊俠",
+      "official_vietnamese_name": "Ảo Ảnh Đi Hia",
+      "official_english_description": "Kirara's outfit. The swashbuckling feline of fairytale fame, the crafty courier of dearly-held dreams... is pleased to make your acquaintance!",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Kirara"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-6276.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/16/da6f59f87c7750945a638f0ef0d4f943_6073925868569378742.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-9253",
+      "hoyowiki_entry_page_id": "9253",
+      "genshin_data_ids": [
+        207701
+      ],
+      "genshin_db_keys": [
+        "rainlitbambooreverie"
+      ],
+      "official_english_name": "Rainlit Bamboo Reverie",
+      "official_simplified_chinese_name": "聆雨听竹",
+      "official_traditional_chinese_name": "聆雨聽竹",
+      "official_vietnamese_name": "Lắng Nghe Mưa Trúc",
+      "official_english_description": "Yaoyao's outfit. New shoots cast shifting shadows on the desk in disarray; at times the guest who enters is not the wind at play.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Yaoyao"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-9253.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/15/4d0fa212767baae02dda1e56f8ddcf02_225472240117228554.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5777",
+      "hoyowiki_entry_page_id": "5777",
+      "genshin_data_ids": [
+        201601
+      ],
+      "genshin_db_keys": [
+        "reddeadofnight"
+      ],
+      "official_english_name": "Red Dead of Night",
+      "official_simplified_chinese_name": "殷红终夜",
+      "official_traditional_chinese_name": "殷紅終夜",
+      "official_vietnamese_name": "Màn Đêm Đỏ Thẫm",
+      "official_english_description": "One of the outfits Diluc wears during covert actions, it resembles a flame dancing in the shadows. The crimson red traces it leaves behind at the edges of the enemy's vision will scar their nightmares forever.",
+      "rarity": 5,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Diluc"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5777.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/9aea096e911dd3b71d31b2f6bfbd26b1_2531231867287960448.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5782",
+      "hoyowiki_entry_page_id": "5782",
+      "genshin_data_ids": [
+        201501
+      ],
+      "genshin_db_keys": [
+        "sailwindshadow"
+      ],
+      "official_english_name": "Sailwind Shadow",
+      "official_simplified_chinese_name": "帆影游风",
+      "official_traditional_chinese_name": "帆影游風",
+      "official_vietnamese_name": "Cánh Buồm Lướt Gió",
+      "official_english_description": "Kaeya's outfit from his role as the \"Dagger Bandit\" in the play. Though flamboyant and designed to be as eye-catching as possible, it isn't difficult to put on, though it does take some time to get all the accessories and daggers sorted.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Kaeya"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5782.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/d99def11f06b2292c06cab126c205d8c_3267539322665900555.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5769",
+      "hoyowiki_entry_page_id": "5769",
+      "genshin_data_ids": [
+        200301
+      ],
+      "genshin_db_keys": [
+        "seabreezedandelion"
+      ],
+      "official_english_name": "Sea Breeze Dandelion",
+      "official_simplified_chinese_name": "海风之梦",
+      "official_traditional_chinese_name": "海風之夢",
+      "official_vietnamese_name": "Giấc Mộng Gió Biển",
+      "official_english_description": "Jean's summer wear. Light and cool, but no less elegant for it. The perfect choice for a trip to the seaside.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Jean"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5769.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/76a025104a27b588fd3139ec51b7cead_8719712595344367741.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5779",
+      "hoyowiki_entry_page_id": "5779",
+      "genshin_data_ids": [
+        200201
+      ],
+      "genshin_db_keys": [
+        "springbloommissive"
+      ],
+      "official_english_name": "Springbloom Missive",
+      "official_simplified_chinese_name": "花时来信",
+      "official_traditional_chinese_name": "花時來信",
+      "official_vietnamese_name": "Thư Từ Hoa Xuân",
+      "official_english_description": "Ayaka's travel outfit. Its design is based on the Fontaine dresses depicted in light novel illustrations and seems to serve as a window into the lifestyle of proper ladies who live in that nation.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Kamisato Ayaka"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5779.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/03008a828aa6d1fab48355f666e676a4_3036761599100821046.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5770",
+      "hoyowiki_entry_page_id": "5770",
+      "genshin_data_ids": [
+        201401
+      ],
+      "genshin_db_keys": [
+        "summertimesparkle"
+      ],
+      "official_english_name": "Summertime Sparkle",
+      "official_simplified_chinese_name": "闪耀协奏",
+      "official_traditional_chinese_name": "閃耀協奏",
+      "official_vietnamese_name": "Mùa Hè Rực Rỡ",
+      "official_english_description": "Barbara's beach attire. This pretty skirt brims with summer vitality and carries with it a cool ocean breeze.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Barbara"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5770.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/88ca0b2be20852a4e92a2996468ccdb1_4470866276641684634.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5776",
+      "hoyowiki_entry_page_id": "5776",
+      "genshin_data_ids": [
+        204501
+      ],
+      "genshin_db_keys": [
+        "tothechurchsfreespirit"
+      ],
+      "official_english_name": "To the Church's Free Spirit",
+      "official_simplified_chinese_name": "致教会自由人",
+      "official_traditional_chinese_name": "致教會自由人",
+      "official_vietnamese_name": "Tu Nữ Tự Do",
+      "official_english_description": "Rosaria's outfit. This seems to have been custom-made for her by the Church.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Rosaria"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5776.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/ef87a4785bacee87664d74db96e3ab01_6853987077197875351.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-9083",
+      "hoyowiki_entry_page_id": "9083",
+      "genshin_data_ids": [
+        212301
+      ],
+      "genshin_db_keys": [
+        "towardthedistanthorizon"
+      ],
+      "official_english_name": "Toward the Distant Horizon",
+      "official_simplified_chinese_name": "故事的远方",
+      "official_traditional_chinese_name": "故事的遠方",
+      "official_vietnamese_name": "Phương Xa Của Câu Chuyện",
+      "official_english_description": "Durin's outfit. Durin's original outfit has received a new lease of life now that he's taken up his mother's pen. Ultimately, he bid farewell to the past once painted by its previous owner. When the lock on his heart faded away, the distant horizon his wish now points to became the direction in which his story continues to unfold.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Durin"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-9083.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/11/25/628be25956abeb39179d840ea9f993ac_6831725048906427172.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-8362",
+      "hoyowiki_entry_page_id": "8362",
+      "genshin_data_ids": [
+        206001
+      ],
+      "genshin_db_keys": [
+        "tranquilbanquet"
+      ],
+      "official_english_name": "Tranquil Banquet",
+      "official_simplified_chinese_name": "静暇雅宴",
+      "official_traditional_chinese_name": "靜暇雅宴",
+      "official_vietnamese_name": "Yến Tiệc Tĩnh Lặng",
+      "official_english_description": "The outfit Yelan has prepared for her holiday. Elegant yet neat, it conveys a sense of leisure while somehow still carrying a hint of concealed aggression...",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Yelan"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-8362.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/30/2cda817c410ad8c47061b7280a0a2817_8477060989772182960.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-5784",
+      "hoyowiki_entry_page_id": "5784",
+      "genshin_data_ids": [
+        203701
+      ],
+      "genshin_db_keys": [
+        "twilightblossom"
+      ],
+      "official_english_name": "Twilight Blossom",
+      "official_simplified_chinese_name": "玄玉瑶芳",
+      "official_traditional_chinese_name": "玄玉瑤芳",
+      "official_vietnamese_name": "Hoa Ngọc Ngát Hương",
+      "official_english_description": "A light and graceful festive outfit accented mainly in black nightshade and cerulean blue. Its hair accessory is as radiant as the Qingxin — a pairing that Ganyu is most fond of.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Ganyu"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-5784.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/24/88796223bf9b438e2ccb3108e25633df_1942472089696744059.png"
+    },
+    {
+      "source_key": "hoyowiki-outfit-10962",
+      "hoyowiki_entry_page_id": "10962",
+      "genshin_data_ids": [
+        210701
+      ],
+      "genshin_db_keys": [
+        "whispersofstarsandsmoke"
+      ],
+      "official_english_name": "Whispers of Stars and Smoke",
+      "official_simplified_chinese_name": "星与烟帷的夜语",
+      "official_traditional_chinese_name": "星與煙帷的夜語",
+      "official_vietnamese_name": "Thì Thầm Của Sao Và Khói",
+      "official_english_description": "Citlali's outfit. When at home, Citlali will sometimes change into attire brimming with girlish charm. At such times, anyone troubling her with official duties has promptly come under heavy attack. Thus, this outfit has become a baleful thing, a subject of fearful rumor that all give a wide berth.",
+      "rarity": 4,
+      "application_kind": "character",
+      "applicable_characters": [
+        "Citlali"
+      ],
+      "applicable_weapons": [],
+      "applicable_weapon_types": [],
+      "thumbnail_asset": "hoyowiki-outfit-10962.png",
+      "thumbnail_source_url": "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/07/02/0af13906c69b9db1255f4e410069f9fd_4474855021275847262.png"
+    }
+  ]
+}

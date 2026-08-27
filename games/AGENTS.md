@@ -19,6 +19,12 @@ Every game module, including `generic`, must make NPC and Region available as ex
 - Keep Region available for named geographic, administrative, world, and map areas. Add title-specific hierarchy or relations through normalized module data without encoding a mutable hierarchy into the display name.
 - Modules may extend these types with namespaced fields or subtypes, but must not replace their common fields or hide them in opaque data.
 
+## Entity context records
+
+The shared core provides normalized source-backed context records for any entity, not only NPCs. A record has a module-owned relation kind, a related title, source provider/identity, optional notes, and zero or more location rows. Use the common kinds `quest`, `event`, and `action` when they have the same meaning across modules. If a title has a genuinely different structured context such as a chapter, scene, raid, or codex entry, keep that vocabulary in the owning module’s namespaced extension and map only the common portion into the shared record.
+
+Do not encode a repeated list of quests, events, locations, or encounters in `other_information`. Preserve each source relationship separately so a character can belong to many regions and many contexts, and so refreshes remain additive and source-keyed. A relationship row is evidence of a source-backed association, not proof that the entity is physically present in every related location at every time.
+
 - Modules depend on shared contracts; shared core code must not import a concrete module.
 - Only the composition root may enumerate and register concrete modules.
 - Do not put `if game == ...`, title matching, or source-specific parsing in shared core/calendar code.

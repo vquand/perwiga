@@ -1,0 +1,4024 @@
+{
+  "schema": "perwiga.genshin-impact.regions.v1",
+  "checked_at": "2026-08-26",
+  "source": {
+    "url": "https://github.com/theBowja/genshin-db",
+    "commit": "8b15995fa220c88a4d0d7ffe1e21b041d0b32588",
+    "upstream": "GenshinData game-data extracts distributed by genshin-db"
+  },
+  "catalog_scope": {
+    "viewpoint_records": 268,
+    "regions": 9,
+    "subregions": 207,
+    "included_records": 217,
+    "excluded_unnamed_viewpoints": 7,
+    "excluded_placeholder_areas": 1
+  },
+  "notes": [
+    "The hierarchy collapses in-game Geography Archive viewpoints by stable regionId and areaId.",
+    "Subregions are areas attested by at least one permanent Geography Archive viewpoint; this is not a claim that every map label is present.",
+    "Nod-Krai is parented to Snezhnaya while retaining its distinct in-game Geography region identity.",
+    "Unnamed and placeholder area labels are excluded rather than invented."
+  ],
+  "regions": [
+    {
+      "source_key": "genshin-world-teyvat",
+      "official_english_name": "Teyvat",
+      "official_simplified_chinese_name": "提瓦特",
+      "official_traditional_chinese_name": "提瓦特",
+      "official_vietnamese_name": "Teyvat",
+      "subtype": "world",
+      "parent_source_key": null,
+      "region_id": null,
+      "area_id": null,
+      "viewpoint_ids": [],
+      "official_english_description": "The world containing the mapped Genshin Impact regions in this catalog.",
+      "source_table": "curated-world-anchor",
+      "catalog_index": 1
+    },
+    {
+      "source_key": "genshin-data-region-1",
+      "official_english_name": "Mondstadt",
+      "official_simplified_chinese_name": "蒙德",
+      "official_traditional_chinese_name": "蒙德",
+      "official_vietnamese_name": "Mondstadt",
+      "subtype": "nation",
+      "parent_source_key": "genshin-world-teyvat",
+      "region_id": 1,
+      "area_id": null,
+      "viewpoint_ids": [
+        70100001,
+        70100002,
+        70100003,
+        70100004,
+        70100005,
+        70100006,
+        70100007,
+        70100008,
+        70100009,
+        70100010,
+        70800028,
+        70800029,
+        70800030
+      ],
+      "official_english_description": "A top-level region represented in the in-game Geography Archive.",
+      "source_table": "Geography",
+      "catalog_index": 2
+    },
+    {
+      "source_key": "genshin-data-region-2",
+      "official_english_name": "Liyue",
+      "official_simplified_chinese_name": "璃月",
+      "official_traditional_chinese_name": "璃月",
+      "official_vietnamese_name": "Liyue",
+      "subtype": "nation",
+      "parent_source_key": "genshin-world-teyvat",
+      "region_id": 2,
+      "area_id": null,
+      "viewpoint_ids": [
+        70200001,
+        70200002,
+        70200003,
+        70200004,
+        70200005,
+        70200006,
+        70200007,
+        70200008,
+        70200009,
+        70200010,
+        70200011,
+        70200012,
+        70200013,
+        70200014,
+        70200015,
+        70200016,
+        70200017,
+        70200018,
+        70200019,
+        70200020,
+        70200021,
+        70200022,
+        70200023,
+        70200024,
+        70200025,
+        70200026,
+        70200027,
+        70600001,
+        70600002,
+        70600003,
+        70600004,
+        70600005,
+        70600006,
+        70600007,
+        70600008,
+        70600009,
+        70600010,
+        70600011,
+        70600012,
+        70600013,
+        70600014,
+        70600015,
+        70600016
+      ],
+      "official_english_description": "A top-level region represented in the in-game Geography Archive.",
+      "source_table": "Geography",
+      "catalog_index": 3
+    },
+    {
+      "source_key": "genshin-data-region-3",
+      "official_english_name": "Inazuma",
+      "official_simplified_chinese_name": "稻妻",
+      "official_traditional_chinese_name": "稻妻",
+      "official_vietnamese_name": "Inazuma",
+      "subtype": "nation",
+      "parent_source_key": "genshin-world-teyvat",
+      "region_id": 3,
+      "area_id": null,
+      "viewpoint_ids": [
+        70300001,
+        70300002,
+        70300003,
+        70300004,
+        70300005,
+        70300006,
+        70300007,
+        70300008,
+        70300009,
+        70300010,
+        70300011,
+        70300012,
+        70300013,
+        70300014,
+        70300015,
+        70300016,
+        70300017,
+        70300018
+      ],
+      "official_english_description": "A top-level region represented in the in-game Geography Archive.",
+      "source_table": "Geography",
+      "catalog_index": 4
+    },
+    {
+      "source_key": "genshin-data-region-4",
+      "official_english_name": "Sumeru",
+      "official_simplified_chinese_name": "须弥",
+      "official_traditional_chinese_name": "須彌",
+      "official_vietnamese_name": "Sumeru",
+      "subtype": "nation",
+      "parent_source_key": "genshin-world-teyvat",
+      "region_id": 4,
+      "area_id": null,
+      "viewpoint_ids": [
+        70400001,
+        70400002,
+        70400003,
+        70400004,
+        70400005,
+        70400006,
+        70400007,
+        70400008,
+        70400009,
+        70400010,
+        70400011,
+        70400012,
+        70400013,
+        70400014,
+        70400015,
+        70400016,
+        70400017,
+        70400018,
+        70400019,
+        70400020,
+        70400021,
+        70400022,
+        70400023,
+        70400024,
+        70400025,
+        70400026,
+        70400027,
+        70400028,
+        70400029,
+        70400030,
+        70400031,
+        70400032,
+        70400033,
+        70400034,
+        70400035,
+        70400036,
+        70400037,
+        70400038,
+        70400039,
+        70400040,
+        70400041,
+        70400042,
+        70400043,
+        70400044,
+        70400045,
+        70400046,
+        70400047,
+        70400048,
+        70400049,
+        70400050,
+        70400051,
+        70400052,
+        70400053
+      ],
+      "official_english_description": "A top-level region represented in the in-game Geography Archive.",
+      "source_table": "Geography",
+      "catalog_index": 5
+    },
+    {
+      "source_key": "genshin-data-region-5",
+      "official_english_name": "Fontaine",
+      "official_simplified_chinese_name": "枫丹",
+      "official_traditional_chinese_name": "楓丹",
+      "official_vietnamese_name": "Fontaine",
+      "subtype": "nation",
+      "parent_source_key": "genshin-world-teyvat",
+      "region_id": 5,
+      "area_id": null,
+      "viewpoint_ids": [
+        70400054,
+        70400055,
+        70400056,
+        70400057,
+        70400058,
+        70400059,
+        70400060,
+        70400061,
+        70400062,
+        70400063,
+        70400064,
+        70400065,
+        70400066,
+        70400067,
+        70400068,
+        70400069,
+        70400070,
+        70400071,
+        70500001,
+        70500002,
+        70500003,
+        70500004,
+        70500005,
+        70500006,
+        70500007,
+        70500008,
+        70500009,
+        70500010,
+        70600031,
+        70600032,
+        70600033,
+        70600034,
+        70600035,
+        70600036,
+        70600037,
+        70600038,
+        70600039
+      ],
+      "official_english_description": "A top-level region represented in the in-game Geography Archive.",
+      "source_table": "Geography",
+      "catalog_index": 6
+    },
+    {
+      "source_key": "genshin-data-region-6",
+      "official_english_name": "Natlan",
+      "official_simplified_chinese_name": "纳塔",
+      "official_traditional_chinese_name": "納塔",
+      "official_vietnamese_name": "Natlan",
+      "subtype": "nation",
+      "parent_source_key": "genshin-world-teyvat",
+      "region_id": 6,
+      "area_id": null,
+      "viewpoint_ids": [
+        70700001,
+        70700002,
+        70700003,
+        70700004,
+        70700005,
+        70700006,
+        70700007,
+        70700008,
+        70700009,
+        70700010,
+        70700011,
+        70700012,
+        70700013,
+        70700014,
+        70700015,
+        70700016,
+        70700017,
+        70700018,
+        70700019,
+        70700020,
+        70700021,
+        70700022,
+        70700023,
+        70700024,
+        70700025,
+        70700026,
+        70700027,
+        70700028,
+        70700029,
+        70700030,
+        70700031,
+        70700032,
+        70700033,
+        70700034,
+        70700035,
+        70700036,
+        70700037,
+        70700038,
+        70700039,
+        70700040,
+        70700041,
+        70700042
+      ],
+      "official_english_description": "A top-level region represented in the in-game Geography Archive.",
+      "source_table": "Geography",
+      "catalog_index": 7
+    },
+    {
+      "source_key": "genshin-data-region-7",
+      "official_english_name": "Nod-Krai",
+      "official_simplified_chinese_name": "挪德卡莱",
+      "official_traditional_chinese_name": "挪德卡萊",
+      "official_vietnamese_name": "Nod-Krai",
+      "subtype": "autonomous-region",
+      "parent_source_key": "genshin-data-region-8",
+      "region_id": 7,
+      "area_id": null,
+      "viewpoint_ids": [
+        70800001,
+        70800002,
+        70800003,
+        70800004,
+        70800005,
+        70800006,
+        70800007,
+        70800008,
+        70800009,
+        70800010,
+        70800011,
+        70800012,
+        70800013,
+        70800014,
+        70800015,
+        70800016,
+        70800017,
+        70800018,
+        70800019,
+        70800020,
+        70800021,
+        70800022,
+        70800046,
+        70800047,
+        70800048,
+        70800049,
+        70800050,
+        70800051,
+        70800052,
+        70800053,
+        70800054,
+        70800055,
+        70800056,
+        70800057,
+        70800058,
+        70800059,
+        70800060,
+        70800061,
+        70800062,
+        70800063,
+        70800064
+      ],
+      "official_english_description": "A top-level region represented in the in-game Geography Archive.",
+      "source_table": "Geography",
+      "catalog_index": 8
+    },
+    {
+      "source_key": "genshin-data-region-8",
+      "official_english_name": "Snezhnaya",
+      "official_simplified_chinese_name": "至冬",
+      "official_traditional_chinese_name": "至冬",
+      "official_vietnamese_name": "Snezhnaya",
+      "subtype": "nation",
+      "parent_source_key": "genshin-world-teyvat",
+      "region_id": 8,
+      "area_id": null,
+      "viewpoint_ids": [
+        70800031,
+        70800032,
+        70800033,
+        70800034,
+        70800035,
+        70800036,
+        70800037,
+        70800038,
+        70800039,
+        70800040,
+        70800041,
+        70800042,
+        70800043,
+        70800044,
+        70800045,
+        70800065
+      ],
+      "official_english_description": "A top-level region represented in the in-game Geography Archive.",
+      "source_table": "Geography",
+      "catalog_index": 9
+    },
+    {
+      "source_key": "genshin-data-region-105",
+      "official_english_name": "Temple of Space",
+      "official_simplified_chinese_name": "空之神殿",
+      "official_traditional_chinese_name": "空之神殿",
+      "official_vietnamese_name": "Thần Điện Không Gian",
+      "subtype": "special-region",
+      "parent_source_key": "genshin-world-teyvat",
+      "region_id": 105,
+      "area_id": null,
+      "viewpoint_ids": [
+        70800023,
+        70800024,
+        70800025,
+        70800026,
+        70800027
+      ],
+      "official_english_description": "A top-level region represented in the in-game Geography Archive.",
+      "source_table": "Geography",
+      "catalog_index": 10
+    },
+    {
+      "source_key": "genshin-data-area-1-1203",
+      "official_english_name": "Dadaupa Gorge",
+      "official_simplified_chinese_name": "达达乌帕谷",
+      "official_traditional_chinese_name": "達達烏帕谷",
+      "official_vietnamese_name": "Hẻm Núi Dadaupa",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 1203,
+      "viewpoint_ids": [
+        70100006
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 11
+    },
+    {
+      "source_key": "genshin-data-area-1-1302",
+      "official_english_name": "Dawn Winery",
+      "official_simplified_chinese_name": "晨曦酒庄",
+      "official_traditional_chinese_name": "晨曦酒莊",
+      "official_vietnamese_name": "Tửu Trang Dawn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 1302,
+      "viewpoint_ids": [
+        70100008
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 12
+    },
+    {
+      "source_key": "genshin-data-area-1-10601",
+      "official_english_name": "Dornman Port",
+      "official_simplified_chinese_name": "荆夫港",
+      "official_traditional_chinese_name": "荊夫港",
+      "official_vietnamese_name": "Cảng Dornman",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 10601,
+      "viewpoint_ids": [
+        70800028
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 13
+    },
+    {
+      "source_key": "genshin-data-area-1-10602",
+      "official_english_name": "Millhaven",
+      "official_simplified_chinese_name": "风车镇",
+      "official_traditional_chinese_name": "風車鎮",
+      "official_vietnamese_name": "Thị Trấn Cối Xay Gió",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 10602,
+      "viewpoint_ids": [
+        70800029
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 14
+    },
+    {
+      "source_key": "genshin-data-area-1-1102",
+      "official_english_name": "Mondstadt",
+      "official_simplified_chinese_name": "蒙德城",
+      "official_traditional_chinese_name": "蒙德城",
+      "official_vietnamese_name": "Thành Mondstadt",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 1102,
+      "viewpoint_ids": [
+        70100002,
+        70100003,
+        70100004
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 3 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 15
+    },
+    {
+      "source_key": "genshin-data-area-1-1301",
+      "official_english_name": "Springvale",
+      "official_simplified_chinese_name": "清泉镇",
+      "official_traditional_chinese_name": "清泉鎮",
+      "official_vietnamese_name": "Thanh Tuyền Trấn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 1301,
+      "viewpoint_ids": [
+        70100007
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 16
+    },
+    {
+      "source_key": "genshin-data-area-1-1103",
+      "official_english_name": "Starfell Lake",
+      "official_simplified_chinese_name": "星落湖",
+      "official_traditional_chinese_name": "星落湖",
+      "official_vietnamese_name": "Hồ Sao Rơi",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 1103,
+      "viewpoint_ids": [
+        70100001
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 17
+    },
+    {
+      "source_key": "genshin-data-area-1-1401",
+      "official_english_name": "Stormterror's Lair",
+      "official_simplified_chinese_name": "风龙废墟",
+      "official_traditional_chinese_name": "風龍廢墟",
+      "official_vietnamese_name": "Phế Tích Phong Long",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 1401,
+      "viewpoint_ids": [
+        70100010
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 18
+    },
+    {
+      "source_key": "genshin-data-area-1-1107",
+      "official_english_name": "Thousand Winds Temple",
+      "official_simplified_chinese_name": "千风神殿",
+      "official_traditional_chinese_name": "千風神殿",
+      "official_vietnamese_name": "Thiên Phong Thần Điện",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 1107,
+      "viewpoint_ids": [
+        70100009
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 19
+    },
+    {
+      "source_key": "genshin-data-area-1-10600",
+      "official_english_name": "Windrest Peak",
+      "official_simplified_chinese_name": "风息山",
+      "official_traditional_chinese_name": "風息山",
+      "official_vietnamese_name": "Núi Gió Lặng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 10600,
+      "viewpoint_ids": [
+        70800030
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 20
+    },
+    {
+      "source_key": "genshin-data-area-1-1201",
+      "official_english_name": "Windrise",
+      "official_simplified_chinese_name": "风起地",
+      "official_traditional_chinese_name": "風起地",
+      "official_vietnamese_name": "Phong Khởi Địa",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-1",
+      "region_id": 1,
+      "area_id": 1201,
+      "viewpoint_ids": [
+        70100005
+      ],
+      "official_english_description": "A mapped area in Mondstadt, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 21
+    },
+    {
+      "source_key": "genshin-data-area-2-3901",
+      "official_english_name": "Ad-Hoc Main Tunnel",
+      "official_simplified_chinese_name": "临时主矿道",
+      "official_traditional_chinese_name": "臨時主礦道",
+      "official_vietnamese_name": "Thông Lộ Tạm Thời",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 3901,
+      "viewpoint_ids": [
+        70200022
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 22
+    },
+    {
+      "source_key": "genshin-data-area-2-21110",
+      "official_english_name": "Adeptus's Repose",
+      "official_simplified_chinese_name": "伏仙洞",
+      "official_traditional_chinese_name": "伏仙洞",
+      "official_vietnamese_name": "Phục Tiên Động",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21110,
+      "viewpoint_ids": [
+        70600005
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 23
+    },
+    {
+      "source_key": "genshin-data-area-2-21203",
+      "official_english_name": "Carp's Rest",
+      "official_simplified_chinese_name": "锦落庭",
+      "official_traditional_chinese_name": "錦落庭",
+      "official_vietnamese_name": "Cẩm Lạc Đình",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21203,
+      "viewpoint_ids": [
+        70600007
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 24
+    },
+    {
+      "source_key": "genshin-data-area-2-21006",
+      "official_english_name": "Chenlong Cleft",
+      "official_simplified_chinese_name": "沉珑渊",
+      "official_traditional_chinese_name": "沉瓏淵",
+      "official_vietnamese_name": "Trầm Long Uyên",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21006,
+      "viewpoint_ids": [
+        70600001
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 25
+    },
+    {
+      "source_key": "genshin-data-area-2-21001",
+      "official_english_name": "Chenyu Vale: Upper Vale",
+      "official_simplified_chinese_name": "沉玉谷·上谷",
+      "official_traditional_chinese_name": "沉玉谷·上谷",
+      "official_vietnamese_name": "Trầm Ngọc Cốc - Thượng Cốc",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21001,
+      "viewpoint_ids": [
+        70600016
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 26
+    },
+    {
+      "source_key": "genshin-data-area-2-21202",
+      "official_english_name": "Chiwang Terrace",
+      "official_simplified_chinese_name": "赤望台",
+      "official_traditional_chinese_name": "赤望臺",
+      "official_vietnamese_name": "Xích Vọng Đài",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21202,
+      "viewpoint_ids": [
+        70600013
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 27
+    },
+    {
+      "source_key": "genshin-data-area-2-21102",
+      "official_english_name": "Chizhang Wall",
+      "official_simplified_chinese_name": "赤璋城垣",
+      "official_traditional_chinese_name": "赤璋城垣",
+      "official_vietnamese_name": "Tường Thành Xích Chương",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21102,
+      "viewpoint_ids": [
+        70600011
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 28
+    },
+    {
+      "source_key": "genshin-data-area-2-2607",
+      "official_english_name": "Cuijue Slope",
+      "official_simplified_chinese_name": "翠玦坡",
+      "official_traditional_chinese_name": "翠玦坡",
+      "official_vietnamese_name": "Dốc Phỉ Thúy",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2607,
+      "viewpoint_ids": [
+        70200009
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 29
+    },
+    {
+      "source_key": "genshin-data-area-2-2503",
+      "official_english_name": "Dihua Marsh",
+      "official_simplified_chinese_name": "荻花洲",
+      "official_traditional_chinese_name": "荻花洲",
+      "official_vietnamese_name": "Địch Hoa Châu",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2503,
+      "viewpoint_ids": [
+        70200003
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 30
+    },
+    {
+      "source_key": "genshin-data-area-2-2801",
+      "official_english_name": "Dunyu Ruins",
+      "official_simplified_chinese_name": "遁玉陵",
+      "official_traditional_chinese_name": "遁玉陵",
+      "official_vietnamese_name": "Tuần Ngọc Lăng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2801,
+      "viewpoint_ids": [
+        70200011
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 31
+    },
+    {
+      "source_key": "genshin-data-area-2-2505",
+      "official_english_name": "Guili Plains",
+      "official_simplified_chinese_name": "归离原",
+      "official_traditional_chinese_name": "歸離原",
+      "official_vietnamese_name": "Quy Li Nguyên",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2505,
+      "viewpoint_ids": [
+        70200007
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 32
+    },
+    {
+      "source_key": "genshin-data-area-2-2703",
+      "official_english_name": "Guyun Stone Forest",
+      "official_simplified_chinese_name": "孤云阁",
+      "official_traditional_chinese_name": "孤雲閣",
+      "official_vietnamese_name": "Cô Vân Các",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2703,
+      "viewpoint_ids": [
+        70200017
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 33
+    },
+    {
+      "source_key": "genshin-data-area-2-2602",
+      "official_english_name": "Huaguang Stone Forest",
+      "official_simplified_chinese_name": "华光林",
+      "official_traditional_chinese_name": "華光林",
+      "official_vietnamese_name": "Hoa Quang Lâm",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2602,
+      "viewpoint_ids": [
+        70200005
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 34
+    },
+    {
+      "source_key": "genshin-data-area-2-21005",
+      "official_english_name": "Jademouth",
+      "official_simplified_chinese_name": "宝玦口",
+      "official_traditional_chinese_name": "寶玦口",
+      "official_vietnamese_name": "Bảo Quyết Khẩu",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21005,
+      "viewpoint_ids": [
+        70600002
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 35
+    },
+    {
+      "source_key": "genshin-data-area-2-2601",
+      "official_english_name": "Jueyun Karst",
+      "official_simplified_chinese_name": "绝云间",
+      "official_traditional_chinese_name": "絕雲間",
+      "official_vietnamese_name": "Tuyệt Vân Gián",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2601,
+      "viewpoint_ids": [
+        70200004
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 36
+    },
+    {
+      "source_key": "genshin-data-area-2-21109",
+      "official_english_name": "Lingshu Courtyard",
+      "official_simplified_chinese_name": "灵枢庭",
+      "official_traditional_chinese_name": "靈樞庭",
+      "official_vietnamese_name": "Linh Xu Đình",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21109,
+      "viewpoint_ids": [
+        70600006
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 37
+    },
+    {
+      "source_key": "genshin-data-area-2-2701",
+      "official_english_name": "Liyue Harbor",
+      "official_simplified_chinese_name": "璃月港",
+      "official_traditional_chinese_name": "璃月港",
+      "official_vietnamese_name": "Cảng Liyue",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2701,
+      "viewpoint_ids": [
+        70200013,
+        70200014,
+        70200015,
+        70200016
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 4 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 38
+    },
+    {
+      "source_key": "genshin-data-area-2-2509",
+      "official_english_name": "Luhua Pool",
+      "official_simplified_chinese_name": "渌华池",
+      "official_traditional_chinese_name": "淥華池",
+      "official_vietnamese_name": "Lục Hoa Trì",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2509,
+      "viewpoint_ids": [
+        70200008
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 39
+    },
+    {
+      "source_key": "genshin-data-area-2-21105",
+      "official_english_name": "Mt. Laixin",
+      "official_simplified_chinese_name": "来歆山",
+      "official_traditional_chinese_name": "來歆山",
+      "official_vietnamese_name": "Lai Hâm Sơn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21105,
+      "viewpoint_ids": [
+        70600012
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 40
+    },
+    {
+      "source_key": "genshin-data-area-2-21004",
+      "official_english_name": "Mt. Lingmeng",
+      "official_simplified_chinese_name": "灵濛山",
+      "official_traditional_chinese_name": "靈濛山",
+      "official_vietnamese_name": "Linh Mông Sơn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21004,
+      "viewpoint_ids": [
+        70600008,
+        70600009
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 41
+    },
+    {
+      "source_key": "genshin-data-area-2-21104",
+      "official_english_name": "Mt. Xuanlian",
+      "official_simplified_chinese_name": "悬练山",
+      "official_traditional_chinese_name": "懸練山",
+      "official_vietnamese_name": "Huyền Luyện Sơn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21104,
+      "viewpoint_ids": [
+        70600010
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 42
+    },
+    {
+      "source_key": "genshin-data-area-2-3905",
+      "official_english_name": "Nameless Ruins",
+      "official_simplified_chinese_name": "无名遗迹",
+      "official_traditional_chinese_name": "無名遺蹟",
+      "official_vietnamese_name": "Di Tích Vô Danh",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 3905,
+      "viewpoint_ids": [
+        70200025
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 43
+    },
+    {
+      "source_key": "genshin-data-area-2-2605",
+      "official_english_name": "Nantianmen",
+      "official_simplified_chinese_name": "南天门",
+      "official_traditional_chinese_name": "南天門",
+      "official_vietnamese_name": "Nam Thiên Môn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2605,
+      "viewpoint_ids": [
+        70200006
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 44
+    },
+    {
+      "source_key": "genshin-data-area-2-21002",
+      "official_english_name": "Qiaoying Village",
+      "official_simplified_chinese_name": "翘英庄",
+      "official_traditional_chinese_name": "翹英莊",
+      "official_vietnamese_name": "Làng Kiều Anh",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21002,
+      "viewpoint_ids": [
+        70600015
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 45
+    },
+    {
+      "source_key": "genshin-data-area-2-2507",
+      "official_english_name": "Qingce Village",
+      "official_simplified_chinese_name": "轻策庄",
+      "official_traditional_chinese_name": "輕策莊",
+      "official_vietnamese_name": "Khinh Sách Trang",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2507,
+      "viewpoint_ids": [
+        70200002
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 46
+    },
+    {
+      "source_key": "genshin-data-area-2-2803",
+      "official_english_name": "Qingxu Pool",
+      "official_simplified_chinese_name": "青墟浦",
+      "official_traditional_chinese_name": "青墟浦",
+      "official_vietnamese_name": "Cửa Biển Thanh Hư",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2803,
+      "viewpoint_ids": [
+        70200010
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 47
+    },
+    {
+      "source_key": "genshin-data-area-2-3904",
+      "official_english_name": "Stony Halls",
+      "official_simplified_chinese_name": "崎岖石厅",
+      "official_traditional_chinese_name": "崎嶇石廳",
+      "official_vietnamese_name": "Sảnh Đá Gập Ghềnh",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 3904,
+      "viewpoint_ids": [
+        70200024
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 48
+    },
+    {
+      "source_key": "genshin-data-area-2-21107",
+      "official_english_name": "Teatree Slope",
+      "official_simplified_chinese_name": "古茶树坡",
+      "official_traditional_chinese_name": "古茶樹坡",
+      "official_vietnamese_name": "Dốc Trà Thụ Cổ",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21107,
+      "viewpoint_ids": [
+        70600014
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 49
+    },
+    {
+      "source_key": "genshin-data-area-2-2200",
+      "official_english_name": "The Chasm",
+      "official_simplified_chinese_name": "层岩巨渊",
+      "official_traditional_chinese_name": "層岩巨淵",
+      "official_vietnamese_name": "Vực Đá Sâu",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2200,
+      "viewpoint_ids": [
+        70200012,
+        70200018,
+        70200020
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 3 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 50
+    },
+    {
+      "source_key": "genshin-data-area-2-2202",
+      "official_english_name": "The Chasm's Maw",
+      "official_simplified_chinese_name": "巨渊之口",
+      "official_traditional_chinese_name": "巨淵之口",
+      "official_vietnamese_name": "Cổng Vực Sâu",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2202,
+      "viewpoint_ids": [
+        70200019
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 51
+    },
+    {
+      "source_key": "genshin-data-area-2-3900",
+      "official_english_name": "The Chasm: Underground Mines",
+      "official_simplified_chinese_name": "层岩巨渊·地下矿区",
+      "official_traditional_chinese_name": "層岩巨淵·地下礦區",
+      "official_vietnamese_name": "Vực Đá Sâu - Khu Mỏ Ngầm",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 3900,
+      "viewpoint_ids": [
+        70200021,
+        70200027
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 52
+    },
+    {
+      "source_key": "genshin-data-area-2-3906",
+      "official_english_name": "The Glowing Narrows",
+      "official_simplified_chinese_name": "荧光狭道",
+      "official_traditional_chinese_name": "熒光狹道",
+      "official_vietnamese_name": "Khe Hẹp Huỳnh Quang",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 3906,
+      "viewpoint_ids": [
+        70200026
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 53
+    },
+    {
+      "source_key": "genshin-data-area-2-3903",
+      "official_english_name": "Underground Waterway",
+      "official_simplified_chinese_name": "地下水泽",
+      "official_traditional_chinese_name": "地下水澤",
+      "official_vietnamese_name": "Ao Nước Ngầm",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 3903,
+      "viewpoint_ids": [
+        70200023
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 54
+    },
+    {
+      "source_key": "genshin-data-area-2-2504",
+      "official_english_name": "Wangshu Inn",
+      "official_simplified_chinese_name": "望舒客栈",
+      "official_traditional_chinese_name": "望舒客棧",
+      "official_vietnamese_name": "Nhà Trọ Vọng Thư",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 2504,
+      "viewpoint_ids": [
+        70200001
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 55
+    },
+    {
+      "source_key": "genshin-data-area-2-21103",
+      "official_english_name": "Yaodie Valley",
+      "official_simplified_chinese_name": "药蝶谷",
+      "official_traditional_chinese_name": "藥蝶谷",
+      "official_vietnamese_name": "Dược Điệp Cốc",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21103,
+      "viewpoint_ids": [
+        70600004
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 56
+    },
+    {
+      "source_key": "genshin-data-area-2-21003",
+      "official_english_name": "Yilong Wharf",
+      "official_simplified_chinese_name": "遗珑埠",
+      "official_traditional_chinese_name": "遺瓏埠",
+      "official_vietnamese_name": "Bến Tàu Di Lung",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-2",
+      "region_id": 2,
+      "area_id": 21003,
+      "viewpoint_ids": [
+        70600003
+      ],
+      "official_english_description": "A mapped area in Liyue, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 57
+    },
+    {
+      "source_key": "genshin-data-area-3-3403",
+      "official_english_name": "\"Seiraimaru\"",
+      "official_simplified_chinese_name": "「清籁丸」",
+      "official_traditional_chinese_name": "「清籟丸」",
+      "official_vietnamese_name": "\"Seiraimaru\"",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3403,
+      "viewpoint_ids": [
+        70300015
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 58
+    },
+    {
+      "source_key": "genshin-data-area-3-3401",
+      "official_english_name": "Amakumo Peak",
+      "official_simplified_chinese_name": "天云峠",
+      "official_traditional_chinese_name": "天雲峠",
+      "official_vietnamese_name": "Đỉnh Amakumo",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3401,
+      "viewpoint_ids": [
+        70300014
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 59
+    },
+    {
+      "source_key": "genshin-data-area-3-3402",
+      "official_english_name": "Asase Shrine",
+      "official_simplified_chinese_name": "浅濑神社",
+      "official_traditional_chinese_name": "淺瀨神社",
+      "official_vietnamese_name": "Đền Asase",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3402,
+      "viewpoint_ids": [
+        70300017
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 60
+    },
+    {
+      "source_key": "genshin-data-area-3-3503",
+      "official_english_name": "Bourou Village",
+      "official_simplified_chinese_name": "望泷村",
+      "official_traditional_chinese_name": "望瀧村",
+      "official_vietnamese_name": "Làng Bourou",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3503,
+      "viewpoint_ids": [
+        70300013
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 61
+    },
+    {
+      "source_key": "genshin-data-area-3-3106",
+      "official_english_name": "Chinju Forest",
+      "official_simplified_chinese_name": "镇守之森",
+      "official_traditional_chinese_name": "鎮守之森",
+      "official_vietnamese_name": "Rừng Chinju",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3106,
+      "viewpoint_ids": [
+        70300002
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 62
+    },
+    {
+      "source_key": "genshin-data-area-3-3109",
+      "official_english_name": "Grand Narukami Shrine",
+      "official_simplified_chinese_name": "鸣神大社",
+      "official_traditional_chinese_name": "鳴神大社",
+      "official_vietnamese_name": "Đền Narukami",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3109,
+      "viewpoint_ids": [
+        70300005
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 63
+    },
+    {
+      "source_key": "genshin-data-area-3-3101",
+      "official_english_name": "Inazuma City",
+      "official_simplified_chinese_name": "稻妻城",
+      "official_traditional_chinese_name": "稻妻城",
+      "official_vietnamese_name": "Thành Inazuma",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3101,
+      "viewpoint_ids": [
+        70300003,
+        70300004
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 64
+    },
+    {
+      "source_key": "genshin-data-area-3-3200",
+      "official_english_name": "Kannazuka",
+      "official_simplified_chinese_name": "神无冢",
+      "official_traditional_chinese_name": "神無塚",
+      "official_vietnamese_name": "Kannazuka",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3200,
+      "viewpoint_ids": [
+        70300006
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 65
+    },
+    {
+      "source_key": "genshin-data-area-3-3404",
+      "official_english_name": "Koseki Village",
+      "official_simplified_chinese_name": "越石村",
+      "official_traditional_chinese_name": "越石村",
+      "official_vietnamese_name": "Làng Koseki",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3404,
+      "viewpoint_ids": [
+        70300016
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 66
+    },
+    {
+      "source_key": "genshin-data-area-3-3202",
+      "official_english_name": "Kujou Encampment",
+      "official_simplified_chinese_name": "九条阵屋",
+      "official_traditional_chinese_name": "九條陣屋",
+      "official_vietnamese_name": "Doanh Trại Kujou",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3202,
+      "viewpoint_ids": [
+        70300007
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 67
+    },
+    {
+      "source_key": "genshin-data-area-3-3304",
+      "official_english_name": "Musoujin Gorge",
+      "official_simplified_chinese_name": "无想刃狭间",
+      "official_traditional_chinese_name": "無想刃狹間",
+      "official_vietnamese_name": "Hẻm Núi Musoujin",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3304,
+      "viewpoint_ids": [
+        70300010
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 68
+    },
+    {
+      "source_key": "genshin-data-area-3-3302",
+      "official_english_name": "Nazuchi Beach",
+      "official_simplified_chinese_name": "名椎滩",
+      "official_traditional_chinese_name": "名椎灘",
+      "official_vietnamese_name": "Bờ Nazuchi",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3302,
+      "viewpoint_ids": [
+        70300009
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 69
+    },
+    {
+      "source_key": "genshin-data-area-3-3102",
+      "official_english_name": "Ritou",
+      "official_simplified_chinese_name": "离岛",
+      "official_traditional_chinese_name": "離島",
+      "official_vietnamese_name": "Đảo Ritou",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3102,
+      "viewpoint_ids": [
+        70300001
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 70
+    },
+    {
+      "source_key": "genshin-data-area-3-3501",
+      "official_english_name": "Sangonomiya Shrine",
+      "official_simplified_chinese_name": "珊瑚宫",
+      "official_traditional_chinese_name": "珊瑚宮",
+      "official_vietnamese_name": "Sangonomiya",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3501,
+      "viewpoint_ids": [
+        70300011,
+        70300012
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 71
+    },
+    {
+      "source_key": "genshin-data-area-3-3307",
+      "official_english_name": "Serpent's Head",
+      "official_simplified_chinese_name": "蛇神之首",
+      "official_traditional_chinese_name": "蛇神之首",
+      "official_vietnamese_name": "Đầu Thần Rắn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3307,
+      "viewpoint_ids": [
+        70300008
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 72
+    },
+    {
+      "source_key": "genshin-data-area-3-3600",
+      "official_english_name": "Tsurumi Island",
+      "official_simplified_chinese_name": "鹤观",
+      "official_traditional_chinese_name": "鶴觀",
+      "official_vietnamese_name": "Đảo Tsurumi",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-3",
+      "region_id": 3,
+      "area_id": 3600,
+      "viewpoint_ids": [
+        70300018
+      ],
+      "official_english_description": "A mapped area in Inazuma, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 73
+    },
+    {
+      "source_key": "genshin-data-area-4-4701",
+      "official_english_name": "Aaru Village",
+      "official_simplified_chinese_name": "阿如村",
+      "official_traditional_chinese_name": "阿如村",
+      "official_vietnamese_name": "Làng Aaru",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4701,
+      "viewpoint_ids": [
+        70400019
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 74
+    },
+    {
+      "source_key": "genshin-data-area-4-4403",
+      "official_english_name": "Apam Woods",
+      "official_simplified_chinese_name": "水天丛林",
+      "official_traditional_chinese_name": "水天叢林",
+      "official_vietnamese_name": "Rừng Apam",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4403,
+      "viewpoint_ids": [
+        70400009
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 75
+    },
+    {
+      "source_key": "genshin-data-area-4-5021",
+      "official_english_name": "Apep's Resort",
+      "official_simplified_chinese_name": "阿佩普的行宫花园",
+      "official_traditional_chinese_name": "阿佩普的行宮花園",
+      "official_vietnamese_name": "Vườn Hoa Apep",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5021,
+      "viewpoint_ids": [
+        70400035
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 76
+    },
+    {
+      "source_key": "genshin-data-area-4-4200",
+      "official_english_name": "Ardravi Valley",
+      "official_simplified_chinese_name": "阿陀河谷",
+      "official_traditional_chinese_name": "阿陀河谷",
+      "official_vietnamese_name": "Thung Lũng Ardravi",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4200,
+      "viewpoint_ids": [
+        70400004
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 77
+    },
+    {
+      "source_key": "genshin-data-area-4-4500",
+      "official_english_name": "Avidya Forest",
+      "official_simplified_chinese_name": "道成林",
+      "official_traditional_chinese_name": "道成林",
+      "official_vietnamese_name": "Rừng Avidya",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4500,
+      "viewpoint_ids": [
+        70400001
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 78
+    },
+    {
+      "source_key": "genshin-data-area-4-5017",
+      "official_english_name": "Bayt Al-Hayah",
+      "official_simplified_chinese_name": "生命之殿",
+      "official_traditional_chinese_name": "生命之殿",
+      "official_vietnamese_name": "Bayt Al-Hayah",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5017,
+      "viewpoint_ids": [
+        70400039
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 79
+    },
+    {
+      "source_key": "genshin-data-area-4-5015",
+      "official_english_name": "Bayt Al-Muazzam",
+      "official_simplified_chinese_name": "君王之殿",
+      "official_traditional_chinese_name": "君王之殿",
+      "official_vietnamese_name": "Bayt Al-Muazzam",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5015,
+      "viewpoint_ids": [
+        70400033
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 80
+    },
+    {
+      "source_key": "genshin-data-area-4-5016",
+      "official_english_name": "Bayt Al-Sukr",
+      "official_simplified_chinese_name": "酣乐之殿",
+      "official_traditional_chinese_name": "酣樂之殿",
+      "official_vietnamese_name": "Bayt Al-Sukr",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5016,
+      "viewpoint_ids": [
+        70400038
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 81
+    },
+    {
+      "source_key": "genshin-data-area-4-4404",
+      "official_english_name": "Caravan Ribat",
+      "official_simplified_chinese_name": "喀万驿",
+      "official_traditional_chinese_name": "喀萬驛",
+      "official_vietnamese_name": "Dịch Trạm Lữ Khách",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4404,
+      "viewpoint_ids": [
+        70400007
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 82
+    },
+    {
+      "source_key": "genshin-data-area-4-41106",
+      "official_english_name": "Chemin Oublie",
+      "official_simplified_chinese_name": "遗忘之路",
+      "official_traditional_chinese_name": "遺忘之路",
+      "official_vietnamese_name": "Chemin Oublie",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 41106,
+      "viewpoint_ids": [
+        70400053
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 83
+    },
+    {
+      "source_key": "genshin-data-area-4-4703",
+      "official_english_name": "Dar al-Shifa",
+      "official_simplified_chinese_name": "活力之家",
+      "official_traditional_chinese_name": "活力之家",
+      "official_vietnamese_name": "Dar al-Shifa",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4703,
+      "viewpoint_ids": [
+        70400027
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 84
+    },
+    {
+      "source_key": "genshin-data-area-4-5007",
+      "official_english_name": "Debris of Panjvahe",
+      "official_simplified_chinese_name": "「五绿洲」的孑遗",
+      "official_traditional_chinese_name": "「五綠洲」的孑遺",
+      "official_vietnamese_name": "Tàn Dư Của Panjvahe",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5007,
+      "viewpoint_ids": [
+        70400036
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 85
+    },
+    {
+      "source_key": "genshin-data-area-4-4204",
+      "official_english_name": "Devantaka Mountain",
+      "official_simplified_chinese_name": "降诸魔山",
+      "official_traditional_chinese_name": "降諸魔山",
+      "official_vietnamese_name": "Núi Devantaka",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4204,
+      "viewpoint_ids": [
+        70400008
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 86
+    },
+    {
+      "source_key": "genshin-data-area-4-4805",
+      "official_english_name": "Duat Hall",
+      "official_simplified_chinese_name": "渡厄厅",
+      "official_traditional_chinese_name": "渡厄廳",
+      "official_vietnamese_name": "Sảnh Duat",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4805,
+      "viewpoint_ids": [
+        70400024
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 87
+    },
+    {
+      "source_key": "genshin-data-area-4-4702",
+      "official_english_name": "Eye of the Sands",
+      "official_simplified_chinese_name": "沙之眼",
+      "official_traditional_chinese_name": "沙之眼",
+      "official_vietnamese_name": "Mắt Cát",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4702,
+      "viewpoint_ids": [
+        70400023
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 88
+    },
+    {
+      "source_key": "genshin-data-area-4-4501",
+      "official_english_name": "Gandharva Ville",
+      "official_simplified_chinese_name": "化城郭",
+      "official_traditional_chinese_name": "化城郭",
+      "official_vietnamese_name": "Làng Gandharva",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4501,
+      "viewpoint_ids": [
+        70400002
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 89
+    },
+    {
+      "source_key": "genshin-data-area-4-41002",
+      "official_english_name": "Gate of Zulqarnain",
+      "official_simplified_chinese_name": "阻勒隘",
+      "official_traditional_chinese_name": "阻勒隘",
+      "official_vietnamese_name": "Cổng Zulqarnain",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 41002,
+      "viewpoint_ids": [
+        70400046
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 90
+    },
+    {
+      "source_key": "genshin-data-area-4-41004",
+      "official_english_name": "Hangeh Afrasiyab",
+      "official_simplified_chinese_name": "逾渊地墟",
+      "official_traditional_chinese_name": "逾淵地墟",
+      "official_vietnamese_name": "Hangeh Afrasiyab",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 41004,
+      "viewpoint_ids": [
+        70400048,
+        70400049
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 91
+    },
+    {
+      "source_key": "genshin-data-area-4-41103",
+      "official_english_name": "Hills of Barsom",
+      "official_simplified_chinese_name": "跋松顶",
+      "official_traditional_chinese_name": "跋松頂",
+      "official_vietnamese_name": "Đỉnh Barsom",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 41103,
+      "viewpoint_ids": [
+        70400047
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 92
+    },
+    {
+      "source_key": "genshin-data-area-4-4800",
+      "official_english_name": "Hypostyle Desert",
+      "official_simplified_chinese_name": "列柱沙原",
+      "official_traditional_chinese_name": "列柱沙原",
+      "official_vietnamese_name": "Biển Cát Trụ Cột",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4800,
+      "viewpoint_ids": [
+        70400022
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 93
+    },
+    {
+      "source_key": "genshin-data-area-4-4604",
+      "official_english_name": "Land of Grounded Dreams",
+      "official_simplified_chinese_name": "失梦的国土",
+      "official_traditional_chinese_name": "失夢的國土",
+      "official_vietnamese_name": "Vùng Đất Mất Giấc Mơ",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4604,
+      "viewpoint_ids": [
+        70400016
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 94
+    },
+    {
+      "source_key": "genshin-data-area-4-4700",
+      "official_english_name": "Land of Lower Setekh",
+      "official_simplified_chinese_name": "下风蚀地",
+      "official_traditional_chinese_name": "下風蝕地",
+      "official_vietnamese_name": "Khu Xói Mòn Gió Lặng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4700,
+      "viewpoint_ids": [
+        70400017,
+        70400018,
+        70400020,
+        70400028
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 4 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 95
+    },
+    {
+      "source_key": "genshin-data-area-4-5013",
+      "official_english_name": "Liloupar's Cell",
+      "official_simplified_chinese_name": "镇灵监牢",
+      "official_traditional_chinese_name": "鎮靈監牢",
+      "official_vietnamese_name": "Nhà Lao Liloupar",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5013,
+      "viewpoint_ids": [
+        70400042
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 96
+    },
+    {
+      "source_key": "genshin-data-area-4-4100",
+      "official_english_name": "Lokapala Jungle",
+      "official_simplified_chinese_name": "护世森",
+      "official_traditional_chinese_name": "護世森",
+      "official_vietnamese_name": "Rừng Lokapala",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4100,
+      "viewpoint_ids": [
+        70400005
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 97
+    },
+    {
+      "source_key": "genshin-data-area-4-4101",
+      "official_english_name": "Mawtiyima Forest",
+      "official_simplified_chinese_name": "无郁稠林",
+      "official_traditional_chinese_name": "無郁稠林",
+      "official_vietnamese_name": "Rừng Mawtiyima",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4101,
+      "viewpoint_ids": [
+        70400011,
+        70400012
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 98
+    },
+    {
+      "source_key": "genshin-data-area-4-4401",
+      "official_english_name": "Pardis Dhyai",
+      "official_simplified_chinese_name": "禅那园",
+      "official_traditional_chinese_name": "禪那園",
+      "official_vietnamese_name": "Pardis Dhyai",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4401,
+      "viewpoint_ids": [
+        70400006
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 99
+    },
+    {
+      "source_key": "genshin-data-area-4-4603",
+      "official_english_name": "Sand-Embraced Home",
+      "official_simplified_chinese_name": "沙中故里",
+      "official_traditional_chinese_name": "沙中故里",
+      "official_vietnamese_name": "Cố Hương Cát",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4603,
+      "viewpoint_ids": [
+        70400015
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 100
+    },
+    {
+      "source_key": "genshin-data-area-4-5001",
+      "official_english_name": "Tanit Camps",
+      "official_simplified_chinese_name": "塔尼特露营地",
+      "official_traditional_chinese_name": "塔尼特露營地",
+      "official_vietnamese_name": "Doanh Trại Tanit",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5001,
+      "viewpoint_ids": [
+        70400029,
+        70400031
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 101
+    },
+    {
+      "source_key": "genshin-data-area-4-4801",
+      "official_english_name": "The Mausoleum of King Deshret",
+      "official_simplified_chinese_name": "赤王陵",
+      "official_traditional_chinese_name": "赤王陵",
+      "official_vietnamese_name": "Lăng Mộ Vua Deshret",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4801,
+      "viewpoint_ids": [
+        70400021,
+        70400025
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 102
+    },
+    {
+      "source_key": "genshin-data-area-4-5019",
+      "official_english_name": "The Orchard of Pairidaeza",
+      "official_simplified_chinese_name": "「永恒绿洲」",
+      "official_traditional_chinese_name": "「永恆綠洲」",
+      "official_vietnamese_name": "Ốc Đảo Pairidaeza",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5019,
+      "viewpoint_ids": [
+        70400045
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 103
+    },
+    {
+      "source_key": "genshin-data-area-4-5005",
+      "official_english_name": "The Sands of Al-Azif",
+      "official_simplified_chinese_name": "啁哳之沙",
+      "official_traditional_chinese_name": "啁哳之沙",
+      "official_vietnamese_name": "Khu Cát Al-Azif",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5005,
+      "viewpoint_ids": [
+        70400030
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 104
+    },
+    {
+      "source_key": "genshin-data-area-4-5002",
+      "official_english_name": "The Temples Forsaken",
+      "official_simplified_chinese_name": "神弃殿阁",
+      "official_traditional_chinese_name": "神棄殿閣",
+      "official_vietnamese_name": "Điện Thờ Chối Bỏ",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5002,
+      "viewpoint_ids": [
+        70400032,
+        70400041
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 105
+    },
+    {
+      "source_key": "genshin-data-area-4-41001",
+      "official_english_name": "Tunigi Hollow",
+      "official_simplified_chinese_name": "荼泥黑渊",
+      "official_traditional_chinese_name": "荼泥黑淵",
+      "official_vietnamese_name": "Vực Thẳm Tunigi",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 41001,
+      "viewpoint_ids": [
+        70400050
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 106
+    },
+    {
+      "source_key": "genshin-data-area-4-4901",
+      "official_english_name": "Valley of Dahri",
+      "official_simplified_chinese_name": "荼诃落谷",
+      "official_traditional_chinese_name": "荼訶落谷",
+      "official_vietnamese_name": "Thung Lũng Dahri",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4901,
+      "viewpoint_ids": [
+        70400026
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 107
+    },
+    {
+      "source_key": "genshin-data-area-4-4000",
+      "official_english_name": "Vanarana",
+      "official_simplified_chinese_name": "桓那兰那",
+      "official_traditional_chinese_name": "桓那蘭那",
+      "official_vietnamese_name": "Vanarana",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4000,
+      "viewpoint_ids": [
+        70400013
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 108
+    },
+    {
+      "source_key": "genshin-data-area-4-4202",
+      "official_english_name": "Vimara Village",
+      "official_simplified_chinese_name": "维摩庄",
+      "official_traditional_chinese_name": "維摩莊",
+      "official_vietnamese_name": "Làng Vimara",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 4202,
+      "viewpoint_ids": [
+        70400003
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 109
+    },
+    {
+      "source_key": "genshin-data-area-4-5003",
+      "official_english_name": "Wadi Al-Majuj",
+      "official_simplified_chinese_name": "巨人峡谷",
+      "official_traditional_chinese_name": "巨人峽谷",
+      "official_vietnamese_name": "Wadi Al-Majuj",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5003,
+      "viewpoint_ids": [
+        70400037,
+        70400043,
+        70400044
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 3 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 110
+    },
+    {
+      "source_key": "genshin-data-area-4-5014",
+      "official_english_name": "Wenut Tunnels",
+      "official_simplified_chinese_name": "沙虫隧道",
+      "official_traditional_chinese_name": "沙蟲隧道",
+      "official_vietnamese_name": "Đường Hầm Wenut",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5014,
+      "viewpoint_ids": [
+        70400034
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 111
+    },
+    {
+      "source_key": "genshin-data-area-4-5008",
+      "official_english_name": "Wounded Shin Valley",
+      "official_simplified_chinese_name": "折胫谷",
+      "official_traditional_chinese_name": "折脛谷",
+      "official_vietnamese_name": "Thung Lũng Xương Gãy",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-4",
+      "region_id": 4,
+      "area_id": 5008,
+      "viewpoint_ids": [
+        70400040
+      ],
+      "official_english_description": "A mapped area in Sumeru, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 112
+    },
+    {
+      "source_key": "genshin-data-area-5-50203",
+      "official_english_name": "\"A Very Warm Place\"",
+      "official_simplified_chinese_name": "「特别温暖的地方」",
+      "official_traditional_chinese_name": "「特別溫暖的地方」",
+      "official_vietnamese_name": "\"Nơi Đặc Biệt Ấm Áp\"",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50203,
+      "viewpoint_ids": [
+        70400054,
+        70400055
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 113
+    },
+    {
+      "source_key": "genshin-data-area-5-50724",
+      "official_english_name": "\"The Rusty Rudder\"",
+      "official_simplified_chinese_name": "「锈舵」",
+      "official_traditional_chinese_name": "「鏽舵」",
+      "official_vietnamese_name": "\"Bánh Lái Rỉ Sét\"",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50724,
+      "viewpoint_ids": [
+        70500007
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 114
+    },
+    {
+      "source_key": "genshin-data-area-5-50401",
+      "official_english_name": "Administrative Area",
+      "official_simplified_chinese_name": "管理区",
+      "official_traditional_chinese_name": "管理區",
+      "official_vietnamese_name": "Khu Hành Chính",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50401,
+      "viewpoint_ids": [
+        70500004
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 115
+    },
+    {
+      "source_key": "genshin-data-area-5-560006",
+      "official_english_name": "Alta Semita",
+      "official_simplified_chinese_name": "崇高大道",
+      "official_traditional_chinese_name": "崇高大道",
+      "official_vietnamese_name": "Đại Lộ Cao Quý",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 560006,
+      "viewpoint_ids": [
+        70600036
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 116
+    },
+    {
+      "source_key": "genshin-data-area-5-50200",
+      "official_english_name": "Beryl Region",
+      "official_simplified_chinese_name": "苍晶区",
+      "official_traditional_chinese_name": "蒼晶區",
+      "official_vietnamese_name": "Khu Beryl",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50200,
+      "viewpoint_ids": [
+        70400058,
+        70400068,
+        70400069,
+        70400070,
+        70400071
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 5 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 117
+    },
+    {
+      "source_key": "genshin-data-area-5-50501",
+      "official_english_name": "Central Laboratory Ruins",
+      "official_simplified_chinese_name": "中央实验室遗址",
+      "official_traditional_chinese_name": "中央實驗室遺址",
+      "official_vietnamese_name": "Di Tích Phòng Thí Nghiệm Trung Tâm",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50501,
+      "viewpoint_ids": [
+        70500002
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 118
+    },
+    {
+      "source_key": "genshin-data-area-5-560007",
+      "official_english_name": "Collegium Phonascorum",
+      "official_simplified_chinese_name": "谐律院",
+      "official_traditional_chinese_name": "諧律院",
+      "official_vietnamese_name": "Viện Phonascorum",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 560007,
+      "viewpoint_ids": [
+        70600038
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 119
+    },
+    {
+      "source_key": "genshin-data-area-5-50300",
+      "official_english_name": "Court of Fontaine Region",
+      "official_simplified_chinese_name": "枫丹廷区",
+      "official_traditional_chinese_name": "楓丹廷區",
+      "official_vietnamese_name": "Khu Đại Sảnh Fontaine",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50300,
+      "viewpoint_ids": [
+        70400066
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 120
+    },
+    {
+      "source_key": "genshin-data-area-5-50314",
+      "official_english_name": "Court of Fontaine: Fleuve Cendre",
+      "official_simplified_chinese_name": "枫丹廷·灰河",
+      "official_traditional_chinese_name": "楓丹廷·灰河",
+      "official_vietnamese_name": "Đại Sảnh Fontaine - Fleuve Cendre",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50314,
+      "viewpoint_ids": [
+        70400062
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 121
+    },
+    {
+      "source_key": "genshin-data-area-5-50320",
+      "official_english_name": "Court of Fontaine: Vasari Passage",
+      "official_simplified_chinese_name": "枫丹廷·瓦萨里回廊",
+      "official_traditional_chinese_name": "楓丹廷·瓦薩里迴廊",
+      "official_vietnamese_name": "Đại Sảnh Fontaine - Phố Vasari",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50320,
+      "viewpoint_ids": [
+        70400061
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 122
+    },
+    {
+      "source_key": "genshin-data-area-5-560009",
+      "official_english_name": "Domus Aurea",
+      "official_simplified_chinese_name": "黄金的大宫",
+      "official_traditional_chinese_name": "黃金的大宮",
+      "official_vietnamese_name": "Domus Aurea",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 560009,
+      "viewpoint_ids": [
+        70600037,
+        70600039
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 123
+    },
+    {
+      "source_key": "genshin-data-area-5-50801",
+      "official_english_name": "Faded Castle",
+      "official_simplified_chinese_name": "褪色古堡",
+      "official_traditional_chinese_name": "褪色古堡",
+      "official_vietnamese_name": "Lâu Đài Phai Màu",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50801,
+      "viewpoint_ids": [
+        70600032,
+        70600033
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 124
+    },
+    {
+      "source_key": "genshin-data-area-5-50500",
+      "official_english_name": "Fontaine Research Institute of Kinetic Energy Engineering Region",
+      "official_simplified_chinese_name": "枫丹动能工程科学研究院区",
+      "official_traditional_chinese_name": "楓丹動能工程科學研究院區",
+      "official_vietnamese_name": "Khu Viện Nghiên Cứu Khoa Học Công Trình Động Năng Fontaine",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50500,
+      "viewpoint_ids": [
+        70500001,
+        70500005
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 125
+    },
+    {
+      "source_key": "genshin-data-area-5-50301",
+      "official_english_name": "Fountain of Lucine",
+      "official_simplified_chinese_name": "露景泉",
+      "official_traditional_chinese_name": "露景泉",
+      "official_vietnamese_name": "Đài Phun Nước Lucine",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50301,
+      "viewpoint_ids": [
+        70400065
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 126
+    },
+    {
+      "source_key": "genshin-data-area-5-50706",
+      "official_english_name": "Genesis of a Certain Micro-Universe",
+      "official_simplified_chinese_name": "某微观宇宙的肇始",
+      "official_traditional_chinese_name": "某微觀宇宙的肇始",
+      "official_vietnamese_name": "Khởi Nguồn Của Một Vũ Trụ Vi Mô Nào Đó",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50706,
+      "viewpoint_ids": [
+        70500010
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 127
+    },
+    {
+      "source_key": "genshin-data-area-5-560001",
+      "official_english_name": "Initium Iani",
+      "official_simplified_chinese_name": "雅努斯之门",
+      "official_traditional_chinese_name": "雅努斯之門",
+      "official_vietnamese_name": "Initium Iani",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 560001,
+      "viewpoint_ids": [
+        70600034
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 128
+    },
+    {
+      "source_key": "genshin-data-area-5-50400",
+      "official_english_name": "Liffey Region",
+      "official_simplified_chinese_name": "黎翡区",
+      "official_traditional_chinese_name": "黎翡區",
+      "official_vietnamese_name": "Khu Liffey",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50400,
+      "viewpoint_ids": [
+        70500003
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 129
+    },
+    {
+      "source_key": "genshin-data-area-5-50725",
+      "official_english_name": "Lumidouce Harbor",
+      "official_simplified_chinese_name": "柔灯港",
+      "official_traditional_chinese_name": "柔燈港",
+      "official_vietnamese_name": "Cảng Lumidouce",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50725,
+      "viewpoint_ids": [
+        70500008
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 130
+    },
+    {
+      "source_key": "genshin-data-area-5-50205",
+      "official_english_name": "Merusea Village",
+      "official_simplified_chinese_name": "海沫村",
+      "official_traditional_chinese_name": "海沫村",
+      "official_vietnamese_name": "Làng Merusea",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50205,
+      "viewpoint_ids": [
+        70400057
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 131
+    },
+    {
+      "source_key": "genshin-data-area-5-50700",
+      "official_english_name": "Morte Region",
+      "official_simplified_chinese_name": "莫尔泰区",
+      "official_traditional_chinese_name": "莫爾泰區",
+      "official_vietnamese_name": "Khu Morte",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50700,
+      "viewpoint_ids": [
+        70500009
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 132
+    },
+    {
+      "source_key": "genshin-data-area-5-50306",
+      "official_english_name": "Opera Epiclese",
+      "official_simplified_chinese_name": "欧庇克莱歌剧院",
+      "official_traditional_chinese_name": "歐庇克萊歌劇院",
+      "official_vietnamese_name": "Viện Ca Kịch Epiclese",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50306,
+      "viewpoint_ids": [
+        70400056
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 133
+    },
+    {
+      "source_key": "genshin-data-area-5-50802",
+      "official_english_name": "Petrichor",
+      "official_simplified_chinese_name": "佩特莉可镇",
+      "official_traditional_chinese_name": "佩特莉可鎮",
+      "official_vietnamese_name": "Thị Trấn Petrichor",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50802,
+      "viewpoint_ids": [
+        70600031
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 134
+    },
+    {
+      "source_key": "genshin-data-area-5-50103",
+      "official_english_name": "Poisson",
+      "official_simplified_chinese_name": "白淞镇",
+      "official_traditional_chinese_name": "白淞鎮",
+      "official_vietnamese_name": "Thị Trấn Poisson",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50103,
+      "viewpoint_ids": [
+        70400059
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 135
+    },
+    {
+      "source_key": "genshin-data-area-5-560003",
+      "official_english_name": "Portus Anticus",
+      "official_simplified_chinese_name": "安提库旧港",
+      "official_traditional_chinese_name": "安提庫舊港",
+      "official_vietnamese_name": "Cảng Anticus",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 560003,
+      "viewpoint_ids": [
+        70600035
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 136
+    },
+    {
+      "source_key": "genshin-data-area-5-50309",
+      "official_english_name": "Salacia Plain",
+      "official_simplified_chinese_name": "塞洛海原",
+      "official_traditional_chinese_name": "塞洛海原",
+      "official_vietnamese_name": "Đại Dương Salacia",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50309,
+      "viewpoint_ids": [
+        70400063
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 137
+    },
+    {
+      "source_key": "genshin-data-area-5-50721",
+      "official_english_name": "Weeping Willow of the Lake",
+      "official_simplified_chinese_name": "湖中垂柳",
+      "official_traditional_chinese_name": "湖中垂柳",
+      "official_vietnamese_name": "Liễu Rũ Trong Hồ",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50721,
+      "viewpoint_ids": [
+        70500006
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 138
+    },
+    {
+      "source_key": "genshin-data-area-5-50104",
+      "official_english_name": "West Slopes of Mont Automnequi",
+      "official_simplified_chinese_name": "秋分山西侧",
+      "official_traditional_chinese_name": "秋分山西側",
+      "official_vietnamese_name": "Phía Tây Núi Automnequi",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-5",
+      "region_id": 5,
+      "area_id": 50104,
+      "viewpoint_ids": [
+        70400067
+      ],
+      "official_english_description": "A mapped area in Fontaine, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 139
+    },
+    {
+      "source_key": "genshin-data-area-6-60701",
+      "official_english_name": "\"Collective of Plenty\"",
+      "official_simplified_chinese_name": "「沃陆之邦」",
+      "official_traditional_chinese_name": "「沃陸之邦」",
+      "official_vietnamese_name": "\"Cộng Đồng Trù Phú\"",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60701,
+      "viewpoint_ids": [
+        70700029
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 140
+    },
+    {
+      "source_key": "genshin-data-area-6-60901",
+      "official_english_name": "\"Flower-Feather Clan\"",
+      "official_simplified_chinese_name": "「花羽会」",
+      "official_traditional_chinese_name": "「花羽會」",
+      "official_vietnamese_name": "\"Hội Hoa Vũ\"",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60901,
+      "viewpoint_ids": [
+        70700027
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 141
+    },
+    {
+      "source_key": "genshin-data-area-6-60503",
+      "official_english_name": "\"Masters of the Night-Wind\"",
+      "official_simplified_chinese_name": "「烟谜主」",
+      "official_traditional_chinese_name": "「煙謎主」",
+      "official_vietnamese_name": "\"Chủ Nhân Gió Đêm\"",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60503,
+      "viewpoint_ids": [
+        70700019,
+        70700020,
+        70700021
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 3 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 142
+    },
+    {
+      "source_key": "genshin-data-area-6-60404",
+      "official_english_name": "Ancestral Temple",
+      "official_simplified_chinese_name": "祖遗庙宇",
+      "official_traditional_chinese_name": "祖遺廟宇",
+      "official_vietnamese_name": "Đền Tổ Tiên",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60404,
+      "viewpoint_ids": [
+        70700008
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 143
+    },
+    {
+      "source_key": "genshin-data-area-6-680000",
+      "official_english_name": "Ancient Sacred Mountain",
+      "official_simplified_chinese_name": "远古圣山",
+      "official_traditional_chinese_name": "遠古聖山",
+      "official_vietnamese_name": "Núi Thánh Viễn Cổ",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 680000,
+      "viewpoint_ids": [
+        70700031
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 144
+    },
+    {
+      "source_key": "genshin-data-area-6-60602",
+      "official_english_name": "Ashflow Street",
+      "official_simplified_chinese_name": "流灰之街",
+      "official_traditional_chinese_name": "流灰之街",
+      "official_vietnamese_name": "Phố Tro Tàn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60602,
+      "viewpoint_ids": [
+        70700018
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 145
+    },
+    {
+      "source_key": "genshin-data-area-6-60700",
+      "official_english_name": "Atocpan",
+      "official_simplified_chinese_name": "安饶之野",
+      "official_traditional_chinese_name": "安饒之野",
+      "official_vietnamese_name": "Atocpan",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60700,
+      "viewpoint_ids": [
+        70700028
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 146
+    },
+    {
+      "source_key": "genshin-data-area-6-60200",
+      "official_english_name": "Basin of Unnumbered Flames",
+      "official_simplified_chinese_name": "万火之瓯",
+      "official_traditional_chinese_name": "萬火之甌",
+      "official_vietnamese_name": "Lòng Chảo Vạn Hỏa",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60200,
+      "viewpoint_ids": [
+        70700004
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 147
+    },
+    {
+      "source_key": "genshin-data-area-6-680004",
+      "official_english_name": "Chamber of Deliberation",
+      "official_simplified_chinese_name": "审议之庭",
+      "official_traditional_chinese_name": "審議之庭",
+      "official_vietnamese_name": "Sảnh Thương Nghị",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 680004,
+      "viewpoint_ids": [
+        70700034
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 148
+    },
+    {
+      "source_key": "genshin-data-area-6-60201",
+      "official_english_name": "Chamber of Night's Trial",
+      "official_simplified_chinese_name": "夜魂试炼之所",
+      "official_traditional_chinese_name": "夜魂試煉之所",
+      "official_vietnamese_name": "Điểm Thí Luyện Dạ Hồn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60201,
+      "viewpoint_ids": [
+        70700013
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 149
+    },
+    {
+      "source_key": "genshin-data-area-6-60400",
+      "official_english_name": "Coatepec Mountain",
+      "official_simplified_chinese_name": "踞石山",
+      "official_traditional_chinese_name": "踞石山",
+      "official_vietnamese_name": "Núi Coatepec",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60400,
+      "viewpoint_ids": [
+        70700002,
+        70700010
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 150
+    },
+    {
+      "source_key": "genshin-data-area-6-60802",
+      "official_english_name": "Colorfall Cliffs",
+      "official_simplified_chinese_name": "彩彩崖",
+      "official_traditional_chinese_name": "彩彩崖",
+      "official_vietnamese_name": "Vách Đá Sắc Màu",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60802,
+      "viewpoint_ids": [
+        70700037
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 151
+    },
+    {
+      "source_key": "genshin-data-area-6-60603",
+      "official_english_name": "Core of Chu'ulel",
+      "official_simplified_chinese_name": "统律之心",
+      "official_traditional_chinese_name": "統律之心",
+      "official_vietnamese_name": "Lõi Chu'ulel",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60603,
+      "viewpoint_ids": [
+        70700016
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 152
+    },
+    {
+      "source_key": "genshin-data-area-6-60801",
+      "official_english_name": "Easybreeze Market",
+      "official_simplified_chinese_name": "悠悠集市",
+      "official_traditional_chinese_name": "悠悠市集",
+      "official_vietnamese_name": "Chợ Nhàn Nhã",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60801,
+      "viewpoint_ids": [
+        70700036
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 153
+    },
+    {
+      "source_key": "genshin-data-area-6-60406",
+      "official_english_name": "Firethief's Secret Isle",
+      "official_simplified_chinese_name": "窃火者密岛",
+      "official_traditional_chinese_name": "竊火者密島",
+      "official_vietnamese_name": "Đảo Trộm Lửa Thần Bí",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60406,
+      "viewpoint_ids": [
+        70700011
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 154
+    },
+    {
+      "source_key": "genshin-data-area-6-680003",
+      "official_english_name": "Flame-Melding Ritual Grounds",
+      "official_simplified_chinese_name": "聚火祭验所",
+      "official_traditional_chinese_name": "聚火祭驗所",
+      "official_vietnamese_name": "Tế Đàn Tụ Lửa",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 680003,
+      "viewpoint_ids": [
+        70700033
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 155
+    },
+    {
+      "source_key": "genshin-data-area-6-60102",
+      "official_english_name": "Hall of Parting Vows",
+      "official_simplified_chinese_name": "分道誓约之厅",
+      "official_traditional_chinese_name": "分道誓約之廳",
+      "official_vietnamese_name": "Sảnh Lời Thề Chia Tách",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60102,
+      "viewpoint_ids": [
+        70700012
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 156
+    },
+    {
+      "source_key": "genshin-data-area-6-680009",
+      "official_english_name": "Heart of the Sacred Mountain",
+      "official_simplified_chinese_name": "圣山之心",
+      "official_traditional_chinese_name": "聖山之心",
+      "official_vietnamese_name": "Trái Tim Của Núi Thánh",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 680009,
+      "viewpoint_ids": [
+        70700035
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 157
+    },
+    {
+      "source_key": "genshin-data-area-6-60108",
+      "official_english_name": "Land of Myriad Megaliths",
+      "official_simplified_chinese_name": "众岩之里",
+      "official_traditional_chinese_name": "眾岩之里",
+      "official_vietnamese_name": "Không Gian Trong Ngàn Tầng Đá",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60108,
+      "viewpoint_ids": [
+        70700006
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 158
+    },
+    {
+      "source_key": "genshin-data-area-6-60502",
+      "official_english_name": "Malinalco Grotto",
+      "official_simplified_chinese_name": "荧草窟",
+      "official_traditional_chinese_name": "螢草窟",
+      "official_vietnamese_name": "Hang Malinalco",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60502,
+      "viewpoint_ids": [
+        70700015,
+        70700025
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 159
+    },
+    {
+      "source_key": "genshin-data-area-6-60600",
+      "official_english_name": "Ochkanatlan",
+      "official_simplified_chinese_name": "奥奇卡纳塔",
+      "official_traditional_chinese_name": "奧奇卡納塔",
+      "official_vietnamese_name": "Ochkanatlan",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60600,
+      "viewpoint_ids": [
+        70700017
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 160
+    },
+    {
+      "source_key": "genshin-data-area-6-60608",
+      "official_english_name": "Old Core of Chu'ulel",
+      "official_simplified_chinese_name": "旧日的统律之心",
+      "official_traditional_chinese_name": "舊日的統律之心",
+      "official_vietnamese_name": "Lõi Chu'ulel Ngày Cũ",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60608,
+      "viewpoint_ids": [
+        70700026
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 161
+    },
+    {
+      "source_key": "genshin-data-area-6-680002",
+      "official_english_name": "Sea of Shifting Sentience",
+      "official_simplified_chinese_name": "分流识海",
+      "official_traditional_chinese_name": "分流識海",
+      "official_vietnamese_name": "Nhánh Biển Nhận Thức",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 680002,
+      "viewpoint_ids": [
+        70700032
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 162
+    },
+    {
+      "source_key": "genshin-data-area-6-60704",
+      "official_english_name": "Skyfire Circlet",
+      "official_simplified_chinese_name": "「天火之冠」",
+      "official_traditional_chinese_name": "「天火之冠」",
+      "official_vietnamese_name": "Vòng Thiên Hỏa",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60704,
+      "viewpoint_ids": [
+        70700030
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 163
+    },
+    {
+      "source_key": "genshin-data-area-6-60107",
+      "official_english_name": "Sulfurous Veins",
+      "official_simplified_chinese_name": "硫晶支脉",
+      "official_traditional_chinese_name": "硫晶支脈",
+      "official_vietnamese_name": "Mạch Lưu Huỳnh",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60107,
+      "viewpoint_ids": [
+        70700005
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 164
+    },
+    {
+      "source_key": "genshin-data-area-6-60508",
+      "official_english_name": "Tecoloapan Bay",
+      "official_simplified_chinese_name": "浮羽之湾",
+      "official_traditional_chinese_name": "浮羽之灣",
+      "official_vietnamese_name": "Vịnh Tecoloapan",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60508,
+      "viewpoint_ids": [
+        70700022
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 165
+    },
+    {
+      "source_key": "genshin-data-area-6-60100",
+      "official_english_name": "Tequemecan Valley",
+      "official_simplified_chinese_name": "坚岩隘谷",
+      "official_traditional_chinese_name": "堅岩隘谷",
+      "official_vietnamese_name": "Thung Lũng Tequemecan",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60100,
+      "viewpoint_ids": [
+        70700001,
+        70700009,
+        70700014
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 3 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 166
+    },
+    {
+      "source_key": "genshin-data-area-6-60806",
+      "official_english_name": "Tete Isle",
+      "official_simplified_chinese_name": "提提岛",
+      "official_traditional_chinese_name": "提提島",
+      "official_vietnamese_name": "Đảo Tete",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60806,
+      "viewpoint_ids": [
+        70700039,
+        70700040
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 167
+    },
+    {
+      "source_key": "genshin-data-area-6-60500",
+      "official_english_name": "Tezcatepetonco Range",
+      "official_simplified_chinese_name": "镜璧山",
+      "official_traditional_chinese_name": "鏡璧山",
+      "official_vietnamese_name": "Dãy Tezcatepetonco",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60500,
+      "viewpoint_ids": [
+        70700023
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 168
+    },
+    {
+      "source_key": "genshin-data-area-6-60304",
+      "official_english_name": "The Upper Sanctum",
+      "official_simplified_chinese_name": "浮土静界",
+      "official_traditional_chinese_name": "浮土靜界",
+      "official_vietnamese_name": "Thánh Địa Nổi",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60304,
+      "viewpoint_ids": [
+        70700007
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 169
+    },
+    {
+      "source_key": "genshin-data-area-6-60300",
+      "official_english_name": "Toyac Springs",
+      "official_simplified_chinese_name": "涌流地",
+      "official_traditional_chinese_name": "湧流地",
+      "official_vietnamese_name": "Suối Nguồn Toyac",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60300,
+      "viewpoint_ids": [
+        70700003
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 170
+    },
+    {
+      "source_key": "genshin-data-area-6-60807",
+      "official_english_name": "Villa Guiztli",
+      "official_simplified_chinese_name": "刺梨镇",
+      "official_traditional_chinese_name": "刺梨鎮",
+      "official_vietnamese_name": "Thị Trấn Guiztli",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60807,
+      "viewpoint_ids": [
+        70700041,
+        70700042
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 171
+    },
+    {
+      "source_key": "genshin-data-area-6-60804",
+      "official_english_name": "Wavey Bay",
+      "official_simplified_chinese_name": "浪浪湾",
+      "official_traditional_chinese_name": "浪浪灣",
+      "official_vietnamese_name": "Vịnh Sóng Vỗ",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-6",
+      "region_id": 6,
+      "area_id": 60804,
+      "viewpoint_ids": [
+        70700038
+      ],
+      "official_english_description": "A mapped area in Natlan, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 172
+    },
+    {
+      "source_key": "genshin-data-area-7-70501",
+      "official_english_name": "\"Post-Apocalyptic Elysium\"",
+      "official_simplified_chinese_name": "「末日后的乐园」",
+      "official_traditional_chinese_name": "「末日後的樂園」",
+      "official_vietnamese_name": "\"Thiên Đường Sau Tận Thế\"",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70501,
+      "viewpoint_ids": [
+        70800017
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 173
+    },
+    {
+      "source_key": "genshin-data-area-7-770005",
+      "official_english_name": "Archaeolune Storm Research Center",
+      "official_simplified_chinese_name": "古月风暴研究所",
+      "official_traditional_chinese_name": "古月風暴研究所",
+      "official_vietnamese_name": "Viện Nghiên Cứu Bão Cổ Nguyệt",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770005,
+      "viewpoint_ids": [
+        70800058
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 174
+    },
+    {
+      "source_key": "genshin-data-area-7-70206",
+      "official_english_name": "Blue Amber Lake",
+      "official_simplified_chinese_name": "蓝珀湖",
+      "official_traditional_chinese_name": "藍珀湖",
+      "official_vietnamese_name": "Hồ Lam Phách",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70206,
+      "viewpoint_ids": [
+        70800012
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 175
+    },
+    {
+      "source_key": "genshin-data-area-7-770004",
+      "official_english_name": "Bubble Pool",
+      "official_simplified_chinese_name": "浮沤泊",
+      "official_traditional_chinese_name": "浮漚泊",
+      "official_vietnamese_name": "Hồ Bọt Nước",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770004,
+      "viewpoint_ids": [
+        70800057
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 176
+    },
+    {
+      "source_key": "genshin-data-area-7-70604",
+      "official_english_name": "Chasm of Endless Decay",
+      "official_simplified_chinese_name": "靡穷深壑",
+      "official_traditional_chinese_name": "靡窮深壑",
+      "official_vietnamese_name": "Khe Sâu Vô Tận",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70604,
+      "viewpoint_ids": [
+        70800016
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 177
+    },
+    {
+      "source_key": "genshin-data-area-7-70602",
+      "official_english_name": "Cliffwatch Camp",
+      "official_simplified_chinese_name": "望崖营壁",
+      "official_traditional_chinese_name": "望崖營壁",
+      "official_vietnamese_name": "Doanh Trại Vách Đá",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70602,
+      "viewpoint_ids": [
+        70800020
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 178
+    },
+    {
+      "source_key": "genshin-data-area-7-70202",
+      "official_english_name": "Clink-Clank Krumkake Craftshop",
+      "official_simplified_chinese_name": "叮铃哐啷蛋卷工坊",
+      "official_traditional_chinese_name": "叮鈴哐啷蛋捲工坊",
+      "official_vietnamese_name": "Xưởng Krumkake Clink-Clank",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70202,
+      "viewpoint_ids": [
+        70800006
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 179
+    },
+    {
+      "source_key": "genshin-data-area-7-770101",
+      "official_english_name": "Curtain-Form Blackbody Containment Lab",
+      "official_simplified_chinese_name": "幕形态黑体物质笼实验室",
+      "official_traditional_chinese_name": "幕形態黑體物質籠實驗室",
+      "official_vietnamese_name": "Phòng Thí Nghiệm Lồng Vật Chất Hắc Thể Dạng Màn",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770101,
+      "viewpoint_ids": [
+        70800064
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 180
+    },
+    {
+      "source_key": "genshin-data-area-7-770200",
+      "official_english_name": "Dark Side of the Moon",
+      "official_simplified_chinese_name": "月之暗面",
+      "official_traditional_chinese_name": "月之暗面",
+      "official_vietnamese_name": "Vùng Tối Của Mặt Trăng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770200,
+      "viewpoint_ids": [
+        70800054,
+        70800055
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 181
+    },
+    {
+      "source_key": "genshin-data-area-7-70702",
+      "official_english_name": "Dunanna Forward Station",
+      "official_simplified_chinese_name": "杜南纳前进站",
+      "official_traditional_chinese_name": "杜南納前進站",
+      "official_vietnamese_name": "Tiền Trạm Dunanna",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70702,
+      "viewpoint_ids": [
+        70800046,
+        70800047
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 182
+    },
+    {
+      "source_key": "genshin-data-area-7-70105",
+      "official_english_name": "Final Night Cemetery",
+      "official_simplified_chinese_name": "终夜长茔",
+      "official_traditional_chinese_name": "終夜長塋",
+      "official_vietnamese_name": "Nghĩa Trang Đêm Cuối",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70105,
+      "viewpoint_ids": [
+        70800013
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 183
+    },
+    {
+      "source_key": "genshin-data-area-7-770006",
+      "official_english_name": "Golden Hall",
+      "official_simplified_chinese_name": "金屋",
+      "official_traditional_chinese_name": "金屋",
+      "official_vietnamese_name": "Sảnh Vàng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770006,
+      "viewpoint_ids": [
+        70800059
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 184
+    },
+    {
+      "source_key": "genshin-data-area-7-70300",
+      "official_english_name": "Hiisi Island",
+      "official_simplified_chinese_name": "希汐岛",
+      "official_traditional_chinese_name": "希汐島",
+      "official_vietnamese_name": "Đảo Hiisi",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70300,
+      "viewpoint_ids": [
+        70800001,
+        70800004
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 185
+    },
+    {
+      "source_key": "genshin-data-area-7-70101",
+      "official_english_name": "Kuuvahki Experimental Design Bureau",
+      "official_simplified_chinese_name": "月矩力试验设计局",
+      "official_traditional_chinese_name": "月矩力試驗設計局",
+      "official_vietnamese_name": "Cục Thiết Kế Thí Nghiệm Kuuvahki",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70101,
+      "viewpoint_ids": [
+        70800009
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 186
+    },
+    {
+      "source_key": "genshin-data-area-7-70302",
+      "official_english_name": "Light-Bathed Platform",
+      "official_simplified_chinese_name": "沐光之台",
+      "official_traditional_chinese_name": "沐光之臺",
+      "official_vietnamese_name": "Đài Tắm Sáng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70302,
+      "viewpoint_ids": [
+        70800002
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 187
+    },
+    {
+      "source_key": "genshin-data-area-7-770007",
+      "official_english_name": "Maagees's Greenhouse",
+      "official_simplified_chinese_name": "玛歌的温室",
+      "official_traditional_chinese_name": "瑪歌的溫室",
+      "official_vietnamese_name": "Nhà Kính Của Maagees",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770007,
+      "viewpoint_ids": [
+        70800060
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 188
+    },
+    {
+      "source_key": "genshin-data-area-7-70104",
+      "official_english_name": "Maroon Basin",
+      "official_simplified_chinese_name": "绯沙盐沼",
+      "official_traditional_chinese_name": "緋沙鹽沼",
+      "official_vietnamese_name": "Lưu Vực Maroon",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70104,
+      "viewpoint_ids": [
+        70800005
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 189
+    },
+    {
+      "source_key": "genshin-data-area-7-770012",
+      "official_english_name": "Moongazer",
+      "official_simplified_chinese_name": "望月者号",
+      "official_traditional_chinese_name": "望月者號",
+      "official_vietnamese_name": "Kẻ Quan Sát Mặt Trăng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770012,
+      "viewpoint_ids": [
+        70800061
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 190
+    },
+    {
+      "source_key": "genshin-data-area-7-770201",
+      "official_english_name": "Moonheart Gap",
+      "official_simplified_chinese_name": "月心罅隙",
+      "official_traditional_chinese_name": "月心罅隙",
+      "official_vietnamese_name": "Khe Nứt Lõi Trăng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770201,
+      "viewpoint_ids": [
+        70800056
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 191
+    },
+    {
+      "source_key": "genshin-data-area-7-770100",
+      "official_english_name": "Moontide Sea",
+      "official_simplified_chinese_name": "月荡海",
+      "official_traditional_chinese_name": "月蕩海",
+      "official_vietnamese_name": "Biển Trăng Dạt Dào",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770100,
+      "viewpoint_ids": [
+        70800053
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 192
+    },
+    {
+      "source_key": "genshin-data-area-7-70201",
+      "official_english_name": "Nasha Town",
+      "official_simplified_chinese_name": "那夏镇",
+      "official_traditional_chinese_name": "那夏鎮",
+      "official_vietnamese_name": "Thị Trấn Nasha",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70201,
+      "viewpoint_ids": [
+        70800007
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 193
+    },
+    {
+      "source_key": "genshin-data-area-7-70208",
+      "official_english_name": "Nothing Passage",
+      "official_simplified_chinese_name": "空寂走廊",
+      "official_traditional_chinese_name": "空寂走廊",
+      "official_vietnamese_name": "Hành Lang Trống",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70208,
+      "viewpoint_ids": [
+        70800008,
+        70800011
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 194
+    },
+    {
+      "source_key": "genshin-data-area-7-770011",
+      "official_english_name": "Nuur Stone Circle",
+      "official_simplified_chinese_name": "努尔寂石阵列",
+      "official_traditional_chinese_name": "努爾寂石陣列",
+      "official_vietnamese_name": "Mảng Đá Nuur",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770011,
+      "viewpoint_ids": [
+        70800062
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 195
+    },
+    {
+      "source_key": "genshin-data-area-7-70100",
+      "official_english_name": "Paha Isle",
+      "official_simplified_chinese_name": "帕哈岛",
+      "official_traditional_chinese_name": "帕哈島",
+      "official_vietnamese_name": "Đảo Paha",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70100,
+      "viewpoint_ids": [
+        70800010
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 196
+    },
+    {
+      "source_key": "genshin-data-area-7-70506",
+      "official_english_name": "Pillar of Embla",
+      "official_simplified_chinese_name": "厄布拉神柱",
+      "official_traditional_chinese_name": "厄布拉神柱",
+      "official_vietnamese_name": "Trụ Thần Embla",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70506,
+      "viewpoint_ids": [
+        70800019
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 197
+    },
+    {
+      "source_key": "genshin-data-area-7-70402",
+      "official_english_name": "Piramida",
+      "official_simplified_chinese_name": "皮拉米达城",
+      "official_traditional_chinese_name": "皮拉米達城",
+      "official_vietnamese_name": "Thành Piramida",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70402,
+      "viewpoint_ids": [
+        70800014
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 198
+    },
+    {
+      "source_key": "genshin-data-area-7-70405",
+      "official_english_name": "Reed Miller's Great Treasure",
+      "official_simplified_chinese_name": "雷德·米勒的「伟大财宝」",
+      "official_traditional_chinese_name": "雷德·米勒的「偉大財寶」",
+      "official_vietnamese_name": "Kho Báu Vĩ Đại Của Reed Miller",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70405,
+      "viewpoint_ids": [
+        70800015
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 199
+    },
+    {
+      "source_key": "genshin-data-area-7-70504",
+      "official_english_name": "Royal Court of the Seelie",
+      "official_simplified_chinese_name": "仙灵的王廷",
+      "official_traditional_chinese_name": "仙靈的王庭",
+      "official_vietnamese_name": "Vương Đình Tiên Linh",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70504,
+      "viewpoint_ids": [
+        70800018
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 200
+    },
+    {
+      "source_key": "genshin-data-area-7-70601",
+      "official_english_name": "Sanctum of Departed Heroes",
+      "official_simplified_chinese_name": "英灵的享殿",
+      "official_traditional_chinese_name": "英靈的享殿",
+      "official_vietnamese_name": "Điện Thờ Anh Linh",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70601,
+      "viewpoint_ids": [
+        70800021
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 201
+    },
+    {
+      "source_key": "genshin-data-area-7-770001",
+      "official_english_name": "The Eye of Ibni-Belum",
+      "official_simplified_chinese_name": "伊比尼伯龙之眼",
+      "official_traditional_chinese_name": "伊比尼伯龍之眼",
+      "official_vietnamese_name": "Mắt Ibni-Belum",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770001,
+      "viewpoint_ids": [
+        70800048,
+        70800049
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 202
+    },
+    {
+      "source_key": "genshin-data-area-7-770003",
+      "official_english_name": "The Space Lifeform Capture Station",
+      "official_simplified_chinese_name": "星空生物捕捉站",
+      "official_traditional_chinese_name": "星空生物捕捉站",
+      "official_vietnamese_name": "Trạm Bắt Giữ Sinh Vật Không Gian",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770003,
+      "viewpoint_ids": [
+        70800052
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 203
+    },
+    {
+      "source_key": "genshin-data-area-7-70404",
+      "official_english_name": "The Witch's Garden",
+      "official_simplified_chinese_name": "魔女的花园",
+      "official_traditional_chinese_name": "魔女的花園",
+      "official_vietnamese_name": "Khu Vườn Ma Nữ",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 70404,
+      "viewpoint_ids": [
+        70800022
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 204
+    },
+    {
+      "source_key": "genshin-data-area-7-770013",
+      "official_english_name": "Traveler's Crater",
+      "official_simplified_chinese_name": "旅者环形山",
+      "official_traditional_chinese_name": "旅者環形山",
+      "official_vietnamese_name": "Hố Va Chạm Lữ Khách",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770013,
+      "viewpoint_ids": [
+        70800063
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 205
+    },
+    {
+      "source_key": "genshin-data-area-7-770002",
+      "official_english_name": "Ungien's Circle",
+      "official_simplified_chinese_name": "乌吉恩圈",
+      "official_traditional_chinese_name": "烏吉恩圈",
+      "official_vietnamese_name": "Vòng Ungien",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770002,
+      "viewpoint_ids": [
+        70800050
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 206
+    },
+    {
+      "source_key": "genshin-data-area-7-770009",
+      "official_english_name": "Ungien's Circle: Power Engine",
+      "official_simplified_chinese_name": "乌吉恩圈·动力引擎",
+      "official_traditional_chinese_name": "烏吉恩圈·動力引擎",
+      "official_vietnamese_name": "Vòng Ungien - Động Cơ Năng Lượng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-7",
+      "region_id": 7,
+      "area_id": 770009,
+      "viewpoint_ids": [
+        70800051
+      ],
+      "official_english_description": "A mapped area in Nod-Krai, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 207
+    },
+    {
+      "source_key": "genshin-data-area-8-80200",
+      "official_english_name": "Everfrozen Earth",
+      "official_simplified_chinese_name": "永凝冻土",
+      "official_traditional_chinese_name": "永凝凍土",
+      "official_vietnamese_name": "Vùng Đất Băng Vĩnh Cửu",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-8",
+      "region_id": 8,
+      "area_id": 80200,
+      "viewpoint_ids": [
+        70800033,
+        70800034,
+        70800035,
+        70800036,
+        70800037,
+        70800038,
+        70800042,
+        70800045,
+        70800065
+      ],
+      "official_english_description": "A mapped area in Snezhnaya, represented by 9 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 208
+    },
+    {
+      "source_key": "genshin-data-area-8-80300",
+      "official_english_name": "Fellfrost Peak",
+      "official_simplified_chinese_name": "霜殛寒峰",
+      "official_traditional_chinese_name": "霜殛寒峰",
+      "official_vietnamese_name": "Đỉnh Băng Giá",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-8",
+      "region_id": 8,
+      "area_id": 80300,
+      "viewpoint_ids": [
+        70800039,
+        70800040,
+        70800043
+      ],
+      "official_english_description": "A mapped area in Snezhnaya, represented by 3 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 209
+    },
+    {
+      "source_key": "genshin-data-area-8-80400",
+      "official_english_name": "Flamefeather Valley",
+      "official_simplified_chinese_name": "焰羽谷",
+      "official_traditional_chinese_name": "焰羽谷",
+      "official_vietnamese_name": "Thung Lũng Lông Vũ Lửa",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-8",
+      "region_id": 8,
+      "area_id": 80400,
+      "viewpoint_ids": [
+        70800041
+      ],
+      "official_english_description": "A mapped area in Snezhnaya, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 210
+    },
+    {
+      "source_key": "genshin-data-area-8-80100",
+      "official_english_name": "Volkodlak Tundra",
+      "official_simplified_chinese_name": "古兽冰原",
+      "official_traditional_chinese_name": "古獸冰原",
+      "official_vietnamese_name": "Lãnh Nguyên Volkodlak",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-8",
+      "region_id": 8,
+      "area_id": 80100,
+      "viewpoint_ids": [
+        70800031,
+        70800044
+      ],
+      "official_english_description": "A mapped area in Snezhnaya, represented by 2 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 211
+    },
+    {
+      "source_key": "genshin-data-area-8-80500",
+      "official_english_name": "White Birch Snowgrave",
+      "official_simplified_chinese_name": "白桦雪葬地",
+      "official_traditional_chinese_name": "白樺雪葬地",
+      "official_vietnamese_name": "Lăng Mộ Bạch Dương Tuyết",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-8",
+      "region_id": 8,
+      "area_id": 80500,
+      "viewpoint_ids": [
+        70800032
+      ],
+      "official_english_description": "A mapped area in Snezhnaya, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 212
+    },
+    {
+      "source_key": "genshin-data-area-105-10705",
+      "official_english_name": "Apathic Interval",
+      "official_simplified_chinese_name": "无想之间",
+      "official_traditional_chinese_name": "無想之間",
+      "official_vietnamese_name": "Quãng Vô Tưởng",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-105",
+      "region_id": 105,
+      "area_id": 10705,
+      "viewpoint_ids": [
+        70800027
+      ],
+      "official_english_description": "A mapped area in Temple of Space, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 213
+    },
+    {
+      "source_key": "genshin-data-area-105-10704",
+      "official_english_name": "Desert Pavilion",
+      "official_simplified_chinese_name": "「沙上楼阁」",
+      "official_traditional_chinese_name": "「沙上樓閣」",
+      "official_vietnamese_name": "Đình Đài Trên Cát",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-105",
+      "region_id": 105,
+      "area_id": 10704,
+      "viewpoint_ids": [
+        70800025
+      ],
+      "official_english_description": "A mapped area in Temple of Space, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 214
+    },
+    {
+      "source_key": "genshin-data-area-105-10703",
+      "official_english_name": "Luyang Academy",
+      "official_simplified_chinese_name": "麓阳书院",
+      "official_traditional_chinese_name": "麓陽書院",
+      "official_vietnamese_name": "Học Viện Lộc Dương",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-105",
+      "region_id": 105,
+      "area_id": 10703,
+      "viewpoint_ids": [
+        70800023
+      ],
+      "official_english_description": "A mapped area in Temple of Space, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 215
+    },
+    {
+      "source_key": "genshin-data-area-105-10702",
+      "official_english_name": "Mahavaipulya Chamber",
+      "official_simplified_chinese_name": "大方广",
+      "official_traditional_chinese_name": "大方廣",
+      "official_vietnamese_name": "Điện Mahavaipulya",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-105",
+      "region_id": 105,
+      "area_id": 10702,
+      "viewpoint_ids": [
+        70800026
+      ],
+      "official_english_description": "A mapped area in Temple of Space, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 216
+    },
+    {
+      "source_key": "genshin-data-area-105-10700",
+      "official_english_name": "Temple of Space",
+      "official_simplified_chinese_name": "空之神殿",
+      "official_traditional_chinese_name": "空之神殿",
+      "official_vietnamese_name": "Thần Điện Không Gian",
+      "subtype": "subregion",
+      "parent_source_key": "genshin-data-region-105",
+      "region_id": 105,
+      "area_id": 10700,
+      "viewpoint_ids": [
+        70800024
+      ],
+      "official_english_description": "A mapped area in Temple of Space, represented by 1 in-game Geography Archive viewpoint record(s).",
+      "source_table": "Geography",
+      "catalog_index": 217
+    }
+  ]
+}

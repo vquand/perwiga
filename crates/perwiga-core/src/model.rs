@@ -42,6 +42,10 @@ pub struct EntityAlias {
 pub struct WikiEntityDetail {
     pub entity: WikiEntity,
     pub aliases: Vec<EntityAlias>,
+    /// Source-backed contexts such as quests, events, and actions in which
+    /// the entity appears. The owning module supplies the meaning of each
+    /// relation kind; the core only preserves the normalized records.
+    pub appearances: Vec<EntityAppearance>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -207,6 +211,45 @@ pub struct AliasInput {
     pub kind: String,
     pub label: Option<String>,
     pub notes: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct EntityAppearanceInput {
+    pub entity_id: String,
+    pub relation_kind: String,
+    pub related_title: String,
+    pub related_source_url: Option<String>,
+    pub source_provider: String,
+    pub source_identity: String,
+    pub source_notes: Option<String>,
+    pub locations: Vec<EntityAppearanceLocationInput>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct EntityAppearanceLocationInput {
+    pub location_name: String,
+    pub region_name: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct EntityAppearance {
+    pub id: String,
+    pub entity_id: String,
+    pub relation_kind: String,
+    pub related_title: String,
+    pub related_source_url: Option<String>,
+    pub source_provider: String,
+    pub source_identity: String,
+    pub source_notes: Option<String>,
+    pub locations: Vec<EntityAppearanceLocation>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct EntityAppearanceLocation {
+    pub id: String,
+    pub appearance_id: String,
+    pub location_name: String,
+    pub region_name: Option<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
