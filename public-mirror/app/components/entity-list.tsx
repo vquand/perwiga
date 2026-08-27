@@ -30,7 +30,7 @@ export function EntityList({ entities, types, selectedId, onSelect }: EntityList
   }
 
   return (
-    <ul className="entity-list" aria-label="Public wiki records">
+    <ul className="entity-list" aria-label="Wiki records">
       {entities.map((entity) => {
         const presentation = entity.presentation;
         const label = entity.catalog_label || entity.official_english_name;

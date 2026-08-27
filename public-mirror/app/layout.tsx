@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Perwiga Public Atlas",
-  description: "A read-only public mirror of selected Perwiga game and novel wiki data.",
+  description: "A multilingual atlas for the worlds you play and read.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 

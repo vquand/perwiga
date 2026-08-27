@@ -21,7 +21,7 @@ async function render() {
   );
 }
 
-test("server-renders the public read-only atlas", async () => {
+test("server-renders the Perwiga atlas", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
@@ -31,8 +31,8 @@ test("server-renders the public read-only atlas", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Perwiga Public Atlas<\/title>/i);
-  assert.match(html, /Public read-only mirror/);
-  assert.match(html, /No account required/);
+  assert.match(html, /Library \/ multilingual field guide/);
+  assert.match(html, /Worlds, names, and stories/);
   assert.match(html, /Genshin Impact/);
   assert.match(html, /Arknights: Endfield/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
@@ -47,6 +47,6 @@ test("does not retain the starter preview or editing affordances", async () => {
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
 
   assert.match(page, /Perwiga Public Atlas/);
-  assert.match(client, /read-only mirror/i);
+  assert.match(client, /Worlds, names, and stories/);
   assert.doesNotMatch(client, /new-entity|save-entity|create_work|PATCH|POST/);
 });

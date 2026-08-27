@@ -30,12 +30,12 @@ function groupEvents(events: Event[]) {
 
 export function Timeline({ events }: TimelineProps) {
   if (!events.length) {
-    return <div className="empty-state"><span className="empty-glyph" aria-hidden="true">⌁</span><h3>No public events yet</h3><p>Events with verified public sources will appear here.</p></div>;
+    return <div className="empty-state"><span className="empty-glyph" aria-hidden="true">⌁</span><h3>No events yet</h3><p>There are no events to show for this work.</p></div>;
   }
 
   const groups = groupEvents(events);
   return (
-    <div className="timeline-stack" aria-label="Public event timeline">
+    <div className="timeline-stack" aria-label="Event timeline">
       {Object.entries(groups).map(([type, items]) => (
         <section className="timeline-lane" key={type}>
           <header>

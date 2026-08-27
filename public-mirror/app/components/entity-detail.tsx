@@ -19,7 +19,7 @@ export function EntityDetail({ entity }: EntityDetailProps) {
       <div className="detail-empty">
         <span className="empty-glyph" aria-hidden="true">↗</span>
         <h2>Choose a record</h2>
-        <p>Inspect names, translations, aliases, and source-backed appearances here.</p>
+        <p>Select a record to see its names, translations, aliases, and appearances.</p>
       </div>
     );
   }

@@ -37,8 +37,8 @@ button:not(:disabled), select:not(:disabled) { cursor: pointer; }
 .topbar { position: sticky; z-index: 20; top: 0; display: flex; min-height: 4rem; align-items: center; justify-content: space-between; padding: 0 var(--space-8); border-bottom: 0.0625rem solid var(--border); background: color-mix(in srgb, var(--background) 92%, transparent); backdrop-filter: blur(0.75rem); }
 .brand { display: inline-flex; align-items: center; gap: var(--space-3); color: var(--text); font-size: 0.8125rem; font-weight: 800; letter-spacing: 0.18em; text-decoration: none; }
 .brand-mark { display: grid; width: 2rem; height: 2rem; place-items: center; color: var(--accent-ink); background: var(--accent); font-size: 1rem; letter-spacing: 0; }
-.public-badge { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--text-subtle); font-size: 0.625rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
-.public-badge::before { width: 0.5rem; height: 0.5rem; content: ""; background: var(--accent); box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--accent) 14%, transparent); }
+.atlas-marker { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--text-subtle); font-size: 0.625rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.atlas-marker::before { width: 0.5rem; height: 0.5rem; content: ""; background: var(--accent); box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--accent) 14%, transparent); }
 
 main { width: min(100% - 2rem, 112rem); margin: 0 auto; }
 .hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr); gap: var(--space-8); padding: 5rem 2rem 3rem; border-bottom: 0.0625rem solid var(--border); }
