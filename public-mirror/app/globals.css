@@ -150,7 +150,7 @@ main { width: min(100% - 2rem, 112rem); margin: 0 auto; }
 .timeline-lane + .timeline-lane { border-top: 0; }
 .timeline-lane > header { display: flex; align-items: flex-start; gap: var(--space-3); min-height: 5.3rem; padding: var(--space-4); border-right: 0.0625rem solid var(--border); }
 .lane-marker { width: 0.5rem; height: 2.5rem; flex: 0 0 auto; background: var(--accent); }
-.timeline-lane h3 { margin: var(--space-1) 0 0; font-size: 1rem; }
+.timeline-lane h3 { margin: 0; font-size: 1rem; }
 .lane-count { margin-left: auto; color: var(--text-subtle); font-size: 0.7rem; white-space: nowrap; }
 .timeline-lane-body { min-width: 0; }
 .timeline-lane-track { position: relative; height: var(--lane-height); min-height: 6rem; overflow: visible; border-bottom: 0.0625rem solid var(--border); background: #0b1116; }

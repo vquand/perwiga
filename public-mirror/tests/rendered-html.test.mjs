@@ -57,6 +57,7 @@ test("does not retain the starter preview or editing affordances", async () => {
   assert.match(timeline, /timeline-lane-track/);
   assert.match(timeline, /timeline-event-tooltip/);
   assert.match(timeline, /aria-describedby/);
+  assert.doesNotMatch(timeline, /className="eyebrow">Swimlane/);
   assert.doesNotMatch(timeline, /className="timeline-events"/);
   assert.doesNotMatch(timeline, /timeline-event-list|timeline-event-card/);
   assert.doesNotMatch(client, /slice\(0, 350\)/);

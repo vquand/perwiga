@@ -171,7 +171,7 @@ export function Timeline({ events }: TimelineProps) {
             <section className="timeline-lane" key={type} aria-label={`${type} event swimlane`}>
               <header>
                 <span className="lane-marker" aria-hidden="true" />
-                <div><p className="eyebrow">Swimlane</p><h3>{type}</h3></div>
+                <div><h3>{type}</h3></div>
                 <span className="lane-count">{items.length} {items.length === 1 ? "event" : "events"}</span>
               </header>
               <div className="timeline-lane-body">
