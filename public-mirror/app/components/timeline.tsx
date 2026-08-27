@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { useRef, useState } from "react";
 import type { Event } from "../types";
 
 type TimelineProps = { events: Event[] };
@@ -7,12 +8,11 @@ type EventState = "upcoming" | "ongoing" | "past";
 type TimelineEvent = {
   event: Event;
   state: EventState;
-  startMs: number;
-  endMs: number;
   left: number;
   width: number;
   row: number;
 };
+type TooltipPosition = { top: number; left: number };
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -84,8 +84,6 @@ function layoutLane(events: Event[], axisStart: number, axisEnd: number): Timeli
       return {
         event,
         state: eventState(event, now),
-        startMs,
-        endMs,
         left: ((startMs - axisStart) / rangeMs) * 100,
         width: Math.max(((visibleEnd - startMs) / rangeMs) * 100, 1.4),
         row: assignedRow,
@@ -102,7 +100,15 @@ function eventSummary(item: TimelineEvent) {
   return `${event.title}. ${formatDate(event.starts_at)}${event.ends_at ? ` to ${formatDate(event.ends_at)}` : ". End not announced"}`;
 }
 
+function tooltipId(event: Event) {
+  return `timeline-detail-${event.id.replace(/[^a-zA-Z0-9_-]/g, "-")}`;
+}
+
 export function Timeline({ events }: TimelineProps) {
+  const [activeTooltipId, setActiveTooltipId] = useState<string | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState<TooltipPosition | null>(null);
+  const closeTooltipTimeout = useRef<number | undefined>(undefined);
+
   if (!events.length) {
     return <div className="empty-state"><span className="empty-glyph" aria-hidden="true">⌁</span><h3>No events yet</h3><p>There are no events to show for this work.</p></div>;
   }
@@ -116,6 +122,32 @@ export function Timeline({ events }: TimelineProps) {
   const rangeDays = Math.ceil((axisEnd - axisStart) / DAY_MS);
   const ticks = createTicks(axisStart, axisEnd);
   const groups = Object.entries(groupEvents(events)).map(([type, items]) => ({ type, items: layoutLane(items, axisStart, axisEnd) }));
+
+  function cancelTooltipClose() {
+    if (closeTooltipTimeout.current !== undefined) window.clearTimeout(closeTooltipTimeout.current);
+  }
+
+  function closeTooltip() {
+    cancelTooltipClose();
+    setActiveTooltipId(null);
+    setTooltipPosition(null);
+  }
+
+  function closeTooltipSoon() {
+    cancelTooltipClose();
+    closeTooltipTimeout.current = window.setTimeout(closeTooltip, 140);
+  }
+
+  function revealTooltip(item: TimelineEvent, button: HTMLButtonElement) {
+    cancelTooltipClose();
+    const rect = button.getBoundingClientRect();
+    const tooltipWidth = Math.min(416, Math.max(16, window.innerWidth - 32));
+    const tooltipHeight = 240;
+    const left = Math.min(Math.max(16, rect.left), Math.max(16, window.innerWidth - tooltipWidth - 16));
+    const top = rect.bottom + 12 + tooltipHeight <= window.innerHeight - 16 ? rect.bottom + 12 : Math.max(16, rect.top - tooltipHeight - 12);
+    setTooltipPosition({ top, left });
+    setActiveTooltipId(item.event.id);
+  }
 
   return (
     <div className="timeline-stack" aria-label="Event timeline">
@@ -147,36 +179,34 @@ export function Timeline({ events }: TimelineProps) {
                   <div className="timeline-grid-lines" aria-hidden="true">
                     {ticks.map((timestamp) => <span key={timestamp} style={styleVars({ "--tick-position": ((timestamp - axisStart) / (axisEnd - axisStart)) * 100 })} />)}
                   </div>
-                  {items.map((item) => (
-                    <div className={`timeline-bar is-${item.state}${item.event.ends_at ? "" : " is-open-ended"}`} key={item.event.id} role="img" aria-label={eventSummary(item)} style={styleVars({ "--event-left": item.left, "--event-width": item.width, "--event-row": item.row })}>
-                      <span className="timeline-bar-title">{item.event.title}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="timeline-event-list">
                   {items.map((item) => {
                     const { event } = item;
+                    const detailId = tooltipId(event);
                     return (
-                      <article className={`timeline-event-card is-${item.state}`} key={event.id}>
-                        <div className="event-date"><strong>{formatDate(event.starts_at)}</strong><span>{event.ends_at ? `to ${formatDate(event.ends_at)}` : "End not announced"}</span></div>
-                        <div className="event-copy">
-                          <div className="event-title-line"><h4>{event.title}</h4><span className="state-badge">{item.state}</span></div>
-                          {(event.patch_start || event.patch_end) && <p className="patch-label">Patch {event.patch_start}{event.patch_end && event.patch_end !== event.patch_start ? `–${event.patch_end}` : ""}</p>}
-                          {event.presentation?.featured_entities.length ? (
-                            <div className="featured-strip" aria-label="Featured entities">
-                              {event.presentation.featured_entities.map((featured) => (
-                                <span className="featured-entity" key={featured.display_name}>
-                                  <Image src={featured.thumbnail_url} alt="" width={32} height={32} loading="lazy" unoptimized />
-                                  <span>{featured.display_name}</span>
-                                  {featured.previous_event_gap && <small>{featured.previous_event_gap.days}d gap</small>}
-                                </span>
-                              ))}
-                            </div>
-                          ) : null}
-                          {event.source_url && <a className="source-link" href={event.source_url} target="_blank" rel="noreferrer">View source ↗</a>}
-                        </div>
-                      </article>
+                      <div className={`timeline-event-anchor is-${item.state}`} key={event.id} style={styleVars({ "--event-left": item.left, "--event-width": item.width, "--event-row": item.row })}>
+                        <button className={`timeline-bar is-${item.state}${event.ends_at ? "" : " is-open-ended"}`} type="button" aria-label={eventSummary(item)} aria-describedby={activeTooltipId === event.id ? detailId : undefined} onMouseEnter={(mouseEvent) => revealTooltip(item, mouseEvent.currentTarget)} onMouseLeave={closeTooltipSoon} onFocus={(focusEvent) => revealTooltip(item, focusEvent.currentTarget)} onBlur={(focusEvent) => { const nextFocus = focusEvent.relatedTarget; if (nextFocus instanceof Node && focusEvent.currentTarget.parentElement?.contains(nextFocus)) return; closeTooltipSoon(); }}>
+                          <span className="timeline-bar-title">{event.title}</span>
+                        </button>
+                        {activeTooltipId === event.id && tooltipPosition ? <div className="timeline-event-tooltip" id={detailId} role="tooltip" style={styleVars({ "--tooltip-top": tooltipPosition.top, "--tooltip-left": tooltipPosition.left })} onMouseEnter={cancelTooltipClose} onMouseLeave={closeTooltipSoon}>
+                          <div className="event-date"><strong>{formatDate(event.starts_at)}</strong><span>{event.ends_at ? `to ${formatDate(event.ends_at)}` : "End not announced"}</span></div>
+                          <div className="event-copy">
+                            <div className="event-title-line"><h4>{event.title}</h4><span className="state-badge">{item.state}</span></div>
+                            {(event.patch_start || event.patch_end) && <p className="patch-label">Patch {event.patch_start}{event.patch_end && event.patch_end !== event.patch_start ? `–${event.patch_end}` : ""}</p>}
+                            {event.presentation?.featured_entities.length ? (
+                              <div className="featured-strip" aria-label="Featured entities">
+                                {event.presentation.featured_entities.map((featured) => (
+                                  <span className="featured-entity" key={featured.display_name}>
+                                    <Image src={featured.thumbnail_url} alt="" width={32} height={32} loading="lazy" unoptimized />
+                                    <span>{featured.display_name}</span>
+                                    {featured.previous_event_gap && <small>{featured.previous_event_gap.days}d gap</small>}
+                                  </span>
+                                ))}
+                              </div>
+                            ) : null}
+                            {event.source_url && <a className="source-link" href={event.source_url} target="_blank" rel="noreferrer">View source ↗</a>}
+                          </div>
+                        </div> : null}
+                      </div>
                     );
                   })}
                 </div>
