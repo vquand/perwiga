@@ -619,6 +619,11 @@ async fn setup_genshin(State(state): State<WebState>) -> Result<Json<SetupRespon
     genshin_impact::import_curated_skins(application.store_mut(), &work.id)?;
     genshin_impact::import_curated_artifacts(application.store_mut(), &work.id)?;
     genshin_impact::import_curated_artifact_domains(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_event_entities(application.store_mut(), &work.id)?;
+    let events = genshin_impact::curated_calendar_events()?;
+    application
+        .store_mut()
+        .import_calendar_events(&work.id, &events)?;
     Ok(Json(workspace_response(&application, work)?))
 }
 

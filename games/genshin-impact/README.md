@@ -48,6 +48,21 @@ Skin presentation uses the same 4-star purple and 5-star gold rarity borders as 
 
 [`data/npc-han-viet.json`](data/npc-han-viet.json) contains generated confidence-E Hán-Việt search aliases for the subset with usable Chinese names. The local reading source is [hanviet-pinyin-words](https://github.com/ph0ngp/hanviet-pinyin-words); unresolved characters and pages without Chinese names remain explicit in the snapshot metadata. These values are search aids only and never replace official Vietnamese text.
 
+## Event schedule snapshot
+
+[`data/events.json`](data/events.json) is a reviewed, title-owned snapshot of 109 Genshin Impact events from Version 6.3 (Luna IV) through Version 7.0. It includes version boundaries, story and exploration activities, combat challenges, TCG events, resource events, skins, permanent content, and Character Wish records with their featured Character source keys. Date-only historical windows are stored as all-day events; Version 7.0 notices with published Asia-server times retain RFC3339 timestamps and the `Asia server (UTC+8)` timezone.
+
+Historical rows use the community-maintained [Genshin Impact Wiki Event History](https://genshin-impact.fandom.com/wiki/Event/History/Song_of_the_Welkin_Moon). Current and foreseeable Version 7.0 rows use official [HoYoLAB Version 7.0 notices](https://www.hoyolab.com/article/46186330) and linked official announcements. The snapshot was checked on 2026-08-27. It is a reviewable import boundary, not an always-on crawler: a refresh must recheck the cited source, preserve stable `source_key` values, keep source provenance on every row, and use additive imports. Permanent or not-yet-ended events retain a null `ends_at` rather than receiving a guessed date.
+
+The shared calendar renders one swimlane per module-defined `event_type`. Character Wish and Test Run records resolve their `featured_character_keys` through the existing HoYoverse Character snapshot, so the hover preview can show local Character thumbnails, rarity colors, and previous-banner gaps where a prior limited banner is recorded. The event importer is available through UAT setup and the CLI; it never opens a remote service or mutates SQLite destructively.
+
+To import the reviewed Event snapshot into an existing Genshin work:
+
+```text
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \\
+  entity import-genshin-events --work <genshin-work-id>
+```
+
 ## Refresh Regions
 
 Use the same reviewed, pinned `genshin-db` checkout:

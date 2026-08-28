@@ -368,6 +368,7 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
             "artifact-set",
             "artifact-piece",
             "domain",
+            "event",
         ]
     );
 
@@ -445,6 +446,45 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
         }));
 
     let work_id = first_json["work"]["id"].as_str().expect("Genshin work id");
+    let wiki_events = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/entities?entity_type=event"))
+                .body(Body::empty())
+                .expect("Genshin Wiki event list request"),
+        )
+        .await
+        .expect("Genshin Wiki event list response");
+    assert_eq!(wiki_events.status(), StatusCode::OK);
+    let wiki_events = json_response(wiki_events).await;
+    assert_eq!(
+        wiki_events.as_array().expect("Genshin Wiki events").len(),
+        109
+    );
+
+    let timeline = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/calendar-events"))
+                .body(Body::empty())
+                .expect("Genshin timeline request"),
+        )
+        .await
+        .expect("Genshin timeline response");
+    assert_eq!(timeline.status(), StatusCode::OK);
+    let timeline = json_response(timeline).await;
+    let timeline = timeline.as_array().expect("Genshin timeline events");
+    assert_eq!(timeline.len(), 109);
+    let odette = timeline
+        .iter()
+        .find(|event| event["source_identity"] == "swan-shadow-silken-ice-7-0")
+        .expect("Odette Character Wish");
+    assert_eq!(odette["presentation"]["heading"], "Featured Character");
+    assert_eq!(
+        odette["presentation"]["featured_entities"][0]["display_name"],
+        "Odette"
+    );
+
     let characters = app
         .clone()
         .oneshot(

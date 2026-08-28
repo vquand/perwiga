@@ -9,3 +9,9 @@ __pycache__/
 *.sqlite-wal
 *.sqlite-shm
 *.sqlite-journal
+
+# The hosted mirror is generated from the canonical tracked SQLite database.
+# Keep its disposable JSON/assets build input out of the project history.
+/public-mirror/public/data/catalog.json
+/public-mirror/public/assets/modules/
+/public-mirror/public/assets/placeholders/
