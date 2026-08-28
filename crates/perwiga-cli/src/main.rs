@@ -82,6 +82,7 @@ enum EntityCommand {
     ImportGenshinSkins(ImportGenshinSkins),
     ImportGenshinArtifacts(ImportGenshinArtifacts),
     ImportGenshinArtifactDomains(ImportGenshinArtifactDomains),
+    ImportGenshinEvents(ImportGenshinEvents),
 }
 
 #[derive(Debug, Args)]
@@ -204,6 +205,12 @@ struct ImportGenshinArtifacts {
 
 #[derive(Debug, Args)]
 struct ImportGenshinArtifactDomains {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinEvents {
     #[arg(long)]
     work: String,
 }
@@ -469,6 +476,23 @@ fn run() -> perwiga_core::Result<()> {
                     &input.work,
                 )?,
             )?,
+            EntityCommand::ImportGenshinEvents(input) => {
+                let entities = perwiga_game_genshin_impact::import_curated_event_entities(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let events = perwiga_game_genshin_impact::curated_calendar_events()?;
+                let calendar = app
+                    .store_mut()
+                    .import_calendar_events(&input.work, &events)?;
+                print_json(&serde_json::json!({
+                    "entities": entities,
+                    "calendar_events": {
+                        "inserted": calendar.inserted,
+                        "unchanged": calendar.unchanged,
+                    },
+                }))?
+            }
         },
         Command::Note { command } => match command {
             NoteCommand::Add(input) => print_json(&app.store().create_note(

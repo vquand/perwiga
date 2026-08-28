@@ -834,6 +834,7 @@ dependencies = [
 name = "perwiga-game-genshin-impact"
 version = "0.1.0"
 dependencies = [
+ "chrono",
  "perwiga-core",
  "serde",
  "serde_json",

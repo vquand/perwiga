@@ -3,19 +3,27 @@ use std::{
     sync::OnceLock,
 };
 
+use chrono::{DateTime, FixedOffset, NaiveDate};
 use perwiga_core::{
     model::{
-        AliasInput, EntityAppearanceInput, EntityAppearanceLocationInput, EntityImportSummary,
-        EntityInput, SourcedEntityInput, WikiEntity,
+        AliasInput, CalendarEvent, CalendarEventInput, EntityAppearanceInput,
+        EntityAppearanceLocationInput, EntityImportSummary, EntityInput, SourcedEntityInput,
+        WikiEntity,
     },
-    Capability, EntityFacetDefinition, EntityFacetOption, EntityPresentation, EntityTypeDefinition,
-    LibraryModule, ModuleRegistry, PerwigaError, Store, ThemeDefinition, WorkKind,
+    CalendarEventPresentation, Capability, EntityEventRecencyPresentation, EntityFacetDefinition,
+    EntityFacetOption, EntityPresentation, EntityTypeDefinition, EventFeaturedEntityPresentation,
+    EventPreviousGapPresentation, LibraryModule, ModuleRegistry, PerwigaError, Store,
+    ThemeDefinition, WorkKind,
 };
 use serde::Deserialize;
 
 pub struct GenshinImpactModule;
 
-static CAPABILITIES: &[Capability] = &[Capability::ManualContent, Capability::EntitySchema];
+static CAPABILITIES: &[Capability] = &[
+    Capability::ManualContent,
+    Capability::EntitySchema,
+    Capability::ScheduledEvents,
+];
 const SOURCE_PROVIDER: &str = "Genshin Impact official global character directory";
 const SOURCE_URL: &str = "https://genshin.hoyoverse.com/en/character/mondstadt";
 const HAN_VIET_DICTIONARY_URL: &str = "https://hvdic.thivien.net/transcript.php#trans";
@@ -27,6 +35,10 @@ const ARTIFACT_SOURCE_PROVIDER: &str =
     "GenshinData Artifact catalog verified against official HoYoWiki";
 const ARTIFACT_DOMAIN_SOURCE_PROVIDER: &str = "GenshinData Artifact Domain extracts";
 const REGION_SOURCE_PROVIDER: &str = "GenshinData Geography extracts via genshin-db";
+const EVENT_SOURCE_PROVIDER: &str =
+    "Genshin Impact event snapshot (official HoYoLAB notices and community event history)";
+const EVENT_HISTORY_SOURCE_URL: &str =
+    "https://genshin-impact.fandom.com/wiki/Event/History/Song_of_the_Welkin_Moon";
 const ARTIFACT_SOURCE_URL: &str = "https://wiki.hoyolab.com/pc/genshin/aggregate/5";
 const ONE_STAR_COLOR: &str = "#8b9198";
 const TWO_STAR_COLOR: &str = "#6fa66f";
@@ -75,6 +87,11 @@ static ENTITY_TYPES: &[EntityTypeDefinition] = &[
         key: "domain",
         display_name: "Domain",
         description: "A repeatable challenge entrance that hosts Artifact rewards.",
+    },
+    EntityTypeDefinition {
+        key: "event",
+        display_name: "Event",
+        description: "A named Genshin Impact event, activity, or limited-time schedule record.",
     },
 ];
 static REGION_OPTIONS: &[EntityFacetOption] = &[
@@ -849,6 +866,42 @@ struct CuratedArtifactDomain {
 }
 
 #[derive(Debug, Deserialize)]
+struct EventSnapshot {
+    metadata: EventSnapshotMetadata,
+    events: Vec<CuratedEvent>,
+}
+
+#[derive(Debug, Deserialize)]
+struct EventSnapshotMetadata {
+    module_id: String,
+    source_provider: String,
+    time_zone: String,
+    source_checked_at: String,
+    notes: String,
+}
+
+#[derive(Debug, Deserialize)]
+struct CuratedEvent {
+    source_key: String,
+    title: String,
+    event_type: String,
+    starts_at: String,
+    ends_at: Option<String>,
+    #[serde(default)]
+    is_all_day: bool,
+    patch_start: String,
+    patch_end: Option<String>,
+    occurrence_index: Option<u16>,
+    #[serde(default)]
+    recurring: bool,
+    source_url: String,
+    schedule_note: Option<String>,
+    #[serde(default)]
+    featured_character_keys: Vec<String>,
+    featured_heading: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
 struct RegionSnapshot {
     schema: String,
     checked_at: String,
@@ -1319,6 +1372,193 @@ fn curated_artifact_domain_snapshot() -> Result<&'static ArtifactDomainSnapshot,
         Ok(snapshot) => Ok(snapshot),
         Err(message) => Err(PerwigaError::Validation(message.clone())),
     }
+}
+
+fn curated_event_snapshot() -> Result<&'static EventSnapshot, PerwigaError> {
+    static SNAPSHOT: OnceLock<Result<EventSnapshot, String>> = OnceLock::new();
+    match SNAPSHOT.get_or_init(|| {
+        let snapshot: EventSnapshot = serde_json::from_str(include_str!("../data/events.json"))
+            .map_err(|error| format!("invalid bundled Genshin event snapshot: {error}"))?;
+        validate_event_snapshot(&snapshot)?;
+        Ok(snapshot)
+    }) {
+        Ok(snapshot) => Ok(snapshot),
+        Err(message) => Err(PerwigaError::Validation(message.clone())),
+    }
+}
+
+fn validate_event_snapshot(snapshot: &EventSnapshot) -> Result<(), String> {
+    if snapshot.metadata.module_id != "genshin-impact"
+        || snapshot.metadata.source_provider != EVENT_SOURCE_PROVIDER
+        || snapshot.metadata.time_zone != "Asia server (UTC+8)"
+        || snapshot.metadata.source_checked_at != "2026-08-27"
+        || snapshot.metadata.notes.trim().is_empty()
+    {
+        return Err("invalid Genshin event snapshot metadata".into());
+    }
+
+    let mut source_keys = HashSet::new();
+    for event in &snapshot.events {
+        if event.source_key.trim().is_empty()
+            || !source_keys.insert(event.source_key.as_str())
+            || event.title.trim().is_empty()
+            || event.event_type.trim().is_empty()
+            || event.patch_start.trim().is_empty()
+            || !(event.source_url == EVENT_HISTORY_SOURCE_URL
+                || event
+                    .source_url
+                    .starts_with("https://genshin-impact.fandom.com/wiki/Version/")
+                || event.source_url.starts_with("https://www.hoyolab.com/"))
+        {
+            return Err(format!(
+                "invalid Genshin event source record: {}",
+                event.source_key
+            ));
+        }
+
+        let (start, end) = if event.is_all_day {
+            let start = NaiveDate::parse_from_str(&event.starts_at, "%Y-%m-%d")
+                .map_err(|_| format!("invalid all-day event start: {}", event.source_key))?;
+            let end = event
+                .ends_at
+                .as_deref()
+                .map(|value| {
+                    NaiveDate::parse_from_str(value, "%Y-%m-%d")
+                        .map_err(|_| format!("invalid all-day event end: {}", event.source_key))
+                })
+                .transpose()?;
+            (
+                start.and_hms_opt(0, 0, 0).expect("midnight"),
+                end.map(|value| value.and_hms_opt(0, 0, 0).expect("midnight")),
+            )
+        } else {
+            let start = DateTime::parse_from_rfc3339(&event.starts_at)
+                .map_err(|_| format!("invalid timed event start: {}", event.source_key))?;
+            let end = event
+                .ends_at
+                .as_deref()
+                .map(|value| {
+                    DateTime::parse_from_rfc3339(value)
+                        .map_err(|_| format!("invalid timed event end: {}", event.source_key))
+                })
+                .transpose()?;
+            (start.naive_utc(), end.map(|value| value.naive_utc()))
+        };
+        if let Some(end) = end {
+            if end <= start {
+                return Err(format!("event ends before it starts: {}", event.source_key));
+            }
+        }
+        for character_key in &event.featured_character_keys {
+            if curated_character(character_key).is_none() {
+                return Err(format!(
+                    "event {} references unknown Character {}",
+                    event.source_key, character_key
+                ));
+            }
+        }
+    }
+    if source_keys.len() != snapshot.events.len() || snapshot.events.is_empty() {
+        return Err("Genshin event snapshot is empty or has duplicate source keys".into());
+    }
+    Ok(())
+}
+
+fn curated_event_display_title(event: &CuratedEvent) -> String {
+    if !event.recurring {
+        return event.title.clone();
+    }
+    let patch_end = event.patch_end.as_deref().unwrap_or(&event.patch_start);
+    let patch = if event.patch_start == patch_end {
+        event.patch_start.clone()
+    } else {
+        format!("{}–{}", event.patch_start, patch_end)
+    };
+    match event.occurrence_index {
+        Some(index) => format!("{} {}.{}", event.title, patch, index),
+        None => format!("{} {}", event.title, patch),
+    }
+}
+
+pub fn curated_calendar_events() -> Result<Vec<CalendarEventInput>, PerwigaError> {
+    let snapshot = curated_event_snapshot()?;
+    snapshot
+        .events
+        .iter()
+        .map(|event| {
+            Ok(CalendarEventInput {
+                title: curated_event_display_title(event),
+                starts_at: event.starts_at.clone(),
+                ends_at: event.ends_at.clone(),
+                is_all_day: event.is_all_day,
+                source_url: Some(event.source_url.clone()),
+                source_provider: snapshot.metadata.source_provider.clone(),
+                source_identity: Some(event.source_key.clone()),
+                event_type: Some(event.event_type.clone()),
+                time_zone: Some(snapshot.metadata.time_zone.clone()),
+                patch_start: Some(event.patch_start.clone()),
+                patch_end: Some(
+                    event
+                        .patch_end
+                        .clone()
+                        .unwrap_or_else(|| event.patch_start.clone()),
+                ),
+                occurrence_index: event.occurrence_index,
+                schedule_note: event.schedule_note.clone(),
+                source_checked_at: Some(snapshot.metadata.source_checked_at.clone()),
+            })
+        })
+        .collect()
+}
+
+pub fn import_curated_event_entities(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<EntityImportSummary> {
+    let work = store
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if work.kind != WorkKind::Game || work.module_id != "genshin-impact" {
+        return Err(PerwigaError::Validation(format!(
+            "work {work_id} is not owned by the Genshin Impact module"
+        )));
+    }
+
+    let snapshot = curated_event_snapshot()?;
+    let inputs = snapshot
+        .events
+        .iter()
+        .map(|event| {
+            let title = curated_event_display_title(event);
+            let published_end = event.ends_at.as_deref().unwrap_or("No published end time");
+            SourcedEntityInput {
+                source_provider: snapshot.metadata.source_provider.clone(),
+                source_identity: event.source_key.clone(),
+                entity: EntityInput {
+                    entity_type: "event".to_string(),
+                    official_english_name: title.clone(),
+                    official_original_name: title,
+                    official_vietnamese_name: None,
+                    automatic_vietnamese_translation: None,
+                    english_description: event.schedule_note.clone(),
+                    other_information: Some(format!(
+                        "Curated Genshin event source key: {}. Type: {}. Start: {}. End: {}. Time zone: {}. Patch: {}–{}. Source: {}. Checked {}. Historical windows are a reviewed snapshot, not a live feed.",
+                        event.source_key,
+                        event.event_type,
+                        event.starts_at,
+                        published_end,
+                        snapshot.metadata.time_zone,
+                        event.patch_start,
+                        event.patch_end.as_deref().unwrap_or(&event.patch_start),
+                        event.source_url,
+                        snapshot.metadata.source_checked_at
+                    )),
+                },
+                aliases: Vec::new(),
+            }
+        })
+        .collect::<Vec<_>>();
+    store.import_sourced_entities(work_id, &inputs)
 }
 
 fn curated_region_snapshot() -> Result<&'static RegionSnapshot, PerwigaError> {
@@ -2706,6 +2946,63 @@ pub fn import_curated_artifact_domains(
     store.import_sourced_entities(work_id, &inputs)
 }
 
+fn event_instant(value: &str) -> Option<DateTime<FixedOffset>> {
+    if value.len() == 10 {
+        DateTime::parse_from_rfc3339(&format!("{value}T00:00:00+08:00")).ok()
+    } else {
+        DateTime::parse_from_rfc3339(value).ok()
+    }
+}
+
+fn last_ended_character_event(source_key: &str) -> Option<&'static CuratedEvent> {
+    curated_event_snapshot()
+        .ok()?
+        .events
+        .iter()
+        .filter(|event| {
+            event.event_type == "Character Wish"
+                && event.ends_at.is_some()
+                && event
+                    .featured_character_keys
+                    .iter()
+                    .any(|key| key == source_key)
+        })
+        .max_by_key(|event| event.ends_at.as_deref().and_then(event_instant))
+}
+
+fn previous_character_event_gap(
+    current_event: &CuratedEvent,
+    source_key: &str,
+) -> Option<EventPreviousGapPresentation> {
+    if current_event.event_type != "Character Wish" {
+        return None;
+    }
+    let current_start = event_instant(&current_event.starts_at)?;
+    let previous = curated_event_snapshot()
+        .ok()?
+        .events
+        .iter()
+        .filter(|event| {
+            event.source_key != current_event.source_key
+                && event.event_type == "Character Wish"
+                && event
+                    .featured_character_keys
+                    .iter()
+                    .any(|key| key == source_key)
+        })
+        .filter_map(|event| {
+            let ended_at = event.ends_at.as_deref()?;
+            let end = event_instant(ended_at)?;
+            (end <= current_start).then_some((event, end))
+        })
+        .max_by_key(|(_, end)| *end)?;
+    Some(EventPreviousGapPresentation {
+        days: current_start.signed_duration_since(previous.1).num_days(),
+        event_title: curated_event_display_title(previous.0),
+        ended_at: previous.0.ends_at.clone()?,
+    })
+}
+
 impl LibraryModule for GenshinImpactModule {
     fn id(&self) -> &'static str {
         "genshin-impact"
@@ -2896,8 +3193,88 @@ impl LibraryModule for GenshinImpactModule {
                     facet_values: BTreeMap::new(),
                 })
             }
+            "event" => {
+                let information = entity.other_information.as_deref()?;
+                let (_, suffix) = information.split_once("Curated Genshin event source key: ")?;
+                let source_key = suffix.split('.').next()?.trim();
+                let event = curated_event_snapshot()
+                    .ok()?
+                    .events
+                    .iter()
+                    .find(|event| event.source_key == source_key)?;
+                Some(EntityPresentation {
+                    thumbnail_url: "/assets/placeholders/event.svg".to_string(),
+                    accent_color: THEME.accent.to_string(),
+                    context_label: Some(event.event_type.clone()),
+                    context_icon_url: None,
+                    label: event.patch_start.clone(),
+                    rarity: None,
+                    facets: BTreeMap::from([("event_type".to_string(), event.event_type.clone())]),
+                    facet_values: BTreeMap::new(),
+                })
+            }
             _ => None,
         }
+    }
+
+    fn entity_event_recency(&self, entity: &WikiEntity) -> Option<EntityEventRecencyPresentation> {
+        let source_key = character_source_key(entity)?;
+        let presentation = curated_character_presentation(source_key)?;
+        if presentation.rarity != 5 {
+            return None;
+        }
+        let event = last_ended_character_event(source_key)?;
+        Some(EntityEventRecencyPresentation {
+            heading: "Last limited banner".into(),
+            event_title: curated_event_display_title(event),
+            ended_at: event.ends_at.clone()?,
+        })
+    }
+
+    fn calendar_event_presentation(
+        &self,
+        event: &CalendarEvent,
+    ) -> Option<CalendarEventPresentation> {
+        let source_identity = event.source_identity.as_deref()?;
+        let curated_event = curated_event_snapshot()
+            .ok()?
+            .events
+            .iter()
+            .find(|curated| curated.source_key == source_identity)?;
+        if curated_event.featured_character_keys.is_empty() {
+            return None;
+        }
+
+        let featured_entities = curated_event
+            .featured_character_keys
+            .iter()
+            .map(|source_key| {
+                let character = curated_character(source_key)?;
+                let presentation = curated_character_presentation(source_key)?;
+                character_thumbnail(source_key)?;
+                Some(EventFeaturedEntityPresentation {
+                    display_name: character.official_english_name.clone(),
+                    thumbnail_url: format!(
+                        "/assets/modules/genshin-impact/characters/{source_key}.png"
+                    ),
+                    accent_color: character_accent(presentation).to_string(),
+                    label: format!("{}★", presentation.rarity),
+                    previous_event_gap: previous_character_event_gap(curated_event, source_key),
+                })
+            })
+            .collect::<Option<Vec<_>>>()?;
+
+        Some(CalendarEventPresentation {
+            heading: curated_event.featured_heading.clone().unwrap_or_else(|| {
+                match (curated_event.event_type.as_str(), featured_entities.len()) {
+                    ("Character Wish", 1) => "Featured Character".to_string(),
+                    ("Character Wish", _) => "Featured Characters".to_string(),
+                    (_, 1) => "Trial Character".to_string(),
+                    _ => "Trial Characters".to_string(),
+                }
+            }),
+            featured_entities,
+        })
     }
 }
 
@@ -3034,8 +3411,96 @@ mod tests {
                 "artifact-set",
                 "artifact-piece",
                 "domain",
+                "event",
             ]
         );
+    }
+
+    #[test]
+    fn curated_event_snapshot_has_dated_windows_and_known_featured_characters() {
+        let snapshot = curated_event_snapshot().expect("Genshin event snapshot");
+        assert!(snapshot.events.len() >= 70);
+        assert_eq!(snapshot.metadata.time_zone, "Asia server (UTC+8)");
+        assert!(snapshot.events.iter().any(|event| event.source_key
+            == "great-expeditionist-challenge-7-0"
+            && event.starts_at == "2026-08-28T10:00:00+08:00"
+            && event.ends_at.as_deref() == Some("2026-09-14T03:59:00+08:00")));
+        assert!(snapshot
+            .events
+            .iter()
+            .any(|event| event.source_key == "swan-shadow-silken-ice-7-0"
+                && event.featured_character_keys == ["hoyoverse-content-165495"]));
+        assert!(snapshot.events.iter().any(|event| {
+            event.source_key == "to-temper-thyself-2026-05-18"
+                && event.recurring
+                && event.patch_end.as_deref() == Some("6.6")
+        }));
+    }
+
+    #[test]
+    fn curated_event_import_is_additive_idempotent_and_presents_characters() {
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let work = store
+            .insert_work(WorkKind::Game, "genshin-impact", "Genshin Impact")
+            .expect("Genshin work");
+
+        let first =
+            import_curated_event_entities(&mut store, &work.id).expect("first Event import");
+        let expected = curated_calendar_events().expect("calendar events").len();
+        assert_eq!(first.inserted, expected);
+        assert_eq!(first.unchanged, 0);
+        let events = curated_calendar_events().expect("calendar events");
+        let imported = store
+            .import_calendar_events(&work.id, &events)
+            .expect("calendar import");
+        assert_eq!(imported.inserted, expected);
+        assert_eq!(imported.unchanged, 0);
+
+        let second =
+            import_curated_event_entities(&mut store, &work.id).expect("second Event import");
+        assert_eq!(second.inserted, 0);
+        assert_eq!(second.unchanged, expected);
+        let imported_again = store
+            .import_calendar_events(&work.id, &events)
+            .expect("idempotent calendar import");
+        assert_eq!(imported_again.inserted, 0);
+        assert_eq!(imported_again.unchanged, expected);
+
+        let event = events
+            .iter()
+            .find(|event| event.source_identity.as_deref() == Some("swan-shadow-silken-ice-7-0"))
+            .expect("Odette event");
+        let calendar_event = CalendarEvent {
+            id: "event-swan-shadow".into(),
+            work_id: work.id.clone(),
+            title: event.title.clone(),
+            starts_at: event.starts_at.clone(),
+            ends_at: event.ends_at.clone(),
+            is_all_day: event.is_all_day,
+            source_url: event.source_url.clone(),
+            source_provider: event.source_provider.clone(),
+            source_identity: event.source_identity.clone(),
+            event_type: event.event_type.clone(),
+            time_zone: event.time_zone.clone(),
+            patch_start: event.patch_start.clone(),
+            patch_end: event.patch_end.clone(),
+            occurrence_index: event.occurrence_index,
+            schedule_note: event.schedule_note.clone(),
+            source_checked_at: event.source_checked_at.clone(),
+            created_at: "2026-08-27T00:00:00Z".into(),
+            updated_at: "2026-08-27T00:00:00Z".into(),
+        };
+        let presentation = module()
+            .calendar_event_presentation(&calendar_event)
+            .expect("featured character presentation");
+        assert_eq!(presentation.heading, "Featured Character");
+        assert_eq!(presentation.featured_entities[0].display_name, "Odette");
+        assert_eq!(presentation.featured_entities[0].label, "5★");
+        assert_eq!(
+            presentation.featured_entities[0].thumbnail_url,
+            "/assets/modules/genshin-impact/characters/hoyoverse-content-165495.png"
+        );
+        assert_eq!(store.integrity_check().expect("integrity"), "ok");
     }
 
     #[test]
