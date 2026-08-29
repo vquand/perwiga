@@ -49,6 +49,7 @@ pub enum Capability {
     EntitySchema,
     UpdateFeed,
     ScheduledEvents,
+    LoreTimeline,
     CustomView,
 }
 
@@ -57,6 +58,28 @@ pub struct EntityTypeDefinition {
     pub key: &'static str,
     pub display_name: &'static str,
     pub description: &'static str,
+}
+
+/// A module-owned vocabulary for lore subjects and event roles. The shared
+/// timeline stores these values as opaque strings, while the title module
+/// supplies the labels and descriptions used by import and review surfaces.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+pub struct LoreSubjectTypeDefinition {
+    pub key: &'static str,
+    pub display_name: &'static str,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+pub struct LoreRoleDefinition {
+    pub key: &'static str,
+    pub display_name: &'static str,
+    pub description: &'static str,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+pub struct LoreSchemaDefinition {
+    pub subject_types: &'static [LoreSubjectTypeDefinition],
+    pub roles: &'static [LoreRoleDefinition],
 }
 
 /// A value offered by a module-owned entity facet.
@@ -183,6 +206,9 @@ pub trait LibraryModule: Sync {
     fn entity_types(&self) -> &'static [EntityTypeDefinition];
     fn entity_facets(&self) -> &'static [EntityFacetDefinition] {
         &[]
+    }
+    fn lore_schema(&self) -> Option<&'static LoreSchemaDefinition> {
+        None
     }
     /// Returns trusted, compile-time theme tokens for generic shared views.
     fn theme(&self) -> ThemeDefinition {

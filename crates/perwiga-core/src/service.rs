@@ -29,6 +29,28 @@ impl Application {
         self.registry.all()
     }
 
+    pub fn module_for_work(&self, work_id: &str) -> Result<&'static dyn LibraryModule> {
+        let work = self
+            .store
+            .get_work(work_id)?
+            .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+        self.registry
+            .get(work.kind, &work.module_id)
+            .ok_or_else(|| {
+                PerwigaError::Unsupported(format!(
+                    "module {}:{} is not registered",
+                    work.kind, work.module_id
+                ))
+            })
+    }
+
+    pub fn supports_capability(&self, work_id: &str, capability: Capability) -> Result<bool> {
+        Ok(self
+            .module_for_work(work_id)?
+            .capabilities()
+            .contains(&capability))
+    }
+
     pub fn create_work(
         &self,
         kind: WorkKind,

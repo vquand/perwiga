@@ -4,6 +4,15 @@ use crate::{error::Result, PerwigaError};
 
 pub const LORE_CANDIDATE_SCHEMA: &str = "perwiga-lore-candidates/v1";
 
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct EntityExternalIdentity {
+    pub id: String,
+    pub work_id: String,
+    pub entity_id: String,
+    pub source_provider: String,
+    pub source_identity: String,
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum LoreTimeKind {
@@ -182,6 +191,142 @@ pub struct LoreCandidateBatch {
     pub events: Vec<LoreEventCandidate>,
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LorePeriod {
+    pub id: String,
+    pub work_id: String,
+    pub source_provider: String,
+    pub source_identity: String,
+    pub name_en: String,
+    pub description_en: Option<String>,
+    pub display_order: i64,
+    pub parent_period_id: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreSource {
+    pub id: String,
+    pub work_id: String,
+    pub source_provider: String,
+    pub source_identity: String,
+    pub source_kind: String,
+    pub title: String,
+    pub language: String,
+    pub source_url: Option<String>,
+    pub content_sha256: String,
+    pub checked_at: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreEvidence {
+    pub id: String,
+    pub source_id: String,
+    pub locator: String,
+    pub excerpt: String,
+    pub excerpt_fingerprint: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreEvent {
+    pub id: String,
+    pub work_id: String,
+    pub source_provider: String,
+    pub source_identity: String,
+    pub revision: i64,
+    pub title_en: String,
+    pub summary_en: Option<String>,
+    pub time_kind: LoreTimeKind,
+    pub time_precision: LoreTimePrecision,
+    pub time_label: String,
+    pub start_period_id: Option<String>,
+    pub end_period_id: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreEventRelation {
+    pub id: String,
+    pub event_id: String,
+    pub related_event_id: String,
+    pub relation_kind: LoreRelationKind,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreSubject {
+    pub id: String,
+    pub work_id: String,
+    pub attested_name: String,
+    pub proposed_type: String,
+    pub wiki_entity_id: Option<String>,
+    pub source_provider: String,
+    pub source_identity: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreClaim {
+    pub id: String,
+    pub event_id: String,
+    pub claim_key: String,
+    pub text_en: String,
+    pub assertion_kind: LoreAssertionKind,
+    pub certainty: LoreCertainty,
+    pub branch_group: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreInvolvement {
+    pub id: String,
+    pub event_id: Option<String>,
+    pub claim_id: Option<String>,
+    pub subject_id: String,
+    pub role: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreClaimEvidence {
+    pub claim_id: String,
+    pub evidence: LoreEvidence,
+    pub stance: LoreEvidenceStance,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreEventDetail {
+    pub event: LoreEvent,
+    pub claims: Vec<LoreClaim>,
+    pub involvements: Vec<LoreInvolvement>,
+    pub subjects: Vec<LoreSubject>,
+    pub evidence: Vec<LoreClaimEvidence>,
+    pub sources: Vec<LoreSource>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreGraph {
+    pub periods: Vec<LorePeriod>,
+    pub events: Vec<LoreEvent>,
+    pub relations: Vec<LoreEventRelation>,
+    pub subjects: Vec<LoreSubject>,
+    pub next_cursor: Option<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LoreCandidateRecord {
+    pub id: String,
+    pub batch_id: String,
+    pub candidate_key: String,
+    pub candidate_kind: String,
+    pub payload_json: String,
+    pub status: String,
+    pub validation_note: Option<String>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
+pub struct LoreImportSummary {
+    pub batch_inserted: usize,
+    pub candidates_inserted: usize,
+    pub candidates_unchanged: usize,
+    pub auto_accepted: usize,
+    pub pending: usize,
+}
+
 impl LoreCandidateBatch {
     pub fn validate(&self) -> Result<()> {
         if self.schema != LORE_CANDIDATE_SCHEMA {
@@ -279,7 +424,10 @@ impl LoreCandidateBatch {
                     )));
                 }
                 if relation.event_key == event.key
-                    && matches!(relation.kind, LoreRelationKind::Before | LoreRelationKind::After)
+                    && matches!(
+                        relation.kind,
+                        LoreRelationKind::Before | LoreRelationKind::After
+                    )
                 {
                     return Err(PerwigaError::Validation(format!(
                         "lore event {} cannot precede itself",
@@ -295,8 +443,62 @@ impl LoreCandidateBatch {
                 validate_evidence(&claim.evidence, &source_keys, "lore claim")?;
             }
         }
+        validate_temporal_cycles(&self.events)?;
         Ok(())
     }
+}
+
+fn validate_temporal_cycles(events: &[LoreEventCandidate]) -> Result<()> {
+    let mut edges: std::collections::HashMap<&str, Vec<&str>> = std::collections::HashMap::new();
+    for event in events {
+        for relation in &event.time.relations {
+            match relation.kind {
+                LoreRelationKind::Before => edges
+                    .entry(event.key.as_str())
+                    .or_default()
+                    .push(relation.event_key.as_str()),
+                LoreRelationKind::After => edges
+                    .entry(relation.event_key.as_str())
+                    .or_default()
+                    .push(event.key.as_str()),
+                LoreRelationKind::Overlaps | LoreRelationKind::Contains => {}
+            }
+        }
+    }
+    let mut visiting = std::collections::HashSet::new();
+    let mut visited = std::collections::HashSet::new();
+    for event in events {
+        if has_cycle(event.key.as_str(), &edges, &mut visiting, &mut visited) {
+            return Err(PerwigaError::Validation(
+                "lore temporal precedence contains a cycle".into(),
+            ));
+        }
+    }
+    Ok(())
+}
+
+fn has_cycle<'a>(
+    key: &'a str,
+    edges: &std::collections::HashMap<&'a str, Vec<&'a str>>,
+    visiting: &mut std::collections::HashSet<&'a str>,
+    visited: &mut std::collections::HashSet<&'a str>,
+) -> bool {
+    if visiting.contains(key) {
+        return true;
+    }
+    if visited.contains(key) {
+        return false;
+    }
+    visiting.insert(key);
+    if edges.get(key).is_some_and(|next| {
+        next.iter()
+            .any(|target| has_cycle(target, edges, visiting, visited))
+    }) {
+        return true;
+    }
+    visiting.remove(key);
+    visited.insert(key);
+    false
 }
 
 fn required(value: &str, field: &str) -> Result<()> {
@@ -313,10 +515,14 @@ where
     let mut keys = std::collections::HashSet::new();
     for value in values {
         if value.trim().is_empty() {
-            return Err(PerwigaError::Validation(format!("{label} key cannot be empty")));
+            return Err(PerwigaError::Validation(format!(
+                "{label} key cannot be empty"
+            )));
         }
         if !keys.insert(value.to_string()) {
-            return Err(PerwigaError::Validation(format!("duplicate {label} key {value}")));
+            return Err(PerwigaError::Validation(format!(
+                "duplicate {label} key {value}"
+            )));
         }
     }
     Ok(keys)
@@ -464,11 +670,46 @@ mod tests {
         assert!(error.to_string().contains("unknown subject"));
 
         let mut value = batch();
-        value.events[0].time.relations.push(LoreEventRelationCandidate {
-            kind: LoreRelationKind::Before,
-            event_key: "first-event".into(),
-        });
+        value.events[0]
+            .time
+            .relations
+            .push(LoreEventRelationCandidate {
+                kind: LoreRelationKind::Before,
+                event_key: "first-event".into(),
+            });
         let error = value.validate().expect_err("self-reference");
         assert!(error.to_string().contains("cannot precede itself"));
+    }
+
+    #[test]
+    fn rejects_a_temporal_precedence_cycle() {
+        let mut value = batch();
+        value.events.push(LoreEventCandidate {
+            key: "second-event".into(),
+            title_en: "Second event".into(),
+            summary_en: None,
+            time: LoreTimeCandidate {
+                kind: LoreTimeKind::Moment,
+                precision: LoreTimePrecision::Relative,
+                label: "After the first event".into(),
+                start_period_key: Some("before".into()),
+                end_period_key: None,
+                relations: vec![LoreEventRelationCandidate {
+                    kind: LoreRelationKind::Before,
+                    event_key: "first-event".into(),
+                }],
+            },
+            involvements: vec![],
+            claims: vec![],
+        });
+        value.events[0]
+            .time
+            .relations
+            .push(LoreEventRelationCandidate {
+                kind: LoreRelationKind::Before,
+                event_key: "second-event".into(),
+            });
+        let error = value.validate().expect_err("cycle");
+        assert!(error.to_string().contains("cycle"));
     }
 }

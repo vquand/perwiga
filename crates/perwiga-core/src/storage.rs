@@ -1,12 +1,25 @@
-use std::{path::Path, time::Duration};
+use std::{
+    collections::{HashMap, HashSet},
+    path::Path,
+    time::Duration,
+};
 
 use chrono::{SecondsFormat, Utc};
 use rusqlite::{params, types::Type, Connection, OptionalExtension};
+use serde::de::DeserializeOwned;
 use url::Url;
 use uuid::Uuid;
 
 use crate::{
     error::{PerwigaError, Result},
+    lore::{
+        EntityExternalIdentity, LoreAssertionKind, LoreCandidateBatch, LoreCandidateRecord,
+        LoreCertainty, LoreClaim, LoreClaimCandidate, LoreClaimEvidence, LoreEvent,
+        LoreEventCandidate, LoreEventDetail, LoreEventRelation, LoreEvidence,
+        LoreEvidenceCandidate, LoreEvidenceStance, LoreImportSummary, LoreInvolvement, LorePeriod,
+        LorePeriodCandidate, LoreRelationKind, LoreSource, LoreSourceCandidate, LoreSubject,
+        LoreSubjectCandidate, LoreTimeKind, LoreTimePrecision,
+    },
     model::{
         AliasBatchSummary, AliasInput, CalendarEvent, CalendarEventImportSummary,
         CalendarEventInput, Checklist, ChecklistItem, EntityAlias, EntityAliasBatchInput,
@@ -93,6 +106,15 @@ impl Store {
             transaction.execute(
                 "INSERT INTO schema_migrations (version, applied_at) VALUES (?1, ?2)",
                 params![5_i64, now()],
+            )?;
+            transaction.commit()?;
+        }
+        if current.unwrap_or(0) < 6 {
+            let transaction = self.connection.transaction()?;
+            transaction.execute_batch(SCHEMA_V6)?;
+            transaction.execute(
+                "INSERT INTO schema_migrations (version, applied_at) VALUES (?1, ?2)",
+                params![6_i64, now()],
             )?;
             transaction.commit()?;
         }
@@ -395,6 +417,744 @@ impl Store {
             .map_err(Into::into)
     }
 
+    /// Adds a stable module/source identity without changing the multilingual
+    /// wiki row. This lets title-owned snapshots resolve entities whose common
+    /// names are not unique (for example, two entries with the same display
+    /// name) while preserving the existing entity contract.
+    pub fn add_entity_external_identity(
+        &self,
+        work_id: &str,
+        entity_id: &str,
+        source_provider: &str,
+        source_identity: &str,
+    ) -> Result<EntityExternalIdentity> {
+        ensure_work(&self.connection, work_id)?;
+        let owner: Option<String> = self
+            .connection
+            .query_row(
+                "SELECT work_id FROM wiki_entities WHERE id = ?1",
+                [entity_id],
+                |row| row.get(0),
+            )
+            .optional()?;
+        match owner {
+            Some(owner) if owner == work_id => {}
+            Some(_) => {
+                return Err(PerwigaError::Conflict(
+                    "entity external identity crosses work ownership boundaries".into(),
+                ))
+            }
+            None => return Err(PerwigaError::NotFound(format!("entity {entity_id}"))),
+        }
+        let source_provider = required_text(source_provider, "entity identity provider")?;
+        let source_identity = required_text(source_identity, "entity identity")?;
+        self.connection.execute(
+            "INSERT INTO entity_external_identities
+             (id, work_id, entity_id, source_provider, source_identity, created_at)
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6)
+             ON CONFLICT (work_id, source_provider, source_identity) DO NOTHING",
+            params![
+                new_id(),
+                work_id,
+                entity_id,
+                source_provider,
+                source_identity,
+                now()
+            ],
+        )?;
+        self.connection
+            .query_row(
+                "SELECT id, work_id, entity_id, source_provider, source_identity
+                 FROM entity_external_identities
+                 WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                params![work_id, source_provider, source_identity],
+                |row| {
+                    Ok(EntityExternalIdentity {
+                        id: row.get(0)?,
+                        work_id: row.get(1)?,
+                        entity_id: row.get(2)?,
+                        source_provider: row.get(3)?,
+                        source_identity: row.get(4)?,
+                    })
+                },
+            )
+            .map_err(Into::into)
+    }
+
+    pub fn resolve_entity_external_identity(
+        &self,
+        work_id: &str,
+        source_provider: &str,
+        source_identity: &str,
+    ) -> Result<Option<String>> {
+        self.connection
+            .query_row(
+                "SELECT entity_id FROM entity_external_identities
+                 WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                params![work_id, source_provider, source_identity],
+                |row| row.get(0),
+            )
+            .optional()
+            .map_err(Into::into)
+    }
+
+    /// Stores a validated candidate batch without materializing unreviewed
+    /// lore into the canonical graph. Sources and exact external identity
+    /// references receive an automatic validation status; narrative events,
+    /// claims, ordering, and provisional subjects remain reviewable records.
+    pub fn import_lore_candidate_batch(
+        &mut self,
+        work_id: &str,
+        batch: &LoreCandidateBatch,
+    ) -> Result<LoreImportSummary> {
+        batch.validate()?;
+        let transaction = self.connection.transaction()?;
+        let module_id: String = transaction
+            .query_row(
+                "SELECT module_id FROM library_works WHERE id = ?1",
+                [work_id],
+                |row| row.get(0),
+            )
+            .optional()?
+            .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+        if module_id != batch.module_id {
+            return Err(PerwigaError::Conflict(format!(
+                "lore candidate module {} does not match work module {}",
+                batch.module_id, module_id
+            )));
+        }
+        if let Some(batch_id) = transaction
+            .query_row(
+                "SELECT id FROM lore_candidate_batches
+                 WHERE work_id = ?1 AND corpus_manifest_sha256 = ?2
+                   AND generator_name = ?3 AND generator_version = ?4",
+                params![
+                    work_id,
+                    batch.corpus.manifest_sha256,
+                    batch.generator.name,
+                    batch.generator.version
+                ],
+                |row| row.get::<_, String>(0),
+            )
+            .optional()?
+        {
+            transaction.commit()?;
+            return Ok(LoreImportSummary {
+                batch_inserted: 0,
+                candidates_inserted: 0,
+                candidates_unchanged: self.count_lore_candidates(&batch_id)?,
+                auto_accepted: 0,
+                pending: 0,
+            });
+        }
+
+        let batch_id = new_id();
+        let timestamp = now();
+        transaction.execute(
+            "INSERT INTO lore_candidate_batches
+             (id, work_id, schema, corpus_version, corpus_manifest_sha256,
+              generator_name, generator_version, generated_at, imported_at)
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+            params![
+                batch_id,
+                work_id,
+                batch.schema,
+                batch.corpus.version,
+                batch.corpus.manifest_sha256,
+                batch.generator.name,
+                batch.generator.version,
+                batch.generator.generated_at,
+                timestamp,
+            ],
+        )?;
+
+        let mut summary = LoreImportSummary {
+            batch_inserted: 1,
+            ..LoreImportSummary::default()
+        };
+        for source in &batch.sources {
+            let status = "auto_accepted";
+            insert_lore_candidate(
+                &transaction,
+                &batch_id,
+                &format!("source:{}", source.key),
+                "source",
+                serde_json::to_string(source)
+                    .map_err(|error| PerwigaError::Validation(error.to_string()))?,
+                status,
+            )?;
+            summary.candidates_inserted += 1;
+            summary.auto_accepted += 1;
+        }
+        for period in &batch.periods {
+            insert_lore_candidate(
+                &transaction,
+                &batch_id,
+                &format!("period:{}", period.key),
+                "period",
+                serde_json::to_string(period)
+                    .map_err(|error| PerwigaError::Validation(error.to_string()))?,
+                "pending",
+            )?;
+            summary.candidates_inserted += 1;
+            summary.pending += 1;
+        }
+        for subject in &batch.subjects {
+            let status = if subject.entity_ref.is_some() {
+                "auto_accepted"
+            } else {
+                "pending"
+            };
+            insert_lore_candidate(
+                &transaction,
+                &batch_id,
+                &format!("subject:{}", subject.key),
+                "subject",
+                serde_json::to_string(subject)
+                    .map_err(|error| PerwigaError::Validation(error.to_string()))?,
+                status,
+            )?;
+            summary.candidates_inserted += 1;
+            if status == "auto_accepted" {
+                summary.auto_accepted += 1;
+            } else {
+                summary.pending += 1;
+            }
+        }
+        for event in &batch.events {
+            insert_lore_candidate(
+                &transaction,
+                &batch_id,
+                &format!("event:{}", event.key),
+                "event",
+                serde_json::to_string(event)
+                    .map_err(|error| PerwigaError::Validation(error.to_string()))?,
+                "pending",
+            )?;
+            summary.candidates_inserted += 1;
+            summary.pending += 1;
+            for claim in &event.claims {
+                insert_lore_candidate(
+                    &transaction,
+                    &batch_id,
+                    &format!("claim:{}:{}", event.key, claim.key),
+                    "claim",
+                    serde_json::to_string(&(event.key.as_str(), claim))
+                        .map_err(|error| PerwigaError::Validation(error.to_string()))?,
+                    "pending",
+                )?;
+                summary.candidates_inserted += 1;
+                summary.pending += 1;
+            }
+            for (index, relation) in event.time.relations.iter().enumerate() {
+                insert_lore_candidate(
+                    &transaction,
+                    &batch_id,
+                    &format!("relation:{}:{index}", event.key),
+                    "relation",
+                    serde_json::to_string(&(event.key.as_str(), relation))
+                        .map_err(|error| PerwigaError::Validation(error.to_string()))?,
+                    "pending",
+                )?;
+                summary.candidates_inserted += 1;
+                summary.pending += 1;
+            }
+        }
+        transaction.commit()?;
+        Ok(summary)
+    }
+
+    pub fn list_lore_candidates(
+        &self,
+        work_id: &str,
+        status: Option<&str>,
+    ) -> Result<Vec<LoreCandidateRecord>> {
+        let mut statement = self.connection.prepare(
+            "SELECT c.id, c.batch_id, c.candidate_key, c.candidate_kind,
+                    c.payload_json, c.status, c.validation_note
+             FROM lore_candidates c
+             JOIN lore_candidate_batches b ON b.id = c.batch_id
+             WHERE b.work_id = ?1 AND (?2 IS NULL OR c.status = ?2)
+             ORDER BY c.created_at, c.id",
+        )?;
+        let rows = statement.query_map(params![work_id, status], |row| {
+            Ok(LoreCandidateRecord {
+                id: row.get(0)?,
+                batch_id: row.get(1)?,
+                candidate_key: row.get(2)?,
+                candidate_kind: row.get(3)?,
+                payload_json: row.get(4)?,
+                status: row.get(5)?,
+                validation_note: row.get(6)?,
+            })
+        })?;
+        rows.collect::<std::result::Result<Vec<_>, _>>()
+            .map_err(Into::into)
+    }
+
+    fn count_lore_candidates(&self, batch_id: &str) -> Result<usize> {
+        Ok(self.connection.query_row(
+            "SELECT COUNT(*) FROM lore_candidates WHERE batch_id = ?1",
+            [batch_id],
+            |row| row.get::<_, i64>(0),
+        )? as usize)
+    }
+
+    pub fn review_lore_candidate(
+        &mut self,
+        candidate_id: &str,
+        decision: &str,
+        normalized_payload_json: Option<&str>,
+        merge_target_id: Option<&str>,
+        notes: Option<&str>,
+    ) -> Result<LoreCandidateRecord> {
+        let transaction = self.connection.transaction()?;
+        let candidate = transaction
+            .query_row(
+                "SELECT c.id, c.batch_id, c.candidate_key, c.candidate_kind,
+                        c.payload_json, c.status, c.validation_note
+                 FROM lore_candidates c WHERE c.id = ?1",
+                [candidate_id],
+                row_to_lore_candidate,
+            )
+            .optional()?
+            .ok_or_else(|| PerwigaError::NotFound(format!("lore candidate {candidate_id}")))?;
+        if matches!(
+            candidate.status.as_str(),
+            "approved" | "rejected" | "merged"
+        ) {
+            return Err(PerwigaError::Conflict(format!(
+                "lore candidate {} already has status {}",
+                candidate.id, candidate.status
+            )));
+        }
+        if !matches!(decision, "approve" | "reject" | "merge") {
+            return Err(PerwigaError::Validation(format!(
+                "unsupported lore review decision {decision}"
+            )));
+        }
+        if decision == "merge" && merge_target_id.is_none() {
+            return Err(PerwigaError::Validation(
+                "merge decisions require a target ID".into(),
+            ));
+        }
+        let payload = normalized_payload_json.unwrap_or(candidate.payload_json.as_str());
+        if normalized_payload_json.is_some() {
+            serde_json::from_str::<serde_json::Value>(payload).map_err(|error| {
+                PerwigaError::Validation(format!("invalid edited lore payload: {error}"))
+            })?;
+        }
+        let status = match decision {
+            "approve" => "approved",
+            "reject" => "rejected",
+            "merge" => "merged",
+            _ => unreachable!(),
+        };
+        transaction.execute(
+            "INSERT INTO lore_review_decisions
+             (id, candidate_id, decision, decision_source, normalized_payload_json,
+              merge_target_id, notes, created_at)
+             VALUES (?1, ?2, ?3, 'human', ?4, ?5, ?6, ?7)",
+            params![
+                new_id(),
+                candidate.id,
+                decision,
+                normalized_payload_json,
+                merge_target_id,
+                non_empty_option(notes, "lore review notes")?,
+                now()
+            ],
+        )?;
+        transaction.execute(
+            "UPDATE lore_candidates SET payload_json = ?1, status = ?2, updated_at = ?3
+             WHERE id = ?4",
+            params![payload, status, now(), candidate.id],
+        )?;
+        if decision == "approve" {
+            let work_id: String = transaction.query_row(
+                "SELECT work_id FROM lore_candidate_batches WHERE id = ?1",
+                [&candidate.batch_id],
+                |row| row.get(0),
+            )?;
+            materialize_lore_batch(&transaction, &work_id, &candidate.batch_id)?;
+            transaction.execute(
+                "UPDATE lore_candidates SET status = CASE
+                   WHEN status IN ('pending', 'auto_accepted') THEN 'approved' ELSE status END,
+                   updated_at = ?1 WHERE batch_id = ?2",
+                params![now(), candidate.batch_id],
+            )?;
+        }
+        transaction.commit()?;
+        self.get_lore_candidate(candidate_id)?
+            .ok_or_else(|| PerwigaError::NotFound(format!("lore candidate {candidate_id}")))
+    }
+
+    pub fn get_lore_candidate(&self, candidate_id: &str) -> Result<Option<LoreCandidateRecord>> {
+        self.connection
+            .query_row(
+                "SELECT id, batch_id, candidate_key, candidate_kind, payload_json,
+                        status, validation_note
+                 FROM lore_candidates WHERE id = ?1",
+                [candidate_id],
+                row_to_lore_candidate,
+            )
+            .optional()
+            .map_err(Into::into)
+    }
+
+    pub fn list_lore_subjects(&self, work_id: &str) -> Result<Vec<LoreSubject>> {
+        let mut statement = self.connection.prepare(
+            "SELECT id, work_id, attested_name, proposed_type, wiki_entity_id,
+                    source_provider, source_identity
+             FROM lore_subjects WHERE work_id = ?1
+             ORDER BY attested_name COLLATE NOCASE, id",
+        )?;
+        let rows = statement.query_map([work_id], |row| {
+            Ok(LoreSubject {
+                id: row.get(0)?,
+                work_id: row.get(1)?,
+                attested_name: row.get(2)?,
+                proposed_type: row.get(3)?,
+                wiki_entity_id: row.get(4)?,
+                source_provider: row.get(5)?,
+                source_identity: row.get(6)?,
+            })
+        })?;
+        rows.collect::<std::result::Result<Vec<_>, _>>()
+            .map_err(Into::into)
+    }
+
+    pub fn list_lore_graph(
+        &self,
+        work_id: &str,
+        subject_id: Option<&str>,
+        cursor: Option<&str>,
+        limit: usize,
+    ) -> Result<crate::lore::LoreGraph> {
+        let limit = limit.clamp(1, 200) as i64;
+        let mut periods_statement = self.connection.prepare(
+            "SELECT id, work_id, source_provider, source_identity, name_en,
+                    description_en, display_order, parent_period_id
+             FROM lore_periods WHERE work_id = ?1
+             ORDER BY display_order, id",
+        )?;
+        let period_rows = periods_statement.query_map([work_id], |row| {
+            Ok(LorePeriod {
+                id: row.get(0)?,
+                work_id: row.get(1)?,
+                source_provider: row.get(2)?,
+                source_identity: row.get(3)?,
+                name_en: row.get(4)?,
+                description_en: row.get(5)?,
+                display_order: row.get(6)?,
+                parent_period_id: row.get(7)?,
+            })
+        })?;
+        let periods = period_rows.collect::<std::result::Result<Vec<_>, _>>()?;
+
+        let mut events_statement = self.connection.prepare(
+            "SELECT e.id, e.work_id, e.source_provider, e.source_identity,
+                    r.revision, r.title_en, r.summary_en, r.time_kind,
+                    r.time_precision, r.time_label, r.start_period_id, r.end_period_id
+             FROM lore_events e
+             JOIN lore_event_revisions r
+               ON r.event_id = e.id AND r.revision = e.active_revision
+             WHERE e.work_id = ?1
+               AND (?2 IS NULL OR e.id > ?2)
+               AND (?3 IS NULL OR EXISTS (
+                 SELECT 1 FROM lore_involvements i
+                 LEFT JOIN lore_claims c ON c.id = i.claim_id
+                 WHERE i.subject_id = ?3 AND (i.event_id = e.id OR c.event_id = e.id)
+               ))
+             ORDER BY e.id LIMIT ?4",
+        )?;
+        let event_rows =
+            events_statement.query_map(params![work_id, cursor, subject_id, limit + 1], |row| {
+                Ok((
+                    row.get::<_, String>(0)?,
+                    row.get::<_, String>(1)?,
+                    row.get::<_, String>(2)?,
+                    row.get::<_, String>(3)?,
+                    row.get::<_, i64>(4)?,
+                    row.get::<_, String>(5)?,
+                    row.get::<_, Option<String>>(6)?,
+                    row.get::<_, String>(7)?,
+                    row.get::<_, String>(8)?,
+                    row.get::<_, String>(9)?,
+                    row.get::<_, Option<String>>(10)?,
+                    row.get::<_, Option<String>>(11)?,
+                ))
+            })?;
+        let mut events = Vec::new();
+        for row in event_rows.take((limit + 1) as usize) {
+            let (
+                id,
+                event_work_id,
+                source_provider,
+                source_identity,
+                revision,
+                title_en,
+                summary_en,
+                time_kind_value,
+                time_precision_value,
+                time_label,
+                start_period_id,
+                end_period_id,
+            ) = row?;
+            events.push(LoreEvent {
+                id,
+                work_id: event_work_id,
+                source_provider,
+                source_identity,
+                revision,
+                title_en,
+                summary_en,
+                time_kind: parse_time_kind(&time_kind_value)?,
+                time_precision: parse_time_precision(&time_precision_value)?,
+                time_label,
+                start_period_id,
+                end_period_id,
+            });
+        }
+        let next_cursor = if events.len() > limit as usize {
+            events.pop();
+            events.last().map(|event| event.id.clone())
+        } else {
+            None
+        };
+        let mut relations_statement = self.connection.prepare(
+            "SELECT r.id, r.event_id, r.related_event_id, r.relation_kind
+             FROM lore_event_relations r
+             JOIN lore_events e ON e.id = r.event_id
+             WHERE e.work_id = ?1 ORDER BY r.id",
+        )?;
+        let relation_rows = relations_statement.query_map([work_id], |row| {
+            Ok((
+                row.get::<_, String>(0)?,
+                row.get::<_, String>(1)?,
+                row.get::<_, String>(2)?,
+                row.get::<_, String>(3)?,
+            ))
+        })?;
+        let mut relations = Vec::new();
+        for row in relation_rows {
+            let (id, event_id, related_event_id, kind) = row?;
+            relations.push(LoreEventRelation {
+                id,
+                event_id,
+                related_event_id,
+                relation_kind: parse_relation_kind(&kind)?,
+            });
+        }
+        Ok(crate::lore::LoreGraph {
+            periods,
+            events,
+            relations,
+            subjects: self.list_lore_subjects(work_id)?,
+            next_cursor,
+        })
+    }
+
+    pub fn get_lore_event_detail(&self, event_id: &str) -> Result<Option<LoreEventDetail>> {
+        let event = self
+            .connection
+            .query_row(
+                "SELECT e.id, e.work_id, e.source_provider, e.source_identity,
+                        r.revision, r.title_en, r.summary_en, r.time_kind,
+                        r.time_precision, r.time_label, r.start_period_id, r.end_period_id
+                 FROM lore_events e
+                 JOIN lore_event_revisions r
+                   ON r.event_id = e.id AND r.revision = e.active_revision
+                 WHERE e.id = ?1",
+                [event_id],
+                |row| {
+                    Ok((
+                        row.get::<_, String>(0)?,
+                        row.get::<_, String>(1)?,
+                        row.get::<_, String>(2)?,
+                        row.get::<_, String>(3)?,
+                        row.get::<_, i64>(4)?,
+                        row.get::<_, String>(5)?,
+                        row.get::<_, Option<String>>(6)?,
+                        row.get::<_, String>(7)?,
+                        row.get::<_, String>(8)?,
+                        row.get::<_, String>(9)?,
+                        row.get::<_, Option<String>>(10)?,
+                        row.get::<_, Option<String>>(11)?,
+                    ))
+                },
+            )
+            .optional()?;
+        let Some((
+            id,
+            work_id,
+            source_provider,
+            source_identity,
+            revision,
+            title_en,
+            summary_en,
+            time_kind_value,
+            time_precision_value,
+            time_label,
+            start_period_id,
+            end_period_id,
+        )) = event
+        else {
+            return Ok(None);
+        };
+        let event = LoreEvent {
+            id,
+            work_id,
+            source_provider,
+            source_identity,
+            revision,
+            title_en,
+            summary_en,
+            time_kind: parse_time_kind(&time_kind_value)?,
+            time_precision: parse_time_precision(&time_precision_value)?,
+            time_label,
+            start_period_id,
+            end_period_id,
+        };
+        let mut claims_statement = self.connection.prepare(
+            "SELECT id, event_id, claim_key, text_en, assertion_kind,
+                    certainty, branch_group
+             FROM lore_claims WHERE event_id = ?1 ORDER BY claim_key, id",
+        )?;
+        let claim_rows = claims_statement.query_map([event_id], |row| {
+            Ok((
+                row.get::<_, String>(0)?,
+                row.get::<_, String>(1)?,
+                row.get::<_, String>(2)?,
+                row.get::<_, String>(3)?,
+                row.get::<_, String>(4)?,
+                row.get::<_, String>(5)?,
+                row.get::<_, Option<String>>(6)?,
+            ))
+        })?;
+        let mut claims = Vec::new();
+        for row in claim_rows {
+            let (id, event_id, claim_key, text_en, assertion, certainty_value, branch_group) = row?;
+            claims.push(LoreClaim {
+                id,
+                event_id,
+                claim_key,
+                text_en,
+                assertion_kind: parse_assertion_kind(&assertion)?,
+                certainty: parse_certainty(&certainty_value)?,
+                branch_group,
+            });
+        }
+        let mut involvements_statement = self.connection.prepare(
+            "SELECT id, event_id, claim_id, subject_id, role
+             FROM lore_involvements WHERE event_id = ?1
+                OR claim_id IN (SELECT id FROM lore_claims WHERE event_id = ?1)
+             ORDER BY id",
+        )?;
+        let involvement_rows = involvements_statement.query_map([event_id], |row| {
+            Ok(LoreInvolvement {
+                id: row.get(0)?,
+                event_id: row.get(1)?,
+                claim_id: row.get(2)?,
+                subject_id: row.get(3)?,
+                role: row.get(4)?,
+            })
+        })?;
+        let involvements = involvement_rows.collect::<std::result::Result<Vec<_>, _>>()?;
+        let mut subjects = Vec::new();
+        let mut seen_subjects = HashSet::new();
+        for involvement in &involvements {
+            if !seen_subjects.insert(involvement.subject_id.clone()) {
+                continue;
+            }
+            if let Some(subject) = self
+                .connection
+                .query_row(
+                    "SELECT id, work_id, attested_name, proposed_type, wiki_entity_id,
+                            source_provider, source_identity
+                     FROM lore_subjects WHERE id = ?1",
+                    [&involvement.subject_id],
+                    |row| {
+                        Ok(LoreSubject {
+                            id: row.get(0)?,
+                            work_id: row.get(1)?,
+                            attested_name: row.get(2)?,
+                            proposed_type: row.get(3)?,
+                            wiki_entity_id: row.get(4)?,
+                            source_provider: row.get(5)?,
+                            source_identity: row.get(6)?,
+                        })
+                    },
+                )
+                .optional()?
+            {
+                subjects.push(subject);
+            }
+        }
+        let mut evidence_statement = self.connection.prepare(
+            "SELECT ce.claim_id, e.id, e.source_id, e.locator, e.excerpt,
+                    e.excerpt_sha256, ce.stance
+             FROM lore_claim_evidence ce
+             JOIN lore_evidence e ON e.id = ce.evidence_id
+             WHERE ce.claim_id IN (SELECT id FROM lore_claims WHERE event_id = ?1)
+             ORDER BY e.id",
+        )?;
+        let evidence_rows = evidence_statement.query_map([event_id], |row| {
+            Ok((
+                row.get::<_, String>(0)?,
+                LoreEvidence {
+                    id: row.get(1)?,
+                    source_id: row.get(2)?,
+                    locator: row.get(3)?,
+                    excerpt: row.get(4)?,
+                    excerpt_fingerprint: row.get(5)?,
+                },
+                row.get::<_, String>(6)?,
+            ))
+        })?;
+        let mut evidence = Vec::new();
+        for row in evidence_rows {
+            let (claim_id, item, stance) = row?;
+            evidence.push(LoreClaimEvidence {
+                claim_id,
+                evidence: item,
+                stance: parse_evidence_stance(&stance)?,
+            });
+        }
+        let mut sources_statement = self.connection.prepare(
+            "SELECT DISTINCT s.id, s.work_id, s.source_provider, s.source_identity,
+                    s.source_kind, s.title, s.language, s.source_url,
+                    s.content_sha256, s.checked_at
+             FROM lore_sources s JOIN lore_evidence e ON e.source_id = s.id
+             WHERE e.id IN (SELECT evidence_id FROM lore_claim_evidence
+                            WHERE claim_id IN (SELECT id FROM lore_claims WHERE event_id = ?1))
+             ORDER BY s.id",
+        )?;
+        let source_rows = sources_statement.query_map([event_id], |row| {
+            Ok(LoreSource {
+                id: row.get(0)?,
+                work_id: row.get(1)?,
+                source_provider: row.get(2)?,
+                source_identity: row.get(3)?,
+                source_kind: row.get(4)?,
+                title: row.get(5)?,
+                language: row.get(6)?,
+                source_url: row.get(7)?,
+                content_sha256: row.get(8)?,
+                checked_at: row.get(9)?,
+            })
+        })?;
+        let sources = source_rows.collect::<std::result::Result<Vec<_>, _>>()?;
+        Ok(Some(LoreEventDetail {
+            event,
+            claims,
+            involvements,
+            subjects,
+            evidence,
+            sources,
+        }))
+    }
+
     pub fn get_entity_detail(&self, id: &str) -> Result<Option<WikiEntityDetail>> {
         let Some(entity) = self.get_entity(id)? else {
             return Ok(None);
@@ -474,7 +1234,7 @@ impl Store {
                 .query_row(
                     "SELECT work_id FROM wiki_entities WHERE id = ?1",
                     [&entity_id],
-                    |row| row.get(0),
+                    |row| row.get::<_, String>(0),
                 )
                 .optional()?;
             if entity_exists.is_none() {
@@ -1301,6 +2061,636 @@ impl Store {
     }
 }
 
+fn insert_lore_candidate(
+    transaction: &rusqlite::Transaction<'_>,
+    batch_id: &str,
+    candidate_key: &str,
+    candidate_kind: &str,
+    payload_json: String,
+    status: &str,
+) -> Result<()> {
+    let fingerprint = stable_fingerprint(&payload_json);
+    transaction.execute(
+        "INSERT INTO lore_candidates
+         (id, batch_id, candidate_key, candidate_kind, payload_json, fingerprint,
+          status, created_at, updated_at)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?8)",
+        params![
+            new_id(),
+            batch_id,
+            candidate_key,
+            candidate_kind,
+            payload_json,
+            fingerprint,
+            status,
+            now()
+        ],
+    )?;
+    Ok(())
+}
+
+fn row_to_lore_candidate(row: &rusqlite::Row<'_>) -> rusqlite::Result<LoreCandidateRecord> {
+    Ok(LoreCandidateRecord {
+        id: row.get(0)?,
+        batch_id: row.get(1)?,
+        candidate_key: row.get(2)?,
+        candidate_kind: row.get(3)?,
+        payload_json: row.get(4)?,
+        status: row.get(5)?,
+        validation_note: row.get(6)?,
+    })
+}
+
+fn candidate_payloads<T: DeserializeOwned>(
+    transaction: &rusqlite::Transaction<'_>,
+    batch_id: &str,
+    candidate_kind: &str,
+) -> Result<Vec<T>> {
+    let mut statement = transaction.prepare(
+        "SELECT payload_json FROM lore_candidates
+         WHERE batch_id = ?1 AND candidate_kind = ?2
+         ORDER BY candidate_key",
+    )?;
+    let rows = statement.query_map(params![batch_id, candidate_kind], |row| {
+        row.get::<_, String>(0)
+    })?;
+    rows.map(|row| {
+        let payload = row?;
+        serde_json::from_str(&payload).map_err(|error| {
+            PerwigaError::Validation(format!("invalid lore candidate payload: {error}"))
+        })
+    })
+    .collect()
+}
+
+fn materialize_lore_batch(
+    transaction: &rusqlite::Transaction<'_>,
+    work_id: &str,
+    batch_id: &str,
+) -> Result<()> {
+    let work_module: String = transaction.query_row(
+        "SELECT module_id FROM library_works WHERE id = ?1",
+        [work_id],
+        |row| row.get(0),
+    )?;
+    let lore_provider = format!("lore:{work_module}");
+
+    let source_candidates: Vec<LoreSourceCandidate> =
+        candidate_payloads(transaction, batch_id, "source")?;
+    let mut sources: HashMap<String, String> = HashMap::new();
+    for source in source_candidates {
+        let source_id = ensure_lore_source(transaction, work_id, &source)?;
+        sources.insert(source.key, source_id);
+    }
+
+    let period_candidates: Vec<LorePeriodCandidate> =
+        candidate_payloads(transaction, batch_id, "period")?;
+    let mut periods: HashMap<String, String> = HashMap::new();
+    let mut remaining = period_candidates;
+    while !remaining.is_empty() {
+        let before = remaining.len();
+        let mut next = Vec::new();
+        for period in remaining {
+            let parent_id = match period.parent_key.as_deref() {
+                None => None,
+                Some(parent_key) => match periods.get(parent_key) {
+                    Some(id) => Some(id.clone()),
+                    None => {
+                        next.push(period);
+                        continue;
+                    }
+                },
+            };
+            let identity = format!("period:{}", period.key);
+            transaction.execute(
+                "INSERT INTO lore_periods
+                 (id, work_id, source_provider, source_identity, name_en,
+                  description_en, display_order, parent_period_id, created_at, updated_at)
+                 VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?9)
+                 ON CONFLICT (work_id, source_provider, source_identity) DO NOTHING",
+                params![
+                    new_id(),
+                    work_id,
+                    lore_provider,
+                    identity,
+                    period.name_en,
+                    period.description_en,
+                    period.order,
+                    parent_id,
+                    now()
+                ],
+            )?;
+            let id: String = transaction.query_row(
+                "SELECT id FROM lore_periods WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                params![work_id, lore_provider, identity],
+                |row| row.get(0),
+            )?;
+            periods.insert(period.key, id);
+        }
+        if next.len() == before {
+            return Err(PerwigaError::Validation(
+                "lore period hierarchy contains an unresolved cycle".into(),
+            ));
+        }
+        remaining = next;
+    }
+
+    let subject_candidates: Vec<LoreSubjectCandidate> =
+        candidate_payloads(transaction, batch_id, "subject")?;
+    let mut subjects: HashMap<String, String> = HashMap::new();
+    for subject in subject_candidates {
+        let identity = format!("subject:{}", subject.key);
+        let resolved_entity = match subject.entity_ref.as_ref() {
+            Some(reference) => transaction
+                .query_row(
+                    "SELECT entity_id FROM entity_external_identities
+                     WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                    params![work_id, reference.provider, reference.identity],
+                    |row| row.get::<_, String>(0),
+                )
+                .optional()?,
+            None => None,
+        };
+        transaction.execute(
+            "INSERT INTO lore_subjects
+             (id, work_id, attested_name, proposed_type, wiki_entity_id,
+              source_provider, source_identity, created_at, updated_at)
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?8)
+             ON CONFLICT (work_id, source_provider, source_identity) DO NOTHING",
+            params![
+                new_id(),
+                work_id,
+                subject.attested_name,
+                subject.proposed_type,
+                resolved_entity,
+                lore_provider,
+                identity,
+                now()
+            ],
+        )?;
+        let subject_id: String = transaction.query_row(
+            "SELECT id FROM lore_subjects WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+            params![work_id, lore_provider, identity],
+            |row| row.get(0),
+        )?;
+        if let Some(entity_id) = resolved_entity {
+            transaction.execute(
+                "UPDATE lore_subjects SET wiki_entity_id = COALESCE(wiki_entity_id, ?1), updated_at = ?2 WHERE id = ?3",
+                params![entity_id, now(), subject_id],
+            )?;
+        }
+        for evidence in subject.evidence {
+            let source_id = sources.get(&evidence.source_key).ok_or_else(|| {
+                PerwigaError::Validation(format!(
+                    "unknown lore evidence source {}",
+                    evidence.source_key
+                ))
+            })?;
+            let evidence_id = ensure_lore_evidence(transaction, source_id, &evidence)?;
+            transaction.execute(
+                "INSERT INTO lore_subject_evidence (id, subject_id, evidence_id, created_at)
+                 VALUES (?1, ?2, ?3, ?4) ON CONFLICT (subject_id, evidence_id) DO NOTHING",
+                params![new_id(), subject_id, evidence_id, now()],
+            )?;
+        }
+        subjects.insert(subject.key, subject_id);
+    }
+
+    let event_candidates: Vec<LoreEventCandidate> =
+        candidate_payloads(transaction, batch_id, "event")?;
+    let mut events: HashMap<String, String> = HashMap::new();
+    for event in &event_candidates {
+        let identity = format!("event:{}", event.key);
+        transaction.execute(
+            "INSERT INTO lore_events
+             (id, work_id, source_provider, source_identity, active_revision, created_at, updated_at)
+             VALUES (?1, ?2, ?3, ?4, 1, ?5, ?5)
+             ON CONFLICT (work_id, source_provider, source_identity) DO NOTHING",
+            params![new_id(), work_id, lore_provider, identity, now()],
+        )?;
+        let event_id: String = transaction.query_row(
+            "SELECT id FROM lore_events WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+            params![work_id, lore_provider, identity],
+            |row| row.get(0),
+        )?;
+        let start_period = event
+            .time
+            .start_period_key
+            .as_ref()
+            .and_then(|key| periods.get(key))
+            .cloned();
+        let end_period = event
+            .time
+            .end_period_key
+            .as_ref()
+            .and_then(|key| periods.get(key))
+            .cloned();
+        ensure_event_revision(transaction, &event_id, event, start_period, end_period)?;
+        events.insert(event.key.clone(), event_id);
+    }
+
+    for event in &event_candidates {
+        let event_id = events.get(&event.key).expect("event map populated");
+        for involvement in &event.involvements {
+            let subject_id = subjects.get(&involvement.subject_key).ok_or_else(|| {
+                PerwigaError::Validation(format!(
+                    "unknown lore subject {}",
+                    involvement.subject_key
+                ))
+            })?;
+            ensure_lore_involvement(
+                transaction,
+                Some(event_id),
+                None,
+                subject_id,
+                &involvement.role,
+            )?;
+        }
+        for claim in &event.claims {
+            let claim_id = ensure_lore_claim(transaction, event_id, claim)?;
+            for involvement in &claim.involvements {
+                let subject_id = subjects.get(&involvement.subject_key).ok_or_else(|| {
+                    PerwigaError::Validation(format!(
+                        "unknown lore subject {}",
+                        involvement.subject_key
+                    ))
+                })?;
+                ensure_lore_involvement(
+                    transaction,
+                    None,
+                    Some(&claim_id),
+                    subject_id,
+                    &involvement.role,
+                )?;
+            }
+            for evidence in &claim.evidence {
+                let source_id = sources.get(&evidence.source_key).ok_or_else(|| {
+                    PerwigaError::Validation(format!(
+                        "unknown lore evidence source {}",
+                        evidence.source_key
+                    ))
+                })?;
+                let evidence_id = ensure_lore_evidence(transaction, source_id, evidence)?;
+                transaction.execute(
+                    "INSERT INTO lore_claim_evidence (id, claim_id, evidence_id, stance, created_at)
+                     VALUES (?1, ?2, ?3, ?4, ?5) ON CONFLICT (claim_id, evidence_id, stance) DO NOTHING",
+                    params![
+                        new_id(),
+                        claim_id,
+                        evidence_id,
+                        evidence_stance(evidence.stance.unwrap_or(LoreEvidenceStance::Supports)),
+                        now()
+                    ],
+                )?;
+            }
+        }
+        for relation in &event.time.relations {
+            let related_id = events.get(&relation.event_key).ok_or_else(|| {
+                PerwigaError::Validation(format!("unknown lore event {}", relation.event_key))
+            })?;
+            transaction.execute(
+                "INSERT INTO lore_event_relations
+                 (id, event_id, related_event_id, relation_kind, created_at)
+                 VALUES (?1, ?2, ?3, ?4, ?5)
+                 ON CONFLICT (event_id, related_event_id, relation_kind) DO NOTHING",
+                params![
+                    new_id(),
+                    event_id,
+                    related_id,
+                    relation_kind(relation.kind),
+                    now()
+                ],
+            )?;
+        }
+    }
+    Ok(())
+}
+
+fn ensure_lore_source(
+    transaction: &rusqlite::Transaction<'_>,
+    work_id: &str,
+    source: &LoreSourceCandidate,
+) -> Result<String> {
+    if let Some(url) = source.url.as_deref() {
+        validate_remote_url(url)?;
+    }
+    transaction.execute(
+        "INSERT INTO lore_sources
+         (id, work_id, source_provider, source_identity, source_kind, title,
+          language, source_url, content_sha256, checked_at, created_at)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?10)
+         ON CONFLICT (work_id, source_provider, source_identity) DO NOTHING",
+        params![
+            new_id(),
+            work_id,
+            source.provider,
+            source.identity,
+            source.kind,
+            source.title,
+            source.language,
+            source.url,
+            source.content_sha256,
+            source.checked_at,
+        ],
+    )?;
+    transaction
+        .query_row(
+            "SELECT id FROM lore_sources WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+            params![work_id, source.provider, source.identity],
+            |row| row.get(0),
+        )
+        .map_err(Into::into)
+}
+
+fn ensure_lore_evidence(
+    transaction: &rusqlite::Transaction<'_>,
+    source_id: &str,
+    evidence: &LoreEvidenceCandidate,
+) -> Result<String> {
+    let fingerprint = stable_fingerprint(&evidence.excerpt);
+    transaction.execute(
+        "INSERT INTO lore_evidence
+         (id, source_id, locator, excerpt, excerpt_sha256, created_at)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6)
+         ON CONFLICT (source_id, locator, excerpt_sha256) DO NOTHING",
+        params![
+            new_id(),
+            source_id,
+            evidence.locator,
+            evidence.excerpt,
+            fingerprint,
+            now()
+        ],
+    )?;
+    transaction
+        .query_row(
+            "SELECT id FROM lore_evidence WHERE source_id = ?1 AND locator = ?2 AND excerpt_sha256 = ?3",
+            params![source_id, evidence.locator, fingerprint],
+            |row| row.get(0),
+        )
+        .map_err(Into::into)
+}
+
+fn ensure_event_revision(
+    transaction: &rusqlite::Transaction<'_>,
+    event_id: &str,
+    event: &LoreEventCandidate,
+    start_period_id: Option<String>,
+    end_period_id: Option<String>,
+) -> Result<()> {
+    let existing: Option<i64> = transaction
+        .query_row(
+            "SELECT revision FROM lore_event_revisions
+             WHERE event_id = ?1 AND title_en = ?2
+               AND COALESCE(summary_en, '') = COALESCE(?3, '')
+               AND time_kind = ?4 AND time_precision = ?5 AND time_label = ?6
+               AND COALESCE(start_period_id, '') = COALESCE(?7, '')
+               AND COALESCE(end_period_id, '') = COALESCE(?8, '')",
+            params![
+                event_id,
+                event.title_en,
+                event.summary_en,
+                time_kind(event.time.kind),
+                time_precision(event.time.precision),
+                event.time.label,
+                start_period_id,
+                end_period_id
+            ],
+            |row| row.get(0),
+        )
+        .optional()?;
+    if existing.is_some() {
+        return Ok(());
+    }
+    let next_revision: i64 = transaction.query_row(
+        "SELECT COALESCE(MAX(revision), 0) + 1 FROM lore_event_revisions WHERE event_id = ?1",
+        [event_id],
+        |row| row.get(0),
+    )?;
+    transaction.execute(
+        "INSERT INTO lore_event_revisions
+         (id, event_id, revision, title_en, summary_en, time_kind,
+          time_precision, time_label, start_period_id, end_period_id, created_at)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
+        params![
+            new_id(),
+            event_id,
+            next_revision,
+            event.title_en,
+            event.summary_en,
+            time_kind(event.time.kind),
+            time_precision(event.time.precision),
+            event.time.label,
+            start_period_id,
+            end_period_id,
+            now()
+        ],
+    )?;
+    transaction.execute(
+        "UPDATE lore_events SET active_revision = ?1, updated_at = ?2 WHERE id = ?3",
+        params![next_revision, now(), event_id],
+    )?;
+    Ok(())
+}
+
+fn ensure_lore_claim(
+    transaction: &rusqlite::Transaction<'_>,
+    event_id: &str,
+    claim: &LoreClaimCandidate,
+) -> Result<String> {
+    transaction.execute(
+        "INSERT INTO lore_claims
+         (id, event_id, claim_key, text_en, assertion_kind, certainty, branch_group, created_at)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)
+         ON CONFLICT (event_id, claim_key) DO NOTHING",
+        params![
+            new_id(),
+            event_id,
+            claim.key,
+            claim.text_en,
+            assertion_kind(claim.assertion_kind),
+            certainty(claim.certainty),
+            claim.branch_group,
+            now()
+        ],
+    )?;
+    transaction
+        .query_row(
+            "SELECT id FROM lore_claims WHERE event_id = ?1 AND claim_key = ?2",
+            params![event_id, claim.key],
+            |row| row.get(0),
+        )
+        .map_err(Into::into)
+}
+
+fn ensure_lore_involvement(
+    transaction: &rusqlite::Transaction<'_>,
+    event_id: Option<&str>,
+    claim_id: Option<&str>,
+    subject_id: &str,
+    role: &str,
+) -> Result<()> {
+    let existing: Option<String> = if let Some(event_id) = event_id {
+        transaction
+            .query_row(
+                "SELECT id FROM lore_involvements
+                 WHERE event_id = ?1 AND subject_id = ?2 AND role = ?3",
+                params![event_id, subject_id, role],
+                |row| row.get(0),
+            )
+            .optional()?
+    } else {
+        transaction
+            .query_row(
+                "SELECT id FROM lore_involvements
+                 WHERE claim_id = ?1 AND subject_id = ?2 AND role = ?3",
+                params![claim_id, subject_id, role],
+                |row| row.get(0),
+            )
+            .optional()?
+    };
+    if existing.is_none() {
+        transaction.execute(
+            "INSERT INTO lore_involvements
+             (id, event_id, claim_id, subject_id, role, created_at)
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6)",
+            params![new_id(), event_id, claim_id, subject_id, role, now()],
+        )?;
+    }
+    Ok(())
+}
+
+fn time_kind(value: LoreTimeKind) -> &'static str {
+    match value {
+        LoreTimeKind::Moment => "moment",
+        LoreTimeKind::Interval => "interval",
+    }
+}
+
+fn time_precision(value: LoreTimePrecision) -> &'static str {
+    match value {
+        LoreTimePrecision::Exact => "exact",
+        LoreTimePrecision::Bounded => "bounded",
+        LoreTimePrecision::Approximate => "approximate",
+        LoreTimePrecision::Relative => "relative",
+        LoreTimePrecision::Unknown => "unknown",
+    }
+}
+
+fn assertion_kind(value: LoreAssertionKind) -> &'static str {
+    match value {
+        LoreAssertionKind::DirectFact => "direct_fact",
+        LoreAssertionKind::InWorldReport => "in_world_report",
+        LoreAssertionKind::Hearsay => "hearsay",
+        LoreAssertionKind::Inference => "inference",
+        LoreAssertionKind::Interpretation => "interpretation",
+    }
+}
+
+fn certainty(value: LoreCertainty) -> &'static str {
+    match value {
+        LoreCertainty::Confirmed => "confirmed",
+        LoreCertainty::Probable => "probable",
+        LoreCertainty::Possible => "possible",
+        LoreCertainty::Disputed => "disputed",
+        LoreCertainty::Unknown => "unknown",
+    }
+}
+
+fn relation_kind(value: LoreRelationKind) -> &'static str {
+    match value {
+        LoreRelationKind::Before => "before",
+        LoreRelationKind::After => "after",
+        LoreRelationKind::Overlaps => "overlaps",
+        LoreRelationKind::Contains => "contains",
+    }
+}
+
+fn evidence_stance(value: LoreEvidenceStance) -> &'static str {
+    match value {
+        LoreEvidenceStance::Supports => "supports",
+        LoreEvidenceStance::Contradicts => "contradicts",
+    }
+}
+
+fn parse_time_kind(value: &str) -> Result<LoreTimeKind> {
+    match value {
+        "moment" => Ok(LoreTimeKind::Moment),
+        "interval" => Ok(LoreTimeKind::Interval),
+        _ => Err(PerwigaError::Validation(format!(
+            "unknown lore time kind: {value}"
+        ))),
+    }
+}
+
+fn parse_time_precision(value: &str) -> Result<LoreTimePrecision> {
+    match value {
+        "exact" => Ok(LoreTimePrecision::Exact),
+        "bounded" => Ok(LoreTimePrecision::Bounded),
+        "approximate" => Ok(LoreTimePrecision::Approximate),
+        "relative" => Ok(LoreTimePrecision::Relative),
+        "unknown" => Ok(LoreTimePrecision::Unknown),
+        _ => Err(PerwigaError::Validation(format!(
+            "unknown lore time precision: {value}"
+        ))),
+    }
+}
+
+fn parse_assertion_kind(value: &str) -> Result<LoreAssertionKind> {
+    match value {
+        "direct_fact" => Ok(LoreAssertionKind::DirectFact),
+        "in_world_report" => Ok(LoreAssertionKind::InWorldReport),
+        "hearsay" => Ok(LoreAssertionKind::Hearsay),
+        "inference" => Ok(LoreAssertionKind::Inference),
+        "interpretation" => Ok(LoreAssertionKind::Interpretation),
+        _ => Err(PerwigaError::Validation(format!(
+            "unknown lore assertion kind: {value}"
+        ))),
+    }
+}
+
+fn parse_certainty(value: &str) -> Result<LoreCertainty> {
+    match value {
+        "confirmed" => Ok(LoreCertainty::Confirmed),
+        "probable" => Ok(LoreCertainty::Probable),
+        "possible" => Ok(LoreCertainty::Possible),
+        "disputed" => Ok(LoreCertainty::Disputed),
+        "unknown" => Ok(LoreCertainty::Unknown),
+        _ => Err(PerwigaError::Validation(format!(
+            "unknown lore certainty: {value}"
+        ))),
+    }
+}
+
+fn parse_relation_kind(value: &str) -> Result<LoreRelationKind> {
+    match value {
+        "before" => Ok(LoreRelationKind::Before),
+        "after" => Ok(LoreRelationKind::After),
+        "overlaps" => Ok(LoreRelationKind::Overlaps),
+        "contains" => Ok(LoreRelationKind::Contains),
+        _ => Err(PerwigaError::Validation(format!(
+            "unknown lore relation kind: {value}"
+        ))),
+    }
+}
+
+fn parse_evidence_stance(value: &str) -> Result<LoreEvidenceStance> {
+    match value {
+        "supports" => Ok(LoreEvidenceStance::Supports),
+        "contradicts" => Ok(LoreEvidenceStance::Contradicts),
+        _ => Err(PerwigaError::Validation(format!(
+            "unknown lore evidence stance: {value}"
+        ))),
+    }
+}
+
+fn stable_fingerprint(value: &str) -> String {
+    use std::hash::{Hash, Hasher};
+    let mut hasher = std::collections::hash_map::DefaultHasher::new();
+    value.hash(&mut hasher);
+    format!("{:016x}", hasher.finish())
+}
+
 const SCHEMA_V1: &str = r#"
 CREATE TABLE library_works (
     id TEXT PRIMARY KEY,
@@ -1668,6 +3058,17 @@ CREATE TABLE lore_review_decisions (
 CREATE INDEX lore_review_decisions_candidate_idx ON lore_review_decisions (candidate_id, created_at);
 "#;
 
+const SCHEMA_V6: &str = r#"
+CREATE TABLE lore_subject_evidence (
+    id TEXT PRIMARY KEY,
+    subject_id TEXT NOT NULL REFERENCES lore_subjects (id),
+    evidence_id TEXT NOT NULL REFERENCES lore_evidence (id),
+    created_at TEXT NOT NULL,
+    UNIQUE (subject_id, evidence_id)
+);
+CREATE INDEX lore_subject_evidence_subject_idx ON lore_subject_evidence (subject_id, evidence_id);
+"#;
+
 fn now() -> String {
     Utc::now().to_rfc3339_opts(SecondsFormat::Millis, true)
 }
@@ -1944,6 +3345,13 @@ fn row_to_calendar_event(row: &rusqlite::Row<'_>) -> rusqlite::Result<CalendarEv
 #[cfg(test)]
 mod tests {
     use crate::{
+        lore::{
+            LoreAssertionKind, LoreCandidateBatch, LoreCertainty, LoreClaimCandidate,
+            LoreCorpusMetadata, LoreEventCandidate, LoreEvidenceCandidate, LoreGeneratorMetadata,
+            LoreInvolvementCandidate, LorePeriodCandidate, LoreSourceCandidate,
+            LoreSubjectCandidate, LoreTimeCandidate, LoreTimeKind, LoreTimePrecision,
+            LORE_CANDIDATE_SCHEMA,
+        },
         model::{
             AliasInput, CalendarEventInput, EntityAppearanceInput, EntityAppearanceLocationInput,
             EntityInput, EntityPatch, SourcedEntityInput,
@@ -1997,6 +3405,194 @@ mod tests {
                 notes: Some("Confirmed first-party localization.".into()),
             }],
         }
+    }
+
+    fn lore_batch_fixture() -> LoreCandidateBatch {
+        let source = LoreEvidenceCandidate {
+            source_key: "archive-1".into(),
+            locator: "chapter-1#opening".into(),
+            excerpt: "The expedition reached the frontier.".into(),
+            stance: None,
+        };
+        LoreCandidateBatch {
+            schema: LORE_CANDIDATE_SCHEMA.into(),
+            module_id: "arknights-endfield".into(),
+            corpus: LoreCorpusMetadata {
+                version: "official-fixture-1".into(),
+                manifest_sha256: "fixture-manifest".into(),
+            },
+            generator: LoreGeneratorMetadata {
+                name: "fixture-generator".into(),
+                version: "1".into(),
+                generated_at: "2026-08-29T00:00:00Z".into(),
+            },
+            sources: vec![LoreSourceCandidate {
+                key: "archive-1".into(),
+                kind: "official_archive".into(),
+                provider: "Arknights: Endfield official archive".into(),
+                identity: "archive-1".into(),
+                title: "Frontier archive".into(),
+                language: "en".into(),
+                url: Some("https://endfield.gryphline.com/en-us/archive/1".into()),
+                content_sha256: "fixture-content".into(),
+                checked_at: "2026-08-29".into(),
+            }],
+            periods: vec![LorePeriodCandidate {
+                key: "frontier-era".into(),
+                name_en: "Frontier Era".into(),
+                description_en: Some("A synthetic period for persistence tests.".into()),
+                order: 10,
+                parent_key: None,
+            }],
+            subjects: vec![LoreSubjectCandidate {
+                key: "unknown-witness".into(),
+                attested_name: "Unknown Witness".into(),
+                proposed_type: "unknown".into(),
+                entity_ref: None,
+                evidence: vec![source.clone()],
+            }],
+            events: vec![LoreEventCandidate {
+                key: "frontier-arrival".into(),
+                title_en: "Arrival at the frontier".into(),
+                summary_en: Some("The expedition reached the frontier.".into()),
+                time: LoreTimeCandidate {
+                    kind: LoreTimeKind::Moment,
+                    precision: LoreTimePrecision::Relative,
+                    label: "During the Frontier Era".into(),
+                    start_period_key: Some("frontier-era".into()),
+                    end_period_key: None,
+                    relations: Vec::new(),
+                },
+                involvements: vec![LoreInvolvementCandidate {
+                    subject_key: "unknown-witness".into(),
+                    role: "witness".into(),
+                }],
+                claims: vec![LoreClaimCandidate {
+                    key: "arrival-confirmed".into(),
+                    text_en: "The expedition reached the frontier.".into(),
+                    assertion_kind: LoreAssertionKind::DirectFact,
+                    certainty: LoreCertainty::Confirmed,
+                    branch_group: None,
+                    involvements: Vec::new(),
+                    evidence: vec![source],
+                }],
+            }],
+        }
+    }
+
+    #[test]
+    fn lore_candidate_import_is_idempotent_and_review_materializes_graph() {
+        let mut store = Store::open_in_memory().expect("in-memory store");
+        let work = store
+            .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+            .expect("work");
+        let batch = lore_batch_fixture();
+
+        let imported = store
+            .import_lore_candidate_batch(&work.id, &batch)
+            .expect("candidate batch import");
+        assert_eq!(imported.batch_inserted, 1);
+        assert_eq!(imported.candidates_inserted, 5);
+        assert_eq!(imported.auto_accepted, 1);
+        assert_eq!(imported.pending, 4);
+
+        let duplicate = store
+            .import_lore_candidate_batch(&work.id, &batch)
+            .expect("duplicate batch import");
+        assert_eq!(duplicate.batch_inserted, 0);
+        assert_eq!(duplicate.candidates_inserted, 0);
+        assert_eq!(duplicate.candidates_unchanged, 5);
+
+        let event_candidate = store
+            .list_lore_candidates(&work.id, Some("pending"))
+            .expect("pending candidates")
+            .into_iter()
+            .find(|candidate| candidate.candidate_kind == "event")
+            .expect("event candidate");
+        let reviewed = store
+            .review_lore_candidate(&event_candidate.id, "approve", None, None, None)
+            .expect("approve event candidate");
+        assert_eq!(reviewed.status, "approved");
+
+        let graph = store
+            .list_lore_graph(&work.id, None, None, 50)
+            .expect("lore graph");
+        assert_eq!(graph.periods.len(), 1);
+        assert_eq!(graph.events.len(), 1);
+        assert_eq!(graph.subjects.len(), 1);
+        assert!(graph.subjects[0].wiki_entity_id.is_none());
+        assert_eq!(graph.events[0].time_precision, LoreTimePrecision::Relative);
+
+        let detail = store
+            .get_lore_event_detail(&graph.events[0].id)
+            .expect("event detail")
+            .expect("event exists");
+        assert_eq!(detail.claims.len(), 1);
+        assert_eq!(detail.evidence.len(), 1);
+        assert_eq!(detail.sources.len(), 1);
+        assert_eq!(detail.involvements.len(), 1);
+    }
+
+    #[test]
+    fn entity_external_identity_is_work_scoped_and_idempotent() {
+        let store = Store::open_in_memory().expect("in-memory store");
+        let first_work = store
+            .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+            .expect("first work");
+        let second_work = store
+            .insert_work(WorkKind::Game, "generic", "Other game")
+            .expect("second work");
+        let entity = store
+            .insert_entity(
+                &first_work.id,
+                &EntityInput {
+                    entity_type: "npc".into(),
+                    official_english_name: "Witness".into(),
+                    official_original_name: "Witness".into(),
+                    official_vietnamese_name: None,
+                    automatic_vietnamese_translation: None,
+                    english_description: None,
+                    other_information: None,
+                },
+            )
+            .expect("entity");
+
+        let identity = store
+            .add_entity_external_identity(
+                &first_work.id,
+                &entity.id,
+                "endfield-official",
+                "npc:witness",
+            )
+            .expect("identity");
+        let duplicate = store
+            .add_entity_external_identity(
+                &first_work.id,
+                &entity.id,
+                "endfield-official",
+                "npc:witness",
+            )
+            .expect("duplicate identity");
+        assert_eq!(identity.id, duplicate.id);
+        assert_eq!(
+            store
+                .resolve_entity_external_identity(
+                    &first_work.id,
+                    "endfield-official",
+                    "npc:witness"
+                )
+                .expect("resolve identity"),
+            Some(entity.id.clone())
+        );
+        assert!(matches!(
+            store.add_entity_external_identity(
+                &second_work.id,
+                &entity.id,
+                "endfield-official",
+                "npc:witness"
+            ),
+            Err(PerwigaError::Conflict(_))
+        ));
     }
 
     #[test]
@@ -2063,7 +3659,7 @@ mod tests {
                 row.get(0)
             })
             .expect("schema version");
-        assert_eq!(schema_version, 5);
+        assert_eq!(schema_version, 6);
         let entity_source_columns: i64 = store
             .connection
             .query_row(

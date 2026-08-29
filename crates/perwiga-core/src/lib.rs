@@ -14,6 +14,7 @@ pub use error::{PerwigaError, Result};
 pub use module::{
     CalendarEventPresentation, Capability, EntityEventRecencyPresentation, EntityFacetDefinition,
     EntityFacetOption, EntityPresentation, EntityTypeDefinition, EventFeaturedEntityPresentation,
-    EventPreviousGapPresentation, LibraryModule, ModuleRegistry, ThemeDefinition, WorkKind,
+    EventPreviousGapPresentation, LibraryModule, LoreRoleDefinition, LoreSchemaDefinition,
+    LoreSubjectTypeDefinition, ModuleRegistry, ThemeDefinition, WorkKind,
 };
 pub use storage::Store;

@@ -6,7 +6,7 @@ use perwiga_core::{
     http::{fetch_and_normalize, HttpFeedTransport},
     model::{AliasInput, EntityInput, EntityPatch},
     service::Application,
-    ModuleRegistry, Store, WorkKind,
+    Capability, ModuleRegistry, Store, WorkKind,
 };
 
 mod public_export;
@@ -46,6 +46,10 @@ enum Command {
     Feed {
         #[command(subcommand)]
         command: FeedCommand,
+    },
+    Lore {
+        #[command(subcommand)]
+        command: LoreCommand,
     },
     Event(EventCommand),
 }
@@ -315,6 +319,28 @@ enum FeedCommand {
     },
 }
 
+#[derive(Debug, Subcommand)]
+enum LoreCommand {
+    Candidates {
+        #[command(subcommand)]
+        command: LoreCandidatesCommand,
+    },
+}
+
+#[derive(Debug, Subcommand)]
+enum LoreCandidatesCommand {
+    Import(ImportLoreCandidates),
+}
+
+#[derive(Debug, Args)]
+struct ImportLoreCandidates {
+    #[arg(long)]
+    work: String,
+    /// JSON file conforming to docs/schemas/lore-candidate-batch-v1.schema.json.
+    #[arg(long)]
+    file: PathBuf,
+}
+
 #[derive(Debug, Args)]
 struct IngestFeed {
     #[arg(long)]
@@ -544,6 +570,31 @@ fn run() -> perwiga_core::Result<()> {
             }
             FeedCommand::List { source } => print_json(&app.store().list_feed_items(&source)?)?,
         },
+        Command::Lore { command } => match command {
+            LoreCommand::Candidates { command } => match command {
+                LoreCandidatesCommand::Import(input) => {
+                    if !app.supports_capability(&input.work, Capability::LoreTimeline)? {
+                        return Err(perwiga_core::PerwigaError::Unsupported(
+                            "the selected work module does not support lore timelines".into(),
+                        ));
+                    }
+                    let json = fs::read_to_string(&input.file).map_err(|error| {
+                        perwiga_core::PerwigaError::Validation(format!(
+                            "cannot read lore candidate file: {error}"
+                        ))
+                    })?;
+                    let batch = serde_json::from_str(&json).map_err(|error| {
+                        perwiga_core::PerwigaError::Validation(format!(
+                            "cannot parse lore candidate file: {error}"
+                        ))
+                    })?;
+                    print_json(
+                        &app.store_mut()
+                            .import_lore_candidate_batch(&input.work, &batch)?,
+                    )?
+                }
+            },
+        },
         Command::Event(input) => print_json(&app.store().create_calendar_event(
             &input.work,
             &input.title,
@@ -708,6 +759,34 @@ mod tests {
             Command::Entity {
                 command: EntityCommand::ImportGenshinSkins(input),
             } => assert_eq!(input.work, "work-4"),
+            command => panic!("unexpected command: {command:?}"),
+        }
+    }
+
+    #[test]
+    fn parses_lore_candidate_import() {
+        let cli = Cli::try_parse_from([
+            "perwiga",
+            "lore",
+            "candidates",
+            "import",
+            "--work",
+            "work-lore",
+            "--file",
+            "candidates.json",
+        ])
+        .expect("valid lore candidate import command");
+
+        match cli.command {
+            Command::Lore {
+                command:
+                    LoreCommand::Candidates {
+                        command: LoreCandidatesCommand::Import(input),
+                    },
+            } => {
+                assert_eq!(input.work, "work-lore");
+                assert_eq!(input.file, PathBuf::from("candidates.json"));
+            }
             command => panic!("unexpected command: {command:?}"),
         }
     }

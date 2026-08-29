@@ -11,8 +11,8 @@ use perwiga_core::{
     },
     CalendarEventPresentation, Capability, EntityEventRecencyPresentation, EntityFacetDefinition,
     EntityFacetOption, EntityPresentation, EntityTypeDefinition, EventFeaturedEntityPresentation,
-    EventPreviousGapPresentation, LibraryModule, ModuleRegistry, PerwigaError, Store,
-    ThemeDefinition, WorkKind,
+    EventPreviousGapPresentation, LibraryModule, LoreRoleDefinition, LoreSchemaDefinition,
+    LoreSubjectTypeDefinition, ModuleRegistry, PerwigaError, Store, ThemeDefinition, WorkKind,
 };
 use serde::{Deserialize, Serialize};
 
@@ -22,7 +22,70 @@ static CAPABILITIES: &[Capability] = &[
     Capability::ManualContent,
     Capability::EntitySchema,
     Capability::ScheduledEvents,
+    Capability::LoreTimeline,
 ];
+static LORE_SUBJECT_TYPES: &[LoreSubjectTypeDefinition] = &[
+    LoreSubjectTypeDefinition {
+        key: "operator",
+        display_name: "Operator",
+    },
+    LoreSubjectTypeDefinition {
+        key: "npc",
+        display_name: "NPC",
+    },
+    LoreSubjectTypeDefinition {
+        key: "region",
+        display_name: "Region",
+    },
+    LoreSubjectTypeDefinition {
+        key: "faction",
+        display_name: "Faction",
+    },
+    LoreSubjectTypeDefinition {
+        key: "concept",
+        display_name: "Concept",
+    },
+    LoreSubjectTypeDefinition {
+        key: "unknown",
+        display_name: "Unknown / hear-say entity",
+    },
+];
+static LORE_ROLES: &[LoreRoleDefinition] = &[
+    LoreRoleDefinition {
+        key: "actor",
+        display_name: "Actor",
+        description: "Performs or initiates the event.",
+    },
+    LoreRoleDefinition {
+        key: "affected",
+        display_name: "Affected",
+        description: "Is changed, harmed, helped, or otherwise affected.",
+    },
+    LoreRoleDefinition {
+        key: "witness",
+        display_name: "Witness",
+        description: "Reports, observes, or remembers the event.",
+    },
+    LoreRoleDefinition {
+        key: "source",
+        display_name: "Source",
+        description: "Is the in-world or archival source of the claim.",
+    },
+    LoreRoleDefinition {
+        key: "location",
+        display_name: "Location",
+        description: "Marks the region or place involved.",
+    },
+    LoreRoleDefinition {
+        key: "mentioned",
+        display_name: "Mentioned",
+        description: "Is named without a stronger involvement claim.",
+    },
+];
+static LORE_SCHEMA: LoreSchemaDefinition = LoreSchemaDefinition {
+    subject_types: LORE_SUBJECT_TYPES,
+    roles: LORE_ROLES,
+};
 static THEME: ThemeDefinition = ThemeDefinition {
     background: "#080d11",
     surface: "#0e151b",
@@ -1518,6 +1581,9 @@ impl LibraryModule for ArknightsEndfieldModule {
     }
     fn entity_facets(&self) -> &'static [EntityFacetDefinition] {
         ENTITY_FACETS
+    }
+    fn lore_schema(&self) -> Option<&'static LoreSchemaDefinition> {
+        Some(&LORE_SCHEMA)
     }
     fn theme(&self) -> ThemeDefinition {
         THEME
