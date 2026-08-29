@@ -3,6 +3,7 @@
 pub mod error;
 pub mod feed;
 pub mod http;
+pub mod lore;
 pub mod model;
 pub mod module;
 pub mod rich_text;

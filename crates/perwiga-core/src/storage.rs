@@ -87,6 +87,15 @@ impl Store {
             )?;
             transaction.commit()?;
         }
+        if current.unwrap_or(0) < 5 {
+            let transaction = self.connection.transaction()?;
+            transaction.execute_batch(SCHEMA_V5)?;
+            transaction.execute(
+                "INSERT INTO schema_migrations (version, applied_at) VALUES (?1, ?2)",
+                params![5_i64, now()],
+            )?;
+            transaction.commit()?;
+        }
         Ok(())
     }
 
@@ -1476,6 +1485,189 @@ CREATE INDEX entity_appearance_locations_appearance_idx
 ON entity_appearance_locations (appearance_id, location_name);
 "#;
 
+const SCHEMA_V5: &str = r#"
+CREATE TABLE entity_external_identities (
+    id TEXT PRIMARY KEY,
+    work_id TEXT NOT NULL REFERENCES library_works (id),
+    entity_id TEXT NOT NULL REFERENCES wiki_entities (id),
+    source_provider TEXT NOT NULL CHECK (length(trim(source_provider)) > 0),
+    source_identity TEXT NOT NULL CHECK (length(trim(source_identity)) > 0),
+    created_at TEXT NOT NULL,
+    UNIQUE (work_id, source_provider, source_identity),
+    UNIQUE (entity_id, source_provider, source_identity)
+);
+CREATE INDEX entity_external_identities_entity_idx
+ON entity_external_identities (entity_id, source_provider);
+
+CREATE TABLE lore_periods (
+    id TEXT PRIMARY KEY,
+    work_id TEXT NOT NULL REFERENCES library_works (id),
+    source_provider TEXT NOT NULL CHECK (length(trim(source_provider)) > 0),
+    source_identity TEXT NOT NULL CHECK (length(trim(source_identity)) > 0),
+    name_en TEXT NOT NULL CHECK (length(trim(name_en)) > 0),
+    description_en TEXT,
+    display_order INTEGER NOT NULL,
+    parent_period_id TEXT REFERENCES lore_periods (id),
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    UNIQUE (work_id, source_provider, source_identity)
+);
+CREATE INDEX lore_periods_order_idx ON lore_periods (work_id, display_order, id);
+
+CREATE TABLE lore_sources (
+    id TEXT PRIMARY KEY,
+    work_id TEXT NOT NULL REFERENCES library_works (id),
+    source_provider TEXT NOT NULL CHECK (length(trim(source_provider)) > 0),
+    source_identity TEXT NOT NULL CHECK (length(trim(source_identity)) > 0),
+    source_kind TEXT NOT NULL CHECK (length(trim(source_kind)) > 0),
+    title TEXT NOT NULL CHECK (length(trim(title)) > 0),
+    language TEXT NOT NULL CHECK (length(trim(language)) > 0),
+    source_url TEXT,
+    content_sha256 TEXT NOT NULL CHECK (length(trim(content_sha256)) > 0),
+    checked_at TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    UNIQUE (work_id, source_provider, source_identity)
+);
+CREATE INDEX lore_sources_work_idx ON lore_sources (work_id, source_provider);
+
+CREATE TABLE lore_evidence (
+    id TEXT PRIMARY KEY,
+    source_id TEXT NOT NULL REFERENCES lore_sources (id),
+    locator TEXT NOT NULL CHECK (length(trim(locator)) > 0),
+    excerpt TEXT NOT NULL CHECK (length(trim(excerpt)) > 0),
+    excerpt_sha256 TEXT NOT NULL CHECK (length(trim(excerpt_sha256)) > 0),
+    created_at TEXT NOT NULL,
+    UNIQUE (source_id, locator, excerpt_sha256)
+);
+
+CREATE TABLE lore_events (
+    id TEXT PRIMARY KEY,
+    work_id TEXT NOT NULL REFERENCES library_works (id),
+    source_provider TEXT NOT NULL CHECK (length(trim(source_provider)) > 0),
+    source_identity TEXT NOT NULL CHECK (length(trim(source_identity)) > 0),
+    active_revision INTEGER NOT NULL CHECK (active_revision > 0),
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    UNIQUE (work_id, source_provider, source_identity)
+);
+CREATE INDEX lore_events_work_idx ON lore_events (work_id, id);
+
+CREATE TABLE lore_event_revisions (
+    id TEXT PRIMARY KEY,
+    event_id TEXT NOT NULL REFERENCES lore_events (id),
+    revision INTEGER NOT NULL CHECK (revision > 0),
+    title_en TEXT NOT NULL CHECK (length(trim(title_en)) > 0),
+    summary_en TEXT,
+    time_kind TEXT NOT NULL CHECK (time_kind IN ('moment', 'interval')),
+    time_precision TEXT NOT NULL CHECK (time_precision IN ('exact', 'bounded', 'approximate', 'relative', 'unknown')),
+    time_label TEXT NOT NULL CHECK (length(trim(time_label)) > 0),
+    start_period_id TEXT REFERENCES lore_periods (id),
+    end_period_id TEXT REFERENCES lore_periods (id),
+    decision_id TEXT,
+    created_at TEXT NOT NULL,
+    UNIQUE (event_id, revision)
+);
+
+CREATE TABLE lore_event_relations (
+    id TEXT PRIMARY KEY,
+    event_id TEXT NOT NULL REFERENCES lore_events (id),
+    related_event_id TEXT NOT NULL REFERENCES lore_events (id),
+    relation_kind TEXT NOT NULL CHECK (relation_kind IN ('before', 'after', 'overlaps', 'contains')),
+    created_at TEXT NOT NULL,
+    UNIQUE (event_id, related_event_id, relation_kind)
+);
+CREATE INDEX lore_event_relations_event_idx ON lore_event_relations (event_id, relation_kind);
+
+CREATE TABLE lore_subjects (
+    id TEXT PRIMARY KEY,
+    work_id TEXT NOT NULL REFERENCES library_works (id),
+    attested_name TEXT NOT NULL CHECK (length(trim(attested_name)) > 0),
+    proposed_type TEXT NOT NULL CHECK (length(trim(proposed_type)) > 0),
+    wiki_entity_id TEXT REFERENCES wiki_entities (id),
+    source_provider TEXT NOT NULL CHECK (length(trim(source_provider)) > 0),
+    source_identity TEXT NOT NULL CHECK (length(trim(source_identity)) > 0),
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    UNIQUE (work_id, source_provider, source_identity)
+);
+CREATE INDEX lore_subjects_work_idx ON lore_subjects (work_id, proposed_type, attested_name);
+
+CREATE TABLE lore_claims (
+    id TEXT PRIMARY KEY,
+    event_id TEXT NOT NULL REFERENCES lore_events (id),
+    claim_key TEXT NOT NULL CHECK (length(trim(claim_key)) > 0),
+    text_en TEXT NOT NULL CHECK (length(trim(text_en)) > 0),
+    assertion_kind TEXT NOT NULL CHECK (assertion_kind IN ('direct_fact', 'in_world_report', 'hearsay', 'inference', 'interpretation')),
+    certainty TEXT NOT NULL CHECK (certainty IN ('confirmed', 'probable', 'possible', 'disputed', 'unknown')),
+    branch_group TEXT,
+    created_at TEXT NOT NULL,
+    UNIQUE (event_id, claim_key)
+);
+CREATE INDEX lore_claims_event_idx ON lore_claims (event_id, claim_key);
+
+CREATE TABLE lore_involvements (
+    id TEXT PRIMARY KEY,
+    event_id TEXT REFERENCES lore_events (id),
+    claim_id TEXT REFERENCES lore_claims (id),
+    subject_id TEXT NOT NULL REFERENCES lore_subjects (id),
+    role TEXT NOT NULL CHECK (length(trim(role)) > 0),
+    created_at TEXT NOT NULL,
+    CHECK ((event_id IS NOT NULL AND claim_id IS NULL) OR (event_id IS NULL AND claim_id IS NOT NULL)),
+    UNIQUE (event_id, claim_id, subject_id, role)
+);
+CREATE INDEX lore_involvements_subject_idx ON lore_involvements (subject_id, event_id, claim_id);
+
+CREATE TABLE lore_claim_evidence (
+    id TEXT PRIMARY KEY,
+    claim_id TEXT NOT NULL REFERENCES lore_claims (id),
+    evidence_id TEXT NOT NULL REFERENCES lore_evidence (id),
+    stance TEXT NOT NULL CHECK (stance IN ('supports', 'contradicts')),
+    created_at TEXT NOT NULL,
+    UNIQUE (claim_id, evidence_id, stance)
+);
+
+CREATE TABLE lore_candidate_batches (
+    id TEXT PRIMARY KEY,
+    work_id TEXT NOT NULL REFERENCES library_works (id),
+    schema TEXT NOT NULL CHECK (length(trim(schema)) > 0),
+    corpus_version TEXT NOT NULL CHECK (length(trim(corpus_version)) > 0),
+    corpus_manifest_sha256 TEXT NOT NULL CHECK (length(trim(corpus_manifest_sha256)) > 0),
+    generator_name TEXT NOT NULL CHECK (length(trim(generator_name)) > 0),
+    generator_version TEXT NOT NULL CHECK (length(trim(generator_version)) > 0),
+    generated_at TEXT NOT NULL,
+    imported_at TEXT NOT NULL,
+    UNIQUE (work_id, corpus_manifest_sha256, generator_name, generator_version)
+);
+
+CREATE TABLE lore_candidates (
+    id TEXT PRIMARY KEY,
+    batch_id TEXT NOT NULL REFERENCES lore_candidate_batches (id),
+    candidate_key TEXT NOT NULL CHECK (length(trim(candidate_key)) > 0),
+    candidate_kind TEXT NOT NULL CHECK (candidate_kind IN ('period', 'source', 'subject', 'event', 'claim', 'relation')),
+    payload_json TEXT NOT NULL CHECK (length(trim(payload_json)) > 0),
+    fingerprint TEXT NOT NULL CHECK (length(trim(fingerprint)) > 0),
+    status TEXT NOT NULL CHECK (status IN ('pending', 'auto_accepted', 'approved', 'rejected', 'merged', 'invalid')),
+    validation_note TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    UNIQUE (batch_id, candidate_key),
+    UNIQUE (batch_id, fingerprint)
+);
+CREATE INDEX lore_candidates_status_idx ON lore_candidates (batch_id, status, created_at);
+
+CREATE TABLE lore_review_decisions (
+    id TEXT PRIMARY KEY,
+    candidate_id TEXT NOT NULL REFERENCES lore_candidates (id),
+    decision TEXT NOT NULL CHECK (decision IN ('approve', 'reject', 'merge')),
+    decision_source TEXT NOT NULL CHECK (decision_source IN ('rule', 'human')),
+    normalized_payload_json TEXT,
+    merge_target_id TEXT,
+    notes TEXT,
+    created_at TEXT NOT NULL
+);
+CREATE INDEX lore_review_decisions_candidate_idx ON lore_review_decisions (candidate_id, created_at);
+"#;
+
 fn now() -> String {
     Utc::now().to_rfc3339_opts(SecondsFormat::Millis, true)
 }
@@ -1871,7 +2063,7 @@ mod tests {
                 row.get(0)
             })
             .expect("schema version");
-        assert_eq!(schema_version, 4);
+        assert_eq!(schema_version, 5);
         let entity_source_columns: i64 = store
             .connection
             .query_row(
