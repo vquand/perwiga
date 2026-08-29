@@ -3631,7 +3631,26 @@ mod tests {
             .into_iter()
             .collect::<Vec<_>>();
         assert_eq!(pending_candidates.len(), 4);
-        for candidate in pending_candidates {
+        let event_candidate = pending_candidates
+            .iter()
+            .find(|candidate| candidate.candidate_kind == "event")
+            .expect("event candidate");
+        let event_candidate_id = event_candidate.id.clone();
+        let reviewed = store
+            .review_lore_candidate(&event_candidate_id, "approve", None, None, None)
+            .expect("approve event candidate");
+        assert_eq!(reviewed.status, "approved");
+        assert_eq!(
+            store
+                .list_lore_candidates(&work.id, Some("pending"))
+                .expect("remaining pending candidates")
+                .len(),
+            3
+        );
+        for candidate in pending_candidates
+            .into_iter()
+            .filter(|candidate| candidate.id != event_candidate_id)
+        {
             let reviewed = store
                 .review_lore_candidate(&candidate.id, "approve", None, None, None)
                 .expect("approve lore candidate");
