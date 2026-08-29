@@ -448,6 +448,33 @@ impl Store {
         }
         let source_provider = required_text(source_provider, "entity identity provider")?;
         let source_identity = required_text(source_identity, "entity identity")?;
+        if let Some(existing) = self
+            .connection
+            .query_row(
+                "SELECT id, work_id, entity_id, source_provider, source_identity
+                 FROM entity_external_identities
+                 WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                params![work_id, source_provider, source_identity],
+                |row| {
+                    Ok(EntityExternalIdentity {
+                        id: row.get(0)?,
+                        work_id: row.get(1)?,
+                        entity_id: row.get(2)?,
+                        source_provider: row.get(3)?,
+                        source_identity: row.get(4)?,
+                    })
+                },
+            )
+            .optional()?
+        {
+            if existing.entity_id != entity_id {
+                return Err(PerwigaError::Conflict(format!(
+                    "entity identity {}:{} is already linked to another entity",
+                    source_provider, source_identity
+                )));
+            }
+            return Ok(existing);
+        }
         self.connection.execute(
             "INSERT INTO entity_external_identities
              (id, work_id, entity_id, source_provider, source_identity, created_at)
@@ -2696,10 +2723,94 @@ fn parse_evidence_stance(value: &str) -> Result<LoreEvidenceStance> {
 }
 
 fn stable_fingerprint(value: &str) -> String {
-    use std::hash::{Hash, Hasher};
-    let mut hasher = std::collections::hash_map::DefaultHasher::new();
-    value.hash(&mut hasher);
-    format!("{:016x}", hasher.finish())
+    // Keep fingerprints deterministic across process restarts without adding
+    // a crypto dependency to the small local-first core. This is the standard
+    // SHA-256 compression function, used only for deduplication fingerprints;
+    // source-provided hashes remain authoritative provenance fields.
+    const K: [u32; 64] = [
+        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4,
+        0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe,
+        0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f,
+        0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
+        0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc,
+        0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b,
+        0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116,
+        0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+        0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7,
+        0xc67178f2,
+    ];
+    let mut padded = value.as_bytes().to_vec();
+    let bit_length = (padded.len() as u64) * 8;
+    padded.push(0x80);
+    while padded.len() % 64 != 56 {
+        padded.push(0);
+    }
+    padded.extend_from_slice(&bit_length.to_be_bytes());
+
+    let mut hash = [
+        0x6a09e667u32,
+        0xbb67ae85,
+        0x3c6ef372,
+        0xa54ff53a,
+        0x510e527f,
+        0x9b05688c,
+        0x1f83d9ab,
+        0x5be0cd19,
+    ];
+    for chunk in padded.chunks_exact(64) {
+        let mut words = [0u32; 64];
+        for (index, word) in words[..16].iter_mut().enumerate() {
+            let offset = index * 4;
+            *word = u32::from_be_bytes([
+                chunk[offset],
+                chunk[offset + 1],
+                chunk[offset + 2],
+                chunk[offset + 3],
+            ]);
+        }
+        for index in 16..64 {
+            let s0 = words[index - 15].rotate_right(7)
+                ^ words[index - 15].rotate_right(18)
+                ^ (words[index - 15] >> 3);
+            let s1 = words[index - 2].rotate_right(17)
+                ^ words[index - 2].rotate_right(19)
+                ^ (words[index - 2] >> 10);
+            words[index] = words[index - 16]
+                .wrapping_add(s0)
+                .wrapping_add(words[index - 7])
+                .wrapping_add(s1);
+        }
+        let mut working = hash;
+        for index in 0..64 {
+            let s1 = working[4].rotate_right(6)
+                ^ working[4].rotate_right(11)
+                ^ working[4].rotate_right(25);
+            let choice = (working[4] & working[5]) ^ ((!working[4]) & working[6]);
+            let temp1 = working[7]
+                .wrapping_add(s1)
+                .wrapping_add(choice)
+                .wrapping_add(K[index])
+                .wrapping_add(words[index]);
+            let s0 = working[0].rotate_right(2)
+                ^ working[0].rotate_right(13)
+                ^ working[0].rotate_right(22);
+            let majority =
+                (working[0] & working[1]) ^ (working[0] & working[2]) ^ (working[1] & working[2]);
+            let temp2 = s0.wrapping_add(majority);
+            working[7] = working[6];
+            working[6] = working[5];
+            working[5] = working[4];
+            working[4] = working[3].wrapping_add(temp1);
+            working[3] = working[2];
+            working[2] = working[1];
+            working[1] = working[0];
+            working[0] = temp1.wrapping_add(temp2);
+        }
+        for (value, update) in hash.iter_mut().zip(working) {
+            *value = value.wrapping_add(update);
+        }
+    }
+    hash.iter().map(|word| format!("{word:08x}")).collect()
 }
 
 const SCHEMA_V1: &str = r#"
@@ -3569,6 +3680,20 @@ mod tests {
                 },
             )
             .expect("entity");
+        let other_entity = store
+            .insert_entity(
+                &first_work.id,
+                &EntityInput {
+                    entity_type: "npc".into(),
+                    official_english_name: "Other Witness".into(),
+                    official_original_name: "Other Witness".into(),
+                    official_vietnamese_name: None,
+                    automatic_vietnamese_translation: None,
+                    english_description: None,
+                    other_information: None,
+                },
+            )
+            .expect("other entity");
 
         let identity = store
             .add_entity_external_identity(
@@ -3587,6 +3712,15 @@ mod tests {
             )
             .expect("duplicate identity");
         assert_eq!(identity.id, duplicate.id);
+        assert!(matches!(
+            store.add_entity_external_identity(
+                &first_work.id,
+                &other_entity.id,
+                "endfield-official",
+                "npc:witness"
+            ),
+            Err(PerwigaError::Conflict(_))
+        ));
         assert_eq!(
             store
                 .resolve_entity_external_identity(
@@ -3606,6 +3740,14 @@ mod tests {
             ),
             Err(PerwigaError::Conflict(_))
         ));
+    }
+
+    #[test]
+    fn lore_fingerprints_are_stable_sha256_values() {
+        assert_eq!(
+            stable_fingerprint("abc"),
+            "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        );
     }
 
     #[test]
