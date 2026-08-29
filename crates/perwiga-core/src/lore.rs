@@ -389,6 +389,10 @@ impl LoreCandidateBatch {
             required(&subject.key, "lore subject key")?;
             required(&subject.attested_name, "lore subject name")?;
             required(&subject.proposed_type, "lore subject type")?;
+            if let Some(reference) = &subject.entity_ref {
+                required(&reference.provider, "lore subject entity provider")?;
+                required(&reference.identity, "lore subject entity identity")?;
+            }
             validate_evidence(&subject.evidence, &source_keys, "lore subject")?;
         }
 
