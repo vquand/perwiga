@@ -7,6 +7,7 @@ import {
   renderInspectorEmpty,
   renderTypeNavigation,
 } from "/assets/ui.js";
+import { renderLoreEventDetail, renderLoreMap, renderLoreReview } from "/assets/lore.js";
 
 const state = {
   works: [],
@@ -24,6 +25,12 @@ const state = {
   sort: "name",
   events: [],
   eventStatus: "all",
+  loreSchema: null,
+  loreGraph: null,
+  loreSubjects: [],
+  loreCandidates: [],
+  selectedLoreEventId: "",
+  loreSubjectId: "",
   view: "wiki",
   switchSequence: 0,
 };
@@ -41,9 +48,16 @@ const dom = {
   viewButtons: Array.from(document.querySelectorAll("[data-view]")),
   wikiView: document.querySelector("#wiki-view"),
   timelineView: document.querySelector("#timeline-view"),
+  loreView: document.querySelector("#lore-view"),
+  loreViewButton: document.querySelector('[data-view="lore"]'),
   eventStatusButtons: Array.from(document.querySelectorAll("[data-event-status]")),
   timelineStatus: document.querySelector("#timeline-status"),
   timeline: document.querySelector("#event-timeline"),
+  loreStatus: document.querySelector("#lore-status"),
+  loreMap: document.querySelector("#lore-map"),
+  loreDetail: document.querySelector("#lore-detail"),
+  loreReview: document.querySelector("#lore-review"),
+  loreSubjectFilter: document.querySelector("#lore-subject-filter"),
   workspace: document.querySelector(".workspace"),
   nav: document.querySelector("#type-nav"),
   heading: document.querySelector("#collection-heading"),
@@ -220,6 +234,8 @@ function renderActiveWork() {
   dom.moduleId.textContent = state.work.module_id;
   dom.workspace.setAttribute("aria-label", `${state.work.display_name} wiki workspace`);
   document.title = `Perwiga · ${state.work.display_name}`;
+  dom.loreViewButton.hidden = !state.loreSchema;
+  if (!state.loreSchema && state.view === "lore") showView("wiki");
   renderLibrary();
 
   dom.type.replaceChildren();
@@ -247,9 +263,10 @@ function setBusy(message) {
 }
 
 function showView(view) {
-  state.view = view === "timeline" ? "timeline" : "wiki";
+  state.view = view === "timeline" || (view === "lore" && state.loreSchema) ? view : "wiki";
   dom.wikiView.hidden = state.view !== "wiki";
   dom.timelineView.hidden = state.view !== "timeline";
+  dom.loreView.hidden = state.view !== "lore";
   for (const button of dom.viewButtons) {
     const active = button.dataset.view === state.view;
     button.classList.toggle("is-active", active);
@@ -257,6 +274,8 @@ function showView(view) {
   }
   if (state.view === "timeline") {
     requestAnimationFrame(() => dom.timeline.focus({ preventScroll: true }));
+  } else if (state.view === "lore") {
+    requestAnimationFrame(() => dom.loreMap.focus({ preventScroll: true }));
   }
 }
 
@@ -376,6 +395,93 @@ function renderTimeline() {
       : "No event schedule has been imported for this title";
 }
 
+function renderLore() {
+  const graph = state.loreGraph || { periods: [], events: [], relations: [], subjects: [] };
+  dom.loreMap.removeAttribute("aria-busy");
+  renderLoreMap(dom.loreMap, graph, { onEvent: selectLoreEvent });
+
+  const currentSubject = state.loreSubjectId;
+  dom.loreSubjectFilter.replaceChildren();
+  dom.loreSubjectFilter.append(new Option("All subjects", ""));
+  for (const subject of state.loreSubjects) {
+    dom.loreSubjectFilter.append(new Option(
+      `${subject.attested_name} · ${subject.proposed_type}`,
+      subject.id,
+    ));
+  }
+  state.loreSubjectId = state.loreSubjects.some((subject) => subject.id === currentSubject)
+    ? currentSubject
+    : "";
+  dom.loreSubjectFilter.value = state.loreSubjectId;
+  renderLoreReview(dom.loreReview, state.loreCandidates, {
+    onDecision: reviewLoreCandidate,
+  });
+  const eventCount = graph.events.length;
+  const candidateCount = state.loreCandidates.length;
+  dom.loreStatus.textContent = eventCount
+    ? `${eventCount} reviewed ${eventCount === 1 ? "event" : "events"} · ${candidateCount} candidate${candidateCount === 1 ? "" : "s"} awaiting review`
+    : candidateCount
+      ? `${candidateCount} candidate${candidateCount === 1 ? "" : "s"} awaiting review · no events approved yet`
+      : "No reviewed lore events yet";
+}
+
+async function selectLoreEvent(eventId) {
+  state.selectedLoreEventId = eventId;
+  dom.loreDetail.setAttribute("aria-busy", "true");
+  try {
+    const detail = await api.getLoreEvent(eventId);
+    if (state.selectedLoreEventId !== eventId) return;
+    renderLoreEventDetail(dom.loreDetail, detail, {
+      onBack: () => {
+        state.selectedLoreEventId = "";
+        renderLoreEventDetail(dom.loreDetail, null);
+      },
+    });
+  } catch (error) {
+    renderLoreEventDetail(dom.loreDetail, null);
+    showToast(error.message, true);
+  } finally {
+    dom.loreDetail.removeAttribute("aria-busy");
+  }
+}
+
+async function reviewLoreCandidate(candidate, decision) {
+  try {
+    await api.reviewLoreCandidate(candidate.id, { decision });
+    showToast(`Lore candidate ${decision === "approve" ? "approved" : "rejected"}`);
+    await refreshLore();
+  } catch (error) {
+    showToast(error.message, true);
+  }
+}
+
+async function refreshLore() {
+  if (!state.work || !state.loreSchema) return;
+  const workId = state.work.id;
+  dom.loreMap.setAttribute("aria-busy", "true");
+  dom.loreStatus.textContent = "Loading lore map…";
+  try {
+    const [graph, subjects, candidates] = await Promise.all([
+      api.getLoreGraph(workId, { subjectId: state.loreSubjectId }),
+      api.listLoreSubjects(workId),
+      api.listLoreCandidates(workId),
+    ]);
+    if (state.work?.id !== workId) return;
+    state.loreGraph = graph;
+    state.loreSubjects = subjects;
+    state.loreCandidates = candidates;
+    renderLore();
+  } catch (error) {
+    if (state.work?.id !== workId) return;
+    state.loreGraph = null;
+    state.loreSubjects = [];
+    state.loreCandidates = [];
+    dom.loreMap.removeAttribute("aria-busy");
+    dom.loreStatus.textContent = "The lore map could not be loaded.";
+    showToast(error.message, true);
+  }
+}
+
 async function refreshTimeline() {
   if (!state.work) return;
   const workId = state.work.id;
@@ -425,6 +531,12 @@ async function activateWork(workId) {
     state.work = workspace.work;
     state.types = workspace.entity_types;
     state.facets = workspace.entity_facets || [];
+    state.loreSchema = workspace.lore_schema || null;
+    state.loreGraph = null;
+    state.loreSubjects = [];
+    state.loreCandidates = [];
+    state.selectedLoreEventId = "";
+    state.loreSubjectId = "";
     state.selectedType = "";
     state.selectedId = "";
     state.detail = null;
@@ -444,7 +556,8 @@ async function activateWork(workId) {
       "Select a record",
       `Choose an entry belonging to ${state.work.display_name}.`,
     );
-    await Promise.all([refreshEntities(), refreshTimeline()]);
+    renderLoreEventDetail(dom.loreDetail, null);
+    await Promise.all([refreshEntities(), refreshTimeline(), refreshLore()]);
   } catch (error) {
     showToast(error.message, true);
   } finally {
@@ -622,6 +735,10 @@ dom.rarityFilter.addEventListener("change", () => {
 dom.sort.addEventListener("change", () => {
   state.sort = dom.sort.value;
   renderWorkspace();
+});
+dom.loreSubjectFilter.addEventListener("change", () => {
+  state.loreSubjectId = dom.loreSubjectFilter.value;
+  refreshLore();
 });
 for (const button of dom.viewButtons) {
   button.addEventListener("click", () => showView(button.dataset.view));

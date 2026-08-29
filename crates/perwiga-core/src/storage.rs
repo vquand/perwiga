@@ -15,10 +15,10 @@ use crate::{
     lore::{
         EntityExternalIdentity, LoreAssertionKind, LoreCandidateBatch, LoreCandidateRecord,
         LoreCertainty, LoreClaim, LoreClaimCandidate, LoreClaimEvidence, LoreEvent,
-        LoreEventCandidate, LoreEventDetail, LoreEventRelation, LoreEvidence,
-        LoreEvidenceCandidate, LoreEvidenceStance, LoreImportSummary, LoreInvolvement, LorePeriod,
-        LorePeriodCandidate, LoreRelationKind, LoreSource, LoreSourceCandidate, LoreSubject,
-        LoreSubjectCandidate, LoreTimeKind, LoreTimePrecision,
+        LoreEventCandidate, LoreEventDetail, LoreEventRelation, LoreEventRelationCandidate,
+        LoreEvidence, LoreEvidenceCandidate, LoreEvidenceStance, LoreImportSummary,
+        LoreInvolvement, LorePeriod, LorePeriodCandidate, LoreRelationKind, LoreSource,
+        LoreSourceCandidate, LoreSubject, LoreSubjectCandidate, LoreTimeKind, LoreTimePrecision,
     },
     model::{
         AliasBatchSummary, AliasInput, CalendarEvent, CalendarEventImportSummary,
@@ -777,12 +777,6 @@ impl Store {
                 |row| row.get(0),
             )?;
             materialize_lore_batch(&transaction, &work_id, &candidate.batch_id)?;
-            transaction.execute(
-                "UPDATE lore_candidates SET status = CASE
-                   WHEN status IN ('pending', 'auto_accepted') THEN 'approved' ELSE status END,
-                   updated_at = ?1 WHERE batch_id = ?2",
-                params![now(), candidate.batch_id],
-            )?;
         }
         transaction.commit()?;
         self.get_lore_candidate(candidate_id)?
@@ -797,6 +791,19 @@ impl Store {
                  FROM lore_candidates WHERE id = ?1",
                 [candidate_id],
                 row_to_lore_candidate,
+            )
+            .optional()
+            .map_err(Into::into)
+    }
+
+    pub fn get_lore_candidate_work_id(&self, candidate_id: &str) -> Result<Option<String>> {
+        self.connection
+            .query_row(
+                "SELECT b.work_id FROM lore_candidates c
+                 JOIN lore_candidate_batches b ON b.id = c.batch_id
+                 WHERE c.id = ?1",
+                [candidate_id],
+                |row| row.get(0),
             )
             .optional()
             .map_err(Into::into)
@@ -2109,6 +2116,7 @@ fn candidate_payloads<T: DeserializeOwned>(
     let mut statement = transaction.prepare(
         "SELECT payload_json FROM lore_candidates
          WHERE batch_id = ?1 AND candidate_kind = ?2
+           AND status IN ('approved', 'auto_accepted')
          ORDER BY candidate_key",
     )?;
     let rows = statement.query_map(params![batch_id, candidate_kind], |row| {
@@ -2188,9 +2196,10 @@ fn materialize_lore_batch(
             periods.insert(period.key, id);
         }
         if next.len() == before {
-            return Err(PerwigaError::Validation(
-                "lore period hierarchy contains an unresolved cycle".into(),
-            ));
+            // A reviewed child may arrive before its parent is reviewed. Leave
+            // it pending in the materialized graph; the next approval reruns
+            // this pass and can attach it once the parent exists.
+            break;
         }
         remaining = next;
     }
@@ -2292,29 +2301,28 @@ fn materialize_lore_batch(
     for event in &event_candidates {
         let event_id = events.get(&event.key).expect("event map populated");
         for involvement in &event.involvements {
-            let subject_id = subjects.get(&involvement.subject_key).ok_or_else(|| {
-                PerwigaError::Validation(format!(
-                    "unknown lore subject {}",
-                    involvement.subject_key
-                ))
-            })?;
-            ensure_lore_involvement(
-                transaction,
-                Some(event_id),
-                None,
-                subject_id,
-                &involvement.role,
-            )?;
+            if let Some(subject_id) = subjects.get(&involvement.subject_key) {
+                ensure_lore_involvement(
+                    transaction,
+                    Some(event_id),
+                    None,
+                    subject_id,
+                    &involvement.role,
+                )?;
+            }
         }
-        for claim in &event.claims {
-            let claim_id = ensure_lore_claim(transaction, event_id, claim)?;
-            for involvement in &claim.involvements {
-                let subject_id = subjects.get(&involvement.subject_key).ok_or_else(|| {
-                    PerwigaError::Validation(format!(
-                        "unknown lore subject {}",
-                        involvement.subject_key
-                    ))
-                })?;
+    }
+
+    type LoreClaimEnvelope = (String, LoreClaimCandidate);
+    let claim_candidates: Vec<LoreClaimEnvelope> =
+        candidate_payloads(transaction, batch_id, "claim")?;
+    for (event_key, claim) in claim_candidates {
+        let Some(event_id) = events.get(&event_key) else {
+            continue;
+        };
+        let claim_id = ensure_lore_claim(transaction, event_id, &claim)?;
+        for involvement in &claim.involvements {
+            if let Some(subject_id) = subjects.get(&involvement.subject_key) {
                 ensure_lore_involvement(
                     transaction,
                     None,
@@ -2323,45 +2331,48 @@ fn materialize_lore_batch(
                     &involvement.role,
                 )?;
             }
-            for evidence in &claim.evidence {
-                let source_id = sources.get(&evidence.source_key).ok_or_else(|| {
-                    PerwigaError::Validation(format!(
-                        "unknown lore evidence source {}",
-                        evidence.source_key
-                    ))
-                })?;
-                let evidence_id = ensure_lore_evidence(transaction, source_id, evidence)?;
-                transaction.execute(
-                    "INSERT INTO lore_claim_evidence (id, claim_id, evidence_id, stance, created_at)
-                     VALUES (?1, ?2, ?3, ?4, ?5) ON CONFLICT (claim_id, evidence_id, stance) DO NOTHING",
-                    params![
-                        new_id(),
-                        claim_id,
-                        evidence_id,
-                        evidence_stance(evidence.stance.unwrap_or(LoreEvidenceStance::Supports)),
-                        now()
-                    ],
-                )?;
-            }
         }
-        for relation in &event.time.relations {
-            let related_id = events.get(&relation.event_key).ok_or_else(|| {
-                PerwigaError::Validation(format!("unknown lore event {}", relation.event_key))
-            })?;
+        for evidence in &claim.evidence {
+            let Some(source_id) = sources.get(&evidence.source_key) else {
+                continue;
+            };
+            let evidence_id = ensure_lore_evidence(transaction, source_id, evidence)?;
             transaction.execute(
-                "INSERT INTO lore_event_relations
-                 (id, event_id, related_event_id, relation_kind, created_at)
-                 VALUES (?1, ?2, ?3, ?4, ?5)
-                 ON CONFLICT (event_id, related_event_id, relation_kind) DO NOTHING",
+                "INSERT INTO lore_claim_evidence (id, claim_id, evidence_id, stance, created_at)
+                 VALUES (?1, ?2, ?3, ?4, ?5) ON CONFLICT (claim_id, evidence_id, stance) DO NOTHING",
                 params![
                     new_id(),
-                    event_id,
-                    related_id,
-                    relation_kind(relation.kind),
+                    claim_id,
+                    evidence_id,
+                    evidence_stance(evidence.stance.unwrap_or(LoreEvidenceStance::Supports)),
                     now()
                 ],
             )?;
         }
+    }
+
+    type LoreRelationEnvelope = (String, LoreEventRelationCandidate);
+    let relation_candidates: Vec<LoreRelationEnvelope> =
+        candidate_payloads(transaction, batch_id, "relation")?;
+    for (event_key, relation) in relation_candidates {
+        let (Some(event_id), Some(related_id)) =
+            (events.get(&event_key), events.get(&relation.event_key))
+        else {
+            continue;
+        };
+        transaction.execute(
+            "INSERT INTO lore_event_relations
+             (id, event_id, related_event_id, relation_kind, created_at)
+             VALUES (?1, ?2, ?3, ?4, ?5)
+             ON CONFLICT (event_id, related_event_id, relation_kind) DO NOTHING",
+            params![
+                new_id(),
+                event_id,
+                related_id,
+                relation_kind(relation.kind),
+                now()
+            ],
+        )?;
     }
     Ok(())
 }
@@ -3503,16 +3514,18 @@ mod tests {
         assert_eq!(duplicate.candidates_inserted, 0);
         assert_eq!(duplicate.candidates_unchanged, 5);
 
-        let event_candidate = store
+        let pending_candidates = store
             .list_lore_candidates(&work.id, Some("pending"))
             .expect("pending candidates")
             .into_iter()
-            .find(|candidate| candidate.candidate_kind == "event")
-            .expect("event candidate");
-        let reviewed = store
-            .review_lore_candidate(&event_candidate.id, "approve", None, None, None)
-            .expect("approve event candidate");
-        assert_eq!(reviewed.status, "approved");
+            .collect::<Vec<_>>();
+        assert_eq!(pending_candidates.len(), 4);
+        for candidate in pending_candidates {
+            let reviewed = store
+                .review_lore_candidate(&candidate.id, "approve", None, None, None)
+                .expect("approve lore candidate");
+            assert_eq!(reviewed.status, "approved");
+        }
 
         let graph = store
             .list_lore_graph(&work.id, None, None, 50)

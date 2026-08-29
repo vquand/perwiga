@@ -55,6 +55,7 @@
       <nav class="view-switcher" aria-label="Workspace view">
         <button class="view-switch is-active" type="button" data-view="wiki" aria-pressed="true">Wiki</button>
         <button class="view-switch" type="button" data-view="timeline" aria-pressed="false">Timeline</button>
+        <button class="view-switch" type="button" data-view="lore" aria-pressed="false" hidden>Lore map</button>
       </nav>
 
       <section id="wiki-view" class="workspace" aria-label="Endfield wiki workspace">
@@ -138,6 +139,33 @@
         </div>
         <div id="event-timeline" class="event-timeline" tabindex="0" aria-label="Scrollable event timeline" aria-busy="true"></div>
         <p class="timeline-source-note">Open an event bar to inspect its published schedule source. Open-ended bars preserve an unannounced closing date.</p>
+      </section>
+
+      <section id="lore-view" class="lore-view" aria-labelledby="lore-heading" hidden>
+        <header class="lore-header">
+          <div>
+            <p class="section-index">Lore / source-backed claims</p>
+            <h2 id="lore-heading">Lore map</h2>
+            <p class="lore-intro">Periods run from past on the left to future on the right. Events preserve exact, fuzzy, and relative time labels; claims stay linked to their evidence.</p>
+          </div>
+          <label class="lore-subject-filter" for="lore-subject-filter"><span>Focus subject</span><select id="lore-subject-filter"><option value="">All subjects</option></select></label>
+        </header>
+        <div class="lore-toolbar">
+          <p id="lore-status" class="timeline-status" role="status" aria-live="polite">Preparing lore map…</p>
+          <span class="lore-legend"><i class="lore-legend-mark is-confirmed" aria-hidden="true"></i>Reviewed canon <i class="lore-legend-mark is-provisional" aria-hidden="true"></i>Provisional subject</span>
+        </div>
+        <div id="lore-map" class="lore-map-shell" tabindex="0" aria-label="Horizontal lore map" aria-busy="true"></div>
+        <div class="lore-lower-grid">
+          <aside class="lore-detail-panel" aria-labelledby="lore-detail-heading">
+            <div class="panel-heading"><p class="section-index">Lore event</p><h3 id="lore-detail-heading">Evidence detail</h3></div>
+            <div id="lore-detail" class="empty-inspector">Select an event on the map to inspect its claims and evidence.</div>
+          </aside>
+          <aside class="lore-review-panel" aria-labelledby="lore-review-heading">
+            <div class="panel-heading"><p class="section-index">Curation</p><h3 id="lore-review-heading">Review queue</h3></div>
+            <p class="lore-review-intro">LLM output is provisional until a human approves or rejects each candidate batch item.</p>
+            <div id="lore-review" class="lore-review-list" aria-live="polite"></div>
+          </aside>
+        </div>
       </section>
     </main>
 

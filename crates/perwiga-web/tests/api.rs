@@ -3,7 +3,7 @@ use axum::{
     http::{Request, StatusCode},
 };
 use http_body_util::BodyExt;
-use perwiga_core::Store;
+use perwiga_core::{lore::LoreCandidateBatch, Store, WorkKind};
 use perwiga_web::{router_with_store, validate_bind_address};
 use serde_json::{json, Value};
 use tower::ServiceExt;
@@ -49,6 +49,15 @@ async fn endfield_setup_is_idempotent() {
 
     assert_eq!(first_json["work"]["id"], second_json["work"]["id"]);
     assert_eq!(first_json["work"]["module_id"], "arknights-endfield");
+    assert_eq!(
+        first_json["lore_schema"]["subject_types"][0]["key"],
+        "operator"
+    );
+    assert!(first_json["lore_schema"]["roles"]
+        .as_array()
+        .expect("lore roles")
+        .iter()
+        .any(|role| role["key"] == "witness"));
     assert_eq!(first_json["entity_types"].as_array().unwrap().len(), 10);
     let facets = first_json["entity_facets"]
         .as_array()
@@ -318,6 +327,155 @@ async fn endfield_setup_is_idempotent() {
         .find(|event| event["source_identity"] == "sanity-supply-1-4-2")
         .expect("Sanity Supply");
     assert!(supply["presentation"].is_null());
+}
+
+#[tokio::test]
+async fn lore_graph_and_review_endpoints_keep_candidates_reviewable() {
+    let mut store = Store::open_in_memory().expect("in-memory database");
+    let work = store
+        .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+        .expect("work");
+    let batch: LoreCandidateBatch = serde_json::from_value(json!({
+        "schema": "perwiga-lore-candidates/v1",
+        "module_id": "arknights-endfield",
+        "corpus": {"version": "official-fixture-1", "manifest_sha256": "web-fixture"},
+        "generator": {"name": "fixture", "version": "1", "generated_at": "2026-08-29T00:00:00Z"},
+        "sources": [{
+            "key": "source-1", "kind": "official_archive", "provider": "Endfield official",
+            "identity": "archive-1", "title": "Archive", "language": "en",
+            "url": "https://endfield.gryphline.com/en-us/archive/1",
+            "content_sha256": "content-1", "checked_at": "2026-08-29"
+        }],
+        "periods": [{"key": "era-1", "name_en": "Era One", "description_en": null, "order": 1, "parent_key": null}],
+        "subjects": [{
+            "key": "witness", "attested_name": "Unknown Witness", "proposed_type": "unknown",
+            "entity_ref": null,
+            "evidence": [{"source_key": "source-1", "locator": "archive#1", "excerpt": "A witness spoke."}]
+        }],
+        "events": [{
+            "key": "event-1", "title_en": "A witnessed arrival", "summary_en": "An arrival was recorded.",
+            "time": {"kind": "moment", "precision": "relative", "label": "Era One", "start_period_key": "era-1", "end_period_key": null, "relations": []},
+            "involvements": [{"subject_key": "witness", "role": "witness"}],
+            "claims": [{
+                "key": "claim-1", "text_en": "An arrival was recorded.", "assertion_kind": "direct_fact", "certainty": "confirmed",
+                "branch_group": null, "involvements": [],
+                "evidence": [{"source_key": "source-1", "locator": "archive#1", "excerpt": "An arrival was recorded."}]
+            }]
+        }]
+    }))
+    .expect("candidate batch");
+    store
+        .import_lore_candidate_batch(&work.id, &batch)
+        .expect("candidate import");
+    let app = router_with_store(store).expect("UAT router");
+
+    let pending = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{}/lore-candidates?status=pending",
+                work.id
+            ))
+            .body(Body::empty())
+            .expect("pending request"),
+        )
+        .await
+        .expect("pending response");
+    assert_eq!(pending.status(), StatusCode::OK);
+    let pending_json = json_response(pending).await;
+    let event_candidate = pending_json
+        .as_array()
+        .expect("pending candidates")
+        .iter()
+        .find(|candidate| candidate["candidate_kind"] == "event")
+        .and_then(|candidate| candidate["id"].as_str())
+        .expect("event candidate ID")
+        .to_string();
+
+    let reviewed = app
+        .clone()
+        .oneshot(
+            Request::post(format!("/api/lore-candidates/{event_candidate}/decisions"))
+                .header("content-type", "application/json")
+                .body(Body::from(json!({"decision": "approve"}).to_string()))
+                .expect("review request"),
+        )
+        .await
+        .expect("review response");
+    assert_eq!(reviewed.status(), StatusCode::OK);
+    assert_eq!(json_response(reviewed).await["status"], "approved");
+
+    let remaining = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{}/lore-candidates?status=pending",
+                work.id
+            ))
+            .body(Body::empty())
+            .expect("remaining candidates request"),
+        )
+        .await
+        .expect("remaining candidates response");
+    let remaining_json = json_response(remaining).await;
+    for candidate_id in remaining_json
+        .as_array()
+        .expect("remaining candidates")
+        .iter()
+        .filter_map(|candidate| candidate["id"].as_str())
+    {
+        let response = app
+            .clone()
+            .oneshot(
+                Request::post(format!("/api/lore-candidates/{candidate_id}/decisions"))
+                    .header("content-type", "application/json")
+                    .body(Body::from(json!({"decision": "approve"}).to_string()))
+                    .expect("remaining review request"),
+            )
+            .await
+            .expect("remaining review response");
+        assert_eq!(response.status(), StatusCode::OK);
+    }
+
+    let graph = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{}/lore-graph?limit=10", work.id))
+                .body(Body::empty())
+                .expect("graph request"),
+        )
+        .await
+        .expect("graph response");
+    assert_eq!(graph.status(), StatusCode::OK);
+    let graph_json = json_response(graph).await;
+    let event_id = graph_json["events"][0]["id"]
+        .as_str()
+        .expect("materialized event ID");
+
+    let detail = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/lore-events/{event_id}"))
+                .body(Body::empty())
+                .expect("detail request"),
+        )
+        .await
+        .expect("detail response");
+    assert_eq!(detail.status(), StatusCode::OK);
+    let detail_json = json_response(detail).await;
+    assert_eq!(detail_json["claims"].as_array().unwrap().len(), 1);
+    assert_eq!(detail_json["evidence"].as_array().unwrap().len(), 1);
+
+    let subjects = app
+        .oneshot(
+            Request::get(format!("/api/works/{}/lore-subjects", work.id))
+                .body(Body::empty())
+                .expect("subjects request"),
+        )
+        .await
+        .expect("subjects response");
+    assert_eq!(subjects.status(), StatusCode::OK);
+    assert_eq!(json_response(subjects).await.as_array().unwrap().len(), 1);
 }
 
 #[tokio::test]
@@ -1661,8 +1819,39 @@ async fn browser_shell_and_health_endpoint_are_served_safely() {
     assert!(html.contains("id=\"timeline-view\""));
     assert!(html.contains("Event timeline"));
     assert!(html.contains("data-view=\"timeline\""));
+    assert!(html.contains("id=\"lore-view\""));
+    assert!(html.contains("data-view=\"lore\""));
+    assert!(html.contains("id=\"lore-review\""));
     assert!(html.contains("data-event-status=\"upcoming\""));
     assert!(!html.contains("<select id=\"game-switcher\""));
+}
+
+#[tokio::test]
+async fn lore_client_asset_is_served_as_a_module() {
+    let app = router_with_store(Store::open_in_memory().expect("in-memory database"))
+        .expect("UAT router");
+    let response = app
+        .oneshot(
+            Request::get("/assets/lore.js")
+                .body(Body::empty())
+                .expect("lore asset request"),
+        )
+        .await
+        .expect("lore asset response");
+    assert_eq!(response.status(), StatusCode::OK);
+    assert_eq!(
+        response.headers()["content-type"],
+        "text/javascript; charset=utf-8"
+    );
+    let body = response
+        .into_body()
+        .collect()
+        .await
+        .expect("lore asset body")
+        .to_bytes();
+    let script = String::from_utf8(body.to_vec()).expect("UTF-8 lore asset");
+    assert!(script.contains("renderLoreMap"));
+    assert!(script.contains("renderLoreReview"));
 }
 
 #[tokio::test]

@@ -51,6 +51,35 @@ export const api = {
     return request(`/api/works/${encodeURIComponent(workId)}/calendar-events`);
   },
 
+  getLoreGraph(workId, { subjectId = "", cursor = "", limit = 100 } = {}) {
+    const search = new URLSearchParams();
+    if (subjectId) search.set("subject_id", subjectId);
+    if (cursor) search.set("cursor", cursor);
+    if (limit) search.set("limit", String(limit));
+    const suffix = search.size ? `?${search}` : "";
+    return request(`/api/works/${encodeURIComponent(workId)}/lore-graph${suffix}`);
+  },
+
+  listLoreSubjects(workId) {
+    return request(`/api/works/${encodeURIComponent(workId)}/lore-subjects`);
+  },
+
+  listLoreCandidates(workId, status = "pending") {
+    const suffix = status ? `?status=${encodeURIComponent(status)}` : "";
+    return request(`/api/works/${encodeURIComponent(workId)}/lore-candidates${suffix}`);
+  },
+
+  getLoreEvent(eventId) {
+    return request(`/api/lore-events/${encodeURIComponent(eventId)}`);
+  },
+
+  reviewLoreCandidate(candidateId, values) {
+    return request(`/api/lore-candidates/${encodeURIComponent(candidateId)}/decisions`, {
+      method: "POST",
+      body: JSON.stringify(compact(values)),
+    });
+  },
+
   createWork(values) {
     return request("/api/works", {
       method: "POST",

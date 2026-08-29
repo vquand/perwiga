@@ -14,14 +14,15 @@ use axum::{
     Json, Router,
 };
 use perwiga_core::{
+    lore::{LoreCandidateRecord, LoreEventDetail, LoreGraph, LoreSubject},
     model::{
         AliasInput, CalendarEvent, EntityAlias, EntityAppearance, EntityInput, EntityPatch,
         LibraryWork, WikiEntity,
     },
     service::Application,
     CalendarEventPresentation, EntityEventRecencyPresentation, EntityFacetDefinition,
-    EntityPresentation, EntityTypeDefinition, ModuleRegistry, PerwigaError, Store, ThemeDefinition,
-    WorkKind,
+    EntityPresentation, EntityTypeDefinition, LoreSchemaDefinition, ModuleRegistry, PerwigaError,
+    Store, ThemeDefinition, WorkKind,
 };
 use serde::{Deserialize, Serialize};
 
@@ -56,6 +57,7 @@ struct SetupResponse {
     entity_types: Vec<EntityTypeResponse>,
     entity_facets: &'static [EntityFacetDefinition],
     theme: ThemeDefinition,
+    lore_schema: Option<&'static LoreSchemaDefinition>,
 }
 
 #[derive(Serialize)]
@@ -96,6 +98,26 @@ struct CalendarEventListItemResponse {
     #[serde(flatten)]
     event: CalendarEvent,
     presentation: Option<CalendarEventPresentation>,
+}
+
+#[derive(Default, Deserialize)]
+struct LoreGraphQuery {
+    subject_id: Option<String>,
+    cursor: Option<String>,
+    limit: Option<usize>,
+}
+
+#[derive(Default, Deserialize)]
+struct LoreCandidateQuery {
+    status: Option<String>,
+}
+
+#[derive(Deserialize)]
+struct LoreDecisionRequest {
+    decision: String,
+    normalized_payload_json: Option<String>,
+    merge_target_id: Option<String>,
+    notes: Option<String>,
 }
 
 impl From<&EntityTypeDefinition> for EntityTypeResponse {
@@ -251,6 +273,7 @@ pub fn router_with_store(store: Store) -> perwiga_core::Result<Router> {
         .route("/assets/app.js", get(script))
         .route("/assets/api.js", get(api_script))
         .route("/assets/ui.js", get(ui_script))
+        .route("/assets/lore.js", get(lore_script))
         .route(
             "/assets/placeholders/{filename}",
             get(entity_type_placeholder),
@@ -297,6 +320,20 @@ pub fn router_with_store(store: Store) -> perwiga_core::Result<Router> {
             "/api/works/{work_id}/calendar-events",
             get(list_calendar_events),
         )
+        .route("/api/works/{work_id}/lore-graph", get(list_lore_graph))
+        .route(
+            "/api/works/{work_id}/lore-subjects",
+            get(list_lore_subjects),
+        )
+        .route(
+            "/api/works/{work_id}/lore-candidates",
+            get(list_lore_candidates),
+        )
+        .route("/api/lore-events/{event_id}", get(get_lore_event_detail))
+        .route(
+            "/api/lore-candidates/{candidate_id}/decisions",
+            post(review_lore_candidate),
+        )
         .route(
             "/api/works/{work_id}/entities",
             get(list_entities).post(create_entity),
@@ -341,6 +378,13 @@ async fn ui_script() -> impl IntoResponse {
     static_asset(
         "text/javascript; charset=utf-8",
         include_str!("../static/ui.js"),
+    )
+}
+
+async fn lore_script() -> impl IntoResponse {
+    static_asset(
+        "text/javascript; charset=utf-8",
+        include_str!("../static/lore.js"),
     )
 }
 
@@ -649,6 +693,7 @@ fn workspace_response(
             .collect(),
         entity_facets: module.entity_facets(),
         theme: module.theme(),
+        lore_schema: module.lore_schema(),
     })
 }
 
@@ -775,6 +820,96 @@ async fn list_calendar_events(
             })
             .collect(),
     ))
+}
+
+fn lore_work(application: &Application, work_id: &str) -> Result<LibraryWork, WebError> {
+    let work = application
+        .store()
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if !application.supports_capability(work_id, perwiga_core::Capability::LoreTimeline)? {
+        return Err(PerwigaError::Unsupported(format!(
+            "module {}:{} does not support lore timelines",
+            work.kind, work.module_id
+        ))
+        .into());
+    }
+    Ok(work)
+}
+
+async fn list_lore_graph(
+    State(state): State<WebState>,
+    Path(work_id): Path<String>,
+    Query(filters): Query<LoreGraphQuery>,
+) -> Result<Json<LoreGraph>, WebError> {
+    let application = state.lock()?;
+    lore_work(&application, &work_id)?;
+    let graph = application.store().list_lore_graph(
+        &work_id,
+        filters.subject_id.as_deref(),
+        filters.cursor.as_deref(),
+        filters.limit.unwrap_or(100),
+    )?;
+    Ok(Json(graph))
+}
+
+async fn list_lore_subjects(
+    State(state): State<WebState>,
+    Path(work_id): Path<String>,
+) -> Result<Json<Vec<LoreSubject>>, WebError> {
+    let application = state.lock()?;
+    lore_work(&application, &work_id)?;
+    Ok(Json(application.store().list_lore_subjects(&work_id)?))
+}
+
+async fn list_lore_candidates(
+    State(state): State<WebState>,
+    Path(work_id): Path<String>,
+    Query(filters): Query<LoreCandidateQuery>,
+) -> Result<Json<Vec<LoreCandidateRecord>>, WebError> {
+    let application = state.lock()?;
+    lore_work(&application, &work_id)?;
+    Ok(Json(application.store().list_lore_candidates(
+        &work_id,
+        filters.status.as_deref(),
+    )?))
+}
+
+async fn get_lore_event_detail(
+    State(state): State<WebState>,
+    Path(event_id): Path<String>,
+) -> Result<Json<LoreEventDetail>, WebError> {
+    let application = state.lock()?;
+    let detail = application
+        .store()
+        .get_lore_event_detail(&event_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("lore event {event_id}")))?;
+    lore_work(&application, &detail.event.work_id)?;
+    Ok(Json(detail))
+}
+
+async fn review_lore_candidate(
+    State(state): State<WebState>,
+    Path(candidate_id): Path<String>,
+    Json(request): Json<LoreDecisionRequest>,
+) -> Result<Json<LoreCandidateRecord>, WebError> {
+    let mut application = state.lock()?;
+    let candidate = application
+        .store()
+        .get_lore_candidate(&candidate_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("lore candidate {candidate_id}")))?;
+    let batch_work_id = application
+        .store()
+        .get_lore_candidate_work_id(&candidate.id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("lore candidate {candidate_id}")))?;
+    lore_work(&application, &batch_work_id)?;
+    Ok(Json(application.store_mut().review_lore_candidate(
+        &candidate_id,
+        &request.decision,
+        request.normalized_payload_json.as_deref(),
+        request.merge_target_id.as_deref(),
+        request.notes.as_deref(),
+    )?))
 }
 
 async fn create_entity(

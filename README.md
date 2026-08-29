@@ -35,6 +35,8 @@ Then open `http://127.0.0.1:5178`. The server rejects non-loopback bind addresse
 
 The interface sets up Endfield and Genshin as switchable library games, imports Genshin's bundled Character, NPC, Region, Weapon, Skin, Artifact Set, Artifact Piece, Artifact Domain, and Event snapshots, supports adding more games, and consumes module-specific themes and entity schemas. It provides type and rarity filtering, rarity sorting, multilingual name and alias search, record creation, editing, detail inspection, aliases, source-backed entity-context details, module-owned Endfield Operator, Weapon, and Item thumbnails with rarity presentation, and module-owned Genshin Character, Weapon, Skin, and Artifact thumbnails and filters. Genshin Regions retain their world/region/subregion hierarchy with type and parent filters; Artifact Pieces retain their parent Set and slot, while Domain entrances retain region and hosted-Set metadata. It also exposes a shared horizontally scrollable event timeline with title-defined event-type swimlanes and past, ongoing, and upcoming filters. Genshin's timeline snapshot covers Luna IV through Version 7.0 and attaches Character Wish and Test Run portraits to event previews. Title modules can declare additional structured facets; Endfield currently provides weapon-type filtering for Operators and Weapons, Operator role, element, race, and verified subrace filters, Item classification and evidence-backed region filters, and Region type/parent filters backed by its 43-place hierarchy. Item classifications remain multi-valued, so a material can also be craftable, gatherable, or another applicable type. Titles without a dedicated module use the generic game fallback. Official and automatic Vietnamese translations remain separate throughout the workflow.
 
+Endfield also declares the lore-timeline capability. An offline curation session can import an official-corpus JSON batch using `lore candidates import`; the core validates source locators, exact excerpts, fuzzy/relative periods, event relationships, claim certainty, and provisional subjects before storing candidates. Events remain out of the canonical lore graph until a human approves the batch item in the UAT review queue. The Lore map is a separate horizontal view from the scheduled-event calendar: periods run past-to-future, event detail shows claims and evidence, and unresolved hear-say entities remain visible as provenance-backed provisional subjects until they can be linked to a wiki entity. See [ADR-004](docs/decisions/ADR-004-lore-timeline-and-evidence.md) and the [candidate schema](docs/schemas/lore-candidate-batch-v1.schema.json).
+
 The CLI remains available for all implemented common workflows. List the registered modules:
 
 ```text
@@ -50,6 +52,14 @@ cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
   entity add --work <work-id> --type operator \
   --english "<verified official English name>" \
   --original "<verified official original-language name>"
+```
+
+Import a reviewed-by-you lore candidate batch into an Endfield work (the
+database stores it as pending until you approve it in the UAT Lore map):
+
+```text
+cargo run -p perwiga -- --database /tmp/perwiga-lore.sqlite \
+  lore candidates import --work <work-id> --file <lore-candidates.json>
 ```
 
 The database path is explicit so a personal tracked database is never confused with a temporary test database. Tests use in-memory or temporary SQLite databases.
