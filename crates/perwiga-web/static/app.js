@@ -32,6 +32,7 @@ const state = {
   selectedLoreEventId: "",
   loreSubjectId: "",
   loreSubjectType: "",
+  loreSubjectSearch: "",
   view: "wiki",
   switchSequence: 0,
 };
@@ -59,6 +60,7 @@ const dom = {
   loreDetail: document.querySelector("#lore-detail"),
   loreReview: document.querySelector("#lore-review"),
   loreSubjectTypeFilter: document.querySelector("#lore-subject-type-filter"),
+  loreSubjectSearch: document.querySelector("#lore-subject-search"),
   loreSubjectFilter: document.querySelector("#lore-subject-filter"),
   workspace: document.querySelector(".workspace"),
   nav: document.querySelector("#type-nav"),
@@ -417,16 +419,31 @@ function renderLore() {
     : "";
   dom.loreSubjectTypeFilter.value = state.loreSubjectType;
 
+  const subjectQuery = state.loreSubjectSearch.trim().toLocaleLowerCase();
+  const subjectMatches = (subject) => {
+    if (state.loreSubjectType && subject.proposed_type !== state.loreSubjectType) return false;
+    if (!subjectQuery) return true;
+    return `${subject.attested_name} ${subject.proposed_type}`
+      .toLocaleLowerCase()
+      .includes(subjectQuery);
+  };
+  dom.loreSubjectSearch.value = state.loreSubjectSearch;
+  const visibleSubjects = state.loreSubjects.filter(subjectMatches);
   const currentSubject = state.loreSubjectId;
   dom.loreSubjectFilter.replaceChildren();
   dom.loreSubjectFilter.append(new Option("All subjects", ""));
-  for (const subject of state.loreSubjects) {
+  for (const subject of visibleSubjects) {
     dom.loreSubjectFilter.append(new Option(
       `${subject.attested_name} · ${subject.proposed_type}`,
       subject.id,
     ));
   }
-  state.loreSubjectId = state.loreSubjects.some((subject) => subject.id === currentSubject)
+  if (!visibleSubjects.length && state.loreSubjects.length) {
+    const emptyOption = new Option("No matching subjects", "");
+    emptyOption.disabled = true;
+    dom.loreSubjectFilter.append(emptyOption);
+  }
+  state.loreSubjectId = visibleSubjects.some((subject) => subject.id === currentSubject)
     ? currentSubject
     : "";
   dom.loreSubjectFilter.value = state.loreSubjectId;
@@ -569,6 +586,7 @@ async function activateWork(workId) {
     state.selectedLoreEventId = "";
     state.loreSubjectId = "";
     state.loreSubjectType = "";
+    state.loreSubjectSearch = "";
     state.selectedType = "";
     state.selectedId = "";
     state.detail = null;
@@ -779,6 +797,20 @@ dom.loreSubjectTypeFilter.addEventListener("change", () => {
     state.loreSubjectId = "";
   }
   refreshLore();
+});
+dom.loreSubjectSearch.addEventListener("input", () => {
+  state.loreSubjectSearch = dom.loreSubjectSearch.value;
+  const query = state.loreSubjectSearch.trim().toLocaleLowerCase();
+  const focusedSubject = state.loreSubjects.find((subject) => subject.id === state.loreSubjectId);
+  const focusedSubjectText = focusedSubject
+    ? `${focusedSubject.attested_name} ${focusedSubject.proposed_type}`.toLocaleLowerCase()
+    : "";
+  if (focusedSubject && !focusedSubjectText.includes(query)) {
+    state.loreSubjectId = "";
+    refreshLore();
+    return;
+  }
+  renderLore();
 });
 for (const button of dom.viewButtons) {
   button.addEventListener("click", () => showView(button.dataset.view));

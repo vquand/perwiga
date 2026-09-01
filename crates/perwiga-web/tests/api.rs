@@ -1929,6 +1929,9 @@ async fn browser_shell_and_health_endpoint_are_served_safely() {
     assert!(html.contains("data-view=\"lore\""));
     assert!(html.contains("id=\"lore-subject-type-filter\""));
     assert!(html.contains("Show events involving"));
+    assert!(html.contains("id=\"lore-subject-search\""));
+    assert!(html.contains("Search subjects"));
+    assert!(html.contains("placeholder=\"Type a name or type\""));
     assert!(html.contains("id=\"lore-review\""));
     assert!(html.contains("data-event-status=\"upcoming\""));
     assert!(!html.contains("<select id=\"game-switcher\""));

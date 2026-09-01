@@ -945,9 +945,9 @@ h1 {
 
 .lore-filter-bar {
   display: grid;
-  grid-template-columns: repeat(2, minmax(12rem, 1fr));
+  grid-template-columns: repeat(3, minmax(10rem, 1fr));
   gap: var(--space-3);
-  min-width: min(100%, 31rem);
+  min-width: min(100%, 42rem);
 }
 
 .lore-subject-filter {
@@ -961,6 +961,7 @@ h1 {
   text-transform: uppercase;
 }
 
+.lore-subject-filter input,
 .lore-subject-filter select {
   min-height: 2.5rem;
   padding: 0 var(--space-3);
