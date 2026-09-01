@@ -214,7 +214,8 @@ pub fn import_curated_heroes_iii(
                     automatic_vietnamese_translation: None,
                     english_description: None,
                     other_information: Some(format!(
-                        "{facts}. VCMI key: {} (index {}, {}). VCMI commit: {}. Wiki page: {} (page {}, revision {}, {}). Sources: {} and {}. Checked {}.",
+                        "source key: {}. {facts}. VCMI key: {} (index {}, {}). VCMI commit: {}. Wiki page: {} (page {}, revision {}, {}). Sources: {} and {}. Checked {}.",
+                        record.source_key,
                         record.vcmi_key,
                         record.vcmi_index,
                         record.vcmi_source_file,
@@ -378,6 +379,18 @@ mod tests {
         let first = import_curated_heroes_iii(&mut store, &work.id).expect("first import");
         assert_eq!(first.inserted, 517);
         assert_eq!(first.unchanged, 0);
+        let orrin = store
+            .list_entities(&work.id, Some("hero"))
+            .expect("Heroes entities")
+            .into_iter()
+            .find(|entity| entity.official_english_name == "Orrin")
+            .expect("Orrin");
+        assert!(
+            orrin
+                .other_information
+                .as_deref()
+                .is_some_and(|info| info.contains("source key: homm3-complete-hero-0."))
+        );
         let second = import_curated_heroes_iii(&mut store, &work.id).expect("second import");
         assert_eq!(second.inserted, 0);
         assert_eq!(second.unchanged, 517);
