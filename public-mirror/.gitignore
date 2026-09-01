@@ -38,3 +38,8 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+
+# Generated from the canonical SQLite database for deployment only.
+/public/data/catalog.json
+/public/assets/modules/
+/public/assets/placeholders/
