@@ -33,6 +33,25 @@ function relationLabel(relation, relatedEvent) {
   }
 }
 
+function isCharacter(subject) {
+  return subject?.entity_type === "operator" || subject?.entity_type === "npc";
+}
+
+function characterAppearance(subject, role, compact = false) {
+  const appearance = element("div", `lore-character${compact ? " is-compact" : ""}`);
+  const image = element("img", "lore-character-avatar");
+  image.src = subject.presentation?.thumbnail_url || "/assets/placeholders/character.svg";
+  image.alt = `${subject.attested_name}, ${subject.entity_type || "character"}`;
+  image.loading = "lazy";
+  image.decoding = "async";
+  const copy = element("span", "lore-character-copy");
+  copy.append(element("span", "lore-character-name", subject.attested_name));
+  if (role && !compact) copy.append(element("span", "lore-character-role", role));
+  appearance.append(image, copy);
+  appearance.title = role ? `${subject.attested_name} · ${role}` : subject.attested_name;
+  return appearance;
+}
+
 function orderEvents(events, relations) {
   const byId = new Map(events.map((event) => [event.id, event]));
   const outgoing = new Map(events.map((event) => [event.id, new Set()]));
@@ -110,6 +129,17 @@ export function renderLoreMap(container, graph, { onEvent } = {}) {
       element("h3", "lore-period-title", period?.name_en || "Relative / unplaced time"),
     );
     if (period?.description_en) column.append(element("p", "lore-period-description", period.description_en));
+    const periodSubjectIds = new Set((graph.involvements || [])
+      .filter((involvement) => events.some((event) => event.id === involvement.event_id))
+      .map((involvement) => involvement.subject_id));
+    const periodCharacters = (graph.subjects || [])
+      .filter((subject) => periodSubjectIds.has(subject.id) && isCharacter(subject));
+    if (periodCharacters.length) {
+      const cast = element("div", "lore-period-cast");
+      cast.setAttribute("aria-label", "Characters in this period");
+      for (const subject of periodCharacters) cast.append(characterAppearance(subject, null, true));
+      column.append(cast);
+    }
     const stack = element("div", "lore-event-stack");
     for (const event of events) {
       const card = element("article", "lore-event-card");
@@ -120,13 +150,22 @@ export function renderLoreMap(container, graph, { onEvent } = {}) {
       const title = element("h4", "lore-event-title", event.title_en);
       const time = element("p", "lore-event-time", event.time_label);
       const summary = event.summary_en ? element("p", "lore-event-summary", event.summary_en) : null;
-      const eventSubjects = [...new Set((graph.involvements || [])
-        .filter((involvement) => involvement.event_id === event.id)
-        .map((involvement) => involvement.subject_id))]
-        .map((subjectId) => graph.subjects?.find((subject) => subject.id === subjectId))
-        .filter(Boolean);
+      const eventSubjects = [];
+      const seenSubjects = new Set();
+      for (const involvement of (graph.involvements || []).filter((item) => item.event_id === event.id)) {
+        if (seenSubjects.has(involvement.subject_id)) continue;
+        const subject = graph.subjects?.find((item) => item.id === involvement.subject_id);
+        if (!subject) continue;
+        seenSubjects.add(involvement.subject_id);
+        eventSubjects.push({ subject, role: involvement.role });
+      }
+      const characterList = element("div", "lore-event-characters");
       const subjectList = element("div", "lore-event-subjects");
-      for (const subject of eventSubjects) {
+      for (const { subject, role } of eventSubjects) {
+        if (isCharacter(subject)) {
+          characterList.append(characterAppearance(subject, role));
+          continue;
+        }
         const pill = element("span", `lore-subject-pill${subject.wiki_entity_id ? "" : " is-provisional"}`, subject.attested_name);
         pill.title = subject.wiki_entity_id ? subject.proposed_type : "Provisional subject; no wiki entity match yet";
         subjectList.append(pill);
@@ -148,6 +187,7 @@ export function renderLoreMap(container, graph, { onEvent } = {}) {
         title,
         time,
         ...(summary ? [summary] : []),
+        ...(characterList.children.length ? [characterList] : []),
         ...(subjectList.children.length ? [subjectList] : []),
         ...(relationList.children.length ? [relationList] : []),
         meta,
@@ -192,11 +232,13 @@ export function renderLoreEventDetail(container, detail, { onBack } = {}) {
   const involvementList = element("ul", "lore-subject-list");
   for (const involvement of detail.involvements || []) {
     const subject = subjects.get(involvement.subject_id);
-    involvementList.append(element(
-      "li",
-      `lore-subject-item${subject?.wiki_entity_id ? "" : " is-provisional"}`,
-      `${subject?.attested_name || "Unknown subject"} · ${involvement.role}${subject?.wiki_entity_id ? "" : " · provisional"}`,
-    ));
+    const item = element("li", `lore-subject-item${subject?.wiki_entity_id ? "" : " is-provisional"}`);
+    if (isCharacter(subject)) {
+      item.append(characterAppearance(subject, involvement.role));
+    } else {
+      item.textContent = `${subject?.attested_name || "Unknown subject"} · ${involvement.role}${subject?.wiki_entity_id ? "" : " · provisional"}`;
+    }
+    involvementList.append(item);
   }
   if (!involvementList.children.length) involvementList.append(element("li", "lore-muted", "No subjects recorded."));
   involvementSection.append(involvementList);

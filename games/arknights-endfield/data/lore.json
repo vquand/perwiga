@@ -2,12 +2,12 @@
   "schema": "perwiga-lore-candidates/v1",
   "module_id": "arknights-endfield",
   "corpus": {
-    "version": "official-web-seed-2026-09",
-    "manifest_sha256": "2f329e6bbf4cb3fc5a7e1ec0f52c6c10b228c3a9b4ddc6f2ecf3b0e78bb4c3b6"
+    "version": "reviewed-web-seed-2026-09-v3",
+    "manifest_sha256": "f204cf20e2fe81383d18ed695fa2f779fd7984782b72ff1717f333c10e4e23f8"
   },
   "generator": {
     "name": "perwiga-curated-seed",
-    "version": "1",
+    "version": "3",
     "generated_at": "2026-09-01T00:00:00Z"
   },
   "sources": [
@@ -32,6 +32,17 @@
       "url": "https://endfield.gryphline.com/en-us/news/7017",
       "content_sha256": "official-news-7017-checked-2026-09-01",
       "checked_at": "2026-09-01"
+    },
+    {
+      "key": "community-visitor-from-the-band-i",
+      "kind": "community-quest-walkthrough",
+      "provider": "Game8 Arknights: Endfield guide",
+      "identity": "quest:visitor-from-the-band-i",
+      "title": "Visitor from the Band I Side Mission Walkthrough",
+      "language": "en",
+      "url": "https://game8.co/games/Arknights-Endfield/archives/576123",
+      "content_sha256": "game8-576123-checked-2026-09-01",
+      "checked_at": "2026-09-01"
     }
   ],
   "periods": [
@@ -54,6 +65,13 @@
       "name_en": "Chapter II · Wuling",
       "description_en": "The second chapter sends Endministrators toward the Wuling region.",
       "order": 30,
+      "parent_key": null
+    },
+    {
+      "key": "valley-iv-after-main",
+      "name_en": "Valley IV · After the main operation",
+      "description_en": "Side stories completed on Talos-II after the Chapter I main operation and before the Wuling journey. Their exact dates remain fuzzy.",
+      "order": 25,
       "parent_key": null
     },
     {
@@ -123,6 +141,23 @@
           "source_key": "official-zeroth-directive",
           "locator": "paragraph:2",
           "excerpt": "Talos-II has welcomed numerous explorers and builders.",
+          "stance": "supports"
+        }
+      ]
+    },
+    {
+      "key": "avywenna",
+      "attested_name": "Avywenna",
+      "proposed_type": "operator",
+      "entity_ref": {
+        "provider": "Arknights: Endfield official operator directory",
+        "identity": "operator:avywenna"
+      },
+      "evidence": [
+        {
+          "source_key": "community-visitor-from-the-band-i",
+          "locator": "walkthrough-overview",
+          "excerpt": "Visitor from the Band I is a Side Mission in Arknights: Endfield 1.0.",
           "stance": "supports"
         }
       ]
@@ -212,6 +247,7 @@
         "start_period_key": "chapter-i-valley-iv",
         "end_period_key": null,
         "relations": [
+          {"kind": "before", "event_key": "visitor-from-the-band-i"},
           {"kind": "before", "event_key": "chapter-ii-wuling"}
         ]
       },
@@ -232,6 +268,46 @@
               "source_key": "official-homecoming-dev-comm",
               "locator": "main-mission-early-unlock",
               "excerpt": "Once you complete [Chapter I Process Ⅱ: Remediation Progress], you will be able to accept Chapter II main missions.",
+              "stance": "supports"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "visitor-from-the-band-i",
+      "title_en": "Visitor from the Band I",
+      "summary_en": "A Valley IV side mission in which Avywenna accompanies the investigation.",
+      "time": {
+        "kind": "moment",
+        "precision": "relative",
+        "label": "After the Talos-II main operation, before the Wuling journey",
+        "start_period_key": "valley-iv-after-main",
+        "end_period_key": null,
+        "relations": [
+          {"kind": "before", "event_key": "chapter-ii-wuling"}
+        ]
+      },
+      "involvements": [
+        {"subject_key": "avywenna", "role": "actor"},
+        {"subject_key": "talos-ii", "role": "location"},
+        {"subject_key": "endministrator", "role": "actor"}
+      ],
+      "claims": [
+        {
+          "key": "avywenna-accompanies-investigation",
+          "text_en": "Avywenna accompanies the Endministrator through the Visitor from the Band I investigation.",
+          "assertion_kind": "direct_fact",
+          "certainty": "confirmed",
+          "branch_group": null,
+          "involvements": [
+            {"subject_key": "avywenna", "role": "actor"}
+          ],
+          "evidence": [
+            {
+              "source_key": "community-visitor-from-the-band-i",
+              "locator": "walkthrough-steps",
+              "excerpt": "Listen in on each one and Avywenna will comment on whether the person is hiding something or not.",
               "stance": "supports"
             }
           ]

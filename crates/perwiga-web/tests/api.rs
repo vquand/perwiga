@@ -134,6 +134,30 @@ async fn endfield_setup_is_idempotent() {
         .iter()
         .any(|subject| subject["attested_name"] == "Talos-II"
             && !subject["wiki_entity_id"].is_null()));
+    let avywenna = lore_graph["subjects"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|subject| subject["attested_name"] == "Avywenna")
+        .expect("Avywenna lore subject");
+    assert_eq!(avywenna["entity_type"], "operator");
+    assert_eq!(
+        avywenna["presentation"]["thumbnail_url"],
+        "/assets/modules/arknights-endfield/operators/avywenna.webp"
+    );
+    let visitor = lore_graph["events"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|event| event["title_en"] == "Visitor from the Band I")
+        .expect("Avywenna quest on lore timeline");
+    let wuling = lore_graph["events"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|event| event["title_en"] == "Chapter II sends Endministrators to Wuling")
+        .expect("Wuling timeline event");
+    assert!(visitor["period_order"].as_i64() < wuling["period_order"].as_i64());
 
     let wiki_events = app
         .clone()
@@ -1875,6 +1899,8 @@ async fn lore_client_asset_is_served_as_a_module() {
     let script = String::from_utf8(body.to_vec()).expect("UTF-8 lore asset");
     assert!(script.contains("renderLoreMap"));
     assert!(script.contains("renderLoreReview"));
+    assert!(script.contains("lore-character-avatar"));
+    assert!(script.contains("presentation?.thumbnail_url"));
 }
 
 #[tokio::test]

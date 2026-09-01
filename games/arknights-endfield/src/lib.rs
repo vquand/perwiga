@@ -769,6 +769,8 @@ struct OperatorSnapshot {
 struct CuratedOperator {
     source_key: String,
     official_english_name: String,
+    official_original_name: String,
+    official_vietnamese_name: Option<String>,
     rarity: u8,
     class: String,
     element: String,
@@ -776,6 +778,26 @@ struct CuratedOperator {
     race: Option<String>,
     subrace: Option<String>,
     han_viet_name: String,
+}
+
+#[derive(Debug, Deserialize)]
+struct NpcSnapshot {
+    checked_at: String,
+    sources: BTreeMap<String, String>,
+    npcs: Vec<CuratedNpc>,
+}
+
+#[derive(Debug, Deserialize)]
+struct CuratedNpc {
+    source_key: String,
+    catalog_index: u16,
+    official_english_name: String,
+    official_original_name: String,
+    official_vietnamese_name: Option<String>,
+    han_viet_name: Option<String>,
+    name_evidence: String,
+    name_confidence: String,
+    source_url: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -958,6 +980,16 @@ fn curated_operator(source_key: &str) -> Option<&'static CuratedOperator> {
         .find(|operator| operator.source_key == source_key)
 }
 
+fn curated_npc_snapshot() -> &'static NpcSnapshot {
+    static SNAPSHOT: OnceLock<NpcSnapshot> = OnceLock::new();
+    SNAPSHOT.get_or_init(|| {
+        let snapshot = serde_json::from_str::<NpcSnapshot>(include_str!("../data/npcs.json"))
+            .expect("the bundled Endfield NPC snapshot must be valid JSON");
+        assert_eq!(snapshot.npcs.len(), 134, "verified NPC scope changed");
+        snapshot
+    })
+}
+
 fn curated_weapon_snapshot() -> &'static WeaponSnapshot {
     static SNAPSHOT: OnceLock<WeaponSnapshot> = OnceLock::new();
     SNAPSHOT.get_or_init(|| {
@@ -1056,6 +1088,117 @@ fn region_type_label(value: &str) -> String {
         })
         .collect::<Vec<_>>()
         .join(" ")
+}
+
+const OPERATOR_SOURCE_PROVIDER: &str = "Arknights: Endfield official operator directory";
+const NPC_SOURCE_PROVIDER: &str = "beyondGameData@90bc55768143f1998ad02d03ed0042919135979f";
+
+fn validate_endfield_work(store: &Store, work_id: &str) -> perwiga_core::Result<()> {
+    let work = store
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if work.kind != WorkKind::Game || work.module_id != "arknights-endfield" {
+        return Err(PerwigaError::Validation(format!(
+            "work {work_id} is not owned by the Arknights: Endfield module"
+        )));
+    }
+    Ok(())
+}
+
+pub fn import_curated_operators(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<EntityImportSummary> {
+    validate_endfield_work(store, work_id)?;
+    let inputs = curated_operators()
+        .iter()
+        .map(|record| SourcedEntityInput {
+            source_provider: OPERATOR_SOURCE_PROVIDER.to_string(),
+            source_identity: format!("operator:{}", record.source_key),
+            entity: EntityInput {
+                entity_type: "operator".to_string(),
+                official_english_name: record.official_english_name.clone(),
+                official_original_name: record.official_original_name.clone(),
+                official_vietnamese_name: record.official_vietnamese_name.clone(),
+                automatic_vietnamese_translation: None,
+                english_description: Some(format!(
+                    "A {}-star {} Operator who uses {} and deals {} damage.",
+                    record.rarity, record.class, record.weapon_type, record.element
+                )),
+                other_information: Some(format!(
+                    "Official source key: {}. Official operator directory checked {}.",
+                    record.source_key,
+                    curated_snapshot().checked_at
+                )),
+            },
+            aliases: vec![AliasInput {
+                value: record.han_viet_name.clone(),
+                language: Some("vi".to_string()),
+                kind: "han-viet".to_string(),
+                label: Some("Hán-Việt (generated)".to_string()),
+                notes: Some(format!(
+                    "Generated from the official Simplified Chinese name; not an official Vietnamese localization. Checked {}. Confidence E (generated).",
+                    curated_snapshot().checked_at
+                )),
+            }],
+        })
+        .collect::<Vec<_>>();
+    store.import_sourced_entities(work_id, &inputs)
+}
+
+pub fn import_curated_npcs(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<EntityImportSummary> {
+    validate_endfield_work(store, work_id)?;
+    let snapshot = curated_npc_snapshot();
+    let client_source = snapshot
+        .sources
+        .get("localized_client_data")
+        .map(String::as_str)
+        .unwrap_or("unrecorded client localization source");
+    let inputs = snapshot
+        .npcs
+        .iter()
+        .map(|record| SourcedEntityInput {
+            source_provider: NPC_SOURCE_PROVIDER.to_string(),
+            source_identity: format!("npc:{}", record.source_key),
+            entity: EntityInput {
+                entity_type: "npc".to_string(),
+                official_english_name: record.official_english_name.clone(),
+                official_original_name: record.official_original_name.clone(),
+                official_vietnamese_name: record.official_vietnamese_name.clone(),
+                automatic_vietnamese_translation: None,
+                english_description: Some("A named non-playable character in Arknights: Endfield.".to_string()),
+                other_information: Some(format!(
+                    "Curated NPC source key: {}. Catalog index: {}/134. Name evidence: {}. Confidence {}. Catalog source: {}. Client localization source: {}. Checked {}.",
+                    record.source_key,
+                    record.catalog_index,
+                    record.name_evidence,
+                    record.name_confidence,
+                    record.source_url,
+                    client_source,
+                    snapshot.checked_at
+                )),
+            },
+            aliases: record
+                .han_viet_name
+                .as_ref()
+                .map(|value| AliasInput {
+                    value: value.clone(),
+                    language: Some("vi".to_string()),
+                    kind: "han-viet".to_string(),
+                    label: Some("Hán-Việt (generated)".to_string()),
+                    notes: Some(format!(
+                        "Generated from aligned Simplified Chinese client text; not an official Vietnamese localization. Checked {}. Confidence E (generated).",
+                        snapshot.checked_at
+                    )),
+                })
+                .into_iter()
+                .collect(),
+        })
+        .collect::<Vec<_>>();
+    store.import_sourced_entities(work_id, &inputs)
 }
 
 fn region_alias(record: &CuratedRegion) -> AliasInput {
@@ -1648,6 +1791,16 @@ impl LibraryModule for ArknightsEndfieldModule {
                     facet_values: BTreeMap::new(),
                 })
             }
+            "npc" => Some(EntityPresentation {
+                thumbnail_url: "/assets/placeholders/character.svg".to_string(),
+                accent_color: THEME.accent.to_string(),
+                context_label: None,
+                context_icon_url: None,
+                label: "NPC".to_string(),
+                rarity: None,
+                facets: BTreeMap::new(),
+                facet_values: BTreeMap::new(),
+            }),
             "weapon" => {
                 let source_key = weapon_source_key(entity)?;
                 let weapon = curated_weapon(source_key)?;
@@ -2615,6 +2768,8 @@ mod tests {
         let work = store
             .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
             .expect("work");
+        import_curated_operators(&mut store, &work.id).expect("curated operators");
+        import_curated_npcs(&mut store, &work.id).expect("curated NPCs");
         import_curated_regions(&mut store, &work.id).expect("curated regions");
         import_curated_lore(&mut store, &work.id).expect("curated lore import");
 
@@ -2633,7 +2788,63 @@ mod tests {
             .find(|subject| subject.attested_name == "Talos-II")
             .expect("Talos-II subject");
         assert!(talos.wiki_entity_id.is_some());
+        let avywenna = graph
+            .subjects
+            .iter()
+            .find(|subject| subject.attested_name == "Avywenna")
+            .expect("Avywenna subject");
+        assert!(avywenna.wiki_entity_id.is_some());
+        let visitor = graph
+            .events
+            .iter()
+            .find(|event| event.title_en == "Visitor from the Band I")
+            .expect("Avywenna quest");
+        let wuling = graph
+            .events
+            .iter()
+            .find(|event| event.title_en == "Chapter II sends Endministrators to Wuling")
+            .expect("Wuling quest");
+        assert!(visitor.period_order < wuling.period_order);
         assert!(graph.relations.len() >= 2);
+    }
+
+    #[test]
+    fn curated_character_catalogs_import_additively_with_stable_source_identities() {
+        let mut store = Store::open_in_memory().expect("in-memory store");
+        let work = store
+            .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+            .expect("work");
+
+        let operators = import_curated_operators(&mut store, &work.id).expect("operators");
+        let npcs = import_curated_npcs(&mut store, &work.id).expect("NPCs");
+        assert_eq!(operators.inserted, 33);
+        assert_eq!(npcs.inserted, 134);
+
+        let avywenna = store
+            .list_entities(&work.id, Some("operator"))
+            .expect("operator list")
+            .into_iter()
+            .find(|entity| entity.official_english_name == "Avywenna")
+            .expect("Avywenna");
+        assert!(avywenna
+            .other_information
+            .as_deref()
+            .is_some_and(|value| value.contains("Official source key: avywenna.")));
+        let presentation = module()
+            .entity_presentation(&avywenna)
+            .expect("Avywenna presentation");
+        assert_eq!(
+            presentation.thumbnail_url,
+            "/assets/modules/arknights-endfield/operators/avywenna.webp"
+        );
+
+        let second_operators =
+            import_curated_operators(&mut store, &work.id).expect("operators again");
+        let second_npcs = import_curated_npcs(&mut store, &work.id).expect("NPCs again");
+        assert_eq!(second_operators.inserted, 0);
+        assert_eq!(second_operators.unchanged, 33);
+        assert_eq!(second_npcs.inserted, 0);
+        assert_eq!(second_npcs.unchanged, 134);
     }
 
     #[test]

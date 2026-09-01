@@ -14,15 +14,18 @@ use axum::{
     Json, Router,
 };
 use perwiga_core::{
-    lore::{LoreCandidateRecord, LoreEventDetail, LoreGraph, LoreSubject},
+    lore::{
+        LoreCandidateRecord, LoreClaim, LoreClaimEvidence, LoreEvent, LoreEventDetail,
+        LoreEventRelation, LoreGraph, LoreInvolvement, LorePeriod, LoreSource, LoreSubject,
+    },
     model::{
         AliasInput, CalendarEvent, EntityAlias, EntityAppearance, EntityInput, EntityPatch,
         LibraryWork, WikiEntity,
     },
     service::Application,
     CalendarEventPresentation, EntityEventRecencyPresentation, EntityFacetDefinition,
-    EntityPresentation, EntityTypeDefinition, LoreSchemaDefinition, ModuleRegistry, PerwigaError,
-    Store, ThemeDefinition, WorkKind,
+    EntityPresentation, EntityTypeDefinition, LibraryModule, LoreSchemaDefinition, ModuleRegistry,
+    PerwigaError, Store, ThemeDefinition, WorkKind,
 };
 use serde::{Deserialize, Serialize};
 
@@ -98,6 +101,34 @@ struct CalendarEventListItemResponse {
     #[serde(flatten)]
     event: CalendarEvent,
     presentation: Option<CalendarEventPresentation>,
+}
+
+#[derive(Serialize)]
+struct LoreSubjectResponse {
+    #[serde(flatten)]
+    subject: LoreSubject,
+    entity_type: Option<String>,
+    presentation: Option<EntityPresentation>,
+}
+
+#[derive(Serialize)]
+struct LoreGraphResponse {
+    periods: Vec<LorePeriod>,
+    events: Vec<LoreEvent>,
+    relations: Vec<LoreEventRelation>,
+    subjects: Vec<LoreSubjectResponse>,
+    involvements: Vec<LoreInvolvement>,
+    next_cursor: Option<String>,
+}
+
+#[derive(Serialize)]
+struct LoreEventDetailResponse {
+    event: LoreEvent,
+    claims: Vec<LoreClaim>,
+    involvements: Vec<LoreInvolvement>,
+    subjects: Vec<LoreSubjectResponse>,
+    evidence: Vec<LoreClaimEvidence>,
+    sources: Vec<LoreSource>,
 }
 
 #[derive(Default, Deserialize)]
@@ -629,6 +660,8 @@ async fn setup_endfield(State(state): State<WebState>) -> Result<Json<SetupRespo
         Some(work) => work,
         None => application.create_work(WorkKind::Game, ENDFIELD_MODULE_ID, module_name)?,
     };
+    arknights_endfield::import_curated_operators(application.store_mut(), &work.id)?;
+    arknights_endfield::import_curated_npcs(application.store_mut(), &work.id)?;
     arknights_endfield::import_curated_regions(application.store_mut(), &work.id)?;
     arknights_endfield::import_curated_lore(application.store_mut(), &work.id)?;
     arknights_endfield::import_curated_gear_sets_and_essences(application.store_mut(), &work.id)?;
@@ -839,29 +872,92 @@ fn lore_work(application: &Application, work_id: &str) -> Result<LibraryWork, We
     Ok(work)
 }
 
+fn lore_subject_response(
+    application: &Application,
+    module: &dyn LibraryModule,
+    subject: LoreSubject,
+) -> Result<LoreSubjectResponse, WebError> {
+    let entity = subject
+        .wiki_entity_id
+        .as_deref()
+        .map(|entity_id| application.store().get_entity(entity_id))
+        .transpose()?
+        .flatten();
+    Ok(LoreSubjectResponse {
+        entity_type: entity.as_ref().map(|entity| entity.entity_type.clone()),
+        presentation: entity
+            .as_ref()
+            .and_then(|entity| module.entity_presentation(entity)),
+        subject,
+    })
+}
+
 async fn list_lore_graph(
     State(state): State<WebState>,
     Path(work_id): Path<String>,
     Query(filters): Query<LoreGraphQuery>,
-) -> Result<Json<LoreGraph>, WebError> {
+) -> Result<Json<LoreGraphResponse>, WebError> {
     let application = state.lock()?;
-    lore_work(&application, &work_id)?;
+    let work = lore_work(&application, &work_id)?;
+    let module = application
+        .modules()
+        .find(|module| module.kind() == work.kind && module.id() == work.module_id)
+        .ok_or_else(|| {
+            PerwigaError::Unsupported(format!(
+                "module {}:{} is not registered",
+                work.kind, work.module_id
+            ))
+        })?;
     let graph = application.store().list_lore_graph(
         &work_id,
         filters.subject_id.as_deref(),
         filters.cursor.as_deref(),
         filters.limit.unwrap_or(100),
     )?;
-    Ok(Json(graph))
+    let LoreGraph {
+        periods,
+        events,
+        relations,
+        subjects,
+        involvements,
+        next_cursor,
+    } = graph;
+    Ok(Json(LoreGraphResponse {
+        periods,
+        events,
+        relations,
+        subjects: subjects
+            .into_iter()
+            .map(|subject| lore_subject_response(&application, module, subject))
+            .collect::<Result<Vec<_>, _>>()?,
+        involvements,
+        next_cursor,
+    }))
 }
 
 async fn list_lore_subjects(
     State(state): State<WebState>,
     Path(work_id): Path<String>,
-) -> Result<Json<Vec<LoreSubject>>, WebError> {
+) -> Result<Json<Vec<LoreSubjectResponse>>, WebError> {
     let application = state.lock()?;
-    lore_work(&application, &work_id)?;
-    Ok(Json(application.store().list_lore_subjects(&work_id)?))
+    let work = lore_work(&application, &work_id)?;
+    let module = application
+        .modules()
+        .find(|module| module.kind() == work.kind && module.id() == work.module_id)
+        .ok_or_else(|| {
+            PerwigaError::Unsupported(format!(
+                "module {}:{} is not registered",
+                work.kind, work.module_id
+            ))
+        })?;
+    Ok(Json(
+        application
+            .store()
+            .list_lore_subjects(&work_id)?
+            .into_iter()
+            .map(|subject| lore_subject_response(&application, module, subject))
+            .collect::<Result<Vec<_>, _>>()?,
+    ))
 }
 
 async fn list_lore_candidates(
@@ -880,14 +976,41 @@ async fn list_lore_candidates(
 async fn get_lore_event_detail(
     State(state): State<WebState>,
     Path(event_id): Path<String>,
-) -> Result<Json<LoreEventDetail>, WebError> {
+) -> Result<Json<LoreEventDetailResponse>, WebError> {
     let application = state.lock()?;
     let detail = application
         .store()
         .get_lore_event_detail(&event_id)?
         .ok_or_else(|| PerwigaError::NotFound(format!("lore event {event_id}")))?;
-    lore_work(&application, &detail.event.work_id)?;
-    Ok(Json(detail))
+    let work = lore_work(&application, &detail.event.work_id)?;
+    let module = application
+        .modules()
+        .find(|module| module.kind() == work.kind && module.id() == work.module_id)
+        .ok_or_else(|| {
+            PerwigaError::Unsupported(format!(
+                "module {}:{} is not registered",
+                work.kind, work.module_id
+            ))
+        })?;
+    let LoreEventDetail {
+        event,
+        claims,
+        involvements,
+        subjects,
+        evidence,
+        sources,
+    } = detail;
+    Ok(Json(LoreEventDetailResponse {
+        event,
+        claims,
+        involvements,
+        subjects: subjects
+            .into_iter()
+            .map(|subject| lore_subject_response(&application, module, subject))
+            .collect::<Result<Vec<_>, _>>()?,
+        evidence,
+        sources,
+    }))
 }
 
 async fn review_lore_candidate(
