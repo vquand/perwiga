@@ -3131,7 +3131,7 @@ mod tests {
         import_curated_lore(&mut store, &work.id).expect("curated lore import");
 
         let graph = store
-            .list_lore_graph(&work.id, None, None, 500)
+            .list_lore_graph(&work.id, None, None, 500, None)
             .expect("lore graph");
         assert_eq!(graph.events.len(), batch.events.len());
         assert!(graph

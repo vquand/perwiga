@@ -31,6 +31,7 @@ const state = {
   loreCandidates: [],
   selectedLoreEventId: "",
   loreSubjectId: "",
+  loreSubjectType: "",
   view: "wiki",
   switchSequence: 0,
 };
@@ -57,6 +58,7 @@ const dom = {
   loreMap: document.querySelector("#lore-map"),
   loreDetail: document.querySelector("#lore-detail"),
   loreReview: document.querySelector("#lore-review"),
+  loreSubjectTypeFilter: document.querySelector("#lore-subject-type-filter"),
   loreSubjectFilter: document.querySelector("#lore-subject-filter"),
   workspace: document.querySelector(".workspace"),
   nav: document.querySelector("#type-nav"),
@@ -398,7 +400,22 @@ function renderTimeline() {
 function renderLore() {
   const graph = state.loreGraph || { periods: [], events: [], relations: [], subjects: [], involvements: [] };
   dom.loreMap.removeAttribute("aria-busy");
-  renderLoreMap(dom.loreMap, graph, { onEvent: selectLoreEvent });
+  renderLoreMap(dom.loreMap, graph, {
+    onEvent: selectLoreEvent,
+    subjectType: state.loreSubjectType,
+  });
+
+  const currentSubjectType = state.loreSubjectType;
+  dom.loreSubjectTypeFilter.replaceChildren(new Option("All subjects", ""));
+  for (const subjectType of ["operator", "npc", "region"]) {
+    const definition = state.loreSchema?.subject_types?.find((item) => item.key === subjectType);
+    if (!definition) continue;
+    dom.loreSubjectTypeFilter.append(new Option(definition.display_name, subjectType));
+  }
+  state.loreSubjectType = ["", "operator", "npc", "region"].includes(currentSubjectType)
+    ? currentSubjectType
+    : "";
+  dom.loreSubjectTypeFilter.value = state.loreSubjectType;
 
   const currentSubject = state.loreSubjectId;
   dom.loreSubjectFilter.replaceChildren();
@@ -422,9 +439,12 @@ function renderLore() {
     subject.entity_type === "operator" || subject.entity_type === "npc"
   );
   const involvedIds = new Set(graph.involvements.map((item) => item.subject_id));
-  const placedCharacters = characterSubjects.filter((subject) => involvedIds.has(subject.id)).length;
-  const characterCoverage = characterSubjects.length
-    ? ` · ${placedCharacters} placed / ${characterSubjects.length - placedCharacters} awaiting placement`
+  const coverageSubjects = ["operator", "npc"].includes(state.loreSubjectType)
+    ? characterSubjects.filter((subject) => subject.entity_type === state.loreSubjectType)
+    : state.loreSubjectType === "region" ? [] : characterSubjects;
+  const placedCharacters = coverageSubjects.filter((subject) => involvedIds.has(subject.id)).length;
+  const characterCoverage = coverageSubjects.length
+    ? ` · ${placedCharacters} placed / ${coverageSubjects.length - placedCharacters} awaiting placement`
     : "";
   dom.loreStatus.textContent = eventCount
     ? `${eventCount} reviewed ${eventCount === 1 ? "event" : "events"}${characterCoverage} · ${candidateCount} candidate${candidateCount === 1 ? "" : "s"} awaiting review`
@@ -470,7 +490,10 @@ async function refreshLore() {
   dom.loreStatus.textContent = "Loading lore map…";
   try {
     const [graph, subjects, candidates] = await Promise.all([
-      api.getLoreGraph(workId, { subjectId: state.loreSubjectId }),
+      api.getLoreGraph(workId, {
+        subjectId: state.loreSubjectId,
+        subjectType: state.loreSubjectType,
+      }),
       api.listLoreSubjects(workId),
       api.listLoreCandidates(workId),
     ]);
@@ -545,6 +568,7 @@ async function activateWork(workId) {
     state.loreCandidates = [];
     state.selectedLoreEventId = "";
     state.loreSubjectId = "";
+    state.loreSubjectType = "";
     state.selectedType = "";
     state.selectedId = "";
     state.detail = null;
@@ -746,6 +770,14 @@ dom.sort.addEventListener("change", () => {
 });
 dom.loreSubjectFilter.addEventListener("change", () => {
   state.loreSubjectId = dom.loreSubjectFilter.value;
+  refreshLore();
+});
+dom.loreSubjectTypeFilter.addEventListener("change", () => {
+  state.loreSubjectType = dom.loreSubjectTypeFilter.value;
+  const focusedSubject = state.loreSubjects.find((subject) => subject.id === state.loreSubjectId);
+  if (focusedSubject && state.loreSubjectType && focusedSubject.proposed_type !== state.loreSubjectType) {
+    state.loreSubjectId = "";
+  }
   refreshLore();
 });
 for (const button of dom.viewButtons) {

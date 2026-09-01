@@ -936,6 +936,7 @@ impl Store {
         subject_id: Option<&str>,
         cursor: Option<&str>,
         limit: usize,
+        subject_type: Option<&str>,
     ) -> Result<crate::lore::LoreGraph> {
         let limit = limit.clamp(1, 500) as i64;
         let mut periods_statement = self.connection.prepare(
@@ -974,10 +975,18 @@ impl Store {
                  LEFT JOIN lore_claims c ON c.id = i.claim_id
                  WHERE i.subject_id = ?3 AND (i.event_id = e.id OR c.event_id = e.id)
                ))
+               AND (?5 IS NULL OR EXISTS (
+                 SELECT 1 FROM lore_involvements i
+                 JOIN lore_subjects s ON s.id = i.subject_id
+                 LEFT JOIN lore_claims c ON c.id = i.claim_id
+                 WHERE s.proposed_type = ?5
+                   AND (i.event_id = e.id OR c.event_id = e.id)
+               ))
              ORDER BY period_order IS NULL, period_order, e.id LIMIT ?4",
         )?;
-        let event_rows =
-            events_statement.query_map(params![work_id, cursor, subject_id, limit + 1], |row| {
+        let event_rows = events_statement.query_map(
+            params![work_id, cursor, subject_id, limit + 1, subject_type],
+            |row| {
                 Ok((
                     row.get::<_, String>(0)?,
                     row.get::<_, String>(1)?,
@@ -993,7 +1002,8 @@ impl Store {
                     row.get::<_, Option<String>>(11)?,
                     row.get::<_, Option<i64>>(12)?,
                 ))
-            })?;
+            },
+        )?;
         let mut events = Vec::new();
         for row in event_rows.take((limit + 1) as usize) {
             let (
@@ -3777,7 +3787,7 @@ mod tests {
         }
 
         let graph = store
-            .list_lore_graph(&work.id, None, None, 50)
+            .list_lore_graph(&work.id, None, None, 50, None)
             .expect("lore graph");
         assert_eq!(graph.periods.len(), 1);
         assert_eq!(graph.events.len(), 1);
@@ -3815,7 +3825,7 @@ mod tests {
         );
         assert_eq!(
             store
-                .list_lore_graph(&work.id, None, None, 50)
+                .list_lore_graph(&work.id, None, None, 50, None)
                 .expect("lore graph")
                 .events
                 .len(),

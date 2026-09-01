@@ -136,6 +136,7 @@ struct LoreGraphQuery {
     subject_id: Option<String>,
     cursor: Option<String>,
     limit: Option<usize>,
+    subject_type: Option<String>,
 }
 
 #[derive(Default, Deserialize)]
@@ -908,11 +909,19 @@ async fn list_lore_graph(
                 work.kind, work.module_id
             ))
         })?;
+    let subject_type = filters.subject_type.as_deref();
+    if subject_type.is_some_and(|value| !matches!(value, "operator" | "npc" | "region")) {
+        return Err(PerwigaError::Validation(
+            "subject_type must be one of operator, npc, or region".to_string(),
+        )
+        .into());
+    }
     let graph = application.store().list_lore_graph(
         &work_id,
         filters.subject_id.as_deref(),
         filters.cursor.as_deref(),
         filters.limit.unwrap_or(500),
+        subject_type,
     )?;
     let LoreGraph {
         periods,

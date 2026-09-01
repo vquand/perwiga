@@ -148,7 +148,10 @@
             <h2 id="lore-heading">Lore map</h2>
             <p class="lore-intro">Periods run from past on the left to future on the right. Events preserve exact, fuzzy, and relative time labels; claims stay linked to their evidence.</p>
           </div>
-          <label class="lore-subject-filter" for="lore-subject-filter"><span>Focus subject</span><select id="lore-subject-filter"><option value="">All subjects</option></select></label>
+          <div class="lore-filter-bar" aria-label="Lore map filters">
+            <label class="lore-subject-filter" for="lore-subject-type-filter"><span>Show events involving</span><select id="lore-subject-type-filter"><option value="">All subjects</option></select></label>
+            <label class="lore-subject-filter" for="lore-subject-filter"><span>Focus subject</span><select id="lore-subject-filter"><option value="">All subjects</option></select></label>
+          </div>
         </header>
         <div class="lore-toolbar">
           <p id="lore-status" class="timeline-status" role="status" aria-live="polite">Preparing lore map…</p>

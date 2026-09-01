@@ -943,6 +943,13 @@ h1 {
   line-height: 1.6;
 }
 
+.lore-filter-bar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(12rem, 1fr));
+  gap: var(--space-3);
+  min-width: min(100%, 31rem);
+}
+
 .lore-subject-filter {
   display: grid;
   min-width: 14rem;
@@ -2292,6 +2299,12 @@ noscript {
 
   .lore-subject-filter {
     width: 100%;
+  }
+
+  .lore-filter-bar {
+    grid-template-columns: 1fr;
+    width: 100%;
+    min-width: 0;
   }
 
   .lore-legend {

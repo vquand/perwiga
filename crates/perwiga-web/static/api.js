@@ -51,9 +51,10 @@ export const api = {
     return request(`/api/works/${encodeURIComponent(workId)}/calendar-events`);
   },
 
-  getLoreGraph(workId, { subjectId = "", cursor = "", limit = 500 } = {}) {
+  getLoreGraph(workId, { subjectId = "", subjectType = "", cursor = "", limit = 500 } = {}) {
     const search = new URLSearchParams();
     if (subjectId) search.set("subject_id", subjectId);
+    if (subjectType) search.set("subject_type", subjectType);
     if (cursor) search.set("cursor", cursor);
     if (limit) search.set("limit", String(limit));
     const suffix = search.size ? `?${search}` : "";

@@ -87,7 +87,7 @@ function orderEvents(events, relations) {
   return ordered;
 }
 
-export function renderLoreMap(container, graph, { onEvent } = {}) {
+export function renderLoreMap(container, graph, { onEvent, subjectType = "" } = {}) {
   container.replaceChildren();
   if (!graph?.events?.length) {
     container.append(
@@ -207,7 +207,9 @@ export function renderLoreMap(container, graph, { onEvent } = {}) {
   }
   const involvedSubjectIds = new Set((graph.involvements || []).map((item) => item.subject_id));
   const awaitingCharacters = (graph.subjects || [])
-    .filter((subject) => isCharacter(subject) && !involvedSubjectIds.has(subject.id))
+    .filter((subject) => isCharacter(subject)
+      && !involvedSubjectIds.has(subject.id)
+      && (!subjectType || subjectType === "operator" || subjectType === "npc"))
     .sort((left, right) => left.attested_name.localeCompare(right.attested_name));
   if (awaitingCharacters.length) {
     const column = element("section", "lore-period lore-period-awaiting");

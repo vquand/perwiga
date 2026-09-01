@@ -169,6 +169,55 @@ async fn endfield_setup_is_idempotent() {
         .expect("Wuling timeline event");
     assert!(visitor["period_order"].as_i64() < wuling["period_order"].as_i64());
 
+    for subject_type in ["operator", "npc", "region"] {
+        let filtered = app
+            .clone()
+            .oneshot(
+                Request::get(format!(
+                    "/api/works/{work_id}/lore-graph?limit=500&subject_type={subject_type}"
+                ))
+                .body(Body::empty())
+                .expect("filtered lore graph request"),
+            )
+            .await
+            .expect("filtered lore graph response");
+        assert_eq!(filtered.status(), StatusCode::OK);
+        let filtered = json_response(filtered).await;
+        let filtered_events = filtered["events"].as_array().expect("filtered events");
+        assert!(!filtered_events.is_empty());
+        assert!(filtered_events.len() < lore_graph["events"].as_array().unwrap().len());
+        for event in filtered_events {
+            let event_id = event["id"].as_str().expect("event id");
+            assert!(filtered["involvements"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .any(|involvement| {
+                    involvement["event_id"] == event_id
+                        && filtered["subjects"]
+                            .as_array()
+                            .unwrap()
+                            .iter()
+                            .any(|subject| {
+                                subject["id"] == involvement["subject_id"]
+                                    && subject["entity_type"] == subject_type
+                            })
+                }));
+        }
+    }
+    let invalid_filter = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/lore-graph?subject_type=faction"
+            ))
+            .body(Body::empty())
+            .expect("invalid lore filter request"),
+        )
+        .await
+        .expect("invalid lore filter response");
+    assert_eq!(invalid_filter.status(), StatusCode::BAD_REQUEST);
+
     let wiki_events = app
         .clone()
         .oneshot(
@@ -1878,6 +1927,8 @@ async fn browser_shell_and_health_endpoint_are_served_safely() {
     assert!(html.contains("data-view=\"timeline\""));
     assert!(html.contains("id=\"lore-view\""));
     assert!(html.contains("data-view=\"lore\""));
+    assert!(html.contains("id=\"lore-subject-type-filter\""));
+    assert!(html.contains("Show events involving"));
     assert!(html.contains("id=\"lore-review\""));
     assert!(html.contains("data-event-status=\"upcoming\""));
     assert!(!html.contains("<select id=\"game-switcher\""));
