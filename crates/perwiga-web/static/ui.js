@@ -157,6 +157,13 @@ function entityKind(entityType, presentation) {
   return kind;
 }
 
+function friendlyOriginalName(entity, catalogLabel) {
+  if (entity.official_original_name === "{NICKNAME}" && catalogLabel) {
+    return catalogLabel.split(" · ", 1)[0];
+  }
+  return entity.official_original_name;
+}
+
 const nameCollator = new Intl.Collator(undefined, { sensitivity: "base" });
 
 export function filterAndSortEntities(entities, { rarity = "", facets = {}, sort = "name" } = {}) {
@@ -244,9 +251,10 @@ export function renderEntityList(list, entities, types, selectedId, onSelect) {
 
     const avatar = entityAvatar(entity);
     const copy = element("span", "entity-copy");
+    const catalogLabel = entity.catalog_label || entity.official_english_name;
     copy.append(
-      element("strong", "entity-name", entity.catalog_label || entity.official_english_name),
-      element("span", "entity-original", entity.official_original_name),
+      element("strong", "entity-name", catalogLabel),
+      element("span", "entity-original", friendlyOriginalName(entity, catalogLabel)),
     );
     const kind = entityKind(typeName(types, entity.entity_type), entity.presentation);
     button.append(avatar, copy, kind);
@@ -418,6 +426,7 @@ function entityAppearanceSection(appearances) {
 export function renderEntityDetail(container, detail, types, { onEdit, onAlias }) {
   const {
     entity,
+    catalog_label: catalogLabel,
     aliases,
     appearances = [],
     event_recency: eventRecency,
@@ -429,8 +438,8 @@ export function renderEntityDetail(container, detail, types, { onEdit, onAlias }
   const titleBlock = element("div", "");
   titleBlock.append(
     element("p", "entity-type-tag", typeName(types, entity.entity_type)),
-    element("h3", "detail-title", entity.official_english_name),
-    element("p", "detail-original", entity.official_original_name),
+    element("h3", "detail-title", catalogLabel || entity.official_english_name),
+    element("p", "detail-original", friendlyOriginalName(entity, catalogLabel)),
   );
   const edit = element("button", "button button-secondary", "Edit");
   edit.type = "button";

@@ -1,0 +1,161 @@
+{
+  "schema": "perwiga.honkai-star-rail.paths.v1",
+  "checked_at": "2026-09-01",
+  "source": {
+    "repository": "https://github.com/Mar-7th/StarRailRes",
+    "source_data": "https://github.com/Dimbreath/StarRailData",
+    "static_api": "https://vizualabstract.github.io/StarRailStaticAPI/db/",
+    "commit": "d226befe3db13f2ec15f4161d5f34b1b607643fe",
+    "upstream": "StarRailRes index_new multilingual game-data extracts; not an official HoYoverse API"
+  },
+  "catalog_scope": {
+    "included_records": 9,
+    "locale_set": [
+      "en",
+      "vi",
+      "cn",
+      "cht"
+    ]
+  },
+  "field_provenance": {
+    "names_descriptions": "StarRailRes index_new extracts sourced from Dimbreath/StarRailData",
+    "thumbnail": "StarRailRes asset path, served by its public static mirror"
+  },
+  "paths": [
+    {
+      "source_key": "starrail-path-Elation",
+      "game_data_id": "Elation",
+      "official_english_name": "Elation",
+      "official_simplified_chinese_name": "欢愉",
+      "official_traditional_chinese_name": "歡愉",
+      "official_vietnamese_name": "Vui Vẻ",
+      "official_english_description": "Devise different kinds of punchlines to entice Aha to join in the revelry",
+      "official_simplified_chinese_description": "以各自的方式制造各种笑料，吸引星神阿哈一同狂欢",
+      "official_traditional_chinese_description": "以各自的方式製造各種笑料，吸引星神阿哈一同狂歡",
+      "official_vietnamese_description": "Tạo ra các loại trò cười theo cách riêng của mình để thu hút Aeon Aha cùng vui vẻ",
+      "source_key_name": "Elation",
+      "color": null,
+      "icon_path": "icon/path/Elation.png"
+    },
+    {
+      "source_key": "starrail-path-Knight",
+      "game_data_id": "Knight",
+      "official_english_name": "Preservation",
+      "official_simplified_chinese_name": "存护",
+      "official_traditional_chinese_name": "存護",
+      "official_vietnamese_name": "Bảo Hộ",
+      "official_english_description": "Possesses powerful defensive abilities to protect allies in various ways",
+      "official_simplified_chinese_description": "具备强大的保护能力，通过不同的方式守护同伴",
+      "official_traditional_chinese_description": "具備強大的保護能力，透過不同的方式守護同伴",
+      "official_vietnamese_description": "Có khả năng Bảo Vệ mạnh mẽ, có thể bảo vệ đồng đội bằng nhiều cách khác nhau.",
+      "source_key_name": "Knight",
+      "color": null,
+      "icon_path": "icon/path/Preservation.png"
+    },
+    {
+      "source_key": "starrail-path-Mage",
+      "game_data_id": "Mage",
+      "official_english_name": "Erudition",
+      "official_simplified_chinese_name": "智识",
+      "official_traditional_chinese_name": "智識",
+      "official_vietnamese_name": "Tri Thức",
+      "official_english_description": "Deals remarkable amounts of multi-target damage. The main damage dealer against groups of enemies",
+      "official_simplified_chinese_description": "拥有出色的群体攻击能力，可以将复数的敌人一网打尽",
+      "official_traditional_chinese_description": "擁有出色的群體攻擊能力，可以將複數敵人一網打盡",
+      "official_vietnamese_description": "Có khả năng tấn công nhóm nổi trội, chỉ cần ra một đòn có thể bắt trọn nhiều kẻ địch.",
+      "source_key_name": "Mage",
+      "color": null,
+      "icon_path": "icon/path/Erudition.png"
+    },
+    {
+      "source_key": "starrail-path-Memory",
+      "game_data_id": "Memory",
+      "official_english_name": "Remembrance",
+      "official_simplified_chinese_name": "记忆",
+      "official_traditional_chinese_name": "記憶",
+      "official_vietnamese_name": "Ký Ức",
+      "official_english_description": "Possesses the ability to summon a memosprite with special abilities to fight alongside the team in battle",
+      "official_simplified_chinese_description": "能召唤拥有特殊能力的忆灵，在战斗中与团队并肩作战",
+      "official_traditional_chinese_description": "能召喚擁有特殊能力的憶靈，在戰鬥中與團隊並肩作戰",
+      "official_vietnamese_description": "Có thể triệu hồi Linh Hồn Ký Ức có Năng Lực Đặc Biệt, kề vai tác chiến cùng đội trong chiến đấu.",
+      "source_key_name": "Memory",
+      "color": null,
+      "icon_path": "icon/path/Remembrance.png"
+    },
+    {
+      "source_key": "starrail-path-Priest",
+      "game_data_id": "Priest",
+      "official_english_name": "Abundance",
+      "official_simplified_chinese_name": "丰饶",
+      "official_traditional_chinese_name": "豐饒",
+      "official_vietnamese_name": "Trù Phú",
+      "official_english_description": "Heals allies and restores HP to the team",
+      "official_simplified_chinese_description": "能够治疗我方伤势，为团队提供回复能力",
+      "official_traditional_chinese_description": "能夠治療我方傷勢，為團隊提供回復能力",
+      "official_vietnamese_description": "Có thể trị liệu vết thương cho phe ta, giúp đồng đội hồi phục.",
+      "source_key_name": "Priest",
+      "color": null,
+      "icon_path": "icon/path/Abundance.png"
+    },
+    {
+      "source_key": "starrail-path-Rogue",
+      "game_data_id": "Rogue",
+      "official_english_name": "The Hunt",
+      "official_simplified_chinese_name": "巡猎",
+      "official_traditional_chinese_name": "巡獵",
+      "official_vietnamese_name": "Săn Bắn",
+      "official_english_description": "Deals extraordinary amounts of single-target damage. The main damage dealer against Elite Enemies",
+      "official_simplified_chinese_description": "有着非凡的单体攻击能力，是战胜精英敌人的主要输出力量",
+      "official_traditional_chinese_description": "有著非凡的單體攻擊能力，是戰勝菁英敵人的主要輸出力量",
+      "official_vietnamese_description": "Có khả năng tấn công đơn thể phi phàm, là sức mạnh tấn công chủ yếu để chiến thắng Kẻ Địch Tinh Anh.",
+      "source_key_name": "Rogue",
+      "color": null,
+      "icon_path": "icon/path/Hunt.png"
+    },
+    {
+      "source_key": "starrail-path-Shaman",
+      "game_data_id": "Shaman",
+      "official_english_name": "Harmony",
+      "official_simplified_chinese_name": "同谐",
+      "official_traditional_chinese_name": "同諧",
+      "official_vietnamese_name": "Hòa Hợp",
+      "official_english_description": "Applies buffs to allies to improve the team's combat capacities",
+      "official_simplified_chinese_description": "能为我方施加增益效果，提升团队的整体战斗力",
+      "official_traditional_chinese_description": "能為我方施加增益效果，提升團隊的整體戰鬥力",
+      "official_vietnamese_description": "Có thể thi triển hiệu ứng buff cho phe ta, giúp tăng sức chiến đấu toàn đội.",
+      "source_key_name": "Shaman",
+      "color": null,
+      "icon_path": "icon/path/Harmony.png"
+    },
+    {
+      "source_key": "starrail-path-Warlock",
+      "game_data_id": "Warlock",
+      "official_english_name": "Nihility",
+      "official_simplified_chinese_name": "虚无",
+      "official_traditional_chinese_name": "虛無",
+      "official_vietnamese_name": "Hư Vô",
+      "official_english_description": "Applies debuffs to enemies to reduce their combat capacities",
+      "official_simplified_chinese_description": "能对敌方施加负面效果，降低敌方战斗力争取优势",
+      "official_traditional_chinese_description": "能對敵方施加負面效果，降低敵方戰鬥力爭取優勢",
+      "official_vietnamese_description": "Có thể thi triển Hiệu Ứng Xấu lên kẻ địch, giảm sức chiến đấu của địch để giành ưu thế.",
+      "source_key_name": "Warlock",
+      "color": null,
+      "icon_path": "icon/path/Nihility.png"
+    },
+    {
+      "source_key": "starrail-path-Warrior",
+      "game_data_id": "Warrior",
+      "official_english_name": "Destruction",
+      "official_simplified_chinese_name": "毁灭",
+      "official_traditional_chinese_name": "毀滅",
+      "official_vietnamese_name": "Hủy Diệt",
+      "official_english_description": "Deals outstanding amounts of damage and possesses great survivability. Suitable for various combat scenarios",
+      "official_simplified_chinese_description": "兼具不俗的输出与生存能力，能适应不同的作战环境",
+      "official_traditional_chinese_description": "兼具不俗的輸出與生存能力，能適應不同的作戰環境",
+      "official_vietnamese_description": "Có khả năng tấn công và sinh tồn phi thường, có thể thích nghi với nhiều môi trường chiến đấu khác nhau.",
+      "source_key_name": "Warrior",
+      "color": null,
+      "icon_path": "icon/path/Destruction.png"
+    }
+  ]
+}

@@ -1,0 +1,1585 @@
+{
+  "schema": "perwiga.honkai-star-rail.light-cone-han-viet.v1",
+  "checked_at": "2026-09-01",
+  "catalog_scope": {
+    "source_records": 169,
+    "alias_records": 169,
+    "unique_simplified_chinese_names": 169
+  },
+  "coverage": {
+    "source_key_coverage": {
+      "source_records": 169,
+      "alias_records": 169,
+      "matched": 169,
+      "missing": [],
+      "extra": []
+    },
+    "generated_aliases": 169,
+    "unresolved_records": 0,
+    "unresolved_token_occurrences": 0,
+    "unresolved_tokens": []
+  },
+  "confidence": {
+    "han_viet_names": "E",
+    "scale": {
+      "E": "Generated dictionary reading suitable as a search alias; not an official localization and not a semantic translation."
+    }
+  },
+  "sources": {
+    "official_simplified_chinese_names": {
+      "repository": "https://github.com/Mar-7th/StarRailRes",
+      "source_path": "index_new/cn/light_cones.json",
+      "commit": "d226befe3db13f2ec15f4161d5f34b1b607643fe",
+      "upstream_data": "https://github.com/Dimbreath/StarRailData"
+    },
+    "official_traditional_chinese_names": {
+      "repository": "https://github.com/Mar-7th/StarRailRes",
+      "source_path": "index_new/cht/light_cones.json",
+      "commit": "d226befe3db13f2ec15f4161d5f34b1b607643fe",
+      "upstream_data": "https://github.com/Dimbreath/StarRailData"
+    },
+    "han_viet_dictionary": "https://hvdic.thivien.net/transcript.php#trans",
+    "han_viet_query_endpoint": "https://hvdic.thivien.net/transcript-query.json.php"
+  },
+  "generation": {
+    "input_locale": "official_simplified_chinese_name",
+    "selection": "First Hán-Việt alternative returned by the Thi Viện transcription endpoint for each Han character.",
+    "capitalization": "Capitalize the first letter of each generated syllable.",
+    "punctuation": "Preserve source punctuation, drop Chinese quote marks used only as title decoration, and separate generated syllables with spaces.",
+    "reading_overrides": {},
+    "explicit_fallbacks": {}
+  },
+  "limitations": [
+    "Hán-Việt is a generated, unofficial reading alias; it never replaces official English, Chinese, or Vietnamese names.",
+    "The dictionary returns character readings, not a context-reviewed translation of the Light Cone title; polyphonic characters therefore retain the endpoint's first alternative unless a future reviewed override is added.",
+    "The Chinese locale values are preserved StarRailRes game-data extracts sourced from Dimbreath/StarRailData, not a direct official HoYoverse API response.",
+    "Names that contain transliterated, invented, or newly coined terms may have a readable Hán-Việt form that is not an established Vietnamese name."
+  ],
+  "notes": [
+    "Every alias record is keyed to the source catalog's stable source_key and preserves both Chinese locale fields for review.",
+    "Unresolved characters, if any, remain explicit in coverage and on the affected alias record; no unknown reading is fabricated."
+  ],
+  "light_cones": [
+    {
+      "source_key": "starrailres-light-cone-20000",
+      "game_data_id": "20000",
+      "official_english_name": "Arrows",
+      "official_simplified_chinese_name": "锋镝",
+      "official_traditional_chinese_name": "鋒鏑",
+      "han_viet_name": "Phong Đích",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20001",
+      "game_data_id": "20001",
+      "official_english_name": "Cornucopia",
+      "official_simplified_chinese_name": "物穰",
+      "official_traditional_chinese_name": "物穰",
+      "han_viet_name": "Vật Nhương",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20002",
+      "game_data_id": "20002",
+      "official_english_name": "Collapsing Sky",
+      "official_simplified_chinese_name": "天倾",
+      "official_traditional_chinese_name": "天傾",
+      "han_viet_name": "Thiên Khuynh",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20003",
+      "game_data_id": "20003",
+      "official_english_name": "Amber",
+      "official_simplified_chinese_name": "琥珀",
+      "official_traditional_chinese_name": "琥珀",
+      "han_viet_name": "Hổ Phách",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20004",
+      "game_data_id": "20004",
+      "official_english_name": "Void",
+      "official_simplified_chinese_name": "幽邃",
+      "official_traditional_chinese_name": "幽邃",
+      "han_viet_name": "U Thuý",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20005",
+      "game_data_id": "20005",
+      "official_english_name": "Chorus",
+      "official_simplified_chinese_name": "齐颂",
+      "official_traditional_chinese_name": "齊頌",
+      "han_viet_name": "Tề Tụng",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20006",
+      "game_data_id": "20006",
+      "official_english_name": "Data Bank",
+      "official_simplified_chinese_name": "智库",
+      "official_traditional_chinese_name": "智庫",
+      "han_viet_name": "Trí Khố",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20007",
+      "game_data_id": "20007",
+      "official_english_name": "Darting Arrow",
+      "official_simplified_chinese_name": "离弦",
+      "official_traditional_chinese_name": "離弦",
+      "han_viet_name": "Ly Huyền",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20008",
+      "game_data_id": "20008",
+      "official_english_name": "Fine Fruit",
+      "official_simplified_chinese_name": "嘉果",
+      "official_traditional_chinese_name": "嘉果",
+      "han_viet_name": "Gia Quả",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20009",
+      "game_data_id": "20009",
+      "official_english_name": "Shattered Home",
+      "official_simplified_chinese_name": "乐圮",
+      "official_traditional_chinese_name": "樂圮",
+      "han_viet_name": "Nhạc Bĩ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20010",
+      "game_data_id": "20010",
+      "official_english_name": "Defense",
+      "official_simplified_chinese_name": "戍御",
+      "official_traditional_chinese_name": "戍禦",
+      "han_viet_name": "Thú Ngự",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20011",
+      "game_data_id": "20011",
+      "official_english_name": "Loop",
+      "official_simplified_chinese_name": "渊环",
+      "official_traditional_chinese_name": "淵環",
+      "han_viet_name": "Uyên Hoàn",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20012",
+      "game_data_id": "20012",
+      "official_english_name": "Meshing Cogs",
+      "official_simplified_chinese_name": "轮契",
+      "official_traditional_chinese_name": "輪契",
+      "han_viet_name": "Luân Khế",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20013",
+      "game_data_id": "20013",
+      "official_english_name": "Passkey",
+      "official_simplified_chinese_name": "灵钥",
+      "official_traditional_chinese_name": "靈鑰",
+      "han_viet_name": "Linh Thược",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20014",
+      "game_data_id": "20014",
+      "official_english_name": "Adversarial",
+      "official_simplified_chinese_name": "相抗",
+      "official_traditional_chinese_name": "相抗",
+      "han_viet_name": "Tương Kháng",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20015",
+      "game_data_id": "20015",
+      "official_english_name": "Multiplication",
+      "official_simplified_chinese_name": "蕃息",
+      "official_traditional_chinese_name": "蕃息",
+      "han_viet_name": "Phiền Tức",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20016",
+      "game_data_id": "20016",
+      "official_english_name": "Mutual Demise",
+      "official_simplified_chinese_name": "俱殁",
+      "official_traditional_chinese_name": "俱歿",
+      "han_viet_name": "Câu Một",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20017",
+      "game_data_id": "20017",
+      "official_english_name": "Pioneering",
+      "official_simplified_chinese_name": "开疆",
+      "official_traditional_chinese_name": "開疆",
+      "han_viet_name": "Khai Cương",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20018",
+      "game_data_id": "20018",
+      "official_english_name": "Hidden Shadow",
+      "official_simplified_chinese_name": "匿影",
+      "official_traditional_chinese_name": "匿影",
+      "han_viet_name": "Nặc Ảnh",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20019",
+      "game_data_id": "20019",
+      "official_english_name": "Mediation",
+      "official_simplified_chinese_name": "调和",
+      "official_traditional_chinese_name": "調和",
+      "han_viet_name": "Điệu Hoà",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20020",
+      "game_data_id": "20020",
+      "official_english_name": "Sagacity",
+      "official_simplified_chinese_name": "睿见",
+      "official_traditional_chinese_name": "睿見",
+      "han_viet_name": "Duệ Kiến",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20021",
+      "game_data_id": "20021",
+      "official_english_name": "Shadowburn",
+      "official_simplified_chinese_name": "焚影",
+      "official_traditional_chinese_name": "焚影",
+      "han_viet_name": "Phần Ảnh",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20022",
+      "game_data_id": "20022",
+      "official_english_name": "Reminiscence",
+      "official_simplified_chinese_name": "溯忆",
+      "official_traditional_chinese_name": "溯憶",
+      "han_viet_name": "Tố Ức",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20023",
+      "game_data_id": "20023",
+      "official_english_name": "Sneering",
+      "official_simplified_chinese_name": "嗤笑",
+      "official_traditional_chinese_name": "嗤笑",
+      "han_viet_name": "Xuy Tiếu",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-20024",
+      "game_data_id": "20024",
+      "official_english_name": "Lingering Tear",
+      "official_simplified_chinese_name": "残泪",
+      "official_traditional_chinese_name": "殘淚",
+      "han_viet_name": "Tàn Lệ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21000",
+      "game_data_id": "21000",
+      "official_english_name": "Post-Op Conversation",
+      "official_simplified_chinese_name": "一场术后对话",
+      "official_traditional_chinese_name": "一場術後對話",
+      "han_viet_name": "Nhất Trường Thuật Hậu Đối Thoại",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21001",
+      "game_data_id": "21001",
+      "official_english_name": "Good Night and Sleep Well",
+      "official_simplified_chinese_name": "晚安与睡颜",
+      "official_traditional_chinese_name": "晚安與睡顏",
+      "han_viet_name": "Vãn An Dữ Thuỵ Nhan",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21002",
+      "game_data_id": "21002",
+      "official_english_name": "Day One of My New Life",
+      "official_simplified_chinese_name": "余生的第一天",
+      "official_traditional_chinese_name": "餘生的第一天",
+      "han_viet_name": "Dư Sinh Đích Đệ Nhất Thiên",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21003",
+      "game_data_id": "21003",
+      "official_english_name": "Only Silence Remains",
+      "official_simplified_chinese_name": "唯有沉默",
+      "official_traditional_chinese_name": "唯有沉默",
+      "han_viet_name": "Duy Hữu Trầm Mặc",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21004",
+      "game_data_id": "21004",
+      "official_english_name": "Memories of the Past",
+      "official_simplified_chinese_name": "记忆中的模样",
+      "official_traditional_chinese_name": "記憶中的模樣",
+      "han_viet_name": "Ký Ức Trung Đích Mô Dạng",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21005",
+      "game_data_id": "21005",
+      "official_english_name": "The Moles Welcome You",
+      "official_simplified_chinese_name": "鼹鼠党欢迎你",
+      "official_traditional_chinese_name": "鼴鼠黨歡迎你",
+      "han_viet_name": "Yển Thử Đảng Hoan Nghinh Nhĩ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21006",
+      "game_data_id": "21006",
+      "official_english_name": "The Birth of the Self",
+      "official_simplified_chinese_name": "「我」的诞生",
+      "official_traditional_chinese_name": "「我」的誕生",
+      "han_viet_name": "Ngã Đích Đản Sinh",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21007",
+      "game_data_id": "21007",
+      "official_english_name": "Shared Feeling",
+      "official_simplified_chinese_name": "同一种心情",
+      "official_traditional_chinese_name": "同一種心情",
+      "han_viet_name": "Đồng Nhất Chủng Tâm Tình",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21008",
+      "game_data_id": "21008",
+      "official_english_name": "Eyes of the Prey",
+      "official_simplified_chinese_name": "猎物的视线",
+      "official_traditional_chinese_name": "獵物的視線",
+      "han_viet_name": "Lạp Vật Đích Thị Tuyến",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21009",
+      "game_data_id": "21009",
+      "official_english_name": "Landau's Choice",
+      "official_simplified_chinese_name": "朗道的选择",
+      "official_traditional_chinese_name": "朗道的選擇",
+      "han_viet_name": "Lãng Đạo Đích Tuyển Trạch",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21010",
+      "game_data_id": "21010",
+      "official_english_name": "Swordplay",
+      "official_simplified_chinese_name": "论剑",
+      "official_traditional_chinese_name": "論劍",
+      "han_viet_name": "Luận Kiếm",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21011",
+      "game_data_id": "21011",
+      "official_english_name": "Planetary Rendezvous",
+      "official_simplified_chinese_name": "与行星相会",
+      "official_traditional_chinese_name": "與行星相會",
+      "han_viet_name": "Dữ Hành Tinh Tương Hội",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21012",
+      "game_data_id": "21012",
+      "official_english_name": "A Secret Vow",
+      "official_simplified_chinese_name": "秘密誓心",
+      "official_traditional_chinese_name": "秘密誓心",
+      "han_viet_name": "Bí Mật Thệ Tâm",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21013",
+      "game_data_id": "21013",
+      "official_english_name": "Make the World Clamor",
+      "official_simplified_chinese_name": "别让世界静下来",
+      "official_traditional_chinese_name": "別讓世界靜下來",
+      "han_viet_name": "Biệt Nhượng Thế Giới Tĩnh Hạ Lai",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21014",
+      "game_data_id": "21014",
+      "official_english_name": "Perfect Timing",
+      "official_simplified_chinese_name": "此时恰好",
+      "official_traditional_chinese_name": "此時恰好",
+      "han_viet_name": "Thử Thì Kháp Hảo",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21015",
+      "game_data_id": "21015",
+      "official_english_name": "Resolution Shines As Pearls of Sweat",
+      "official_simplified_chinese_name": "决心如汗珠般闪耀",
+      "official_traditional_chinese_name": "決心如汗珠般閃耀",
+      "han_viet_name": "Quyết Tâm Như Hãn Châu Bàn Thiểm Diệu",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21016",
+      "game_data_id": "21016",
+      "official_english_name": "Trend of the Universal Market",
+      "official_simplified_chinese_name": "宇宙市场趋势",
+      "official_traditional_chinese_name": "宇宙市場趨勢",
+      "han_viet_name": "Vũ Trụ Thị Trường Xu Thế",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21017",
+      "game_data_id": "21017",
+      "official_english_name": "Subscribe for More!",
+      "official_simplified_chinese_name": "点个关注吧！",
+      "official_traditional_chinese_name": "按個追蹤吧！",
+      "han_viet_name": "Điểm Cá Quan Chú Ba！",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21018",
+      "game_data_id": "21018",
+      "official_english_name": "Dance! Dance! Dance!",
+      "official_simplified_chinese_name": "舞！舞！舞！",
+      "official_traditional_chinese_name": "舞！舞！舞！",
+      "han_viet_name": "Vũ！ Vũ！ Vũ！",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21019",
+      "game_data_id": "21019",
+      "official_english_name": "Under the Blue Sky",
+      "official_simplified_chinese_name": "在蓝天下",
+      "official_traditional_chinese_name": "在藍天下",
+      "han_viet_name": "Tại Lam Thiên Hạ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21020",
+      "game_data_id": "21020",
+      "official_english_name": "Geniuses' Repose",
+      "official_simplified_chinese_name": "天才们的休憩",
+      "official_traditional_chinese_name": "天才們的休憩",
+      "han_viet_name": "Thiên Tài Môn Đích Hưu Khế",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21021",
+      "game_data_id": "21021",
+      "official_english_name": "Quid Pro Quo",
+      "official_simplified_chinese_name": "等价交换",
+      "official_traditional_chinese_name": "等價交換",
+      "han_viet_name": "Đẳng Giá Giao Hoán",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21022",
+      "game_data_id": "21022",
+      "official_english_name": "Fermata",
+      "official_simplified_chinese_name": "延长记号",
+      "official_traditional_chinese_name": "延長記號",
+      "han_viet_name": "Duyên Trưởng Ký Hiệu",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21023",
+      "game_data_id": "21023",
+      "official_english_name": "We Are Wildfire",
+      "official_simplified_chinese_name": "我们是地火",
+      "official_traditional_chinese_name": "我們是地火",
+      "han_viet_name": "Ngã Môn Thị Địa Hoả",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21024",
+      "game_data_id": "21024",
+      "official_english_name": "River Flows in Spring",
+      "official_simplified_chinese_name": "春水初生",
+      "official_traditional_chinese_name": "春水初生",
+      "han_viet_name": "Xuân Thuỷ Sơ Sinh",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21025",
+      "game_data_id": "21025",
+      "official_english_name": "Past and Future",
+      "official_simplified_chinese_name": "过往未来",
+      "official_traditional_chinese_name": "過往未來",
+      "han_viet_name": "Quá Vãng Vị Lai",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21026",
+      "game_data_id": "21026",
+      "official_english_name": "Woof! Walk Time!",
+      "official_simplified_chinese_name": "汪！散步时间！",
+      "official_traditional_chinese_name": "汪！散步時間！",
+      "han_viet_name": "Uông！ Tán Bộ Thì Gian！",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21027",
+      "game_data_id": "21027",
+      "official_english_name": "The Seriousness of Breakfast",
+      "official_simplified_chinese_name": "早餐的仪式感",
+      "official_traditional_chinese_name": "早餐的儀式感",
+      "han_viet_name": "Tảo Xan Đích Nghi Thức Cảm",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21028",
+      "game_data_id": "21028",
+      "official_english_name": "Warmth Shortens Cold Nights",
+      "official_simplified_chinese_name": "暖夜不会漫长",
+      "official_traditional_chinese_name": "暖夜不會漫長",
+      "han_viet_name": "Noãn Dạ Bất Hội Mạn Trưởng",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21029",
+      "game_data_id": "21029",
+      "official_english_name": "We Will Meet Again",
+      "official_simplified_chinese_name": "后会有期",
+      "official_traditional_chinese_name": "後會有期",
+      "han_viet_name": "Hậu Hội Hữu Kỳ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21030",
+      "game_data_id": "21030",
+      "official_english_name": "This Is Me!",
+      "official_simplified_chinese_name": "这就是我啦！",
+      "official_traditional_chinese_name": "這就是我啦！",
+      "han_viet_name": "Giá Tựu Thị Ngã Lạp！",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21031",
+      "game_data_id": "21031",
+      "official_english_name": "Return to Darkness",
+      "official_simplified_chinese_name": "重返幽冥",
+      "official_traditional_chinese_name": "重返幽冥",
+      "han_viet_name": "Trùng Phản U Minh",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21032",
+      "game_data_id": "21032",
+      "official_english_name": "Carve the Moon, Weave the Clouds",
+      "official_simplified_chinese_name": "镂月裁云之意",
+      "official_traditional_chinese_name": "鏤月裁雲之意",
+      "han_viet_name": "Lũ Nguyệt Tài Vân Chi Ý",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21033",
+      "game_data_id": "21033",
+      "official_english_name": "Nowhere to Run",
+      "official_simplified_chinese_name": "无处可逃",
+      "official_traditional_chinese_name": "無處可逃",
+      "han_viet_name": "Vô Xứ Khả Đào",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21034",
+      "game_data_id": "21034",
+      "official_english_name": "Today Is Another Peaceful Day",
+      "official_simplified_chinese_name": "今日亦是和平的一日",
+      "official_traditional_chinese_name": "今日亦是和平的一日",
+      "han_viet_name": "Kim Nhật Diệc Thị Hoà Bình Đích Nhất Nhật",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21035",
+      "game_data_id": "21035",
+      "official_english_name": "What Is Real?",
+      "official_simplified_chinese_name": "何物为真",
+      "official_traditional_chinese_name": "何物為真",
+      "han_viet_name": "Hà Vật Vy Chân",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21036",
+      "game_data_id": "21036",
+      "official_english_name": "Dreamville Adventure",
+      "official_simplified_chinese_name": "美梦小镇大冒险",
+      "official_traditional_chinese_name": "美夢小鎮大冒險",
+      "han_viet_name": "Mỹ Mộng Tiểu Trấn Đại Mạo Hiểm",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21037",
+      "game_data_id": "21037",
+      "official_english_name": "Final Victor",
+      "official_simplified_chinese_name": "最后的赢家",
+      "official_traditional_chinese_name": "最後的贏家",
+      "han_viet_name": "Tối Hậu Đích Doanh Gia",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21038",
+      "game_data_id": "21038",
+      "official_english_name": "Flames Afar",
+      "official_simplified_chinese_name": "在火的远处",
+      "official_traditional_chinese_name": "在火的遠處",
+      "han_viet_name": "Tại Hoả Đích Viễn Xứ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21039",
+      "game_data_id": "21039",
+      "official_english_name": "Destiny's Threads Forewoven",
+      "official_simplified_chinese_name": "织造命运之线",
+      "official_traditional_chinese_name": "織造命運之線",
+      "han_viet_name": "Chức Tạo Mệnh Vận Chi Tuyến",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21040",
+      "game_data_id": "21040",
+      "official_english_name": "The Day The Cosmos Fell",
+      "official_simplified_chinese_name": "银河沦陷日",
+      "official_traditional_chinese_name": "銀河淪陷日",
+      "han_viet_name": "Ngân Hà Luân Hãm Nhật",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21041",
+      "game_data_id": "21041",
+      "official_english_name": "It's Showtime",
+      "official_simplified_chinese_name": "好戏开演",
+      "official_traditional_chinese_name": "好戲開演",
+      "han_viet_name": "Hảo Hý Khai Diễn",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21042",
+      "game_data_id": "21042",
+      "official_english_name": "Indelible Promise",
+      "official_simplified_chinese_name": "铭记于心的约定",
+      "official_traditional_chinese_name": "銘記於心的約定",
+      "han_viet_name": "Minh Ký Vu Tâm Đích Ước Định",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21043",
+      "game_data_id": "21043",
+      "official_english_name": "Concert for Two",
+      "official_simplified_chinese_name": "两个人的演唱会",
+      "official_traditional_chinese_name": "兩個人的演唱會",
+      "han_viet_name": "Lưỡng Cá Nhân Đích Diễn Xướng Hội",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21044",
+      "game_data_id": "21044",
+      "official_english_name": "Boundless Choreo",
+      "official_simplified_chinese_name": "无边曼舞",
+      "official_traditional_chinese_name": "無邊曼舞",
+      "han_viet_name": "Vô Biên Mạn Vũ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21045",
+      "game_data_id": "21045",
+      "official_english_name": "After the Charmony Fall",
+      "official_simplified_chinese_name": "谐乐静默之后",
+      "official_traditional_chinese_name": "諧樂靜默之後",
+      "han_viet_name": "Hài Nhạc Tĩnh Mặc Chi Hậu",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21046",
+      "game_data_id": "21046",
+      "official_english_name": "Poised to Bloom",
+      "official_simplified_chinese_name": "芳华待灼",
+      "official_traditional_chinese_name": "芳華待灼",
+      "han_viet_name": "Phương Hoa Đãi Chước",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21047",
+      "game_data_id": "21047",
+      "official_english_name": "Shadowed by Night",
+      "official_simplified_chinese_name": "黑夜如影随行",
+      "official_traditional_chinese_name": "黑夜如影隨行",
+      "han_viet_name": "Hắc Dạ Như Ảnh Tuỳ Hành",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21048",
+      "game_data_id": "21048",
+      "official_english_name": "Dream's Montage",
+      "official_simplified_chinese_name": "梦的蒙太奇",
+      "official_traditional_chinese_name": "夢的蒙太奇",
+      "han_viet_name": "Mộng Đích Mông Thái Kỳ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21050",
+      "game_data_id": "21050",
+      "official_english_name": "Victory In a Blink",
+      "official_simplified_chinese_name": "胜利只在朝夕间",
+      "official_traditional_chinese_name": "勝利只在朝夕間",
+      "han_viet_name": "Thắng Lợi Chỉ Tại Triêu Tịch Gian",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21051",
+      "game_data_id": "21051",
+      "official_english_name": "Geniuses' Greetings",
+      "official_simplified_chinese_name": "天才们的问候",
+      "official_traditional_chinese_name": "天才們的問候",
+      "han_viet_name": "Thiên Tài Môn Đích Vấn Hậu",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21052",
+      "game_data_id": "21052",
+      "official_english_name": "Sweat Now, Cry Less",
+      "official_simplified_chinese_name": "多流汗，少流泪",
+      "official_traditional_chinese_name": "多流汗，少流淚",
+      "han_viet_name": "Đa Lưu Hãn， Thiểu Lưu Lệ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21053",
+      "game_data_id": "21053",
+      "official_english_name": "Journey, Forever Peaceful",
+      "official_simplified_chinese_name": "愿旅途永远坦然",
+      "official_traditional_chinese_name": "願旅途永遠坦然",
+      "han_viet_name": "Nguyện Lữ Đồ Vĩnh Viễn Thản Nhiên",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21054",
+      "game_data_id": "21054",
+      "official_english_name": "The Story's Next Page",
+      "official_simplified_chinese_name": "故事的下一页",
+      "official_traditional_chinese_name": "故事的下一頁",
+      "han_viet_name": "Cố Sự Đích Hạ Nhất Hiệt",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21055",
+      "game_data_id": "21055",
+      "official_english_name": "Unto Tomorrow's Morrow",
+      "official_simplified_chinese_name": "直到明天的明天",
+      "official_traditional_chinese_name": "直到明天的明天",
+      "han_viet_name": "Trực Đáo Minh Thiên Đích Minh Thiên",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21056",
+      "game_data_id": "21056",
+      "official_english_name": "In Pursuit of the Wind",
+      "official_simplified_chinese_name": "追逐风的时候",
+      "official_traditional_chinese_name": "追逐風的時候",
+      "han_viet_name": "Truy Trục Phong Đích Thì Hậu",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21057",
+      "game_data_id": "21057",
+      "official_english_name": "The Flower Remembers",
+      "official_simplified_chinese_name": "花儿不会忘记",
+      "official_traditional_chinese_name": "花兒不會忘記",
+      "han_viet_name": "Hoa Nhi Bất Hội Vong Ký",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21058",
+      "game_data_id": "21058",
+      "official_english_name": "A Trail of Bygone Blood",
+      "official_simplified_chinese_name": "一行往日的血",
+      "official_traditional_chinese_name": "一行往日的血",
+      "han_viet_name": "Nhất Hành Vãng Nhật Đích Huyết",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21060",
+      "game_data_id": "21060",
+      "official_english_name": "A Dream Scented in Wheat",
+      "official_simplified_chinese_name": "氤氲麦香的梦",
+      "official_traditional_chinese_name": "氤氳麥香的夢",
+      "han_viet_name": "Nhân Uân Mạch Hương Đích Mộng",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21061",
+      "game_data_id": "21061",
+      "official_english_name": "Holiday Thermae Escapade",
+      "official_simplified_chinese_name": "假日浴场大冒险",
+      "official_traditional_chinese_name": "假日浴場大冒險",
+      "han_viet_name": "Giả Nhật Dục Trường Đại Mạo Hiểm",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21062",
+      "game_data_id": "21062",
+      "official_english_name": "See You at the End",
+      "official_simplified_chinese_name": "于那终点再见",
+      "official_traditional_chinese_name": "於那終點再見",
+      "han_viet_name": "Vu Na Chung Điểm Tái Kiến",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21064",
+      "game_data_id": "21064",
+      "official_english_name": "Mushy Shroomy's Adventures",
+      "official_simplified_chinese_name": "菇菇嘎嘎历险记",
+      "official_traditional_chinese_name": "菇菇嘎嘎歷險記",
+      "han_viet_name": "Cô Cô Dát Dát Lịch Hiểm Ký",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21065",
+      "game_data_id": "21065",
+      "official_english_name": "Today's Good Luck",
+      "official_simplified_chinese_name": "今日好手气",
+      "official_traditional_chinese_name": "今日好手氣",
+      "han_viet_name": "Kim Nhật Hảo Thủ Khí",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-21066",
+      "game_data_id": "21066",
+      "official_english_name": "A Little Getaway",
+      "official_simplified_chinese_name": "放个短假",
+      "official_traditional_chinese_name": "放個小假",
+      "han_viet_name": "Phóng Cá Đoản Giả",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-22000",
+      "game_data_id": "22000",
+      "official_english_name": "Before the Tutorial Mission Starts",
+      "official_simplified_chinese_name": "新手任务开始前",
+      "official_traditional_chinese_name": "新手任務開始前",
+      "han_viet_name": "Tân Thủ Nhậm Vụ Khai Thuỷ Tiền",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-22001",
+      "game_data_id": "22001",
+      "official_english_name": "Hey, Over Here",
+      "official_simplified_chinese_name": "嘿，我在这儿",
+      "official_traditional_chinese_name": "嘿，我在這裡",
+      "han_viet_name": "Hắc， Ngã Tại Giá Nhi",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-22002",
+      "game_data_id": "22002",
+      "official_english_name": "For Tomorrow's Journey",
+      "official_simplified_chinese_name": "为了明日的旅途",
+      "official_traditional_chinese_name": "為了明日的旅途",
+      "han_viet_name": "Vy Liễu Minh Nhật Đích Lữ Đồ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-22003",
+      "game_data_id": "22003",
+      "official_english_name": "Ninja Record: Sound Hunt",
+      "official_simplified_chinese_name": "忍事录•音律狩猎",
+      "official_traditional_chinese_name": "忍事錄•音律狩獵",
+      "han_viet_name": "Nhẫn Sự Lục • Âm Luật Thú Lạp",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-22004",
+      "game_data_id": "22004",
+      "official_english_name": "The Great Cosmic Enterprise",
+      "official_simplified_chinese_name": "宇宙大生意",
+      "official_traditional_chinese_name": "宇宙大生意",
+      "han_viet_name": "Vũ Trụ Đại Sinh Ý",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-22005",
+      "game_data_id": "22005",
+      "official_english_name": "The Forever Victual",
+      "official_simplified_chinese_name": "永远的迷境饭",
+      "official_traditional_chinese_name": "永遠的迷境飯",
+      "han_viet_name": "Vĩnh Viễn Đích Mê Cảnh Phạn",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-22006",
+      "game_data_id": "22006",
+      "official_english_name": "Fly Into a Pink Tomorrow",
+      "official_simplified_chinese_name": "飞向粉色的明天",
+      "official_traditional_chinese_name": "飛向粉紅色的明天",
+      "han_viet_name": "Phi Hướng Phấn Sắc Đích Minh Thiên",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-22007",
+      "game_data_id": "22007",
+      "official_english_name": "Tomorrow, Together",
+      "official_simplified_chinese_name": "未来，有我们一起",
+      "official_traditional_chinese_name": "未來，有我們一起",
+      "han_viet_name": "Vị Lai， Hữu Ngã Môn Nhất Khởi",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-22008",
+      "game_data_id": "22008",
+      "official_english_name": "Race to the Horizon",
+      "official_simplified_chinese_name": "向着地平线的终点",
+      "official_traditional_chinese_name": "向著地平線的終點",
+      "han_viet_name": "Hướng Trước Địa Bình Tuyến Đích Chung Điểm",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23000",
+      "game_data_id": "23000",
+      "official_english_name": "Night on the Milky Way",
+      "official_simplified_chinese_name": "银河铁道之夜",
+      "official_traditional_chinese_name": "銀河鐵道之夜",
+      "han_viet_name": "Ngân Hà Thiết Đạo Chi Dạ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23001",
+      "game_data_id": "23001",
+      "official_english_name": "In the Night",
+      "official_simplified_chinese_name": "于夜色中",
+      "official_traditional_chinese_name": "於夜色中",
+      "han_viet_name": "Vu Dạ Sắc Trung",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23002",
+      "game_data_id": "23002",
+      "official_english_name": "Something Irreplaceable",
+      "official_simplified_chinese_name": "无可取代的东西",
+      "official_traditional_chinese_name": "無可取代的東西",
+      "han_viet_name": "Vô Khả Thủ Đại Đích Đông Tây",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23003",
+      "game_data_id": "23003",
+      "official_english_name": "But the Battle Isn't Over",
+      "official_simplified_chinese_name": "但战斗还未结束",
+      "official_traditional_chinese_name": "但戰鬥還未結束",
+      "han_viet_name": "Đãn Chiến Đẩu Hoàn Vị Kết Thúc",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23004",
+      "game_data_id": "23004",
+      "official_english_name": "In the Name of the World",
+      "official_simplified_chinese_name": "以世界之名",
+      "official_traditional_chinese_name": "以世界之名",
+      "han_viet_name": "Dĩ Thế Giới Chi Danh",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23005",
+      "game_data_id": "23005",
+      "official_english_name": "Moment of Victory",
+      "official_simplified_chinese_name": "制胜的瞬间",
+      "official_traditional_chinese_name": "制勝的瞬間",
+      "han_viet_name": "Chế Thắng Đích Thuấn Gian",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23006",
+      "game_data_id": "23006",
+      "official_english_name": "Patience Is All You Need",
+      "official_simplified_chinese_name": "只需等待",
+      "official_traditional_chinese_name": "只需等待",
+      "han_viet_name": "Chỉ Nhu Đẳng Đãi",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23007",
+      "game_data_id": "23007",
+      "official_english_name": "Incessant Rain",
+      "official_simplified_chinese_name": "雨一直下",
+      "official_traditional_chinese_name": "雨一直下",
+      "han_viet_name": "Vũ Nhất Trực Hạ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23008",
+      "game_data_id": "23008",
+      "official_english_name": "Echoes of the Coffin",
+      "official_simplified_chinese_name": "棺的回响",
+      "official_traditional_chinese_name": "棺的迴響",
+      "han_viet_name": "Quan Đích Hồi Hưởng",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23009",
+      "game_data_id": "23009",
+      "official_english_name": "The Unreachable Side",
+      "official_simplified_chinese_name": "到不了的彼岸",
+      "official_traditional_chinese_name": "到不了的彼岸",
+      "han_viet_name": "Đáo Bất Liễu Đích Bỉ Ngạn",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23010",
+      "game_data_id": "23010",
+      "official_english_name": "Before Dawn",
+      "official_simplified_chinese_name": "拂晓之前",
+      "official_traditional_chinese_name": "拂曉之前",
+      "han_viet_name": "Phất Hiểu Chi Tiền",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23011",
+      "game_data_id": "23011",
+      "official_english_name": "She Already Shut Her Eyes",
+      "official_simplified_chinese_name": "她已闭上双眼",
+      "official_traditional_chinese_name": "她已閉上雙眼",
+      "han_viet_name": "Tha Dĩ Bế Thượng Song Nhãn",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23012",
+      "game_data_id": "23012",
+      "official_english_name": "Sleep Like the Dead",
+      "official_simplified_chinese_name": "如泥酣眠",
+      "official_traditional_chinese_name": "如泥酣眠",
+      "han_viet_name": "Như Nê Hàm Miên",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23013",
+      "game_data_id": "23013",
+      "official_english_name": "Time Waits for No One",
+      "official_simplified_chinese_name": "时节不居",
+      "official_traditional_chinese_name": "時節不居",
+      "han_viet_name": "Thì Tiết Bất Cư",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23014",
+      "game_data_id": "23014",
+      "official_english_name": "I Shall Be My Own Sword",
+      "official_simplified_chinese_name": "此身为剑",
+      "official_traditional_chinese_name": "此身為劍",
+      "han_viet_name": "Thử Thân Vy Kiếm",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23015",
+      "game_data_id": "23015",
+      "official_english_name": "Brighter Than the Sun",
+      "official_simplified_chinese_name": "比阳光更明亮的",
+      "official_traditional_chinese_name": "比陽光更明亮的",
+      "han_viet_name": "Tỷ Dương Quang Canh Minh Lượng Đích",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23016",
+      "game_data_id": "23016",
+      "official_english_name": "Worrisome, Blissful",
+      "official_simplified_chinese_name": "烦恼着，幸福着",
+      "official_traditional_chinese_name": "煩惱著，幸福著",
+      "han_viet_name": "Phiền Não Trước， Hạnh Phúc Trước",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23017",
+      "game_data_id": "23017",
+      "official_english_name": "Night of Fright",
+      "official_simplified_chinese_name": "惊魂夜",
+      "official_traditional_chinese_name": "驚魂夜",
+      "han_viet_name": "Kinh Hồn Dạ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23018",
+      "game_data_id": "23018",
+      "official_english_name": "An Instant Before A Gaze",
+      "official_simplified_chinese_name": "片刻，留在眼底",
+      "official_traditional_chinese_name": "片刻，留在眼底",
+      "han_viet_name": "Phiến Khắc， Lưu Tại Nhãn Để",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23019",
+      "game_data_id": "23019",
+      "official_english_name": "Past Self in Mirror",
+      "official_simplified_chinese_name": "镜中故我",
+      "official_traditional_chinese_name": "鏡中故我",
+      "han_viet_name": "Kính Trung Cố Ngã",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23020",
+      "game_data_id": "23020",
+      "official_english_name": "Baptism of Pure Thought",
+      "official_simplified_chinese_name": "纯粹思维的洗礼",
+      "official_traditional_chinese_name": "純粹思維的洗禮",
+      "han_viet_name": "Thuần Tuý Tư Duy Đích Tẩy Lễ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23021",
+      "game_data_id": "23021",
+      "official_english_name": "Earthly Escapade",
+      "official_simplified_chinese_name": "游戏尘寰",
+      "official_traditional_chinese_name": "遊戲塵寰",
+      "han_viet_name": "Du Hý Trần Hoàn",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23022",
+      "game_data_id": "23022",
+      "official_english_name": "Reforged Remembrance",
+      "official_simplified_chinese_name": "重塑时光之忆",
+      "official_traditional_chinese_name": "重塑時光之憶",
+      "han_viet_name": "Trùng Tố Thì Quang Chi Ức",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23023",
+      "game_data_id": "23023",
+      "official_english_name": "Inherently Unjust Destiny",
+      "official_simplified_chinese_name": "命运从未公平",
+      "official_traditional_chinese_name": "命運從未公平",
+      "han_viet_name": "Mệnh Vận Thung Vị Công Bình",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23024",
+      "game_data_id": "23024",
+      "official_english_name": "Along the Passing Shore",
+      "official_simplified_chinese_name": "行于流逝的岸",
+      "official_traditional_chinese_name": "行於流逝的岸",
+      "han_viet_name": "Hành Vu Lưu Thệ Đích Ngạn",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23025",
+      "game_data_id": "23025",
+      "official_english_name": "Whereabouts Should Dreams Rest",
+      "official_simplified_chinese_name": "梦应归于何处",
+      "official_traditional_chinese_name": "夢應歸於何處",
+      "han_viet_name": "Mộng Ưng Quy Vu Hà Xứ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23026",
+      "game_data_id": "23026",
+      "official_english_name": "Flowing Nightglow",
+      "official_simplified_chinese_name": "夜色流光溢彩",
+      "official_traditional_chinese_name": "夜色流光溢彩",
+      "han_viet_name": "Dạ Sắc Lưu Quang Dật Thái",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23027",
+      "game_data_id": "23027",
+      "official_english_name": "Sailing Towards a Second Life",
+      "official_simplified_chinese_name": "驶向第二次生命",
+      "official_traditional_chinese_name": "駛向第二次生命",
+      "han_viet_name": "Sử Hướng Đệ Nhị Thứ Sinh Mệnh",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23028",
+      "game_data_id": "23028",
+      "official_english_name": "Yet Hope Is Priceless",
+      "official_simplified_chinese_name": "偏偏希望无价",
+      "official_traditional_chinese_name": "偏偏希望無價",
+      "han_viet_name": "Thiên Thiên Hy Vọng Vô Giá",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23029",
+      "game_data_id": "23029",
+      "official_english_name": "Those Many Springs",
+      "official_simplified_chinese_name": "那无数个春天",
+      "official_traditional_chinese_name": "那無數個春天",
+      "han_viet_name": "Na Vô Sổ Cá Xuân Thiên",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23030",
+      "game_data_id": "23030",
+      "official_english_name": "Dance at Sunset",
+      "official_simplified_chinese_name": "落日时起舞",
+      "official_traditional_chinese_name": "落日時起舞",
+      "han_viet_name": "Lạc Nhật Thì Khởi Vũ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23031",
+      "game_data_id": "23031",
+      "official_english_name": "I Venture Forth to Hunt",
+      "official_simplified_chinese_name": "我将，巡征追猎",
+      "official_traditional_chinese_name": "我將，巡徵追獵",
+      "han_viet_name": "Ngã Tướng， Tuần Chinh Truy Lạp",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23032",
+      "game_data_id": "23032",
+      "official_english_name": "Scent Alone Stays True",
+      "official_simplified_chinese_name": "唯有香如故",
+      "official_traditional_chinese_name": "唯有香如故",
+      "han_viet_name": "Duy Hữu Hương Như Cố",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23033",
+      "game_data_id": "23033",
+      "official_english_name": "Ninjutsu Inscription: Dazzling Evilbreaker",
+      "official_simplified_chinese_name": "忍法帖•缭乱破魔",
+      "official_traditional_chinese_name": "忍法帖•繚亂破魔",
+      "han_viet_name": "Nhẫn Pháp Thiếp • Liễu Loạn Phá Ma",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23034",
+      "game_data_id": "23034",
+      "official_english_name": "A Grounded Ascent",
+      "official_simplified_chinese_name": "回到大地的飞行",
+      "official_traditional_chinese_name": "回到大地的飛行",
+      "han_viet_name": "Hồi Đáo Đại Địa Đích Phi Hành",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23035",
+      "game_data_id": "23035",
+      "official_english_name": "Long Road Leads Home",
+      "official_simplified_chinese_name": "长路终有归途",
+      "official_traditional_chinese_name": "長路終有歸途",
+      "han_viet_name": "Trưởng Lộ Chung Hữu Quy Đồ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23036",
+      "game_data_id": "23036",
+      "official_english_name": "Time Woven Into Gold",
+      "official_simplified_chinese_name": "将光阴织成黄金",
+      "official_traditional_chinese_name": "將光陰織成黃金",
+      "han_viet_name": "Tướng Quang Âm Chức Thành Hoàng Kim",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23037",
+      "game_data_id": "23037",
+      "official_english_name": "Into the Unreachable Veil",
+      "official_simplified_chinese_name": "向着不可追问处",
+      "official_traditional_chinese_name": "向著不可追問處",
+      "han_viet_name": "Hướng Trước Bất Khả Truy Vấn Xứ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23038",
+      "game_data_id": "23038",
+      "official_english_name": "If Time Were a Flower",
+      "official_simplified_chinese_name": "如果时间是一朵花",
+      "official_traditional_chinese_name": "如果時間是一朵花",
+      "han_viet_name": "Như Quả Thì Gian Thị Nhất Đoá Hoa",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23039",
+      "game_data_id": "23039",
+      "official_english_name": "Flame of Blood, Blaze My Path",
+      "official_simplified_chinese_name": "血火啊，燃烧前路",
+      "official_traditional_chinese_name": "血火啊，燃燒前路",
+      "han_viet_name": "Huyết Hoả A， Nhiên Thiêu Tiền Lộ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23040",
+      "game_data_id": "23040",
+      "official_english_name": "Make Farewells More Beautiful",
+      "official_simplified_chinese_name": "让告别，更美一些",
+      "official_traditional_chinese_name": "讓告別，更美一點",
+      "han_viet_name": "Nhượng Cáo Biệt， Canh Mỹ Nhất Ta",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23041",
+      "game_data_id": "23041",
+      "official_english_name": "Life Should Be Cast to Flames",
+      "official_simplified_chinese_name": "生命当付之一炬",
+      "official_traditional_chinese_name": "生命當付之一炬",
+      "han_viet_name": "Sinh Mệnh Đương Phó Chi Nhất Cự",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23042",
+      "game_data_id": "23042",
+      "official_english_name": "Long May Rainbows Adorn the Sky",
+      "official_simplified_chinese_name": "愿虹光永驻天空",
+      "official_traditional_chinese_name": "願虹光永駐天空",
+      "han_viet_name": "Nguyện Hồng Quang Vĩnh Trú Thiên Không",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23043",
+      "game_data_id": "23043",
+      "official_english_name": "Lies Dance on the Breeze",
+      "official_simplified_chinese_name": "谎言在风中飘扬",
+      "official_traditional_chinese_name": "謊言在風中飄揚",
+      "han_viet_name": "Hoang Ngôn Tại Phong Trung Phiêu Dương",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23044",
+      "game_data_id": "23044",
+      "official_english_name": "Thus Burns the Dawn",
+      "official_simplified_chinese_name": "黎明恰如此燃烧",
+      "official_traditional_chinese_name": "黎明恰如此燃燒",
+      "han_viet_name": "Lê Minh Kháp Như Thử Nhiên Thiêu",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23045",
+      "game_data_id": "23045",
+      "official_english_name": "A Thankless Coronation",
+      "official_simplified_chinese_name": "没有回报的加冕",
+      "official_traditional_chinese_name": "沒有回報的加冕",
+      "han_viet_name": "Một Hữu Hồi Báo Đích Gia Miện",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23046",
+      "game_data_id": "23046",
+      "official_english_name": "The Hell Where Ideals Burn",
+      "official_simplified_chinese_name": "理想燃烧的地狱",
+      "official_traditional_chinese_name": "理想燃燒的地獄",
+      "han_viet_name": "Lý Tưởng Nhiên Thiêu Đích Địa Ngục",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23047",
+      "game_data_id": "23047",
+      "official_english_name": "Why Does the Ocean Sing",
+      "official_simplified_chinese_name": "海洋为何而歌",
+      "official_traditional_chinese_name": "海洋為何而歌",
+      "han_viet_name": "Hải Dương Vy Hà Nhi Ca",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23048",
+      "game_data_id": "23048",
+      "official_english_name": "Epoch Etched in Golden Blood",
+      "official_simplified_chinese_name": "金血铭刻的时代",
+      "official_traditional_chinese_name": "金血銘刻的時代",
+      "han_viet_name": "Kim Huyết Minh Khắc Đích Thì Đại",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23049",
+      "game_data_id": "23049",
+      "official_english_name": "To Evernight's Stars",
+      "official_simplified_chinese_name": "致长夜的星光",
+      "official_traditional_chinese_name": "致長夜的星光",
+      "han_viet_name": "Trí Trưởng Dạ Đích Tinh Quang",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23050",
+      "game_data_id": "23050",
+      "official_english_name": "Never Forget Her Flame",
+      "official_simplified_chinese_name": "勿忘她的火焰",
+      "official_traditional_chinese_name": "勿忘她的火焰",
+      "han_viet_name": "Vật Vong Tha Đích Hoả Diễm",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23051",
+      "game_data_id": "23051",
+      "official_english_name": "Though Worlds Apart",
+      "official_simplified_chinese_name": "纵然山河万程",
+      "official_traditional_chinese_name": "縱然山河萬程",
+      "han_viet_name": "Tung Nhiên Sơn Hà Vạn Trình",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23052",
+      "game_data_id": "23052",
+      "official_english_name": "This Love, Forever",
+      "official_simplified_chinese_name": "爱如此刻永恒",
+      "official_traditional_chinese_name": "愛如此刻永恆",
+      "han_viet_name": "Ái Như Thử Khắc Vĩnh Hằng",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23053",
+      "game_data_id": "23053",
+      "official_english_name": "Dazzled by a Flowery World",
+      "official_simplified_chinese_name": "花花世界迷人眼",
+      "official_traditional_chinese_name": "花花世界迷人眼",
+      "han_viet_name": "Hoa Hoa Thế Giới Mê Nhân Nhãn",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23054",
+      "game_data_id": "23054",
+      "official_english_name": "When She Decided to See",
+      "official_simplified_chinese_name": "当她决定看见",
+      "official_traditional_chinese_name": "當她決定看見",
+      "han_viet_name": "Đương Tha Quyết Định Khán Kiến",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23056",
+      "game_data_id": "23056",
+      "official_english_name": "The Finale of a Lie",
+      "official_simplified_chinese_name": "一场谎言的终幕",
+      "official_traditional_chinese_name": "一場謊言的終幕",
+      "han_viet_name": "Nhất Trường Hoang Ngôn Đích Chung Mán",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23057",
+      "game_data_id": "23057",
+      "official_english_name": "Welcome to the Cosmic City",
+      "official_simplified_chinese_name": "欢迎来到银河城",
+      "official_traditional_chinese_name": "歡迎來到銀河城",
+      "han_viet_name": "Hoan Nghinh Lai Đáo Ngân Hà Thành",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23058",
+      "game_data_id": "23058",
+      "official_english_name": "Until the Flowers Bloom Again",
+      "official_simplified_chinese_name": "邂逅于下一个花季",
+      "official_traditional_chinese_name": "邂逅於下一個花季",
+      "han_viet_name": "Giải Cấu Vu Hạ Nhất Cá Hoa Quý",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23059",
+      "game_data_id": "23059",
+      "official_english_name": "Reforged in Hellfire",
+      "official_simplified_chinese_name": "灼尽炼狱的新骸",
+      "official_traditional_chinese_name": "灼盡煉獄的新骸",
+      "han_viet_name": "Chước Tận Luyện Ngục Đích Tân Hài",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23060",
+      "game_data_id": "23060",
+      "official_english_name": "A Star That Lights the Night",
+      "official_simplified_chinese_name": "当一颗星照亮夜空",
+      "official_traditional_chinese_name": "當一顆星照亮夜空",
+      "han_viet_name": "Đương Nhất Khoả Tinh Chiếu Lượng Dạ Không",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23061",
+      "game_data_id": "23061",
+      "official_english_name": "Flickering Stars",
+      "official_simplified_chinese_name": "星火悄然闪耀",
+      "official_traditional_chinese_name": "星火悄然閃耀",
+      "han_viet_name": "Tinh Hoả Tiễu Nhiên Thiểm Diệu",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23062",
+      "game_data_id": "23062",
+      "official_english_name": "I Am As You Behold",
+      "official_simplified_chinese_name": "所见即我",
+      "official_traditional_chinese_name": "所見即我",
+      "han_viet_name": "Sở Kiến Tức Ngã",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23063",
+      "game_data_id": "23063",
+      "official_english_name": "Rise and Sing",
+      "official_simplified_chinese_name": "你将起身歌唱",
+      "official_traditional_chinese_name": "你將起身歌唱",
+      "han_viet_name": "Nhĩ Tướng Khởi Thân Ca Xướng",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-23064",
+      "game_data_id": "23064",
+      "official_english_name": "Summer Rides the Surf",
+      "official_simplified_chinese_name": "向浪花掷下盛夏",
+      "official_traditional_chinese_name": "向浪花擲下盛夏",
+      "han_viet_name": "Hướng Lãng Hoa Trịch Hạ Thịnh Hạ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-24000",
+      "game_data_id": "24000",
+      "official_english_name": "On the Fall of an Aeon",
+      "official_simplified_chinese_name": "记一位星神的陨落",
+      "official_traditional_chinese_name": "記一位星神的殞落",
+      "han_viet_name": "Ký Nhất Vị Tinh Thần Đích Vẫn Lạc",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-24001",
+      "game_data_id": "24001",
+      "official_english_name": "Cruising in the Stellar Sea",
+      "official_simplified_chinese_name": "星海巡航",
+      "official_traditional_chinese_name": "星海巡航",
+      "han_viet_name": "Tinh Hải Tuần Hàng",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-24002",
+      "game_data_id": "24002",
+      "official_english_name": "Texture of Memories",
+      "official_simplified_chinese_name": "记忆的质料",
+      "official_traditional_chinese_name": "記憶的質料",
+      "han_viet_name": "Ký Ức Đích Chất Liệu",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-24003",
+      "game_data_id": "24003",
+      "official_english_name": "Solitary Healing",
+      "official_simplified_chinese_name": "孤独的疗愈",
+      "official_traditional_chinese_name": "孤獨的療癒",
+      "han_viet_name": "Cô Độc Đích Liệu Dũ",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-24004",
+      "game_data_id": "24004",
+      "official_english_name": "Eternal Calculus",
+      "official_simplified_chinese_name": "不息的演算",
+      "official_traditional_chinese_name": "不息的演算",
+      "han_viet_name": "Bất Tức Đích Diễn Toán",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-24005",
+      "game_data_id": "24005",
+      "official_english_name": "Memory's Curtain Never Falls",
+      "official_simplified_chinese_name": "记忆永不落幕",
+      "official_traditional_chinese_name": "記憶永不落幕",
+      "han_viet_name": "Ký Ức Vĩnh Bất Lạc Mán",
+      "confidence": "E"
+    },
+    {
+      "source_key": "starrailres-light-cone-24006",
+      "game_data_id": "24006",
+      "official_english_name": "Elation Brimming With Blessings",
+      "official_simplified_chinese_name": "欢愉满溢祝福",
+      "official_traditional_chinese_name": "歡愉滿溢祝福",
+      "han_viet_name": "Hoan Du Mãn Dật Chúc Phúc",
+      "confidence": "E"
+    }
+  ]
+}

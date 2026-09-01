@@ -1191,6 +1191,202 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
 }
 
 #[tokio::test]
+async fn star_rail_setup_is_idempotent_and_imports_crawled_catalogs() {
+    let app = router_with_store(Store::open_in_memory().expect("in-memory database"))
+        .expect("UAT router");
+
+    let first = app
+        .clone()
+        .oneshot(
+            Request::post("/api/uat/star-rail")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("first Star Rail setup response");
+    assert_eq!(first.status(), StatusCode::OK);
+    let first_json = json_response(first).await;
+
+    let second = app
+        .clone()
+        .oneshot(
+            Request::post("/api/uat/star-rail")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("second Star Rail setup response");
+    assert_eq!(second.status(), StatusCode::OK);
+    let second_json = json_response(second).await;
+
+    assert_eq!(first_json["work"]["id"], second_json["work"]["id"]);
+    assert_eq!(first_json["work"]["module_id"], "honkai-star-rail");
+    assert_eq!(first_json["work"]["display_name"], "Honkai: Star Rail");
+    assert_eq!(
+        first_json["entity_types"]
+            .as_array()
+            .expect("Star Rail entity types")
+            .iter()
+            .map(|entity_type| entity_type["key"].as_str().expect("entity type key"))
+            .collect::<Vec<_>>(),
+        vec![
+            "character",
+            "npc",
+            "region",
+            "light-cone",
+            "relic-set",
+            "relic",
+            "path",
+            "element",
+        ]
+    );
+
+    let facets = first_json["entity_facets"]
+        .as_array()
+        .expect("Star Rail facets");
+    assert_eq!(
+        facets
+            .iter()
+            .find(|facet| facet["key"] == "path")
+            .expect("Path facet")["entity_types"],
+        json!(["character", "light-cone"])
+    );
+    assert_eq!(
+        facets
+            .iter()
+            .find(|facet| facet["key"] == "element")
+            .expect("Element facet")["entity_types"],
+        json!(["character"])
+    );
+    assert_eq!(
+        facets
+            .iter()
+            .find(|facet| facet["key"] == "relic_slot")
+            .expect("Relic slot facet")["entity_types"],
+        json!(["relic"])
+    );
+
+    let work_id = first_json["work"]["id"]
+        .as_str()
+        .expect("Star Rail work id");
+    for (entity_type, expected_count) in [
+        ("character", 97),
+        ("npc", 433),
+        ("light-cone", 169),
+        ("relic-set", 60),
+        ("relic", 742),
+        ("path", 9),
+        ("element", 7),
+    ] {
+        let response = app
+            .clone()
+            .oneshot(
+                Request::get(format!(
+                    "/api/works/{work_id}/entities?entity_type={entity_type}"
+                ))
+                .body(Body::empty())
+                .expect("entity list request"),
+            )
+            .await
+            .expect("entity list response");
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            json_response(response)
+                .await
+                .as_array()
+                .expect("entity list")
+                .len(),
+            expected_count,
+            "unexpected {entity_type} count"
+        );
+    }
+
+    let characters = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/entities?entity_type=character"
+            ))
+            .body(Body::empty())
+            .expect("character list request"),
+        )
+        .await
+        .expect("character list response");
+    let characters = json_response(characters).await;
+    let march = characters
+        .as_array()
+        .expect("character list")
+        .iter()
+        .find(|character| {
+            character["official_english_name"] == "March 7th"
+                && character["other_information"]
+                    .as_str()
+                    .is_some_and(|value| value.contains("Path: Preservation"))
+        })
+        .expect("March 7th Preservation variant");
+    assert_eq!(march["official_original_name"], "三月七");
+    assert_eq!(march["presentation"]["label"], "4★");
+    assert_eq!(march["presentation"]["rarity"], 4);
+    assert_eq!(march["presentation"]["facets"]["path"], "Preservation");
+    assert_eq!(march["presentation"]["facets"]["element"], "Ice");
+    assert_eq!(
+        march["presentation"]["thumbnail_url"],
+        "https://vizualabstract.github.io/StarRailStaticAPI/assets/image/character_portrait/1001.png"
+    );
+    assert_eq!(
+        march["presentation"]["context_icon_url"],
+        "https://vizualabstract.github.io/StarRailStaticAPI/assets/icon/element/Ice.png"
+    );
+
+    let trailblazer = characters
+        .as_array()
+        .expect("character list")
+        .iter()
+        .find(|character| {
+            character["official_original_name"] == "{NICKNAME}"
+                && character["catalog_label"] == "Trailblazer (Male) · Destruction · Physical"
+        })
+        .expect("male Trailblazer");
+    assert_eq!(
+        trailblazer["catalog_label"],
+        "Trailblazer (Male) · Destruction · Physical"
+    );
+    let trailblazer_id = trailblazer["id"].as_str().expect("Trailblazer id");
+    let detail = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/entities/{trailblazer_id}"))
+                .body(Body::empty())
+                .expect("Trailblazer detail request"),
+        )
+        .await
+        .expect("Trailblazer detail response");
+    assert_eq!(detail.status(), StatusCode::OK);
+    assert_eq!(
+        json_response(detail).await["catalog_label"],
+        "Trailblazer (Male) · Destruction · Physical"
+    );
+
+    let han_viet_search = app
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/entities?query=Tam%20Nguy%E1%BB%87t%20Th%E1%BA%A5t"
+            ))
+            .body(Body::empty())
+            .expect("Hán-Việt search request"),
+        )
+        .await
+        .expect("Hán-Việt search response");
+    assert_eq!(han_viet_search.status(), StatusCode::OK);
+    let han_viet_search = json_response(han_viet_search).await;
+    let han_viet_results = han_viet_search.as_array().expect("Hán-Việt results");
+    assert_eq!(han_viet_results.len(), 2);
+    assert!(han_viet_results
+        .iter()
+        .all(|entity| entity["official_english_name"] == "March 7th"));
+}
+
+#[tokio::test]
 async fn entity_round_trip_preserves_translation_provenance() {
     let app = router_with_store(Store::open_in_memory().expect("in-memory database"))
         .expect("UAT router");
@@ -1252,9 +1448,11 @@ async fn entity_round_trip_preserves_translation_provenance() {
 
     let listed = app
         .oneshot(
-            Request::get(format!("/api/works/{work_id}/entities?query=m%C3%A1y"))
-                .body(Body::empty())
-                .expect("request"),
+            Request::get(format!(
+                "/api/works/{work_id}/entities?query=m%C3%A1y%20d%E1%BB%8Bch"
+            ))
+            .body(Body::empty())
+            .expect("request"),
         )
         .await
         .expect("list response");
@@ -2058,7 +2256,7 @@ async fn library_lists_switchable_games_with_isolated_entities_and_module_themes
     assert_eq!(modules.status(), StatusCode::OK);
     let modules_json = json_response(modules).await;
     let modules = modules_json.as_array().expect("module list");
-    assert_eq!(modules.len(), 4);
+    assert_eq!(modules.len(), 5);
     assert!(modules.iter().any(|module| {
         module["id"] == "heroes-of-might-and-magic"
             && module["display_name"] == "Heroes of Might and Magic"

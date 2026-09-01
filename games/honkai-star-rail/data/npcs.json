@@ -1,0 +1,3096 @@
+{
+  "schema": "perwiga.honkai-star-rail.npcs.v1",
+  "checked_at": "2026-09-01",
+  "source": {
+    "provider": "HoYoWiki",
+    "hosted_by": "HoYoverse HoYoLAB",
+    "api_url": "https://sg-act-public-api.hoyolab.com/hoyowiki/hsr/wapi/get_entry_page_list",
+    "index_url": "https://wiki.hoyolab.com/pc/hsr/aggregate/npc?lang=zh-cn",
+    "english_index_url": "https://wiki.hoyolab.com/pc/hsr/aggregate/npc?lang=en-us",
+    "entry_url_template": "https://wiki.hoyolab.com/pc/hsr/entry/{entry_page_id}?lang=zh-cn",
+    "game_route": "hsr",
+    "npc_menu_id": "105",
+    "snapshot_locales": [
+      "en-us",
+      "zh-cn"
+    ],
+    "english_index_records": 433,
+    "simplified_chinese_index_records": 436,
+    "retrieved_at": "2026-09-01",
+    "identity_join": "HoYoWiki entry_page_id"
+  },
+  "catalog_scope": {
+    "included_records": 436,
+    "source_locale": "zh-cn",
+    "source_index_records": 436,
+    "english_joined_records": 433,
+    "english_name_gaps": [
+      "hoyowiki-npc-3943",
+      "hoyowiki-npc-3928",
+      "hoyowiki-npc-3756"
+    ],
+    "english_only_records": 0,
+    "english_only_entry_page_ids": [],
+    "stable_identity_field": "hoyowiki_entry_page_id"
+  },
+  "notes": [
+    "The catalog scope is the official HoYoWiki Simplified Chinese NPC index, joined to the English index by entry_page_id.",
+    "Names are copied from HoYoWiki locale responses; no names are fabricated from page titles, transliteration, or inference.",
+    "The English and Simplified Chinese index totals are retained because the source currently exposes different locale counts.",
+    "No Traditional Chinese field is included: the crawlable zh-tw NPC index is materially incomplete compared with zh-cn."
+  ],
+  "npcs": [
+    {
+      "source_key": "hoyowiki-npc-3943",
+      "hoyowiki_entry_page_id": "3943",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3943?lang=zh-cn",
+      "official_english_name": null,
+      "official_simplified_chinese_name": "Lancer"
+    },
+    {
+      "source_key": "hoyowiki-npc-3928",
+      "hoyowiki_entry_page_id": "3928",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3928?lang=zh-cn",
+      "official_english_name": null,
+      "official_simplified_chinese_name": "莱娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-3756",
+      "hoyowiki_entry_page_id": "3756",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3756?lang=zh-cn",
+      "official_english_name": null,
+      "official_simplified_chinese_name": "阿波菲斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-3551",
+      "hoyowiki_entry_page_id": "3551",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3551?lang=zh-cn",
+      "official_english_name": "Demetria",
+      "official_simplified_chinese_name": "德墨忒尔"
+    },
+    {
+      "source_key": "hoyowiki-npc-3549",
+      "hoyowiki_entry_page_id": "3549",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3549?lang=zh-cn",
+      "official_english_name": "Damionis",
+      "official_simplified_chinese_name": "达米亚诺斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-3421",
+      "hoyowiki_entry_page_id": "3421",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3421?lang=zh-cn",
+      "official_english_name": "Janus' Steed",
+      "official_simplified_chinese_name": "雅努斯之驹"
+    },
+    {
+      "source_key": "hoyowiki-npc-3417",
+      "hoyowiki_entry_page_id": "3417",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3417?lang=zh-cn",
+      "official_english_name": "Chartonus",
+      "official_simplified_chinese_name": "哈托努斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-3410",
+      "hoyowiki_entry_page_id": "3410",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3410?lang=zh-cn",
+      "official_english_name": "Akmonides",
+      "official_simplified_chinese_name": "阿克蒙"
+    },
+    {
+      "source_key": "hoyowiki-npc-3408",
+      "hoyowiki_entry_page_id": "3408",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3408?lang=zh-cn",
+      "official_english_name": "Ctesiphona",
+      "official_simplified_chinese_name": "克帖西芬"
+    },
+    {
+      "source_key": "hoyowiki-npc-3402",
+      "hoyowiki_entry_page_id": "3402",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3402?lang=zh-cn",
+      "official_english_name": "Kyros",
+      "official_simplified_chinese_name": "克瑞斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-3398",
+      "hoyowiki_entry_page_id": "3398",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3398?lang=zh-cn",
+      "official_english_name": "Theodoros",
+      "official_simplified_chinese_name": "西塔罗斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-3374",
+      "hoyowiki_entry_page_id": "3374",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3374?lang=zh-cn",
+      "official_english_name": "Iason",
+      "official_simplified_chinese_name": "伊阿宋"
+    },
+    {
+      "source_key": "hoyowiki-npc-3297",
+      "hoyowiki_entry_page_id": "3297",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3297?lang=zh-cn",
+      "official_english_name": "\"Shush\"",
+      "official_simplified_chinese_name": "「闭嘴」"
+    },
+    {
+      "source_key": "hoyowiki-npc-3222",
+      "hoyowiki_entry_page_id": "3222",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3222?lang=zh-cn",
+      "official_english_name": "Chad",
+      "official_simplified_chinese_name": "查德"
+    },
+    {
+      "source_key": "hoyowiki-npc-3221",
+      "hoyowiki_entry_page_id": "3221",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3221?lang=zh-cn",
+      "official_english_name": "Nobody",
+      "official_simplified_chinese_name": "诺伯蒂"
+    },
+    {
+      "source_key": "hoyowiki-npc-3220",
+      "hoyowiki_entry_page_id": "3220",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3220?lang=zh-cn",
+      "official_english_name": "Richie",
+      "official_simplified_chinese_name": "富贵"
+    },
+    {
+      "source_key": "hoyowiki-npc-3219",
+      "hoyowiki_entry_page_id": "3219",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3219?lang=zh-cn",
+      "official_english_name": "Ligeia",
+      "official_simplified_chinese_name": "丽姬娅"
+    },
+    {
+      "source_key": "hoyowiki-npc-3218",
+      "hoyowiki_entry_page_id": "3218",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3218?lang=zh-cn",
+      "official_english_name": "Harrison",
+      "official_simplified_chinese_name": "哈里森"
+    },
+    {
+      "source_key": "hoyowiki-npc-3217",
+      "hoyowiki_entry_page_id": "3217",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3217?lang=zh-cn",
+      "official_english_name": "Haru",
+      "official_simplified_chinese_name": "哈鲁"
+    },
+    {
+      "source_key": "hoyowiki-npc-3216",
+      "hoyowiki_entry_page_id": "3216",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3216?lang=zh-cn",
+      "official_english_name": "Prema",
+      "official_simplified_chinese_name": "普蕾玛"
+    },
+    {
+      "source_key": "hoyowiki-npc-3215",
+      "hoyowiki_entry_page_id": "3215",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3215?lang=zh-cn",
+      "official_english_name": "Mr. Arturo",
+      "official_simplified_chinese_name": "阿图罗先生"
+    },
+    {
+      "source_key": "hoyowiki-npc-3214",
+      "hoyowiki_entry_page_id": "3214",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3214?lang=zh-cn",
+      "official_english_name": "Professor Owl",
+      "official_simplified_chinese_name": "猫头鹰老师"
+    },
+    {
+      "source_key": "hoyowiki-npc-3213",
+      "hoyowiki_entry_page_id": "3213",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3213?lang=zh-cn",
+      "official_english_name": "Alphonse",
+      "official_simplified_chinese_name": "阿尔丰斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-3207",
+      "hoyowiki_entry_page_id": "3207",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3207?lang=zh-cn",
+      "official_english_name": "Gabbana",
+      "official_simplified_chinese_name": "嘉宝娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-3206",
+      "hoyowiki_entry_page_id": "3206",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3206?lang=zh-cn",
+      "official_english_name": "Chaletka",
+      "official_simplified_chinese_name": "恰丽卡"
+    },
+    {
+      "source_key": "hoyowiki-npc-3140",
+      "hoyowiki_entry_page_id": "3140",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3140?lang=zh-cn",
+      "official_english_name": "Carmella",
+      "official_simplified_chinese_name": "卡美丽"
+    },
+    {
+      "source_key": "hoyowiki-npc-3105",
+      "hoyowiki_entry_page_id": "3105",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3105?lang=zh-cn",
+      "official_english_name": "Su Meile",
+      "official_simplified_chinese_name": "苏美乐"
+    },
+    {
+      "source_key": "hoyowiki-npc-3099",
+      "hoyowiki_entry_page_id": "3099",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3099?lang=zh-cn",
+      "official_english_name": "Fulin",
+      "official_simplified_chinese_name": "馥林"
+    },
+    {
+      "source_key": "hoyowiki-npc-3098",
+      "hoyowiki_entry_page_id": "3098",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3098?lang=zh-cn",
+      "official_english_name": "Northern Beggar",
+      "official_simplified_chinese_name": "北丐"
+    },
+    {
+      "source_key": "hoyowiki-npc-3058",
+      "hoyowiki_entry_page_id": "3058",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3058?lang=zh-cn",
+      "official_english_name": "Skott",
+      "official_simplified_chinese_name": "斯科特"
+    },
+    {
+      "source_key": "hoyowiki-npc-3054",
+      "hoyowiki_entry_page_id": "3054",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3054?lang=zh-cn",
+      "official_english_name": "Randolph",
+      "official_simplified_chinese_name": "伦道夫"
+    },
+    {
+      "source_key": "hoyowiki-npc-3039",
+      "hoyowiki_entry_page_id": "3039",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3039?lang=zh-cn",
+      "official_english_name": "Auslotte",
+      "official_simplified_chinese_name": "奥希洛特"
+    },
+    {
+      "source_key": "hoyowiki-npc-3038",
+      "hoyowiki_entry_page_id": "3038",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3038?lang=zh-cn",
+      "official_english_name": "Graysen",
+      "official_simplified_chinese_name": "格莱西"
+    },
+    {
+      "source_key": "hoyowiki-npc-3006",
+      "hoyowiki_entry_page_id": "3006",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3006?lang=zh-cn",
+      "official_english_name": "Gouteng",
+      "official_simplified_chinese_name": "钩藤"
+    },
+    {
+      "source_key": "hoyowiki-npc-3003",
+      "hoyowiki_entry_page_id": "3003",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/3003?lang=zh-cn",
+      "official_english_name": "Arma",
+      "official_simplified_chinese_name": "阿合马"
+    },
+    {
+      "source_key": "hoyowiki-npc-2974",
+      "hoyowiki_entry_page_id": "2974",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2974?lang=zh-cn",
+      "official_english_name": "Ruoyue",
+      "official_simplified_chinese_name": "若月"
+    },
+    {
+      "source_key": "hoyowiki-npc-2973",
+      "hoyowiki_entry_page_id": "2973",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2973?lang=zh-cn",
+      "official_english_name": "Cleo",
+      "official_simplified_chinese_name": "克利欧"
+    },
+    {
+      "source_key": "hoyowiki-npc-2968",
+      "hoyowiki_entry_page_id": "2968",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2968?lang=zh-cn",
+      "official_english_name": "Thea",
+      "official_simplified_chinese_name": "西娅"
+    },
+    {
+      "source_key": "hoyowiki-npc-2967",
+      "hoyowiki_entry_page_id": "2967",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2967?lang=zh-cn",
+      "official_english_name": "Whisper",
+      "official_simplified_chinese_name": "薇丝普"
+    },
+    {
+      "source_key": "hoyowiki-npc-2966",
+      "hoyowiki_entry_page_id": "2966",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2966?lang=zh-cn",
+      "official_english_name": "Erica",
+      "official_simplified_chinese_name": "艾丽卡"
+    },
+    {
+      "source_key": "hoyowiki-npc-2965",
+      "hoyowiki_entry_page_id": "2965",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2965?lang=zh-cn",
+      "official_english_name": "Stefano",
+      "official_simplified_chinese_name": "塞提芬诺"
+    },
+    {
+      "source_key": "hoyowiki-npc-2964",
+      "hoyowiki_entry_page_id": "2964",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2964?lang=zh-cn",
+      "official_english_name": "Bella",
+      "official_simplified_chinese_name": "贝拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-2963",
+      "hoyowiki_entry_page_id": "2963",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2963?lang=zh-cn",
+      "official_english_name": "Lester",
+      "official_simplified_chinese_name": "莱斯特"
+    },
+    {
+      "source_key": "hoyowiki-npc-2962",
+      "hoyowiki_entry_page_id": "2962",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2962?lang=zh-cn",
+      "official_english_name": "Jacob",
+      "official_simplified_chinese_name": "雅各布"
+    },
+    {
+      "source_key": "hoyowiki-npc-2961",
+      "hoyowiki_entry_page_id": "2961",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2961?lang=zh-cn",
+      "official_english_name": "Amsella",
+      "official_simplified_chinese_name": "亚梅塞菈"
+    },
+    {
+      "source_key": "hoyowiki-npc-2960",
+      "hoyowiki_entry_page_id": "2960",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2960?lang=zh-cn",
+      "official_english_name": "Deborah",
+      "official_simplified_chinese_name": "黛博拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-2959",
+      "hoyowiki_entry_page_id": "2959",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2959?lang=zh-cn",
+      "official_english_name": "Attorney McGill",
+      "official_simplified_chinese_name": "麦吉尔律师"
+    },
+    {
+      "source_key": "hoyowiki-npc-2946",
+      "hoyowiki_entry_page_id": "2946",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2946?lang=zh-cn",
+      "official_english_name": "Hyacinth",
+      "official_simplified_chinese_name": "海信丝"
+    },
+    {
+      "source_key": "hoyowiki-npc-2945",
+      "hoyowiki_entry_page_id": "2945",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2945?lang=zh-cn",
+      "official_english_name": "Jessamy",
+      "official_simplified_chinese_name": "杰萨梅"
+    },
+    {
+      "source_key": "hoyowiki-npc-2944",
+      "hoyowiki_entry_page_id": "2944",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2944?lang=zh-cn",
+      "official_english_name": "Samantha",
+      "official_simplified_chinese_name": "萨曼莎"
+    },
+    {
+      "source_key": "hoyowiki-npc-2733",
+      "hoyowiki_entry_page_id": "2733",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2733?lang=zh-cn",
+      "official_english_name": "Richard",
+      "official_simplified_chinese_name": "理查德"
+    },
+    {
+      "source_key": "hoyowiki-npc-2721",
+      "hoyowiki_entry_page_id": "2721",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2721?lang=zh-cn",
+      "official_english_name": "Thomas",
+      "official_simplified_chinese_name": "托马斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-2720",
+      "hoyowiki_entry_page_id": "2720",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2720?lang=zh-cn",
+      "official_english_name": "\"Mini Captain\"",
+      "official_simplified_chinese_name": "「迷你船长」"
+    },
+    {
+      "source_key": "hoyowiki-npc-2676",
+      "hoyowiki_entry_page_id": "2676",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2676?lang=zh-cn",
+      "official_english_name": "Snack Vendor",
+      "official_simplified_chinese_name": "零食工"
+    },
+    {
+      "source_key": "hoyowiki-npc-2675",
+      "hoyowiki_entry_page_id": "2675",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2675?lang=zh-cn",
+      "official_english_name": "Soda Pop Pup",
+      "official_simplified_chinese_name": "宠勿饮"
+    },
+    {
+      "source_key": "hoyowiki-npc-2674",
+      "hoyowiki_entry_page_id": "2674",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2674?lang=zh-cn",
+      "official_english_name": "Dahf",
+      "official_simplified_chinese_name": "达夫"
+    },
+    {
+      "source_key": "hoyowiki-npc-2673",
+      "hoyowiki_entry_page_id": "2673",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2673?lang=zh-cn",
+      "official_english_name": "Elegy",
+      "official_simplified_chinese_name": "悼亡诗"
+    },
+    {
+      "source_key": "hoyowiki-npc-2636",
+      "hoyowiki_entry_page_id": "2636",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2636?lang=zh-cn",
+      "official_english_name": "Aideen",
+      "official_simplified_chinese_name": "艾迪恩"
+    },
+    {
+      "source_key": "hoyowiki-npc-2635",
+      "hoyowiki_entry_page_id": "2635",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2635?lang=zh-cn",
+      "official_english_name": "SoulGlad Vendor",
+      "official_simplified_chinese_name": "苏乐达供应商"
+    },
+    {
+      "source_key": "hoyowiki-npc-2634",
+      "hoyowiki_entry_page_id": "2634",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2634?lang=zh-cn",
+      "official_english_name": "Toskani",
+      "official_simplified_chinese_name": "托斯卡尼"
+    },
+    {
+      "source_key": "hoyowiki-npc-2633",
+      "hoyowiki_entry_page_id": "2633",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2633?lang=zh-cn",
+      "official_english_name": "Pisce",
+      "official_simplified_chinese_name": "皮斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-2620",
+      "hoyowiki_entry_page_id": "2620",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2620?lang=zh-cn",
+      "official_english_name": "Geed",
+      "official_simplified_chinese_name": "捷德"
+    },
+    {
+      "source_key": "hoyowiki-npc-2611",
+      "hoyowiki_entry_page_id": "2611",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2611?lang=zh-cn",
+      "official_english_name": "Aymille",
+      "official_simplified_chinese_name": "艾弥尔"
+    },
+    {
+      "source_key": "hoyowiki-npc-2556",
+      "hoyowiki_entry_page_id": "2556",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2556?lang=zh-cn",
+      "official_english_name": "Hydra",
+      "official_simplified_chinese_name": "海德拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-2555",
+      "hoyowiki_entry_page_id": "2555",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2555?lang=zh-cn",
+      "official_english_name": "Nancy",
+      "official_simplified_chinese_name": "南希"
+    },
+    {
+      "source_key": "hoyowiki-npc-2551",
+      "hoyowiki_entry_page_id": "2551",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2551?lang=zh-cn",
+      "official_english_name": "Cloda",
+      "official_simplified_chinese_name": "柯洛达"
+    },
+    {
+      "source_key": "hoyowiki-npc-2550",
+      "hoyowiki_entry_page_id": "2550",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2550?lang=zh-cn",
+      "official_english_name": "Vader",
+      "official_simplified_chinese_name": "维德"
+    },
+    {
+      "source_key": "hoyowiki-npc-2549",
+      "hoyowiki_entry_page_id": "2549",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2549?lang=zh-cn",
+      "official_english_name": "Nelson",
+      "official_simplified_chinese_name": "纳尔逊"
+    },
+    {
+      "source_key": "hoyowiki-npc-2548",
+      "hoyowiki_entry_page_id": "2548",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2548?lang=zh-cn",
+      "official_english_name": "Emanator of Cans",
+      "official_simplified_chinese_name": "「桶的令使」"
+    },
+    {
+      "source_key": "hoyowiki-npc-2547",
+      "hoyowiki_entry_page_id": "2547",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2547?lang=zh-cn",
+      "official_english_name": "Garcia",
+      "official_simplified_chinese_name": "加西亚"
+    },
+    {
+      "source_key": "hoyowiki-npc-2546",
+      "hoyowiki_entry_page_id": "2546",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2546?lang=zh-cn",
+      "official_english_name": "Bodybuilder SoulGlad",
+      "official_simplified_chinese_name": "健美苏乐达"
+    },
+    {
+      "source_key": "hoyowiki-npc-2545",
+      "hoyowiki_entry_page_id": "2545",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2545?lang=zh-cn",
+      "official_english_name": "Olma",
+      "official_simplified_chinese_name": "欧利马"
+    },
+    {
+      "source_key": "hoyowiki-npc-2544",
+      "hoyowiki_entry_page_id": "2544",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2544?lang=zh-cn",
+      "official_english_name": "George",
+      "official_simplified_chinese_name": "乔治"
+    },
+    {
+      "source_key": "hoyowiki-npc-2543",
+      "hoyowiki_entry_page_id": "2543",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2543?lang=zh-cn",
+      "official_english_name": "Lady Black Claw",
+      "official_simplified_chinese_name": "黑爪女士"
+    },
+    {
+      "source_key": "hoyowiki-npc-2541",
+      "hoyowiki_entry_page_id": "2541",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2541?lang=zh-cn",
+      "official_english_name": "Adelyn",
+      "official_simplified_chinese_name": "艾德琳"
+    },
+    {
+      "source_key": "hoyowiki-npc-2540",
+      "hoyowiki_entry_page_id": "2540",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2540?lang=zh-cn",
+      "official_english_name": "Stoneblade",
+      "official_simplified_chinese_name": "「石剑」"
+    },
+    {
+      "source_key": "hoyowiki-npc-2539",
+      "hoyowiki_entry_page_id": "2539",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2539?lang=zh-cn",
+      "official_english_name": "Miss Red Whistle",
+      "official_simplified_chinese_name": "红哨小姐"
+    },
+    {
+      "source_key": "hoyowiki-npc-2538",
+      "hoyowiki_entry_page_id": "2538",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2538?lang=zh-cn",
+      "official_english_name": "Kaimee",
+      "official_simplified_chinese_name": "科玫"
+    },
+    {
+      "source_key": "hoyowiki-npc-2537",
+      "hoyowiki_entry_page_id": "2537",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2537?lang=zh-cn",
+      "official_english_name": "Jessie",
+      "official_simplified_chinese_name": "翠丝"
+    },
+    {
+      "source_key": "hoyowiki-npc-2536",
+      "hoyowiki_entry_page_id": "2536",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2536?lang=zh-cn",
+      "official_english_name": "Mellon",
+      "official_simplified_chinese_name": "梅隆"
+    },
+    {
+      "source_key": "hoyowiki-npc-2535",
+      "hoyowiki_entry_page_id": "2535",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2535?lang=zh-cn",
+      "official_english_name": "City Vagrant",
+      "official_simplified_chinese_name": "城市浪客"
+    },
+    {
+      "source_key": "hoyowiki-npc-2534",
+      "hoyowiki_entry_page_id": "2534",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2534?lang=zh-cn",
+      "official_english_name": "Grace",
+      "official_simplified_chinese_name": "格莉莎"
+    },
+    {
+      "source_key": "hoyowiki-npc-2533",
+      "hoyowiki_entry_page_id": "2533",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2533?lang=zh-cn",
+      "official_english_name": "Rolan",
+      "official_simplified_chinese_name": "罗兰"
+    },
+    {
+      "source_key": "hoyowiki-npc-2532",
+      "hoyowiki_entry_page_id": "2532",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2532?lang=zh-cn",
+      "official_english_name": "Kirk",
+      "official_simplified_chinese_name": "基尔克"
+    },
+    {
+      "source_key": "hoyowiki-npc-2531",
+      "hoyowiki_entry_page_id": "2531",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2531?lang=zh-cn",
+      "official_english_name": "Galatea",
+      "official_simplified_chinese_name": "伽拉忒亚"
+    },
+    {
+      "source_key": "hoyowiki-npc-2530",
+      "hoyowiki_entry_page_id": "2530",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2530?lang=zh-cn",
+      "official_english_name": "Percy",
+      "official_simplified_chinese_name": "珀西"
+    },
+    {
+      "source_key": "hoyowiki-npc-2529",
+      "hoyowiki_entry_page_id": "2529",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2529?lang=zh-cn",
+      "official_english_name": "Micah",
+      "official_simplified_chinese_name": "米凯"
+    },
+    {
+      "source_key": "hoyowiki-npc-2493",
+      "hoyowiki_entry_page_id": "2493",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2493?lang=zh-cn",
+      "official_english_name": "Wolpe",
+      "official_simplified_chinese_name": "沃尔普"
+    },
+    {
+      "source_key": "hoyowiki-npc-2490",
+      "hoyowiki_entry_page_id": "2490",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2490?lang=zh-cn",
+      "official_english_name": "Tizocic III",
+      "official_simplified_chinese_name": "蒂索克三世"
+    },
+    {
+      "source_key": "hoyowiki-npc-2488",
+      "hoyowiki_entry_page_id": "2488",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2488?lang=zh-cn",
+      "official_english_name": "Lysander",
+      "official_simplified_chinese_name": "莱桑德"
+    },
+    {
+      "source_key": "hoyowiki-npc-2487",
+      "hoyowiki_entry_page_id": "2487",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2487?lang=zh-cn",
+      "official_english_name": "Bob",
+      "official_simplified_chinese_name": "鲍勃"
+    },
+    {
+      "source_key": "hoyowiki-npc-2484",
+      "hoyowiki_entry_page_id": "2484",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2484?lang=zh-cn",
+      "official_english_name": "Burton",
+      "official_simplified_chinese_name": "伯顿"
+    },
+    {
+      "source_key": "hoyowiki-npc-2483",
+      "hoyowiki_entry_page_id": "2483",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2483?lang=zh-cn",
+      "official_english_name": "Oak Family Soldier",
+      "official_simplified_chinese_name": "橡木兵人"
+    },
+    {
+      "source_key": "hoyowiki-npc-2441",
+      "hoyowiki_entry_page_id": "2441",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2441?lang=zh-cn",
+      "official_english_name": "Siobhan",
+      "official_simplified_chinese_name": "舒翁"
+    },
+    {
+      "source_key": "hoyowiki-npc-2427",
+      "hoyowiki_entry_page_id": "2427",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2427?lang=zh-cn",
+      "official_english_name": "Conna",
+      "official_simplified_chinese_name": "康娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-2426",
+      "hoyowiki_entry_page_id": "2426",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2426?lang=zh-cn",
+      "official_english_name": "Brina",
+      "official_simplified_chinese_name": "布琳娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-2425",
+      "hoyowiki_entry_page_id": "2425",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2425?lang=zh-cn",
+      "official_english_name": "Hendrick",
+      "official_simplified_chinese_name": "亨德列克"
+    },
+    {
+      "source_key": "hoyowiki-npc-2424",
+      "hoyowiki_entry_page_id": "2424",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2424?lang=zh-cn",
+      "official_english_name": "Leo",
+      "official_simplified_chinese_name": "里奥"
+    },
+    {
+      "source_key": "hoyowiki-npc-2423",
+      "hoyowiki_entry_page_id": "2423",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2423?lang=zh-cn",
+      "official_english_name": "Mr. McCoy",
+      "official_simplified_chinese_name": "麦考先生"
+    },
+    {
+      "source_key": "hoyowiki-npc-2422",
+      "hoyowiki_entry_page_id": "2422",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2422?lang=zh-cn",
+      "official_english_name": "Warner",
+      "official_simplified_chinese_name": "沃尔纳"
+    },
+    {
+      "source_key": "hoyowiki-npc-2421",
+      "hoyowiki_entry_page_id": "2421",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2421?lang=zh-cn",
+      "official_english_name": "Billboard Investigator",
+      "official_simplified_chinese_name": "广告牌侦探"
+    },
+    {
+      "source_key": "hoyowiki-npc-2420",
+      "hoyowiki_entry_page_id": "2420",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2420?lang=zh-cn",
+      "official_english_name": "Elvira",
+      "official_simplified_chinese_name": "艾薇拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-2419",
+      "hoyowiki_entry_page_id": "2419",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2419?lang=zh-cn",
+      "official_english_name": "Walter",
+      "official_simplified_chinese_name": "沃尔特"
+    },
+    {
+      "source_key": "hoyowiki-npc-2418",
+      "hoyowiki_entry_page_id": "2418",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2418?lang=zh-cn",
+      "official_english_name": "Oksana",
+      "official_simplified_chinese_name": "奥科萨娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-2417",
+      "hoyowiki_entry_page_id": "2417",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2417?lang=zh-cn",
+      "official_english_name": "Themed Restaurant Server",
+      "official_simplified_chinese_name": "主题餐厅侍者"
+    },
+    {
+      "source_key": "hoyowiki-npc-2416",
+      "hoyowiki_entry_page_id": "2416",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2416?lang=zh-cn",
+      "official_english_name": "Tebeth",
+      "official_simplified_chinese_name": "特迪思"
+    },
+    {
+      "source_key": "hoyowiki-npc-2415",
+      "hoyowiki_entry_page_id": "2415",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2415?lang=zh-cn",
+      "official_english_name": "Neony",
+      "official_simplified_chinese_name": "尼奥尼"
+    },
+    {
+      "source_key": "hoyowiki-npc-2404",
+      "hoyowiki_entry_page_id": "2404",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2404?lang=zh-cn",
+      "official_english_name": "Mag",
+      "official_simplified_chinese_name": "玛姬"
+    },
+    {
+      "source_key": "hoyowiki-npc-2364",
+      "hoyowiki_entry_page_id": "2364",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2364?lang=zh-cn",
+      "official_english_name": "Gongyu",
+      "official_simplified_chinese_name": "宮羽"
+    },
+    {
+      "source_key": "hoyowiki-npc-2346",
+      "hoyowiki_entry_page_id": "2346",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2346?lang=zh-cn",
+      "official_english_name": "Bocchi",
+      "official_simplified_chinese_name": "波奇"
+    },
+    {
+      "source_key": "hoyowiki-npc-2345",
+      "hoyowiki_entry_page_id": "2345",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2345?lang=zh-cn",
+      "official_english_name": "Lesley Dean",
+      "official_simplified_chinese_name": "莱斯利•迪恩"
+    },
+    {
+      "source_key": "hoyowiki-npc-2257",
+      "hoyowiki_entry_page_id": "2257",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2257?lang=zh-cn",
+      "official_english_name": "Charlotte",
+      "official_simplified_chinese_name": "夏洛特"
+    },
+    {
+      "source_key": "hoyowiki-npc-2255",
+      "hoyowiki_entry_page_id": "2255",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2255?lang=zh-cn",
+      "official_english_name": "Mullich",
+      "official_simplified_chinese_name": "姆利斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-2254",
+      "hoyowiki_entry_page_id": "2254",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2254?lang=zh-cn",
+      "official_english_name": "Oro",
+      "official_simplified_chinese_name": "奥洛"
+    },
+    {
+      "source_key": "hoyowiki-npc-2253",
+      "hoyowiki_entry_page_id": "2253",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2253?lang=zh-cn",
+      "official_english_name": "Tizocic II",
+      "official_simplified_chinese_name": "蒂索克二世"
+    },
+    {
+      "source_key": "hoyowiki-npc-2252",
+      "hoyowiki_entry_page_id": "2252",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2252?lang=zh-cn",
+      "official_english_name": "Bailiff",
+      "official_simplified_chinese_name": "捕快"
+    },
+    {
+      "source_key": "hoyowiki-npc-2251",
+      "hoyowiki_entry_page_id": "2251",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2251?lang=zh-cn",
+      "official_english_name": "Constable",
+      "official_simplified_chinese_name": "捕头"
+    },
+    {
+      "source_key": "hoyowiki-npc-2250",
+      "hoyowiki_entry_page_id": "2250",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2250?lang=zh-cn",
+      "official_english_name": "Zhongshan",
+      "official_simplified_chinese_name": "钟珊"
+    },
+    {
+      "source_key": "hoyowiki-npc-2249",
+      "hoyowiki_entry_page_id": "2249",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2249?lang=zh-cn",
+      "official_english_name": "Sheriff",
+      "official_simplified_chinese_name": "警长"
+    },
+    {
+      "source_key": "hoyowiki-npc-2248",
+      "hoyowiki_entry_page_id": "2248",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2248?lang=zh-cn",
+      "official_english_name": "Deputy Sheriff",
+      "official_simplified_chinese_name": "副警长"
+    },
+    {
+      "source_key": "hoyowiki-npc-2234",
+      "hoyowiki_entry_page_id": "2234",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2234?lang=zh-cn",
+      "official_english_name": "Detective",
+      "official_simplified_chinese_name": "名侦探"
+    },
+    {
+      "source_key": "hoyowiki-npc-2233",
+      "hoyowiki_entry_page_id": "2233",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2233?lang=zh-cn",
+      "official_english_name": "Assistant Detective",
+      "official_simplified_chinese_name": "侦探助手"
+    },
+    {
+      "source_key": "hoyowiki-npc-2232",
+      "hoyowiki_entry_page_id": "2232",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2232?lang=zh-cn",
+      "official_english_name": "Chadwick",
+      "official_simplified_chinese_name": "查德威克"
+    },
+    {
+      "source_key": "hoyowiki-npc-2174",
+      "hoyowiki_entry_page_id": "2174",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2174?lang=zh-cn",
+      "official_english_name": "Giovanna",
+      "official_simplified_chinese_name": "乔凡娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-2173",
+      "hoyowiki_entry_page_id": "2173",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2173?lang=zh-cn",
+      "official_english_name": "Patient Banker",
+      "official_simplified_chinese_name": "耐心的银行家"
+    },
+    {
+      "source_key": "hoyowiki-npc-2172",
+      "hoyowiki_entry_page_id": "2172",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2172?lang=zh-cn",
+      "official_english_name": "Barrle's Father",
+      "official_simplified_chinese_name": "巴尔的父亲"
+    },
+    {
+      "source_key": "hoyowiki-npc-2171",
+      "hoyowiki_entry_page_id": "2171",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2171?lang=zh-cn",
+      "official_english_name": "Barrle",
+      "official_simplified_chinese_name": "巴尔"
+    },
+    {
+      "source_key": "hoyowiki-npc-2063",
+      "hoyowiki_entry_page_id": "2063",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2063?lang=zh-cn",
+      "official_english_name": "Woolsey",
+      "official_simplified_chinese_name": "伍尔西"
+    },
+    {
+      "source_key": "hoyowiki-npc-2062",
+      "hoyowiki_entry_page_id": "2062",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2062?lang=zh-cn",
+      "official_english_name": "Vitali",
+      "official_simplified_chinese_name": "维塔利"
+    },
+    {
+      "source_key": "hoyowiki-npc-2052",
+      "hoyowiki_entry_page_id": "2052",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2052?lang=zh-cn",
+      "official_english_name": "Hurrylove",
+      "official_simplified_chinese_name": "爱遇见"
+    },
+    {
+      "source_key": "hoyowiki-npc-2051",
+      "hoyowiki_entry_page_id": "2051",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2051?lang=zh-cn",
+      "official_english_name": "Mr. Herring Billboard",
+      "official_simplified_chinese_name": "鲱鱼先生广告牌"
+    },
+    {
+      "source_key": "hoyowiki-npc-2050",
+      "hoyowiki_entry_page_id": "2050",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2050?lang=zh-cn",
+      "official_english_name": "Bistro Franchise Billboard",
+      "official_simplified_chinese_name": "餐饮连锁广告牌"
+    },
+    {
+      "source_key": "hoyowiki-npc-2049",
+      "hoyowiki_entry_page_id": "2049",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2049?lang=zh-cn",
+      "official_english_name": "Spheroid Billboard",
+      "official_simplified_chinese_name": "球笼广告牌"
+    },
+    {
+      "source_key": "hoyowiki-npc-2048",
+      "hoyowiki_entry_page_id": "2048",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2048?lang=zh-cn",
+      "official_english_name": "Fashion Store Billboard",
+      "official_simplified_chinese_name": "服装店广告牌"
+    },
+    {
+      "source_key": "hoyowiki-npc-2047",
+      "hoyowiki_entry_page_id": "2047",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2047?lang=zh-cn",
+      "official_english_name": "Trendy Laser Gun Billboard",
+      "official_simplified_chinese_name": "潮玩光枪广告牌"
+    },
+    {
+      "source_key": "hoyowiki-npc-2046",
+      "hoyowiki_entry_page_id": "2046",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2046?lang=zh-cn",
+      "official_english_name": "SoulGlad Billboard",
+      "official_simplified_chinese_name": "苏乐达广告牌"
+    },
+    {
+      "source_key": "hoyowiki-npc-2045",
+      "hoyowiki_entry_page_id": "2045",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2045?lang=zh-cn",
+      "official_english_name": "Trendy Doll Billboard",
+      "official_simplified_chinese_name": "潮玩娃娃广告牌"
+    },
+    {
+      "source_key": "hoyowiki-npc-2044",
+      "hoyowiki_entry_page_id": "2044",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2044?lang=zh-cn",
+      "official_english_name": "Young Master Gold",
+      "official_simplified_chinese_name": "黄金公子"
+    },
+    {
+      "source_key": "hoyowiki-npc-2043",
+      "hoyowiki_entry_page_id": "2043",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2043?lang=zh-cn",
+      "official_english_name": "Boss Red",
+      "official_simplified_chinese_name": "赤红大哥"
+    },
+    {
+      "source_key": "hoyowiki-npc-2042",
+      "hoyowiki_entry_page_id": "2042",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2042?lang=zh-cn",
+      "official_english_name": "Lady Vermilion",
+      "official_simplified_chinese_name": "妃色夫人"
+    },
+    {
+      "source_key": "hoyowiki-npc-2041",
+      "hoyowiki_entry_page_id": "2041",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2041?lang=zh-cn",
+      "official_english_name": "Verdant Manager",
+      "official_simplified_chinese_name": "草绿经理"
+    },
+    {
+      "source_key": "hoyowiki-npc-2040",
+      "hoyowiki_entry_page_id": "2040",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2040?lang=zh-cn",
+      "official_english_name": "Dr. Blues",
+      "official_simplified_chinese_name": "湛蓝爵士"
+    },
+    {
+      "source_key": "hoyowiki-npc-2037",
+      "hoyowiki_entry_page_id": "2037",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2037?lang=zh-cn",
+      "official_english_name": "Carl",
+      "official_simplified_chinese_name": "卡尔"
+    },
+    {
+      "source_key": "hoyowiki-npc-2033",
+      "hoyowiki_entry_page_id": "2033",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2033?lang=zh-cn",
+      "official_english_name": "Poseman",
+      "official_simplified_chinese_name": "愚致思"
+    },
+    {
+      "source_key": "hoyowiki-npc-2032",
+      "hoyowiki_entry_page_id": "2032",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2032?lang=zh-cn",
+      "official_english_name": "Quinn",
+      "official_simplified_chinese_name": "奎茵"
+    },
+    {
+      "source_key": "hoyowiki-npc-2031",
+      "hoyowiki_entry_page_id": "2031",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2031?lang=zh-cn",
+      "official_english_name": "Daisy",
+      "official_simplified_chinese_name": "黛茜"
+    },
+    {
+      "source_key": "hoyowiki-npc-2030",
+      "hoyowiki_entry_page_id": "2030",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2030?lang=zh-cn",
+      "official_english_name": "Morris",
+      "official_simplified_chinese_name": "莫里斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-2029",
+      "hoyowiki_entry_page_id": "2029",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2029?lang=zh-cn",
+      "official_english_name": "Beastar",
+      "official_simplified_chinese_name": "毕丝塔"
+    },
+    {
+      "source_key": "hoyowiki-npc-2028",
+      "hoyowiki_entry_page_id": "2028",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2028?lang=zh-cn",
+      "official_english_name": "Sabrina",
+      "official_simplified_chinese_name": "萨宾娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-2027",
+      "hoyowiki_entry_page_id": "2027",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2027?lang=zh-cn",
+      "official_english_name": "Max",
+      "official_simplified_chinese_name": "麦克斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-2026",
+      "hoyowiki_entry_page_id": "2026",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2026?lang=zh-cn",
+      "official_english_name": "Mehlem",
+      "official_simplified_chinese_name": "梅汉姆"
+    },
+    {
+      "source_key": "hoyowiki-npc-2025",
+      "hoyowiki_entry_page_id": "2025",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2025?lang=zh-cn",
+      "official_english_name": "Anderson",
+      "official_simplified_chinese_name": "安德森"
+    },
+    {
+      "source_key": "hoyowiki-npc-2024",
+      "hoyowiki_entry_page_id": "2024",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2024?lang=zh-cn",
+      "official_english_name": "Jno",
+      "official_simplified_chinese_name": "杰诺"
+    },
+    {
+      "source_key": "hoyowiki-npc-2023",
+      "hoyowiki_entry_page_id": "2023",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2023?lang=zh-cn",
+      "official_english_name": "Coty",
+      "official_simplified_chinese_name": "科蒂"
+    },
+    {
+      "source_key": "hoyowiki-npc-2022",
+      "hoyowiki_entry_page_id": "2022",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2022?lang=zh-cn",
+      "official_english_name": "Dennis",
+      "official_simplified_chinese_name": "丹尼斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-2021",
+      "hoyowiki_entry_page_id": "2021",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2021?lang=zh-cn",
+      "official_english_name": "Alley",
+      "official_simplified_chinese_name": "艾丽"
+    },
+    {
+      "source_key": "hoyowiki-npc-2020",
+      "hoyowiki_entry_page_id": "2020",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2020?lang=zh-cn",
+      "official_english_name": "Penelope",
+      "official_simplified_chinese_name": "佩内洛普"
+    },
+    {
+      "source_key": "hoyowiki-npc-2019",
+      "hoyowiki_entry_page_id": "2019",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2019?lang=zh-cn",
+      "official_english_name": "Wesley",
+      "official_simplified_chinese_name": "韦斯莱"
+    },
+    {
+      "source_key": "hoyowiki-npc-2018",
+      "hoyowiki_entry_page_id": "2018",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2018?lang=zh-cn",
+      "official_english_name": "Cocona",
+      "official_simplified_chinese_name": "柯柯娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-2017",
+      "hoyowiki_entry_page_id": "2017",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2017?lang=zh-cn",
+      "official_english_name": "Family Merchant",
+      "official_simplified_chinese_name": "家族商人"
+    },
+    {
+      "source_key": "hoyowiki-npc-2016",
+      "hoyowiki_entry_page_id": "2016",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2016?lang=zh-cn",
+      "official_english_name": "Clockie",
+      "official_simplified_chinese_name": "钟表小子"
+    },
+    {
+      "source_key": "hoyowiki-npc-2015",
+      "hoyowiki_entry_page_id": "2015",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2015?lang=zh-cn",
+      "official_english_name": "Dr. Edward",
+      "official_simplified_chinese_name": "爱德华医生"
+    },
+    {
+      "source_key": "hoyowiki-npc-2014",
+      "hoyowiki_entry_page_id": "2014",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2014?lang=zh-cn",
+      "official_english_name": "Forla",
+      "official_simplified_chinese_name": "芙尔拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-2013",
+      "hoyowiki_entry_page_id": "2013",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2013?lang=zh-cn",
+      "official_english_name": "Dancy",
+      "official_simplified_chinese_name": "丹西"
+    },
+    {
+      "source_key": "hoyowiki-npc-2012",
+      "hoyowiki_entry_page_id": "2012",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2012?lang=zh-cn",
+      "official_english_name": "Brona",
+      "official_simplified_chinese_name": "布罗娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-2011",
+      "hoyowiki_entry_page_id": "2011",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2011?lang=zh-cn",
+      "official_english_name": "Louis",
+      "official_simplified_chinese_name": "路易斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-2010",
+      "hoyowiki_entry_page_id": "2010",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2010?lang=zh-cn",
+      "official_english_name": "Chabro",
+      "official_simplified_chinese_name": "夏布罗"
+    },
+    {
+      "source_key": "hoyowiki-npc-2009",
+      "hoyowiki_entry_page_id": "2009",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2009?lang=zh-cn",
+      "official_english_name": "Mr. Piggy Bank",
+      "official_simplified_chinese_name": "笨罐先生"
+    },
+    {
+      "source_key": "hoyowiki-npc-2008",
+      "hoyowiki_entry_page_id": "2008",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2008?lang=zh-cn",
+      "official_english_name": "Lady Cash",
+      "official_simplified_chinese_name": "卡什女士"
+    },
+    {
+      "source_key": "hoyowiki-npc-2007",
+      "hoyowiki_entry_page_id": "2007",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2007?lang=zh-cn",
+      "official_english_name": "Ran",
+      "official_simplified_chinese_name": "阿然"
+    },
+    {
+      "source_key": "hoyowiki-npc-2006",
+      "hoyowiki_entry_page_id": "2006",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2006?lang=zh-cn",
+      "official_english_name": "Haliburton",
+      "official_simplified_chinese_name": "哈利伯顿"
+    },
+    {
+      "source_key": "hoyowiki-npc-2005",
+      "hoyowiki_entry_page_id": "2005",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2005?lang=zh-cn",
+      "official_english_name": "Lew Archer",
+      "official_simplified_chinese_name": "卢•阿彻"
+    },
+    {
+      "source_key": "hoyowiki-npc-2004",
+      "hoyowiki_entry_page_id": "2004",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2004?lang=zh-cn",
+      "official_english_name": "Uma",
+      "official_simplified_chinese_name": "乌玛"
+    },
+    {
+      "source_key": "hoyowiki-npc-2003",
+      "hoyowiki_entry_page_id": "2003",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2003?lang=zh-cn",
+      "official_english_name": "Qian Ketong",
+      "official_simplified_chinese_name": "钱可通"
+    },
+    {
+      "source_key": "hoyowiki-npc-2002",
+      "hoyowiki_entry_page_id": "2002",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2002?lang=zh-cn",
+      "official_english_name": "Jay",
+      "official_simplified_chinese_name": "杰伊"
+    },
+    {
+      "source_key": "hoyowiki-npc-2001",
+      "hoyowiki_entry_page_id": "2001",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2001?lang=zh-cn",
+      "official_english_name": "Ferdinand",
+      "official_simplified_chinese_name": "斐迪南德"
+    },
+    {
+      "source_key": "hoyowiki-npc-2000",
+      "hoyowiki_entry_page_id": "2000",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/2000?lang=zh-cn",
+      "official_english_name": "Emmrich",
+      "official_simplified_chinese_name": "艾默里奇"
+    },
+    {
+      "source_key": "hoyowiki-npc-1999",
+      "hoyowiki_entry_page_id": "1999",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1999?lang=zh-cn",
+      "official_english_name": "Singler",
+      "official_simplified_chinese_name": "辛格勒"
+    },
+    {
+      "source_key": "hoyowiki-npc-1998",
+      "hoyowiki_entry_page_id": "1998",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1998?lang=zh-cn",
+      "official_english_name": "Keenan",
+      "official_simplified_chinese_name": "基南"
+    },
+    {
+      "source_key": "hoyowiki-npc-1997",
+      "hoyowiki_entry_page_id": "1997",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1997?lang=zh-cn",
+      "official_english_name": "Cielo",
+      "official_simplified_chinese_name": "切诺"
+    },
+    {
+      "source_key": "hoyowiki-npc-1996",
+      "hoyowiki_entry_page_id": "1996",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1996?lang=zh-cn",
+      "official_english_name": "Larose",
+      "official_simplified_chinese_name": "拉洛丝"
+    },
+    {
+      "source_key": "hoyowiki-npc-1995",
+      "hoyowiki_entry_page_id": "1995",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1995?lang=zh-cn",
+      "official_english_name": "IV",
+      "official_simplified_chinese_name": "埃韦"
+    },
+    {
+      "source_key": "hoyowiki-npc-1994",
+      "hoyowiki_entry_page_id": "1994",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1994?lang=zh-cn",
+      "official_english_name": "Asika",
+      "official_simplified_chinese_name": "阿锡卡"
+    },
+    {
+      "source_key": "hoyowiki-npc-1993",
+      "hoyowiki_entry_page_id": "1993",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1993?lang=zh-cn",
+      "official_english_name": "Yuan",
+      "official_simplified_chinese_name": "老袁"
+    },
+    {
+      "source_key": "hoyowiki-npc-1992",
+      "hoyowiki_entry_page_id": "1992",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1992?lang=zh-cn",
+      "official_english_name": "Benny",
+      "official_simplified_chinese_name": "班尼"
+    },
+    {
+      "source_key": "hoyowiki-npc-1991",
+      "hoyowiki_entry_page_id": "1991",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1991?lang=zh-cn",
+      "official_english_name": "Colleen",
+      "official_simplified_chinese_name": "科琳"
+    },
+    {
+      "source_key": "hoyowiki-npc-1990",
+      "hoyowiki_entry_page_id": "1990",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1990?lang=zh-cn",
+      "official_english_name": "Claudia",
+      "official_simplified_chinese_name": "克劳迪娅"
+    },
+    {
+      "source_key": "hoyowiki-npc-1989",
+      "hoyowiki_entry_page_id": "1989",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1989?lang=zh-cn",
+      "official_english_name": "Sir Whittaker",
+      "official_simplified_chinese_name": "惠特克爵士"
+    },
+    {
+      "source_key": "hoyowiki-npc-1988",
+      "hoyowiki_entry_page_id": "1988",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1988?lang=zh-cn",
+      "official_english_name": "Go-Ray",
+      "official_simplified_chinese_name": "格-蕾"
+    },
+    {
+      "source_key": "hoyowiki-npc-1987",
+      "hoyowiki_entry_page_id": "1987",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1987?lang=zh-cn",
+      "official_english_name": "Hirata Heiji",
+      "official_simplified_chinese_name": "平田平次"
+    },
+    {
+      "source_key": "hoyowiki-npc-1898",
+      "hoyowiki_entry_page_id": "1898",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1898?lang=zh-cn",
+      "official_english_name": "Little Robot",
+      "official_simplified_chinese_name": "小机器人"
+    },
+    {
+      "source_key": "hoyowiki-npc-1891",
+      "hoyowiki_entry_page_id": "1891",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1891?lang=zh-cn",
+      "official_english_name": "Helper Robot",
+      "official_simplified_chinese_name": "保姆机器人"
+    },
+    {
+      "source_key": "hoyowiki-npc-1889",
+      "hoyowiki_entry_page_id": "1889",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1889?lang=zh-cn",
+      "official_english_name": "Wendy",
+      "official_simplified_chinese_name": "温婷婷"
+    },
+    {
+      "source_key": "hoyowiki-npc-1882",
+      "hoyowiki_entry_page_id": "1882",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1882?lang=zh-cn",
+      "official_english_name": "Wenfry",
+      "official_simplified_chinese_name": "温萍萍"
+    },
+    {
+      "source_key": "hoyowiki-npc-1880",
+      "hoyowiki_entry_page_id": "1880",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1880?lang=zh-cn",
+      "official_english_name": "Joseph's Model",
+      "official_simplified_chinese_name": "约瑟夫的模特"
+    },
+    {
+      "source_key": "hoyowiki-npc-1874",
+      "hoyowiki_entry_page_id": "1874",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1874?lang=zh-cn",
+      "official_english_name": "Ashy Paste",
+      "official_simplified_chinese_name": "豆沙灰灰"
+    },
+    {
+      "source_key": "hoyowiki-npc-1873",
+      "hoyowiki_entry_page_id": "1873",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1873?lang=zh-cn",
+      "official_english_name": "True Love's Frozen Beans",
+      "official_simplified_chinese_name": "真爱红豆冰"
+    },
+    {
+      "source_key": "hoyowiki-npc-1872",
+      "hoyowiki_entry_page_id": "1872",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1872?lang=zh-cn",
+      "official_english_name": "Mung \"Sentimental\" Bean",
+      "official_simplified_chinese_name": "多情绿豆酥"
+    },
+    {
+      "source_key": "hoyowiki-npc-1870",
+      "hoyowiki_entry_page_id": "1870",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1870?lang=zh-cn",
+      "official_english_name": "Joseph",
+      "official_simplified_chinese_name": "约瑟夫"
+    },
+    {
+      "source_key": "hoyowiki-npc-1865",
+      "hoyowiki_entry_page_id": "1865",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1865?lang=zh-cn",
+      "official_english_name": "Bit Busy",
+      "official_simplified_chinese_name": "有点急"
+    },
+    {
+      "source_key": "hoyowiki-npc-1864",
+      "hoyowiki_entry_page_id": "1864",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1864?lang=zh-cn",
+      "official_english_name": "Salty Rimeplume",
+      "official_simplified_chinese_name": "盐渍冬梅"
+    },
+    {
+      "source_key": "hoyowiki-npc-1863",
+      "hoyowiki_entry_page_id": "1863",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1863?lang=zh-cn",
+      "official_english_name": "Guardian of the Domain",
+      "official_simplified_chinese_name": "全域守望者"
+    },
+    {
+      "source_key": "hoyowiki-npc-1862",
+      "hoyowiki_entry_page_id": "1862",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1862?lang=zh-cn",
+      "official_english_name": "Insighter",
+      "official_simplified_chinese_name": "洞悉者"
+    },
+    {
+      "source_key": "hoyowiki-npc-1861",
+      "hoyowiki_entry_page_id": "1861",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1861?lang=zh-cn",
+      "official_english_name": "Exemplary",
+      "official_simplified_chinese_name": "威名赫赫"
+    },
+    {
+      "source_key": "hoyowiki-npc-1860",
+      "hoyowiki_entry_page_id": "1860",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1860?lang=zh-cn",
+      "official_english_name": "\"The Unviewable\"",
+      "official_simplified_chinese_name": "「不可直视之物」"
+    },
+    {
+      "source_key": "hoyowiki-npc-1858",
+      "hoyowiki_entry_page_id": "1858",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1858?lang=zh-cn",
+      "official_english_name": "Super Annoy",
+      "official_simplified_chinese_name": "非常烦"
+    },
+    {
+      "source_key": "hoyowiki-npc-1830",
+      "hoyowiki_entry_page_id": "1830",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1830?lang=zh-cn",
+      "official_english_name": "Wright",
+      "official_simplified_chinese_name": "阿佑"
+    },
+    {
+      "source_key": "hoyowiki-npc-1829",
+      "hoyowiki_entry_page_id": "1829",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1829?lang=zh-cn",
+      "official_english_name": "Lefton",
+      "official_simplified_chinese_name": "佐罗"
+    },
+    {
+      "source_key": "hoyowiki-npc-1828",
+      "hoyowiki_entry_page_id": "1828",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1828?lang=zh-cn",
+      "official_english_name": "Survey Robot",
+      "official_simplified_chinese_name": "侦察机器人"
+    },
+    {
+      "source_key": "hoyowiki-npc-1827",
+      "hoyowiki_entry_page_id": "1827",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1827?lang=zh-cn",
+      "official_english_name": "Youci",
+      "official_simplified_chinese_name": "游辞"
+    },
+    {
+      "source_key": "hoyowiki-npc-1826",
+      "hoyowiki_entry_page_id": "1826",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1826?lang=zh-cn",
+      "official_english_name": "Cloudbot",
+      "official_simplified_chinese_name": "云端机器人"
+    },
+    {
+      "source_key": "hoyowiki-npc-1803",
+      "hoyowiki_entry_page_id": "1803",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1803?lang=zh-cn",
+      "official_english_name": "Guangjin",
+      "official_simplified_chinese_name": "广进"
+    },
+    {
+      "source_key": "hoyowiki-npc-1800",
+      "hoyowiki_entry_page_id": "1800",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1800?lang=zh-cn",
+      "official_english_name": "Velite",
+      "official_simplified_chinese_name": "维利特"
+    },
+    {
+      "source_key": "hoyowiki-npc-1739",
+      "hoyowiki_entry_page_id": "1739",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1739?lang=zh-cn",
+      "official_english_name": "Chess Ghost",
+      "official_simplified_chinese_name": "棋鬼"
+    },
+    {
+      "source_key": "hoyowiki-npc-1702",
+      "hoyowiki_entry_page_id": "1702",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1702?lang=zh-cn",
+      "official_english_name": "Mr. Xiao",
+      "official_simplified_chinese_name": "霄老大"
+    },
+    {
+      "source_key": "hoyowiki-npc-1672",
+      "hoyowiki_entry_page_id": "1672",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1672?lang=zh-cn",
+      "official_english_name": "Cirrus",
+      "official_simplified_chinese_name": "浮烟"
+    },
+    {
+      "source_key": "hoyowiki-npc-1671",
+      "hoyowiki_entry_page_id": "1671",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1671?lang=zh-cn",
+      "official_english_name": "NO. 437",
+      "official_simplified_chinese_name": "四卅七号"
+    },
+    {
+      "source_key": "hoyowiki-npc-1670",
+      "hoyowiki_entry_page_id": "1670",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1670?lang=zh-cn",
+      "official_english_name": "Shouling",
+      "official_simplified_chinese_name": "守灵"
+    },
+    {
+      "source_key": "hoyowiki-npc-1669",
+      "hoyowiki_entry_page_id": "1669",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1669?lang=zh-cn",
+      "official_english_name": "Miaodian",
+      "official_simplified_chinese_name": "妙典"
+    },
+    {
+      "source_key": "hoyowiki-npc-1646",
+      "hoyowiki_entry_page_id": "1646",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1646?lang=zh-cn",
+      "official_english_name": "Mukogaoka",
+      "official_simplified_chinese_name": "向之丘"
+    },
+    {
+      "source_key": "hoyowiki-npc-1643",
+      "hoyowiki_entry_page_id": "1643",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1643?lang=zh-cn",
+      "official_english_name": "Your Fanatical Fan",
+      "official_simplified_chinese_name": "你的狂热粉丝"
+    },
+    {
+      "source_key": "hoyowiki-npc-1642",
+      "hoyowiki_entry_page_id": "1642",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1642?lang=zh-cn",
+      "official_english_name": "Baal",
+      "official_simplified_chinese_name": "巴尔"
+    },
+    {
+      "source_key": "hoyowiki-npc-1641",
+      "hoyowiki_entry_page_id": "1641",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1641?lang=zh-cn",
+      "official_english_name": "Fedora",
+      "official_simplified_chinese_name": "凡迪雅"
+    },
+    {
+      "source_key": "hoyowiki-npc-1617",
+      "hoyowiki_entry_page_id": "1617",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1617?lang=zh-cn",
+      "official_english_name": "Barrie",
+      "official_simplified_chinese_name": "巴瑞"
+    },
+    {
+      "source_key": "hoyowiki-npc-1616",
+      "hoyowiki_entry_page_id": "1616",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1616?lang=zh-cn",
+      "official_english_name": "Giovanni",
+      "official_simplified_chinese_name": "乔瓦尼"
+    },
+    {
+      "source_key": "hoyowiki-npc-1587",
+      "hoyowiki_entry_page_id": "1587",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1587?lang=zh-cn",
+      "official_english_name": "Wilder",
+      "official_simplified_chinese_name": "维尔德"
+    },
+    {
+      "source_key": "hoyowiki-npc-1546",
+      "hoyowiki_entry_page_id": "1546",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1546?lang=zh-cn",
+      "official_english_name": "Mr. Huo",
+      "official_simplified_chinese_name": "霍三哥"
+    },
+    {
+      "source_key": "hoyowiki-npc-1502",
+      "hoyowiki_entry_page_id": "1502",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1502?lang=zh-cn",
+      "official_english_name": "The President",
+      "official_simplified_chinese_name": "「会长」"
+    },
+    {
+      "source_key": "hoyowiki-npc-1501",
+      "hoyowiki_entry_page_id": "1501",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1501?lang=zh-cn",
+      "official_english_name": "Little Tian",
+      "official_simplified_chinese_name": "小天"
+    },
+    {
+      "source_key": "hoyowiki-npc-1500",
+      "hoyowiki_entry_page_id": "1500",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1500?lang=zh-cn",
+      "official_english_name": "Boyang",
+      "official_simplified_chinese_name": "泊阳"
+    },
+    {
+      "source_key": "hoyowiki-npc-1499",
+      "hoyowiki_entry_page_id": "1499",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1499?lang=zh-cn",
+      "official_english_name": "Boss Du",
+      "official_simplified_chinese_name": "杜老板"
+    },
+    {
+      "source_key": "hoyowiki-npc-1498",
+      "hoyowiki_entry_page_id": "1498",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1498?lang=zh-cn",
+      "official_english_name": "Ms. Yo",
+      "official_simplified_chinese_name": "悠姐"
+    },
+    {
+      "source_key": "hoyowiki-npc-1497",
+      "hoyowiki_entry_page_id": "1497",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1497?lang=zh-cn",
+      "official_english_name": "Hongjin",
+      "official_simplified_chinese_name": "鸿津"
+    },
+    {
+      "source_key": "hoyowiki-npc-1496",
+      "hoyowiki_entry_page_id": "1496",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1496?lang=zh-cn",
+      "official_english_name": "Fardus",
+      "official_simplified_chinese_name": "法尔杜丝"
+    },
+    {
+      "source_key": "hoyowiki-npc-1495",
+      "hoyowiki_entry_page_id": "1495",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1495?lang=zh-cn",
+      "official_english_name": "Kiryu",
+      "official_simplified_chinese_name": "雾生"
+    },
+    {
+      "source_key": "hoyowiki-npc-1494",
+      "hoyowiki_entry_page_id": "1494",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1494?lang=zh-cn",
+      "official_english_name": "Majima",
+      "official_simplified_chinese_name": "真志摩"
+    },
+    {
+      "source_key": "hoyowiki-npc-1491",
+      "hoyowiki_entry_page_id": "1491",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1491?lang=zh-cn",
+      "official_english_name": "Short Auntie",
+      "official_simplified_chinese_name": "矮阿姨"
+    },
+    {
+      "source_key": "hoyowiki-npc-1490",
+      "hoyowiki_entry_page_id": "1490",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1490?lang=zh-cn",
+      "official_english_name": "Mingxi",
+      "official_simplified_chinese_name": "明曦"
+    },
+    {
+      "source_key": "hoyowiki-npc-1489",
+      "hoyowiki_entry_page_id": "1489",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1489?lang=zh-cn",
+      "official_english_name": "Tall Auntie",
+      "official_simplified_chinese_name": "高阿姨"
+    },
+    {
+      "source_key": "hoyowiki-npc-1455",
+      "hoyowiki_entry_page_id": "1455",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1455?lang=zh-cn",
+      "official_english_name": "Lingling",
+      "official_simplified_chinese_name": "泠泠"
+    },
+    {
+      "source_key": "hoyowiki-npc-1454",
+      "hoyowiki_entry_page_id": "1454",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1454?lang=zh-cn",
+      "official_english_name": "Yongren",
+      "official_simplified_chinese_name": "永仁"
+    },
+    {
+      "source_key": "hoyowiki-npc-1453",
+      "hoyowiki_entry_page_id": "1453",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1453?lang=zh-cn",
+      "official_english_name": "Hanming",
+      "official_simplified_chinese_name": "含明"
+    },
+    {
+      "source_key": "hoyowiki-npc-1452",
+      "hoyowiki_entry_page_id": "1452",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1452?lang=zh-cn",
+      "official_english_name": "Jinwen",
+      "official_simplified_chinese_name": "锦纹"
+    },
+    {
+      "source_key": "hoyowiki-npc-1451",
+      "hoyowiki_entry_page_id": "1451",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1451?lang=zh-cn",
+      "official_english_name": "Yueyuan",
+      "official_simplified_chinese_name": "跃渊"
+    },
+    {
+      "source_key": "hoyowiki-npc-1450",
+      "hoyowiki_entry_page_id": "1450",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1450?lang=zh-cn",
+      "official_english_name": "Dewei",
+      "official_simplified_chinese_name": "德威"
+    },
+    {
+      "source_key": "hoyowiki-npc-1449",
+      "hoyowiki_entry_page_id": "1449",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1449?lang=zh-cn",
+      "official_english_name": "A-Ying",
+      "official_simplified_chinese_name": "阿莺"
+    },
+    {
+      "source_key": "hoyowiki-npc-1448",
+      "hoyowiki_entry_page_id": "1448",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1448?lang=zh-cn",
+      "official_english_name": "Maozhen",
+      "official_simplified_chinese_name": "茂贞"
+    },
+    {
+      "source_key": "hoyowiki-npc-1447",
+      "hoyowiki_entry_page_id": "1447",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1447?lang=zh-cn",
+      "official_english_name": "Sinclair",
+      "official_simplified_chinese_name": "辛克莱"
+    },
+    {
+      "source_key": "hoyowiki-npc-1446",
+      "hoyowiki_entry_page_id": "1446",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1446?lang=zh-cn",
+      "official_english_name": "Maryam",
+      "official_simplified_chinese_name": "麦尔彦"
+    },
+    {
+      "source_key": "hoyowiki-npc-1445",
+      "hoyowiki_entry_page_id": "1445",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1445?lang=zh-cn",
+      "official_english_name": "Kongqing",
+      "official_simplified_chinese_name": "空青"
+    },
+    {
+      "source_key": "hoyowiki-npc-1444",
+      "hoyowiki_entry_page_id": "1444",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1444?lang=zh-cn",
+      "official_english_name": "Sanjin",
+      "official_simplified_chinese_name": "散锦"
+    },
+    {
+      "source_key": "hoyowiki-npc-1385",
+      "hoyowiki_entry_page_id": "1385",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1385?lang=zh-cn",
+      "official_english_name": "Aksay",
+      "official_simplified_chinese_name": "阿克赛"
+    },
+    {
+      "source_key": "hoyowiki-npc-1379",
+      "hoyowiki_entry_page_id": "1379",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1379?lang=zh-cn",
+      "official_english_name": "Shiyun",
+      "official_simplified_chinese_name": "石韵"
+    },
+    {
+      "source_key": "hoyowiki-npc-1327",
+      "hoyowiki_entry_page_id": "1327",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1327?lang=zh-cn",
+      "official_english_name": "Sensen",
+      "official_simplified_chinese_name": "森森"
+    },
+    {
+      "source_key": "hoyowiki-npc-1321",
+      "hoyowiki_entry_page_id": "1321",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1321?lang=zh-cn",
+      "official_english_name": "Leili",
+      "official_simplified_chinese_name": "雷力"
+    },
+    {
+      "source_key": "hoyowiki-npc-1318",
+      "hoyowiki_entry_page_id": "1318",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1318?lang=zh-cn",
+      "official_english_name": "Zhongshan",
+      "official_simplified_chinese_name": "钟珊"
+    },
+    {
+      "source_key": "hoyowiki-npc-1317",
+      "hoyowiki_entry_page_id": "1317",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1317?lang=zh-cn",
+      "official_english_name": "Tonya",
+      "official_simplified_chinese_name": "冬妮娅"
+    },
+    {
+      "source_key": "hoyowiki-npc-1316",
+      "hoyowiki_entry_page_id": "1316",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1316?lang=zh-cn",
+      "official_english_name": "Nannan",
+      "official_simplified_chinese_name": "楠楠"
+    },
+    {
+      "source_key": "hoyowiki-npc-1315",
+      "hoyowiki_entry_page_id": "1315",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1315?lang=zh-cn",
+      "official_english_name": "Heathmann",
+      "official_simplified_chinese_name": "希斯曼"
+    },
+    {
+      "source_key": "hoyowiki-npc-1314",
+      "hoyowiki_entry_page_id": "1314",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1314?lang=zh-cn",
+      "official_english_name": "Jingzhai",
+      "official_simplified_chinese_name": "静斋"
+    },
+    {
+      "source_key": "hoyowiki-npc-1313",
+      "hoyowiki_entry_page_id": "1313",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1313?lang=zh-cn",
+      "official_english_name": "Mingyue",
+      "official_simplified_chinese_name": "明阅"
+    },
+    {
+      "source_key": "hoyowiki-npc-1312",
+      "hoyowiki_entry_page_id": "1312",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1312?lang=zh-cn",
+      "official_english_name": "Wenwen",
+      "official_simplified_chinese_name": "文雯"
+    },
+    {
+      "source_key": "hoyowiki-npc-1285",
+      "hoyowiki_entry_page_id": "1285",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1285?lang=zh-cn",
+      "official_english_name": "Qingni",
+      "official_simplified_chinese_name": "晴霓"
+    },
+    {
+      "source_key": "hoyowiki-npc-1284",
+      "hoyowiki_entry_page_id": "1284",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1284?lang=zh-cn",
+      "official_english_name": "Yuluo",
+      "official_simplified_chinese_name": "玉络"
+    },
+    {
+      "source_key": "hoyowiki-npc-1276",
+      "hoyowiki_entry_page_id": "1276",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1276?lang=zh-cn",
+      "official_english_name": "Benna",
+      "official_simplified_chinese_name": "贝娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-1225",
+      "hoyowiki_entry_page_id": "1225",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1225?lang=zh-cn",
+      "official_english_name": "Ryan",
+      "official_simplified_chinese_name": "莱恩"
+    },
+    {
+      "source_key": "hoyowiki-npc-1215",
+      "hoyowiki_entry_page_id": "1215",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1215?lang=zh-cn",
+      "official_english_name": "Howard",
+      "official_simplified_chinese_name": "霍华德"
+    },
+    {
+      "source_key": "hoyowiki-npc-1214",
+      "hoyowiki_entry_page_id": "1214",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1214?lang=zh-cn",
+      "official_english_name": "Think-Tank",
+      "official_simplified_chinese_name": "「智囊」"
+    },
+    {
+      "source_key": "hoyowiki-npc-1201",
+      "hoyowiki_entry_page_id": "1201",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1201?lang=zh-cn",
+      "official_english_name": "Awei",
+      "official_simplified_chinese_name": "阿伟"
+    },
+    {
+      "source_key": "hoyowiki-npc-1200",
+      "hoyowiki_entry_page_id": "1200",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1200?lang=zh-cn",
+      "official_english_name": "Back'n",
+      "official_simplified_chinese_name": "阿来"
+    },
+    {
+      "source_key": "hoyowiki-npc-1199",
+      "hoyowiki_entry_page_id": "1199",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1199?lang=zh-cn",
+      "official_english_name": "Banxia",
+      "official_simplified_chinese_name": "半夏"
+    },
+    {
+      "source_key": "hoyowiki-npc-1198",
+      "hoyowiki_entry_page_id": "1198",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1198?lang=zh-cn",
+      "official_english_name": "Baroumbrella",
+      "official_simplified_chinese_name": "阴晴伞"
+    },
+    {
+      "source_key": "hoyowiki-npc-1197",
+      "hoyowiki_entry_page_id": "1197",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1197?lang=zh-cn",
+      "official_english_name": "Battuta",
+      "official_simplified_chinese_name": "白图泰"
+    },
+    {
+      "source_key": "hoyowiki-npc-1196",
+      "hoyowiki_entry_page_id": "1196",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1196?lang=zh-cn",
+      "official_english_name": "Chengjie",
+      "official_simplified_chinese_name": "铖杰"
+    },
+    {
+      "source_key": "hoyowiki-npc-1195",
+      "hoyowiki_entry_page_id": "1195",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1195?lang=zh-cn",
+      "official_english_name": "Chiyan",
+      "official_simplified_chinese_name": "斥晏"
+    },
+    {
+      "source_key": "hoyowiki-npc-1194",
+      "hoyowiki_entry_page_id": "1194",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1194?lang=zh-cn",
+      "official_english_name": "Chunfen",
+      "official_simplified_chinese_name": "春分"
+    },
+    {
+      "source_key": "hoyowiki-npc-1193",
+      "hoyowiki_entry_page_id": "1193",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1193?lang=zh-cn",
+      "official_english_name": "Cong",
+      "official_simplified_chinese_name": "小聪"
+    },
+    {
+      "source_key": "hoyowiki-npc-1192",
+      "hoyowiki_entry_page_id": "1192",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1192?lang=zh-cn",
+      "official_english_name": "Dahao",
+      "official_simplified_chinese_name": "大毫"
+    },
+    {
+      "source_key": "hoyowiki-npc-1191",
+      "hoyowiki_entry_page_id": "1191",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1191?lang=zh-cn",
+      "official_english_name": "Dan Shu",
+      "official_simplified_chinese_name": "丹枢"
+    },
+    {
+      "source_key": "hoyowiki-npc-1190",
+      "hoyowiki_entry_page_id": "1190",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1190?lang=zh-cn",
+      "official_english_name": "Depressed Cycrane",
+      "official_simplified_chinese_name": "忧郁的机巧鸟"
+    },
+    {
+      "source_key": "hoyowiki-npc-1189",
+      "hoyowiki_entry_page_id": "1189",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1189?lang=zh-cn",
+      "official_english_name": "Diting",
+      "official_simplified_chinese_name": "谛听"
+    },
+    {
+      "source_key": "hoyowiki-npc-1188",
+      "hoyowiki_entry_page_id": "1188",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1188?lang=zh-cn",
+      "official_english_name": "Dongsheng",
+      "official_simplified_chinese_name": "冬生"
+    },
+    {
+      "source_key": "hoyowiki-npc-1187",
+      "hoyowiki_entry_page_id": "1187",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1187?lang=zh-cn",
+      "official_english_name": "Edelia",
+      "official_simplified_chinese_name": "艾德嘉"
+    },
+    {
+      "source_key": "hoyowiki-npc-1186",
+      "hoyowiki_entry_page_id": "1186",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1186?lang=zh-cn",
+      "official_english_name": "Food Stall Owner (I)",
+      "official_simplified_chinese_name": "小吃摊主（一）"
+    },
+    {
+      "source_key": "hoyowiki-npc-1185",
+      "hoyowiki_entry_page_id": "1185",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1185?lang=zh-cn",
+      "official_english_name": "Food Stall Owner (II)",
+      "official_simplified_chinese_name": "小吃摊主（二）"
+    },
+    {
+      "source_key": "hoyowiki-npc-1184",
+      "hoyowiki_entry_page_id": "1184",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1184?lang=zh-cn",
+      "official_english_name": "Forth",
+      "official_simplified_chinese_name": "阿往"
+    },
+    {
+      "source_key": "hoyowiki-npc-1183",
+      "hoyowiki_entry_page_id": "1183",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1183?lang=zh-cn",
+      "official_english_name": "Foxian Beauty Daiqing",
+      "official_simplified_chinese_name": "狐仙黛青"
+    },
+    {
+      "source_key": "hoyowiki-npc-1182",
+      "hoyowiki_entry_page_id": "1182",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1182?lang=zh-cn",
+      "official_english_name": "Fulie",
+      "official_simplified_chinese_name": "阿浮"
+    },
+    {
+      "source_key": "hoyowiki-npc-1181",
+      "hoyowiki_entry_page_id": "1181",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1181?lang=zh-cn",
+      "official_english_name": "Gao Tang",
+      "official_simplified_chinese_name": "高唐"
+    },
+    {
+      "source_key": "hoyowiki-npc-1180",
+      "hoyowiki_entry_page_id": "1180",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1180?lang=zh-cn",
+      "official_english_name": "Green Hibiscus",
+      "official_simplified_chinese_name": "绿芙蓉"
+    },
+    {
+      "source_key": "hoyowiki-npc-1179",
+      "hoyowiki_entry_page_id": "1179",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1179?lang=zh-cn",
+      "official_english_name": "Greyla",
+      "official_simplified_chinese_name": "葛瑞菈"
+    },
+    {
+      "source_key": "hoyowiki-npc-1178",
+      "hoyowiki_entry_page_id": "1178",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1178?lang=zh-cn",
+      "official_english_name": "Guangda",
+      "official_simplified_chinese_name": "广大"
+    },
+    {
+      "source_key": "hoyowiki-npc-1177",
+      "hoyowiki_entry_page_id": "1177",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1177?lang=zh-cn",
+      "official_english_name": "Huixing",
+      "official_simplified_chinese_name": "绘星"
+    },
+    {
+      "source_key": "hoyowiki-npc-1176",
+      "hoyowiki_entry_page_id": "1176",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1176?lang=zh-cn",
+      "official_english_name": "Immortal in a Vase",
+      "official_simplified_chinese_name": "罐中仙"
+    },
+    {
+      "source_key": "hoyowiki-npc-1175",
+      "hoyowiki_entry_page_id": "1175",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1175?lang=zh-cn",
+      "official_english_name": "Jing Fang",
+      "official_simplified_chinese_name": "景芳"
+    },
+    {
+      "source_key": "hoyowiki-npc-1174",
+      "hoyowiki_entry_page_id": "1174",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1174?lang=zh-cn",
+      "official_english_name": "Jingyan",
+      "official_simplified_chinese_name": "净砚"
+    },
+    {
+      "source_key": "hoyowiki-npc-1173",
+      "hoyowiki_entry_page_id": "1173",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1173?lang=zh-cn",
+      "official_english_name": "Jinyu",
+      "official_simplified_chinese_name": "锦余"
+    },
+    {
+      "source_key": "hoyowiki-npc-1172",
+      "hoyowiki_entry_page_id": "1172",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1172?lang=zh-cn",
+      "official_english_name": "Kang Tu",
+      "official_simplified_chinese_name": "康图"
+    },
+    {
+      "source_key": "hoyowiki-npc-1171",
+      "hoyowiki_entry_page_id": "1171",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1171?lang=zh-cn",
+      "official_english_name": "Liangmu",
+      "official_simplified_chinese_name": "梁沐"
+    },
+    {
+      "source_key": "hoyowiki-npc-1170",
+      "hoyowiki_entry_page_id": "1170",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1170?lang=zh-cn",
+      "official_english_name": "Lianyan",
+      "official_simplified_chinese_name": "连烟"
+    },
+    {
+      "source_key": "hoyowiki-npc-1169",
+      "hoyowiki_entry_page_id": "1169",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1169?lang=zh-cn",
+      "official_english_name": "Luhui",
+      "official_simplified_chinese_name": "芦慧"
+    },
+    {
+      "source_key": "hoyowiki-npc-1168",
+      "hoyowiki_entry_page_id": "1168",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1168?lang=zh-cn",
+      "official_english_name": "Master Gongshu",
+      "official_simplified_chinese_name": "公输师傅"
+    },
+    {
+      "source_key": "hoyowiki-npc-1167",
+      "hoyowiki_entry_page_id": "1167",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1167?lang=zh-cn",
+      "official_english_name": "Mauve Moon",
+      "official_simplified_chinese_name": "紫月季"
+    },
+    {
+      "source_key": "hoyowiki-npc-1166",
+      "hoyowiki_entry_page_id": "1166",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1166?lang=zh-cn",
+      "official_english_name": "Mei",
+      "official_simplified_chinese_name": "梅姐"
+    },
+    {
+      "source_key": "hoyowiki-npc-1165",
+      "hoyowiki_entry_page_id": "1165",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1165?lang=zh-cn",
+      "official_english_name": "Mengming",
+      "official_simplified_chinese_name": "梦茗"
+    },
+    {
+      "source_key": "hoyowiki-npc-1164",
+      "hoyowiki_entry_page_id": "1164",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1164?lang=zh-cn",
+      "official_english_name": "Mr. Xiyan",
+      "official_simplified_chinese_name": "西衍先生"
+    },
+    {
+      "source_key": "hoyowiki-npc-1163",
+      "hoyowiki_entry_page_id": "1163",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1163?lang=zh-cn",
+      "official_english_name": "Mufang",
+      "official_simplified_chinese_name": "沐芳"
+    },
+    {
+      "source_key": "hoyowiki-npc-1162",
+      "hoyowiki_entry_page_id": "1162",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1162?lang=zh-cn",
+      "official_english_name": "Nanjie",
+      "official_simplified_chinese_name": "南洁"
+    },
+    {
+      "source_key": "hoyowiki-npc-1161",
+      "hoyowiki_entry_page_id": "1161",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1161?lang=zh-cn",
+      "official_english_name": "Pawnbroker Handian",
+      "official_simplified_chinese_name": "瀚典掌柜"
+    },
+    {
+      "source_key": "hoyowiki-npc-1160",
+      "hoyowiki_entry_page_id": "1160",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1160?lang=zh-cn",
+      "official_english_name": "Qingyue",
+      "official_simplified_chinese_name": "清越"
+    },
+    {
+      "source_key": "hoyowiki-npc-1159",
+      "hoyowiki_entry_page_id": "1159",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1159?lang=zh-cn",
+      "official_english_name": "Qingzu",
+      "official_simplified_chinese_name": "青镞"
+    },
+    {
+      "source_key": "hoyowiki-npc-1158",
+      "hoyowiki_entry_page_id": "1158",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1158?lang=zh-cn",
+      "official_english_name": "Salesby",
+      "official_simplified_chinese_name": "货全"
+    },
+    {
+      "source_key": "hoyowiki-npc-1157",
+      "hoyowiki_entry_page_id": "1157",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1157?lang=zh-cn",
+      "official_english_name": "Shumiao",
+      "official_simplified_chinese_name": "殊妙"
+    },
+    {
+      "source_key": "hoyowiki-npc-1156",
+      "hoyowiki_entry_page_id": "1156",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1156?lang=zh-cn",
+      "official_english_name": "Songyan",
+      "official_simplified_chinese_name": "松烟"
+    },
+    {
+      "source_key": "hoyowiki-npc-1155",
+      "hoyowiki_entry_page_id": "1155",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1155?lang=zh-cn",
+      "official_english_name": "Tantan",
+      "official_simplified_chinese_name": "檀檀"
+    },
+    {
+      "source_key": "hoyowiki-npc-1154",
+      "hoyowiki_entry_page_id": "1154",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1154?lang=zh-cn",
+      "official_english_name": "Todd",
+      "official_simplified_chinese_name": "陶德"
+    },
+    {
+      "source_key": "hoyowiki-npc-1153",
+      "hoyowiki_entry_page_id": "1153",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1153?lang=zh-cn",
+      "official_english_name": "Wu He",
+      "official_simplified_chinese_name": "武赫"
+    },
+    {
+      "source_key": "hoyowiki-npc-1152",
+      "hoyowiki_entry_page_id": "1152",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1152?lang=zh-cn",
+      "official_english_name": "Xikui",
+      "official_simplified_chinese_name": "夕葵"
+    },
+    {
+      "source_key": "hoyowiki-npc-1151",
+      "hoyowiki_entry_page_id": "1151",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1151?lang=zh-cn",
+      "official_english_name": "Xingxue",
+      "official_simplified_chinese_name": "行雪"
+    },
+    {
+      "source_key": "hoyowiki-npc-1150",
+      "hoyowiki_entry_page_id": "1150",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1150?lang=zh-cn",
+      "official_english_name": "Xuxia",
+      "official_simplified_chinese_name": "旭霞"
+    },
+    {
+      "source_key": "hoyowiki-npc-1149",
+      "hoyowiki_entry_page_id": "1149",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1149?lang=zh-cn",
+      "official_english_name": "Yancui",
+      "official_simplified_chinese_name": "燕翠"
+    },
+    {
+      "source_key": "hoyowiki-npc-1148",
+      "hoyowiki_entry_page_id": "1148",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1148?lang=zh-cn",
+      "official_english_name": "Yanming",
+      "official_simplified_chinese_name": "岩明"
+    },
+    {
+      "source_key": "hoyowiki-npc-1147",
+      "hoyowiki_entry_page_id": "1147",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1147?lang=zh-cn",
+      "official_english_name": "Yinshu",
+      "official_simplified_chinese_name": "隐书"
+    },
+    {
+      "source_key": "hoyowiki-npc-1146",
+      "hoyowiki_entry_page_id": "1146",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1146?lang=zh-cn",
+      "official_english_name": "Yong Hai",
+      "official_simplified_chinese_name": "永海"
+    },
+    {
+      "source_key": "hoyowiki-npc-1145",
+      "hoyowiki_entry_page_id": "1145",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1145?lang=zh-cn",
+      "official_english_name": "Yong Nian",
+      "official_simplified_chinese_name": "永念"
+    },
+    {
+      "source_key": "hoyowiki-npc-1144",
+      "hoyowiki_entry_page_id": "1144",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1144?lang=zh-cn",
+      "official_english_name": "Yujin",
+      "official_simplified_chinese_name": "予衿"
+    },
+    {
+      "source_key": "hoyowiki-npc-1143",
+      "hoyowiki_entry_page_id": "1143",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1143?lang=zh-cn",
+      "official_english_name": "Yunshen",
+      "official_simplified_chinese_name": "芸慎"
+    },
+    {
+      "source_key": "hoyowiki-npc-1142",
+      "hoyowiki_entry_page_id": "1142",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1142?lang=zh-cn",
+      "official_english_name": "Yutie",
+      "official_simplified_chinese_name": "浴铁"
+    },
+    {
+      "source_key": "hoyowiki-npc-1141",
+      "hoyowiki_entry_page_id": "1141",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1141?lang=zh-cn",
+      "official_english_name": "Ziqiao",
+      "official_simplified_chinese_name": "梓桥"
+    },
+    {
+      "source_key": "hoyowiki-npc-1140",
+      "hoyowiki_entry_page_id": "1140",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1140?lang=zh-cn",
+      "official_english_name": "Norbert",
+      "official_simplified_chinese_name": "诺尔伯特"
+    },
+    {
+      "source_key": "hoyowiki-npc-1139",
+      "hoyowiki_entry_page_id": "1139",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1139?lang=zh-cn",
+      "official_english_name": "Bova",
+      "official_simplified_chinese_name": "波瓦"
+    },
+    {
+      "source_key": "hoyowiki-npc-1134",
+      "hoyowiki_entry_page_id": "1134",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1134?lang=zh-cn",
+      "official_english_name": "Grumpy",
+      "official_simplified_chinese_name": "布凯辛"
+    },
+    {
+      "source_key": "hoyowiki-npc-1120",
+      "hoyowiki_entry_page_id": "1120",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1120?lang=zh-cn",
+      "official_english_name": "Screwllum",
+      "official_simplified_chinese_name": "螺丝咕姆"
+    },
+    {
+      "source_key": "hoyowiki-npc-1061",
+      "hoyowiki_entry_page_id": "1061",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1061?lang=zh-cn",
+      "official_english_name": "Third of the Formidable Four",
+      "official_simplified_chinese_name": "「四大天王」之三"
+    },
+    {
+      "source_key": "hoyowiki-npc-1060",
+      "hoyowiki_entry_page_id": "1060",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1060?lang=zh-cn",
+      "official_english_name": "Second of the Formidable Four",
+      "official_simplified_chinese_name": "「四大天王」之二"
+    },
+    {
+      "source_key": "hoyowiki-npc-1059",
+      "hoyowiki_entry_page_id": "1059",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1059?lang=zh-cn",
+      "official_english_name": "First of the Formidable Four",
+      "official_simplified_chinese_name": "「四大天王」之一"
+    },
+    {
+      "source_key": "hoyowiki-npc-1058",
+      "hoyowiki_entry_page_id": "1058",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1058?lang=zh-cn",
+      "official_english_name": "Treasure Chest Magician",
+      "official_simplified_chinese_name": "宝箱魔术师"
+    },
+    {
+      "source_key": "hoyowiki-npc-1057",
+      "hoyowiki_entry_page_id": "1057",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1057?lang=zh-cn",
+      "official_english_name": "Mysterious Kid",
+      "official_simplified_chinese_name": "神秘的孩子"
+    },
+    {
+      "source_key": "hoyowiki-npc-1056",
+      "hoyowiki_entry_page_id": "1056",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1056?lang=zh-cn",
+      "official_english_name": "Tanya",
+      "official_simplified_chinese_name": "谭雅"
+    },
+    {
+      "source_key": "hoyowiki-npc-1055",
+      "hoyowiki_entry_page_id": "1055",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1055?lang=zh-cn",
+      "official_english_name": "Toby",
+      "official_simplified_chinese_name": "托比"
+    },
+    {
+      "source_key": "hoyowiki-npc-1054",
+      "hoyowiki_entry_page_id": "1054",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1054?lang=zh-cn",
+      "official_english_name": "Balaway the Miner's Lamp",
+      "official_simplified_chinese_name": "矿灯巴列维"
+    },
+    {
+      "source_key": "hoyowiki-npc-1053",
+      "hoyowiki_entry_page_id": "1053",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1053?lang=zh-cn",
+      "official_english_name": "Cable Car Operator",
+      "official_simplified_chinese_name": "缆车道操作员"
+    },
+    {
+      "source_key": "hoyowiki-npc-1052",
+      "hoyowiki_entry_page_id": "1052",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1052?lang=zh-cn",
+      "official_english_name": "Eric",
+      "official_simplified_chinese_name": "埃里克"
+    },
+    {
+      "source_key": "hoyowiki-npc-1051",
+      "hoyowiki_entry_page_id": "1051",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1051?lang=zh-cn",
+      "official_english_name": "Elaine",
+      "official_simplified_chinese_name": "伊蕾恩"
+    },
+    {
+      "source_key": "hoyowiki-npc-1050",
+      "hoyowiki_entry_page_id": "1050",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1050?lang=zh-cn",
+      "official_english_name": "Eunice",
+      "official_simplified_chinese_name": "伊妮丝"
+    },
+    {
+      "source_key": "hoyowiki-npc-1049",
+      "hoyowiki_entry_page_id": "1049",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1049?lang=zh-cn",
+      "official_english_name": "Gertie",
+      "official_simplified_chinese_name": "歌蒂"
+    },
+    {
+      "source_key": "hoyowiki-npc-1048",
+      "hoyowiki_entry_page_id": "1048",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1048?lang=zh-cn",
+      "official_english_name": "Kluzer",
+      "official_simplified_chinese_name": "科鲁泽"
+    },
+    {
+      "source_key": "hoyowiki-npc-1047",
+      "hoyowiki_entry_page_id": "1047",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1047?lang=zh-cn",
+      "official_english_name": "Maxime",
+      "official_simplified_chinese_name": "马克西姆"
+    },
+    {
+      "source_key": "hoyowiki-npc-1046",
+      "hoyowiki_entry_page_id": "1046",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1046?lang=zh-cn",
+      "official_english_name": "Pascal",
+      "official_simplified_chinese_name": "帕斯卡"
+    },
+    {
+      "source_key": "hoyowiki-npc-1045",
+      "hoyowiki_entry_page_id": "1045",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1045?lang=zh-cn",
+      "official_english_name": "Peak",
+      "official_simplified_chinese_name": "匹克"
+    },
+    {
+      "source_key": "hoyowiki-npc-1044",
+      "hoyowiki_entry_page_id": "1044",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1044?lang=zh-cn",
+      "official_english_name": "Antonia",
+      "official_simplified_chinese_name": "安东尼娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-1043",
+      "hoyowiki_entry_page_id": "1043",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1043?lang=zh-cn",
+      "official_english_name": "Alina",
+      "official_simplified_chinese_name": "阿丽娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-1042",
+      "hoyowiki_entry_page_id": "1042",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1042?lang=zh-cn",
+      "official_english_name": "Apprentice Mine Cart Operator",
+      "official_simplified_chinese_name": "矿车工学徒"
+    },
+    {
+      "source_key": "hoyowiki-npc-1041",
+      "hoyowiki_entry_page_id": "1041",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1041?lang=zh-cn",
+      "official_english_name": "Senior Mine Cart Operator",
+      "official_simplified_chinese_name": "矿车工老师傅"
+    },
+    {
+      "source_key": "hoyowiki-npc-1040",
+      "hoyowiki_entry_page_id": "1040",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1040?lang=zh-cn",
+      "official_english_name": "Joshua",
+      "official_simplified_chinese_name": "约书亚"
+    },
+    {
+      "source_key": "hoyowiki-npc-1039",
+      "hoyowiki_entry_page_id": "1039",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1039?lang=zh-cn",
+      "official_english_name": "Oleg",
+      "official_simplified_chinese_name": "奥列格"
+    },
+    {
+      "source_key": "hoyowiki-npc-1038",
+      "hoyowiki_entry_page_id": "1038",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1038?lang=zh-cn",
+      "official_english_name": "Scott",
+      "official_simplified_chinese_name": "史考特"
+    },
+    {
+      "source_key": "hoyowiki-npc-1037",
+      "hoyowiki_entry_page_id": "1037",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1037?lang=zh-cn",
+      "official_english_name": "Lauder",
+      "official_simplified_chinese_name": "劳德"
+    },
+    {
+      "source_key": "hoyowiki-npc-1036",
+      "hoyowiki_entry_page_id": "1036",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1036?lang=zh-cn",
+      "official_english_name": "Fidora",
+      "official_simplified_chinese_name": "菲多拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-1035",
+      "hoyowiki_entry_page_id": "1035",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1035?lang=zh-cn",
+      "official_english_name": "Fersman",
+      "official_simplified_chinese_name": "费斯曼"
+    },
+    {
+      "source_key": "hoyowiki-npc-1034",
+      "hoyowiki_entry_page_id": "1034",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1034?lang=zh-cn",
+      "official_english_name": "Perkins",
+      "official_simplified_chinese_name": "帕金斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-1033",
+      "hoyowiki_entry_page_id": "1033",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1033?lang=zh-cn",
+      "official_english_name": "Swetta",
+      "official_simplified_chinese_name": "斯薇塔"
+    },
+    {
+      "source_key": "hoyowiki-npc-1011",
+      "hoyowiki_entry_page_id": "1011",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1011?lang=zh-cn",
+      "official_english_name": "Eris",
+      "official_simplified_chinese_name": "艾丽斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-1010",
+      "hoyowiki_entry_page_id": "1010",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1010?lang=zh-cn",
+      "official_english_name": "Serval's Fanatic Fan",
+      "official_simplified_chinese_name": "希露瓦的狂热粉丝"
+    },
+    {
+      "source_key": "hoyowiki-npc-1009",
+      "hoyowiki_entry_page_id": "1009",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1009?lang=zh-cn",
+      "official_english_name": "Uldan",
+      "official_simplified_chinese_name": "于尔丹"
+    },
+    {
+      "source_key": "hoyowiki-npc-1008",
+      "hoyowiki_entry_page_id": "1008",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1008?lang=zh-cn",
+      "official_english_name": "Cunning Child",
+      "official_simplified_chinese_name": "狡猾的小孩子"
+    },
+    {
+      "source_key": "hoyowiki-npc-1007",
+      "hoyowiki_entry_page_id": "1007",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1007?lang=zh-cn",
+      "official_english_name": "Rebini",
+      "official_simplified_chinese_name": "雷比尼"
+    },
+    {
+      "source_key": "hoyowiki-npc-1006",
+      "hoyowiki_entry_page_id": "1006",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1006?lang=zh-cn",
+      "official_english_name": "Museum Booth Attendant",
+      "official_simplified_chinese_name": "博物馆检票员"
+    },
+    {
+      "source_key": "hoyowiki-npc-1005",
+      "hoyowiki_entry_page_id": "1005",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/1005?lang=zh-cn",
+      "official_english_name": "Boris",
+      "official_simplified_chinese_name": "鲍里斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-903",
+      "hoyowiki_entry_page_id": "903",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/903?lang=zh-cn",
+      "official_english_name": "Herta",
+      "official_simplified_chinese_name": "黑塔"
+    },
+    {
+      "source_key": "hoyowiki-npc-881",
+      "hoyowiki_entry_page_id": "881",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/881?lang=zh-cn",
+      "official_english_name": "Leonard",
+      "official_simplified_chinese_name": "伦纳德"
+    },
+    {
+      "source_key": "hoyowiki-npc-870",
+      "hoyowiki_entry_page_id": "870",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/870?lang=zh-cn",
+      "official_english_name": "Julian",
+      "official_simplified_chinese_name": "尤利安"
+    },
+    {
+      "source_key": "hoyowiki-npc-867",
+      "hoyowiki_entry_page_id": "867",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/867?lang=zh-cn",
+      "official_english_name": "Turner",
+      "official_simplified_chinese_name": "特纳"
+    },
+    {
+      "source_key": "hoyowiki-npc-866",
+      "hoyowiki_entry_page_id": "866",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/866?lang=zh-cn",
+      "official_english_name": "Franz",
+      "official_simplified_chinese_name": "弗朗兹"
+    },
+    {
+      "source_key": "hoyowiki-npc-861",
+      "hoyowiki_entry_page_id": "861",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/861?lang=zh-cn",
+      "official_english_name": "Messenger",
+      "official_simplified_chinese_name": "「信使」"
+    },
+    {
+      "source_key": "hoyowiki-npc-860",
+      "hoyowiki_entry_page_id": "860",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/860?lang=zh-cn",
+      "official_english_name": "Molly",
+      "official_simplified_chinese_name": "茉莉"
+    },
+    {
+      "source_key": "hoyowiki-npc-859",
+      "hoyowiki_entry_page_id": "859",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/859?lang=zh-cn",
+      "official_english_name": "Nika",
+      "official_simplified_chinese_name": "尼古莱"
+    },
+    {
+      "source_key": "hoyowiki-npc-858",
+      "hoyowiki_entry_page_id": "858",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/858?lang=zh-cn",
+      "official_english_name": "Old Goethe",
+      "official_simplified_chinese_name": "老歌德"
+    },
+    {
+      "source_key": "hoyowiki-npc-857",
+      "hoyowiki_entry_page_id": "857",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/857?lang=zh-cn",
+      "official_english_name": "Regin",
+      "official_simplified_chinese_name": "雷金"
+    },
+    {
+      "source_key": "hoyowiki-npc-856",
+      "hoyowiki_entry_page_id": "856",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/856?lang=zh-cn",
+      "official_english_name": "Ronald",
+      "official_simplified_chinese_name": "罗纳德"
+    },
+    {
+      "source_key": "hoyowiki-npc-855",
+      "hoyowiki_entry_page_id": "855",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/855?lang=zh-cn",
+      "official_english_name": "Rossy",
+      "official_simplified_chinese_name": "罗希"
+    },
+    {
+      "source_key": "hoyowiki-npc-854",
+      "hoyowiki_entry_page_id": "854",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/854?lang=zh-cn",
+      "official_english_name": "Tamila",
+      "official_simplified_chinese_name": "塔米拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-853",
+      "hoyowiki_entry_page_id": "853",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/853?lang=zh-cn",
+      "official_english_name": "Vaska",
+      "official_simplified_chinese_name": "瓦丝卡"
+    },
+    {
+      "source_key": "hoyowiki-npc-852",
+      "hoyowiki_entry_page_id": "852",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/852?lang=zh-cn",
+      "official_english_name": "Wallace",
+      "official_simplified_chinese_name": "华劳斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-851",
+      "hoyowiki_entry_page_id": "851",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/851?lang=zh-cn",
+      "official_english_name": "Gilbert",
+      "official_simplified_chinese_name": "吉尔伯特"
+    },
+    {
+      "source_key": "hoyowiki-npc-850",
+      "hoyowiki_entry_page_id": "850",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/850?lang=zh-cn",
+      "official_english_name": "Vanessa",
+      "official_simplified_chinese_name": "凡妮莎"
+    },
+    {
+      "source_key": "hoyowiki-npc-849",
+      "hoyowiki_entry_page_id": "849",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/849?lang=zh-cn",
+      "official_english_name": "Butler Oswell",
+      "official_simplified_chinese_name": "管家奥斯威尔"
+    },
+    {
+      "source_key": "hoyowiki-npc-848",
+      "hoyowiki_entry_page_id": "848",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/848?lang=zh-cn",
+      "official_english_name": "Agnes",
+      "official_simplified_chinese_name": "艾格尼斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-847",
+      "hoyowiki_entry_page_id": "847",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/847?lang=zh-cn",
+      "official_english_name": "Alexis",
+      "official_simplified_chinese_name": "亚历克西斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-846",
+      "hoyowiki_entry_page_id": "846",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/846?lang=zh-cn",
+      "official_english_name": "Amo",
+      "official_simplified_chinese_name": "亚诺"
+    },
+    {
+      "source_key": "hoyowiki-npc-845",
+      "hoyowiki_entry_page_id": "845",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/845?lang=zh-cn",
+      "official_english_name": "Celine",
+      "official_simplified_chinese_name": "塞琳"
+    },
+    {
+      "source_key": "hoyowiki-npc-844",
+      "hoyowiki_entry_page_id": "844",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/844?lang=zh-cn",
+      "official_english_name": "Chavez",
+      "official_simplified_chinese_name": "查威"
+    },
+    {
+      "source_key": "hoyowiki-npc-843",
+      "hoyowiki_entry_page_id": "843",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/843?lang=zh-cn",
+      "official_english_name": "Cyrille",
+      "official_simplified_chinese_name": "希莉儿"
+    },
+    {
+      "source_key": "hoyowiki-npc-842",
+      "hoyowiki_entry_page_id": "842",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/842?lang=zh-cn",
+      "official_english_name": "Dominic",
+      "official_simplified_chinese_name": "多米尼克"
+    },
+    {
+      "source_key": "hoyowiki-npc-841",
+      "hoyowiki_entry_page_id": "841",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/841?lang=zh-cn",
+      "official_english_name": "Dunn",
+      "official_simplified_chinese_name": "邓恩"
+    },
+    {
+      "source_key": "hoyowiki-npc-840",
+      "hoyowiki_entry_page_id": "840",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/840?lang=zh-cn",
+      "official_english_name": "Findie",
+      "official_simplified_chinese_name": "查宝"
+    },
+    {
+      "source_key": "hoyowiki-npc-839",
+      "hoyowiki_entry_page_id": "839",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/839?lang=zh-cn",
+      "official_english_name": "Fizz",
+      "official_simplified_chinese_name": "菲丝"
+    },
+    {
+      "source_key": "hoyowiki-npc-838",
+      "hoyowiki_entry_page_id": "838",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/838?lang=zh-cn",
+      "official_english_name": "Furdo",
+      "official_simplified_chinese_name": "费尔多"
+    },
+    {
+      "source_key": "hoyowiki-npc-837",
+      "hoyowiki_entry_page_id": "837",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/837?lang=zh-cn",
+      "official_english_name": "Lavonne",
+      "official_simplified_chinese_name": "拉雯妮"
+    },
+    {
+      "source_key": "hoyowiki-npc-836",
+      "hoyowiki_entry_page_id": "836",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/836?lang=zh-cn",
+      "official_english_name": "Lila",
+      "official_simplified_chinese_name": "莉拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-835",
+      "hoyowiki_entry_page_id": "835",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/835?lang=zh-cn",
+      "official_english_name": "Manya",
+      "official_simplified_chinese_name": "曼娅"
+    },
+    {
+      "source_key": "hoyowiki-npc-834",
+      "hoyowiki_entry_page_id": "834",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/834?lang=zh-cn",
+      "official_english_name": "Wubbaboo",
+      "official_simplified_chinese_name": "呜呜伯"
+    },
+    {
+      "source_key": "hoyowiki-npc-829",
+      "hoyowiki_entry_page_id": "829",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/829?lang=zh-cn",
+      "official_english_name": "Liaison Officer William",
+      "official_simplified_chinese_name": "联络员威廉"
+    },
+    {
+      "source_key": "hoyowiki-npc-827",
+      "hoyowiki_entry_page_id": "827",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/827?lang=zh-cn",
+      "official_english_name": "Aide",
+      "official_simplified_chinese_name": "「副官」"
+    },
+    {
+      "source_key": "hoyowiki-npc-826",
+      "hoyowiki_entry_page_id": "826",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/826?lang=zh-cn",
+      "official_english_name": "Security Department Member",
+      "official_simplified_chinese_name": "防卫科员"
+    },
+    {
+      "source_key": "hoyowiki-npc-803",
+      "hoyowiki_entry_page_id": "803",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/803?lang=zh-cn",
+      "official_english_name": "Svarog",
+      "official_simplified_chinese_name": "史瓦罗"
+    },
+    {
+      "source_key": "hoyowiki-npc-788",
+      "hoyowiki_entry_page_id": "788",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/788?lang=zh-cn",
+      "official_english_name": "Eikura Shuu",
+      "official_simplified_chinese_name": "荣仓终"
+    },
+    {
+      "source_key": "hoyowiki-npc-787",
+      "hoyowiki_entry_page_id": "787",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/787?lang=zh-cn",
+      "official_english_name": "Dr. Dig",
+      "official_simplified_chinese_name": "掘掘博士"
+    },
+    {
+      "source_key": "hoyowiki-npc-746",
+      "hoyowiki_entry_page_id": "746",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/746?lang=zh-cn",
+      "official_english_name": "Hinkel",
+      "official_simplified_chinese_name": "辛克尔"
+    },
+    {
+      "source_key": "hoyowiki-npc-745",
+      "hoyowiki_entry_page_id": "745",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/745?lang=zh-cn",
+      "official_english_name": "Maintenance Engineer",
+      "official_simplified_chinese_name": "维修工程师"
+    },
+    {
+      "source_key": "hoyowiki-npc-744",
+      "hoyowiki_entry_page_id": "744",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/744?lang=zh-cn",
+      "official_english_name": "Abraham",
+      "official_simplified_chinese_name": "亚伯拉罕"
+    },
+    {
+      "source_key": "hoyowiki-npc-743",
+      "hoyowiki_entry_page_id": "743",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/743?lang=zh-cn",
+      "official_english_name": "Man With Luscious Hair",
+      "official_simplified_chinese_name": "狂野爆炸头"
+    },
+    {
+      "source_key": "hoyowiki-npc-742",
+      "hoyowiki_entry_page_id": "742",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/742?lang=zh-cn",
+      "official_english_name": "Bernard",
+      "official_simplified_chinese_name": "伯纳德"
+    },
+    {
+      "source_key": "hoyowiki-npc-741",
+      "hoyowiki_entry_page_id": "741",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/741?lang=zh-cn",
+      "official_english_name": "Capote",
+      "official_simplified_chinese_name": "卡波特"
+    },
+    {
+      "source_key": "hoyowiki-npc-740",
+      "hoyowiki_entry_page_id": "740",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/740?lang=zh-cn",
+      "official_english_name": "Chris",
+      "official_simplified_chinese_name": "克里斯"
+    },
+    {
+      "source_key": "hoyowiki-npc-739",
+      "hoyowiki_entry_page_id": "739",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/739?lang=zh-cn",
+      "official_english_name": "Cooking Genius No. 123",
+      "official_simplified_chinese_name": "炒饭天才123号"
+    },
+    {
+      "source_key": "hoyowiki-npc-738",
+      "hoyowiki_entry_page_id": "738",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/738?lang=zh-cn",
+      "official_english_name": "Joanne",
+      "official_simplified_chinese_name": "乔安"
+    },
+    {
+      "source_key": "hoyowiki-npc-737",
+      "hoyowiki_entry_page_id": "737",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/737?lang=zh-cn",
+      "official_english_name": "Lamina",
+      "official_simplified_chinese_name": "拉明娜"
+    },
+    {
+      "source_key": "hoyowiki-npc-736",
+      "hoyowiki_entry_page_id": "736",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/736?lang=zh-cn",
+      "official_english_name": "Lukacs",
+      "official_simplified_chinese_name": "卢卡奇"
+    },
+    {
+      "source_key": "hoyowiki-npc-735",
+      "hoyowiki_entry_page_id": "735",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/735?lang=zh-cn",
+      "official_english_name": "Mare",
+      "official_simplified_chinese_name": "梅厄"
+    },
+    {
+      "source_key": "hoyowiki-npc-734",
+      "hoyowiki_entry_page_id": "734",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/734?lang=zh-cn",
+      "official_english_name": "Peppy",
+      "official_simplified_chinese_name": "佩佩"
+    },
+    {
+      "source_key": "hoyowiki-npc-733",
+      "hoyowiki_entry_page_id": "733",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/733?lang=zh-cn",
+      "official_english_name": "Rocky",
+      "official_simplified_chinese_name": "洛奇"
+    },
+    {
+      "source_key": "hoyowiki-npc-732",
+      "hoyowiki_entry_page_id": "732",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/732?lang=zh-cn",
+      "official_english_name": "Watson",
+      "official_simplified_chinese_name": "沃森"
+    },
+    {
+      "source_key": "hoyowiki-npc-731",
+      "hoyowiki_entry_page_id": "731",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/731?lang=zh-cn",
+      "official_english_name": "Wen Mingde",
+      "official_simplified_chinese_name": "温明德"
+    },
+    {
+      "source_key": "hoyowiki-npc-730",
+      "hoyowiki_entry_page_id": "730",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/730?lang=zh-cn",
+      "official_english_name": "Wen Shiling",
+      "official_simplified_chinese_name": "温世玲"
+    },
+    {
+      "source_key": "hoyowiki-npc-729",
+      "hoyowiki_entry_page_id": "729",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/729?lang=zh-cn",
+      "official_english_name": "Wen Shiqi",
+      "official_simplified_chinese_name": "温世齐"
+    },
+    {
+      "source_key": "hoyowiki-npc-728",
+      "hoyowiki_entry_page_id": "728",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/728?lang=zh-cn",
+      "official_english_name": "Gunn",
+      "official_simplified_chinese_name": "古恩"
+    },
+    {
+      "source_key": "hoyowiki-npc-727",
+      "hoyowiki_entry_page_id": "727",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/727?lang=zh-cn",
+      "official_english_name": "Esther",
+      "official_simplified_chinese_name": "以斯帖"
+    },
+    {
+      "source_key": "hoyowiki-npc-726",
+      "hoyowiki_entry_page_id": "726",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/726?lang=zh-cn",
+      "official_english_name": "Sheila",
+      "official_simplified_chinese_name": "希拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-725",
+      "hoyowiki_entry_page_id": "725",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/725?lang=zh-cn",
+      "official_english_name": "Emily",
+      "official_simplified_chinese_name": "埃美丽"
+    },
+    {
+      "source_key": "hoyowiki-npc-724",
+      "hoyowiki_entry_page_id": "724",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/724?lang=zh-cn",
+      "official_english_name": "Adler",
+      "official_simplified_chinese_name": "阿德勒"
+    },
+    {
+      "source_key": "hoyowiki-npc-723",
+      "hoyowiki_entry_page_id": "723",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/723?lang=zh-cn",
+      "official_english_name": "Wen Tianweng",
+      "official_simplified_chinese_name": "温天翁"
+    },
+    {
+      "source_key": "hoyowiki-npc-722",
+      "hoyowiki_entry_page_id": "722",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/722?lang=zh-cn",
+      "official_english_name": "Wen Furui",
+      "official_simplified_chinese_name": "温符瑞"
+    },
+    {
+      "source_key": "hoyowiki-npc-721",
+      "hoyowiki_entry_page_id": "721",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/721?lang=zh-cn",
+      "official_english_name": "Pamela",
+      "official_simplified_chinese_name": "帕梅拉"
+    },
+    {
+      "source_key": "hoyowiki-npc-720",
+      "hoyowiki_entry_page_id": "720",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/720?lang=zh-cn",
+      "official_english_name": "Richard",
+      "official_simplified_chinese_name": "理查"
+    },
+    {
+      "source_key": "hoyowiki-npc-581",
+      "hoyowiki_entry_page_id": "581",
+      "page_url": "https://wiki.hoyolab.com/pc/hsr/entry/581?lang=zh-cn",
+      "official_english_name": "Pom-Pom",
+      "official_simplified_chinese_name": "帕姆"
+    }
+  ]
+}

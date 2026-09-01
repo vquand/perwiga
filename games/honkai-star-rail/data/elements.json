@@ -1,0 +1,131 @@
+{
+  "schema": "perwiga.honkai-star-rail.elements.v1",
+  "checked_at": "2026-09-01",
+  "source": {
+    "repository": "https://github.com/Mar-7th/StarRailRes",
+    "source_data": "https://github.com/Dimbreath/StarRailData",
+    "static_api": "https://vizualabstract.github.io/StarRailStaticAPI/db/",
+    "commit": "d226befe3db13f2ec15f4161d5f34b1b607643fe",
+    "upstream": "StarRailRes index_new multilingual game-data extracts; not an official HoYoverse API"
+  },
+  "catalog_scope": {
+    "included_records": 7,
+    "locale_set": [
+      "en",
+      "vi",
+      "cn",
+      "cht"
+    ]
+  },
+  "field_provenance": {
+    "names_descriptions": "StarRailRes index_new extracts sourced from Dimbreath/StarRailData",
+    "thumbnail": "StarRailRes asset path, served by its public static mirror"
+  },
+  "elements": [
+    {
+      "source_key": "starrail-element-Fire",
+      "game_data_id": "Fire",
+      "official_english_name": "Fire",
+      "official_simplified_chinese_name": "火",
+      "official_traditional_chinese_name": "火",
+      "official_vietnamese_name": "Hỏa",
+      "official_english_description": "Using Fire attacks to trigger Weakness Break will deal Fire DMG and apply the Burn effect, dealing Fire DoT.",
+      "official_simplified_chinese_description": "使用火属性造成弱点击破时，会造成火属性伤害，并施加灼烧状态。灼烧能造成火属性持续伤害。",
+      "official_traditional_chinese_description": "使用火屬性造成弱點擊破時，會造成火屬性傷害，並施加灼燒狀態。灼燒能造成火屬性持續傷害。",
+      "official_vietnamese_description": "Khi dùng thuộc tính Hỏa gây ra Phá Vỡ Điểm Yếu, sẽ gây Sát Thương Hỏa, đồng thời thi triển trạng thái Thiêu Đốt. Thiêu Đốt có thể gây ra Sát Thương Hỏa Duy Trì.",
+      "source_key_name": "Fire",
+      "color": "#F84F36",
+      "icon_path": "icon/element/Fire.png"
+    },
+    {
+      "source_key": "starrail-element-Ice",
+      "game_data_id": "Ice",
+      "official_english_name": "Ice",
+      "official_simplified_chinese_name": "冰",
+      "official_traditional_chinese_name": "冰",
+      "official_vietnamese_name": "Băng",
+      "official_english_description": "Using Ice attacks to trigger Weakness Break will deal Ice DMG and Freeze the target, immobilizing the enemy and dealing Ice additional DMG.",
+      "official_simplified_chinese_description": "使用冰属性造成弱点击破时，会造成冰属性伤害，并施加冻结状态。冻结会使敌人无法行动，造成冰属性附加伤害。",
+      "official_traditional_chinese_description": "使用冰屬性造成弱點擊破時，會造成冰屬性傷害，並施加凍結狀態。凍結會使敵人無法行動，並造成冰屬性附加傷害。",
+      "official_vietnamese_description": "Khi dùng thuộc tính Băng gây ra Phá Vỡ Điểm Yếu, sẽ gây sát thương thuộc tính Băng, đồng thời thi triển trạng thái Đóng Băng. Đóng Băng khiến kẻ địch không thể hành động, gây ra sát thương Băng kèm theo.",
+      "source_key_name": "Ice",
+      "color": "#47C7FD",
+      "icon_path": "icon/element/Ice.png"
+    },
+    {
+      "source_key": "starrail-element-Imaginary",
+      "game_data_id": "Imaginary",
+      "official_english_name": "Imaginary",
+      "official_simplified_chinese_name": "虚数",
+      "official_traditional_chinese_name": "虛數",
+      "official_vietnamese_name": "Số Ảo",
+      "official_english_description": "Using Imaginary attacks to trigger Weakness Break will deal Imaginary DMG and apply the Imprisonment effect, delaying the enemy's action and reducing its SPD.",
+      "official_simplified_chinese_description": "使用虚数属性造成弱点击破时，会造成虚数属性伤害，并施加禁锢状态。禁锢会使敌人行动延后，同时使其速度降低。",
+      "official_traditional_chinese_description": "使用虛數屬性造成弱點擊破時，會造成虛數屬性傷害，並施加禁錮狀態。禁錮會使敵人行動延後，並降低其速度。",
+      "official_vietnamese_description": "Khi dùng Thuộc Tính Số Ảo gây Phá Vỡ Điểm Yếu, sẽ gây Sát Thương Số Ảo, đồng thời thêm trạng thái Giam Cầm. Giam Cầm sẽ khiến kẻ địch trì hoãn hành động và giảm tốc.",
+      "source_key_name": "Imaginary",
+      "color": "#F4D258",
+      "icon_path": "icon/element/Imaginary.png"
+    },
+    {
+      "source_key": "starrail-element-Physical",
+      "game_data_id": "Physical",
+      "official_english_name": "Physical",
+      "official_simplified_chinese_name": "物理",
+      "official_traditional_chinese_name": "物理",
+      "official_vietnamese_name": "Vật Lý",
+      "official_english_description": "Using Physical attacks to trigger Weakness Break will deal Physical DMG and apply the Bleed effect, dealing Physical DoT.",
+      "official_simplified_chinese_description": "使用物理属性造成弱点击破时，会造成物理属性伤害，并施加裂伤状态。裂伤能造成物理属性持续伤害。",
+      "official_traditional_chinese_description": "使用物理屬性造成弱點擊破時，會造成物理屬性傷害，並施加裂傷狀態。裂傷能造成物理屬性持續傷害。",
+      "official_vietnamese_description": "Khi dùng thuộc tính Vật Lý gây ra Phá Vỡ Điểm Yếu, sẽ gây Sát Thương Vật Lý, đồng thời thi triển trạng thái Chảy Máu. Chảy Máu có thể gây ra Sát Thương Vật Lý Duy Trì.",
+      "source_key_name": "Physical",
+      "color": "#FFFFFF",
+      "icon_path": "icon/element/Physical.png"
+    },
+    {
+      "source_key": "starrail-element-Quantum",
+      "game_data_id": "Quantum",
+      "official_english_name": "Quantum",
+      "official_simplified_chinese_name": "量子",
+      "official_traditional_chinese_name": "量子",
+      "official_vietnamese_name": "Lượng Tử",
+      "official_english_description": "Using Quantum attacks to trigger Weakness Break will deal Quantum DMG and apply the Entanglement effect, delaying the enemy's action and dealing Quantum Additional DMG to the affected enemy at the start of the next turn. When the enemy is hit, this extra DMG will increase.",
+      "official_simplified_chinese_description": "使用量子属性造成弱点击破时，会造成量子属性伤害，并施加纠缠状态。纠缠会使敌人行动延后，并在下个回合开始时对其造成额外的量子属性附加伤害，当其受到攻击时，会使该额外伤害提高。",
+      "official_traditional_chinese_description": "使用量子屬性造成弱點擊破時，會造成量子屬性傷害，並施加糾纏狀態。糾纏會使敵人行動延後，並在下個回合開始時對其造成額外的量子屬性附加傷害，且若其受到攻擊，該額外傷害將會提高。",
+      "official_vietnamese_description": "Khi dùng thuộc tính Lượng Tử gây ra Phá Vỡ Điểm Yếu, sẽ gây sát thương thuộc tính Lượng Tử, đồng thời thi triển trạng thái Nhiễu Loạn. Nhiễu Loạn khiến kẻ địch Trì Hoãn Hành Động. Khi bắt đầu hiệp kế tiếp sẽ gây thêm sát thương kèm theo Lượng Tử lên kẻ địch, khi kẻ địch chịu tấn công, sẽ tăng lượng sát thương thêm này.",
+      "source_key_name": "Quantum",
+      "color": "#1C29BA",
+      "icon_path": "icon/element/Quantum.png"
+    },
+    {
+      "source_key": "starrail-element-Thunder",
+      "game_data_id": "Thunder",
+      "official_english_name": "Lightning",
+      "official_simplified_chinese_name": "雷",
+      "official_traditional_chinese_name": "雷",
+      "official_vietnamese_name": "Lôi",
+      "official_english_description": "Using Lightning attacks to trigger Weakness Break will deal Lightning DMG and apply the Shock effect, dealing Lightning DoT.",
+      "official_simplified_chinese_description": "使用雷属性造成弱点击破时，会造成雷属性伤害，并施加触电状态。触电能造成雷属性持续伤害。",
+      "official_traditional_chinese_description": "使用雷屬性造成弱點擊破時，會造成雷屬性傷害，並施加觸電狀態。觸電能造成雷屬性持續傷害。",
+      "official_vietnamese_description": "Khi dùng thuộc tính Lôi gây ra Phá Vỡ Điểm Yếu, sẽ gây Sát Thương Lôi, đồng thời thi triển trạng thái Sốc Điện. Sốc Điện có thể gây ra Sát Thương Lôi Duy Trì.",
+      "source_key_name": "Thunder",
+      "color": "#8872F1",
+      "icon_path": "icon/element/Thunder.png"
+    },
+    {
+      "source_key": "starrail-element-Wind",
+      "game_data_id": "Wind",
+      "official_english_name": "Wind",
+      "official_simplified_chinese_name": "风",
+      "official_traditional_chinese_name": "風",
+      "official_vietnamese_name": "Phong",
+      "official_english_description": "Using Wind attacks to trigger Weakness Break will deal Wind DMG and apply the Wind Shear effect, dealing Wind DoT.",
+      "official_simplified_chinese_description": "使用风属性造成弱点击破时，会造成风属性伤害，并施加风化状态。风化能造成风属性持续伤害。",
+      "official_traditional_chinese_description": "使用風屬性造成弱點擊破時，會造成風屬性傷害，並施加風化狀態。風化能造成風屬性持續傷害。",
+      "official_vietnamese_description": "Khi dùng thuộc tính Phong gây ra Phá Vỡ Điểm Yếu, sẽ gây Sát Thương Phong, đồng thời thi triển trạng thái Bào Mòn. Bào Mòn có thể gây ra Sát Thương Phong Duy Trì.",
+      "source_key_name": "Wind",
+      "color": "#00FF9C",
+      "icon_path": "icon/element/Wind.png"
+    }
+  ]
+}
