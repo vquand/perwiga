@@ -23,7 +23,7 @@ The snapshot checked on 2026-09-01 contains:
 
 The separate Hán-Việt snapshots provide generated search aliases without changing official names: 97 Character records (85 aliases; placeholders and Latin-only names remain unresolved), 169 Light Cones, 60 Relic Sets, 742 Relic Pieces, 9 Paths, 7 Elements, and 436 NPC source records (432 generated readings, 3 unresolved readings, and 1 source-literal name). These aliases are explicitly marked as generated and unofficial; they are not Vietnamese localization fields.
 
-Character records preserve rarity, Path, Element, Max Energy when supplied, localized names, and StarRailRes portrait paths. The upstream catalog includes multiple playable variants, both protagonist genders/path variants, crossover records, and source placeholders such as `{NICKNAME}`; these are preserved as source records and are not silently collapsed by display name. The runtime uses a contextual `Trailblazer (Male/Female)` label for those placeholder records while retaining `{NICKNAME}` in the official source fields. The basic Character endpoint does not supply biographies, so the snapshot keeps descriptions absent rather than inferring them from another source.
+Character records preserve rarity, Path, Element, Max Energy when supplied, localized names, and StarRailRes portrait paths. Character icon URLs are pinned to the reviewed StarRailRes commit and crawled into `assets/characters/` for local and public serving; the source URL remains in each database row's provenance metadata. The upstream catalog includes multiple playable variants, both protagonist genders/path variants, crossover records, and source placeholders such as `{NICKNAME}`; these are preserved as source records and are not silently collapsed by display name. The runtime uses a contextual `Trailblazer (Male/Female)` label for those placeholder records while retaining `{NICKNAME}` in the official source fields. The basic Character endpoint does not supply biographies, so the snapshot keeps descriptions absent rather than inferring them from another source.
 
 Light Cone records preserve localized names and descriptions, rarity, Path, and portrait paths. Relic Sets and Relic Pieces remain separate: each Piece retains its source parent Set key, slot, rarity, maximum level, and localized names. No missing pieces are fabricated. Paths and Elements retain their localized names, descriptions, source keys, and Element presentation colors.
 
@@ -38,6 +38,8 @@ python3 games/honkai-star-rail/scripts/fetch-data.py \
   --source-dir /path/to/StarRailRes \
   --source-commit <reviewed-commit> \
   --checked-at YYYY-MM-DD
+
+python3 games/honkai-star-rail/scripts/fetch-character-thumbnails.py
 ```
 
 The script also supports the public static mirror when `--source-dir` is omitted. Review changes before importing them. It refuses an unexpected shrink in any existing catalog unless `--allow-shrink` is explicitly added.

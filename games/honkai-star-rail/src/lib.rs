@@ -227,6 +227,7 @@ struct CharacterRecord {
     element_vietnamese_name: String,
     max_sp: Option<u16>,
     thumbnail_path: String,
+    thumbnail_url: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -1220,8 +1221,10 @@ pub fn import_curated_characters(
                     automatic_vietnamese_translation: None,
                     english_description: None,
                     other_information: Some(format!(
-                        "{}. Path: {} ({}). Element: {} ({}). Rarity: {}★. Game data ID: {}. Max Energy: {}. The basic StarRailRes character endpoint does not supply a biography; no description was inferred.",
+                        "{}. Thumbnail source URL: {}. StarRailRes portrait path: {}. Path: {} ({}). Element: {} ({}). Rarity: {}★. Game data ID: {}. Max Energy: {}. The basic StarRailRes character endpoint does not supply a biography; no description was inferred.",
                         marker(&character.source_key, "character", source_commit(&snapshot.source), &snapshot.checked_at),
+                        character.thumbnail_url,
+                        character.thumbnail_path,
                         character.path_english_name,
                         character.path_vietnamese_name,
                         character.element_english_name,
@@ -1704,8 +1707,11 @@ impl LibraryModule for HonkaiStarRailModule {
         match entity.entity_type.as_str() {
             "character" => {
                 let character = character_record(source_key)?;
+                character_thumbnail(source_key)?;
                 Some(EntityPresentation {
-                    thumbnail_url: asset_url(&character.thumbnail_path),
+                    thumbnail_url: format!(
+                        "/assets/modules/honkai-star-rail/characters/{source_key}.png"
+                    ),
                     accent_color: rarity_color(character.rarity).to_string(),
                     context_label: Some(format!(
                         "{} · {}",
@@ -1814,6 +1820,12 @@ pub fn register(registry: &mut ModuleRegistry) -> perwiga_core::Result<()> {
     registry.register(module())
 }
 
+include!(concat!(env!("OUT_DIR"), "/character_thumbnails.rs"));
+
+pub fn character_thumbnail(source_key: &str) -> Option<&'static [u8]> {
+    character_thumbnail_asset(source_key)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1891,8 +1903,17 @@ mod tests {
                 && alias.kind == "han-viet"));
         let presentation = module().entity_presentation(&march).expect("presentation");
         assert_eq!(presentation.rarity, Some(4));
+        assert_eq!(
+            presentation.thumbnail_url,
+            "/assets/modules/honkai-star-rail/characters/starrailres-character-1001.png"
+        );
         assert_eq!(presentation.facets["path"], "Preservation");
         assert_eq!(presentation.facets["element"], "Ice");
+        assert!(march.other_information.as_deref().is_some_and(|value| {
+            value.contains(
+                "Thumbnail source URL: https://raw.githubusercontent.com/Mar-7th/StarRailRes/",
+            )
+        }));
 
         let trailblazer = store
             .list_entities(&work.id, Some("character"))

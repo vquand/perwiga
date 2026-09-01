@@ -5,6 +5,7 @@
     "repository": "https://github.com/Mar-7th/StarRailRes",
     "source_data": "https://github.com/Dimbreath/StarRailData",
     "static_api": "https://vizualabstract.github.io/StarRailStaticAPI/db/",
+    "static_assets": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/",
     "commit": "d226befe3db13f2ec15f4161d5f34b1b607643fe",
     "upstream": "StarRailRes index_new multilingual game-data extracts; not an official HoYoverse API"
   },
@@ -39,7 +40,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 120,
       "icon_path": "icon/character/1001.png",
-      "thumbnail_path": "image/character_portrait/1001.png"
+      "thumbnail_path": "image/character_portrait/1001.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1001.png"
     },
     {
       "source_key": "starrailres-character-1002",
@@ -57,7 +59,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 100,
       "icon_path": "icon/character/1002.png",
-      "thumbnail_path": "image/character_portrait/1002.png"
+      "thumbnail_path": "image/character_portrait/1002.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1002.png"
     },
     {
       "source_key": "starrailres-character-1003",
@@ -75,7 +78,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 120,
       "icon_path": "icon/character/1003.png",
-      "thumbnail_path": "image/character_portrait/1003.png"
+      "thumbnail_path": "image/character_portrait/1003.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1003.png"
     },
     {
       "source_key": "starrailres-character-1004",
@@ -93,7 +97,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 120,
       "icon_path": "icon/character/1004.png",
-      "thumbnail_path": "image/character_portrait/1004.png"
+      "thumbnail_path": "image/character_portrait/1004.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1004.png"
     },
     {
       "source_key": "starrailres-character-1005",
@@ -111,7 +116,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 120,
       "icon_path": "icon/character/1005.png",
-      "thumbnail_path": "image/character_portrait/1005.png"
+      "thumbnail_path": "image/character_portrait/1005.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1005.png"
     },
     {
       "source_key": "starrailres-character-1006",
@@ -129,7 +135,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 110,
       "icon_path": "icon/character/1006.png",
-      "thumbnail_path": "image/character_portrait/1006.png"
+      "thumbnail_path": "image/character_portrait/1006.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1006.png"
     },
     {
       "source_key": "starrailres-character-1008",
@@ -147,7 +154,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 110,
       "icon_path": "icon/character/1008.png",
-      "thumbnail_path": "image/character_portrait/1008.png"
+      "thumbnail_path": "image/character_portrait/1008.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1008.png"
     },
     {
       "source_key": "starrailres-character-1009",
@@ -165,7 +173,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 120,
       "icon_path": "icon/character/1009.png",
-      "thumbnail_path": "image/character_portrait/1009.png"
+      "thumbnail_path": "image/character_portrait/1009.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1009.png"
     },
     {
       "source_key": "starrailres-character-1013",
@@ -183,7 +192,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 110,
       "icon_path": "icon/character/1013.png",
-      "thumbnail_path": "image/character_portrait/1013.png"
+      "thumbnail_path": "image/character_portrait/1013.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1013.png"
     },
     {
       "source_key": "starrailres-character-1014",
@@ -201,7 +211,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 360,
       "icon_path": "icon/character/1014.png",
-      "thumbnail_path": "image/character_portrait/1014.png"
+      "thumbnail_path": "image/character_portrait/1014.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1014.png"
     },
     {
       "source_key": "starrailres-character-1015",
@@ -219,7 +230,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 220,
       "icon_path": "icon/character/1015.png",
-      "thumbnail_path": "image/character_portrait/1015.png"
+      "thumbnail_path": "image/character_portrait/1015.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1015.png"
     },
     {
       "source_key": "starrailres-character-1101",
@@ -237,7 +249,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 120,
       "icon_path": "icon/character/1101.png",
-      "thumbnail_path": "image/character_portrait/1101.png"
+      "thumbnail_path": "image/character_portrait/1101.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1101.png"
     },
     {
       "source_key": "starrailres-character-1102",
@@ -255,7 +268,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 120,
       "icon_path": "icon/character/1102.png",
-      "thumbnail_path": "image/character_portrait/1102.png"
+      "thumbnail_path": "image/character_portrait/1102.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1102.png"
     },
     {
       "source_key": "starrailres-character-1103",
@@ -273,7 +287,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 100,
       "icon_path": "icon/character/1103.png",
-      "thumbnail_path": "image/character_portrait/1103.png"
+      "thumbnail_path": "image/character_portrait/1103.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1103.png"
     },
     {
       "source_key": "starrailres-character-1104",
@@ -291,7 +306,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 100,
       "icon_path": "icon/character/1104.png",
-      "thumbnail_path": "image/character_portrait/1104.png"
+      "thumbnail_path": "image/character_portrait/1104.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1104.png"
     },
     {
       "source_key": "starrailres-character-1105",
@@ -309,7 +325,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 90,
       "icon_path": "icon/character/1105.png",
-      "thumbnail_path": "image/character_portrait/1105.png"
+      "thumbnail_path": "image/character_portrait/1105.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1105.png"
     },
     {
       "source_key": "starrailres-character-1106",
@@ -327,7 +344,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 110,
       "icon_path": "icon/character/1106.png",
-      "thumbnail_path": "image/character_portrait/1106.png"
+      "thumbnail_path": "image/character_portrait/1106.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1106.png"
     },
     {
       "source_key": "starrailres-character-1107",
@@ -345,7 +363,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 110,
       "icon_path": "icon/character/1107.png",
-      "thumbnail_path": "image/character_portrait/1107.png"
+      "thumbnail_path": "image/character_portrait/1107.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1107.png"
     },
     {
       "source_key": "starrailres-character-1108",
@@ -363,7 +382,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 120,
       "icon_path": "icon/character/1108.png",
-      "thumbnail_path": "image/character_portrait/1108.png"
+      "thumbnail_path": "image/character_portrait/1108.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1108.png"
     },
     {
       "source_key": "starrailres-character-1109",
@@ -381,7 +401,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 120,
       "icon_path": "icon/character/1109.png",
-      "thumbnail_path": "image/character_portrait/1109.png"
+      "thumbnail_path": "image/character_portrait/1109.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1109.png"
     },
     {
       "source_key": "starrailres-character-1110",
@@ -399,7 +420,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 100,
       "icon_path": "icon/character/1110.png",
-      "thumbnail_path": "image/character_portrait/1110.png"
+      "thumbnail_path": "image/character_portrait/1110.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1110.png"
     },
     {
       "source_key": "starrailres-character-1111",
@@ -417,7 +439,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 130,
       "icon_path": "icon/character/1111.png",
-      "thumbnail_path": "image/character_portrait/1111.png"
+      "thumbnail_path": "image/character_portrait/1111.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1111.png"
     },
     {
       "source_key": "starrailres-character-1112",
@@ -435,7 +458,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 130,
       "icon_path": "icon/character/1112.png",
-      "thumbnail_path": "image/character_portrait/1112.png"
+      "thumbnail_path": "image/character_portrait/1112.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1112.png"
     },
     {
       "source_key": "starrailres-character-1201",
@@ -453,7 +477,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 140,
       "icon_path": "icon/character/1201.png",
-      "thumbnail_path": "image/character_portrait/1201.png"
+      "thumbnail_path": "image/character_portrait/1201.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1201.png"
     },
     {
       "source_key": "starrailres-character-1202",
@@ -471,7 +496,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 130,
       "icon_path": "icon/character/1202.png",
-      "thumbnail_path": "image/character_portrait/1202.png"
+      "thumbnail_path": "image/character_portrait/1202.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1202.png"
     },
     {
       "source_key": "starrailres-character-1203",
@@ -489,7 +515,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 100,
       "icon_path": "icon/character/1203.png",
-      "thumbnail_path": "image/character_portrait/1203.png"
+      "thumbnail_path": "image/character_portrait/1203.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1203.png"
     },
     {
       "source_key": "starrailres-character-1204",
@@ -507,7 +534,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 130,
       "icon_path": "icon/character/1204.png",
-      "thumbnail_path": "image/character_portrait/1204.png"
+      "thumbnail_path": "image/character_portrait/1204.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1204.png"
     },
     {
       "source_key": "starrailres-character-1205",
@@ -525,7 +553,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 130,
       "icon_path": "icon/character/1205.png",
-      "thumbnail_path": "image/character_portrait/1205.png"
+      "thumbnail_path": "image/character_portrait/1205.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1205.png"
     },
     {
       "source_key": "starrailres-character-1206",
@@ -543,7 +572,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 120,
       "icon_path": "icon/character/1206.png",
-      "thumbnail_path": "image/character_portrait/1206.png"
+      "thumbnail_path": "image/character_portrait/1206.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1206.png"
     },
     {
       "source_key": "starrailres-character-1207",
@@ -561,7 +591,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 130,
       "icon_path": "icon/character/1207.png",
-      "thumbnail_path": "image/character_portrait/1207.png"
+      "thumbnail_path": "image/character_portrait/1207.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1207.png"
     },
     {
       "source_key": "starrailres-character-1208",
@@ -579,7 +610,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 135,
       "icon_path": "icon/character/1208.png",
-      "thumbnail_path": "image/character_portrait/1208.png"
+      "thumbnail_path": "image/character_portrait/1208.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1208.png"
     },
     {
       "source_key": "starrailres-character-1209",
@@ -597,7 +629,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 140,
       "icon_path": "icon/character/1209.png",
-      "thumbnail_path": "image/character_portrait/1209.png"
+      "thumbnail_path": "image/character_portrait/1209.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1209.png"
     },
     {
       "source_key": "starrailres-character-1210",
@@ -615,7 +648,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 120,
       "icon_path": "icon/character/1210.png",
-      "thumbnail_path": "image/character_portrait/1210.png"
+      "thumbnail_path": "image/character_portrait/1210.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1210.png"
     },
     {
       "source_key": "starrailres-character-1211",
@@ -633,7 +667,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 100,
       "icon_path": "icon/character/1211.png",
-      "thumbnail_path": "image/character_portrait/1211.png"
+      "thumbnail_path": "image/character_portrait/1211.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1211.png"
     },
     {
       "source_key": "starrailres-character-1212",
@@ -651,7 +686,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 140,
       "icon_path": "icon/character/1212.png",
-      "thumbnail_path": "image/character_portrait/1212.png"
+      "thumbnail_path": "image/character_portrait/1212.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1212.png"
     },
     {
       "source_key": "starrailres-character-1213",
@@ -669,7 +705,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 140,
       "icon_path": "icon/character/1213.png",
-      "thumbnail_path": "image/character_portrait/1213.png"
+      "thumbnail_path": "image/character_portrait/1213.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1213.png"
     },
     {
       "source_key": "starrailres-character-1214",
@@ -687,7 +724,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 120,
       "icon_path": "icon/character/1214.png",
-      "thumbnail_path": "image/character_portrait/1214.png"
+      "thumbnail_path": "image/character_portrait/1214.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1214.png"
     },
     {
       "source_key": "starrailres-character-1215",
@@ -705,7 +743,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 140,
       "icon_path": "icon/character/1215.png",
-      "thumbnail_path": "image/character_portrait/1215.png"
+      "thumbnail_path": "image/character_portrait/1215.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1215.png"
     },
     {
       "source_key": "starrailres-character-1217",
@@ -723,7 +762,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 140,
       "icon_path": "icon/character/1217.png",
-      "thumbnail_path": "image/character_portrait/1217.png"
+      "thumbnail_path": "image/character_portrait/1217.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1217.png"
     },
     {
       "source_key": "starrailres-character-1218",
@@ -741,7 +781,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 100,
       "icon_path": "icon/character/1218.png",
-      "thumbnail_path": "image/character_portrait/1218.png"
+      "thumbnail_path": "image/character_portrait/1218.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1218.png"
     },
     {
       "source_key": "starrailres-character-1220",
@@ -759,7 +800,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 12,
       "icon_path": "icon/character/1220.png",
-      "thumbnail_path": "image/character_portrait/1220.png"
+      "thumbnail_path": "image/character_portrait/1220.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1220.png"
     },
     {
       "source_key": "starrailres-character-1221",
@@ -777,7 +819,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 240,
       "icon_path": "icon/character/1221.png",
-      "thumbnail_path": "image/character_portrait/1221.png"
+      "thumbnail_path": "image/character_portrait/1221.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1221.png"
     },
     {
       "source_key": "starrailres-character-1222",
@@ -795,7 +838,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 110,
       "icon_path": "icon/character/1222.png",
-      "thumbnail_path": "image/character_portrait/1222.png"
+      "thumbnail_path": "image/character_portrait/1222.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1222.png"
     },
     {
       "source_key": "starrailres-character-1223",
@@ -813,7 +857,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 120,
       "icon_path": "icon/character/1223.png",
-      "thumbnail_path": "image/character_portrait/1223.png"
+      "thumbnail_path": "image/character_portrait/1223.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1223.png"
     },
     {
       "source_key": "starrailres-character-1224",
@@ -831,7 +876,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 110,
       "icon_path": "icon/character/1224.png",
-      "thumbnail_path": "image/character_portrait/1224.png"
+      "thumbnail_path": "image/character_portrait/1224.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1224.png"
     },
     {
       "source_key": "starrailres-character-1225",
@@ -849,7 +895,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 130,
       "icon_path": "icon/character/1225.png",
-      "thumbnail_path": "image/character_portrait/1225.png"
+      "thumbnail_path": "image/character_portrait/1225.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1225.png"
     },
     {
       "source_key": "starrailres-character-1301",
@@ -867,7 +914,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 110,
       "icon_path": "icon/character/1301.png",
-      "thumbnail_path": "image/character_portrait/1301.png"
+      "thumbnail_path": "image/character_portrait/1301.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1301.png"
     },
     {
       "source_key": "starrailres-character-1302",
@@ -885,7 +933,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 180,
       "icon_path": "icon/character/1302.png",
-      "thumbnail_path": "image/character_portrait/1302.png"
+      "thumbnail_path": "image/character_portrait/1302.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1302.png"
     },
     {
       "source_key": "starrailres-character-1303",
@@ -903,7 +952,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 130,
       "icon_path": "icon/character/1303.png",
-      "thumbnail_path": "image/character_portrait/1303.png"
+      "thumbnail_path": "image/character_portrait/1303.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1303.png"
     },
     {
       "source_key": "starrailres-character-1304",
@@ -921,7 +971,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 110,
       "icon_path": "icon/character/1304.png",
-      "thumbnail_path": "image/character_portrait/1304.png"
+      "thumbnail_path": "image/character_portrait/1304.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1304.png"
     },
     {
       "source_key": "starrailres-character-1305",
@@ -939,7 +990,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 140,
       "icon_path": "icon/character/1305.png",
-      "thumbnail_path": "image/character_portrait/1305.png"
+      "thumbnail_path": "image/character_portrait/1305.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1305.png"
     },
     {
       "source_key": "starrailres-character-1306",
@@ -957,7 +1009,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 110,
       "icon_path": "icon/character/1306.png",
-      "thumbnail_path": "image/character_portrait/1306.png"
+      "thumbnail_path": "image/character_portrait/1306.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1306.png"
     },
     {
       "source_key": "starrailres-character-1307",
@@ -975,7 +1028,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 120,
       "icon_path": "icon/character/1307.png",
-      "thumbnail_path": "image/character_portrait/1307.png"
+      "thumbnail_path": "image/character_portrait/1307.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1307.png"
     },
     {
       "source_key": "starrailres-character-1308",
@@ -993,7 +1047,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 9,
       "icon_path": "icon/character/1308.png",
-      "thumbnail_path": "image/character_portrait/1308.png"
+      "thumbnail_path": "image/character_portrait/1308.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1308.png"
     },
     {
       "source_key": "starrailres-character-1309",
@@ -1011,7 +1066,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 160,
       "icon_path": "icon/character/1309.png",
-      "thumbnail_path": "image/character_portrait/1309.png"
+      "thumbnail_path": "image/character_portrait/1309.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1309.png"
     },
     {
       "source_key": "starrailres-character-1310",
@@ -1029,7 +1085,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 240,
       "icon_path": "icon/character/1310.png",
-      "thumbnail_path": "image/character_portrait/1310.png"
+      "thumbnail_path": "image/character_portrait/1310.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1310.png"
     },
     {
       "source_key": "starrailres-character-1312",
@@ -1047,7 +1104,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 100,
       "icon_path": "icon/character/1312.png",
-      "thumbnail_path": "image/character_portrait/1312.png"
+      "thumbnail_path": "image/character_portrait/1312.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1312.png"
     },
     {
       "source_key": "starrailres-character-1313",
@@ -1065,7 +1123,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 130,
       "icon_path": "icon/character/1313.png",
-      "thumbnail_path": "image/character_portrait/1313.png"
+      "thumbnail_path": "image/character_portrait/1313.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1313.png"
     },
     {
       "source_key": "starrailres-character-1314",
@@ -1083,7 +1142,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 140,
       "icon_path": "icon/character/1314.png",
-      "thumbnail_path": "image/character_portrait/1314.png"
+      "thumbnail_path": "image/character_portrait/1314.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1314.png"
     },
     {
       "source_key": "starrailres-character-1315",
@@ -1101,7 +1161,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 115,
       "icon_path": "icon/character/1315.png",
-      "thumbnail_path": "image/character_portrait/1315.png"
+      "thumbnail_path": "image/character_portrait/1315.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1315.png"
     },
     {
       "source_key": "starrailres-character-1317",
@@ -1119,7 +1180,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 140,
       "icon_path": "icon/character/1317.png",
-      "thumbnail_path": "image/character_portrait/1317.png"
+      "thumbnail_path": "image/character_portrait/1317.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1317.png"
     },
     {
       "source_key": "starrailres-character-1321",
@@ -1137,7 +1199,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 130,
       "icon_path": "icon/character/1321.png",
-      "thumbnail_path": "image/character_portrait/1321.png"
+      "thumbnail_path": "image/character_portrait/1321.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1321.png"
     },
     {
       "source_key": "starrailres-character-1401",
@@ -1155,7 +1218,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 220,
       "icon_path": "icon/character/1401.png",
-      "thumbnail_path": "image/character_portrait/1401.png"
+      "thumbnail_path": "image/character_portrait/1401.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1401.png"
     },
     {
       "source_key": "starrailres-character-1402",
@@ -1173,7 +1237,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 350,
       "icon_path": "icon/character/1402.png",
-      "thumbnail_path": "image/character_portrait/1402.png"
+      "thumbnail_path": "image/character_portrait/1402.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1402.png"
     },
     {
       "source_key": "starrailres-character-1403",
@@ -1191,7 +1256,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 120,
       "icon_path": "icon/character/1403.png",
-      "thumbnail_path": "image/character_portrait/1403.png"
+      "thumbnail_path": "image/character_portrait/1403.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1403.png"
     },
     {
       "source_key": "starrailres-character-1404",
@@ -1209,7 +1275,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 160,
       "icon_path": "icon/character/1404.png",
-      "thumbnail_path": "image/character_portrait/1404.png"
+      "thumbnail_path": "image/character_portrait/1404.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1404.png"
     },
     {
       "source_key": "starrailres-character-1405",
@@ -1227,7 +1294,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 140,
       "icon_path": "icon/character/1405.png",
-      "thumbnail_path": "image/character_portrait/1405.png"
+      "thumbnail_path": "image/character_portrait/1405.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1405.png"
     },
     {
       "source_key": "starrailres-character-1406",
@@ -1245,7 +1313,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 130,
       "icon_path": "icon/character/1406.png",
-      "thumbnail_path": "image/character_portrait/1406.png"
+      "thumbnail_path": "image/character_portrait/1406.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1406.png"
     },
     {
       "source_key": "starrailres-character-1407",
@@ -1263,7 +1332,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": null,
       "icon_path": "icon/character/1407.png",
-      "thumbnail_path": "image/character_portrait/1407.png"
+      "thumbnail_path": "image/character_portrait/1407.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1407.png"
     },
     {
       "source_key": "starrailres-character-1408",
@@ -1281,7 +1351,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 12,
       "icon_path": "icon/character/1408.png",
-      "thumbnail_path": "image/character_portrait/1408.png"
+      "thumbnail_path": "image/character_portrait/1408.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1408.png"
     },
     {
       "source_key": "starrailres-character-1409",
@@ -1299,7 +1370,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 140,
       "icon_path": "icon/character/1409.png",
-      "thumbnail_path": "image/character_portrait/1409.png"
+      "thumbnail_path": "image/character_portrait/1409.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1409.png"
     },
     {
       "source_key": "starrailres-character-1410",
@@ -1317,7 +1389,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 110,
       "icon_path": "icon/character/1410.png",
-      "thumbnail_path": "image/character_portrait/1410.png"
+      "thumbnail_path": "image/character_portrait/1410.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1410.png"
     },
     {
       "source_key": "starrailres-character-1412",
@@ -1335,7 +1408,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 130,
       "icon_path": "icon/character/1412.png",
-      "thumbnail_path": "image/character_portrait/1412.png"
+      "thumbnail_path": "image/character_portrait/1412.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1412.png"
     },
     {
       "source_key": "starrailres-character-1413",
@@ -1353,7 +1427,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 240,
       "icon_path": "icon/character/1413.png",
-      "thumbnail_path": "image/character_portrait/1413.png"
+      "thumbnail_path": "image/character_portrait/1413.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1413.png"
     },
     {
       "source_key": "starrailres-character-1414",
@@ -1371,7 +1446,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 135,
       "icon_path": "icon/character/1414.png",
-      "thumbnail_path": "image/character_portrait/1414.png"
+      "thumbnail_path": "image/character_portrait/1414.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1414.png"
     },
     {
       "source_key": "starrailres-character-1415",
@@ -1389,7 +1465,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 24,
       "icon_path": "icon/character/1415.png",
-      "thumbnail_path": "image/character_portrait/1415.png"
+      "thumbnail_path": "image/character_portrait/1415.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1415.png"
     },
     {
       "source_key": "starrailres-character-1501",
@@ -1407,7 +1484,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 160,
       "icon_path": "icon/character/1501.png",
-      "thumbnail_path": "image/character_portrait/1501.png"
+      "thumbnail_path": "image/character_portrait/1501.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1501.png"
     },
     {
       "source_key": "starrailres-character-1502",
@@ -1425,7 +1503,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 180,
       "icon_path": "icon/character/1502.png",
-      "thumbnail_path": "image/character_portrait/1502.png"
+      "thumbnail_path": "image/character_portrait/1502.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1502.png"
     },
     {
       "source_key": "starrailres-character-1504",
@@ -1443,7 +1522,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 150,
       "icon_path": "icon/character/1504.png",
-      "thumbnail_path": "image/character_portrait/1504.png"
+      "thumbnail_path": "image/character_portrait/1504.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1504.png"
     },
     {
       "source_key": "starrailres-character-1505",
@@ -1461,7 +1541,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 480,
       "icon_path": "icon/character/1505.png",
-      "thumbnail_path": "image/character_portrait/1505.png"
+      "thumbnail_path": "image/character_portrait/1505.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1505.png"
     },
     {
       "source_key": "starrailres-character-1506",
@@ -1479,7 +1560,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 60,
       "icon_path": "icon/character/1506.png",
-      "thumbnail_path": "image/character_portrait/1506.png"
+      "thumbnail_path": "image/character_portrait/1506.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1506.png"
     },
     {
       "source_key": "starrailres-character-1507",
@@ -1497,7 +1579,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 160,
       "icon_path": "icon/character/1507.png",
-      "thumbnail_path": "image/character_portrait/1507.png"
+      "thumbnail_path": "image/character_portrait/1507.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1507.png"
     },
     {
       "source_key": "starrailres-character-1508",
@@ -1515,7 +1598,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 160,
       "icon_path": "icon/character/1508.png",
-      "thumbnail_path": "image/character_portrait/1508.png"
+      "thumbnail_path": "image/character_portrait/1508.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1508.png"
     },
     {
       "source_key": "starrailres-character-1509",
@@ -1533,7 +1617,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 360,
       "icon_path": "icon/character/1509.png",
-      "thumbnail_path": "image/character_portrait/1509.png"
+      "thumbnail_path": "image/character_portrait/1509.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1509.png"
     },
     {
       "source_key": "starrailres-character-1510",
@@ -1551,7 +1636,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 150,
       "icon_path": "icon/character/1510.png",
-      "thumbnail_path": "image/character_portrait/1510.png"
+      "thumbnail_path": "image/character_portrait/1510.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1510.png"
     },
     {
       "source_key": "starrailres-character-1512",
@@ -1569,7 +1655,8 @@
       "element_vietnamese_name": "Phong",
       "max_sp": 140,
       "icon_path": "icon/character/1512.png",
-      "thumbnail_path": "image/character_portrait/1512.png"
+      "thumbnail_path": "image/character_portrait/1512.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1512.png"
     },
     {
       "source_key": "starrailres-character-1513",
@@ -1587,7 +1674,8 @@
       "element_vietnamese_name": "Lượng Tử",
       "max_sp": 130,
       "icon_path": "icon/character/1513.png",
-      "thumbnail_path": "image/character_portrait/1513.png"
+      "thumbnail_path": "image/character_portrait/1513.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/1513.png"
     },
     {
       "source_key": "starrailres-character-8001",
@@ -1605,7 +1693,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 120,
       "icon_path": "icon/character/8001.png",
-      "thumbnail_path": "image/character_portrait/8001.png"
+      "thumbnail_path": "image/character_portrait/8001.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8001.png"
     },
     {
       "source_key": "starrailres-character-8002",
@@ -1623,7 +1712,8 @@
       "element_vietnamese_name": "Vật Lý",
       "max_sp": 120,
       "icon_path": "icon/character/8002.png",
-      "thumbnail_path": "image/character_portrait/8002.png"
+      "thumbnail_path": "image/character_portrait/8002.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8002.png"
     },
     {
       "source_key": "starrailres-character-8003",
@@ -1641,7 +1731,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 120,
       "icon_path": "icon/character/8003.png",
-      "thumbnail_path": "image/character_portrait/8003.png"
+      "thumbnail_path": "image/character_portrait/8003.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8003.png"
     },
     {
       "source_key": "starrailres-character-8004",
@@ -1659,7 +1750,8 @@
       "element_vietnamese_name": "Hỏa",
       "max_sp": 120,
       "icon_path": "icon/character/8004.png",
-      "thumbnail_path": "image/character_portrait/8004.png"
+      "thumbnail_path": "image/character_portrait/8004.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8004.png"
     },
     {
       "source_key": "starrailres-character-8005",
@@ -1677,7 +1769,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 140,
       "icon_path": "icon/character/8005.png",
-      "thumbnail_path": "image/character_portrait/8005.png"
+      "thumbnail_path": "image/character_portrait/8005.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8005.png"
     },
     {
       "source_key": "starrailres-character-8006",
@@ -1695,7 +1788,8 @@
       "element_vietnamese_name": "Số Ảo",
       "max_sp": 140,
       "icon_path": "icon/character/8006.png",
-      "thumbnail_path": "image/character_portrait/8006.png"
+      "thumbnail_path": "image/character_portrait/8006.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8006.png"
     },
     {
       "source_key": "starrailres-character-8007",
@@ -1713,7 +1807,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 160,
       "icon_path": "icon/character/8007.png",
-      "thumbnail_path": "image/character_portrait/8007.png"
+      "thumbnail_path": "image/character_portrait/8007.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8007.png"
     },
     {
       "source_key": "starrailres-character-8008",
@@ -1731,7 +1826,8 @@
       "element_vietnamese_name": "Băng",
       "max_sp": 160,
       "icon_path": "icon/character/8008.png",
-      "thumbnail_path": "image/character_portrait/8008.png"
+      "thumbnail_path": "image/character_portrait/8008.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8008.png"
     },
     {
       "source_key": "starrailres-character-8009",
@@ -1749,7 +1845,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 160,
       "icon_path": "icon/character/8009.png",
-      "thumbnail_path": "image/character_portrait/8009.png"
+      "thumbnail_path": "image/character_portrait/8009.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8009.png"
     },
     {
       "source_key": "starrailres-character-8010",
@@ -1767,7 +1864,8 @@
       "element_vietnamese_name": "Lôi",
       "max_sp": 160,
       "icon_path": "icon/character/8010.png",
-      "thumbnail_path": "image/character_portrait/8010.png"
+      "thumbnail_path": "image/character_portrait/8010.png",
+      "thumbnail_url": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/icon/character/8010.png"
     }
   ]
 }

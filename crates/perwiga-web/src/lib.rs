@@ -347,6 +347,10 @@ pub fn router_with_store(store: Store) -> perwiga_core::Result<Router> {
             "/assets/modules/genshin-impact/regions/{filename}",
             get(genshin_region_icon),
         )
+        .route(
+            "/assets/modules/honkai-star-rail/characters/{filename}",
+            get(star_rail_character_thumbnail),
+        )
         .route("/api/health", get(health))
         .route("/api/uat/endfield", post(setup_endfield))
         .route("/api/uat/genshin", post(setup_genshin))
@@ -525,6 +529,28 @@ async fn genshin_character_thumbnail(Path(filename): Path<String>) -> Result<Res
         .ok_or_else(|| PerwigaError::NotFound(format!("character thumbnail {filename}")))?;
     let bytes = genshin_impact::character_thumbnail(source_key)
         .ok_or_else(|| PerwigaError::NotFound(format!("character thumbnail {filename}")))?;
+    let mut response = Response::new(Body::from(bytes));
+    response
+        .headers_mut()
+        .insert(header::CONTENT_TYPE, HeaderValue::from_static("image/png"));
+    response.headers_mut().insert(
+        header::CACHE_CONTROL,
+        HeaderValue::from_static("public, max-age=31536000, immutable"),
+    );
+    response.headers_mut().insert(
+        header::X_CONTENT_TYPE_OPTIONS,
+        HeaderValue::from_static("nosniff"),
+    );
+    Ok(response)
+}
+
+async fn star_rail_character_thumbnail(Path(filename): Path<String>) -> Result<Response, WebError> {
+    let source_key = filename.strip_suffix(".png").ok_or_else(|| {
+        PerwigaError::NotFound(format!("Star Rail character thumbnail {filename}"))
+    })?;
+    let bytes = honkai_star_rail::character_thumbnail(source_key).ok_or_else(|| {
+        PerwigaError::NotFound(format!("Star Rail character thumbnail {filename}"))
+    })?;
     let mut response = Response::new(Body::from(bytes));
     response
         .headers_mut()

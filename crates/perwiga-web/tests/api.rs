@@ -1,6 +1,6 @@
 use axum::{
     body::Body,
-    http::{Request, StatusCode},
+    http::{header, Request, StatusCode},
 };
 use http_body_util::BodyExt;
 use perwiga_core::{lore::LoreCandidateBatch, Store, WorkKind};
@@ -1331,12 +1331,33 @@ async fn star_rail_setup_is_idempotent_and_imports_crawled_catalogs() {
     assert_eq!(march["presentation"]["facets"]["element"], "Ice");
     assert_eq!(
         march["presentation"]["thumbnail_url"],
-        "https://vizualabstract.github.io/StarRailStaticAPI/assets/image/character_portrait/1001.png"
+        "/assets/modules/honkai-star-rail/characters/starrailres-character-1001.png"
     );
     assert_eq!(
         march["presentation"]["context_icon_url"],
         "https://vizualabstract.github.io/StarRailStaticAPI/assets/icon/element/Ice.png"
     );
+
+    let thumbnail = app
+        .clone()
+        .oneshot(
+            Request::get(
+                "/assets/modules/honkai-star-rail/characters/starrailres-character-1001.png",
+            )
+            .body(Body::empty())
+            .expect("Star Rail character thumbnail request"),
+        )
+        .await
+        .expect("Star Rail character thumbnail response");
+    assert_eq!(thumbnail.status(), StatusCode::OK);
+    assert_eq!(thumbnail.headers()[header::CONTENT_TYPE], "image/png");
+    assert!(thumbnail
+        .into_body()
+        .collect()
+        .await
+        .expect("Star Rail character thumbnail body")
+        .to_bytes()
+        .starts_with(b"\x89PNG\r\n\x1a\n"));
 
     let trailblazer = characters
         .as_array()

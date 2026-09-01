@@ -30,6 +30,10 @@ OUTPUTS = {
     "relics": "relics.json",
 }
 DEFAULT_BASE_URL = "https://vizualabstract.github.io/StarRailStaticAPI/db"
+DEFAULT_ASSET_BASE_URL = (
+    "https://raw.githubusercontent.com/Mar-7th/StarRailRes/"
+    "d226befe3db13f2ec15f4161d5f34b1b607643fe"
+)
 MAX_RESPONSE_BYTES = 25 * 1024 * 1024
 SCHEMA_PREFIX = "perwiga.honkai-star-rail"
 
@@ -43,6 +47,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--source-commit", help="Pinned upstream commit when --source-dir has no .git")
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
+    parser.add_argument("--asset-base-url", default=DEFAULT_ASSET_BASE_URL)
     parser.add_argument("--checked-at", help="Snapshot date in YYYY-MM-DD; defaults to today")
     parser.add_argument(
         "--output-dir",
@@ -180,11 +185,12 @@ def common_record(
     return result
 
 
-def source_metadata(commit: str | None, base_url: str) -> dict[str, Any]:
+def source_metadata(commit: str | None, base_url: str, asset_base_url: str) -> dict[str, Any]:
     return {
         "repository": "https://github.com/Mar-7th/StarRailRes",
         "source_data": "https://github.com/Dimbreath/StarRailData",
         "static_api": base_url.rstrip("/") + "/",
+        "static_assets": asset_base_url.rstrip("/") + "/",
         "commit": commit,
         "upstream": "StarRailRes index_new multilingual game-data extracts; not an official HoYoverse API",
     }
@@ -202,7 +208,12 @@ def make_header(kind: str, checked_at: str, source: dict[str, Any], count: int) 
     }
 
 
-def build_catalogs(raw: dict[str, dict[str, dict[str, Any]]], checked_at: str, source: dict[str, Any]) -> dict[str, dict[str, Any]]:
+def build_catalogs(
+    raw: dict[str, dict[str, dict[str, Any]]],
+    checked_at: str,
+    source: dict[str, Any],
+    asset_base_url: str,
+) -> dict[str, dict[str, Any]]:
     paths = raw["paths"]
     elements = raw["elements"]
     path_names = {
@@ -252,6 +263,7 @@ def build_catalogs(raw: dict[str, dict[str, dict[str, Any]]], checked_at: str, s
                         "max_sp": english.get("max_sp"),
                         "icon_path": required_text(english, "icon", "Character"),
                         "thumbnail_path": required_text(english, "portrait", "Character"),
+                        "thumbnail_url": f"{asset_base_url.rstrip('/')}/{required_text(english, 'icon', 'Character')}",
                     }
                 )
                 records.append(record)
@@ -338,7 +350,8 @@ def build_catalogs(raw: dict[str, dict[str, dict[str, Any]]], checked_at: str, s
             field_provenance = {
                 "names_facets_rarity": "StarRailRes index_new extracts sourced from Dimbreath/StarRailData",
                 "description": "Not supplied by the StarRailRes basic character endpoint; remains null rather than inferred",
-                "thumbnail": "StarRailRes asset path, served by its public static mirror",
+                "thumbnail_path": "StarRailRes portrait asset path, preserved for source fidelity",
+                "thumbnail_url": "StarRailRes character icon URL, derived from the explicit icon path and served by its public static mirror",
             }
         elif endpoint == "light_cones":
             field_provenance = {
@@ -412,8 +425,12 @@ def main() -> int:
         }
         for endpoint in ENDPOINTS
     }
-    source = source_metadata(source_commit(args.source_dir, args.source_commit), args.base_url)
-    catalogs = build_catalogs(raw, checked_at, source)
+    source = source_metadata(
+        source_commit(args.source_dir, args.source_commit),
+        args.base_url,
+        args.asset_base_url,
+    )
+    catalogs = build_catalogs(raw, checked_at, source, args.asset_base_url)
     assert_no_shrink(args.output_dir, catalogs, args.allow_shrink)
     for endpoint, snapshot in catalogs.items():
         write_atomically(args.output_dir / OUTPUTS[endpoint], snapshot)
