@@ -240,6 +240,9 @@ pub struct LoreEvent {
     pub time_label: String,
     pub start_period_id: Option<String>,
     pub end_period_id: Option<String>,
+    /// Display order inherited from the event's start period. `None` means
+    /// the event is relative or otherwise unplaced on the period spine.
+    pub period_order: Option<i64>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -304,6 +307,7 @@ pub struct LoreGraph {
     pub events: Vec<LoreEvent>,
     pub relations: Vec<LoreEventRelation>,
     pub subjects: Vec<LoreSubject>,
+    pub involvements: Vec<LoreInvolvement>,
     pub next_cursor: Option<String>,
 }
 

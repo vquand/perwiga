@@ -629,6 +629,7 @@ async fn setup_endfield(State(state): State<WebState>) -> Result<Json<SetupRespo
         None => application.create_work(WorkKind::Game, ENDFIELD_MODULE_ID, module_name)?,
     };
     arknights_endfield::import_curated_regions(application.store_mut(), &work.id)?;
+    arknights_endfield::import_curated_lore(application.store_mut(), &work.id)?;
     arknights_endfield::import_curated_gear_sets_and_essences(application.store_mut(), &work.id)?;
     arknights_endfield::import_curated_event_entities(application.store_mut(), &work.id)?;
     let events = arknights_endfield::curated_calendar_events()?;

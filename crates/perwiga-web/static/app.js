@@ -396,7 +396,7 @@ function renderTimeline() {
 }
 
 function renderLore() {
-  const graph = state.loreGraph || { periods: [], events: [], relations: [], subjects: [] };
+  const graph = state.loreGraph || { periods: [], events: [], relations: [], subjects: [], involvements: [] };
   dom.loreMap.removeAttribute("aria-busy");
   renderLoreMap(dom.loreMap, graph, { onEvent: selectLoreEvent });
 

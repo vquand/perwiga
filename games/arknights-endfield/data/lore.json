@@ -1,0 +1,314 @@
+{
+  "schema": "perwiga-lore-candidates/v1",
+  "module_id": "arknights-endfield",
+  "corpus": {
+    "version": "official-web-seed-2026-09",
+    "manifest_sha256": "2f329e6bbf4cb3fc5a7e1ec0f52c6c10b228c3a9b4ddc6f2ecf3b0e78bb4c3b6"
+  },
+  "generator": {
+    "name": "perwiga-curated-seed",
+    "version": "1",
+    "generated_at": "2026-09-01T00:00:00Z"
+  },
+  "sources": [
+    {
+      "key": "official-zeroth-directive",
+      "kind": "official-web-publication",
+      "provider": "Arknights: Endfield official site",
+      "identity": "news:3846",
+      "title": "Arknights: Endfield Zeroth Directive: DEV Comm",
+      "language": "en",
+      "url": "https://endfield.gryphline.com/en-us/news/3846",
+      "content_sha256": "official-news-3846-checked-2026-09-01",
+      "checked_at": "2026-09-01"
+    },
+    {
+      "key": "official-homecoming-dev-comm",
+      "kind": "official-web-publication",
+      "provider": "Arknights: Endfield official site",
+      "identity": "news:7017",
+      "title": "Arknights: Endfield [Homecoming] Core Chapter Version DEV Comm",
+      "language": "en",
+      "url": "https://endfield.gryphline.com/en-us/news/7017",
+      "content_sha256": "official-news-7017-checked-2026-09-01",
+      "checked_at": "2026-09-01"
+    }
+  ],
+  "periods": [
+    {
+      "key": "talos-ii-frontier",
+      "name_en": "Talos-II frontier",
+      "description_en": "Official publications describe Talos-II as a frontier welcoming explorers and builders.",
+      "order": 10,
+      "parent_key": null
+    },
+    {
+      "key": "chapter-i-valley-iv",
+      "name_en": "Chapter I · Valley IV",
+      "description_en": "The opening main-mission progression. The source does not provide a Gregorian date for these story beats.",
+      "order": 20,
+      "parent_key": null
+    },
+    {
+      "key": "chapter-ii-wuling",
+      "name_en": "Chapter II · Wuling",
+      "description_en": "The second chapter sends Endministrators toward the Wuling region.",
+      "order": 30,
+      "parent_key": null
+    },
+    {
+      "key": "homecoming",
+      "name_en": "Homecoming",
+      "description_en": "The Homecoming Core Chapter is described as the final battle chapter of Wuling.",
+      "order": 40,
+      "parent_key": null
+    }
+  ],
+  "subjects": [
+    {
+      "key": "talos-ii",
+      "attested_name": "Talos-II",
+      "proposed_type": "region",
+      "entity_ref": {
+        "provider": "beyondGameData@90bc55768143f1998ad02d03ed0042919135979f",
+        "identity": "region:talos-ii"
+      },
+      "evidence": [
+        {
+          "source_key": "official-zeroth-directive",
+          "locator": "paragraph:2",
+          "excerpt": "Talos-II has welcomed numerous explorers and builders of boundless passion, intellect, and spirit of altruism.",
+          "stance": "supports"
+        }
+      ]
+    },
+    {
+      "key": "wuling",
+      "attested_name": "Wuling",
+      "proposed_type": "region",
+      "entity_ref": {
+        "provider": "beyondGameData@90bc55768143f1998ad02d03ed0042919135979f",
+        "identity": "region:wuling"
+      },
+      "evidence": [
+        {
+          "source_key": "official-homecoming-dev-comm",
+          "locator": "main-mission-early-unlock",
+          "excerpt": "Chapter II main missions ... head to the Wuling region.",
+          "stance": "supports"
+        }
+      ]
+    },
+    {
+      "key": "endministrator",
+      "attested_name": "Endministrator",
+      "proposed_type": "unknown",
+      "entity_ref": null,
+      "evidence": [
+        {
+          "source_key": "official-homecoming-dev-comm",
+          "locator": "main-mission-early-unlock",
+          "excerpt": "Once you complete the Chapter I progression, you can accept Chapter II main missions.",
+          "stance": "supports"
+        }
+      ]
+    },
+    {
+      "key": "frontier-explorers",
+      "attested_name": "Endfield explorers and builders",
+      "proposed_type": "unknown",
+      "entity_ref": null,
+      "evidence": [
+        {
+          "source_key": "official-zeroth-directive",
+          "locator": "paragraph:2",
+          "excerpt": "Talos-II has welcomed numerous explorers and builders.",
+          "stance": "supports"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "key": "talos-ii-welcomes-explorers",
+      "title_en": "Talos-II welcomes the expedition",
+      "summary_en": "The official setting context describes Talos-II welcoming explorers and builders.",
+      "time": {
+        "kind": "moment",
+        "precision": "relative",
+        "label": "Before and around the opening expedition",
+        "start_period_key": "talos-ii-frontier",
+        "end_period_key": null,
+        "relations": []
+      },
+      "involvements": [
+        {"subject_key": "talos-ii", "role": "location"},
+        {"subject_key": "frontier-explorers", "role": "actor"}
+      ],
+      "claims": [
+        {
+          "key": "frontier-welcomes-explorers",
+          "text_en": "Talos-II is described as welcoming numerous explorers and builders.",
+          "assertion_kind": "direct_fact",
+          "certainty": "confirmed",
+          "branch_group": null,
+          "involvements": [],
+          "evidence": [
+            {
+              "source_key": "official-zeroth-directive",
+              "locator": "paragraph:2",
+              "excerpt": "Talos-II has welcomed numerous explorers and builders.",
+              "stance": "supports"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "chapter-i-break-the-siege",
+      "title_en": "Chapter I / Process I: Break the Siege",
+      "summary_en": "The official communication names Break the Siege as the first main-mission milestone.",
+      "time": {
+        "kind": "moment",
+        "precision": "relative",
+        "label": "Opening main-mission progression",
+        "start_period_key": "chapter-i-valley-iv",
+        "end_period_key": null,
+        "relations": [
+          {"kind": "before", "event_key": "chapter-i-remediation-progress"}
+        ]
+      },
+      "involvements": [
+        {"subject_key": "talos-ii", "role": "location"},
+        {"subject_key": "endministrator", "role": "actor"}
+      ],
+      "claims": [
+        {
+          "key": "break-the-siege-is-named",
+          "text_en": "Break the Siege is named as the first main mission in the official communication.",
+          "assertion_kind": "direct_fact",
+          "certainty": "confirmed",
+          "branch_group": null,
+          "involvements": [],
+          "evidence": [
+            {
+              "source_key": "official-zeroth-directive",
+              "locator": "designation-selection-permit",
+              "excerpt": "Complete the main mission [Chapter Ⅰ Process I: Break the Siege].",
+              "stance": "supports"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "chapter-i-remediation-progress",
+      "title_en": "Chapter I / Process II: Remediation Progress",
+      "summary_en": "The Wuling unlock notice places Remediation Progress before access to Chapter II missions.",
+      "time": {
+        "kind": "moment",
+        "precision": "relative",
+        "label": "After Break the Siege, before Chapter II",
+        "start_period_key": "chapter-i-valley-iv",
+        "end_period_key": null,
+        "relations": [
+          {"kind": "before", "event_key": "chapter-ii-wuling"}
+        ]
+      },
+      "involvements": [
+        {"subject_key": "endministrator", "role": "actor"},
+        {"subject_key": "talos-ii", "role": "location"}
+      ],
+      "claims": [
+        {
+          "key": "remediation-unlocks-chapter-two",
+          "text_en": "Completing Chapter I Process II: Remediation Progress unlocks Chapter II main missions.",
+          "assertion_kind": "direct_fact",
+          "certainty": "confirmed",
+          "branch_group": null,
+          "involvements": [],
+          "evidence": [
+            {
+              "source_key": "official-homecoming-dev-comm",
+              "locator": "main-mission-early-unlock",
+              "excerpt": "Once you complete [Chapter I Process Ⅱ: Remediation Progress], you will be able to accept Chapter II main missions.",
+              "stance": "supports"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "chapter-ii-wuling",
+      "title_en": "Chapter II sends Endministrators to Wuling",
+      "summary_en": "The official unlock description directs Chapter II main missions toward the Wuling region.",
+      "time": {
+        "kind": "moment",
+        "precision": "relative",
+        "label": "Chapter II main-mission destination",
+        "start_period_key": "chapter-ii-wuling",
+        "end_period_key": null,
+        "relations": [
+          {"kind": "before", "event_key": "homecoming-final-battle-chapter"}
+        ]
+      },
+      "involvements": [
+        {"subject_key": "endministrator", "role": "actor"},
+        {"subject_key": "wuling", "role": "location"}
+      ],
+      "claims": [
+        {
+          "key": "chapter-two-heads-to-wuling",
+          "text_en": "Chapter II main missions send Endministrators to the Wuling region.",
+          "assertion_kind": "direct_fact",
+          "certainty": "confirmed",
+          "branch_group": null,
+          "involvements": [],
+          "evidence": [
+            {
+              "source_key": "official-homecoming-dev-comm",
+              "locator": "main-mission-early-unlock",
+              "excerpt": "Accept Chapter II main missions in advance ... and head to the Wuling region.",
+              "stance": "supports"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "homecoming-final-battle-chapter",
+      "title_en": "Homecoming is Wuling's final battle chapter",
+      "summary_en": "The Homecoming Core Chapter is described as the final battle chapter of Wuling.",
+      "time": {
+        "kind": "moment",
+        "precision": "relative",
+        "label": "After the Chapter II Wuling progression",
+        "start_period_key": "homecoming",
+        "end_period_key": null,
+        "relations": []
+      },
+      "involvements": [
+        {"subject_key": "wuling", "role": "location"},
+        {"subject_key": "endministrator", "role": "actor"}
+      ],
+      "claims": [
+        {
+          "key": "homecoming-final-wuling-chapter",
+          "text_en": "The Homecoming Core Chapter is described as Wuling's final battle chapter.",
+          "assertion_kind": "direct_fact",
+          "certainty": "confirmed",
+          "branch_group": null,
+          "involvements": [],
+          "evidence": [
+            {
+              "source_key": "official-homecoming-dev-comm",
+              "locator": "opening-summary",
+              "excerpt": "The [Homecoming] Core Chapter Version serves as the final battle chapter of Wuling.",
+              "stance": "supports"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@ use std::{
 
 use chrono::{DateTime, FixedOffset};
 use perwiga_core::{
+    lore::{LoreCandidateBatch, LoreImportSummary},
     model::{
         AliasInput, CalendarEvent, CalendarEventInput, EntityAliasBatchInput, EntityImportSummary,
         EntityInput, SourcedEntityInput, WikiEntity,
@@ -1303,6 +1304,36 @@ fn curated_event_snapshot() -> Result<&'static EventSnapshot, PerwigaError> {
     }
 }
 
+pub fn curated_lore_candidate_batch() -> Result<&'static LoreCandidateBatch, PerwigaError> {
+    static BATCH: OnceLock<Result<LoreCandidateBatch, String>> = OnceLock::new();
+    match BATCH.get_or_init(|| {
+        let batch = serde_json::from_str::<LoreCandidateBatch>(include_str!("../data/lore.json"))
+            .map_err(|error| format!("invalid bundled Endfield lore seed: {error}"))?;
+        batch
+            .validate()
+            .map_err(|error| format!("invalid bundled Endfield lore seed: {error}"))?;
+        Ok(batch)
+    }) {
+        Ok(batch) => Ok(batch),
+        Err(message) => Err(PerwigaError::Validation(message.clone())),
+    }
+}
+
+pub fn import_curated_lore(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<LoreImportSummary> {
+    let work = store
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if work.kind != WorkKind::Game || work.module_id != "arknights-endfield" {
+        return Err(PerwigaError::Validation(format!(
+            "work {work_id} is not owned by the Arknights: Endfield module"
+        )));
+    }
+    store.import_reviewed_lore_candidate_batch(work_id, curated_lore_candidate_batch()?)
+}
+
 fn validate_event_snapshot(snapshot: &EventSnapshot) -> Result<(), String> {
     if snapshot.metadata.module_id != "arknights-endfield" {
         return Err("Endfield event snapshot has the wrong module ID".into());
@@ -2571,6 +2602,38 @@ mod tests {
             .expect("cross-patch event");
         assert_eq!(cross_patch.patch_start.as_deref(), Some("1.1"));
         assert_eq!(cross_patch.patch_end.as_deref(), Some("1.2"));
+    }
+
+    #[test]
+    fn curated_lore_seed_is_valid_ordered_and_links_region_subjects() {
+        let batch = curated_lore_candidate_batch().expect("curated lore batch");
+        assert_eq!(batch.module_id, "arknights-endfield");
+        assert!(batch.periods.len() >= 4);
+        assert!(batch.events.len() >= 4);
+
+        let mut store = Store::open_in_memory().expect("in-memory store");
+        let work = store
+            .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+            .expect("work");
+        import_curated_regions(&mut store, &work.id).expect("curated regions");
+        import_curated_lore(&mut store, &work.id).expect("curated lore import");
+
+        let graph = store
+            .list_lore_graph(&work.id, None, None, 100)
+            .expect("lore graph");
+        assert_eq!(graph.events.len(), batch.events.len());
+        assert!(graph
+            .events
+            .windows(2)
+            .all(|events| events[0].period_order.unwrap_or(i64::MAX)
+                <= events[1].period_order.unwrap_or(i64::MAX)));
+        let talos = graph
+            .subjects
+            .iter()
+            .find(|subject| subject.attested_name == "Talos-II")
+            .expect("Talos-II subject");
+        assert!(talos.wiki_entity_id.is_some());
+        assert!(graph.relations.len() >= 2);
     }
 
     #[test]

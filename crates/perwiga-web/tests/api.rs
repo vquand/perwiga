@@ -113,6 +113,28 @@ async fn endfield_setup_is_idempotent() {
     );
 
     let work_id = first_json["work"]["id"].as_str().expect("work id");
+    let lore_graph = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/lore-graph?limit=100"))
+                .body(Body::empty())
+                .expect("lore graph request"),
+        )
+        .await
+        .expect("lore graph response");
+    assert_eq!(lore_graph.status(), StatusCode::OK);
+    let lore_graph = json_response(lore_graph).await;
+    assert!(lore_graph["periods"].as_array().unwrap().len() >= 4);
+    assert!(lore_graph["events"].as_array().unwrap().len() >= 4);
+    assert!(!lore_graph["relations"].as_array().unwrap().is_empty());
+    assert!(!lore_graph["involvements"].as_array().unwrap().is_empty());
+    assert!(lore_graph["subjects"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .any(|subject| subject["attested_name"] == "Talos-II"
+            && !subject["wiki_entity_id"].is_null()));
+
     let wiki_events = app
         .clone()
         .oneshot(
@@ -1080,6 +1102,7 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
     )
     .expect("UTF-8 JavaScript");
     assert!(javascript.contains("api.setupGenshin()"));
+    assert!(javascript.contains("api.setupStarRail()"));
     assert!(javascript.contains("for (const work of state.works)"));
     assert!(javascript.contains("chooseGame(work.id)"));
 }

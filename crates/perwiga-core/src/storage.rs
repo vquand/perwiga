@@ -691,6 +691,58 @@ impl Store {
         Ok(summary)
     }
 
+    /// Imports a title-owned, human-reviewed batch and materializes it into
+    /// the canonical lore graph. The review decisions are still recorded with
+    /// `decision_source = 'rule'` so the provenance is explicit and the
+    /// normal candidate/review tables remain the single source of truth.
+    pub fn import_reviewed_lore_candidate_batch(
+        &mut self,
+        work_id: &str,
+        batch: &LoreCandidateBatch,
+    ) -> Result<LoreImportSummary> {
+        let summary = self.import_lore_candidate_batch(work_id, batch)?;
+        let batch_id: String = self.connection.query_row(
+            "SELECT id FROM lore_candidate_batches
+             WHERE work_id = ?1 AND corpus_manifest_sha256 = ?2
+               AND generator_name = ?3 AND generator_version = ?4",
+            params![
+                work_id,
+                batch.corpus.manifest_sha256,
+                batch.generator.name,
+                batch.generator.version
+            ],
+            |row| row.get(0),
+        )?;
+        let transaction = self.connection.transaction()?;
+        let pending_ids: Vec<String> = {
+            let mut statement = transaction.prepare(
+                "SELECT id FROM lore_candidates
+                 WHERE batch_id = ?1 AND status = 'pending'
+                 ORDER BY candidate_key, id",
+            )?;
+            let rows = statement.query_map([&batch_id], |row| row.get(0))?;
+            rows.collect::<std::result::Result<Vec<String>, _>>()?
+        };
+        for candidate_id in pending_ids {
+            transaction.execute(
+                "INSERT INTO lore_review_decisions
+                 (id, candidate_id, decision, decision_source, normalized_payload_json,
+                  merge_target_id, notes, created_at)
+                 VALUES (?1, ?2, 'approve', 'rule', NULL, NULL,
+                         'Bundled module-owned lore seed reviewed before release.', ?3)",
+                params![new_id(), candidate_id, now()],
+            )?;
+            transaction.execute(
+                "UPDATE lore_candidates SET status = 'approved', updated_at = ?1
+                 WHERE id = ?2 AND status = 'pending'",
+                params![now(), candidate_id],
+            )?;
+        }
+        materialize_lore_batch(&transaction, work_id, &batch_id)?;
+        transaction.commit()?;
+        Ok(summary)
+    }
+
     pub fn list_lore_candidates(
         &self,
         work_id: &str,
@@ -889,7 +941,9 @@ impl Store {
         let mut events_statement = self.connection.prepare(
             "SELECT e.id, e.work_id, e.source_provider, e.source_identity,
                     r.revision, r.title_en, r.summary_en, r.time_kind,
-                    r.time_precision, r.time_label, r.start_period_id, r.end_period_id
+                    r.time_precision, r.time_label, r.start_period_id, r.end_period_id,
+                    (SELECT p.display_order FROM lore_periods p
+                     WHERE p.id = r.start_period_id) AS period_order
              FROM lore_events e
              JOIN lore_event_revisions r
                ON r.event_id = e.id AND r.revision = e.active_revision
@@ -900,7 +954,7 @@ impl Store {
                  LEFT JOIN lore_claims c ON c.id = i.claim_id
                  WHERE i.subject_id = ?3 AND (i.event_id = e.id OR c.event_id = e.id)
                ))
-             ORDER BY e.id LIMIT ?4",
+             ORDER BY period_order IS NULL, period_order, e.id LIMIT ?4",
         )?;
         let event_rows =
             events_statement.query_map(params![work_id, cursor, subject_id, limit + 1], |row| {
@@ -917,6 +971,7 @@ impl Store {
                     row.get::<_, String>(9)?,
                     row.get::<_, Option<String>>(10)?,
                     row.get::<_, Option<String>>(11)?,
+                    row.get::<_, Option<i64>>(12)?,
                 ))
             })?;
         let mut events = Vec::new();
@@ -934,6 +989,7 @@ impl Store {
                 time_label,
                 start_period_id,
                 end_period_id,
+                period_order,
             ) = row?;
             events.push(LoreEvent {
                 id,
@@ -948,6 +1004,7 @@ impl Store {
                 time_label,
                 start_period_id,
                 end_period_id,
+                period_order,
             });
         }
         let next_cursor = if events.len() > limit as usize {
@@ -980,11 +1037,35 @@ impl Store {
                 relation_kind: parse_relation_kind(&kind)?,
             });
         }
+        let mut involvements_statement = self.connection.prepare(
+            "SELECT i.id, i.event_id, i.claim_id, i.subject_id, i.role
+             FROM lore_involvements i
+             WHERE i.event_id IN (
+                       SELECT e.id FROM lore_events e WHERE e.work_id = ?1
+                   )
+                OR i.claim_id IN (
+                       SELECT c.id FROM lore_claims c
+                       JOIN lore_events e ON e.id = c.event_id
+                       WHERE e.work_id = ?1
+                   )
+             ORDER BY i.id",
+        )?;
+        let involvement_rows = involvements_statement.query_map([work_id], |row| {
+            Ok(crate::lore::LoreInvolvement {
+                id: row.get(0)?,
+                event_id: row.get(1)?,
+                claim_id: row.get(2)?,
+                subject_id: row.get(3)?,
+                role: row.get(4)?,
+            })
+        })?;
+        let involvements = involvement_rows.collect::<std::result::Result<Vec<_>, _>>()?;
         Ok(crate::lore::LoreGraph {
             periods,
             events,
             relations,
             subjects: self.list_lore_subjects(work_id)?,
+            involvements,
             next_cursor,
         })
     }
@@ -995,7 +1076,9 @@ impl Store {
             .query_row(
                 "SELECT e.id, e.work_id, e.source_provider, e.source_identity,
                         r.revision, r.title_en, r.summary_en, r.time_kind,
-                        r.time_precision, r.time_label, r.start_period_id, r.end_period_id
+                        r.time_precision, r.time_label, r.start_period_id, r.end_period_id,
+                        (SELECT p.display_order FROM lore_periods p
+                         WHERE p.id = r.start_period_id) AS period_order
                  FROM lore_events e
                  JOIN lore_event_revisions r
                    ON r.event_id = e.id AND r.revision = e.active_revision
@@ -1015,6 +1098,7 @@ impl Store {
                         row.get::<_, String>(9)?,
                         row.get::<_, Option<String>>(10)?,
                         row.get::<_, Option<String>>(11)?,
+                        row.get::<_, Option<i64>>(12)?,
                     ))
                 },
             )
@@ -1032,6 +1116,7 @@ impl Store {
             time_label,
             start_period_id,
             end_period_id,
+            period_order,
         )) = event
         else {
             return Ok(None);
@@ -1049,6 +1134,7 @@ impl Store {
             time_label,
             start_period_id,
             end_period_id,
+            period_order,
         };
         let mut claims_statement = self.connection.prepare(
             "SELECT id, event_id, claim_key, text_en, assertion_kind,
@@ -2237,14 +2323,27 @@ fn materialize_lore_batch(
     for subject in subject_candidates {
         let identity = format!("subject:{}", subject.key);
         let resolved_entity = match subject.entity_ref.as_ref() {
-            Some(reference) => transaction
-                .query_row(
-                    "SELECT entity_id FROM entity_external_identities
-                     WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
-                    params![work_id, reference.provider, reference.identity],
-                    |row| row.get::<_, String>(0),
-                )
-                .optional()?,
+            Some(reference) => {
+                let external_entity = transaction
+                    .query_row(
+                        "SELECT entity_id FROM entity_external_identities
+                         WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                        params![work_id, reference.provider, reference.identity],
+                        |row| row.get::<_, String>(0),
+                    )
+                    .optional()?;
+                match external_entity {
+                    Some(entity_id) => Some(entity_id),
+                    None => transaction
+                        .query_row(
+                            "SELECT id FROM wiki_entities
+                             WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                            params![work_id, reference.provider, reference.identity],
+                            |row| row.get::<_, String>(0),
+                        )
+                        .optional()?,
+                }
+            }
             None => None,
         };
         transaction.execute(
@@ -3674,6 +3773,34 @@ mod tests {
         assert_eq!(detail.evidence.len(), 1);
         assert_eq!(detail.sources.len(), 1);
         assert_eq!(detail.involvements.len(), 1);
+    }
+
+    #[test]
+    fn reviewed_lore_batch_materializes_without_touching_the_human_queue() {
+        let mut store = Store::open_in_memory().expect("in-memory store");
+        let work = store
+            .insert_work(WorkKind::Game, "arknights-endfield", "Arknights: Endfield")
+            .expect("work");
+
+        let summary = store
+            .import_reviewed_lore_candidate_batch(&work.id, &lore_batch_fixture())
+            .expect("reviewed lore batch import");
+        assert_eq!(summary.batch_inserted, 1);
+        assert_eq!(
+            store
+                .list_lore_candidates(&work.id, Some("pending"))
+                .expect("pending candidates")
+                .len(),
+            0
+        );
+        assert_eq!(
+            store
+                .list_lore_graph(&work.id, None, None, 50)
+                .expect("lore graph")
+                .events
+                .len(),
+            1
+        );
     }
 
     #[test]

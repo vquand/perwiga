@@ -13,6 +13,61 @@ function certaintyLabel(event) {
       : event.time_precision;
 }
 
+function timelineOrder(event) {
+  return Number.isFinite(event?.period_order) ? event.period_order : Number.MAX_SAFE_INTEGER;
+}
+
+function relationLabel(relation, relatedEvent) {
+  const target = relatedEvent?.title_en || "another event";
+  switch (relation.relation_kind) {
+    case "before":
+      return `Before ${target}`;
+    case "after":
+      return `After ${target}`;
+    case "overlaps":
+      return `Overlaps ${target}`;
+    case "contains":
+      return `Contains ${target}`;
+    default:
+      return target;
+  }
+}
+
+function orderEvents(events, relations) {
+  const byId = new Map(events.map((event) => [event.id, event]));
+  const outgoing = new Map(events.map((event) => [event.id, new Set()]));
+  const indegree = new Map(events.map((event) => [event.id, 0]));
+  for (const relation of relations || []) {
+    let from = relation.event_id;
+    let to = relation.related_event_id;
+    if (relation.relation_kind === "after") [from, to] = [to, from];
+    if (!["before", "after"].includes(relation.relation_kind) || !byId.has(from) || !byId.has(to)) continue;
+    const targets = outgoing.get(from);
+    if (targets.has(to)) continue;
+    targets.add(to);
+    indegree.set(to, indegree.get(to) + 1);
+  }
+  const compare = (left, right) => left.title_en.localeCompare(right.title_en) || left.id.localeCompare(right.id);
+  const ready = events.filter((event) => indegree.get(event.id) === 0).sort(compare);
+  const ordered = [];
+  while (ready.length) {
+    const event = ready.shift();
+    ordered.push(event);
+    for (const target of outgoing.get(event.id)) {
+      indegree.set(target, indegree.get(target) - 1);
+      if (indegree.get(target) === 0) {
+        ready.push(byId.get(target));
+        ready.sort(compare);
+      }
+    }
+  }
+  if (ordered.length < events.length) {
+    const already = new Set(ordered.map((event) => event.id));
+    ordered.push(...events.filter((event) => !already.has(event.id)).sort(compare));
+  }
+  return ordered;
+}
+
 export function renderLoreMap(container, graph, { onEvent } = {}) {
   container.replaceChildren();
   if (!graph?.events?.length) {
@@ -26,11 +81,18 @@ export function renderLoreMap(container, graph, { onEvent } = {}) {
     left.display_order - right.display_order || left.id.localeCompare(right.id),
   );
   const periodById = new Map(periods.map((period) => [period.id, period]));
+  const eventById = new Map((graph.events || []).map((event) => [event.id, event]));
   const grouped = new Map();
   for (const event of graph.events) {
     const key = event.start_period_id || "__unplaced";
     if (!grouped.has(key)) grouped.set(key, []);
     grouped.get(key).push(event);
+  }
+  for (const events of grouped.values()) {
+    events.splice(0, events.length, ...orderEvents(
+      events.sort((left, right) => timelineOrder(left) - timelineOrder(right) || left.title_en.localeCompare(right.title_en) || left.id.localeCompare(right.id)),
+      (graph.relations || []).filter((relation) => events.some((event) => event.id === relation.event_id || event.id === relation.related_event_id)),
+    ));
   }
 
   const map = element("div", "lore-map");
@@ -58,12 +120,38 @@ export function renderLoreMap(container, graph, { onEvent } = {}) {
       const title = element("h4", "lore-event-title", event.title_en);
       const time = element("p", "lore-event-time", event.time_label);
       const summary = event.summary_en ? element("p", "lore-event-summary", event.summary_en) : null;
+      const eventSubjects = [...new Set((graph.involvements || [])
+        .filter((involvement) => involvement.event_id === event.id)
+        .map((involvement) => involvement.subject_id))]
+        .map((subjectId) => graph.subjects?.find((subject) => subject.id === subjectId))
+        .filter(Boolean);
+      const subjectList = element("div", "lore-event-subjects");
+      for (const subject of eventSubjects) {
+        const pill = element("span", `lore-subject-pill${subject.wiki_entity_id ? "" : " is-provisional"}`, subject.attested_name);
+        pill.title = subject.wiki_entity_id ? subject.proposed_type : "Provisional subject; no wiki entity match yet";
+        subjectList.append(pill);
+      }
+      const eventRelations = (graph.relations || [])
+        .filter((relation) => relation.event_id === event.id)
+        .map((relation) => ({ relation, relatedEvent: eventById.get(relation.related_event_id) }))
+        .filter(({ relatedEvent }) => relatedEvent);
+      const relationList = element("div", "lore-relation-list");
+      for (const { relation, relatedEvent } of eventRelations) {
+        relationList.append(element("span", "lore-relation", relationLabel(relation, relatedEvent)));
+      }
       const meta = element("div", "lore-event-meta");
       meta.append(
         element("span", "lore-event-badge", certaintyLabel(event)),
         element("span", "lore-event-badge", `Revision ${event.revision}`),
       );
-      card.append(title, time, ...(summary ? [summary] : []), meta);
+      card.append(
+        title,
+        time,
+        ...(summary ? [summary] : []),
+        ...(subjectList.children.length ? [subjectList] : []),
+        ...(relationList.children.length ? [relationList] : []),
+        meta,
+      );
       const open = () => onEvent?.(event.id);
       card.addEventListener("click", open);
       card.addEventListener("keydown", (eventKey) => {
@@ -104,7 +192,11 @@ export function renderLoreEventDetail(container, detail, { onBack } = {}) {
   const involvementList = element("ul", "lore-subject-list");
   for (const involvement of detail.involvements || []) {
     const subject = subjects.get(involvement.subject_id);
-    involvementList.append(element("li", "lore-subject-item", `${subject?.attested_name || "Unknown subject"} · ${involvement.role}`));
+    involvementList.append(element(
+      "li",
+      `lore-subject-item${subject?.wiki_entity_id ? "" : " is-provisional"}`,
+      `${subject?.attested_name || "Unknown subject"} · ${involvement.role}${subject?.wiki_entity_id ? "" : " · provisional"}`,
+    ));
   }
   if (!involvementList.children.length) involvementList.append(element("li", "lore-muted", "No subjects recorded."));
   involvementSection.append(involvementList);
@@ -117,6 +209,7 @@ export function renderLoreEventDetail(container, detail, { onBack } = {}) {
   }
   const claimSection = element("section", "lore-detail-section");
   claimSection.append(element("h4", "lore-detail-section-title", "Claims and evidence"));
+  const sources = new Map((detail.sources || []).map((source) => [source.id, source]));
   for (const claim of detail.claims || []) {
     const article = element("article", "lore-claim");
     article.append(
@@ -125,7 +218,18 @@ export function renderLoreEventDetail(container, detail, { onBack } = {}) {
     );
     for (const item of evidenceByClaim.get(claim.id) || []) {
       const evidence = element("blockquote", "lore-evidence", item.evidence.excerpt);
-      evidence.append(element("cite", "lore-evidence-locator", `${item.evidence.locator} · ${item.stance}`));
+      const source = sources.get(item.evidence.source_id);
+      const cite = element("cite", "lore-evidence-locator", `${item.evidence.locator} · ${item.stance}`);
+      if (source?.source_url) {
+        const link = element("a", "lore-source-link", source.title);
+        link.href = source.source_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        cite.append(document.createTextNode(" · "), link);
+      } else if (source?.title) {
+        cite.append(document.createTextNode(` · ${source.title}`));
+      }
+      evidence.append(cite);
       article.append(evidence);
     }
     claimSection.append(article);
