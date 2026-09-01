@@ -35,6 +35,10 @@ export const api = {
     return request("/api/uat/genshin", { method: "POST" });
   },
 
+  setupStarRail() {
+    return request("/api/uat/star-rail", { method: "POST" });
+  },
+
   listWorks() {
     return request("/api/works?kind=game");
   },

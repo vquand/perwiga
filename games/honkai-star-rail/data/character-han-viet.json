@@ -1,0 +1,3476 @@
+{
+  "schema": "perwiga.honkai-star-rail.character-han-viet.v1",
+  "checked_at": "2026-09-01",
+  "catalog_scope": {
+    "source_catalog": "games/honkai-star-rail/data/characters.json",
+    "source_catalog_schema": "perwiga.honkai-star-rail.characters.v1",
+    "source_name_field": "official_simplified_chinese_name",
+    "included_records": 97,
+    "source_records": 97,
+    "alias_records": 97,
+    "unique_simplified_chinese_names": 86,
+    "counts": {
+      "catalog_records": 97,
+      "output_records": 97,
+      "queried_records": 87,
+      "generated_han_viet_records": 85,
+      "dictionary_only_generated_records": 84,
+      "explicit_fallback_records": 1,
+      "source_literal_records": 2,
+      "placeholder_records": 10,
+      "unresolved_records": 0,
+      "unique_unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "unique_explicit_fallback_tokens": [
+        "菈"
+      ]
+    },
+    "source_key_coverage": {
+      "catalog_records": 97,
+      "output_records": 97,
+      "missing_source_keys": [],
+      "unexpected_source_keys": []
+    }
+  },
+  "coverage": {
+    "source_key_coverage": {
+      "source_records": 97,
+      "alias_records": 97,
+      "matched": 97,
+      "missing": [],
+      "extra": []
+    },
+    "generated_aliases": 85,
+    "dictionary_only_generated_aliases": 84,
+    "explicit_fallback_aliases": 1,
+    "source_literal_records": 2,
+    "placeholder_records": 10,
+    "unresolved_records": 0,
+    "unresolved_token_occurrences": 10,
+    "unresolved_tokens": [
+      "{NICKNAME}"
+    ]
+  },
+  "confidence": {
+    "han_viet_names": "E",
+    "display_name_fallbacks": "B",
+    "scale": {
+      "E": "Generated dictionary reading suitable as a search alias; not an official localization and not a semantic translation.",
+      "B": "Source-backed generic display label; not a personal name and not a Hán-Việt alias."
+    },
+    "notes": {
+      "E": "Exploratory generated search aliases. They are selected from the dictionary's first character-level reading and are not official Vietnamese names or human-reviewed proper-noun readings.",
+      "B": "Source-backed generic display label, safe for the placeholder fallback but not a personal name and not a Hán-Việt alias."
+    }
+  },
+  "sources": {
+    "official_simplified_chinese_names": {
+      "repository": "https://github.com/Mar-7th/StarRailRes",
+      "source_path": "index_new/cn/characters.json",
+      "commit": "d226befe3db13f2ec15f4161d5f34b1b607643fe",
+      "raw_snapshot": "https://raw.githubusercontent.com/Mar-7th/StarRailRes/d226befe3db13f2ec15f4161d5f34b1b607643fe/index_new/cn/characters.json",
+      "upstream_data": "https://github.com/Dimbreath/StarRailData"
+    },
+    "official_traditional_chinese_names": {
+      "repository": "https://github.com/Mar-7th/StarRailRes",
+      "source_path": "index_new/cht/characters.json",
+      "commit": "d226befe3db13f2ec15f4161d5f34b1b607643fe",
+      "upstream_data": "https://github.com/Dimbreath/StarRailData"
+    },
+    "han_viet_dictionary": "https://hvdic.thivien.net/transcript.php#trans",
+    "han_viet_dictionary_endpoint": "https://hvdic.thivien.net/transcript-query.json.php",
+    "unattested_character_fallback": "https://en.wiktionary.org/wiki/%E8%8F%88",
+    "fallback_han_viet_cognate": "https://hvdic.thivien.net/whv/%E6%8B%89",
+    "placeholder_display_fallback": "https://wiki.hoyolab.com/pc/hsr/entry/880?crawler=Googlebot"
+  },
+  "generation": {
+    "input_locale": "official_simplified_chinese_name",
+    "method": "Query official_simplified_chinese_name values with HVDic mode=trans and lang=1; select the first returned Hán-Việt alternative per Han character; retain non-Han source text and punctuation.",
+    "selection": "First Hán-Việt alternative returned by the Thi Viện transcription endpoint for each Han character.",
+    "capitalization": "Capitalize the first letter of each generated syllable.",
+    "punctuation": "Preserve source punctuation and separate generated syllables with spaces.",
+    "reading_overrides": {},
+    "placeholder_policy": "Do not query or transcribe brace-delimited source placeholders. Keep each placeholder in official fields and expose it in unresolved_tokens.",
+    "display_fallback_policy": "For {NICKNAME}, expose Trailblazer only as a documented generic role label. It is separate from official names and han_viet_name.",
+    "explicit_fallbacks": {
+      "菈": "lạp"
+    },
+    "official_fields_unchanged": true,
+    "dictionary_request_records": 87
+  },
+  "limitations": [
+    "The Hán-Việt value is a search alias, not an official Vietnamese localization.",
+    "Character-level dictionary readings can be semantically or name-context wrong for transliterations and proper nouns.",
+    "The first dictionary alternative is deterministic but may not be the preferred reading; alternatives remain per record in dictionary_readings.",
+    "菈 is absent from the Hán-Việt dictionary response; the one explicit lạp fallback is based on the documented phonetic cognate 拉 and remains flagged as generated_fallback.",
+    "Latin-only source names such as Saber and Archer have no generated Hán-Việt value.",
+    "The selected StarRailRes catalog is a community-maintained game-data extract, not an official HoYoverse API response."
+  ],
+  "characters": [
+    {
+      "source_key": "starrailres-character-1001",
+      "game_data_id": "1001",
+      "official_english_name": "March 7th",
+      "official_simplified_chinese_name": "三月七",
+      "official_traditional_chinese_name": "三月七",
+      "official_vietnamese_name": "March 7th",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tam Nguyệt Thất",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "三",
+          "selected": "tam",
+          "alternatives": [
+            "tam",
+            "tám",
+            "tạm"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "月",
+          "selected": "nguyệt",
+          "alternatives": [
+            "nguyệt"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "七",
+          "selected": "thất",
+          "alternatives": [
+            "thất"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1002",
+      "game_data_id": "1002",
+      "official_english_name": "Dan Heng",
+      "official_simplified_chinese_name": "丹恒",
+      "official_traditional_chinese_name": "丹恆",
+      "official_vietnamese_name": "Dan Heng",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Đan Hằng",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "丹",
+          "selected": "đan",
+          "alternatives": [
+            "đan",
+            "đơn"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "恒",
+          "selected": "hằng",
+          "alternatives": [
+            "hằng",
+            "cắng",
+            "căng"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1003",
+      "game_data_id": "1003",
+      "official_english_name": "Himeko",
+      "official_simplified_chinese_name": "姬子",
+      "official_traditional_chinese_name": "姬子",
+      "official_vietnamese_name": "Himeko",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Cơ Tử",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "姬",
+          "selected": "cơ",
+          "alternatives": [
+            "cơ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "子",
+          "selected": "tử",
+          "alternatives": [
+            "tử",
+            "tý",
+            "tí"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1004",
+      "game_data_id": "1004",
+      "official_english_name": "Welt",
+      "official_simplified_chinese_name": "瓦尔特",
+      "official_traditional_chinese_name": "瓦爾特",
+      "official_vietnamese_name": "Welt",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Ngoã Nhĩ Đặc",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "瓦",
+          "selected": "ngoã",
+          "alternatives": [
+            "ngoã",
+            "ngoá"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "尔",
+          "selected": "nhĩ",
+          "alternatives": [
+            "nhĩ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "特",
+          "selected": "đặc",
+          "alternatives": [
+            "đặc"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1005",
+      "game_data_id": "1005",
+      "official_english_name": "Kafka",
+      "official_simplified_chinese_name": "卡芙卡",
+      "official_traditional_chinese_name": "卡芙卡",
+      "official_vietnamese_name": "Kafka",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tạp Phù Tạp",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "卡",
+          "selected": "tạp",
+          "alternatives": [
+            "tạp",
+            "khải",
+            "ca",
+            "sá"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "芙",
+          "selected": "phù",
+          "alternatives": [
+            "phù"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "卡",
+          "selected": "tạp",
+          "alternatives": [
+            "tạp",
+            "khải",
+            "ca",
+            "sá"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1006",
+      "game_data_id": "1006",
+      "official_english_name": "Silver Wolf",
+      "official_simplified_chinese_name": "银狼",
+      "official_traditional_chinese_name": "銀狼",
+      "official_vietnamese_name": "Sói Bạc",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Ngân Lang",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "银",
+          "selected": "ngân",
+          "alternatives": [
+            "ngân"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "狼",
+          "selected": "lang",
+          "alternatives": [
+            "lang"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1008",
+      "game_data_id": "1008",
+      "official_english_name": "Arlan",
+      "official_simplified_chinese_name": "阿兰",
+      "official_traditional_chinese_name": "阿蘭",
+      "official_vietnamese_name": "Arlan",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "A Lan",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "阿",
+          "selected": "a",
+          "alternatives": [
+            "a",
+            "á",
+            "ốc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "兰",
+          "selected": "lan",
+          "alternatives": [
+            "lan"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1009",
+      "game_data_id": "1009",
+      "official_english_name": "Asta",
+      "official_simplified_chinese_name": "艾丝妲",
+      "official_traditional_chinese_name": "艾絲妲",
+      "official_vietnamese_name": "Asta",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Ngải Ty Đát",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "艾",
+          "selected": "ngải",
+          "alternatives": [
+            "ngải",
+            "nghệ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "丝",
+          "selected": "ty",
+          "alternatives": [
+            "ty"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "妲",
+          "selected": "đát",
+          "alternatives": [
+            "đát",
+            "đán"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1013",
+      "game_data_id": "1013",
+      "official_english_name": "Herta",
+      "official_simplified_chinese_name": "黑塔",
+      "official_traditional_chinese_name": "黑塔",
+      "official_vietnamese_name": "Herta",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hắc Tháp",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "黑",
+          "selected": "hắc",
+          "alternatives": [
+            "hắc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "塔",
+          "selected": "tháp",
+          "alternatives": [
+            "tháp",
+            "đáp"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1014",
+      "game_data_id": "1014",
+      "official_english_name": "Saber",
+      "official_simplified_chinese_name": "Saber",
+      "official_traditional_chinese_name": "Saber",
+      "official_vietnamese_name": "Saber",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "source_literal",
+      "unresolved_tokens": [],
+      "source_literal_note": "The source name contains no Han characters, so no Hán-Việt transcription was generated."
+    },
+    {
+      "source_key": "starrailres-character-1015",
+      "game_data_id": "1015",
+      "official_english_name": "Archer",
+      "official_simplified_chinese_name": "Archer",
+      "official_traditional_chinese_name": "Archer",
+      "official_vietnamese_name": "Archer",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "source_literal",
+      "unresolved_tokens": [],
+      "source_literal_note": "The source name contains no Han characters, so no Hán-Việt transcription was generated."
+    },
+    {
+      "source_key": "starrailres-character-1101",
+      "game_data_id": "1101",
+      "official_english_name": "Bronya",
+      "official_simplified_chinese_name": "布洛妮娅",
+      "official_traditional_chinese_name": "布洛妮婭",
+      "official_vietnamese_name": "Bronya",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Bố Lạc Ni Á",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "布",
+          "selected": "bố",
+          "alternatives": [
+            "bố"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "洛",
+          "selected": "lạc",
+          "alternatives": [
+            "lạc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "妮",
+          "selected": "ni",
+          "alternatives": [
+            "ni"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "娅",
+          "selected": "á",
+          "alternatives": [
+            "á"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1102",
+      "game_data_id": "1102",
+      "official_english_name": "Seele",
+      "official_simplified_chinese_name": "希儿",
+      "official_traditional_chinese_name": "希兒",
+      "official_vietnamese_name": "Seele",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hy Nhi",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "希",
+          "selected": "hy",
+          "alternatives": [
+            "hy",
+            "hi"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "儿",
+          "selected": "nhi",
+          "alternatives": [
+            "nhi",
+            "nhân"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1103",
+      "game_data_id": "1103",
+      "official_english_name": "Serval",
+      "official_simplified_chinese_name": "希露瓦",
+      "official_traditional_chinese_name": "希露瓦",
+      "official_vietnamese_name": "Serval",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hy Lộ Ngoã",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "希",
+          "selected": "hy",
+          "alternatives": [
+            "hy",
+            "hi"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "露",
+          "selected": "lộ",
+          "alternatives": [
+            "lộ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "瓦",
+          "selected": "ngoã",
+          "alternatives": [
+            "ngoã",
+            "ngoá"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1104",
+      "game_data_id": "1104",
+      "official_english_name": "Gepard",
+      "official_simplified_chinese_name": "杰帕德",
+      "official_traditional_chinese_name": "傑帕德",
+      "official_vietnamese_name": "Gepard",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Kiệt Mạt Đức",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "杰",
+          "selected": "kiệt",
+          "alternatives": [
+            "kiệt"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "帕",
+          "selected": "mạt",
+          "alternatives": [
+            "mạt",
+            "phách",
+            "phạ",
+            "bạch"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "德",
+          "selected": "đức",
+          "alternatives": [
+            "đức"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1105",
+      "game_data_id": "1105",
+      "official_english_name": "Natasha",
+      "official_simplified_chinese_name": "娜塔莎",
+      "official_traditional_chinese_name": "娜塔莎",
+      "official_vietnamese_name": "Natasha",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Na Tháp Toa",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "娜",
+          "selected": "na",
+          "alternatives": [
+            "na",
+            "nã",
+            "nả"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "塔",
+          "selected": "tháp",
+          "alternatives": [
+            "tháp",
+            "đáp"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "莎",
+          "selected": "toa",
+          "alternatives": [
+            "toa",
+            "sa",
+            "ta"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1106",
+      "game_data_id": "1106",
+      "official_english_name": "Pela",
+      "official_simplified_chinese_name": "佩拉",
+      "official_traditional_chinese_name": "佩拉",
+      "official_vietnamese_name": "Pela",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Bội Lạp",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "佩",
+          "selected": "bội",
+          "alternatives": [
+            "bội"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "拉",
+          "selected": "lạp",
+          "alternatives": [
+            "lạp"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1107",
+      "game_data_id": "1107",
+      "official_english_name": "Clara",
+      "official_simplified_chinese_name": "克拉拉",
+      "official_traditional_chinese_name": "克拉拉",
+      "official_vietnamese_name": "Clara",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Khắc Lạp Lạp",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "克",
+          "selected": "khắc",
+          "alternatives": [
+            "khắc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "拉",
+          "selected": "lạp",
+          "alternatives": [
+            "lạp"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "拉",
+          "selected": "lạp",
+          "alternatives": [
+            "lạp"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1108",
+      "game_data_id": "1108",
+      "official_english_name": "Sampo",
+      "official_simplified_chinese_name": "桑博",
+      "official_traditional_chinese_name": "桑博",
+      "official_vietnamese_name": "Sampo",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tang Bác",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "桑",
+          "selected": "tang",
+          "alternatives": [
+            "tang"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "博",
+          "selected": "bác",
+          "alternatives": [
+            "bác"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1109",
+      "game_data_id": "1109",
+      "official_english_name": "Hook",
+      "official_simplified_chinese_name": "虎克",
+      "official_traditional_chinese_name": "虎克",
+      "official_vietnamese_name": "Hook",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hổ Khắc",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "虎",
+          "selected": "hổ",
+          "alternatives": [
+            "hổ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "克",
+          "selected": "khắc",
+          "alternatives": [
+            "khắc"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1110",
+      "game_data_id": "1110",
+      "official_english_name": "Lynx",
+      "official_simplified_chinese_name": "玲可",
+      "official_traditional_chinese_name": "玲可",
+      "official_vietnamese_name": "Lynx",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Linh Khả",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "玲",
+          "selected": "linh",
+          "alternatives": [
+            "linh"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "可",
+          "selected": "khả",
+          "alternatives": [
+            "khả",
+            "khắc"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1111",
+      "game_data_id": "1111",
+      "official_english_name": "Luka",
+      "official_simplified_chinese_name": "卢卡",
+      "official_traditional_chinese_name": "盧卡",
+      "official_vietnamese_name": "Luka",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Lô Tạp",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "卢",
+          "selected": "lô",
+          "alternatives": [
+            "lô",
+            "lư"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "卡",
+          "selected": "tạp",
+          "alternatives": [
+            "tạp",
+            "khải",
+            "ca",
+            "sá"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1112",
+      "game_data_id": "1112",
+      "official_english_name": "Topaz & Numby",
+      "official_simplified_chinese_name": "托帕&账账",
+      "official_traditional_chinese_name": "托帕&帳帳",
+      "official_vietnamese_name": "Topaz & Numby",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Thác Mạt & Trướng Trướng",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "托",
+          "selected": "thác",
+          "alternatives": [
+            "thác"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "帕",
+          "selected": "mạt",
+          "alternatives": [
+            "mạt",
+            "phách",
+            "phạ",
+            "bạch"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "账",
+          "selected": "trướng",
+          "alternatives": [
+            "trướng"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "账",
+          "selected": "trướng",
+          "alternatives": [
+            "trướng"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1201",
+      "game_data_id": "1201",
+      "official_english_name": "Qingque",
+      "official_simplified_chinese_name": "青雀",
+      "official_traditional_chinese_name": "青雀",
+      "official_vietnamese_name": "Qingque",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Thanh Tước",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "青",
+          "selected": "thanh",
+          "alternatives": [
+            "thanh"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "雀",
+          "selected": "tước",
+          "alternatives": [
+            "tước"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1202",
+      "game_data_id": "1202",
+      "official_english_name": "Tingyun",
+      "official_simplified_chinese_name": "停云",
+      "official_traditional_chinese_name": "停雲",
+      "official_vietnamese_name": "Tingyun",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Đình Vân",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "停",
+          "selected": "đình",
+          "alternatives": [
+            "đình"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "云",
+          "selected": "vân",
+          "alternatives": [
+            "vân"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1203",
+      "game_data_id": "1203",
+      "official_english_name": "Luocha",
+      "official_simplified_chinese_name": "罗刹",
+      "official_traditional_chinese_name": "羅剎",
+      "official_vietnamese_name": "Luocha",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "La Sát",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "罗",
+          "selected": "la",
+          "alternatives": [
+            "la"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "刹",
+          "selected": "sát",
+          "alternatives": [
+            "sát"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1204",
+      "game_data_id": "1204",
+      "official_english_name": "Jing Yuan",
+      "official_simplified_chinese_name": "景元",
+      "official_traditional_chinese_name": "景元",
+      "official_vietnamese_name": "Jing Yuan",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Cảnh Nguyên",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "景",
+          "selected": "cảnh",
+          "alternatives": [
+            "cảnh",
+            "ảnh"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "元",
+          "selected": "nguyên",
+          "alternatives": [
+            "nguyên"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1205",
+      "game_data_id": "1205",
+      "official_english_name": "Blade",
+      "official_simplified_chinese_name": "刃",
+      "official_traditional_chinese_name": "刃",
+      "official_vietnamese_name": "Blade",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Nhận",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "刃",
+          "selected": "nhận",
+          "alternatives": [
+            "nhận",
+            "nhẫn"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1206",
+      "game_data_id": "1206",
+      "official_english_name": "Sushang",
+      "official_simplified_chinese_name": "素裳",
+      "official_traditional_chinese_name": "素裳",
+      "official_vietnamese_name": "Sushang",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tố Thường",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "素",
+          "selected": "tố",
+          "alternatives": [
+            "tố"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "裳",
+          "selected": "thường",
+          "alternatives": [
+            "thường"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1207",
+      "game_data_id": "1207",
+      "official_english_name": "Yukong",
+      "official_simplified_chinese_name": "驭空",
+      "official_traditional_chinese_name": "馭空",
+      "official_vietnamese_name": "Yukong",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Ngự Không",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "驭",
+          "selected": "ngự",
+          "alternatives": [
+            "ngự"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "空",
+          "selected": "không",
+          "alternatives": [
+            "không",
+            "khống",
+            "khổng"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1208",
+      "game_data_id": "1208",
+      "official_english_name": "Fu Xuan",
+      "official_simplified_chinese_name": "符玄",
+      "official_traditional_chinese_name": "符玄",
+      "official_vietnamese_name": "Fu Xuan",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Phù Huyền",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "符",
+          "selected": "phù",
+          "alternatives": [
+            "phù",
+            "bồ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "玄",
+          "selected": "huyền",
+          "alternatives": [
+            "huyền"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1209",
+      "game_data_id": "1209",
+      "official_english_name": "Yanqing",
+      "official_simplified_chinese_name": "彦卿",
+      "official_traditional_chinese_name": "彥卿",
+      "official_vietnamese_name": "Yanqing",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Ngạn Khanh",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "彦",
+          "selected": "ngạn",
+          "alternatives": [
+            "ngạn"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "卿",
+          "selected": "khanh",
+          "alternatives": [
+            "khanh"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1210",
+      "game_data_id": "1210",
+      "official_english_name": "Guinaifen",
+      "official_simplified_chinese_name": "桂乃芬",
+      "official_traditional_chinese_name": "桂乃芬",
+      "official_vietnamese_name": "Guinaifen",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Quế Nãi Phân",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "桂",
+          "selected": "quế",
+          "alternatives": [
+            "quế"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "乃",
+          "selected": "nãi",
+          "alternatives": [
+            "nãi",
+            "ái"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "芬",
+          "selected": "phân",
+          "alternatives": [
+            "phân",
+            "phần"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1211",
+      "game_data_id": "1211",
+      "official_english_name": "Bailu",
+      "official_simplified_chinese_name": "白露",
+      "official_traditional_chinese_name": "白露",
+      "official_vietnamese_name": "Bailu",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Bạch Lộ",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "白",
+          "selected": "bạch",
+          "alternatives": [
+            "bạch"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "露",
+          "selected": "lộ",
+          "alternatives": [
+            "lộ"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1212",
+      "game_data_id": "1212",
+      "official_english_name": "Jingliu",
+      "official_simplified_chinese_name": "镜流",
+      "official_traditional_chinese_name": "鏡流",
+      "official_vietnamese_name": "Jingliu",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Kính Lưu",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "镜",
+          "selected": "kính",
+          "alternatives": [
+            "kính",
+            "cảnh"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "流",
+          "selected": "lưu",
+          "alternatives": [
+            "lưu"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1213",
+      "game_data_id": "1213",
+      "official_english_name": "Dan Heng • Imbibitor Lunae",
+      "official_simplified_chinese_name": "丹恒•饮月",
+      "official_traditional_chinese_name": "丹恆•飲月",
+      "official_vietnamese_name": "Dan Heng - Ẩm Nguyệt",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Đan Hằng • Ẩm Nguyệt",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "丹",
+          "selected": "đan",
+          "alternatives": [
+            "đan",
+            "đơn"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "恒",
+          "selected": "hằng",
+          "alternatives": [
+            "hằng",
+            "cắng",
+            "căng"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "饮",
+          "selected": "ẩm",
+          "alternatives": [
+            "ẩm",
+            "ấm"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "月",
+          "selected": "nguyệt",
+          "alternatives": [
+            "nguyệt"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1214",
+      "game_data_id": "1214",
+      "official_english_name": "Xueyi",
+      "official_simplified_chinese_name": "雪衣",
+      "official_traditional_chinese_name": "雪衣",
+      "official_vietnamese_name": "Xueyi",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tuyết Y",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "雪",
+          "selected": "tuyết",
+          "alternatives": [
+            "tuyết"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "衣",
+          "selected": "y",
+          "alternatives": [
+            "y",
+            "ý"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1215",
+      "game_data_id": "1215",
+      "official_english_name": "Hanya",
+      "official_simplified_chinese_name": "寒鸦",
+      "official_traditional_chinese_name": "寒鴉",
+      "official_vietnamese_name": "Hanya",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hàn Nha",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "寒",
+          "selected": "hàn",
+          "alternatives": [
+            "hàn"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "鸦",
+          "selected": "nha",
+          "alternatives": [
+            "nha"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1217",
+      "game_data_id": "1217",
+      "official_english_name": "Huohuo",
+      "official_simplified_chinese_name": "藿藿",
+      "official_traditional_chinese_name": "藿藿",
+      "official_vietnamese_name": "Huohuo",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hoắc Hoắc",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "藿",
+          "selected": "hoắc",
+          "alternatives": [
+            "hoắc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "藿",
+          "selected": "hoắc",
+          "alternatives": [
+            "hoắc"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1218",
+      "game_data_id": "1218",
+      "official_english_name": "Jiaoqiu",
+      "official_simplified_chinese_name": "椒丘",
+      "official_traditional_chinese_name": "椒丘",
+      "official_vietnamese_name": "Jiaoqiu",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tiêu Khâu",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "椒",
+          "selected": "tiêu",
+          "alternatives": [
+            "tiêu"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "丘",
+          "selected": "khâu",
+          "alternatives": [
+            "khâu",
+            "khiêu"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1220",
+      "game_data_id": "1220",
+      "official_english_name": "Feixiao",
+      "official_simplified_chinese_name": "飞霄",
+      "official_traditional_chinese_name": "飛霄",
+      "official_vietnamese_name": "Feixiao",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Phi Tiêu",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "飞",
+          "selected": "phi",
+          "alternatives": [
+            "phi"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "霄",
+          "selected": "tiêu",
+          "alternatives": [
+            "tiêu"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1221",
+      "game_data_id": "1221",
+      "official_english_name": "Yunli",
+      "official_simplified_chinese_name": "云璃",
+      "official_traditional_chinese_name": "雲璃",
+      "official_vietnamese_name": "Yunli",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Vân Ly",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "云",
+          "selected": "vân",
+          "alternatives": [
+            "vân"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "璃",
+          "selected": "ly",
+          "alternatives": [
+            "ly",
+            "lê",
+            "li"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1222",
+      "game_data_id": "1222",
+      "official_english_name": "Lingsha",
+      "official_simplified_chinese_name": "灵砂",
+      "official_traditional_chinese_name": "靈砂",
+      "official_vietnamese_name": "Lingsha",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Linh Sa",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "灵",
+          "selected": "linh",
+          "alternatives": [
+            "linh"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "砂",
+          "selected": "sa",
+          "alternatives": [
+            "sa"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1223",
+      "game_data_id": "1223",
+      "official_english_name": "Moze",
+      "official_simplified_chinese_name": "貊泽",
+      "official_traditional_chinese_name": "貊澤",
+      "official_vietnamese_name": "Moze",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Mạch Trạch",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "貊",
+          "selected": "mạch",
+          "alternatives": [
+            "mạch"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "泽",
+          "selected": "trạch",
+          "alternatives": [
+            "trạch"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1224",
+      "game_data_id": "1224",
+      "official_english_name": "March 7th",
+      "official_simplified_chinese_name": "三月七",
+      "official_traditional_chinese_name": "三月七",
+      "official_vietnamese_name": "March 7th",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tam Nguyệt Thất",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "三",
+          "selected": "tam",
+          "alternatives": [
+            "tam",
+            "tám",
+            "tạm"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "月",
+          "selected": "nguyệt",
+          "alternatives": [
+            "nguyệt"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "七",
+          "selected": "thất",
+          "alternatives": [
+            "thất"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1225",
+      "game_data_id": "1225",
+      "official_english_name": "Fugue",
+      "official_simplified_chinese_name": "忘归人",
+      "official_traditional_chinese_name": "忘歸人",
+      "official_vietnamese_name": "Fugue",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Vong Quy Nhân",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "忘",
+          "selected": "vong",
+          "alternatives": [
+            "vong",
+            "vô",
+            "vương"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "归",
+          "selected": "quy",
+          "alternatives": [
+            "quy"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "人",
+          "selected": "nhân",
+          "alternatives": [
+            "nhân",
+            "nhơn"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1301",
+      "game_data_id": "1301",
+      "official_english_name": "Gallagher",
+      "official_simplified_chinese_name": "加拉赫",
+      "official_traditional_chinese_name": "加拉赫",
+      "official_vietnamese_name": "Gallagher",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Gia Lạp Hách",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "加",
+          "selected": "gia",
+          "alternatives": [
+            "gia"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "拉",
+          "selected": "lạp",
+          "alternatives": [
+            "lạp"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "赫",
+          "selected": "hách",
+          "alternatives": [
+            "hách"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1302",
+      "game_data_id": "1302",
+      "official_english_name": "Argenti",
+      "official_simplified_chinese_name": "银枝",
+      "official_traditional_chinese_name": "銀枝",
+      "official_vietnamese_name": "Argenti",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Ngân Chi",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "银",
+          "selected": "ngân",
+          "alternatives": [
+            "ngân"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "枝",
+          "selected": "chi",
+          "alternatives": [
+            "chi",
+            "kỳ",
+            "kì"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1303",
+      "game_data_id": "1303",
+      "official_english_name": "Ruan Mei",
+      "official_simplified_chinese_name": "阮•梅",
+      "official_traditional_chinese_name": "阮•梅",
+      "official_vietnamese_name": "Ruan Mei",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Nguyễn • Mai",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "阮",
+          "selected": "nguyễn",
+          "alternatives": [
+            "nguyễn"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "梅",
+          "selected": "mai",
+          "alternatives": [
+            "mai"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1304",
+      "game_data_id": "1304",
+      "official_english_name": "Aventurine",
+      "official_simplified_chinese_name": "砂金",
+      "official_traditional_chinese_name": "砂金",
+      "official_vietnamese_name": "Aventurine",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Sa Kim",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "砂",
+          "selected": "sa",
+          "alternatives": [
+            "sa"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "金",
+          "selected": "kim",
+          "alternatives": [
+            "kim"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1305",
+      "game_data_id": "1305",
+      "official_english_name": "Dr. Ratio",
+      "official_simplified_chinese_name": "真理医生",
+      "official_traditional_chinese_name": "真理醫生",
+      "official_vietnamese_name": "Dr. Ratio",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Chân Lý Y Sinh",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "真",
+          "selected": "chân",
+          "alternatives": [
+            "chân"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "理",
+          "selected": "lý",
+          "alternatives": [
+            "lý",
+            "lí"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "医",
+          "selected": "y",
+          "alternatives": [
+            "y",
+            "ế"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "生",
+          "selected": "sinh",
+          "alternatives": [
+            "sinh",
+            "sanh"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1306",
+      "game_data_id": "1306",
+      "official_english_name": "Sparkle",
+      "official_simplified_chinese_name": "花火",
+      "official_traditional_chinese_name": "花火",
+      "official_vietnamese_name": "Sparkle",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hoa Hoả",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "花",
+          "selected": "hoa",
+          "alternatives": [
+            "hoa"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "火",
+          "selected": "hoả",
+          "alternatives": [
+            "hoả"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1307",
+      "game_data_id": "1307",
+      "official_english_name": "Black Swan",
+      "official_simplified_chinese_name": "黑天鹅",
+      "official_traditional_chinese_name": "黑天鵝",
+      "official_vietnamese_name": "Black Swan",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hắc Thiên Nga",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "黑",
+          "selected": "hắc",
+          "alternatives": [
+            "hắc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "天",
+          "selected": "thiên",
+          "alternatives": [
+            "thiên"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "鹅",
+          "selected": "nga",
+          "alternatives": [
+            "nga"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1308",
+      "game_data_id": "1308",
+      "official_english_name": "Acheron",
+      "official_simplified_chinese_name": "黄泉",
+      "official_traditional_chinese_name": "黃泉",
+      "official_vietnamese_name": "Acheron",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hoàng Tuyền",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "黄",
+          "selected": "hoàng",
+          "alternatives": [
+            "hoàng",
+            "huỳnh"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "泉",
+          "selected": "tuyền",
+          "alternatives": [
+            "tuyền",
+            "toàn"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1309",
+      "game_data_id": "1309",
+      "official_english_name": "Robin",
+      "official_simplified_chinese_name": "知更鸟",
+      "official_traditional_chinese_name": "知更鳥",
+      "official_vietnamese_name": "Robin",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tri Canh Điểu",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "知",
+          "selected": "tri",
+          "alternatives": [
+            "tri",
+            "trí"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "更",
+          "selected": "canh",
+          "alternatives": [
+            "canh",
+            "cánh"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "鸟",
+          "selected": "điểu",
+          "alternatives": [
+            "điểu"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1310",
+      "game_data_id": "1310",
+      "official_english_name": "Firefly",
+      "official_simplified_chinese_name": "流萤",
+      "official_traditional_chinese_name": "流螢",
+      "official_vietnamese_name": "Firefly",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Lưu Huỳnh",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "流",
+          "selected": "lưu",
+          "alternatives": [
+            "lưu"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "萤",
+          "selected": "huỳnh",
+          "alternatives": [
+            "huỳnh"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1312",
+      "game_data_id": "1312",
+      "official_english_name": "Misha",
+      "official_simplified_chinese_name": "米沙",
+      "official_traditional_chinese_name": "米沙",
+      "official_vietnamese_name": "Misha",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Mễ Sa",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "米",
+          "selected": "mễ",
+          "alternatives": [
+            "mễ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "沙",
+          "selected": "sa",
+          "alternatives": [
+            "sa",
+            "sá"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1313",
+      "game_data_id": "1313",
+      "official_english_name": "Sunday",
+      "official_simplified_chinese_name": "星期日",
+      "official_traditional_chinese_name": "星期日",
+      "official_vietnamese_name": "Sunday",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tinh Kỳ Nhật",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "星",
+          "selected": "tinh",
+          "alternatives": [
+            "tinh"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "期",
+          "selected": "kỳ",
+          "alternatives": [
+            "kỳ",
+            "ky",
+            "cơ",
+            "kì",
+            "ki"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "日",
+          "selected": "nhật",
+          "alternatives": [
+            "nhật",
+            "nhựt"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1314",
+      "game_data_id": "1314",
+      "official_english_name": "Jade",
+      "official_simplified_chinese_name": "翡翠",
+      "official_traditional_chinese_name": "翡翠",
+      "official_vietnamese_name": "Jade",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Phí Thuý",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "翡",
+          "selected": "phí",
+          "alternatives": [
+            "phí",
+            "phỉ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "翠",
+          "selected": "thuý",
+          "alternatives": [
+            "thuý"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1315",
+      "game_data_id": "1315",
+      "official_english_name": "Boothill",
+      "official_simplified_chinese_name": "波提欧",
+      "official_traditional_chinese_name": "波提歐",
+      "official_vietnamese_name": "Boothill",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Ba Đề Âu",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "波",
+          "selected": "ba",
+          "alternatives": [
+            "ba"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "提",
+          "selected": "đề",
+          "alternatives": [
+            "đề",
+            "thì",
+            "để"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "欧",
+          "selected": "âu",
+          "alternatives": [
+            "âu",
+            "ẩu"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1317",
+      "game_data_id": "1317",
+      "official_english_name": "Rappa",
+      "official_simplified_chinese_name": "乱破",
+      "official_traditional_chinese_name": "亂破",
+      "official_vietnamese_name": "Rappa",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Loạn Phá",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "乱",
+          "selected": "loạn",
+          "alternatives": [
+            "loạn"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "破",
+          "selected": "phá",
+          "alternatives": [
+            "phá"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1321",
+      "game_data_id": "1321",
+      "official_english_name": "The Dahlia",
+      "official_simplified_chinese_name": "大丽花",
+      "official_traditional_chinese_name": "大理花",
+      "official_vietnamese_name": "Dahlia",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Đại Lệ Hoa",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "大",
+          "selected": "đại",
+          "alternatives": [
+            "đại",
+            "thái"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "丽",
+          "selected": "lệ",
+          "alternatives": [
+            "lệ",
+            "ly"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "花",
+          "selected": "hoa",
+          "alternatives": [
+            "hoa"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1401",
+      "game_data_id": "1401",
+      "official_english_name": "The Herta",
+      "official_simplified_chinese_name": "大黑塔",
+      "official_traditional_chinese_name": "大黑塔",
+      "official_vietnamese_name": "Đại Herta",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Đại Hắc Tháp",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "大",
+          "selected": "đại",
+          "alternatives": [
+            "đại",
+            "thái"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "黑",
+          "selected": "hắc",
+          "alternatives": [
+            "hắc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "塔",
+          "selected": "tháp",
+          "alternatives": [
+            "tháp",
+            "đáp"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1402",
+      "game_data_id": "1402",
+      "official_english_name": "Aglaea",
+      "official_simplified_chinese_name": "阿格莱雅",
+      "official_traditional_chinese_name": "阿格萊雅",
+      "official_vietnamese_name": "Aglaea",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "A Cách Lai Nhã",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "阿",
+          "selected": "a",
+          "alternatives": [
+            "a",
+            "á",
+            "ốc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "格",
+          "selected": "cách",
+          "alternatives": [
+            "cách",
+            "các"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "莱",
+          "selected": "lai",
+          "alternatives": [
+            "lai"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "雅",
+          "selected": "nhã",
+          "alternatives": [
+            "nhã",
+            "nha"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1403",
+      "game_data_id": "1403",
+      "official_english_name": "Tribbie",
+      "official_simplified_chinese_name": "缇宝",
+      "official_traditional_chinese_name": "緹寶",
+      "official_vietnamese_name": "Tribbie",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Đề Bảo",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "缇",
+          "selected": "đề",
+          "alternatives": [
+            "đề"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "宝",
+          "selected": "bảo",
+          "alternatives": [
+            "bảo",
+            "bửu"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1404",
+      "game_data_id": "1404",
+      "official_english_name": "Mydei",
+      "official_simplified_chinese_name": "万敌",
+      "official_traditional_chinese_name": "萬敵",
+      "official_vietnamese_name": "Mydei",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Vạn Địch",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "万",
+          "selected": "vạn",
+          "alternatives": [
+            "vạn",
+            "mặc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "敌",
+          "selected": "địch",
+          "alternatives": [
+            "địch"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1405",
+      "game_data_id": "1405",
+      "official_english_name": "Anaxa",
+      "official_simplified_chinese_name": "那刻夏",
+      "official_traditional_chinese_name": "那刻夏",
+      "official_vietnamese_name": "Anaxa",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Na Khắc Hạ",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "那",
+          "selected": "na",
+          "alternatives": [
+            "na",
+            "ná",
+            "nả"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "刻",
+          "selected": "khắc",
+          "alternatives": [
+            "khắc",
+            "hặc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "夏",
+          "selected": "hạ",
+          "alternatives": [
+            "hạ",
+            "giạ",
+            "giá"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1406",
+      "game_data_id": "1406",
+      "official_english_name": "Cipher",
+      "official_simplified_chinese_name": "赛飞儿",
+      "official_traditional_chinese_name": "賽飛兒",
+      "official_vietnamese_name": "Cipher",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tái Phi Nhi",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "赛",
+          "selected": "tái",
+          "alternatives": [
+            "tái",
+            "trại"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "飞",
+          "selected": "phi",
+          "alternatives": [
+            "phi"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "儿",
+          "selected": "nhi",
+          "alternatives": [
+            "nhi",
+            "nhân"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1407",
+      "game_data_id": "1407",
+      "official_english_name": "Castorice",
+      "official_simplified_chinese_name": "遐蝶",
+      "official_traditional_chinese_name": "遐蝶",
+      "official_vietnamese_name": "Castorice",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hà Điệp",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "遐",
+          "selected": "hà",
+          "alternatives": [
+            "hà"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "蝶",
+          "selected": "điệp",
+          "alternatives": [
+            "điệp"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1408",
+      "game_data_id": "1408",
+      "official_english_name": "Phainon",
+      "official_simplified_chinese_name": "白厄",
+      "official_traditional_chinese_name": "白厄",
+      "official_vietnamese_name": "Phainon",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Bạch Ách",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "白",
+          "selected": "bạch",
+          "alternatives": [
+            "bạch"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "厄",
+          "selected": "ách",
+          "alternatives": [
+            "ách",
+            "ngoả"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1409",
+      "game_data_id": "1409",
+      "official_english_name": "Hyacine",
+      "official_simplified_chinese_name": "风堇",
+      "official_traditional_chinese_name": "風堇",
+      "official_vietnamese_name": "Hyacine",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Phong Cận",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "风",
+          "selected": "phong",
+          "alternatives": [
+            "phong",
+            "phúng",
+            "phóng"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "堇",
+          "selected": "cận",
+          "alternatives": [
+            "cận"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1410",
+      "game_data_id": "1410",
+      "official_english_name": "Hysilens",
+      "official_simplified_chinese_name": "海瑟音",
+      "official_traditional_chinese_name": "海瑟音",
+      "official_vietnamese_name": "Hysilens",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hải Sắt Âm",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "海",
+          "selected": "hải",
+          "alternatives": [
+            "hải"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "瑟",
+          "selected": "sắt",
+          "alternatives": [
+            "sắt"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "音",
+          "selected": "âm",
+          "alternatives": [
+            "âm",
+            "ấm"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1412",
+      "game_data_id": "1412",
+      "official_english_name": "Cerydra",
+      "official_simplified_chinese_name": "刻律德菈",
+      "official_traditional_chinese_name": "刻律德菈",
+      "official_vietnamese_name": "Cerydra",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Khắc Luật Đức Lạp",
+      "alias_status": "generated_fallback",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "刻",
+          "selected": "khắc",
+          "alternatives": [
+            "khắc",
+            "hặc"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "律",
+          "selected": "luật",
+          "alternatives": [
+            "luật"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "德",
+          "selected": "đức",
+          "alternatives": [
+            "đức"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "菈",
+          "selected": "lạp",
+          "alternatives": [],
+          "explicit_fallback": true
+        }
+      ],
+      "explicit_fallback_tokens": [
+        "菈"
+      ]
+    },
+    {
+      "source_key": "starrailres-character-1413",
+      "game_data_id": "1413",
+      "official_english_name": "Evernight",
+      "official_simplified_chinese_name": "长夜月",
+      "official_traditional_chinese_name": "長夜月",
+      "official_vietnamese_name": "Evernight",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Trưởng Dạ Nguyệt",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "长",
+          "selected": "trưởng",
+          "alternatives": [
+            "trưởng",
+            "trường",
+            "tràng",
+            "trướng"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "夜",
+          "selected": "dạ",
+          "alternatives": [
+            "dạ",
+            "dịch"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "月",
+          "selected": "nguyệt",
+          "alternatives": [
+            "nguyệt"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1414",
+      "game_data_id": "1414",
+      "official_english_name": "Dan Heng • Permansor Terrae",
+      "official_simplified_chinese_name": "丹恒•腾荒",
+      "official_traditional_chinese_name": "丹恆•騰荒",
+      "official_vietnamese_name": "Dan Heng - Permansor Terrae",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Đan Hằng • Đằng Hoang",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "丹",
+          "selected": "đan",
+          "alternatives": [
+            "đan",
+            "đơn"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "恒",
+          "selected": "hằng",
+          "alternatives": [
+            "hằng",
+            "cắng",
+            "căng"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "腾",
+          "selected": "đằng",
+          "alternatives": [
+            "đằng"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "荒",
+          "selected": "hoang",
+          "alternatives": [
+            "hoang"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1415",
+      "game_data_id": "1415",
+      "official_english_name": "Cyrene",
+      "official_simplified_chinese_name": "昔涟",
+      "official_traditional_chinese_name": "昔漣",
+      "official_vietnamese_name": "Cyrene",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tích Liên",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "昔",
+          "selected": "tích",
+          "alternatives": [
+            "tích",
+            "thố",
+            "thác",
+            "tịch"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "涟",
+          "selected": "liên",
+          "alternatives": [
+            "liên"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1501",
+      "game_data_id": "1501",
+      "official_english_name": "Sparxie",
+      "official_simplified_chinese_name": "火花",
+      "official_traditional_chinese_name": "火花",
+      "official_vietnamese_name": "Sparxie",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hoả Hoa",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "火",
+          "selected": "hoả",
+          "alternatives": [
+            "hoả"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "花",
+          "selected": "hoa",
+          "alternatives": [
+            "hoa"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1502",
+      "game_data_id": "1502",
+      "official_english_name": "Yao Guang",
+      "official_simplified_chinese_name": "爻光",
+      "official_traditional_chinese_name": "爻光",
+      "official_vietnamese_name": "Yao Guang",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Hào Quang",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "爻",
+          "selected": "hào",
+          "alternatives": [
+            "hào"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "光",
+          "selected": "quang",
+          "alternatives": [
+            "quang"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1504",
+      "game_data_id": "1504",
+      "official_english_name": "Ashveil",
+      "official_simplified_chinese_name": "不死途",
+      "official_traditional_chinese_name": "不死途",
+      "official_vietnamese_name": "Ashveil",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Bất Tử Đồ",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "不",
+          "selected": "bất",
+          "alternatives": [
+            "bất",
+            "phầu",
+            "phủ",
+            "phi",
+            "phu",
+            "bưu",
+            "bỉ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "死",
+          "selected": "tử",
+          "alternatives": [
+            "tử"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "途",
+          "selected": "đồ",
+          "alternatives": [
+            "đồ"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1505",
+      "game_data_id": "1505",
+      "official_english_name": "Evanescia",
+      "official_simplified_chinese_name": "绯英",
+      "official_traditional_chinese_name": "緋英",
+      "official_vietnamese_name": "Evanescia",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Phi Anh",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "绯",
+          "selected": "phi",
+          "alternatives": [
+            "phi"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "英",
+          "selected": "anh",
+          "alternatives": [
+            "anh"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1506",
+      "game_data_id": "1506",
+      "official_english_name": "Silver Wolf LV.999",
+      "official_simplified_chinese_name": "银狼LV.999",
+      "official_traditional_chinese_name": "銀狼LV.999",
+      "official_vietnamese_name": "Sói Bạc LV.999",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Ngân Lang LV.999",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "银",
+          "selected": "ngân",
+          "alternatives": [
+            "ngân"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "狼",
+          "selected": "lang",
+          "alternatives": [
+            "lang"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1507",
+      "game_data_id": "1507",
+      "official_english_name": "Mortenax Blade",
+      "official_simplified_chinese_name": "千冶•刃",
+      "official_traditional_chinese_name": "千冶•刃",
+      "official_vietnamese_name": "Mortenax Blade",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Thiên Dã • Nhận",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "千",
+          "selected": "thiên",
+          "alternatives": [
+            "thiên"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "冶",
+          "selected": "dã",
+          "alternatives": [
+            "dã"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "刃",
+          "selected": "nhận",
+          "alternatives": [
+            "nhận",
+            "nhẫn"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1508",
+      "game_data_id": "1508",
+      "official_english_name": "Rin Tohsaka",
+      "official_simplified_chinese_name": "远坂凛",
+      "official_traditional_chinese_name": "遠坂凜",
+      "official_vietnamese_name": "Rin Tohsaka",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Viễn Phản Lẫm",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "远",
+          "selected": "viễn",
+          "alternatives": [
+            "viễn",
+            "viến"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "坂",
+          "selected": "phản",
+          "alternatives": [
+            "phản",
+            "bản"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "凛",
+          "selected": "lẫm",
+          "alternatives": [
+            "lẫm"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1509",
+      "game_data_id": "1509",
+      "official_english_name": "Gilgamesh",
+      "official_simplified_chinese_name": "吉尔伽美什",
+      "official_traditional_chinese_name": "吉爾伽美什",
+      "official_vietnamese_name": "Gilgamesh",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Cát Nhĩ Già Mỹ Thập",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "吉",
+          "selected": "cát",
+          "alternatives": [
+            "cát"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "尔",
+          "selected": "nhĩ",
+          "alternatives": [
+            "nhĩ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "伽",
+          "selected": "già",
+          "alternatives": [
+            "già",
+            "gia",
+            "cà"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "美",
+          "selected": "mỹ",
+          "alternatives": [
+            "mỹ",
+            "mĩ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "什",
+          "selected": "thập",
+          "alternatives": [
+            "thập",
+            "thậm"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1510",
+      "game_data_id": "1510",
+      "official_english_name": "Himeko • Nova",
+      "official_simplified_chinese_name": "姬子•启行",
+      "official_traditional_chinese_name": "姬子•啟行",
+      "official_vietnamese_name": "Himeko - Nova",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Cơ Tử • Khởi Hành",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "姬",
+          "selected": "cơ",
+          "alternatives": [
+            "cơ"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "子",
+          "selected": "tử",
+          "alternatives": [
+            "tử",
+            "tý",
+            "tí"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "启",
+          "selected": "khởi",
+          "alternatives": [
+            "khởi",
+            "khải",
+            "khể"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "行",
+          "selected": "hành",
+          "alternatives": [
+            "hành",
+            "hàng",
+            "hạnh",
+            "hạng",
+            "hãng"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1512",
+      "game_data_id": "1512",
+      "official_english_name": "Robin • Summeretto",
+      "official_simplified_chinese_name": "知更鸟•晴歌",
+      "official_traditional_chinese_name": "知更鳥•晴歌",
+      "official_vietnamese_name": "Robin - Summeretto",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Tri Canh Điểu • Tình Ca",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "知",
+          "selected": "tri",
+          "alternatives": [
+            "tri",
+            "trí"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "更",
+          "selected": "canh",
+          "alternatives": [
+            "canh",
+            "cánh"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "鸟",
+          "selected": "điểu",
+          "alternatives": [
+            "điểu"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "晴",
+          "selected": "tình",
+          "alternatives": [
+            "tình"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "歌",
+          "selected": "ca",
+          "alternatives": [
+            "ca"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-1513",
+      "game_data_id": "1513",
+      "official_english_name": "Aventurine • Waveflair",
+      "official_simplified_chinese_name": "砂金•戏浪",
+      "official_traditional_chinese_name": "砂金•戲浪",
+      "official_vietnamese_name": "Aventurine - Waveflair",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": "Sa Kim • Hý Lãng",
+      "alias_status": "generated",
+      "unresolved_tokens": [],
+      "dictionary_readings": [
+        {
+          "source": "砂",
+          "selected": "sa",
+          "alternatives": [
+            "sa"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "金",
+          "selected": "kim",
+          "alternatives": [
+            "kim"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "戏",
+          "selected": "hý",
+          "alternatives": [
+            "hý",
+            "hô",
+            "huy",
+            "hí",
+            "hi"
+          ],
+          "explicit_fallback": false
+        },
+        {
+          "source": "浪",
+          "selected": "lãng",
+          "alternatives": [
+            "lãng",
+            "lang"
+          ],
+          "explicit_fallback": false
+        }
+      ],
+      "explicit_fallback_tokens": []
+    },
+    {
+      "source_key": "starrailres-character-8001",
+      "game_data_id": "8001",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    },
+    {
+      "source_key": "starrailres-character-8002",
+      "game_data_id": "8002",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    },
+    {
+      "source_key": "starrailres-character-8003",
+      "game_data_id": "8003",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    },
+    {
+      "source_key": "starrailres-character-8004",
+      "game_data_id": "8004",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    },
+    {
+      "source_key": "starrailres-character-8005",
+      "game_data_id": "8005",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    },
+    {
+      "source_key": "starrailres-character-8006",
+      "game_data_id": "8006",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    },
+    {
+      "source_key": "starrailres-character-8007",
+      "game_data_id": "8007",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    },
+    {
+      "source_key": "starrailres-character-8008",
+      "game_data_id": "8008",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    },
+    {
+      "source_key": "starrailres-character-8009",
+      "game_data_id": "8009",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    },
+    {
+      "source_key": "starrailres-character-8010",
+      "game_data_id": "8010",
+      "official_english_name": "{NICKNAME}",
+      "official_simplified_chinese_name": "{NICKNAME}",
+      "official_traditional_chinese_name": "{NICKNAME}",
+      "official_vietnamese_name": "{NICKNAME}",
+      "generated_from": "official_simplified_chinese_name",
+      "han_viet_name": null,
+      "alias_status": "placeholder",
+      "unresolved_tokens": [
+        "{NICKNAME}"
+      ],
+      "display_name_fallback": "Trailblazer",
+      "display_fallback_kind": "generic_role_label",
+      "display_fallback_is_personal_name": false,
+      "display_fallback_note": "User-facing role label only; the source {NICKNAME} value is preserved and no personal name is inferred."
+    }
+  ]
+}

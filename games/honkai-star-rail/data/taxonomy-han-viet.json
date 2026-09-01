@@ -1,0 +1,560 @@
+{
+  "schema": "perwiga.honkai-star-rail.taxonomy-han-viet.v1",
+  "checked_at": "2026-09-01",
+  "source_snapshot": {
+    "paths_file": "data/paths.json",
+    "elements_file": "data/elements.json",
+    "source_commit": "d226befe3db13f2ec15f4161d5f34b1b607643fe",
+    "source_note": "The repeated official localized names and keys are copied from the pinned StarRailRes index_new snapshot. That upstream is a community-maintained game-data extract, not an official HoYoverse API."
+  },
+  "catalog_scope": {
+    "paths": {
+      "source_array": "paths",
+      "included_records": 9,
+      "generated_aliases": 9
+    },
+    "elements": {
+      "source_array": "elements",
+      "included_records": 7,
+      "generated_aliases": 7
+    },
+    "total_records": 16,
+    "total_generated_aliases": 16,
+    "total_han_character_occurrences": 28,
+    "unique_han_characters": 27,
+    "resolved_han_characters": 27,
+    "unresolved_token_count": 0
+  },
+  "confidence": {
+    "coverage": {
+      "grade": "A",
+      "meaning": "Every record in the two named source arrays is represented exactly once."
+    },
+    "official_localized_names": {
+      "grade": "B",
+      "meaning": "Names are preserved from the pinned community extract of client localization; this file does not independently upgrade that source to an official API."
+    },
+    "han_viet_aliases": {
+      "grade": "E",
+      "meaning": "Generated search aliases assembled from dictionary-attested character readings; not official HoYoverse Vietnamese terminology."
+    }
+  },
+  "methodology": {
+    "alias_field": "generated_aliases[].value",
+    "official_name_fields_preserved": [
+      "official_english_name",
+      "official_simplified_chinese_name",
+      "official_traditional_chinese_name",
+      "official_vietnamese_name"
+    ],
+    "source_key_fields_preserved": [
+      "source_key",
+      "game_data_id",
+      "source_key_name"
+    ],
+    "input_field": "official_traditional_chinese_name",
+    "rule": "Each traditional-Chinese character is looked up as a Hán-Việt reading in the Thi Viện Hán-Nôm dictionary, then readings are joined in source order and title-cased for a display/search alias. Simplified Chinese is retained for comparison and is never substituted for the official localized fields.",
+    "limitations": [
+      "The generated alias is a linguistic Hán-Việt reading, not an official Vietnamese localization, translation, or in-game display label.",
+      "Character-by-character readings do not guarantee that a compound is idiomatic modern Vietnamese or the preferred terminology used by Vietnamese players.",
+      "The alias does not translate the English label semantically; it transliterates the Chinese taxonomy name.",
+      "No community nickname, beta name, legacy name, or alternate Vietnamese localization is inferred or added."
+    ]
+  },
+  "sources": {
+    "starrailres_repository": "https://github.com/Mar-7th/StarRailRes",
+    "starrail_data_repository": "https://github.com/Dimbreath/StarRailData",
+    "starrail_static_api": "https://vizualabstract.github.io/StarRailStaticAPI/db/",
+    "han_viet_dictionary": "https://hvdic.thivien.net/transcript.php#trans",
+    "dictionary_note": "The Hán-Việt dictionary is used for character-reading evidence only. Its readings do not establish official HoYoverse naming."
+  },
+  "unresolved_tokens": [],
+  "paths": [
+    {
+      "source_key": "starrail-path-Elation",
+      "game_data_id": "Elation",
+      "source_key_name": "Elation",
+      "official_english_name": "Elation",
+      "official_simplified_chinese_name": "欢愉",
+      "official_traditional_chinese_name": "歡愉",
+      "official_vietnamese_name": "Vui Vẻ",
+      "generated_aliases": [
+        {
+          "value": "Hoan Du",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "歡愉",
+          "character_readings": [
+            {"character": "歡", "reading": "hoan"},
+            {"character": "愉", "reading": "du"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/歡",
+            "https://hvdic.thivien.net/whv/愉"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-path-Knight",
+      "game_data_id": "Knight",
+      "source_key_name": "Knight",
+      "official_english_name": "Preservation",
+      "official_simplified_chinese_name": "存护",
+      "official_traditional_chinese_name": "存護",
+      "official_vietnamese_name": "Bảo Hộ",
+      "generated_aliases": [
+        {
+          "value": "Tồn Hộ",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "存護",
+          "character_readings": [
+            {"character": "存", "reading": "tồn"},
+            {"character": "護", "reading": "hộ"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/存",
+            "https://hvdic.thivien.net/whv/護"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-path-Mage",
+      "game_data_id": "Mage",
+      "source_key_name": "Mage",
+      "official_english_name": "Erudition",
+      "official_simplified_chinese_name": "智识",
+      "official_traditional_chinese_name": "智識",
+      "official_vietnamese_name": "Tri Thức",
+      "generated_aliases": [
+        {
+          "value": "Trí Thức",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "智識",
+          "character_readings": [
+            {"character": "智", "reading": "trí"},
+            {"character": "識", "reading": "thức"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/智",
+            "https://hvdic.thivien.net/whv/識"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-path-Memory",
+      "game_data_id": "Memory",
+      "source_key_name": "Memory",
+      "official_english_name": "Remembrance",
+      "official_simplified_chinese_name": "记忆",
+      "official_traditional_chinese_name": "記憶",
+      "official_vietnamese_name": "Ký Ức",
+      "generated_aliases": [
+        {
+          "value": "Ký Ức",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "記憶",
+          "character_readings": [
+            {"character": "記", "reading": "ký"},
+            {"character": "憶", "reading": "ức"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/記",
+            "https://hvdic.thivien.net/whv/憶"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "The dictionary also displays the accepted orthographic variant ‘kí ức’; this snapshot normalizes the alias to ‘Ký Ức’ for consistency with the source's Vietnamese casing."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-path-Priest",
+      "game_data_id": "Priest",
+      "source_key_name": "Priest",
+      "official_english_name": "Abundance",
+      "official_simplified_chinese_name": "丰饶",
+      "official_traditional_chinese_name": "豐饒",
+      "official_vietnamese_name": "Trù Phú",
+      "generated_aliases": [
+        {
+          "value": "Phong Nhiêu",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "豐饒",
+          "character_readings": [
+            {"character": "豐", "reading": "phong"},
+            {"character": "饒", "reading": "nhiêu"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/豐",
+            "https://hvdic.thivien.net/whv/饒"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-path-Rogue",
+      "game_data_id": "Rogue",
+      "source_key_name": "Rogue",
+      "official_english_name": "The Hunt",
+      "official_simplified_chinese_name": "巡猎",
+      "official_traditional_chinese_name": "巡獵",
+      "official_vietnamese_name": "Săn Bắn",
+      "generated_aliases": [
+        {
+          "value": "Tuần Liệp",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "巡獵",
+          "character_readings": [
+            {"character": "巡", "reading": "tuần"},
+            {"character": "獵", "reading": "liệp"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/巡",
+            "https://hvdic.thivien.net/whv/獵"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-path-Shaman",
+      "game_data_id": "Shaman",
+      "source_key_name": "Shaman",
+      "official_english_name": "Harmony",
+      "official_simplified_chinese_name": "同谐",
+      "official_traditional_chinese_name": "同諧",
+      "official_vietnamese_name": "Hòa Hợp",
+      "generated_aliases": [
+        {
+          "value": "Đồng Hài",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "同諧",
+          "character_readings": [
+            {"character": "同", "reading": "đồng"},
+            {"character": "諧", "reading": "hài"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/同",
+            "https://hvdic.thivien.net/whv/諧"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-path-Warlock",
+      "game_data_id": "Warlock",
+      "source_key_name": "Warlock",
+      "official_english_name": "Nihility",
+      "official_simplified_chinese_name": "虚无",
+      "official_traditional_chinese_name": "虛無",
+      "official_vietnamese_name": "Hư Vô",
+      "generated_aliases": [
+        {
+          "value": "Hư Vô",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "虛無",
+          "character_readings": [
+            {"character": "虛", "reading": "hư"},
+            {"character": "無", "reading": "vô"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/虛",
+            "https://hvdic.thivien.net/whv/無"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-path-Warrior",
+      "game_data_id": "Warrior",
+      "source_key_name": "Warrior",
+      "official_english_name": "Destruction",
+      "official_simplified_chinese_name": "毁灭",
+      "official_traditional_chinese_name": "毀滅",
+      "official_vietnamese_name": "Hủy Diệt",
+      "generated_aliases": [
+        {
+          "value": "Hủy Diệt",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "毀滅",
+          "character_readings": [
+            {"character": "毀", "reading": "hủy"},
+            {"character": "滅", "reading": "diệt"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/毀",
+            "https://hvdic.thivien.net/whv/滅"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "source_key": "starrail-element-Fire",
+      "game_data_id": "Fire",
+      "source_key_name": "Fire",
+      "official_english_name": "Fire",
+      "official_simplified_chinese_name": "火",
+      "official_traditional_chinese_name": "火",
+      "official_vietnamese_name": "Hỏa",
+      "generated_aliases": [
+        {
+          "value": "Hỏa",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "火",
+          "character_readings": [
+            {"character": "火", "reading": "hỏa"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/火"
+          ],
+          "limitations": [
+            "Generated from a character reading; not an official Vietnamese game name."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-element-Ice",
+      "game_data_id": "Ice",
+      "source_key_name": "Ice",
+      "official_english_name": "Ice",
+      "official_simplified_chinese_name": "冰",
+      "official_traditional_chinese_name": "冰",
+      "official_vietnamese_name": "Băng",
+      "generated_aliases": [
+        {
+          "value": "Băng",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "冰",
+          "character_readings": [
+            {"character": "冰", "reading": "băng"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/冰"
+          ],
+          "limitations": [
+            "Generated from a character reading; not an official Vietnamese game name."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-element-Imaginary",
+      "game_data_id": "Imaginary",
+      "source_key_name": "Imaginary",
+      "official_english_name": "Imaginary",
+      "official_simplified_chinese_name": "虚数",
+      "official_traditional_chinese_name": "虛數",
+      "official_vietnamese_name": "Số Ảo",
+      "generated_aliases": [
+        {
+          "value": "Hư Số",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "虛數",
+          "character_readings": [
+            {"character": "虛", "reading": "hư"},
+            {"character": "數", "reading": "số"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/虛",
+            "https://hvdic.thivien.net/whv/數"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "The alias preserves Chinese source order and is not a semantic translation of the English label."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-element-Physical",
+      "game_data_id": "Physical",
+      "source_key_name": "Physical",
+      "official_english_name": "Physical",
+      "official_simplified_chinese_name": "物理",
+      "official_traditional_chinese_name": "物理",
+      "official_vietnamese_name": "Vật Lý",
+      "generated_aliases": [
+        {
+          "value": "Vật Lý",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "物理",
+          "character_readings": [
+            {"character": "物", "reading": "vật"},
+            {"character": "理", "reading": "lý"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/物",
+            "https://hvdic.thivien.net/whv/理"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-element-Quantum",
+      "game_data_id": "Quantum",
+      "source_key_name": "Quantum",
+      "official_english_name": "Quantum",
+      "official_simplified_chinese_name": "量子",
+      "official_traditional_chinese_name": "量子",
+      "official_vietnamese_name": "Lượng Tử",
+      "generated_aliases": [
+        {
+          "value": "Lượng Tử",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "量子",
+          "character_readings": [
+            {"character": "量", "reading": "lượng"},
+            {"character": "子", "reading": "tử"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/量",
+            "https://hvdic.thivien.net/whv/子"
+          ],
+          "limitations": [
+            "Generated from character readings; not an official Vietnamese game name.",
+            "Compound-level idiomaticity is not independently verified."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-element-Thunder",
+      "game_data_id": "Thunder",
+      "source_key_name": "Thunder",
+      "official_english_name": "Lightning",
+      "official_simplified_chinese_name": "雷",
+      "official_traditional_chinese_name": "雷",
+      "official_vietnamese_name": "Lôi",
+      "generated_aliases": [
+        {
+          "value": "Lôi",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "雷",
+          "character_readings": [
+            {"character": "雷", "reading": "lôi"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/雷"
+          ],
+          "limitations": [
+            "Generated from a character reading; not an official Vietnamese game name."
+          ]
+        }
+      ]
+    },
+    {
+      "source_key": "starrail-element-Wind",
+      "game_data_id": "Wind",
+      "source_key_name": "Wind",
+      "official_english_name": "Wind",
+      "official_simplified_chinese_name": "风",
+      "official_traditional_chinese_name": "風",
+      "official_vietnamese_name": "Phong",
+      "generated_aliases": [
+        {
+          "value": "Phong",
+          "language": "vi",
+          "kind": "han-viet",
+          "official": false,
+          "confidence": "E",
+          "source_text": "風",
+          "character_readings": [
+            {"character": "風", "reading": "phong"}
+          ],
+          "dictionary_lookup_urls": [
+            "https://hvdic.thivien.net/whv/風"
+          ],
+          "limitations": [
+            "Generated from a character reading; not an official Vietnamese game name."
+          ]
+        }
+      ]
+    }
+  ]
+}

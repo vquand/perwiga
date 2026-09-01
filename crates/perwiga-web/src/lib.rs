@@ -31,6 +31,7 @@ use serde::{Deserialize, Serialize};
 
 pub const ENDFIELD_MODULE_ID: &str = "arknights-endfield";
 pub const GENSHIN_MODULE_ID: &str = "genshin-impact";
+pub const STAR_RAIL_MODULE_ID: &str = "honkai-star-rail";
 
 pub fn validate_bind_address(address: SocketAddr) -> Result<(), String> {
     if address.ip().is_loopback() {
@@ -91,6 +92,8 @@ struct EntityListItemResponse {
 #[derive(Serialize)]
 struct EntityDetailResponse {
     entity: WikiEntity,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    catalog_label: Option<String>,
     aliases: Vec<EntityAlias>,
     appearances: Vec<EntityAppearance>,
     event_recency: Option<EntityEventRecencyPresentation>,
@@ -296,6 +299,7 @@ pub fn router_with_store(store: Store) -> perwiga_core::Result<Router> {
     generic_game::register(&mut registry)?;
     genshin_impact::register(&mut registry)?;
     heroes_of_might_and_magic::register(&mut registry)?;
+    honkai_star_rail::register(&mut registry)?;
     let state = WebState {
         application: Arc::new(Mutex::new(Application::new(store, registry))),
     };
@@ -346,6 +350,7 @@ pub fn router_with_store(store: Store) -> perwiga_core::Result<Router> {
         .route("/api/health", get(health))
         .route("/api/uat/endfield", post(setup_endfield))
         .route("/api/uat/genshin", post(setup_genshin))
+        .route("/api/uat/star-rail", post(setup_star_rail))
         .route("/api/modules", get(list_modules))
         .route("/api/works", get(list_works).post(create_work))
         .route("/api/works/{work_id}/workspace", get(get_workspace))
@@ -704,6 +709,34 @@ async fn setup_genshin(State(state): State<WebState>) -> Result<Json<SetupRespon
     application
         .store_mut()
         .import_calendar_events(&work.id, &events)?;
+    Ok(Json(workspace_response(&application, work)?))
+}
+
+async fn setup_star_rail(State(state): State<WebState>) -> Result<Json<SetupResponse>, WebError> {
+    let mut application = state.lock()?;
+    let module_name = application
+        .modules()
+        .find(|module| module.kind() == WorkKind::Game && module.id() == STAR_RAIL_MODULE_ID)
+        .map(|module| module.display_name())
+        .ok_or_else(|| {
+            PerwigaError::Unsupported("Honkai: Star Rail module is not registered".to_string())
+        })?;
+    let work = match application
+        .store()
+        .list_works()?
+        .into_iter()
+        .find(|work| work.kind == WorkKind::Game && work.module_id == STAR_RAIL_MODULE_ID)
+    {
+        Some(work) => work,
+        None => application.create_work(WorkKind::Game, STAR_RAIL_MODULE_ID, module_name)?,
+    };
+    honkai_star_rail::import_curated_characters(application.store_mut(), &work.id)?;
+    honkai_star_rail::import_curated_npcs(application.store_mut(), &work.id)?;
+    honkai_star_rail::import_curated_light_cones(application.store_mut(), &work.id)?;
+    honkai_star_rail::import_curated_relic_sets(application.store_mut(), &work.id)?;
+    honkai_star_rail::import_curated_relics(application.store_mut(), &work.id)?;
+    honkai_star_rail::import_curated_paths(application.store_mut(), &work.id)?;
+    honkai_star_rail::import_curated_elements(application.store_mut(), &work.id)?;
     Ok(Json(workspace_response(&application, work)?))
 }
 
@@ -1079,8 +1112,10 @@ async fn get_entity(
             ))
         })?;
     let event_recency = module.entity_event_recency(&detail.entity);
+    let catalog_label = module.entity_catalog_label(&detail.entity);
     Ok(Json(EntityDetailResponse {
         entity: detail.entity,
+        catalog_label,
         aliases: detail.aliases,
         appearances: detail.appearances,
         event_recency,

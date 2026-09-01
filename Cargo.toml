@@ -6,6 +6,7 @@ members = [
     "games/generic",
     "games/arknights-endfield",
     "games/genshin-impact",
+    "games/honkai-star-rail",
     "games/heroes-of-might-and-magic",
     "novels/generic",
 ]

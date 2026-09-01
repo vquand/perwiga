@@ -87,6 +87,7 @@ enum EntityCommand {
     ImportGenshinArtifacts(ImportGenshinArtifacts),
     ImportGenshinArtifactDomains(ImportGenshinArtifactDomains),
     ImportGenshinEvents(ImportGenshinEvents),
+    ImportStarRail(ImportStarRail),
     ImportHeroesIii(ImportHeroesIii),
 }
 
@@ -216,6 +217,12 @@ struct ImportGenshinArtifactDomains {
 
 #[derive(Debug, Args)]
 struct ImportGenshinEvents {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportStarRail {
     #[arg(long)]
     work: String,
 }
@@ -401,6 +408,7 @@ fn run() -> perwiga_core::Result<()> {
     perwiga_game_generic::register(&mut registry)?;
     perwiga_game_arknights_endfield::register(&mut registry)?;
     perwiga_game_genshin_impact::register(&mut registry)?;
+    perwiga_game_honkai_star_rail::register(&mut registry)?;
     perwiga_game_heroes_of_might_and_magic::register(&mut registry)?;
     perwiga_novel_generic::register(&mut registry)?;
     let mut app = Application::new(Store::open(&cli.database)?, registry);
@@ -525,6 +533,45 @@ fn run() -> perwiga_core::Result<()> {
                         "inserted": calendar.inserted,
                         "unchanged": calendar.unchanged,
                     },
+                }))?
+            }
+            EntityCommand::ImportStarRail(input) => {
+                let characters = perwiga_game_honkai_star_rail::import_curated_characters(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let npcs = perwiga_game_honkai_star_rail::import_curated_npcs(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let light_cones = perwiga_game_honkai_star_rail::import_curated_light_cones(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let relic_sets = perwiga_game_honkai_star_rail::import_curated_relic_sets(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let relics = perwiga_game_honkai_star_rail::import_curated_relics(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let paths = perwiga_game_honkai_star_rail::import_curated_paths(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let elements = perwiga_game_honkai_star_rail::import_curated_elements(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                print_json(&serde_json::json!({
+                    "characters": characters,
+                    "npcs": npcs,
+                    "light_cones": light_cones,
+                    "relic_sets": relic_sets,
+                    "relics": relics,
+                    "paths": paths,
+                    "elements": elements,
                 }))?
             }
             EntityCommand::ImportHeroesIii(input) => print_json(

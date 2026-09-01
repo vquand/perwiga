@@ -742,7 +742,11 @@ async function saveGame(event) {
 
 async function initialize() {
   try {
-    const [setup] = await Promise.all([api.setupEndfield(), api.setupGenshin()]);
+    const [setup] = await Promise.all([
+      api.setupEndfield(),
+      api.setupGenshin(),
+      api.setupStarRail(),
+    ]);
     [state.works, state.modules] = await Promise.all([api.listWorks(), api.listModules()]);
     renderLibrary();
     await activateWork(setup.work.id);
