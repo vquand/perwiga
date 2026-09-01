@@ -24,6 +24,19 @@ class HeroesIiiCrawlerTests(unittest.TestCase):
         self.assertEqual(payload["url"], "https://example.com/path//kept")
         self.assertEqual(payload["entry"]["index"], 7)
 
+    def test_jsonc_parser_accepts_vcmi_trailing_commas_without_damaging_strings(self):
+        payload = MODULE.parse_jsonc(
+            '''{
+              "literal": "kept,}",
+              "items": [1, 2,],
+              "entry": {"index": 7,},
+            }'''
+        )
+
+        self.assertEqual(payload["literal"], "kept,}")
+        self.assertEqual(payload["items"], [1, 2])
+        self.assertEqual(payload["entry"], {"index": 7})
+
     def test_template_parser_handles_nested_templates_and_named_fields(self):
         text = """{{CreatureNew
         | name = Halberdier
@@ -83,6 +96,64 @@ class HeroesIiiCrawlerTests(unittest.TestCase):
                 "artifact": 141,
                 "spell": 70,
             },
+        )
+
+    def test_catalog_validation_rejects_duplicate_source_keys(self):
+        records = [
+            {"source_key": "homm3-complete-hero-0", "entity_type": "hero"},
+            {"source_key": "homm3-complete-hero-0", "entity_type": "hero"},
+        ]
+
+        with self.assertRaisesRegex(ValueError, "duplicate source key"):
+            MODULE.validate_catalog_records(records, {"hero": 2})
+
+    def test_catalog_validation_requires_exact_type_counts(self):
+        records = [
+            {"source_key": "homm3-complete-town-0", "entity_type": "town"},
+            {"source_key": "homm3-complete-hero-0", "entity_type": "hero"},
+        ]
+
+        with self.assertRaisesRegex(ValueError, "hero catalog has 1 records; expected 2"):
+            MODULE.validate_catalog_records(records, {"town": 1, "hero": 2})
+
+    def test_camel_case_source_keys_become_reviewable_titles(self):
+        self.assertEqual(MODULE.title_from_key("lordHaart"), "Lord Haart")
+        self.assertEqual(MODULE.title_from_key("blackshardOfTheDeadKnight"), "Blackshard Of The Dead Knight")
+
+    def test_wiki_page_helpers_preserve_revision_provenance_and_selected_facts(self):
+        page = {
+            "pageid": 42,
+            "title": "Magic Arrow",
+            "revisions": [
+                {
+                    "revid": 73,
+                    "timestamp": "2026-08-31T12:00:00Z",
+                    "slots": {
+                        "main": {
+                            "*": "{{Spell| school = {{Sm|Air Magic}} | level = 1 | cost = 5 }}"
+                        }
+                    },
+                }
+            ],
+        }
+
+        source = MODULE.wiki_page_source(page)
+        facts = MODULE.facts_from_template(
+            MODULE.wiki_page_content(page),
+            "Spell",
+            (("School", "school"), ("Level", "level"), ("Cost", "cost")),
+        )
+
+        self.assertEqual(source["page_id"], 42)
+        self.assertEqual(source["revision_id"], 73)
+        self.assertEqual(source["revision_timestamp"], "2026-08-31T12:00:00Z")
+        self.assertEqual(
+            facts,
+            [
+                {"label": "School", "value": "Air Magic"},
+                {"label": "Level", "value": "1"},
+                {"label": "Cost", "value": "5"},
+            ],
         )
 
 
