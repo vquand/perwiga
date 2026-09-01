@@ -525,6 +525,26 @@ impl Store {
             .map_err(Into::into)
     }
 
+    /// Resolves the title-owned primary source identity attached at entity import.
+    pub fn resolve_sourced_entity_id(
+        &self,
+        work_id: &str,
+        source_provider: &str,
+        source_identity: &str,
+    ) -> Result<Option<String>> {
+        let source_provider = required_text(source_provider, "entity source provider")?;
+        let source_identity = required_text(source_identity, "entity source identity")?;
+        self.connection
+            .query_row(
+                "SELECT id FROM wiki_entities
+                 WHERE work_id = ?1 AND source_provider = ?2 AND source_identity = ?3",
+                params![work_id, source_provider, source_identity],
+                |row| row.get(0),
+            )
+            .optional()
+            .map_err(Into::into)
+    }
+
     /// Stores a validated candidate batch without materializing unreviewed
     /// lore into the canonical graph. Sources and exact external identity
     /// references receive an automatic validation status; narrative events,
@@ -917,7 +937,7 @@ impl Store {
         cursor: Option<&str>,
         limit: usize,
     ) -> Result<crate::lore::LoreGraph> {
-        let limit = limit.clamp(1, 200) as i64;
+        let limit = limit.clamp(1, 500) as i64;
         let mut periods_statement = self.connection.prepare(
             "SELECT id, work_id, source_provider, source_identity, name_en,
                     description_en, display_order, parent_period_id

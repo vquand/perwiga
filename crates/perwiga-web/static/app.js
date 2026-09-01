@@ -418,8 +418,16 @@ function renderLore() {
   });
   const eventCount = graph.events.length;
   const candidateCount = state.loreCandidates.length;
+  const characterSubjects = graph.subjects.filter((subject) =>
+    subject.entity_type === "operator" || subject.entity_type === "npc"
+  );
+  const involvedIds = new Set(graph.involvements.map((item) => item.subject_id));
+  const placedCharacters = characterSubjects.filter((subject) => involvedIds.has(subject.id)).length;
+  const characterCoverage = characterSubjects.length
+    ? ` · ${placedCharacters} placed / ${characterSubjects.length - placedCharacters} awaiting placement`
+    : "";
   dom.loreStatus.textContent = eventCount
-    ? `${eventCount} reviewed ${eventCount === 1 ? "event" : "events"} · ${candidateCount} candidate${candidateCount === 1 ? "" : "s"} awaiting review`
+    ? `${eventCount} reviewed ${eventCount === 1 ? "event" : "events"}${characterCoverage} · ${candidateCount} candidate${candidateCount === 1 ? "" : "s"} awaiting review`
     : candidateCount
       ? `${candidateCount} candidate${candidateCount === 1 ? "" : "s"} awaiting review · no events approved yet`
       : "No reviewed lore events yet";

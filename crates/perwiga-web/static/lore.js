@@ -205,6 +205,28 @@ export function renderLoreMap(container, graph, { onEvent } = {}) {
     column.append(stack);
     map.append(column);
   }
+  const involvedSubjectIds = new Set((graph.involvements || []).map((item) => item.subject_id));
+  const awaitingCharacters = (graph.subjects || [])
+    .filter((subject) => isCharacter(subject) && !involvedSubjectIds.has(subject.id))
+    .sort((left, right) => left.attested_name.localeCompare(right.attested_name));
+  if (awaitingCharacters.length) {
+    const column = element("section", "lore-period lore-period-awaiting");
+    column.setAttribute("role", "listitem");
+    column.append(
+      element("p", "lore-period-order", "Not on the timeline"),
+      element("h3", "lore-period-title", "Awaiting placement"),
+      element(
+        "p",
+        "lore-period-description",
+        `${awaitingCharacters.length} catalogued characters have no direct mission-actor evidence in the current source snapshot.`,
+      ),
+    );
+    const cast = element("div", "lore-awaiting-cast");
+    cast.setAttribute("aria-label", "Characters awaiting a source-backed timeline placement");
+    for (const subject of awaitingCharacters) cast.append(characterAppearance(subject));
+    column.append(cast);
+    map.append(column);
+  }
   container.append(map);
 }
 

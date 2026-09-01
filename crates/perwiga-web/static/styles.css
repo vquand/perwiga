@@ -1139,6 +1139,24 @@ h1 {
   margin-top: var(--space-4);
 }
 
+.lore-period-awaiting {
+  border-style: dashed;
+  background: color-mix(in srgb, var(--surface) 60%, var(--bg));
+}
+
+.lore-awaiting-cast {
+  display: grid;
+  max-height: 42rem;
+  gap: var(--space-2);
+  overflow-y: auto;
+  padding-right: var(--space-2);
+}
+
+.lore-awaiting-cast .lore-character {
+  padding: var(--space-1);
+  border-bottom: 0.0625rem solid var(--border);
+}
+
 .lore-event-card {
   display: grid;
   gap: var(--space-2);

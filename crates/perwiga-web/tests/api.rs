@@ -116,7 +116,7 @@ async fn endfield_setup_is_idempotent() {
     let lore_graph = app
         .clone()
         .oneshot(
-            Request::get(format!("/api/works/{work_id}/lore-graph?limit=100"))
+            Request::get(format!("/api/works/{work_id}/lore-graph?limit=500"))
                 .body(Body::empty())
                 .expect("lore graph request"),
         )
@@ -125,7 +125,7 @@ async fn endfield_setup_is_idempotent() {
     assert_eq!(lore_graph.status(), StatusCode::OK);
     let lore_graph = json_response(lore_graph).await;
     assert!(lore_graph["periods"].as_array().unwrap().len() >= 4);
-    assert!(lore_graph["events"].as_array().unwrap().len() >= 4);
+    assert_eq!(lore_graph["events"].as_array().unwrap().len(), 200);
     assert!(!lore_graph["relations"].as_array().unwrap().is_empty());
     assert!(!lore_graph["involvements"].as_array().unwrap().is_empty());
     assert!(lore_graph["subjects"]
@@ -134,6 +134,16 @@ async fn endfield_setup_is_idempotent() {
         .iter()
         .any(|subject| subject["attested_name"] == "Talos-II"
             && !subject["wiki_entity_id"].is_null()));
+    let character_subjects = lore_graph["subjects"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter(|subject| matches!(subject["entity_type"].as_str(), Some("operator" | "npc")))
+        .collect::<Vec<_>>();
+    assert_eq!(character_subjects.len(), 167);
+    assert!(character_subjects
+        .iter()
+        .all(|subject| !subject["wiki_entity_id"].is_null()));
     let avywenna = lore_graph["subjects"]
         .as_array()
         .unwrap()

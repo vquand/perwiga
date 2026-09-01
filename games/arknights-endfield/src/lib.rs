@@ -5,10 +5,15 @@ use std::{
 
 use chrono::{DateTime, FixedOffset};
 use perwiga_core::{
-    lore::{LoreCandidateBatch, LoreImportSummary},
+    lore::{
+        LoreAssertionKind, LoreCandidateBatch, LoreCertainty, LoreClaimCandidate,
+        LoreEventCandidate, LoreEvidenceCandidate, LoreEvidenceStance, LoreImportSummary,
+        LoreInvolvementCandidate, LoreSourceCandidate, LoreSubjectCandidate, LoreSubjectReference,
+        LoreTimeCandidate, LoreTimeKind, LoreTimePrecision,
+    },
     model::{
-        AliasInput, CalendarEvent, CalendarEventInput, EntityAliasBatchInput, EntityImportSummary,
-        EntityInput, SourcedEntityInput, WikiEntity,
+        AliasInput, CalendarEvent, CalendarEventInput, EntityAliasBatchInput,
+        EntityAppearanceInput, EntityImportSummary, EntityInput, SourcedEntityInput, WikiEntity,
     },
     CalendarEventPresentation, Capability, EntityEventRecencyPresentation, EntityFacetDefinition,
     EntityFacetOption, EntityPresentation, EntityTypeDefinition, EventFeaturedEntityPresentation,
@@ -788,6 +793,44 @@ struct NpcSnapshot {
 }
 
 #[derive(Debug, Deserialize)]
+struct LoreAppearanceSnapshot {
+    checked_at: String,
+    client_data_commit: String,
+    catalog_scope: LoreAppearanceScope,
+    sources: BTreeMap<String, String>,
+    evidence_note: String,
+    missions: Vec<LoreAppearanceMission>,
+    unplaced_characters: Vec<LoreAppearanceCharacter>,
+}
+
+#[derive(Debug, Deserialize)]
+struct LoreAppearanceScope {
+    operators: usize,
+    npcs: usize,
+    characters: usize,
+    placed_characters: usize,
+    unplaced_characters: usize,
+    missions: usize,
+}
+
+#[derive(Debug, Deserialize)]
+struct LoreAppearanceMission {
+    mission_id: String,
+    title_en: String,
+    summary_en: Option<String>,
+    period_key: Option<String>,
+    source_locator: String,
+    characters: Vec<LoreAppearanceCharacter>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct LoreAppearanceCharacter {
+    entity_type: String,
+    source_key: String,
+    name_en: String,
+}
+
+#[derive(Debug, Deserialize)]
 struct CuratedNpc {
     source_key: String,
     catalog_index: u16,
@@ -1450,8 +1493,14 @@ fn curated_event_snapshot() -> Result<&'static EventSnapshot, PerwigaError> {
 pub fn curated_lore_candidate_batch() -> Result<&'static LoreCandidateBatch, PerwigaError> {
     static BATCH: OnceLock<Result<LoreCandidateBatch, String>> = OnceLock::new();
     match BATCH.get_or_init(|| {
-        let batch = serde_json::from_str::<LoreCandidateBatch>(include_str!("../data/lore.json"))
-            .map_err(|error| format!("invalid bundled Endfield lore seed: {error}"))?;
+        let mut batch =
+            serde_json::from_str::<LoreCandidateBatch>(include_str!("../data/lore.json"))
+                .map_err(|error| format!("invalid bundled Endfield lore seed: {error}"))?;
+        let appearances = serde_json::from_str::<LoreAppearanceSnapshot>(include_str!(
+            "../data/lore-appearances.json"
+        ))
+        .map_err(|error| format!("invalid bundled Endfield lore appearance snapshot: {error}"))?;
+        extend_lore_with_character_appearances(&mut batch, &appearances)?;
         batch
             .validate()
             .map_err(|error| format!("invalid bundled Endfield lore seed: {error}"))?;
@@ -1460,6 +1509,251 @@ pub fn curated_lore_candidate_batch() -> Result<&'static LoreCandidateBatch, Per
         Ok(batch) => Ok(batch),
         Err(message) => Err(PerwigaError::Validation(message.clone())),
     }
+}
+
+fn lore_character_subject_key(character: &LoreAppearanceCharacter) -> String {
+    if character.entity_type == "operator" && character.source_key == "avywenna" {
+        "avywenna".to_string()
+    } else {
+        format!("catalog-{}-{}", character.entity_type, character.source_key)
+    }
+}
+
+fn lore_character_reference(character: &LoreAppearanceCharacter) -> LoreSubjectReference {
+    let provider = if character.entity_type == "operator" {
+        OPERATOR_SOURCE_PROVIDER
+    } else {
+        NPC_SOURCE_PROVIDER
+    };
+    LoreSubjectReference {
+        provider: provider.to_string(),
+        identity: format!("{}:{}", character.entity_type, character.source_key),
+    }
+}
+
+fn extend_lore_with_character_appearances(
+    batch: &mut LoreCandidateBatch,
+    snapshot: &LoreAppearanceSnapshot,
+) -> Result<(), String> {
+    if snapshot.client_data_commit != "90bc55768143f1998ad02d03ed0042919135979f" {
+        return Err("Endfield lore appearances use an unexpected client-data commit".into());
+    }
+    if snapshot.catalog_scope.operators != curated_operators().len()
+        || snapshot.catalog_scope.npcs != curated_npc_snapshot().npcs.len()
+        || snapshot.catalog_scope.characters
+            != snapshot.catalog_scope.operators + snapshot.catalog_scope.npcs
+        || snapshot.catalog_scope.missions != snapshot.missions.len()
+        || snapshot.catalog_scope.unplaced_characters != snapshot.unplaced_characters.len()
+        || snapshot.catalog_scope.placed_characters + snapshot.catalog_scope.unplaced_characters
+            != snapshot.catalog_scope.characters
+    {
+        return Err("Endfield lore appearance coverage does not match the curated catalogs".into());
+    }
+
+    let dialogue_source_key = "client-mission-dialogue";
+    let operator_catalog_source_key = "official-operator-directory-catalog";
+    let npc_catalog_source_key = "client-npc-catalog";
+    batch.sources.extend([
+        LoreSourceCandidate {
+            key: dialogue_source_key.into(),
+            kind: "structured-client-dialogue".into(),
+            provider: format!("beyondGameData@{}", snapshot.client_data_commit),
+            identity: "dialog/json/mission".into(),
+            title: "Arknights: Endfield mission dialogue actor data".into(),
+            language: "en".into(),
+            url: snapshot.sources.get("dialogue").cloned(),
+            content_sha256: format!("git-{}-dialogue", snapshot.client_data_commit),
+            checked_at: snapshot.checked_at.clone(),
+        },
+        LoreSourceCandidate {
+            key: operator_catalog_source_key.into(),
+            kind: "official-operator-directory".into(),
+            provider: OPERATOR_SOURCE_PROVIDER.into(),
+            identity: "operator-directory".into(),
+            title: "Arknights: Endfield official Operator directory".into(),
+            language: "en".into(),
+            url: Some("https://endfield.gryphline.com/en-us/operator".into()),
+            content_sha256: "official-operator-directory-checked-2026-08-24".into(),
+            checked_at: snapshot.checked_at.clone(),
+        },
+        LoreSourceCandidate {
+            key: npc_catalog_source_key.into(),
+            kind: "structured-client-localization".into(),
+            provider: NPC_SOURCE_PROVIDER.into(),
+            identity: "tableCfg/NpcTable.json".into(),
+            title: "Arknights: Endfield NPC client table".into(),
+            language: "en".into(),
+            url: snapshot.sources.get("npc_templates").cloned(),
+            content_sha256: format!("git-{}-npc-table", snapshot.client_data_commit),
+            checked_at: snapshot.checked_at.clone(),
+        },
+    ]);
+
+    let mut appearances_by_character: BTreeMap<(String, String), Vec<&LoreAppearanceMission>> =
+        BTreeMap::new();
+    for mission in &snapshot.missions {
+        for character in &mission.characters {
+            appearances_by_character
+                .entry((character.entity_type.clone(), character.source_key.clone()))
+                .or_default()
+                .push(mission);
+        }
+    }
+    let all_characters = snapshot
+        .missions
+        .iter()
+        .flat_map(|mission| mission.characters.iter().cloned())
+        .chain(snapshot.unplaced_characters.iter().cloned())
+        .collect::<Vec<_>>();
+    let mut seen_characters = HashSet::new();
+    for character in all_characters {
+        let identity = (character.entity_type.clone(), character.source_key.clone());
+        if !seen_characters.insert(identity.clone()) {
+            continue;
+        }
+        let source_key = if let Some(mission) = appearances_by_character
+            .get(&identity)
+            .and_then(|missions| missions.first())
+        {
+            let subject_key = lore_character_subject_key(&character);
+            if subject_key == "avywenna" {
+                continue;
+            }
+            batch.subjects.push(LoreSubjectCandidate {
+                key: subject_key,
+                attested_name: character.name_en.clone(),
+                proposed_type: character.entity_type.clone(),
+                entity_ref: Some(lore_character_reference(&character)),
+                evidence: vec![LoreEvidenceCandidate {
+                    source_key: dialogue_source_key.into(),
+                    locator: mission.source_locator.clone(),
+                    excerpt: format!(
+                        "{} is staged as an actor in the structured dialogue for {}.",
+                        character.name_en, mission.title_en
+                    ),
+                    stance: Some(LoreEvidenceStance::Supports),
+                }],
+            });
+            continue;
+        } else if character.entity_type == "operator" {
+            operator_catalog_source_key
+        } else {
+            npc_catalog_source_key
+        };
+        batch.subjects.push(LoreSubjectCandidate {
+            key: lore_character_subject_key(&character),
+            attested_name: character.name_en.clone(),
+            proposed_type: character.entity_type.clone(),
+            entity_ref: Some(lore_character_reference(&character)),
+            evidence: vec![LoreEvidenceCandidate {
+                source_key: source_key.into(),
+                locator: format!("catalog:{}", character.source_key),
+                excerpt: format!(
+                    "{} is in the curated {} catalog; no mission actor placement is attested in this snapshot.",
+                    character.name_en, character.entity_type
+                ),
+                stance: Some(LoreEvidenceStance::Supports),
+            }],
+        });
+    }
+
+    for mission in &snapshot.missions {
+        let involvements = mission
+            .characters
+            .iter()
+            .map(|character| LoreInvolvementCandidate {
+                subject_key: lore_character_subject_key(character),
+                role: "actor".into(),
+            })
+            .collect::<Vec<_>>();
+        let evidence = LoreEvidenceCandidate {
+            source_key: dialogue_source_key.into(),
+            locator: mission.source_locator.clone(),
+            excerpt: format!(
+                "The structured mission dialogue stages {} catalogued character(s). {}",
+                mission.characters.len(),
+                snapshot.evidence_note
+            ),
+            stance: Some(LoreEvidenceStance::Supports),
+        };
+        if mission.mission_id == "sm1l5m1" {
+            let event = batch
+                .events
+                .iter_mut()
+                .find(|event| event.key == "visitor-from-the-band-i")
+                .ok_or("the curated Visitor from the Band I event is missing")?;
+            let mut existing_subjects = event
+                .involvements
+                .iter()
+                .map(|involvement| involvement.subject_key.clone())
+                .collect::<HashSet<_>>();
+            event.involvements.extend(
+                involvements
+                    .iter()
+                    .filter(|involvement| existing_subjects.insert(involvement.subject_key.clone()))
+                    .cloned(),
+            );
+            event.claims.push(LoreClaimCandidate {
+                key: "sm1l5m1-character-staging".into(),
+                text_en: format!(
+                    "The client dialogue data associates {} catalogued character(s) with {}.",
+                    mission.characters.len(),
+                    mission.title_en
+                ),
+                assertion_kind: LoreAssertionKind::DirectFact,
+                certainty: LoreCertainty::Confirmed,
+                branch_group: None,
+                involvements,
+                evidence: vec![evidence],
+            });
+            continue;
+        }
+        batch.events.push(LoreEventCandidate {
+            key: format!("client-mission-{}", mission.mission_id),
+            title_en: mission.title_en.clone(),
+            summary_en: mission.summary_en.clone(),
+            time: LoreTimeCandidate {
+                kind: LoreTimeKind::Moment,
+                precision: if mission.period_key.is_some() {
+                    LoreTimePrecision::Relative
+                } else {
+                    LoreTimePrecision::Unknown
+                },
+                label: format!(
+                    "Mission {} · {}",
+                    mission.mission_id,
+                    if mission.period_key.is_some() {
+                        "broad story placement"
+                    } else {
+                        "exact placement unresolved"
+                    }
+                ),
+                start_period_key: mission.period_key.clone(),
+                end_period_key: None,
+                relations: Vec::new(),
+            },
+            involvements: involvements.clone(),
+            claims: vec![LoreClaimCandidate {
+                key: format!("{}-character-staging", mission.mission_id),
+                text_en: format!(
+                    "The client dialogue data associates {} catalogued character(s) with {}.",
+                    mission.characters.len(),
+                    mission.title_en
+                ),
+                assertion_kind: LoreAssertionKind::DirectFact,
+                certainty: LoreCertainty::Confirmed,
+                branch_group: None,
+                involvements,
+                evidence: vec![evidence],
+            }],
+        });
+    }
+    batch.corpus.version = "reviewed-web-and-client-dialogue-2026-09-v6".into();
+    batch.corpus.manifest_sha256 =
+        "0f56eb0443b10bdb3955f76db1dc1cdba3e7671612009c3d4b046aae2f52a262".into();
+    batch.generator.name = "perwiga-curated-seed-and-client-dialogue".into();
+    batch.generator.version = "6".into();
+    Ok(())
 }
 
 pub fn import_curated_lore(
@@ -1474,7 +1768,62 @@ pub fn import_curated_lore(
             "work {work_id} is not owned by the Arknights: Endfield module"
         )));
     }
+    import_curated_lore_appearances(store, work_id)?;
     store.import_reviewed_lore_candidate_batch(work_id, curated_lore_candidate_batch()?)
+}
+
+fn import_curated_lore_appearances(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<usize> {
+    let snapshot = serde_json::from_str::<LoreAppearanceSnapshot>(include_str!(
+        "../data/lore-appearances.json"
+    ))
+    .map_err(|error| {
+        PerwigaError::Validation(format!(
+            "invalid bundled Endfield lore appearance snapshot: {error}"
+        ))
+    })?;
+    let dialogue_url = snapshot.sources.get("dialogue").cloned();
+    let mut inputs = Vec::new();
+    for mission in &snapshot.missions {
+        for character in &mission.characters {
+            let reference = lore_character_reference(character);
+            let entity_id = store
+                .resolve_entity_external_identity(
+                    work_id,
+                    &reference.provider,
+                    &reference.identity,
+                )?
+                .or(store.resolve_sourced_entity_id(
+                    work_id,
+                    &reference.provider,
+                    &reference.identity,
+                )?);
+            let Some(entity_id) = entity_id else {
+                return Err(PerwigaError::NotFound(format!(
+                    "Endfield lore appearance character {}:{} is not imported",
+                    character.entity_type, character.source_key
+                )));
+            };
+            inputs.push(EntityAppearanceInput {
+                entity_id,
+                relation_kind: "quest".into(),
+                related_title: mission.title_en.clone(),
+                source_provider: format!("beyondGameData@{}", snapshot.client_data_commit),
+                source_identity: format!("mission:{}", mission.mission_id),
+                related_source_url: dialogue_url
+                    .as_ref()
+                    .map(|base| format!("{base}/{}", mission.mission_id)),
+                source_notes: Some(format!(
+                    "{} Source locator: {}",
+                    snapshot.evidence_note, mission.source_locator
+                )),
+                locations: Vec::new(),
+            });
+        }
+    }
+    store.import_entity_appearances(&inputs)
 }
 
 fn validate_event_snapshot(snapshot: &EventSnapshot) -> Result<(), String> {
@@ -2762,7 +3111,15 @@ mod tests {
         let batch = curated_lore_candidate_batch().expect("curated lore batch");
         assert_eq!(batch.module_id, "arknights-endfield");
         assert!(batch.periods.len() >= 4);
-        assert!(batch.events.len() >= 4);
+        assert_eq!(batch.events.len(), 200);
+        assert_eq!(
+            batch
+                .subjects
+                .iter()
+                .filter(|subject| matches!(subject.proposed_type.as_str(), "operator" | "npc"))
+                .count(),
+            167
+        );
 
         let mut store = Store::open_in_memory().expect("in-memory store");
         let work = store
@@ -2774,7 +3131,7 @@ mod tests {
         import_curated_lore(&mut store, &work.id).expect("curated lore import");
 
         let graph = store
-            .list_lore_graph(&work.id, None, None, 100)
+            .list_lore_graph(&work.id, None, None, 500)
             .expect("lore graph");
         assert_eq!(graph.events.len(), batch.events.len());
         assert!(graph
@@ -2794,11 +3151,54 @@ mod tests {
             .find(|subject| subject.attested_name == "Avywenna")
             .expect("Avywenna subject");
         assert!(avywenna.wiki_entity_id.is_some());
+        let avywenna_appearances = store
+            .list_entity_appearances(avywenna.wiki_entity_id.as_deref().expect("Avywenna entity"))
+            .expect("Avywenna appearances");
+        assert!(avywenna_appearances.iter().any(|appearance| {
+            appearance.relation_kind == "quest"
+                && appearance.related_title == "Visitor from the Band I"
+        }));
+        let catalog_characters = graph
+            .subjects
+            .iter()
+            .filter(|subject| matches!(subject.proposed_type.as_str(), "operator" | "npc"))
+            .collect::<Vec<_>>();
+        assert_eq!(catalog_characters.len(), 167);
+        assert!(catalog_characters
+            .iter()
+            .all(|subject| subject.wiki_entity_id.is_some()));
+        let involved_character_ids = graph
+            .involvements
+            .iter()
+            .map(|involvement| involvement.subject_id.as_str())
+            .collect::<HashSet<_>>();
+        assert_eq!(
+            catalog_characters
+                .iter()
+                .filter(|subject| involved_character_ids.contains(subject.id.as_str()))
+                .count(),
+            71
+        );
         let visitor = graph
             .events
             .iter()
             .find(|event| event.title_en == "Visitor from the Band I")
             .expect("Avywenna quest");
+        let character_subject_ids = catalog_characters
+            .iter()
+            .map(|subject| subject.id.as_str())
+            .collect::<HashSet<_>>();
+        assert_eq!(
+            graph
+                .involvements
+                .iter()
+                .filter(|involvement| {
+                    involvement.event_id.as_deref() == Some(visitor.id.as_str())
+                        && character_subject_ids.contains(involvement.subject_id.as_str())
+                })
+                .count(),
+            5
+        );
         let wuling = graph
             .events
             .iter()

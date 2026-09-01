@@ -912,7 +912,7 @@ async fn list_lore_graph(
         &work_id,
         filters.subject_id.as_deref(),
         filters.cursor.as_deref(),
-        filters.limit.unwrap_or(100),
+        filters.limit.unwrap_or(500),
     )?;
     let LoreGraph {
         periods,
