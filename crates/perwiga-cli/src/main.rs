@@ -87,6 +87,7 @@ enum EntityCommand {
     ImportGenshinArtifacts(ImportGenshinArtifacts),
     ImportGenshinArtifactDomains(ImportGenshinArtifactDomains),
     ImportGenshinEvents(ImportGenshinEvents),
+    ImportHeroesIii(ImportHeroesIii),
 }
 
 #[derive(Debug, Args)]
@@ -215,6 +216,12 @@ struct ImportGenshinArtifactDomains {
 
 #[derive(Debug, Args)]
 struct ImportGenshinEvents {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportHeroesIii {
     #[arg(long)]
     work: String,
 }
@@ -394,6 +401,7 @@ fn run() -> perwiga_core::Result<()> {
     perwiga_game_generic::register(&mut registry)?;
     perwiga_game_arknights_endfield::register(&mut registry)?;
     perwiga_game_genshin_impact::register(&mut registry)?;
+    perwiga_game_heroes_of_might_and_magic::register(&mut registry)?;
     perwiga_novel_generic::register(&mut registry)?;
     let mut app = Application::new(Store::open(&cli.database)?, registry);
 
@@ -519,6 +527,12 @@ fn run() -> perwiga_core::Result<()> {
                     },
                 }))?
             }
+            EntityCommand::ImportHeroesIii(input) => print_json(
+                &perwiga_game_heroes_of_might_and_magic::import_curated_heroes_iii(
+                    app.store_mut(),
+                    &input.work,
+                )?,
+            )?,
         },
         Command::Note { command } => match command {
             NoteCommand::Add(input) => print_json(&app.store().create_note(
@@ -759,6 +773,25 @@ mod tests {
             Command::Entity {
                 command: EntityCommand::ImportGenshinSkins(input),
             } => assert_eq!(input.work, "work-4"),
+            command => panic!("unexpected command: {command:?}"),
+        }
+    }
+
+    #[test]
+    fn parses_heroes_iii_curated_catalog_import() {
+        let cli = Cli::try_parse_from([
+            "perwiga",
+            "entity",
+            "import-heroes-iii",
+            "--work",
+            "work-heroes-3",
+        ])
+        .expect("valid Heroes III catalog import command");
+
+        match cli.command {
+            Command::Entity {
+                command: EntityCommand::ImportHeroesIii(input),
+            } => assert_eq!(input.work, "work-heroes-3"),
             command => panic!("unexpected command: {command:?}"),
         }
     }

@@ -1966,7 +1966,13 @@ async fn library_lists_switchable_games_with_isolated_entities_and_module_themes
         .await
         .expect("module list response");
     assert_eq!(modules.status(), StatusCode::OK);
-    assert_eq!(json_response(modules).await.as_array().unwrap().len(), 3);
+    let modules_json = json_response(modules).await;
+    let modules = modules_json.as_array().expect("module list");
+    assert_eq!(modules.len(), 4);
+    assert!(modules.iter().any(|module| {
+        module["id"] == "heroes-of-might-and-magic"
+            && module["display_name"] == "Heroes of Might and Magic"
+    }));
 
     let generic_workspace = app
         .clone()

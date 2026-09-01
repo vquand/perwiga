@@ -263,6 +263,7 @@ pub fn router_with_store(store: Store) -> perwiga_core::Result<Router> {
     arknights_endfield::register(&mut registry)?;
     generic_game::register(&mut registry)?;
     genshin_impact::register(&mut registry)?;
+    heroes_of_might_and_magic::register(&mut registry)?;
     let state = WebState {
         application: Arc::new(Mutex::new(Application::new(store, registry))),
     };

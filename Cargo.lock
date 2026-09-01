@@ -791,6 +791,7 @@ dependencies = [
  "perwiga-game-arknights-endfield",
  "perwiga-game-generic",
  "perwiga-game-genshin-impact",
+ "perwiga-game-heroes-of-might-and-magic",
  "perwiga-novel-generic",
  "serde",
  "serde_json",
@@ -842,6 +843,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "perwiga-game-heroes-of-might-and-magic"
+version = "0.1.0"
+dependencies = [
+ "perwiga-core",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "perwiga-novel-generic"
 version = "0.1.0"
 dependencies = [
@@ -859,6 +869,7 @@ dependencies = [
  "perwiga-game-arknights-endfield",
  "perwiga-game-generic",
  "perwiga-game-genshin-impact",
+ "perwiga-game-heroes-of-might-and-magic",
  "serde",
  "serde_json",
  "tempfile",

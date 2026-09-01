@@ -6,6 +6,7 @@ members = [
     "games/generic",
     "games/arknights-endfield",
     "games/genshin-impact",
+    "games/heroes-of-might-and-magic",
     "novels/generic",
 ]
 resolver = "2"

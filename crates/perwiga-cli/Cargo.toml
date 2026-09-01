@@ -10,6 +10,7 @@ perwiga-core = { path = "../perwiga-core" }
 perwiga-game-arknights-endfield = { path = "../../games/arknights-endfield" }
 perwiga-game-generic = { path = "../../games/generic" }
 perwiga-game-genshin-impact = { path = "../../games/genshin-impact" }
+perwiga-game-heroes-of-might-and-magic = { path = "../../games/heroes-of-might-and-magic" }
 perwiga-novel-generic = { path = "../../novels/generic" }
 serde.workspace = true
 serde_json.workspace = true
