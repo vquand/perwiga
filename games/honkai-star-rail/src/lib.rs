@@ -1278,7 +1278,8 @@ pub fn import_curated_npcs(
                     automatic_vietnamese_translation: None,
                     english_description: None,
                     other_information: Some(format!(
-                        "HoYoWiki NPC entry page ID: {}. Source: {}. Page: {}. Checked {}. The bundled English join supplies the display name; the Simplified Chinese source name is preserved for localized lookup.",
+                        "source key: {}. HoYoWiki NPC entry page ID: {}. Source: {}. Page: {}. Checked {}. The bundled English join supplies the display name; the Simplified Chinese source name is preserved for localized lookup.",
+                        npc.source_key,
                         npc.hoyowiki_entry_page_id,
                         NPC_SOURCE_PROVIDER,
                         npc.page_url,
@@ -1915,6 +1916,10 @@ mod tests {
             .into_iter()
             .find(|entity| entity.official_english_name == "Demetria")
             .expect("Demetria NPC");
+        assert!(demetria
+            .other_information
+            .as_deref()
+            .is_some_and(|value| value.contains("source key: hoyowiki-npc-")));
         assert!(store
             .list_aliases(&demetria.id)
             .expect("NPC aliases")
