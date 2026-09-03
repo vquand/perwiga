@@ -27,6 +27,7 @@ const state = {
   eventStatus: "all",
   loreSchema: null,
   loreGraph: null,
+  loreLoadingMore: false,
   loreSubjects: [],
   loreCandidates: [],
   selectedLoreEventId: "",
@@ -99,6 +100,8 @@ const dom = {
 let toastTimer;
 let searchTimer;
 let gameMenuFocusIndex = -1;
+let loreScrollFrame = null;
+const LORE_PREFETCH_DISTANCE = 640;
 
 const themeProperties = {
   background: "--bg",
@@ -281,6 +284,7 @@ function showView(view) {
   } else if (state.view === "lore") {
     requestAnimationFrame(() => dom.loreMap.focus({ preventScroll: true }));
   }
+  if (state.view === "lore") scheduleLorePrefetch();
 }
 
 function currentTypeName() {
@@ -401,20 +405,23 @@ function renderTimeline() {
 
 function renderLore() {
   const graph = state.loreGraph || { periods: [], events: [], relations: [], subjects: [], involvements: [] };
-  dom.loreMap.removeAttribute("aria-busy");
+  if (state.loreLoadingMore) dom.loreMap.setAttribute("aria-busy", "true");
+  else dom.loreMap.removeAttribute("aria-busy");
   renderLoreMap(dom.loreMap, graph, {
     onEvent: selectLoreEvent,
+    onLoadMore: loadMoreLore,
+    isLoadingMore: state.loreLoadingMore,
     subjectType: state.loreSubjectType,
   });
 
   const currentSubjectType = state.loreSubjectType;
   dom.loreSubjectTypeFilter.replaceChildren(new Option("All subjects", ""));
-  for (const subjectType of ["operator", "npc", "region"]) {
+  for (const subjectType of ["character", "operator", "npc", "region"]) {
     const definition = state.loreSchema?.subject_types?.find((item) => item.key === subjectType);
     if (!definition) continue;
     dom.loreSubjectTypeFilter.append(new Option(definition.display_name, subjectType));
   }
-  state.loreSubjectType = ["", "operator", "npc", "region"].includes(currentSubjectType)
+  state.loreSubjectType = ["", "character", "operator", "npc", "region"].includes(currentSubjectType)
     ? currentSubjectType
     : "";
   dom.loreSubjectTypeFilter.value = state.loreSubjectType;
@@ -453,21 +460,85 @@ function renderLore() {
   const eventCount = graph.events.length;
   const candidateCount = state.loreCandidates.length;
   const characterSubjects = graph.subjects.filter((subject) =>
-    subject.entity_type === "operator" || subject.entity_type === "npc"
+    ["character", "operator", "npc"].includes(subject.entity_type)
   );
   const involvedIds = new Set(graph.involvements.map((item) => item.subject_id));
-  const coverageSubjects = ["operator", "npc"].includes(state.loreSubjectType)
+  const coverageSubjects = ["character", "operator", "npc"].includes(state.loreSubjectType)
     ? characterSubjects.filter((subject) => subject.entity_type === state.loreSubjectType)
     : state.loreSubjectType === "region" ? [] : characterSubjects;
   const placedCharacters = coverageSubjects.filter((subject) => involvedIds.has(subject.id)).length;
   const characterCoverage = coverageSubjects.length
     ? ` · ${placedCharacters} placed / ${coverageSubjects.length - placedCharacters} awaiting placement`
     : "";
+  const moreEvents = graph.next_cursor || state.loreLoadingMore
+    ? " · More events available below"
+    : "";
   dom.loreStatus.textContent = eventCount
-    ? `${eventCount} reviewed ${eventCount === 1 ? "event" : "events"}${characterCoverage} · ${candidateCount} candidate${candidateCount === 1 ? "" : "s"} awaiting review`
+    ? `${eventCount} reviewed ${eventCount === 1 ? "event" : "events"}${characterCoverage}${moreEvents} · ${candidateCount} candidate${candidateCount === 1 ? "" : "s"} awaiting review`
     : candidateCount
       ? `${candidateCount} candidate${candidateCount === 1 ? "" : "s"} awaiting review · no events approved yet`
       : "No reviewed lore events yet";
+  scheduleLorePrefetch();
+}
+
+function mergeLoreGraphs(current, next) {
+  const uniqueById = (items) => Array.from(
+    new Map(items.map((item) => [item.id, item])).values(),
+  );
+  return {
+    ...next,
+    periods: current.periods.length ? current.periods : next.periods,
+    events: uniqueById([...current.events, ...next.events]),
+    relations: uniqueById([...current.relations, ...next.relations]),
+    subjects: uniqueById([...current.subjects, ...next.subjects]),
+    involvements: uniqueById([...current.involvements, ...next.involvements]),
+    next_cursor: next.next_cursor,
+  };
+}
+
+async function loadMoreLore() {
+  if (!state.work || !state.loreSchema || state.loreLoadingMore || !state.loreGraph?.next_cursor) return;
+  const workId = state.work.id;
+  const cursor = state.loreGraph.next_cursor;
+  state.loreLoadingMore = true;
+  renderLore();
+  try {
+    const nextGraph = await api.getLoreGraph(workId, {
+      subjectId: state.loreSubjectId,
+      subjectType: state.loreSubjectType,
+      cursor,
+    });
+    if (state.work?.id !== workId || state.loreGraph?.next_cursor !== cursor) return;
+    state.loreGraph = mergeLoreGraphs(state.loreGraph, nextGraph);
+    renderLore();
+  } catch (error) {
+    if (state.work?.id === workId) showToast(error.message, true);
+  } finally {
+    if (state.work?.id === workId) {
+      state.loreLoadingMore = false;
+      renderLore();
+    }
+  }
+}
+
+function maybeLoadMoreLore() {
+  if (state.loreLoadingMore || !state.loreGraph?.next_cursor) return;
+  if (!dom.loreMap.clientWidth || !dom.loreMap.getClientRects().length) return;
+  const populatedPeriods = Array.from(dom.loreMap.querySelectorAll(".lore-period"))
+    .filter((period) => period.querySelector(".lore-event-card"));
+  const lastPopulatedPeriod = populatedPeriods[populatedPeriods.length - 1];
+  if (!lastPopulatedPeriod) return;
+  const shellRect = dom.loreMap.getBoundingClientRect();
+  const periodRect = lastPopulatedPeriod.getBoundingClientRect();
+  if (periodRect.right <= shellRect.right + LORE_PREFETCH_DISTANCE) loadMoreLore();
+}
+
+function scheduleLorePrefetch() {
+  if (loreScrollFrame !== null) return;
+  loreScrollFrame = requestAnimationFrame(() => {
+    loreScrollFrame = null;
+    maybeLoadMoreLore();
+  });
 }
 
 async function selectLoreEvent(eventId) {
@@ -516,12 +587,14 @@ async function refreshLore() {
     ]);
     if (state.work?.id !== workId) return;
     state.loreGraph = graph;
+    state.loreLoadingMore = false;
     state.loreSubjects = subjects;
     state.loreCandidates = candidates;
     renderLore();
   } catch (error) {
     if (state.work?.id !== workId) return;
     state.loreGraph = null;
+    state.loreLoadingMore = false;
     state.loreSubjects = [];
     state.loreCandidates = [];
     dom.loreMap.removeAttribute("aria-busy");
@@ -581,6 +654,7 @@ async function activateWork(workId) {
     state.facets = workspace.entity_facets || [];
     state.loreSchema = workspace.lore_schema || null;
     state.loreGraph = null;
+    state.loreLoadingMore = false;
     state.loreSubjects = [];
     state.loreCandidates = [];
     state.selectedLoreEventId = "";
@@ -742,11 +816,21 @@ async function saveGame(event) {
 
 async function initialize() {
   try {
-    const [setup] = await Promise.all([
+    const setupResults = await Promise.allSettled([
       api.setupEndfield(),
       api.setupGenshin(),
       api.setupStarRail(),
     ]);
+    const successfulSetups = setupResults
+      .filter((result) => result.status === "fulfilled")
+      .map((result) => result.value);
+    if (!successfulSetups.length) {
+      throw setupResults.find((result) => result.status === "rejected")?.reason ||
+        new Error("No game workspace could be initialized.");
+    }
+    const setup =
+      successfulSetups.find((value) => value.work.module_id === "genshin-impact") ||
+      successfulSetups[0];
     [state.works, state.modules] = await Promise.all([api.listWorks(), api.listModules()]);
     renderLibrary();
     await activateWork(setup.work.id);
@@ -816,6 +900,7 @@ dom.loreSubjectSearch.addEventListener("input", () => {
   }
   renderLore();
 });
+dom.loreMap.addEventListener("scroll", scheduleLorePrefetch, { passive: true });
 for (const button of dom.viewButtons) {
   button.addEventListener("click", () => showView(button.dataset.view));
 }

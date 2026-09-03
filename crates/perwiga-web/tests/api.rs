@@ -632,8 +632,20 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
             "artifact-piece",
             "domain",
             "event",
+            "book",
+            "quest",
         ]
     );
+    assert!(first_json["lore_schema"]["subject_types"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .any(|subject_type| subject_type["key"] == "book"));
+    assert!(first_json["lore_schema"]["roles"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .any(|role| role["key"] == "document"));
 
     let facets = first_json["entity_facets"]
         .as_array()
@@ -709,6 +721,92 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
         }));
 
     let work_id = first_json["work"]["id"].as_str().expect("Genshin work id");
+    for (entity_type, expected_count) in [("book", 47), ("quest", 2545)] {
+        let response = app
+            .clone()
+            .oneshot(
+                Request::get(format!(
+                    "/api/works/{work_id}/entities?entity_type={entity_type}"
+                ))
+                .body(Body::empty())
+                .expect("Genshin lore entity list request"),
+            )
+            .await
+            .expect("Genshin lore entity list response");
+        assert_eq!(response.status(), StatusCode::OK);
+        assert_eq!(
+            json_response(response).await.as_array().unwrap().len(),
+            expected_count
+        );
+    }
+    let lore_graph = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/lore-graph?limit=10&subject_type=quest"
+            ))
+            .body(Body::empty())
+            .expect("Genshin lore graph request"),
+        )
+        .await
+        .expect("Genshin lore graph response");
+    assert_eq!(lore_graph.status(), StatusCode::OK);
+    assert_eq!(
+        json_response(lore_graph).await["events"]
+            .as_array()
+            .unwrap()
+            .len(),
+        10
+    );
+    let first_lore_page = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/lore-graph?limit=500"))
+                .body(Body::empty())
+                .expect("first Genshin lore page request"),
+        )
+        .await
+        .expect("first Genshin lore page response");
+    assert_eq!(first_lore_page.status(), StatusCode::OK);
+    let first_lore_page = json_response(first_lore_page).await;
+    let first_lore_events = first_lore_page["events"]
+        .as_array()
+        .expect("first lore page events");
+    assert_eq!(first_lore_events.len(), 500);
+    let first_last_period = first_lore_events
+        .last()
+        .and_then(|event| event["period_order"].as_i64())
+        .expect("first lore page period");
+    let next_cursor = first_lore_page["next_cursor"]
+        .as_str()
+        .expect("next lore page cursor");
+    let second_lore_page = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/works/{work_id}/lore-graph?limit=500&cursor={next_cursor}"
+            ))
+            .body(Body::empty())
+            .expect("second Genshin lore page request"),
+        )
+        .await
+        .expect("second Genshin lore page response");
+    assert_eq!(second_lore_page.status(), StatusCode::OK);
+    let second_lore_page = json_response(second_lore_page).await;
+    let second_lore_events = second_lore_page["events"]
+        .as_array()
+        .expect("second lore page events");
+    assert_eq!(second_lore_events.len(), 500);
+    let second_first_period = second_lore_events
+        .first()
+        .and_then(|event| event["period_order"].as_i64())
+        .expect("second lore page period");
+    assert!(second_first_period >= first_last_period);
+    assert!(first_lore_events.iter().all(|first_event| {
+        second_lore_events
+            .iter()
+            .all(|second_event| first_event["id"] != second_event["id"])
+    }));
     let wiki_events = app
         .clone()
         .oneshot(
@@ -1188,6 +1286,9 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
     assert!(javascript.contains("api.setupStarRail()"));
     assert!(javascript.contains("for (const work of state.works)"));
     assert!(javascript.contains("chooseGame(work.id)"));
+    assert!(javascript.contains("maybeLoadMoreLore"));
+    assert!(javascript.contains("addEventListener(\"scroll\""));
+    assert!(javascript.contains("dom.loreMap.setAttribute(\"aria-busy\", \"true\")"));
 }
 
 #[tokio::test]
@@ -2007,6 +2108,9 @@ async fn event_timeline_assets_support_featured_operator_hover_and_focus_preview
     assert!(css.contains(".event-feature-gap"));
     assert!(css.contains(".entity-event-recency"));
     assert!(css.contains(".appearance-list"));
+    assert!(css.contains(".lore-period-loading"));
+    assert!(css.contains("@keyframes lore-skeleton-shimmer"));
+    assert!(css.contains(".lore-skeleton-line"));
 }
 
 #[tokio::test]
@@ -2184,6 +2288,14 @@ async fn lore_client_asset_is_served_as_a_module() {
     assert!(script.contains("renderLoreReview"));
     assert!(script.contains("lore-character-avatar"));
     assert!(script.contains("presentation?.thumbnail_url"));
+    assert!(script.contains("characterGroupItems"));
+    assert!(script.contains("lore-character-overflow"));
+    assert!(script.contains("lore-character-count"));
+    assert!(script.contains("onLoadMore"));
+    assert!(script.contains("Load more lore events"));
+    assert!(script.contains("renderPeriodLoading"));
+    assert!(script.contains("lore-period-loading"));
+    assert!(script.contains("Loading release data"));
 }
 
 #[tokio::test]

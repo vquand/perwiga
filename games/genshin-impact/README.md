@@ -1,6 +1,6 @@
 # Genshin Impact data fetching
 
-This directory contains a title-owned, review-first fetch pipeline for the official Genshin Impact website character directory. It does not use account credentials, player data, or an undocumented game-client endpoint, and it never opens Perwiga's SQLite database.
+This directory contains title-owned, review-first fetch pipelines for the official Genshin Impact website character directory and the community-maintained Book/Quest lore catalog. They do not use account credentials, player data, or undocumented game-client endpoints, and they never open Perwiga's SQLite database.
 
 ## Snapshot boundary
 
@@ -47,6 +47,27 @@ Skin presentation uses the same 4-star purple and 5-star gold rarity borders as 
 [`data/npcs.json`](data/npcs.json) contains a 2026-08-27 snapshot of 4,967 named NPC/person pages from the community-maintained [Genshin Impact Wiki NPC index](https://genshin-impact.fandom.com/wiki/NPC/List). It preserves page IDs, multilingual page fields when present, infobox regions and locations, page categories, and source-backed quest/event/action relationships. One NPC may have many locations and many related contexts; those relationships are imported into the shared normalized context tables rather than being flattened into a text field on the NPC. The crawler captures explicit Quest/Event/Action templates, selected relationship categories, and explicit linked titles, so it does not claim to infer every appearance from free-form prose.
 
 [`data/npc-han-viet.json`](data/npc-han-viet.json) contains generated confidence-E Hán-Việt search aliases for the subset with usable Chinese names. The local reading source is [hanviet-pinyin-words](https://github.com/ph0ngp/hanviet-pinyin-words); unresolved characters and pages without Chinese names remain explicit in the snapshot metadata. These values are search aids only and never replace official Vietnamese text.
+
+## Books, quests, and lore timeline
+
+[`data/books.json`](data/books.json) and [`data/quests.json`](data/quests.json) are source-checked snapshots from the community-maintained [Books category](https://genshin-impact.fandom.com/wiki/Category:Books) and [Quests category](https://genshin-impact.fandom.com/wiki/Category:Quests). The 2026-09-02 crawl contains 47 book or book-collection records and 2,545 quest, act, chapter, event-quest, and explicitly linked quest-like records. The category's `Book` terminology/index page is retained in the source-page count but excluded from the entity catalog. Four linked records were expanded from quest pages outside the main category; redirect aliases and reused quest titles remain source-keyed rather than being merged by display name.
+
+The quest crawler extracts only bounded, reviewable fields: infobox names and classifications, explicit predecessor/successor links, release-version categories, explicit book/reward links, and Quest Infobox or Appearances-category Character/NPC links. It does not infer a character appearance from arbitrary prose. Every book and quest record retains its page ID, URL, multilingual fields when available, stable source key, and unresolved-link field. The checked snapshot has zero unresolved book-to-quest, quest-to-book, predecessor, or successor links. Unknown names such as the Traveler are kept as provisional lore subjects until a dedicated source identity is available.
+
+[`data/lore.json`](data/lore.json) is the connected Genshin lore candidate batch. It links each quest event to its quest subject, explicitly named Characters/NPCs, and explicitly linked Books; book links from either direction are preserved in the normalized context import. It contains 2,545 quest events, 8,002 subjects, and 44 release-version ordering anchors. Release versions provide publication ordering only; every quest's in-world date remains explicitly unknown unless a future source-backed chronology is reviewed. The core validates the batch's evidence, subject references, event relations, and temporal graph before the module imports it into the lore timeline.
+
+Refresh the three snapshots together after reviewing the live category pages:
+
+```text
+python3 games/genshin-impact/scripts/fetch-lore.py \
+  --checked-at YYYY-MM-DD
+```
+
+The crawler uses the public Fandom MediaWiki API, follows linked redirects, validates every cross-catalog link, writes atomically, refuses an unexpected catalog shrink unless `--allow-shrink` is explicitly reviewed, and never opens SQLite. The local script tests use fixtures only:
+
+```text
+python3 -m unittest discover -s games/genshin-impact/scripts/tests -v
+```
 
 ## Event schedule snapshot
 
@@ -184,10 +205,17 @@ cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
   entity import-genshin-artifacts --work <genshin-work-id>
 cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
   entity import-genshin-artifact-domains --work <genshin-work-id>
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
   entity import-genshin-npcs --work <genshin-work-id>
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
+  entity import-genshin-books --work <genshin-work-id>
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
+  entity import-genshin-quests --work <genshin-work-id>
+cargo run -p perwiga -- --database /path/to/perwiga.sqlite \
+  entity import-genshin-lore --work <genshin-work-id>
 ```
 
-The import is transactional, additive, and idempotent. Stable HoYoverse source keys prevent duplicate imports, existing records are never replaced, official Traditional Chinese names remain provenance-labeled aliases, and generated Hán-Việt values are separate confidence-E search aliases. The confirmed global source does not provide Simplified Chinese, so the English catalog anchor is repeated in the schema-required original-name field rather than mislabeling Traditional Chinese.
+The import is transactional, additive, and idempotent. `entity import-genshin-lore` is the connected convenience command: it ensures the Character, NPC, Book, and Quest source entities exist before materializing the reviewed lore batch. Quest links also populate normalized source-backed context rows for Characters, NPCs, and Books. Stable source keys prevent duplicate imports, existing records are never replaced, official Traditional Chinese names remain provenance-labeled aliases, and generated Hán-Việt values are separate confidence-E search aliases. The confirmed global source does not provide Simplified Chinese, so the English catalog anchor is repeated in the schema-required original-name field rather than mislabeling Traditional Chinese.
 
 ## Sources
 
@@ -203,6 +231,9 @@ The import is transactional, additive, and idempotent. Stable HoYoverse source k
 - Official HoYoWiki introduction and Weapon Archive description: <https://www.hoyolab.com/article/4626755>
 - Weapon data/localizations and indexed first-party image URLs: <https://github.com/theBowja/genshin-db> (commit `8b15995fa220c88a4d0d7ffe1e21b041d0b32588`, checked 2026-08-25)
 - Game-asset thumbnail fallback: <https://enka.network/> (used only when an indexed first-party URL is unavailable)
+- Community-maintained Book catalog: <https://genshin-impact.fandom.com/wiki/Category:Books>
+- Community-maintained Quest catalog: <https://genshin-impact.fandom.com/wiki/Category:Quests>
+- Quest article and menu taxonomy: <https://genshin-impact.fandom.com/wiki/Quest>
 - `鹮` Hán-Việt fallback evidence: <https://js.vnu.edu.vn/FS/article/download/4175/3893>
 - Region emblem catalog: <https://genshin-impact.fandom.com/wiki/Category:Region_Emblems> (presentation assets only, checked 2026-08-24)
 - Geography Archive names and localizations: <https://github.com/theBowja/genshin-db> (commit `8b15995fa220c88a4d0d7ffe1e21b041d0b32588`, checked 2026-08-26)

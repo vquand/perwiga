@@ -726,6 +726,9 @@ async fn setup_genshin(State(state): State<WebState>) -> Result<Json<SetupRespon
     genshin_impact::import_curated_characters(application.store_mut(), &work.id)?;
     genshin_impact::import_curated_regions(application.store_mut(), &work.id)?;
     genshin_impact::import_curated_npcs(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_books(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_quests(application.store_mut(), &work.id)?;
+    genshin_impact::import_curated_lore(application.store_mut(), &work.id)?;
     genshin_impact::import_curated_weapons(application.store_mut(), &work.id)?;
     genshin_impact::import_curated_skins(application.store_mut(), &work.id)?;
     genshin_impact::import_curated_artifacts(application.store_mut(), &work.id)?;
@@ -969,10 +972,23 @@ async fn list_lore_graph(
             ))
         })?;
     let subject_type = filters.subject_type.as_deref();
-    if subject_type.is_some_and(|value| !matches!(value, "operator" | "npc" | "region")) {
-        return Err(PerwigaError::Validation(
-            "subject_type must be one of operator, npc, or region".to_string(),
-        )
+    let allowed_subject_types = module
+        .lore_schema()
+        .into_iter()
+        .flat_map(|schema| schema.subject_types.iter())
+        .filter(|subject_type| {
+            module
+                .entity_types()
+                .iter()
+                .any(|entity_type| entity_type.key == subject_type.key)
+        })
+        .map(|subject_type| subject_type.key)
+        .collect::<Vec<_>>();
+    if subject_type.is_some_and(|value| !allowed_subject_types.contains(&value)) {
+        return Err(PerwigaError::Validation(format!(
+            "subject_type must be one of {}",
+            allowed_subject_types.join(", ")
+        ))
         .into());
     }
     let graph = application.store().list_lore_graph(

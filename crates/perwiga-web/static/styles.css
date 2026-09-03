@@ -1026,6 +1026,11 @@ h1 {
   padding: 0 var(--space-2) var(--space-4);
 }
 
+.lore-load-more {
+  display: block;
+  margin: var(--space-4) auto 0;
+}
+
 .lore-period {
   position: relative;
   min-height: 15rem;
@@ -1079,8 +1084,81 @@ h1 {
   line-height: 1.5;
 }
 
+.lore-period.is-loading {
+  border-color: color-mix(in srgb, var(--accent) 54%, var(--border-strong));
+}
+
+.lore-period-loading {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding: var(--space-3);
+  border: 0.0625rem dashed var(--border-strong);
+  border-left: 0.1875rem solid var(--accent);
+  background: color-mix(in srgb, var(--surface-active) 70%, var(--surface-raised));
+}
+
+.lore-period-loading-label {
+  color: var(--text-muted);
+  font-size: 0.6875rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.lore-period-loading-preview {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.lore-skeleton-line {
+  display: block;
+  height: 0.625rem;
+  background: linear-gradient(
+    90deg,
+    var(--surface-active) 20%,
+    color-mix(in srgb, var(--accent) 18%, var(--surface-active)) 50%,
+    var(--surface-active) 80%
+  );
+  background-size: 220% 100%;
+  animation: lore-skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+.lore-skeleton-line.is-wide {
+  width: 92%;
+}
+
+.lore-skeleton-line.is-medium {
+  width: 72%;
+}
+
+.lore-skeleton-line.is-short {
+  width: 48%;
+}
+
+@keyframes lore-skeleton-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lore-skeleton-line {
+    animation: none;
+  }
+}
+
 .lore-period-cast,
 .lore-event-characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.lore-character-group {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
@@ -1139,6 +1217,21 @@ h1 {
 
 .lore-character.is-compact .lore-character-copy {
   display: none;
+}
+
+.lore-character-overflow {
+  min-width: 4rem;
+  padding: 0.15rem 0.4rem 0.15rem 0.15rem;
+  border: 0.0625rem solid var(--border-strong);
+  background: var(--surface-active);
+}
+
+.lore-character-count {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .lore-event-stack {

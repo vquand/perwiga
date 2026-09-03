@@ -4,7 +4,7 @@
 
 These rules apply to the whole repository unless a deeper `AGENTS.md` adds more specific instructions. Read the relevant parts of [README.md](README.md) before changing behavior or data contracts. Follow [ADR-002](docs/decisions/ADR-002-games-and-novels-as-library-works.md) for work ownership and title-module boundaries; [ADR-001](docs/decisions/ADR-001-modular-game-support.md) is historical context.
 
-Perwiga is a private, local-first desktop wiki for games and novels. The planned core is Rust with SQLite, targeting macOS, Windows, and Linux. The repository is currently documentation-only; do not invent framework, build, migration, or test commands before they exist and are verified.
+Perwiga is a private, local-first desktop wiki for games and novels. The current core is Rust with SQLite, targeting macOS, Windows, and Linux. The repository contains the implemented workspace and documentation; do not invent framework, build, migration, or test commands before they exist and are verified.
 
 ## Non-negotiable SQLite data safety
 

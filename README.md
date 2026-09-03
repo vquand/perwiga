@@ -2,7 +2,7 @@
 
 Perwiga is a personal, local-first wiki for games and novels. It stores information about the works a person plays or reads in a SQLite database and organizes that information into categories that can grow over time.
 
-The first planned category is a multilingual wiki for named content such as playable characters, NPCs, main/supporting/side characters, regions, places, items, factions, and other entities. The app will also connect folders, notes, checklists, feeds, and supported schedule data to each library work.
+The initial category is a multilingual wiki for named content such as playable characters, NPCs, main/supporting/side characters, regions, places, items, factions, and other entities. The app also connects folders, notes, checklists, feeds, and supported schedule data to each library work.
 
 ## Public mirror
 
@@ -17,7 +17,7 @@ same export command refreshes the public deployment inputs.
 
 ## Status
 
-The first executable vertical slice is implemented in Rust. It provides a local SQLite core, a family-aware module registry, a CLI composition root, and the common wiki, notes, folders, checklists, feeds, calendar, and source-backed entity-context persistence workflows. Arknights: Endfield, Genshin Impact, Honkai: Star Rail, and Heroes of Might and Magic are dedicated runtime game modules. Genshin, Star Rail, and Heroes III have title-owned, review-first catalog pipelines with additive, idempotent SQLite importers for their bundled snapshots.
+The first executable vertical slice is implemented in Rust. It provides a local SQLite core, a family-aware module registry, a CLI composition root, and the common wiki, notes, folders, checklists, feeds, calendar, lore timeline, and source-backed entity-context persistence workflows. Arknights: Endfield, Genshin Impact, Honkai: Star Rail, and Heroes of Might and Magic are dedicated runtime game modules. Genshin, Star Rail, and Heroes III have title-owned, review-first catalog pipelines with additive, idempotent SQLite importers for their bundled snapshots.
 
 An Endfield-focused localhost UAT interface now exercises the multilingual wiki workflow in a real browser while keeping all domain logic and SQLite access in Rust. It is an evaluation surface, not the final distribution model. The planned product remains a lightweight cross-platform desktop application. Tauri 2 is the leading shell candidate because it can reuse this interface with the operating system's WebView, but the desktop choice will be recorded in a separate ADR after packaging prerequisites and platform behavior are verified. See [ADR-003](docs/decisions/ADR-003-rust-core-and-cli-first-slice.md).
 
@@ -33,9 +33,9 @@ cargo run -p perwiga-web -- \
 
 Then open `http://127.0.0.1:5178`. The server rejects non-loopback bind addresses. Do not point UAT at the tracked personal database; use a fresh path outside the repository.
 
-The interface sets up Endfield and Genshin as switchable library games, imports Genshin's bundled Character, NPC, Region, Weapon, Skin, Artifact Set, Artifact Piece, Artifact Domain, and Event snapshots, supports adding more games, and consumes module-specific themes and entity schemas. It provides type and rarity filtering, rarity sorting, multilingual name and alias search, record creation, editing, detail inspection, aliases, source-backed entity-context details, module-owned Endfield Operator, Weapon, and Item thumbnails with rarity presentation, and module-owned Genshin Character, Weapon, Skin, and Artifact thumbnails and filters. Genshin Regions retain their world/region/subregion hierarchy with type and parent filters; Artifact Pieces retain their parent Set and slot, while Domain entrances retain region and hosted-Set metadata. It also exposes a shared horizontally scrollable event timeline with title-defined event-type swimlanes and past, ongoing, and upcoming filters. Genshin's timeline snapshot covers Luna IV through Version 7.0 and attaches Character Wish and Test Run portraits to event previews. Title modules can declare additional structured facets; Endfield currently provides weapon-type filtering for Operators and Weapons, Operator role, element, race, and verified subrace filters, Item classification and evidence-backed region filters, and Region type/parent filters backed by its 43-place hierarchy. Item classifications remain multi-valued, so a material can also be craftable, gatherable, or another applicable type. Titles without a dedicated module use the generic game fallback. Official and automatic Vietnamese translations remain separate throughout the workflow.
+The interface sets up Endfield and Genshin as switchable library games, imports Genshin's bundled Character, NPC, Region, Weapon, Skin, Artifact Set, Artifact Piece, Artifact Domain, Event, Book, Quest, and Lore snapshots, supports adding more games, and consumes module-specific themes and entity schemas. It provides type and rarity filtering, rarity sorting, multilingual name and alias search, record creation, editing, detail inspection, aliases, source-backed entity-context details, module-owned Endfield Operator, Weapon, and Item thumbnails with rarity presentation, and module-owned Genshin Character, Weapon, Skin, Artifact, Book, and Quest presentation. Genshin Regions retain their world/region/subregion hierarchy with type and parent filters; Artifact Pieces retain their parent Set and slot, while Domain entrances retain region and hosted-Set metadata. It also exposes shared horizontally scrollable scheduled-event and lore timelines: scheduled events use title-defined event-type swimlanes, while lore uses source-backed periods, claims, subject filters, and explicit evidence. Genshin's scheduled timeline snapshot covers Luna IV through Version 7.0 and attaches Character Wish and Test Run portraits to event previews; its lore snapshot links Quest records to Books, Characters, NPCs, and publication-order anchors without asserting unknown in-world dates. Title modules can declare additional structured facets; Endfield currently provides weapon-type filtering for Operators and Weapons, Operator role, element, race, and verified subrace filters, Item classification and evidence-backed region filters, and Region type/parent filters backed by its 43-place hierarchy. Item classifications remain multi-valued, so a material can also be craftable, gatherable, or another applicable type. Titles without a dedicated module use the generic game fallback. Official and automatic Vietnamese translations remain separate throughout the workflow.
 
-Endfield also declares the lore-timeline capability. An offline curation session can import an official-corpus JSON batch using `lore candidates import`; the core validates source locators, exact excerpts, fuzzy/relative periods, event relationships, claim certainty, and provisional subjects before storing candidates. Events remain out of the canonical lore graph until a human approves the batch item in the UAT review queue. The Lore map is a separate horizontal view from the scheduled-event calendar: periods run past-to-future, event detail shows claims and evidence, and the map can filter events by Operator, NPC, Region, or a specific subject. The bundled Endfield snapshot additionally maps curated Operators and NPCs to client mission dialogue actor records; catalog characters without direct mission evidence remain visible in an explicit awaiting-placement roster. See [ADR-004](docs/decisions/ADR-004-lore-timeline-and-evidence.md) and the [candidate schema](docs/schemas/lore-candidate-batch-v1.schema.json).
+Endfield and Genshin declare the lore-timeline capability. An offline curation session can import a source-backed JSON batch using `lore candidates import`, while title-owned reviewed snapshots can use their module importer. The core validates source locators, exact excerpts, fuzzy/relative periods, event relationships, claim certainty, and provisional subjects before storing candidates; approved module snapshots are materialized through the same provenance tables. The Lore map is a separate horizontal view from the scheduled-event calendar: periods run past-to-future, event detail shows claims and evidence, and the map can filter events by the module's declared subject types or a specific subject. The bundled Endfield snapshot maps curated Operators and NPCs to client mission dialogue actor records; the bundled Genshin snapshot maps Quests to explicit Books, Characters, NPCs, predecessor/successor links, and publication-order anchors without turning release order into an in-world date. See [ADR-004](docs/decisions/ADR-004-lore-timeline-and-evidence.md) and the [candidate schema](docs/schemas/lore-candidate-batch-v1.schema.json).
 
 The CLI remains available for all implemented common workflows. List the registered modules:
 
@@ -81,7 +81,7 @@ The CLI also exposes `work`, `entity`, `note`, `folder`, `checklist`, `feed`, an
 
 The current Endfield module exposes source-confirmed baseline types for operators, NPCs, regions, weapons, enemies, missions, events, items, Gear Sets, and Essences. Module-owned data includes the [official 33-Operator roster snapshot](games/arknights-endfield/data/operators.json), a [provenance-labeled initial catalog of 134 named NPCs/persons](games/arknights-endfield/data/npcs.json), a [scoped hierarchical snapshot of 43 regions and locations](games/arknights-endfield/data/regions.json) with generated Hán-Việt search aliases and preserved parent relationships, a [current snapshot of 77 weapons with rarity, type, multilingual names, and generated Hán-Việt aliases](games/arknights-endfield/data/weapons.json), a [current Item Files snapshot of 731 non-weapon records](games/arknights-endfield/data/items.json), and a [client-backed snapshot of 23 Gear Sets and 154 production Essence presets](games/arknights-endfield/data/gear-essences.json) with official multilingual names, generated Hán-Việt aliases, rarity presentation, Gear membership/effects, and filterable Essence weapon/effect metadata. Existing Gear-piece Items remain unchanged. Internal test and tutorial-only Essence presets are excluded. The module also owns a [source-checked Asia-server event schedule](games/arknights-endfield/data/events.json) spanning launch through announcements checked on 2026-08-24.
 
-The [Genshin Impact data pipeline](games/genshin-impact/README.md) fetches the official website's seven regional character catalogs in English, Traditional Chinese, and Vietnamese, joins them by HoYoverse content ID, and caches first-party thumbnails locally without touching SQLite. Its 2026-08-24 snapshot contains 118 character-directory records with no locale gaps. It also owns a reviewed 109-record event snapshot covering Version 6.3 (Luna IV) through Version 7.0, with historical windows from the Genshin Impact Wiki event history and current/foreseeable Version 7.0 windows from official HoYoLAB notices. A separate transactional importer persists those reviewed snapshots using stable source identities without replacing existing records. It does not mislabel Traditional Chinese as the original Simplified Chinese localization, and it does not assume that the website content service is a general game-data, account, event, or schedule API.
+The [Genshin Impact data pipeline](games/genshin-impact/README.md) fetches the official website's seven regional character catalogs in English, Traditional Chinese, and Vietnamese, joins them by HoYoverse content ID, and caches first-party thumbnails locally without touching SQLite. Its 2026-08-24 snapshot contains 118 character-directory records with no locale gaps. It also owns reviewed 109-record scheduled-event and 2026-09-02 Book/Quest/lore snapshots: the latter contains 47 Book/book-collection records and 2,545 Quest/quest-like events connected to explicit Books, Characters, NPCs, predecessor/successor links, and release-version ordering anchors. A separate transactional importer persists those snapshots using stable source identities without replacing existing records. It does not mislabel Traditional Chinese as the original Simplified Chinese localization, treat release order as in-world chronology, or assume that any community page category is a general game-data, account, event, or schedule API.
 
 The [Honkai: Star Rail data pipeline](games/honkai-star-rail/README.md) joins the current StarRailRes English, Vietnamese, Simplified Chinese, and Traditional Chinese indexes by stable game-data ID. Its 2026-09-01 snapshot contains 97 Characters, 169 Light Cones, 60 Relic Sets, 742 Relic Pieces, 9 Paths, and 7 Elements, plus a separate HoYoWiki NPC source snapshot of 436 records with 433 English joins. Dedicated Hán-Việt snapshots provide generated, unofficial search aliases for Characters, Light Cones, Relic Sets, Relic Pieces, Paths, Elements, and NPCs without replacing official localized fields. The selected game-data source is a community extract rather than an official HoYoverse API; NPC source gaps, Regions, and scheduled events are not inferred.
 
@@ -102,7 +102,7 @@ The [Heroes of Might and Magic III data pipeline](games/heroes-of-might-and-magi
 - Provide the same core experience on macOS, Windows, and Linux as far as platform capabilities allow.
 - Keep data available locally through SQLite so the app can work without a remote service.
 
-## Planned title support
+## Current and planned title support
 
 Each library record has a work kind (`game` or `novel`) and is represented by a registered module in that family. A module is identified by the pair of work kind and stable module identifier, so game and novel modules can evolve independently.
 
@@ -112,16 +112,16 @@ The initial dedicated game support list is:
 
 | Module identifier | Game or series |
 | --- | --- |
-| `genshin-impact` | Genshin Impact |
-| `honkai-star-rail` | Honkai: Star Rail |
-| `arknights-endfield` | Arknights: Endfield |
-| `heroes-of-might-and-magic` | Heroes of Might and Magic series |
-| `starcraft-brood-war` | StarCraft and StarCraft: Brood War |
-| `starcraft-ii` | StarCraft II series |
-| `warcraft` | Warcraft strategy series |
-| `world-of-warcraft` | World of Warcraft |
+| `genshin-impact` | Genshin Impact (implemented) |
+| `honkai-star-rail` | Honkai: Star Rail (implemented) |
+| `arknights-endfield` | Arknights: Endfield (implemented) |
+| `heroes-of-might-and-magic` | Heroes of Might and Magic series (implemented) |
+| `starcraft-brood-war` | StarCraft and StarCraft: Brood War (scaffold) |
+| `starcraft-ii` | StarCraft II series (scaffold) |
+| `warcraft` | Warcraft strategy series (scaffold) |
+| `world-of-warcraft` | World of Warcraft (scaffold) |
 
-Series modules may share private franchise code, but they remain separate modules when their entities, source data, release cycles, or integrations differ. This list describes planned support; it does not imply that an RSS feed or API has already been selected for any game.
+Series modules may share private franchise code, but they remain separate modules when their entities, source data, release cycles, or integrations differ. Scaffold rows describe planned support; they do not imply that an RSS feed or API has already been selected for any game.
 
 Games without a dedicated module use the built-in game `generic` module. They still support the common wiki, folders, notes, checklists, feeds configured by the user, and manually entered events. Assigning a dedicated module later must preserve that existing common data.
 
@@ -278,7 +278,7 @@ The data model should preserve Unicode exactly enough to retain original scripts
 - Remote image, feed, and event fetching should be treated as optional I/O with clear failure states and timeouts.
 - The app should not require an account or remote database for the core workflow.
 
-## Planned user flow
+## User flow
 
 ```text
 Open app → View library → Add game or novel → Open work → Choose category
