@@ -87,6 +87,9 @@ enum EntityCommand {
     ImportGenshinArtifacts(ImportGenshinArtifacts),
     ImportGenshinArtifactDomains(ImportGenshinArtifactDomains),
     ImportGenshinEvents(ImportGenshinEvents),
+    ImportGenshinBooks(ImportGenshinBooks),
+    ImportGenshinQuests(ImportGenshinQuests),
+    ImportGenshinLore(ImportGenshinLore),
     ImportStarRail(ImportStarRail),
     ImportHeroesIii(ImportHeroesIii),
 }
@@ -217,6 +220,24 @@ struct ImportGenshinArtifactDomains {
 
 #[derive(Debug, Args)]
 struct ImportGenshinEvents {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinBooks {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinQuests {
+    #[arg(long)]
+    work: String,
+}
+
+#[derive(Debug, Args)]
+struct ImportGenshinLore {
     #[arg(long)]
     work: String,
 }
@@ -533,6 +554,37 @@ fn run() -> perwiga_core::Result<()> {
                         "inserted": calendar.inserted,
                         "unchanged": calendar.unchanged,
                     },
+                }))?
+            }
+            EntityCommand::ImportGenshinBooks(input) => print_json(
+                &perwiga_game_genshin_impact::import_curated_books(app.store_mut(), &input.work)?,
+            )?,
+            EntityCommand::ImportGenshinQuests(input) => print_json(
+                &perwiga_game_genshin_impact::import_curated_quests(app.store_mut(), &input.work)?,
+            )?,
+            EntityCommand::ImportGenshinLore(input) => {
+                let characters = perwiga_game_genshin_impact::import_curated_characters(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let npcs =
+                    perwiga_game_genshin_impact::import_curated_npcs(app.store_mut(), &input.work)?;
+                let books = perwiga_game_genshin_impact::import_curated_books(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let quests = perwiga_game_genshin_impact::import_curated_quests(
+                    app.store_mut(),
+                    &input.work,
+                )?;
+                let lore =
+                    perwiga_game_genshin_impact::import_curated_lore(app.store_mut(), &input.work)?;
+                print_json(&serde_json::json!({
+                    "characters": characters,
+                    "npcs": npcs,
+                    "books": books,
+                    "quests": quests,
+                    "lore": lore,
                 }))?
             }
             EntityCommand::ImportStarRail(input) => {

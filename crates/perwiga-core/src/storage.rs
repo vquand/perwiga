@@ -939,6 +939,9 @@ impl Store {
         subject_type: Option<&str>,
     ) -> Result<crate::lore::LoreGraph> {
         let limit = limit.clamp(1, 500) as i64;
+        let parsed_cursor = cursor.map(parse_lore_cursor).transpose()?;
+        let cursor_order = parsed_cursor.as_ref().map(|(order, _)| *order);
+        let cursor_id = parsed_cursor.as_ref().map(|(_, id)| id.as_str());
         let mut periods_statement = self.connection.prepare(
             "SELECT id, work_id, source_provider, source_identity, name_en,
                     description_en, display_order, parent_period_id
@@ -969,23 +972,36 @@ impl Store {
              JOIN lore_event_revisions r
                ON r.event_id = e.id AND r.revision = e.active_revision
              WHERE e.work_id = ?1
-               AND (?2 IS NULL OR e.id > ?2)
-               AND (?3 IS NULL OR EXISTS (
+               AND (?2 IS NULL OR
+                    COALESCE((SELECT p.display_order FROM lore_periods p
+                              WHERE p.id = r.start_period_id), 9223372036854775807) > ?3
+                    OR (COALESCE((SELECT p.display_order FROM lore_periods p
+                                  WHERE p.id = r.start_period_id), 9223372036854775807) = ?3
+                        AND e.id > ?4))
+               AND (?5 IS NULL OR EXISTS (
                  SELECT 1 FROM lore_involvements i
                  LEFT JOIN lore_claims c ON c.id = i.claim_id
-                 WHERE i.subject_id = ?3 AND (i.event_id = e.id OR c.event_id = e.id)
+                 WHERE i.subject_id = ?5 AND (i.event_id = e.id OR c.event_id = e.id)
                ))
-               AND (?5 IS NULL OR EXISTS (
+               AND (?7 IS NULL OR EXISTS (
                  SELECT 1 FROM lore_involvements i
                  JOIN lore_subjects s ON s.id = i.subject_id
                  LEFT JOIN lore_claims c ON c.id = i.claim_id
-                 WHERE s.proposed_type = ?5
+                 WHERE s.proposed_type = ?7
                    AND (i.event_id = e.id OR c.event_id = e.id)
                ))
-             ORDER BY period_order IS NULL, period_order, e.id LIMIT ?4",
+               ORDER BY period_order IS NULL, period_order, e.id LIMIT ?6",
         )?;
         let event_rows = events_statement.query_map(
-            params![work_id, cursor, subject_id, limit + 1, subject_type],
+            params![
+                work_id,
+                cursor,
+                cursor_order,
+                cursor_id,
+                subject_id,
+                limit + 1,
+                subject_type
+            ],
             |row| {
                 Ok((
                     row.get::<_, String>(0)?,
@@ -1039,7 +1055,7 @@ impl Store {
         }
         let next_cursor = if events.len() > limit as usize {
             events.pop();
-            events.last().map(|event| event.id.clone())
+            events.last().map(lore_cursor)
         } else {
             None
         };
@@ -3591,6 +3607,31 @@ fn row_to_calendar_event(row: &rusqlite::Row<'_>) -> rusqlite::Result<CalendarEv
         created_at: row.get(16)?,
         updated_at: row.get(17)?,
     })
+}
+
+const UNPLACED_LORE_ORDER: i64 = i64::MAX;
+
+fn lore_cursor(event: &LoreEvent) -> String {
+    format!(
+        "{}|{}",
+        event.period_order.unwrap_or(UNPLACED_LORE_ORDER),
+        event.id
+    )
+}
+
+fn parse_lore_cursor(value: &str) -> Result<(i64, String)> {
+    let (order, id) = value.split_once('|').ok_or_else(|| {
+        PerwigaError::Validation("lore cursor must contain an order and event id".into())
+    })?;
+    let order = order.parse::<i64>().map_err(|_| {
+        PerwigaError::Validation("lore cursor order must be a signed integer".into())
+    })?;
+    if id.is_empty() {
+        return Err(PerwigaError::Validation(
+            "lore cursor event id must not be empty".into(),
+        ));
+    }
+    Ok((order, id.into()))
 }
 
 #[cfg(test)]

@@ -5,6 +5,7 @@ use std::{
 
 use chrono::{DateTime, FixedOffset, NaiveDate};
 use perwiga_core::{
+    lore::{LoreCandidateBatch, LoreImportSummary},
     model::{
         AliasInput, CalendarEvent, CalendarEventInput, EntityAppearanceInput,
         EntityAppearanceLocationInput, EntityImportSummary, EntityInput, SourcedEntityInput,
@@ -23,6 +24,7 @@ static CAPABILITIES: &[Capability] = &[
     Capability::ManualContent,
     Capability::EntitySchema,
     Capability::ScheduledEvents,
+    Capability::LoreTimeline,
 ];
 const SOURCE_PROVIDER: &str = "Genshin Impact official global character directory";
 const SOURCE_URL: &str = "https://genshin.hoyoverse.com/en/character/mondstadt";
@@ -39,6 +41,9 @@ const EVENT_SOURCE_PROVIDER: &str =
     "Genshin Impact event snapshot (official HoYoLAB notices and community event history)";
 const EVENT_HISTORY_SOURCE_URL: &str =
     "https://genshin-impact.fandom.com/wiki/Event/History/Song_of_the_Welkin_Moon";
+const BOOK_SOURCE_PROVIDER: &str = "Genshin Impact Wiki Book catalog";
+const QUEST_SOURCE_PROVIDER: &str = "Genshin Impact Wiki Quest catalog";
+const NPC_SOURCE_PROVIDER: &str = "Genshin Impact Wiki NPC catalog";
 const ARTIFACT_SOURCE_URL: &str = "https://wiki.hoyolab.com/pc/genshin/aggregate/5";
 const ONE_STAR_COLOR: &str = "#8b9198";
 const TWO_STAR_COLOR: &str = "#6fa66f";
@@ -46,6 +51,49 @@ const THREE_STAR_COLOR: &str = "#6287c5";
 const FOUR_STAR_COLOR: &str = "#9a77c7";
 const FIVE_STAR_COLOR: &str = "#d8b66f";
 const COLLABORATION_COLOR: &str = "#d94b4b";
+static LORE_SUBJECT_TYPES: &[perwiga_core::LoreSubjectTypeDefinition] = &[
+    perwiga_core::LoreSubjectTypeDefinition {
+        key: "character",
+        display_name: "Character",
+    },
+    perwiga_core::LoreSubjectTypeDefinition {
+        key: "npc",
+        display_name: "NPC",
+    },
+    perwiga_core::LoreSubjectTypeDefinition {
+        key: "book",
+        display_name: "Book",
+    },
+    perwiga_core::LoreSubjectTypeDefinition {
+        key: "quest",
+        display_name: "Quest",
+    },
+    perwiga_core::LoreSubjectTypeDefinition {
+        key: "unknown",
+        display_name: "Unknown / provisional entity",
+    },
+];
+static LORE_ROLES: &[perwiga_core::LoreRoleDefinition] = &[
+    perwiga_core::LoreRoleDefinition {
+        key: "subject",
+        display_name: "Subject",
+        description: "The quest or event represented by the timeline record.",
+    },
+    perwiga_core::LoreRoleDefinition {
+        key: "participant",
+        display_name: "Participant",
+        description: "A character, NPC, or provisional entity named on the quest record.",
+    },
+    perwiga_core::LoreRoleDefinition {
+        key: "document",
+        display_name: "Document",
+        description: "A book explicitly linked to the quest record.",
+    },
+];
+static LORE_SCHEMA: perwiga_core::LoreSchemaDefinition = perwiga_core::LoreSchemaDefinition {
+    subject_types: LORE_SUBJECT_TYPES,
+    roles: LORE_ROLES,
+};
 static ENTITY_TYPES: &[EntityTypeDefinition] = &[
     EntityTypeDefinition {
         key: "character",
@@ -92,6 +140,16 @@ static ENTITY_TYPES: &[EntityTypeDefinition] = &[
         key: "event",
         display_name: "Event",
         description: "A named Genshin Impact event, activity, or limited-time schedule record.",
+    },
+    EntityTypeDefinition {
+        key: "book",
+        display_name: "Book",
+        description: "A book or book collection recorded in the Genshin Impact Wiki catalog.",
+    },
+    EntityTypeDefinition {
+        key: "quest",
+        display_name: "Quest",
+        description: "A quest, act, chapter, or quest-like objective recorded in the catalog.",
     },
 ];
 static REGION_OPTIONS: &[EntityFacetOption] = &[
@@ -982,6 +1040,105 @@ struct CuratedNpc {
 }
 
 #[derive(Debug, Deserialize)]
+struct BookSnapshot {
+    schema: String,
+    checked_at: String,
+    catalog_scope: BookCatalogScope,
+    books: Vec<CuratedBook>,
+}
+
+#[derive(Debug, Deserialize)]
+struct BookCatalogScope {
+    included_records: usize,
+    source_page_count: usize,
+}
+
+#[derive(Debug, Deserialize)]
+struct CuratedBook {
+    source_key: String,
+    page_id: u64,
+    page_title: String,
+    page_url: String,
+    official_english_name: String,
+    official_simplified_chinese_name: String,
+    official_traditional_chinese_name: String,
+    official_vietnamese_name: String,
+    book_kind: String,
+    quality: Option<u8>,
+    lore_region: String,
+    obtain_region: String,
+    volume_count: Option<u16>,
+    description: String,
+    source_note: String,
+    release_version: Option<String>,
+    quest_links: Vec<String>,
+    related_quest_keys: Vec<String>,
+    unresolved_quest_links: Vec<String>,
+}
+
+#[derive(Debug, Deserialize)]
+struct QuestSnapshot {
+    schema: String,
+    checked_at: String,
+    catalog_scope: QuestCatalogScope,
+    quests: Vec<CuratedQuest>,
+}
+
+#[derive(Debug, Deserialize)]
+struct QuestCatalogScope {
+    included_records: usize,
+    source_page_count: usize,
+    expanded_linked_records: usize,
+}
+
+#[derive(Debug, Deserialize)]
+struct CuratedQuest {
+    source_key: String,
+    page_id: u64,
+    page_title: String,
+    page_url: String,
+    #[serde(default)]
+    redirect_titles: Vec<String>,
+    official_english_name: String,
+    official_simplified_chinese_name: String,
+    official_traditional_chinese_name: String,
+    official_vietnamese_name: String,
+    record_kind: String,
+    quest_type: String,
+    chapter: String,
+    act: String,
+    act_number: String,
+    part: String,
+    region: String,
+    locations: Vec<String>,
+    description: String,
+    requirement: String,
+    previous_quest_title: Option<String>,
+    next_quest_title: Option<String>,
+    release_version: Option<String>,
+    entity_links: Vec<QuestEntityLink>,
+    book_links: Vec<QuestBookLink>,
+    previous_quest_source_key: Option<String>,
+    next_quest_source_key: Option<String>,
+    unresolved_quest_links: Vec<String>,
+}
+
+#[derive(Debug, Deserialize)]
+struct QuestEntityLink {
+    entity_type: String,
+    name: String,
+    source_key: Option<String>,
+    source: String,
+}
+
+#[derive(Debug, Deserialize)]
+struct QuestBookLink {
+    title: String,
+    source: String,
+    source_key: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
 struct CuratedNpcRelationship {
     kind: String,
     title: String,
@@ -1825,6 +1982,253 @@ fn curated_npc_han_viet_snapshot() -> Result<&'static NpcHanVietSnapshot, Perwig
     }
 }
 
+fn curated_book_snapshot() -> Result<&'static BookSnapshot, PerwigaError> {
+    static SNAPSHOT: OnceLock<Result<BookSnapshot, String>> = OnceLock::new();
+    match SNAPSHOT.get_or_init(|| {
+        let snapshot: BookSnapshot = serde_json::from_str(include_str!("../data/books.json"))
+            .map_err(|error| format!("invalid bundled Genshin Book snapshot: {error}"))?;
+        validate_book_snapshot(&snapshot)?;
+        Ok(snapshot)
+    }) {
+        Ok(snapshot) => Ok(snapshot),
+        Err(message) => Err(PerwigaError::Validation(message.clone())),
+    }
+}
+
+fn validate_book_snapshot(snapshot: &BookSnapshot) -> Result<(), String> {
+    if snapshot.schema != "perwiga.genshin-impact.books.v1"
+        || snapshot.catalog_scope.included_records != snapshot.books.len()
+        || snapshot.catalog_scope.source_page_count < snapshot.books.len()
+        || snapshot.books.is_empty()
+    {
+        return Err("Genshin Book snapshot scope is inconsistent".into());
+    }
+    let mut source_keys = HashSet::new();
+    let mut page_ids = HashSet::new();
+    for book in &snapshot.books {
+        if book.source_key != format!("genshin-fandom-book-{}", book.page_id)
+            || !source_keys.insert(book.source_key.as_str())
+            || !page_ids.insert(book.page_id)
+            || !book
+                .page_url
+                .starts_with("https://genshin-impact.fandom.com/wiki/")
+            || !matches!(book.book_kind.as_str(), "book" | "collection")
+        {
+            return Err(format!(
+                "invalid Genshin Book identity: {}",
+                book.source_key
+            ));
+        }
+        validate_source_text(
+            &book.official_english_name,
+            500,
+            "Book English name",
+            &book.source_key,
+        )?;
+        for (value, field) in [
+            (
+                &book.official_simplified_chinese_name,
+                "Book Simplified Chinese name",
+            ),
+            (
+                &book.official_traditional_chinese_name,
+                "Book Traditional Chinese name",
+            ),
+            (&book.official_vietnamese_name, "Book Vietnamese name"),
+        ] {
+            if !value.is_empty() {
+                validate_source_text(value, 500, field, &book.source_key)?;
+            }
+        }
+        if !book.description.is_empty() {
+            validate_source_text(
+                &book.description,
+                20_000,
+                "Book description",
+                &book.source_key,
+            )?;
+        }
+        if !book.source_note.is_empty() {
+            validate_source_text(
+                &book.source_note,
+                2_000,
+                "Book source note",
+                &book.source_key,
+            )?;
+        }
+        if book.related_quest_keys.iter().any(|key| {
+            !key.starts_with("genshin-fandom-quest-") || key.len() <= "genshin-fandom-quest-".len()
+        }) || book
+            .unresolved_quest_links
+            .iter()
+            .any(|value| value.trim().is_empty())
+        {
+            return Err(format!("invalid Genshin Book links: {}", book.source_key));
+        }
+    }
+    Ok(())
+}
+
+fn curated_quest_snapshot() -> Result<&'static QuestSnapshot, PerwigaError> {
+    static SNAPSHOT: OnceLock<Result<QuestSnapshot, String>> = OnceLock::new();
+    match SNAPSHOT.get_or_init(|| {
+        let snapshot: QuestSnapshot = serde_json::from_str(include_str!("../data/quests.json"))
+            .map_err(|error| format!("invalid bundled Genshin Quest snapshot: {error}"))?;
+        validate_quest_snapshot(&snapshot)?;
+        Ok(snapshot)
+    }) {
+        Ok(snapshot) => Ok(snapshot),
+        Err(message) => Err(PerwigaError::Validation(message.clone())),
+    }
+}
+
+fn validate_quest_snapshot(snapshot: &QuestSnapshot) -> Result<(), String> {
+    if snapshot.schema != "perwiga.genshin-impact.quests.v1"
+        || snapshot.catalog_scope.included_records != snapshot.quests.len()
+        || snapshot.catalog_scope.source_page_count == 0
+        || snapshot.catalog_scope.expanded_linked_records > snapshot.quests.len()
+        || snapshot.quests.is_empty()
+    {
+        return Err("Genshin Quest snapshot scope is inconsistent".into());
+    }
+    let mut source_keys = HashSet::new();
+    let mut page_ids = HashSet::new();
+    for quest in &snapshot.quests {
+        if quest.source_key != format!("genshin-fandom-quest-{}", quest.page_id)
+            || !source_keys.insert(quest.source_key.as_str())
+            || !page_ids.insert(quest.page_id)
+            || !quest
+                .page_url
+                .starts_with("https://genshin-impact.fandom.com/wiki/")
+            || !matches!(
+                quest.record_kind.as_str(),
+                "quest" | "event_quest" | "act" | "chapter" | "quest_like"
+            )
+        {
+            return Err(format!(
+                "invalid Genshin Quest identity: {}",
+                quest.source_key
+            ));
+        }
+        validate_source_text(
+            &quest.official_english_name,
+            500,
+            "Quest English name",
+            &quest.source_key,
+        )?;
+        for (value, field) in [
+            (
+                &quest.official_simplified_chinese_name,
+                "Quest Simplified Chinese name",
+            ),
+            (
+                &quest.official_traditional_chinese_name,
+                "Quest Traditional Chinese name",
+            ),
+            (&quest.official_vietnamese_name, "Quest Vietnamese name"),
+        ] {
+            if !value.is_empty() {
+                validate_source_text(value, 500, field, &quest.source_key)?;
+            }
+        }
+        if quest
+            .unresolved_quest_links
+            .iter()
+            .any(|value| value.trim().is_empty())
+            || quest.entity_links.iter().any(|link| {
+                !matches!(link.entity_type.as_str(), "character" | "npc" | "unknown")
+                    || link.name.trim().is_empty()
+                    || (link.entity_type == "unknown" && link.source_key.is_some())
+                    || (matches!(link.entity_type.as_str(), "character" | "npc")
+                        && link.source_key.is_none())
+            })
+            || quest.book_links.iter().any(|link| {
+                link.title.trim().is_empty()
+                    || link.source_key.as_deref().is_none_or(|key| {
+                        !key.starts_with("genshin-fandom-book-")
+                            || key.len() <= "genshin-fandom-book-".len()
+                    })
+            })
+        {
+            return Err(format!("invalid Genshin Quest links: {}", quest.source_key));
+        }
+        for key in [
+            quest.previous_quest_source_key.as_deref(),
+            quest.next_quest_source_key.as_deref(),
+        ]
+        .into_iter()
+        .flatten()
+        {
+            if !key.starts_with("genshin-fandom-quest-") {
+                return Err(format!(
+                    "invalid Genshin Quest relation: {}",
+                    quest.source_key
+                ));
+            }
+        }
+    }
+    Ok(())
+}
+
+pub fn curated_lore_candidate_batch() -> Result<&'static LoreCandidateBatch, PerwigaError> {
+    static BATCH: OnceLock<Result<LoreCandidateBatch, String>> = OnceLock::new();
+    match BATCH.get_or_init(|| {
+        let batch: LoreCandidateBatch = serde_json::from_str(include_str!("../data/lore.json"))
+            .map_err(|error| format!("invalid bundled Genshin lore batch: {error}"))?;
+        batch
+            .validate()
+            .map_err(|error| format!("invalid bundled Genshin lore batch: {error}"))?;
+        validate_lore_batch(&batch)?;
+        Ok(batch)
+    }) {
+        Ok(batch) => Ok(batch),
+        Err(message) => Err(PerwigaError::Validation(message.clone())),
+    }
+}
+
+fn validate_lore_batch(batch: &LoreCandidateBatch) -> Result<(), String> {
+    let quest_count = curated_quest_snapshot()
+        .map_err(|error| error.to_string())?
+        .quests
+        .len();
+    if batch.module_id != "genshin-impact" || batch.events.len() != quest_count {
+        return Err("Genshin lore batch module or Quest coverage is inconsistent".into());
+    }
+    let allowed_types = ["character", "npc", "book", "quest", "unknown"];
+    for subject in &batch.subjects {
+        if !allowed_types.contains(&subject.proposed_type.as_str()) {
+            return Err(format!(
+                "unsupported Genshin lore subject type: {}",
+                subject.proposed_type
+            ));
+        }
+        match (subject.proposed_type.as_str(), subject.entity_ref.as_ref()) {
+            ("unknown", None) => {}
+            ("character", Some(reference)) if reference.provider == SOURCE_PROVIDER => {}
+            ("npc", Some(reference)) if reference.provider == NPC_SOURCE_PROVIDER => {}
+            ("book", Some(reference)) if reference.provider == BOOK_SOURCE_PROVIDER => {}
+            ("quest", Some(reference)) if reference.provider == QUEST_SOURCE_PROVIDER => {}
+            _ => {
+                return Err(format!(
+                    "invalid Genshin lore subject reference: {}",
+                    subject.key
+                ))
+            }
+        }
+    }
+    for event in &batch.events {
+        if !event.key.starts_with("quest-")
+            || !event
+                .involvements
+                .iter()
+                .any(|involvement| involvement.role == "subject")
+        {
+            return Err(format!("invalid Genshin lore Quest event: {}", event.key));
+        }
+    }
+    Ok(())
+}
+
 fn validate_skin_snapshot(snapshot: &SkinSnapshot) -> Result<(), String> {
     if snapshot.schema != "perwiga.genshin-impact.skins.v1"
         || snapshot.catalog_scope.included_records != snapshot.skins.len()
@@ -2214,6 +2618,42 @@ fn curated_character(source_key: &str) -> Option<&'static CuratedCharacter> {
         .characters
         .iter()
         .find(|character| character.source_key == source_key)
+}
+
+fn curated_book(source_key: &str) -> Option<&'static CuratedBook> {
+    curated_book_snapshot()
+        .ok()?
+        .books
+        .iter()
+        .find(|book| book.source_key == source_key)
+}
+
+fn book_source_key(entity: &WikiEntity) -> Option<&str> {
+    if entity.entity_type != "book" {
+        return None;
+    }
+    let information = entity.other_information.as_deref()?;
+    let (_, suffix) = information.split_once("Genshin Fandom Book source key: ")?;
+    let source_key = suffix.split('.').next()?.trim();
+    curated_book(source_key).map(|book| book.source_key.as_str())
+}
+
+fn curated_quest(source_key: &str) -> Option<&'static CuratedQuest> {
+    curated_quest_snapshot()
+        .ok()?
+        .quests
+        .iter()
+        .find(|quest| quest.source_key == source_key)
+}
+
+fn quest_source_key(entity: &WikiEntity) -> Option<&str> {
+    if entity.entity_type != "quest" {
+        return None;
+    }
+    let information = entity.other_information.as_deref()?;
+    let (_, suffix) = information.split_once("Genshin Fandom Quest source key: ")?;
+    let source_key = suffix.split('.').next()?.trim();
+    curated_quest(source_key).map(|quest| quest.source_key.as_str())
 }
 
 fn curated_character_presentation(
@@ -2672,6 +3112,304 @@ pub fn import_curated_npcs(
     Ok(summary)
 }
 
+pub fn import_curated_books(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<EntityImportSummary> {
+    let work = store
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if work.kind != WorkKind::Game || work.module_id != "genshin-impact" {
+        return Err(PerwigaError::Validation(format!(
+            "work {work_id} is not owned by the Genshin Impact module"
+        )));
+    }
+
+    let snapshot = curated_book_snapshot()?;
+    let inputs = snapshot
+        .books
+        .iter()
+        .map(|book| {
+            let mut aliases = Vec::new();
+            if !book.official_traditional_chinese_name.is_empty() {
+                aliases.push(AliasInput {
+                    value: book.official_traditional_chinese_name.clone(),
+                    language: Some("zh-Hant".into()),
+                    kind: "official-localization".into(),
+                    label: Some("Traditional Chinese localization".into()),
+                    notes: Some(format!(
+                        "Book page localization from {}. Checked {}.",
+                        book.page_url, snapshot.checked_at
+                    )),
+                });
+            }
+            if !book.official_vietnamese_name.is_empty() {
+                aliases.push(AliasInput {
+                    value: book.official_vietnamese_name.clone(),
+                    language: Some("vi".into()),
+                    kind: "official-localization".into(),
+                    label: Some("Vietnamese localization".into()),
+                    notes: Some(format!(
+                        "Book page localization from {}. Checked {}.",
+                        book.page_url, snapshot.checked_at
+                    )),
+                });
+            }
+            SourcedEntityInput {
+                source_provider: BOOK_SOURCE_PROVIDER.into(),
+                source_identity: book.source_key.clone(),
+                entity: EntityInput {
+                    entity_type: "book".into(),
+                    official_english_name: book.official_english_name.clone(),
+                    official_original_name: if book.official_simplified_chinese_name.is_empty() {
+                        book.official_english_name.clone()
+                    } else {
+                        book.official_simplified_chinese_name.clone()
+                    },
+                    official_vietnamese_name: (!book.official_vietnamese_name.is_empty())
+                        .then(|| book.official_vietnamese_name.clone()),
+                    automatic_vietnamese_translation: None,
+                    english_description: (!book.description.is_empty())
+                        .then(|| book.description.clone()),
+                    other_information: Some(format!(
+                        "Genshin Fandom Book source key: {}. Page ID: {}. Page title: {}. Book kind: {}. Lore region: {}. Obtain region: {}. Volumes: {}. Release version: {}. Source quest link labels: {}. Source: {}. Checked {}. Quest links are explicit wiki cross-links; release version is a publication anchor, not an in-world date.",
+                        book.source_key,
+                        book.page_id,
+                        book.page_title,
+                        book.book_kind,
+                        if book.lore_region.is_empty() { "None" } else { &book.lore_region },
+                        if book.obtain_region.is_empty() { "None" } else { &book.obtain_region },
+                        book.volume_count
+                            .map(|value| value.to_string())
+                            .unwrap_or_else(|| "None".into()),
+                        book.release_version.as_deref().unwrap_or("Unknown"),
+                        if book.quest_links.is_empty() {
+                            "None".to_string()
+                        } else {
+                            book.quest_links.join(", ")
+                        },
+                        book.page_url,
+                        snapshot.checked_at
+                    )),
+                },
+                aliases,
+            }
+        })
+        .collect::<Vec<_>>();
+    store.import_sourced_entities(work_id, &inputs)
+}
+
+pub fn import_curated_quests(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<EntityImportSummary> {
+    let work = store
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if work.kind != WorkKind::Game || work.module_id != "genshin-impact" {
+        return Err(PerwigaError::Validation(format!(
+            "work {work_id} is not owned by the Genshin Impact module"
+        )));
+    }
+
+    let snapshot = curated_quest_snapshot()?;
+    let inputs = snapshot
+        .quests
+        .iter()
+        .map(|quest| {
+            let mut aliases = Vec::new();
+            if !quest.official_traditional_chinese_name.is_empty() {
+                aliases.push(AliasInput {
+                    value: quest.official_traditional_chinese_name.clone(),
+                    language: Some("zh-Hant".into()),
+                    kind: "official-localization".into(),
+                    label: Some("Traditional Chinese localization".into()),
+                    notes: Some(format!(
+                        "Quest page localization from {}. Checked {}.",
+                        quest.page_url, snapshot.checked_at
+                    )),
+                });
+            }
+            if !quest.official_vietnamese_name.is_empty() {
+                aliases.push(AliasInput {
+                    value: quest.official_vietnamese_name.clone(),
+                    language: Some("vi".into()),
+                    kind: "official-localization".into(),
+                    label: Some("Vietnamese localization".into()),
+                    notes: Some(format!(
+                        "Quest page localization from {}. Checked {}.",
+                        quest.page_url, snapshot.checked_at
+                    )),
+                });
+            }
+            SourcedEntityInput {
+                source_provider: QUEST_SOURCE_PROVIDER.into(),
+                source_identity: quest.source_key.clone(),
+                entity: EntityInput {
+                    entity_type: "quest".into(),
+                    official_english_name: quest.official_english_name.clone(),
+                    official_original_name: if quest.official_simplified_chinese_name.is_empty() {
+                        quest.official_english_name.clone()
+                    } else {
+                        quest.official_simplified_chinese_name.clone()
+                    },
+                    official_vietnamese_name: (!quest.official_vietnamese_name.is_empty())
+                        .then(|| quest.official_vietnamese_name.clone()),
+                    automatic_vietnamese_translation: None,
+                    english_description: (!quest.description.is_empty())
+                        .then(|| quest.description.clone()),
+                    other_information: Some(format!(
+                        "Genshin Fandom Quest source key: {}. Page ID: {}. Page title: {}. Record kind: {}. Quest type: {}. Chapter: {}. Act: {} {}. Part: {}. Region: {}. Locations: {}. Requirement: {}. Previous: {} [{}]. Next: {} [{}]. Release version: {}. Redirect aliases: {}. Source: {}. Checked {}. Release version is a publication anchor, not an in-world date.",
+                        quest.source_key,
+                        quest.page_id,
+                        quest.page_title,
+                        quest.record_kind,
+                        if quest.quest_type.is_empty() { "Unknown" } else { &quest.quest_type },
+                        if quest.chapter.is_empty() { "None" } else { &quest.chapter },
+                        if quest.act.is_empty() { "None" } else { &quest.act },
+                        if quest.act_number.is_empty() {
+                            String::new()
+                        } else {
+                            format!("(Act {})", quest.act_number)
+                        },
+                        if quest.part.is_empty() { "None" } else { &quest.part },
+                        if quest.region.is_empty() { "None" } else { &quest.region },
+                        if quest.locations.is_empty() {
+                            "None".to_string()
+                        } else {
+                            quest.locations.join(", ")
+                        },
+                        if quest.requirement.is_empty() { "None" } else { &quest.requirement },
+                        quest.previous_quest_source_key.as_deref().unwrap_or("None"),
+                        quest.previous_quest_title.as_deref().unwrap_or("None"),
+                        quest.next_quest_source_key.as_deref().unwrap_or("None"),
+                        quest.next_quest_title.as_deref().unwrap_or("None"),
+                        quest.release_version.as_deref().unwrap_or("Unknown"),
+                        if quest.redirect_titles.is_empty() {
+                            "None".to_string()
+                        } else {
+                            quest.redirect_titles.join(", ")
+                        },
+                        quest.page_url,
+                        snapshot.checked_at
+                    )),
+                },
+                aliases,
+            }
+        })
+        .collect::<Vec<_>>();
+    let summary = store.import_sourced_entities(work_id, &inputs)?;
+    let mut appearances = Vec::new();
+    for quest in &snapshot.quests {
+        for link in &quest.entity_links {
+            let Some(source_key) = link.source_key.as_deref() else {
+                continue;
+            };
+            let provider = match link.entity_type.as_str() {
+                "character" => SOURCE_PROVIDER,
+                "npc" => NPC_SOURCE_PROVIDER,
+                _ => continue,
+            };
+            let entity_id = store
+                .resolve_sourced_entity_id(work_id, provider, source_key)?
+                .ok_or_else(|| {
+                    PerwigaError::NotFound(format!(
+                        "Genshin Quest {} references unimported {} {}",
+                        quest.source_key, link.entity_type, source_key
+                    ))
+                })?;
+            appearances.push(EntityAppearanceInput {
+                entity_id,
+                relation_kind: "quest".into(),
+                related_title: quest.official_english_name.clone(),
+                related_source_url: Some(quest.page_url.clone()),
+                source_provider: QUEST_SOURCE_PROVIDER.into(),
+                source_identity: format!("{}:entity:{}", quest.source_key, source_key),
+                source_notes: Some(format!(
+                    "Explicit {} link from the Quest Infobox or Appearances category on {}. Checked {}.",
+                    link.source, quest.page_url, snapshot.checked_at
+                )),
+                locations: Vec::new(),
+            });
+        }
+        for link in &quest.book_links {
+            let Some(source_key) = link.source_key.as_deref() else {
+                continue;
+            };
+            let entity_id = store
+                .resolve_sourced_entity_id(work_id, BOOK_SOURCE_PROVIDER, source_key)?
+                .ok_or_else(|| {
+                    PerwigaError::NotFound(format!(
+                        "Genshin Quest {} references unimported Book {}",
+                        quest.source_key, source_key
+                    ))
+                })?;
+            appearances.push(EntityAppearanceInput {
+                entity_id,
+                relation_kind: "quest".into(),
+                related_title: quest.official_english_name.clone(),
+                related_source_url: Some(quest.page_url.clone()),
+                source_provider: QUEST_SOURCE_PROVIDER.into(),
+                source_identity: format!("{}:book:{}", quest.source_key, source_key),
+                source_notes: Some(format!(
+                    "Explicit {} book link from {}. Checked {}.",
+                    link.source, quest.page_url, snapshot.checked_at
+                )),
+                locations: Vec::new(),
+            });
+        }
+    }
+    let book_snapshot = curated_book_snapshot()?;
+    for book in &book_snapshot.books {
+        let book_entity_id = store
+            .resolve_sourced_entity_id(work_id, BOOK_SOURCE_PROVIDER, &book.source_key)?
+            .ok_or_else(|| {
+                PerwigaError::NotFound(format!(
+                    "Genshin Book {} is not imported before Quest links are materialized",
+                    book.source_key
+                ))
+            })?;
+        for quest_source_key in &book.related_quest_keys {
+            let quest = curated_quest(quest_source_key).ok_or_else(|| {
+                PerwigaError::NotFound(format!(
+                    "Genshin Book {} references unknown Quest {}",
+                    book.source_key, quest_source_key
+                ))
+            })?;
+            appearances.push(EntityAppearanceInput {
+                entity_id: book_entity_id.clone(),
+                relation_kind: "quest".into(),
+                related_title: quest.official_english_name.clone(),
+                related_source_url: Some(quest.page_url.clone()),
+                source_provider: BOOK_SOURCE_PROVIDER.into(),
+                source_identity: format!("{}:quest:{}", book.source_key, quest_source_key),
+                source_notes: Some(format!(
+                    "Explicit Quest link from the Book page {}. Checked {}.",
+                    book.page_url, book_snapshot.checked_at
+                )),
+                locations: Vec::new(),
+            });
+        }
+    }
+    store.import_entity_appearances(&appearances)?;
+    Ok(summary)
+}
+
+pub fn import_curated_lore(
+    store: &mut Store,
+    work_id: &str,
+) -> perwiga_core::Result<LoreImportSummary> {
+    let work = store
+        .get_work(work_id)?
+        .ok_or_else(|| PerwigaError::NotFound(format!("work {work_id}")))?;
+    if work.kind != WorkKind::Game || work.module_id != "genshin-impact" {
+        return Err(PerwigaError::Validation(format!(
+            "work {work_id} is not owned by the Genshin Impact module"
+        )));
+    }
+    store.import_reviewed_lore_candidate_batch(work_id, curated_lore_candidate_batch()?)
+}
+
 pub fn import_curated_weapons(
     store: &mut Store,
     work_id: &str,
@@ -3028,6 +3766,10 @@ impl LibraryModule for GenshinImpactModule {
         ENTITY_FACETS
     }
 
+    fn lore_schema(&self) -> Option<&'static perwiga_core::LoreSchemaDefinition> {
+        Some(&LORE_SCHEMA)
+    }
+
     fn theme(&self) -> ThemeDefinition {
         THEME
     }
@@ -3190,6 +3932,56 @@ impl LibraryModule for GenshinImpactModule {
                     label: region_type.to_uppercase(),
                     rarity: None,
                     facets,
+                    facet_values: BTreeMap::new(),
+                })
+            }
+            "book" => {
+                let source_key = book_source_key(entity)?;
+                let book = curated_book(source_key)?;
+                let context_label = if !book.lore_region.is_empty() {
+                    Some(book.lore_region.clone())
+                } else if !book.obtain_region.is_empty() {
+                    Some(book.obtain_region.clone())
+                } else {
+                    None
+                };
+                Some(EntityPresentation {
+                    thumbnail_url: "/assets/placeholders/item.svg".to_string(),
+                    accent_color: THEME.accent.to_string(),
+                    context_label,
+                    context_icon_url: None,
+                    label: if book.book_kind == "collection" {
+                        "COLLECTION".to_string()
+                    } else {
+                        "BOOK".to_string()
+                    },
+                    rarity: book.quality,
+                    facets: BTreeMap::new(),
+                    facet_values: BTreeMap::new(),
+                })
+            }
+            "quest" => {
+                let source_key = quest_source_key(entity)?;
+                let quest = curated_quest(source_key)?;
+                let context_label = if !quest.region.is_empty() {
+                    Some(quest.region.clone())
+                } else if !quest.quest_type.is_empty() {
+                    Some(quest.quest_type.clone())
+                } else {
+                    None
+                };
+                Some(EntityPresentation {
+                    thumbnail_url: "/assets/placeholders/mission.svg".to_string(),
+                    accent_color: THEME.accent.to_string(),
+                    context_label,
+                    context_icon_url: None,
+                    label: if quest.quest_type.is_empty() {
+                        quest.record_kind.to_uppercase()
+                    } else {
+                        quest.quest_type.to_uppercase()
+                    },
+                    rarity: None,
+                    facets: BTreeMap::new(),
                     facet_values: BTreeMap::new(),
                 })
             }
@@ -3412,6 +4204,8 @@ mod tests {
                 "artifact-piece",
                 "domain",
                 "event",
+                "book",
+                "quest",
             ]
         );
     }
@@ -3853,6 +4647,112 @@ mod tests {
         assert_eq!(second.unchanged, 118);
         assert_eq!(second.aliases_inserted, 0);
         assert_eq!(second.aliases_unchanged, 236);
+        assert_eq!(store.integrity_check().expect("integrity"), "ok");
+        assert_eq!(store.foreign_key_violations().expect("foreign keys"), 0);
+    }
+
+    #[test]
+    fn curated_lore_snapshot_has_explicit_quest_book_character_and_npc_paths() {
+        let batch = curated_lore_candidate_batch().expect("Genshin lore batch");
+        assert_eq!(batch.events.len(), 2545);
+        assert_eq!(batch.periods.len(), 44);
+        assert!(batch.subjects.iter().any(|subject| {
+            subject.key == "book-genshin-fandom-book-3103" && subject.proposed_type == "book"
+        }));
+        assert!(batch.subjects.iter().any(|subject| {
+            subject.key == "character-hoyoverse-content-104803"
+                && subject.proposed_type == "character"
+        }));
+
+        let lost_book = batch
+            .events
+            .iter()
+            .find(|event| event.title_en == "Lost Book")
+            .expect("Lost Book event");
+        assert!(lost_book
+            .involvements
+            .iter()
+            .any(
+                |involvement| involvement.subject_key == "book-genshin-fandom-book-3103"
+                    && involvement.role == "document"
+            ));
+        assert!(lost_book
+            .involvements
+            .iter()
+            .any(
+                |involvement| involvement.subject_key == "character-hoyoverse-content-104803"
+                    && involvement.role == "participant"
+            ));
+        assert!(lost_book.time.precision == perwiga_core::lore::LoreTimePrecision::Unknown);
+    }
+
+    #[test]
+    fn curated_books_and_quests_import_idempotently_and_connect_normalized_contexts() {
+        let mut store = Store::open_in_memory().expect("temporary database");
+        let work = store
+            .insert_work(WorkKind::Game, "genshin-impact", "Genshin Impact")
+            .expect("Genshin work");
+
+        import_curated_characters(&mut store, &work.id).expect("characters");
+        import_curated_npcs(&mut store, &work.id).expect("NPCs");
+        let books = import_curated_books(&mut store, &work.id).expect("books");
+        let quests = import_curated_quests(&mut store, &work.id).expect("quests");
+        let lore = import_curated_lore(&mut store, &work.id).expect("lore");
+
+        assert_eq!(books.inserted, 47);
+        assert_eq!(quests.inserted, 2545);
+        assert!(lore.candidates_inserted > 10_000);
+        assert_eq!(
+            store.list_entities(&work.id, Some("book")).unwrap().len(),
+            47
+        );
+        assert_eq!(
+            store.list_entities(&work.id, Some("quest")).unwrap().len(),
+            2545
+        );
+
+        let lisa = store
+            .list_entities(&work.id, Some("character"))
+            .unwrap()
+            .into_iter()
+            .find(|entity| entity.official_english_name == "Lisa")
+            .expect("Lisa");
+        assert!(store
+            .list_entity_appearances(&lisa.id)
+            .unwrap()
+            .iter()
+            .any(|appearance| appearance.related_title == "Lost Book"));
+
+        let book = store
+            .list_entities(&work.id, Some("book"))
+            .unwrap()
+            .into_iter()
+            .find(|entity| entity.official_english_name == "1000 Years of Loneliness")
+            .expect("book reward");
+        assert!(store
+            .list_entity_appearances(&book.id)
+            .unwrap()
+            .iter()
+            .any(|appearance| appearance.related_title == "Troublesome Work (Quest)"));
+
+        let lost_book_subject = store
+            .list_lore_subjects(&work.id)
+            .unwrap()
+            .into_iter()
+            .find(|subject| subject.source_identity == "subject:quest-genshin-fandom-quest-2915")
+            .expect("Lost Book lore subject");
+        let graph = store
+            .list_lore_graph(&work.id, Some(&lost_book_subject.id), None, 10, None)
+            .expect("Lost Book lore graph");
+        assert_eq!(graph.events.len(), 1);
+        assert_eq!(graph.events[0].title_en, "Lost Book");
+
+        let second_books = import_curated_books(&mut store, &work.id).expect("books again");
+        let second_quests = import_curated_quests(&mut store, &work.id).expect("quests again");
+        assert_eq!(second_books.inserted, 0);
+        assert_eq!(second_books.unchanged, 47);
+        assert_eq!(second_quests.inserted, 0);
+        assert_eq!(second_quests.unchanged, 2545);
         assert_eq!(store.integrity_check().expect("integrity"), "ok");
         assert_eq!(store.foreign_key_violations().expect("foreign keys"), 0);
     }

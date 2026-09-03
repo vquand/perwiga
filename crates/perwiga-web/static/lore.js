@@ -34,14 +34,37 @@ function relationLabel(relation, relatedEvent) {
 }
 
 function isCharacter(subject) {
-  return subject?.entity_type === "operator" || subject?.entity_type === "npc";
+  return ["character", "operator", "npc"].includes(characterType(subject));
+}
+
+function characterType(subject) {
+  const type = subject?.entity_type || subject?.proposed_type;
+  return ["character", "operator", "npc"].includes(type) ? type : null;
+}
+
+function characterGroupKey(subject) {
+  return characterType(subject) === "npc" ? "npc" : "playable";
+}
+
+function characterGroupLabel(groupKey) {
+  return groupKey === "npc" ? "NPCs" : "playable characters";
+}
+
+function characterGroupItems(subjects) {
+  if (subjects.length <= 5) {
+    return subjects.map((subject) => ({ subject }));
+  }
+  return [
+    ...subjects.slice(0, 4).map((subject) => ({ subject })),
+    { overflow: subjects.length - 4, representative: subjects[0] },
+  ];
 }
 
 function characterAppearance(subject, role, compact = false) {
   const appearance = element("div", `lore-character${compact ? " is-compact" : ""}`);
   const image = element("img", "lore-character-avatar");
   image.src = subject.presentation?.thumbnail_url || "/assets/placeholders/character.svg";
-  image.alt = `${subject.attested_name}, ${subject.entity_type || "character"}`;
+  image.alt = `${subject.attested_name}, ${characterType(subject) || "character"}`;
   image.loading = "lazy";
   image.decoding = "async";
   const copy = element("span", "lore-character-copy");
@@ -50,6 +73,45 @@ function characterAppearance(subject, role, compact = false) {
   appearance.append(image, copy);
   appearance.title = role ? `${subject.attested_name} · ${role}` : subject.attested_name;
   return appearance;
+}
+
+function characterOverflow(item, groupKey) {
+  const label = characterGroupLabel(groupKey);
+  const appearance = element("div", "lore-character lore-character-overflow is-compact");
+  const image = element("img", "lore-character-avatar");
+  image.src = item.representative.presentation?.thumbnail_url || "/assets/placeholders/character.svg";
+  image.alt = "";
+  image.setAttribute("aria-hidden", "true");
+  image.loading = "lazy";
+  image.decoding = "async";
+  const count = element("span", "lore-character-count", `(+${item.overflow})`);
+  appearance.append(image, count);
+  appearance.setAttribute("role", "img");
+  appearance.setAttribute("aria-label", `${item.overflow} more ${label}`);
+  appearance.title = `${item.overflow} more ${label}`;
+  return appearance;
+}
+
+function renderCharacterGroup(subjects, groupKey) {
+  const group = element("div", `lore-character-group is-${groupKey}`);
+  group.setAttribute("role", "group");
+  group.setAttribute("aria-label", `${characterGroupLabel(groupKey)} in this period`);
+  for (const item of characterGroupItems(subjects)) {
+    group.append(item.overflow ? characterOverflow(item, groupKey) : characterAppearance(item.subject, null, true));
+  }
+  return group;
+}
+
+function renderPeriodLoading() {
+  const loading = element("div", "lore-period-loading");
+  loading.setAttribute("aria-hidden", "true");
+  loading.append(element("span", "lore-period-loading-label", "Loading release data…"));
+  const preview = element("div", "lore-period-loading-preview");
+  for (const size of ["wide", "medium", "short"]) {
+    preview.append(element("span", `lore-skeleton-line is-${size}`));
+  }
+  loading.append(preview);
+  return loading;
 }
 
 function orderEvents(events, relations) {
@@ -87,7 +149,11 @@ function orderEvents(events, relations) {
   return ordered;
 }
 
-export function renderLoreMap(container, graph, { onEvent, subjectType = "" } = {}) {
+export function renderLoreMap(
+  container,
+  graph,
+  { onEvent, onLoadMore, isLoadingMore = false, subjectType = "" } = {},
+) {
   container.replaceChildren();
   if (!graph?.events?.length) {
     container.append(
@@ -129,6 +195,10 @@ export function renderLoreMap(container, graph, { onEvent, subjectType = "" } = 
       element("h3", "lore-period-title", period?.name_en || "Relative / unplaced time"),
     );
     if (period?.description_en) column.append(element("p", "lore-period-description", period.description_en));
+    if (isLoadingMore && period && !events.length) {
+      column.classList.add("is-loading");
+      column.append(renderPeriodLoading());
+    }
     const periodSubjectIds = new Set((graph.involvements || [])
       .filter((involvement) => events.some((event) => event.id === involvement.event_id))
       .map((involvement) => involvement.subject_id));
@@ -137,7 +207,10 @@ export function renderLoreMap(container, graph, { onEvent, subjectType = "" } = 
     if (periodCharacters.length) {
       const cast = element("div", "lore-period-cast");
       cast.setAttribute("aria-label", "Characters in this period");
-      for (const subject of periodCharacters) cast.append(characterAppearance(subject, null, true));
+      for (const groupKey of ["playable", "npc"]) {
+        const subjects = periodCharacters.filter((subject) => characterGroupKey(subject) === groupKey);
+        if (subjects.length) cast.append(renderCharacterGroup(subjects, groupKey));
+      }
       column.append(cast);
     }
     const stack = element("div", "lore-event-stack");
@@ -209,7 +282,7 @@ export function renderLoreMap(container, graph, { onEvent, subjectType = "" } = 
   const awaitingCharacters = (graph.subjects || [])
     .filter((subject) => isCharacter(subject)
       && !involvedSubjectIds.has(subject.id)
-      && (!subjectType || subjectType === "operator" || subjectType === "npc"))
+      && (!subjectType || ["character", "operator", "npc"].includes(subjectType)))
     .sort((left, right) => left.attested_name.localeCompare(right.attested_name));
   if (awaitingCharacters.length) {
     const column = element("section", "lore-period lore-period-awaiting");
@@ -230,6 +303,17 @@ export function renderLoreMap(container, graph, { onEvent, subjectType = "" } = 
     map.append(column);
   }
   container.append(map);
+  if (graph.next_cursor || isLoadingMore) {
+    const loadMore = element(
+      "button",
+      "button button-secondary lore-load-more",
+      isLoadingMore ? "Loading more events…" : "Load more lore events",
+    );
+    loadMore.type = "button";
+    loadMore.disabled = isLoadingMore;
+    loadMore.addEventListener("click", () => onLoadMore?.());
+    container.append(loadMore);
+  }
 }
 
 export function renderLoreEventDetail(container, detail, { onBack } = {}) {
