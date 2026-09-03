@@ -142,6 +142,15 @@ pub struct EntityPresentation {
     pub facet_values: BTreeMap<String, Vec<String>>,
 }
 
+/// Optional long-form content shown only on an entity's detail view. Modules
+/// use this for source-backed records such as in-game books without adding
+/// large payloads to entity list responses.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+pub struct EntityDetailContent {
+    pub heading: String,
+    pub paragraphs: Vec<String>,
+}
+
 /// Optional, module-owned timing metadata for an entity's most recent
 /// relevant scheduled event. The shared UI computes the live day count from
 /// the supplied end timestamp without understanding title-specific rules.
@@ -215,6 +224,9 @@ pub trait LibraryModule: Sync {
         ThemeDefinition::default()
     }
     fn entity_presentation(&self, _entity: &WikiEntity) -> Option<EntityPresentation> {
+        None
+    }
+    fn entity_detail_content(&self, _entity: &WikiEntity) -> Option<EntityDetailContent> {
         None
     }
     /// Optional readable catalog label when several records share the same

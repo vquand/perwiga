@@ -11,10 +11,10 @@ use perwiga_core::{
         EntityAppearanceLocationInput, EntityImportSummary, EntityInput, SourcedEntityInput,
         WikiEntity,
     },
-    CalendarEventPresentation, Capability, EntityEventRecencyPresentation, EntityFacetDefinition,
-    EntityFacetOption, EntityPresentation, EntityTypeDefinition, EventFeaturedEntityPresentation,
-    EventPreviousGapPresentation, LibraryModule, ModuleRegistry, PerwigaError, Store,
-    ThemeDefinition, WorkKind,
+    CalendarEventPresentation, Capability, EntityDetailContent, EntityEventRecencyPresentation,
+    EntityFacetDefinition, EntityFacetOption, EntityPresentation, EntityTypeDefinition,
+    EventFeaturedEntityPresentation, EventPreviousGapPresentation, LibraryModule, ModuleRegistry,
+    PerwigaError, Store, ThemeDefinition, WorkKind,
 };
 use serde::Deserialize;
 
@@ -1069,6 +1069,8 @@ struct CuratedBook {
     obtain_region: String,
     volume_count: Option<u16>,
     description: String,
+    #[serde(default)]
+    content: Vec<String>,
     source_note: String,
     release_version: Option<String>,
     quest_links: Vec<String>,
@@ -3774,6 +3776,15 @@ impl LibraryModule for GenshinImpactModule {
         THEME
     }
 
+    fn entity_detail_content(&self, entity: &WikiEntity) -> Option<EntityDetailContent> {
+        let source_key = book_source_key(entity)?;
+        let book = curated_book(source_key)?;
+        Some(EntityDetailContent {
+            heading: "Book content".to_string(),
+            paragraphs: book.content.clone(),
+        })
+    }
+
     fn entity_presentation(&self, entity: &WikiEntity) -> Option<EntityPresentation> {
         match entity.entity_type.as_str() {
             "character" => {
@@ -4684,6 +4695,14 @@ mod tests {
                     && involvement.role == "participant"
             ));
         assert!(lost_book.time.precision == perwiga_core::lore::LoreTimePrecision::Unknown);
+    }
+
+    #[test]
+    fn curated_book_snapshot_retains_readable_book_content() {
+        let book = curated_book("genshin-fandom-book-4038").expect("Wind, Courage, and Wings");
+        assert!(book.content.iter().any(|paragraph| {
+            paragraph.contains("When the first wisp of wind brushed across the land")
+        }));
     }
 
     #[test]

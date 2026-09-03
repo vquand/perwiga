@@ -227,6 +227,19 @@
       </form>
     </dialog>
 
+    <dialog id="lore-detail-dialog" aria-labelledby="lore-detail-dialog-title">
+      <div class="lore-detail-dialog-shell">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Linked lore record</p>
+            <h2 id="lore-detail-dialog-title">Quest detail</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-lore-dialog aria-label="Close linked lore detail">×</button>
+        </div>
+        <div id="lore-detail-dialog-content" class="lore-detail-dialog-content" aria-live="polite"></div>
+      </div>
+    </dialog>
+
     <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
     <noscript>This UAT interface requires JavaScript to communicate with the local Rust application.</noscript>
   </body>

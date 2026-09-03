@@ -739,6 +739,41 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
             expected_count
         );
     }
+    let books = app
+        .clone()
+        .oneshot(
+            Request::get(format!("/api/works/{work_id}/entities?entity_type=book"))
+                .body(Body::empty())
+                .expect("Genshin book list request"),
+        )
+        .await
+        .expect("Genshin book list response");
+    let books_json = json_response(books).await;
+    let book = books_json
+        .as_array()
+        .expect("Genshin books")
+        .iter()
+        .find(|book| book["official_english_name"] == "Wind, Courage, and Wings (Book)")
+        .expect("Wind, Courage, and Wings book");
+    let book_detail = app
+        .clone()
+        .oneshot(
+            Request::get(format!(
+                "/api/entities/{}",
+                book["id"].as_str().expect("book ID")
+            ))
+            .body(Body::empty())
+            .expect("Genshin book detail request"),
+        )
+        .await
+        .expect("Genshin book detail response");
+    let book_detail = json_response(book_detail).await;
+    assert_eq!(book_detail["detail_content"]["heading"], "Book content");
+    assert!(book_detail["detail_content"]["paragraphs"]
+        .as_array()
+        .expect("book content paragraphs")
+        .iter()
+        .any(|paragraph| paragraph == "When the first wisp of wind brushed across the land"));
     let lore_graph = app
         .clone()
         .oneshot(
@@ -1265,6 +1300,7 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
     );
 
     let script = app
+        .clone()
         .oneshot(
             Request::get("/assets/app.js")
                 .body(Body::empty())
@@ -1289,6 +1325,31 @@ async fn genshin_setup_is_idempotent_and_lists_a_switchable_game() {
     assert!(javascript.contains("maybeLoadMoreLore"));
     assert!(javascript.contains("addEventListener(\"scroll\""));
     assert!(javascript.contains("dom.loreMap.setAttribute(\"aria-busy\", \"true\")"));
+    assert!(javascript.contains("lore-detail-dialog-open"));
+    assert!(javascript.contains("handleLoreDetailDialogWheel"));
+    assert!(javascript.contains("event.deltaY"));
+    assert!(javascript.contains("event.preventDefault()"));
+
+    let styles = app
+        .oneshot(
+            Request::get("/assets/styles.css")
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("styles response");
+    let styles = String::from_utf8(
+        styles
+            .into_body()
+            .collect()
+            .await
+            .expect("styles body")
+            .to_bytes()
+            .to_vec(),
+    )
+    .expect("UTF-8 CSS");
+    assert!(styles.contains("overflow-y: hidden"));
+    assert!(styles.contains("overscroll-behavior: contain"));
 }
 
 #[tokio::test]
@@ -2079,6 +2140,7 @@ async fn event_timeline_assets_support_featured_operator_hover_and_focus_preview
     assert!(javascript.contains("event_recency"));
     assert!(javascript.contains("wholeDaysSince"));
     assert!(javascript.contains("entityAppearanceSection"));
+    assert!(javascript.contains("entityDetailContentSection"));
     assert!(javascript.contains("appearance.related_title"));
     assert!(!javascript.contains("bar.title = description"));
 
@@ -2296,6 +2358,9 @@ async fn lore_client_asset_is_served_as_a_module() {
     assert!(script.contains("renderPeriodLoading"));
     assert!(script.contains("lore-period-loading"));
     assert!(script.contains("Loading release data"));
+    assert!(script.contains("onSubject"));
+    assert!(script.contains("Open quest details for"));
+    assert!(script.contains("onSubject(subject, pill)"));
 }
 
 #[tokio::test]

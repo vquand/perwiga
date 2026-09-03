@@ -60,8 +60,10 @@ function characterGroupItems(subjects) {
   ];
 }
 
-function characterAppearance(subject, role, compact = false) {
-  const appearance = element("div", `lore-character${compact ? " is-compact" : ""}`);
+function characterAppearance(subject, role, compact = false, onSelect) {
+  const canOpen = Boolean(onSelect && subject.wiki_entity_id);
+  const appearance = element(canOpen ? "button" : "div", `lore-character${compact ? " is-compact" : ""}`);
+  if (canOpen) appearance.type = "button";
   const image = element("img", "lore-character-avatar");
   image.src = subject.presentation?.thumbnail_url || "/assets/placeholders/character.svg";
   image.alt = `${subject.attested_name}, ${characterType(subject) || "character"}`;
@@ -72,6 +74,16 @@ function characterAppearance(subject, role, compact = false) {
   if (role && !compact) copy.append(element("span", "lore-character-role", role));
   appearance.append(image, copy);
   appearance.title = role ? `${subject.attested_name} · ${role}` : subject.attested_name;
+  if (canOpen) {
+    appearance.setAttribute(
+      "aria-label",
+      `Open ${characterType(subject) === "npc" ? "NPC" : "playable character"} detail for ${subject.attested_name}`,
+    );
+    appearance.addEventListener("click", (event) => {
+      event.stopPropagation();
+      onSelect(subject, appearance);
+    });
+  }
   return appearance;
 }
 
@@ -92,12 +104,14 @@ function characterOverflow(item, groupKey) {
   return appearance;
 }
 
-function renderCharacterGroup(subjects, groupKey) {
+function renderCharacterGroup(subjects, groupKey, onSelect) {
   const group = element("div", `lore-character-group is-${groupKey}`);
   group.setAttribute("role", "group");
   group.setAttribute("aria-label", `${characterGroupLabel(groupKey)} in this period`);
   for (const item of characterGroupItems(subjects)) {
-    group.append(item.overflow ? characterOverflow(item, groupKey) : characterAppearance(item.subject, null, true));
+    group.append(item.overflow
+      ? characterOverflow(item, groupKey)
+      : characterAppearance(item.subject, null, true, onSelect));
   }
   return group;
 }
@@ -152,7 +166,7 @@ function orderEvents(events, relations) {
 export function renderLoreMap(
   container,
   graph,
-  { onEvent, onLoadMore, isLoadingMore = false, subjectType = "" } = {},
+  { onEvent, onSubject, onLoadMore, isLoadingMore = false, subjectType = "" } = {},
 ) {
   container.replaceChildren();
   if (!graph?.events?.length) {
@@ -209,7 +223,7 @@ export function renderLoreMap(
       cast.setAttribute("aria-label", "Characters in this period");
       for (const groupKey of ["playable", "npc"]) {
         const subjects = periodCharacters.filter((subject) => characterGroupKey(subject) === groupKey);
-        if (subjects.length) cast.append(renderCharacterGroup(subjects, groupKey));
+        if (subjects.length) cast.append(renderCharacterGroup(subjects, groupKey, onSubject));
       }
       column.append(cast);
     }
@@ -219,7 +233,7 @@ export function renderLoreMap(
       card.dataset.eventId = event.id;
       card.tabIndex = 0;
       card.setAttribute("role", "button");
-      card.setAttribute("aria-label", `Open lore event ${event.title_en}`);
+      card.setAttribute("aria-label", `Open quest details for ${event.title_en}`);
       const title = element("h4", "lore-event-title", event.title_en);
       const time = element("p", "lore-event-time", event.time_label);
       const summary = event.summary_en ? element("p", "lore-event-summary", event.summary_en) : null;
@@ -236,10 +250,23 @@ export function renderLoreMap(
       const subjectList = element("div", "lore-event-subjects");
       for (const { subject, role } of eventSubjects) {
         if (isCharacter(subject)) {
-          characterList.append(characterAppearance(subject, role));
+          characterList.append(characterAppearance(subject, role, false, onSubject));
           continue;
         }
-        const pill = element("span", `lore-subject-pill${subject.wiki_entity_id ? "" : " is-provisional"}`, subject.attested_name);
+        const canOpen = Boolean(onSubject && subject.wiki_entity_id);
+        const pill = element(
+          canOpen ? "button" : "span",
+          `lore-subject-pill${subject.wiki_entity_id ? "" : " is-provisional"}`,
+          subject.attested_name,
+        );
+        if (canOpen) {
+          pill.type = "button";
+          pill.setAttribute("aria-label", `Open ${subject.entity_type || subject.proposed_type} detail for ${subject.attested_name}`);
+          pill.addEventListener("click", (eventKey) => {
+            eventKey.stopPropagation();
+            onSubject(subject, pill);
+          });
+        }
         pill.title = subject.wiki_entity_id ? subject.proposed_type : "Provisional subject; no wiki entity match yet";
         subjectList.append(pill);
       }
@@ -265,7 +292,7 @@ export function renderLoreMap(
         ...(relationList.children.length ? [relationList] : []),
         meta,
       );
-      const open = () => onEvent?.(event.id);
+      const open = () => onEvent?.(event.id, card);
       card.addEventListener("click", open);
       card.addEventListener("keydown", (eventKey) => {
         if (eventKey.key === "Enter" || eventKey.key === " ") {
@@ -316,7 +343,7 @@ export function renderLoreMap(
   }
 }
 
-export function renderLoreEventDetail(container, detail, { onBack } = {}) {
+export function renderLoreEventDetail(container, detail, { onBack, onSubject } = {}) {
   container.replaceChildren();
   if (!detail) {
     container.append(element("div", "empty-inspector", "Select an event on the lore map to inspect its claims and evidence."));
@@ -342,9 +369,24 @@ export function renderLoreEventDetail(container, detail, { onBack } = {}) {
     const subject = subjects.get(involvement.subject_id);
     const item = element("li", `lore-subject-item${subject?.wiki_entity_id ? "" : " is-provisional"}`);
     if (isCharacter(subject)) {
-      item.append(characterAppearance(subject, involvement.role));
+      item.append(characterAppearance(subject, involvement.role, false, onSubject));
     } else {
-      item.textContent = `${subject?.attested_name || "Unknown subject"} · ${involvement.role}${subject?.wiki_entity_id ? "" : " · provisional"}`;
+      const canOpen = Boolean(onSubject && subject?.wiki_entity_id);
+      const label = subject?.attested_name || "Unknown subject";
+      const subjectLink = element(
+        canOpen ? "button" : "span",
+        `lore-subject-pill${subject?.wiki_entity_id ? "" : " is-provisional"}`,
+        label,
+      );
+      if (canOpen) {
+        subjectLink.type = "button";
+        subjectLink.setAttribute("aria-label", `Open ${subject.entity_type || subject.proposed_type} detail for ${label}`);
+        subjectLink.addEventListener("click", (event) => {
+          event.stopPropagation();
+          onSubject(subject, subjectLink);
+        });
+      }
+      item.append(subjectLink, element("span", "lore-subject-role", involvement.role));
     }
     involvementList.append(item);
   }

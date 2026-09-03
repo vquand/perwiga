@@ -60,6 +60,9 @@ const dom = {
   loreMap: document.querySelector("#lore-map"),
   loreDetail: document.querySelector("#lore-detail"),
   loreReview: document.querySelector("#lore-review"),
+  loreDetailDialog: document.querySelector("#lore-detail-dialog"),
+  loreDetailDialogTitle: document.querySelector("#lore-detail-dialog-title"),
+  loreDetailDialogContent: document.querySelector("#lore-detail-dialog-content"),
   loreSubjectTypeFilter: document.querySelector("#lore-subject-type-filter"),
   loreSubjectSearch: document.querySelector("#lore-subject-search"),
   loreSubjectFilter: document.querySelector("#lore-subject-filter"),
@@ -101,6 +104,8 @@ let toastTimer;
 let searchTimer;
 let gameMenuFocusIndex = -1;
 let loreScrollFrame = null;
+let detailDialogTrigger = null;
+let detailDialogRequest = 0;
 const LORE_PREFETCH_DISTANCE = 640;
 
 const themeProperties = {
@@ -409,6 +414,7 @@ function renderLore() {
   else dom.loreMap.removeAttribute("aria-busy");
   renderLoreMap(dom.loreMap, graph, {
     onEvent: selectLoreEvent,
+    onSubject: selectLoreSubject,
     onLoadMore: loadMoreLore,
     isLoadingMore: state.loreLoadingMore,
     subjectType: state.loreSubjectType,
@@ -541,8 +547,84 @@ function scheduleLorePrefetch() {
   });
 }
 
-async function selectLoreEvent(eventId) {
+function loreSubjectDialogTitle(subject) {
+  const subjectType = subject?.entity_type || subject?.proposed_type || "record";
+  if (["character", "operator"].includes(subjectType)) return "Playable character detail";
+  if (subjectType === "npc") return "NPC detail";
+  if (subjectType === "book") return "Book detail";
+  if (subjectType === "quest") return "Quest detail";
+  return `${subjectType[0].toUpperCase()}${subjectType.slice(1)} detail`;
+}
+
+function openLoreDetailDialog(title, trigger) {
+  if (!dom.loreDetailDialog.open) detailDialogTrigger = trigger || document.activeElement;
+  document.documentElement.classList.add("lore-detail-dialog-open");
+  dom.loreDetailDialogTitle.textContent = title;
+  dom.loreDetailDialogContent.replaceChildren();
+  const request = ++detailDialogRequest;
+  if (!dom.loreDetailDialog.open) dom.loreDetailDialog.showModal();
+  requestAnimationFrame(() => {
+    if (dom.loreDetailDialog.open) dom.loreDetailDialog.querySelector("[data-close-lore-dialog]")?.focus();
+  });
+  return request;
+}
+
+function handleLoreDetailDialogWheel(event) {
+  if (!dom.loreDetailDialog.open) return;
+
+  const shell = dom.loreDetailDialog.querySelector(".lore-detail-dialog-shell");
+  const target = event.target;
+  if (!shell || !(target instanceof Node) || !shell.contains(target)) {
+    event.preventDefault();
+    return;
+  }
+
+  const atTop = event.deltaY < 0 && shell.scrollTop <= 0;
+  const atBottom =
+    event.deltaY > 0 && shell.scrollTop + shell.clientHeight >= shell.scrollHeight - 1;
+  if (atTop || atBottom) event.preventDefault();
+}
+
+document.addEventListener("wheel", handleLoreDetailDialogWheel, {
+  capture: true,
+  passive: false,
+});
+
+function renderLoreDialogLoading(label) {
+  renderInspectorEmpty(dom.loreDetailDialogContent, `Loading ${label}…`, "Fetching the linked record.");
+  dom.loreDetailDialogContent.setAttribute("aria-busy", "true");
+}
+
+function linkedQuestSubject(detail) {
+  const subjects = new Map((detail.subjects || []).map((subject) => [subject.id, subject]));
+  return (detail.involvements || [])
+    .filter((involvement) => involvement.role === "subject")
+    .map((involvement) => subjects.get(involvement.subject_id))
+    .find((subject) => subject?.entity_type === "quest" || subject?.proposed_type === "quest");
+}
+
+async function selectLoreSubject(subject, trigger) {
+  if (!subject?.wiki_entity_id) return;
+  const request = openLoreDetailDialog(loreSubjectDialogTitle(subject), trigger);
+  renderLoreDialogLoading(loreSubjectDialogTitle(subject).replace(/ detail$/, "").toLocaleLowerCase());
+  try {
+    const detail = await api.getEntity(subject.wiki_entity_id);
+    if (request !== detailDialogRequest) return;
+    renderEntityDetail(dom.loreDetailDialogContent, detail, state.types, { readOnly: true });
+  } catch (error) {
+    if (request === detailDialogRequest) {
+      renderInspectorEmpty(dom.loreDetailDialogContent, "Record unavailable", error.message);
+      showToast(error.message, true);
+    }
+  } finally {
+    if (request === detailDialogRequest) dom.loreDetailDialogContent.removeAttribute("aria-busy");
+  }
+}
+
+async function selectLoreEvent(eventId, trigger) {
   state.selectedLoreEventId = eventId;
+  const request = openLoreDetailDialog("Quest detail", trigger);
+  renderLoreDialogLoading("quest detail");
   dom.loreDetail.setAttribute("aria-busy", "true");
   try {
     const detail = await api.getLoreEvent(eventId);
@@ -552,12 +634,27 @@ async function selectLoreEvent(eventId) {
         state.selectedLoreEventId = "";
         renderLoreEventDetail(dom.loreDetail, null);
       },
+      onSubject: selectLoreSubject,
     });
+    const quest = linkedQuestSubject(detail);
+    if (!quest?.wiki_entity_id) {
+      if (request !== detailDialogRequest) return;
+      dom.loreDetailDialogTitle.textContent = "Lore event detail";
+      renderLoreEventDetail(dom.loreDetailDialogContent, detail, { onSubject: selectLoreSubject });
+      return;
+    }
+    const entityDetail = await api.getEntity(quest.wiki_entity_id);
+    if (request !== detailDialogRequest) return;
+    renderEntityDetail(dom.loreDetailDialogContent, entityDetail, state.types, { readOnly: true });
   } catch (error) {
     renderLoreEventDetail(dom.loreDetail, null);
-    showToast(error.message, true);
+    if (request === detailDialogRequest) {
+      renderInspectorEmpty(dom.loreDetailDialogContent, "Quest unavailable", error.message);
+      showToast(error.message, true);
+    }
   } finally {
     dom.loreDetail.removeAttribute("aria-busy");
+    if (request === detailDialogRequest) dom.loreDetailDialogContent.removeAttribute("aria-busy");
   }
 }
 
@@ -921,5 +1018,21 @@ for (const button of document.querySelectorAll("[data-close-dialog]")) {
 for (const button of document.querySelectorAll("[data-close-game-dialog]")) {
   button.addEventListener("click", () => dom.gameDialog.close());
 }
+function closeLoreDetailDialog() {
+  if (dom.loreDetailDialog.open) dom.loreDetailDialog.close();
+}
+for (const button of document.querySelectorAll("[data-close-lore-dialog]")) {
+  button.addEventListener("click", closeLoreDetailDialog);
+}
+dom.loreDetailDialog.addEventListener("click", (event) => {
+  if (event.target === dom.loreDetailDialog) closeLoreDetailDialog();
+});
+dom.loreDetailDialog.addEventListener("close", () => {
+  document.documentElement.classList.remove("lore-detail-dialog-open");
+  detailDialogRequest += 1;
+  const trigger = detailDialogTrigger;
+  detailDialogTrigger = null;
+  if (trigger?.isConnected) trigger.focus({ preventScroll: true });
+});
 
 initialize();
