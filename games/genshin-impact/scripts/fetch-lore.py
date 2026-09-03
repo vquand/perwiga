@@ -2,10 +2,11 @@
 """Crawl Genshin books and quests, then build their reviewed lore join.
 
 The Genshin Impact Wiki is a community-maintained source. This crawler keeps
-the boundary conservative: it extracts infobox fields, release-version
-categories, explicit Quest/Book templates, quest reward books, predecessor
-links, and the explicit character/appearance categories on quest pages. It
-does not turn arbitrary prose links into confirmed appearances or dates.
+the boundary conservative: it extracts infobox fields, the readable Text
+section from book pages, release-version categories, explicit Quest/Book
+templates, quest reward books, predecessor links, and the explicit
+character/appearance categories on quest pages. It does not turn arbitrary
+prose links into confirmed appearances or dates.
 """
 
 from __future__ import annotations
@@ -42,6 +43,8 @@ LINK_RE = re.compile(r"\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]")
 TEMPLATE_RE = re.compile(r"\{\{\s*(Quest|Book)\s*\|\s*([^{}|]+?)(?:\|[^{}]*)?\}\}", re.I)
 VERSION_RE = re.compile(r"^Released in Version (\d+(?:\.\d+)*)$", re.I)
 APPEARANCE_CATEGORY_RE = re.compile(r"^(.+?) Appearances$", re.I)
+BOOK_TEXT_HEADING_RE = re.compile(r"^={2,6}\s*Text(?:\[\])?\s*={2,6}\s*$", re.I | re.M)
+SECTION_HEADING_RE = re.compile(r"^={2,6}\s*[^=\n]+?\s*={2,6}\s*$", re.M)
 
 
 def compact(value: str) -> str:
@@ -59,6 +62,46 @@ def title_value(value: str) -> str:
         value = links[0].group(1)
     value = re.sub(r"\{\{[^{}]*\}\}", "", value)
     return compact(value)
+
+
+def plain_wikitext(value: str) -> str:
+    value = re.sub(r"<ref[^>]*>.*?</ref>", "", value, flags=re.I | re.S)
+    value = re.sub(r"<!--.*?-->", "", value, flags=re.S)
+    for _ in range(5):
+        replacement = re.sub(r"\{\{[^{}]*\}\}", "", value)
+        if replacement == value:
+            break
+        value = replacement
+    value = re.sub(r"\[\[([^\]|#]+)(?:#[^\]|]*)?\|([^\]]+)\]\]", r"\2", value)
+    value = re.sub(r"\[\[([^\]|#]+)(?:#[^\]|]*)?\]\]", r"\1", value)
+    value = re.sub(r"\[https?://\S+(?:\s+([^\]]+))?\]", lambda match: match.group(1) or "", value)
+    value = re.sub(r"<br\s*/?>", "\n", value, flags=re.I)
+    value = re.sub(r"<[^>]+>", "", value)
+    value = re.sub(r"'{2,5}", "", value)
+    value = html.unescape(value)
+    return re.sub(r"[ \t]+", " ", value)
+
+
+def book_content(wikitext: str) -> list[str]:
+    heading = BOOK_TEXT_HEADING_RE.search(wikitext)
+    if not heading:
+        return []
+    section = wikitext[heading.end():]
+    next_heading = SECTION_HEADING_RE.search(section)
+    if next_heading:
+        section = section[:next_heading.start()]
+    section = plain_wikitext(section)
+    paragraphs: list[str] = []
+    for block in re.split(r"\n\s*\n+", section):
+        lines = []
+        for line in block.splitlines():
+            line = re.sub(r"^\s*[*#;:]\s*", "", line).strip()
+            if line:
+                lines.append(line)
+        paragraph = re.sub(r"\s+", " ", " ".join(lines)).strip()
+        if paragraph and paragraph not in paragraphs:
+            paragraphs.append(paragraph)
+    return paragraphs
 
 
 def page_url(title: str) -> str:
@@ -154,6 +197,7 @@ def parse_book_page(title: str, page_id: int, wikitext: str, categories: list[st
         "obtain_region": title_value(fields.get("region_location", "")),
         "volume_count": int(volume_count) if volume_count and volume_count.isdigit() else None,
         "description": title_value(fields.get("description", "")),
+        "content": book_content(wikitext),
         "source_note": "; ".join(title_value(value) for value in source_values if title_value(value)),
         "release_version": release_version(categories),
         "quest_links": quest_links,

@@ -1178,6 +1178,21 @@ h1 {
   color: var(--text);
 }
 
+.lore-character:is(button) {
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+}
+
+.lore-character:is(button):hover .lore-character-avatar,
+.lore-character:is(button):focus-visible .lore-character-avatar {
+  border-color: var(--accent);
+  transform: translateY(-0.0625rem);
+}
+
 .lore-character-avatar {
   width: 2.5rem;
   height: 2.5rem;
@@ -1320,6 +1335,27 @@ h1 {
 .lore-subject-pill {
   border-radius: 999px;
   color: var(--text);
+}
+
+.lore-subject-pill:is(button) {
+  cursor: pointer;
+  font: inherit;
+  background: var(--surface-active);
+  text-align: left;
+}
+
+.lore-subject-pill:is(button):hover,
+.lore-subject-pill:is(button):focus-visible {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.lore-subject-role {
+  align-self: center;
+  color: var(--text-subtle);
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .lore-subject-pill.is-provisional,
@@ -2052,8 +2088,21 @@ textarea:hover {
 
 .aliases,
 .entity-appearances,
-.alias-editor {
+.alias-editor,
+.entity-detail-content {
   padding-top: var(--space-6);
+}
+
+.entity-detail-content-body {
+  display: grid;
+  gap: var(--space-4);
+  color: var(--text);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.entity-detail-content-body p {
+  margin: 0;
 }
 
 .appearance-list {
@@ -2174,9 +2223,35 @@ dialog {
   box-shadow: 0 2rem 5rem rgb(0 0 0 / 50%);
 }
 
+html.lore-detail-dialog-open,
+html.lore-detail-dialog-open body {
+  overflow-y: hidden;
+}
+
 dialog::backdrop {
   background: rgb(2 5 7 / 82%);
   backdrop-filter: blur(0.25rem);
+}
+
+#lore-detail-dialog {
+  width: min(52rem, calc(100vw - 2rem));
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.lore-detail-dialog-shell {
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-6);
+}
+
+.lore-detail-dialog-content {
+  min-height: 6rem;
+}
+
+#lore-detail-dialog .inspector-content {
+  padding: 0;
 }
 
 #entity-form,

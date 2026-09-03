@@ -23,9 +23,9 @@ use perwiga_core::{
         LibraryWork, WikiEntity,
     },
     service::Application,
-    CalendarEventPresentation, EntityEventRecencyPresentation, EntityFacetDefinition,
-    EntityPresentation, EntityTypeDefinition, LibraryModule, LoreSchemaDefinition, ModuleRegistry,
-    PerwigaError, Store, ThemeDefinition, WorkKind,
+    CalendarEventPresentation, EntityDetailContent, EntityEventRecencyPresentation,
+    EntityFacetDefinition, EntityPresentation, EntityTypeDefinition, LibraryModule,
+    LoreSchemaDefinition, ModuleRegistry, PerwigaError, Store, ThemeDefinition, WorkKind,
 };
 use serde::{Deserialize, Serialize};
 
@@ -97,6 +97,8 @@ struct EntityDetailResponse {
     aliases: Vec<EntityAlias>,
     appearances: Vec<EntityAppearance>,
     event_recency: Option<EntityEventRecencyPresentation>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    detail_content: Option<EntityDetailContent>,
 }
 
 #[derive(Serialize)]
@@ -1155,12 +1157,14 @@ async fn get_entity(
         })?;
     let event_recency = module.entity_event_recency(&detail.entity);
     let catalog_label = module.entity_catalog_label(&detail.entity);
+    let detail_content = module.entity_detail_content(&detail.entity);
     Ok(Json(EntityDetailResponse {
         entity: detail.entity,
         catalog_label,
         aliases: detail.aliases,
         appearances: detail.appearances,
         event_recency,
+        detail_content,
     }))
 }
 

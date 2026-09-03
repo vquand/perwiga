@@ -423,13 +423,29 @@ function entityAppearanceSection(appearances) {
   return section;
 }
 
-export function renderEntityDetail(container, detail, types, { onEdit, onAlias }) {
+function entityDetailContentSection(content) {
+  const section = element("section", "entity-detail-content");
+  section.append(element("h3", "subheading", content.heading || "Content"));
+  if (!content.paragraphs?.length) {
+    section.append(element("p", "empty-copy", "No readable content was captured for this record."));
+    return section;
+  }
+  const body = element("div", "entity-detail-content-body");
+  for (const paragraph of content.paragraphs) {
+    body.append(element("p", "", paragraph));
+  }
+  section.append(body);
+  return section;
+}
+
+export function renderEntityDetail(container, detail, types, { onEdit, onAlias, readOnly = false } = {}) {
   const {
     entity,
     catalog_label: catalogLabel,
     aliases,
     appearances = [],
     event_recency: eventRecency,
+    detail_content: detailContent,
   } = detail;
   container.className = "inspector-content";
   container.replaceChildren();
@@ -441,10 +457,14 @@ export function renderEntityDetail(container, detail, types, { onEdit, onAlias }
     element("h3", "detail-title", catalogLabel || entity.official_english_name),
     element("p", "detail-original", friendlyOriginalName(entity, catalogLabel)),
   );
-  const edit = element("button", "button button-secondary", "Edit");
-  edit.type = "button";
-  edit.addEventListener("click", onEdit);
-  heading.append(titleBlock, edit);
+  if (!readOnly && onEdit) {
+    const edit = element("button", "button button-secondary", "Edit");
+    edit.type = "button";
+    edit.addEventListener("click", onEdit);
+    heading.append(titleBlock, edit);
+  } else {
+    heading.append(titleBlock);
+  }
 
   const names = element("dl", "detail-list");
   names.append(
@@ -482,7 +502,10 @@ export function renderEntityDetail(container, detail, types, { onEdit, onAlias }
   const recency = eventRecencyPanel(eventRecency);
   container.append(heading);
   if (recency) container.append(recency);
-  container.append(names, entityAppearanceSection(appearances), aliasSection, aliasEditor(onAlias));
+  container.append(names);
+  if (detailContent) container.append(entityDetailContentSection(detailContent));
+  container.append(entityAppearanceSection(appearances), aliasSection);
+  if (!readOnly && onAlias) container.append(aliasEditor(onAlias));
 }
 
 export function renderInspectorEmpty(container, title = "Select a record", message) {

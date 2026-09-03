@@ -2,13 +2,13 @@
   "schema": "perwiga-lore-candidates/v1",
   "module_id": "genshin-impact",
   "corpus": {
-    "version": "reviewed-wiki-catalog-2026-09-02",
-    "manifest_sha256": "c472cde0762766e973966a55fa48c8d0a2490d82f82984c537d652468088110b"
+    "version": "reviewed-wiki-catalog-2026-09-03",
+    "manifest_sha256": "9d98e5fe66fcd96fdddfba98f26734c485501cf7bf45638cafc099ec6880aa28"
   },
   "generator": {
     "name": "perwiga-genshin-lore-crawl",
     "version": "1",
-    "generated_at": "2026-09-02T00:00:00Z"
+    "generated_at": "2026-09-03T00:00:00Z"
   },
   "sources": [
     {
@@ -19,8 +19,8 @@
       "title": "Genshin Impact Wiki Book list",
       "language": "en",
       "url": "https://genshin-impact.fandom.com/wiki/Category:Books",
-      "content_sha256": "e7b222334583a0a09e60104f7b3cb25f83ff91a4d06cf3b9b38af30848554387",
-      "checked_at": "2026-09-02"
+      "content_sha256": "e8d0ce0ec091f4f47b82f60c747ffaff2393ec1c05b3cc623eb09097e16080ac",
+      "checked_at": "2026-09-03"
     },
     {
       "key": "quests-catalog",
